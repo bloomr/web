@@ -2,13 +2,15 @@
 <html>
 <head>
   <title>Bloomr</title>
+  <link href="//fonts.googleapis.com/css?family=Lobster" media="screen" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:300italic,600italic,300,600|Quando|Josefin+Slab:400,700,400italic,700italic|Trocchi|Arvo|Lato:300,400,700,300italic,400italic,700italic|Raleway:200,300,700|Playfair+Display:400,700,400italic,700italic|Bitter:400,700,400italic|Vollkorn:400,400italic|Titillium+Web|EB+Garamond&amp;subset=latin,latin-ext" media="screen" rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div id="header" class="navbar navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,12 +19,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Bloomr</a>
+      <a class="navbar-brand" href="http://www.bloomr.org">Bloomr</a>
     </div><!--/.nav-collapse -->
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://www.bloomr.org/#bloomr">Bloomr</a></li>
+        <li><a href="http://www.bloomr.org/#participer">Participer</a></li>
+        <li><a href="http://www.bloomr.org/#nos-motivations">Nos motivations</a></li>
+        <li><a href="http://www.bloomr.org/#vos-questions">Vos questions</a></li>
+        <li><a href="http://www.bloomr.org/#qui-nous-sommes">Qui nous sommes</a></li>
+        <li><a href="http://www.bloomr.org/#partager">Partager</a></li>
+        <li><a href="http://www.bloomr.org/#contact">Contact</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<%= yield %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

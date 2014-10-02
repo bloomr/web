@@ -1,0 +1,15 @@
+<h1>Portraits</h1>
+
+<div id="portraits_list" class="row">
+  <% @portraits.each do |portrait| %>
+    <div class="col-md-4 portrait-item">
+      <%= image_tag "default_avatar.png" %>
+      <h2>
+        <%= portrait.first_name %> (<%= portrait.job_title %>)
+      </h2>
+      <p>
+        <%= portrait.job_description %>
+      </p>
+    </div>
+  <% end %>
+</div>

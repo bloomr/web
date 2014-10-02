@@ -38,6 +38,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'capybara'
   gem 'growl'
 end
 

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resource :profile
 
+  resources :portraits, :only => [:index]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
