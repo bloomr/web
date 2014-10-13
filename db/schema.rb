@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20141013192343) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "questions", force: true do |t|
-    t.string   "title"
+    t.string   "title",      null: false
     t.string   "answer"
     t.string   "identifier"
     t.datetime "created_at"

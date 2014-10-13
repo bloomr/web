@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :questions
+  accepts_nested_attributes_for :questions, :allow_destroy => true
 end

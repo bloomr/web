@@ -14,7 +14,7 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
-  permit_params :email, :password, :first_name, :job_title, :job_description
+  permit_params :email, :first_name, :job_title, :job_description, questions_attributes: [:id, :title, :answer, :identifier, :_destroy]
 
   index do
     selectable_column
@@ -33,13 +33,21 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "Credentials" do
       f.input :email
-      f.input :password
+      f.input :password, :required => false
     end
 
     f.inputs "Infos" do
       f.input :first_name
       f.input :job_title
       f.input :job_description
+    end
+
+    f.inputs "Questions" do
+      f.has_many :questions, :allow_destroy => true do |qf|
+        qf.input :title
+        qf.input :answer
+        qf.input :identifier
+      end
     end
 
     f.actions
