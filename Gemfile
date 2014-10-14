@@ -31,6 +31,8 @@ gem 'spring',        group: :development
 
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'acts-as-taggable-on', '~> 3.4'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

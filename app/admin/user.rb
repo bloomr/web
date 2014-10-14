@@ -14,7 +14,9 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
-  permit_params :email, :first_name, :job_title, :job_description, questions_attributes: [:id, :title, :answer, :identifier, :_destroy]
+  permit_params :email, :first_name, :job_title, :job_description,
+                :keyword_list,
+                questions_attributes: [:id, :title, :answer, :identifier, :_destroy]
 
   index do
     selectable_column
@@ -40,6 +42,10 @@ ActiveAdmin.register User do
       f.input :first_name
       f.input :job_title
       f.input :job_description
+    end
+
+    f.inputs "Keywords" do
+      f.input :keyword_list, :hint => "Keywords should be separated by commas ','"
     end
 
     f.inputs "Questions" do

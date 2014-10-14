@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :questions
   accepts_nested_attributes_for :questions, :allow_destroy => true
+
+  acts_as_taggable_on :keywords
 end
