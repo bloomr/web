@@ -1,5 +1,38 @@
+$orange: #FF6622 !default;
+
 #portraits_list {
-  .col-md-4 {
-    text-align: center;
+  .panel {
+    .panel-heading {
+      text-align: center;
+      h2 {
+        font-weight: bold;
+      }
+    }
+    .panel-body {
+      .portrait-keywords {
+        height: 110px;
+        list-style: none;
+        li:before {
+          content: '\2605';
+          color: $orange;
+          padding-right: 8px;
+        }
+        border-bottom: 1px solid gray;
+      }
+      .portrait-love-job {
+        height: 90px;
+        border-bottom: 1px solid gray;
+      }
+      .portrait-infos {
+        img.portrait-avatar {
+          height: 104px;
+          width: 104px;
+          border-radius: 52px;
+        }
+        .portrait-infos-right {
+          float: right;
+        }
+      }
+    }
   }
 }

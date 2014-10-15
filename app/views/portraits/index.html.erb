@@ -2,14 +2,33 @@
 
 <div id="portraits_list" class="row">
   <% @portraits.each do |portrait| %>
-    <div class="col-md-4 portrait-item">
-      <%= image_tag "default_avatar.png" %>
-      <h2>
-        <%= portrait.first_name %> (<%= portrait.job_title %>)
-      </h2>
-      <p>
-        <%= portrait.job_description %>
-      </p>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title portrait-job-title"><%= portrait.job_title %></h2>
+        </div>
+
+        <div class="panel-body">
+          <ul class="portrait-keywords">
+            <% portrait.keyword_list.each do |keyword| %>
+                <li><%= keyword %></li>
+            <% end %>
+          </ul>
+
+          <p class="portrait-love-job"><%= truncate(portrait.love_job_answer, :length => 120, :separator => " ") %></p>
+
+          <div class="portrait-infos">
+            <%= image_tag "default_avatar.png", :class => "portrait-avatar" %>
+            <div class="portrait-infos-right">
+              <h3 class="portrait-name"><%= portrait.first_name %></h3>
+              <p class="portrait-location">
+                <span class="glyphicon glyphicon-map-marker"></span>
+                Paris
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
