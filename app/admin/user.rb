@@ -14,9 +14,19 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
-  permit_params :email, :first_name, :job_title, :job_description,
+  permit_params :email, :password, :password_confirmation, :first_name, :job_title, :job_description,
                 :keyword_list,
                 questions_attributes: [:id, :title, :answer, :identifier, :_destroy]
+
+  controller do
+    def update
+      if params[:user][:password].blank?
+        params[:user].delete "password"
+        params[:user].delete "password_confirmation"
+      end
+      super
+    end
+  end
 
   index do
     selectable_column
@@ -35,7 +45,8 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "Credentials" do
       f.input :email
-      f.input :password, :required => false
+      f.input :password, :required => false, :hint => "You can leave it empty to prevent changing the user's existing password. New users should have a password."
+      f.input :password_confirmation, :required => false
     end
 
     f.inputs "Infos" do
@@ -45,7 +56,7 @@ ActiveAdmin.register User do
     end
 
     f.inputs "Keywords" do
-      f.input :keyword_list, :hint => "Keywords should be separated by commas ','"
+      f.input :keyword_list, :hint => "Keywords should be separated by commas ','."
     end
 
     f.inputs "Questions" do
