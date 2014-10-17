@@ -14,7 +14,7 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
-  permit_params :email, :password, :password_confirmation, :first_name, :job_title, :job_description,
+  permit_params :email, :password, :password_confirmation, :first_name, :job_title, :job_description, :avatar,
                 :keyword_list,
                 questions_attributes: [:id, :title, :answer, :identifier, :_destroy]
 
@@ -53,6 +53,7 @@ ActiveAdmin.register User do
       f.input :first_name
       f.input :job_title
       f.input :job_description
+      f.input :avatar, :required => false, :as => :file, :hint => f.template.image_tag(f.object.avatar.url(:thumb))
     end
 
     f.inputs "Keywords" do

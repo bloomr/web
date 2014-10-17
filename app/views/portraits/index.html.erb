@@ -18,7 +18,7 @@
           <p class="portrait-love-job"><%= truncate(portrait.love_job_answer, :length => 120, :separator => " ") %></p>
 
           <div class="portrait-infos">
-            <%= image_tag "default_avatar.png", :class => "portrait-avatar" %>
+            <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar" %>
             <div class="portrait-infos-right">
               <h3 class="portrait-name"><%= portrait.first_name %></h3>
               <p class="portrait-location">

@@ -33,6 +33,9 @@ gem 'activeadmin', github: 'activeadmin'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
+gem "paperclip", "~> 4.2"
+gem 'aws-sdk'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
