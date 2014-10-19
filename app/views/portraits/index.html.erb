@@ -9,13 +9,6 @@
         </div>
 
         <div class="panel-body">
-          <ul class="portrait-keywords">
-            <% portrait.keyword_list.each do |keyword| %>
-                <li><%= keyword %></li>
-            <% end %>
-          </ul>
-
-          <p class="portrait-love-job"><%= truncate(portrait.love_job_answer, :length => 120, :separator => " ") %></p>
 
           <div class="portrait-infos">
             <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar" %>
@@ -27,6 +20,17 @@
               </p>
             </div>
           </div>
+
+          <p class="portrait-love-job"><%= truncate(portrait.love_job_answer, :length => 120, :separator => " ") %></p>
+
+          <ul class="portrait-keywords">
+            <% portrait.keyword_list.each do |keyword| %>
+                <li><%= keyword %></li>
+            <% end %>
+          </ul>
+
+          <p class="portrait-specifically"><%= truncate(portrait.specifically, :length => 120, :separator => " ") %></p>
+
         </div>
       </div>
     </div>

@@ -16,12 +16,12 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def love_job_answer
-    answer = nil
-    questions.each do |question|
-      if question.identifier == "love_job"
-        answer = question.answer
-      end
-    end
-    return answer
+    question = questions.find {|q| q.identifier == 'love_job'}
+    question.answer if question
+  end
+
+  def specifically
+    question = questions.find {|q| q.identifier == 'specifically'}
+    question.answer if question
   end
 end
