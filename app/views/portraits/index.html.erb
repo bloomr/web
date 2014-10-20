@@ -21,7 +21,7 @@
             </div>
           </div>
 
-          <p class="portrait-love-job"><%= truncate(portrait.love_job_answer, :length => 120, :separator => " ") %></p>
+          <p class="portrait-love-job"><%= truncate(portrait.answer_to('love_job'), :length => 120, :separator => " ") %></p>
 
           <ul class="portrait-keywords">
             <% portrait.keyword_list.each do |keyword| %>
@@ -29,7 +29,7 @@
             <% end %>
           </ul>
 
-          <p class="portrait-specifically"><%= truncate(portrait.specifically, :length => 120, :separator => " ") %></p>
+          <p class="portrait-specifically"><%= truncate(portrait.answer_to('specifically'), :length => 120, :separator => " ") %></p>
 
         </div>
       </div>
