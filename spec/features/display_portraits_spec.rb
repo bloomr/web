@@ -5,13 +5,11 @@ feature "List of portraits" do
       user1 = User.create(
           :email => "john.doe@example.org",
           :first_name => "John",
-          :job_title => "Developer",
-          :job_description => "I love my job. It's awesome.")
+          :job_title => "Developer")
       user2 = User.create(
           :email => "jane.doe@example.org",
           :first_name => "Jane",
-          :job_title => "Architect",
-          :job_description => "I build crazy things.")
+          :job_title => "Architect")
       user_unemployed = User.create(
           :email => "mike.test@example.org",
           :first_name => "Mike"
