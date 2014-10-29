@@ -4,53 +4,67 @@ $orange: #FF6622 !default;
   padding-left: 0px;
   list-style: none;
 
-  .panel {
-    .panel-heading {
-      text-align: center;
-      h2 {
-        font-weight: bold;
+  > li {
+    > a {
+      color: #333333;
+      text-decoration: none;
+      .panel {
+        .panel-heading {
+          text-align: center;
+          h2 {
+            font-weight: bold;
+          }
+        }
+        .panel-body {
+          .portrait-infos {
+            img.portrait-avatar {
+              height: 104px;
+              width: 104px;
+              border-radius: 52px;
+              float: left;
+            }
+            .portrait-infos-right {
+              overflow: hidden;
+              padding-left: 10px;
+            }
+            border-bottom: 1px solid gray;
+            padding-bottom:15px;
+            overflow: hidden; /* clear the float */
+          }
+          .portrait-love-job {
+            padding: 15px 0;
+            margin-bottom: 0;
+            border-bottom: 1px solid gray;
+            font-weight: bold;
+          }
+          .portrait-keywords {
+            margin-bottom: 0;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            list-style: none;
+            li:before {
+              content: '\2605';
+              color: $orange;
+              padding-right: 8px;
+            }
+            border-bottom: 1px solid gray;
+          }
+          .portrait-specifically {
+            padding-top: 15px;
+          }
+
+        }
       }
     }
-    .panel-body {
-      .portrait-infos {
-        img.portrait-avatar {
-          height: 104px;
-          width: 104px;
-          border-radius: 52px;
-          float: left;
-        }
-        .portrait-infos-right {
-          overflow: hidden;
-          padding-left: 10px;
-        }
-        border-bottom: 1px solid gray;
-        padding-bottom:15px;
-        overflow: hidden; /* clear the float */
+    > a:hover {
+      .panel {
+        border: 1px solid #BBBBBB;
+        background-color: #F9F9F9;
       }
-      .portrait-love-job {
-        padding: 15px 0;
-        margin-bottom: 0;
-        border-bottom: 1px solid gray;
-        font-weight: bold;
-      }
-      .portrait-keywords {
-        margin-bottom: 0;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        list-style: none;
-        li:before {
-          content: '\2605';
-          color: $orange;
-          padding-right: 8px;
-        }
-        border-bottom: 1px solid gray;
-      }
-      .portrait-specifically {
-        padding-top: 15px;
-      }
-
     }
   }
+
+
 }
 
 #portrait_details {
