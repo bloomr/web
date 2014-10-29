@@ -23,14 +23,13 @@ $orange: #FF6622 !default;
           overflow: hidden;
           padding-left: 10px;
         }
-        border-bottom: 1px solid gray;
         padding-bottom:15px;
         overflow: hidden; /* clear the float */
       }
       .portrait-love-job {
         padding: 15px 0;
         margin-bottom: 0;
-        border-bottom: 1px solid gray;
+        border-top: 1px solid gray;
         font-weight: bold;
       }
       .portrait-keywords {
@@ -43,10 +42,11 @@ $orange: #FF6622 !default;
           color: $orange;
           padding-right: 8px;
         }
-        border-bottom: 1px solid gray;
+        border-top: 1px solid gray;
       }
       .portrait-specifically {
         padding-top: 15px;
+        border-top: 1px solid gray;
       }
 
     }
