@@ -1,0 +1,31 @@
+<ol class="breadcrumb">
+  <li><a href="<%= portraits_path %>">Portraits</a></li>
+  <li class="active"><a href="<%= portrait_path(@portrait)%>"><%= @portrait .first_name %></a></li>
+</ol>
+
+<div id="portrait_details">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="portrait-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <h2 class="portrait-job-title"><%= @portrait.job_title %></h2>
+          <ul class="portrait-keywords">
+            <% @portrait.keyword_list.each do |keyword| %>
+                <li><%= keyword %></li>
+            <% end %>
+          </ul>
+          <p class="portrait-love-job"><%= @portrait.answer_to('love_job') %></p>
+        </div>
+        <div class="portrait-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <div class="portrait-infos">
+            <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar" %>
+            <h3 class="portrait-name"><%= @portrait.first_name %></h3>
+          </div>
+          <div class="portrait-specifically">
+            <%= @portrait.answer_to('specifically') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

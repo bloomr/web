@@ -10,3 +10,13 @@ body {
   padding-top: 70px;
   padding-bottom: 90px;
 }
+
+/* Breadcrumb */
+ol.breadcrumb {
+  margin-top: 10px;
+  > li + li:before {
+    color: #CCCCCC;
+    content: "/ ";
+    padding: 0 5px;
+  }
+}

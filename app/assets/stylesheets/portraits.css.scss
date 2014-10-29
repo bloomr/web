@@ -5,7 +5,7 @@ $orange: #FF6622 !default;
     .panel-heading {
       text-align: center;
       height: 56px;
-      h2 {
+      h2.portrait-job-title {
         font-weight: bold;
       }
     }
@@ -45,6 +45,58 @@ $orange: #FF6622 !default;
         padding-top: 15px;
       }
 
+    }
+  }
+}
+
+#portrait_details {
+  .panel {
+    .panel-body {
+      .portrait-sidebar {
+        border-right: 1px dotted gray;
+        h2.portrait-job-title {
+          font-size: 16px;
+          margin-top: 0px;
+          margin-bottom: 0px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          text-align: center;
+          font-weight: bold;
+          border-bottom: 1px solid gray;
+        }
+        .portrait-keywords {
+           margin-bottom: 0;
+           padding-top: 15px;
+           padding-bottom: 15px;
+           list-style: none;
+           li:before {
+             content: '\2605';
+             color: $orange;
+             padding-right: 8px;
+           }
+           border-bottom: 1px solid gray;
+         }
+        .portrait-love-job {
+          height: 110px;
+          padding: 15px 0;
+          margin-bottom: 0;
+          font-weight: bold;
+        }
+      }
+      .portrait-main {
+        .portrait-infos {
+          text-align: center;
+          border-bottom: 1px solid gray;
+          img.portrait-avatar {
+            height: 140px;
+            width: 140px;
+            border-radius: 70px;
+          }
+        }
+      }
+      .portrait-specifically {
+        padding-top: 15px;
+      }
     }
   }
 }
