@@ -12,12 +12,12 @@
 
           <div class="portrait-infos">
             <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
-            <div class="portrait-infos-right">
-              <h3 class="portrait-name p-given-name"><%= portrait.first_name %></h3>
-            </div>
+            <!--<div class="portrait-infos-right">-->
+              <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
+            <!--</div>-->
           </div>
 
-          <p class="portrait-love-job"><%= truncate(portrait.answer_to('love_job'), :length => 120, :separator => " ") %></p>
+          <p class="portrait-love-job"><%= portrait.answer_to('love_job') %></p>
 
           <ul class="portrait-keywords">
             <% portrait.keyword_list.each do |keyword| %>
@@ -25,7 +25,7 @@
             <% end %>
           </ul>
 
-          <p class="portrait-specifically p-role"><%= truncate(portrait.answer_to('specifically'), :length => 120, :separator => " ") %></p>
+          <p class="portrait-specifically p-role"><%= portrait.answer_to('specifically') %></p>
 
         </div>
       </div>

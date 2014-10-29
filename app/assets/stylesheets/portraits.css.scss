@@ -7,7 +7,6 @@ $orange: #FF6622 !default;
   .panel {
     .panel-heading {
       text-align: center;
-      height: 56px;
       h2 {
         font-weight: bold;
       }
@@ -18,15 +17,17 @@ $orange: #FF6622 !default;
           height: 104px;
           width: 104px;
           border-radius: 52px;
+          float: left;
         }
         .portrait-infos-right {
-          float: right;
+          overflow: hidden;
+          padding-left: 10px;
         }
         border-bottom: 1px solid gray;
         padding-bottom:15px;
+        overflow: hidden; /* clear the float */
       }
       .portrait-love-job {
-        height: 110px;
         padding: 15px 0;
         margin-bottom: 0;
         border-bottom: 1px solid gray;
