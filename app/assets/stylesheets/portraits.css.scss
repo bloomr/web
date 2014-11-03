@@ -5,6 +5,58 @@ $orange: #FF6622 !default;
   list-style: none;
 
   > li {
+    .panel {
+      .panel-heading {
+        text-align: center;
+        h3.portrait-name {
+          font-size: 1.2em;
+        }
+        h2.portrait-job-title {
+          font-size: 1.2em;
+          font-weight: bold;
+          line-height: 1.5;
+        }
+      }
+      .panel-body {
+        blockquote.portrait-love-job {
+          margin: 0px;
+          padding: 0px;
+          border-left: none;
+          text-align: center;
+          a {
+            padding-left: 4px;
+            text-decoration: underline;
+          }
+        }
+        blockquote.portrait-love-job:before {
+          content: open-quote;
+        }
+        blockquote.portrait-love-job:after {
+          content: close-quote;
+        }
+        ul.portrait-keywords {
+          padding-left: 0px;
+          li {
+            display: inline-block;
+          }
+          li:before {
+            content: "#";
+          }
+        }
+      }
+    }
+  }
+
+  > li:hover {
+    .panel {
+      .panel-heading {
+        background-color: lighten($orange, 20%);
+      }
+    }
+  }
+}
+  /*
+  > li {
     > a {
       color: #333333;
       text-decoration: none;
@@ -28,7 +80,7 @@ $orange: #FF6622 !default;
               padding-left: 10px;
             }
             padding-bottom:15px;
-            overflow: hidden; /* clear the float */
+            overflow: hidden;
           }
           .portrait-love-job {
             padding: 15px 0;
@@ -64,6 +116,7 @@ $orange: #FF6622 !default;
     }
   }
 }
+*/
 
 #portrait_details {
   .panel {
