@@ -14,7 +14,7 @@
                 <li><%= keyword %></li>
             <% end %>
           </ul>
-          <p class="portrait-love-job"><%= @portrait.answer_to('love_job') %></p>
+          <p class="portrait-love-job"><%= raw(@portrait.answer_to('love_job')) %></p>
         </div>
         <div class="portrait-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <div class="portrait-infos">
@@ -22,7 +22,7 @@
             <h3 class="portrait-name p-given-name"><%= @portrait.first_name %></h3>
           </div>
           <div class="portrait-specifically p-role">
-            <%= @portrait.answer_to('specifically') %>
+            <%= raw(@portrait.answer_to('specifically')) %>
           </div>
         </div>
       </div>

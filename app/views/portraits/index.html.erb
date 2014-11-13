@@ -15,7 +15,7 @@
           <div class="panel-body">
             <% if portrait.answer_to('love_job') %>
                 <blockquote class="portrait-love-job">
-                  <%= truncate(portrait.answer_to('love_job'), :length => 100, :separator => " ", :omission => "") { link_to("[...]", portrait_path(portrait)) } %>
+                  <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => "") { link_to("[...]", portrait_path(portrait)) } %>
                 </blockquote>
             <% end %>
 
