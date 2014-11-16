@@ -1,3 +1,5 @@
+
+
 <ol class="breadcrumb">
   <li class="active"><a href="<%= portraits_path %>">Portraits</a></li>
 </ol>
@@ -15,7 +17,7 @@
           <div class="panel-body">
             <% if portrait.answer_to('love_job') %>
                 <blockquote class="portrait-love-job">
-                  <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => "") { link_to("[...]", portrait_path(portrait)) } %>
+                  <%= truncate(raw(portrait.answer_to('love_job')), :length => 120, :separator => " ", :omission => "") { link_to("[...]", portrait_path(portrait)) } %>
                 </blockquote>
             <% end %>
 
@@ -29,7 +31,7 @@
           </div>
 
           <div class="panel-footer">
-            <a class="btn btn-block" href="<%= portrait_path(portrait) %>">En voir +</a>
+            <a href="<%= portrait_path(portrait) %>">En voir +</a>
           </div>
         </div>
       </li>
@@ -38,6 +40,9 @@
 
 <script>
     $(function(){
-        new Masonry("#portraits_list");
+        var msnry = new Masonry("#portraits_list");
+        imagesLoaded( "#portraits_list", function() {
+            msnry.layout();
+        });
     });
 </script>

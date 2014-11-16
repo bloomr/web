@@ -9,11 +9,13 @@
 body {
   padding-top: 70px;
   padding-bottom: 90px;
+  background-color: rgb(28,28,34);
 }
 
 /* Breadcrumb */
 ol.breadcrumb {
   margin-top: 10px;
+  background: transparent;
   > li + li:before {
     color: #CCCCCC;
     content: "/ ";
