@@ -5,10 +5,10 @@
 </ol>
 
 <ul id="portraits_list" class="row">
-  <% @portraits.each do |portrait| %>
+  <% @portraits.each_with_index do |portrait, index| %>
       <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">
         <div class="panel panel-default h-card">
-          <div class="panel-heading">
+          <div class="panel-heading background-<%= index %3 %>">
             <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
             <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
             <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
@@ -19,14 +19,6 @@
                 <blockquote class="portrait-love-job">
                   <%= truncate(raw(portrait.answer_to('love_job')), :length => 120, :separator => " ", :omission => "") { link_to("[...]", portrait_path(portrait)) } %>
                 </blockquote>
-            <% end %>
-
-            <% if !portrait.keyword_list.empty? %>
-                <ul class="portrait-keywords">
-                  <% portrait.keyword_list.each do |keyword| %>
-                      <li><%= keyword.downcase %></li>
-                  <% end %>
-                </ul>
             <% end %>
           </div>
 

@@ -3,11 +3,11 @@ $orange: #FF6622 !default;
 #portraits_list {
   padding-left: 0px;
   list-style: none;
-
   > li {
     .panel {
       .panel-heading {
-        background-color: rgb(226,226,226);
+        background-repeat: repeat;
+        transition: background-position 10s;
         text-align: center;
         h3.portrait-name {
           font-size: 1.2em;
@@ -24,15 +24,40 @@ $orange: #FF6622 !default;
           height: 104px;
           width: 104px;
           border-radius: 52px;
-          border: 3px solid rgb(194,194,194);
-          padding: 4px;
+        }
+      }
+
+      .panel-heading.background-0 {
+        background-image: image-url("restaurant_icons.png");
+        &:hover {
+          background-position: 1000px 1000px;
+        }
+      }
+      .panel-heading.background-1 {
+        background-image: image-url("sativa.png");
+        &:hover {
+          background-position: -1000px 1000px;
+        }
+      }
+      .panel-heading.background-2 {
+        background-image: image-url("skulls.png");
+        &:hover {
+          background-position: 1000px -1000px;
+        }
+      }
+      .panel-heading.background-3 {
+        background-image: image-url("upfeathers.png");
+        &:hover {
+          background-position: -1000px -1000px;
         }
       }
       .panel-body {
+        padding-bottom: 0;
         blockquote.portrait-love-job {
           margin: 0px;
-          padding: 0px;
+          padding: 0 0 15px 0;
           border-left: none;
+          border-bottom: 1px solid rgb(194,194,194);;
           text-align: center;
           font-size: 1.2em;
           font-weight: bold;
@@ -40,7 +65,6 @@ $orange: #FF6622 !default;
           line-height: 1.6;
           a {
             padding-left: 4px;
-            text-decoration: underline;
           }
         }
         blockquote.portrait-love-job:before {
@@ -68,12 +92,19 @@ $orange: #FF6622 !default;
       .panel-footer {
         background-color: transparent;
         text-align: center;
-        padding-top: 0;
         border: 0;
         a {
-          border-top: 1px solid rgb(194,194,194);
-          display: block;
           padding-top: 10px;
+          font-size: 1.2em;
+          border: 2px solid #FF6622;
+          padding: 10px 30px;
+          border-radius: 8px;
+          display: inline-block;
+          margin: 8px;
+        }
+        a:hover {
+          text-decoration: none;
+          border-color: #d44100;
         }
       }
     }
