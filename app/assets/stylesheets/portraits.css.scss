@@ -7,8 +7,17 @@ $orange: #FF6622 !default;
     .panel {
       .panel-heading {
         background-repeat: repeat;
-        transition: background-position 10s;
+        transition: background-position 0.5s ease-in;
         text-align: center;
+        padding: 0;
+        &:hover {
+          background-position: 10px 0px;
+        }
+        > div {
+          padding: 5px 0;
+          opacity: 0.8;
+          background-color: white;
+        }
         h3.portrait-name {
           font-size: 1.2em;
           color: rgb(150,150,150);
@@ -24,32 +33,36 @@ $orange: #FF6622 !default;
           height: 104px;
           width: 104px;
           border-radius: 52px;
+          margin-top:5px;
+          margin-bottom:5px;
         }
       }
-
       .panel-heading.background-0 {
-        background-image: image-url("restaurant_icons.png");
-        &:hover {
-          background-position: 1000px 1000px;
-        }
+        background-image: image-url("triangles.png");
       }
       .panel-heading.background-1 {
-        background-image: image-url("sativa.png");
-        &:hover {
-          background-position: -1000px 1000px;
-        }
+        background-image: image-url("wild-sea.png");
       }
       .panel-heading.background-2 {
-        background-image: image-url("skulls.png");
-        &:hover {
-          background-position: 1000px -1000px;
-        }
+        background-image: image-url("white-wood.jpg");
       }
       .panel-heading.background-3 {
-        background-image: image-url("upfeathers.png");
-        &:hover {
-          background-position: -1000px -1000px;
-        }
+        background-image: image-url("congruent_pentagon.png");
+      }
+      .panel-heading.background-4 {
+        background-color: #ffff00;
+      }
+      .panel-heading.background-5 {
+        background-image: image-url("canvas-orange.jpg");
+      }
+      .panel-heading.background-6 {
+        background-image: image-url("food.png");
+      }
+      .panel-heading.background-7 {
+        background-image: image-url("restaurant-2.png");
+      }
+      .panel-heading.background-8 {
+        background-color: #215968;
       }
       .panel-body {
         padding-bottom: 0;

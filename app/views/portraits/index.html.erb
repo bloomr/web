@@ -8,10 +8,12 @@
   <% @portraits.each_with_index do |portrait, index| %>
       <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">
         <div class="panel panel-default h-card">
-          <div class="panel-heading background-<%= index %3 %>">
+          <div class="panel-heading background-<%= index %9 %>">
             <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
-            <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
-            <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
+            <div>
+                <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
+                <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
+            </div>
           </div>
 
           <div class="panel-body">
