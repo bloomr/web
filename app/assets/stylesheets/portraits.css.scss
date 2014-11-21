@@ -20,7 +20,7 @@ $orange: #FF6622 !default;
         }
         h3.portrait-name {
           font-size: 1.2em;
-          color: rgb(150,150,150);
+          color: rgb(150, 150, 150);
           margin-top: 10px;
           margin-bottom: 5px;
         }
@@ -33,8 +33,8 @@ $orange: #FF6622 !default;
           height: 104px;
           width: 104px;
           border-radius: 52px;
-          margin-top:5px;
-          margin-bottom:5px;
+          margin-top: 5px;
+          margin-bottom: 5px;
         }
       }
       .panel-heading.background-0 {
@@ -70,11 +70,11 @@ $orange: #FF6622 !default;
           margin: 0px;
           padding: 0 0 15px 0;
           border-left: none;
-          border-bottom: 1px solid rgb(194,194,194);;
+          border-bottom: 1px solid rgb(194, 194, 194);;
           text-align: center;
           font-size: 1.2em;
           font-weight: bold;
-          color: rgb(25,25,25);
+          color: rgb(25, 25, 25);
           line-height: 1.6;
           a {
             padding-left: 4px;
@@ -90,14 +90,14 @@ $orange: #FF6622 !default;
 
         }
         ul.portrait-keywords {
-          border-top: 1px solid rgb(194,194,194);
+          border-top: 1px solid rgb(194, 194, 194);
           margin-top: 15px;
           padding-top: 10px;
           padding-left: 0px;
-          li {
+          > li {
             display: inline-block;
           }
-          li:before {
+          > li:before {
             content: "#";
           }
         }
@@ -246,115 +246,103 @@ $orange: #FF6622 !default;
   }
 }
 
-  /*
-  > li {
-    > a {
-      color: #333333;
-      text-decoration: none;
-      .panel {
-        .panel-heading {
-          text-align: center;
-          h2 {
-            font-weight: bold;
-          }
-        }
-        .panel-body {
-          .portrait-infos {
-            img.portrait-avatar {
-              height: 104px;
-              width: 104px;
-              border-radius: 52px;
-              float: left;
-            }
-            .portrait-infos-right {
-              overflow: hidden;
-              padding-left: 10px;
-            }
-            padding-bottom:15px;
-            overflow: hidden;
-          }
-          .portrait-love-job {
-            padding: 15px 0;
-            margin-bottom: 0;
-            border-top: 1px solid gray;
-            font-weight: bold;
-          }
-          .portrait-keywords {
-            margin-bottom: 0;
-            padding-top: 15px;
-            padding-bottom: 15px;
-            list-style: none;
-            li:before {
-              content: '\2605';
-              color: $orange;
-              padding-right: 8px;
-            }
-            border-top: 1px solid gray;
-          }
-          .portrait-specifically {
-            padding-top: 15px;
-            border-top: 1px solid gray;
-          }
-
-        }
+#portrait_details {
+  border: 1px solid #dddddd;
+  .portrait-sidebar {
+    border-right: 1px solid #dddddd;
+    padding-right: 0px;
+    .portrait-header {
+      background-repeat: repeat;
+      transition: background-position 0.5s ease-in;
+      text-align: center;
+      padding: 0;
+      &:hover {
+        background-position: 10px 0px;
+      }
+      > div {
+        padding: 5px 0;
+        opacity: 0.8;
+        background-color: white;
+      }
+      h3.portrait-name {
+        font-size: 1.2em;
+        color: rgb(150, 150, 150);
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      h2.portrait-job-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      img.portrait-avatar {
+        height: 104px;
+        width: 104px;
+        border-radius: 52px;
+        margin-top:5px;
+        margin-bottom:5px;
       }
     }
-    > a:hover {
-      .panel {
-        border: 1px solid #BBBBBB;
-        background-color: #F9F9F9;
+    .portrait-header.background-0 {
+      background-image: image-url("patterns/dark-triangles.gif"); // thepatternlibrary
+    }
+    .portrait-header.background-1 {
+      background-image: image-url("patterns/purple-cross.jpg"); // thepatternlibrary
+    }
+    .portrait-header.background-2 {
+      background-image: image-url("patterns/colorful-triangles.png"); //http://www.backgroundlabs.com/item/abstract-triangle-pattern/
+    }
+    .portrait-header.background-3 {
+      background-image: image-url("patterns/red-green-collage.png"); // thepatternlibrary
+    }
+    .portrait-header.background-4 {
+      background-image: image-url("patterns/yellow-triangles.jpg"); // backgroundlabs.com
+    }
+    .portrait-header.background-5 {
+      background-image: image-url("patterns/diamond-shaped-retro.png"); // backgroundlabs.com
+    }
+    .portrait-header.background-6 {
+      background-image: image-url("patterns/abstrakt-tile.jpg"); // http://www.dinpattern.com/
+    }
+    .portrait-header.background-7 {
+      background-image: image-url("patterns/starliner.gif"); // dinpattern.com
+    }
+    .portrait-header.background-8 {
+      background-image: image-url("patterns/gridded-blue.gif"); // dinpattern.com
+    }
+    ul.portrait-keywords {
+      text-align: center;
+      margin-top: 15px;
+      padding-top: 10px;
+      padding-left: 0px;
+      > li {
+        display: inline-block;
+      }
+      > li:before {
+        content: "#";
       }
     }
   }
-}
-*/
+  .portrait-main {
+    padding: 15px;
+    ul.portrait-questions {
+      > li {
+        list-style-type: none;
+        .portrait-question-title {
+          font-weight: bold;
+        }
+        .portrait-question-answer {
 
-#portrait_details {
-  .panel {
-    .panel-body {
-      .portrait-sidebar {
-        border-right: 1px dotted gray;
-        h2.portrait-job-title {
-          font-size: 16px;
-          margin-top: 0px;
-          margin-bottom: 0px;
-          padding-top: 10px;
-          padding-bottom: 10px;
-          text-align: center;
-          font-weight: bold;
-          border-bottom: 1px solid gray;
-        }
-        .portrait-keywords {
-          margin-bottom: 0;
-          padding-top: 15px;
-          padding-bottom: 15px;
-          list-style: none;
-          li:before {
-            content: '\2605';
-            color: $orange;
-            padding-right: 8px;
-          }
-          border-bottom: 1px solid gray;
-        }
-        .portrait-love-job {
-          padding: 15px 0;
-          margin-bottom: 0;
-          font-weight: bold;
         }
       }
-      .portrait-main {
-        .portrait-infos {
-          text-align: center;
-          border-bottom: 1px solid gray;
-          img.portrait-avatar {
-            height: 140px;
-            width: 140px;
-            border-radius: 70px;
-          }
-        }
-      }
-      .portrait-specifically {
-        padding-top: 15px;
+    }
+    .portrait-infos {
+      text-align: center;
+      border-bottom: 1px solid gray;
+      img.portrait-avatar {
+        height: 140px;
+        width: 140px;
+        border-radius: 70px;
       }
     }
   }
