@@ -1,5 +1,75 @@
 $orange: #FF6622 !default;
 
+
+.background-0 {
+  background-image: image-url("patterns/dark-triangles.gif"); // thepatternlibrary
+}
+.background-1 {
+  background-image: image-url("patterns/purple-cross.jpg"); // thepatternlibrary
+}
+.background-2 {
+  background-image: image-url("patterns/colorful-triangles.png"); //http://www.backgroundlabs.com/item/abstract-triangle-pattern/
+}
+.background-3 {
+  background-image: image-url("patterns/red-green-collage.png"); // thepatternlibrary
+}
+.background-4 {
+  background-image: image-url("patterns/yellow-triangles.jpg"); // backgroundlabs.com
+}
+.background-5 {
+  background-image: image-url("patterns/diamond-shaped-retro.png"); // backgroundlabs.com
+}
+.background-6 {
+  background-image: image-url("patterns/abstrakt-tile.jpg"); // http://www.dinpattern.com/
+}
+.background-7 {
+  background-image: image-url("patterns/starliner.gif"); // dinpattern.com
+}
+.background-8 {
+  background-image: image-url("patterns/gridded-blue.gif"); // dinpattern.com
+}
+.background-9 {
+  background-image: image-url("triangles.png");
+}
+.background-10 {
+  background-image: image-url("wild-sea.png");
+}
+.background-11 {
+  background-image: image-url("white-wood.jpg");
+}
+.background-12 {
+  background-image: image-url("congruent_pentagon.png");
+}
+.background-13 {
+  background-image: image-url("canvas-orange.jpg");
+}
+.background-14 {
+  background-image: image-url("food.png");
+}
+.background-15 {
+  background-image: image-url("restaurant-2.png");
+}
+.background-16 {
+  background-image: image-url("green_modern_floral.png");
+}
+.background-17 {
+  background-image: image-url("modern_cirles.png");
+}
+.background-18 {
+  background-image: image-url("modern_floral_red.png");
+}
+.background-19 {
+  background-image: image-url("snowflake2.png");
+}
+.background-20 {
+  background-image: image-url("yellow_floral.png");
+}
+.background-21 {
+  background-image: image-url("yellow_swirls.png");
+}
+
+
+
 #portraits_list {
   padding-left: 0px;
   list-style: none;
@@ -36,33 +106,6 @@ $orange: #FF6622 !default;
           margin-top: 5px;
           margin-bottom: 5px;
         }
-      }
-      .panel-heading.background-0 {
-        background-image: image-url("patterns/dark-triangles.gif"); // thepatternlibrary
-      }
-      .panel-heading.background-1 {
-        background-image: image-url("patterns/purple-cross.jpg"); // thepatternlibrary
-      }
-      .panel-heading.background-2 {
-        background-image: image-url("patterns/colorful-triangles.png"); //http://www.backgroundlabs.com/item/abstract-triangle-pattern/
-      }
-      .panel-heading.background-3 {
-        background-image: image-url("patterns/red-green-collage.png"); // thepatternlibrary
-      }
-      .panel-heading.background-4 {
-        background-image: image-url("patterns/yellow-triangles.jpg"); // backgroundlabs.com
-      }
-      .panel-heading.background-5 {
-        background-image: image-url("patterns/diamond-shaped-retro.png"); // backgroundlabs.com
-      }
-      .panel-heading.background-6 {
-        background-image: image-url("patterns/abstrakt-tile.jpg"); // http://www.dinpattern.com/
-      }
-      .panel-heading.background-7 {
-        background-image: image-url("patterns/starliner.gif"); // dinpattern.com
-      }
-      .panel-heading.background-8 {
-        background-image: image-url("patterns/gridded-blue.gif"); // dinpattern.com
       }
       .panel-body {
         padding-bottom: 0;
@@ -126,118 +169,94 @@ $orange: #FF6622 !default;
 }
 
 #home {
-  li {
-    overflow: hidden;
-    margin-bottom: 10px;
-    a{
-      color: inherit;
+  #portraits_list {
+    li {
+      overflow: hidden;
+      margin-bottom: 10px;
+      a {
+        color: inherit;
 
-      > div {
-        padding-top: 0;
-        position:relative;
-        height: 316px;
-        transition: padding 0.35s;
-        text-align: center;
-
-        img.portrait-avatar {
-          height: 104px;
-          width: 104px;
-          border-radius: 52px;
+        > div {
+          padding-top: 0;
           position: relative;
-          top:0px;
-          transition: top 0.35s;
-        }
-
-        .encart {
-          position : absolute;
-          top: 98px;
-          left: 0;
-          width: 100%;
-          height: 80px;
+          height: 316px;
+          transition: padding 0.35s;
           text-align: center;
-          transition: opacity 0.35s, transform 0.35s;
-          h3 {
-            padding-top: 10px;
-          }
-          h3, h2 {
-            opacity: 0.98;
-            background-color: white;
-            margin: 0;
-            padding-bottom: 10px;
-          }
-          h2 {
-            font-size: 1.3em;
-            font-weight: bold;
-            display:block;
-            height: 65px;
-            padding: 0 5px;
-          }
-          h3 {
-            font-size: 1.2em;
-          }
-          blockquote {
-            border-left: 0;
-            background-color: white;
-            opacity: 1;
-            height: 115px;
-            font-size: 1.3em;
-            opacity: 0.8;
+
+          img.portrait-avatar {
+            height: 104px;
+            width: 104px;
+            border-radius: 52px;
             position: relative;
+            top: 0px;
+            transition: top 0.35s;
+          }
+
+          .encart {
+            position: absolute;
+            top: 98px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            text-align: center;
+            transition: opacity 0.35s, transform 0.35s;
+            h3 {
+              padding-top: 10px;
+            }
+            h3, h2 {
+              opacity: 0.98;
+              background-color: white;
+              margin: 0;
+              padding-bottom: 10px;
+            }
+            h2 {
+              font-size: 1.3em;
+              font-weight: bold;
+              display: block;
+              height: 65px;
+              padding: 0 5px;
+            }
+            h3 {
+              font-size: 1.2em;
+            }
+            blockquote {
+              border-left: 0;
+              background-color: white;
+              opacity: 1;
+              height: 115px;
+              font-size: 1.3em;
+              opacity: 0.8;
+              position: relative;
+            }
           }
         }
       }
     }
-  }
-
-  .background-0 {
-    background-image: image-url("triangles.png");
-  }
-  .background-1 {
-    background-image: image-url("wild-sea.png");
-  }
-  .background-2 {
-    background-image: image-url("white-wood.jpg");
-  }
-  .background-3 {
-    background-image: image-url("congruent_pentagon.png");
-  }
-  .background-4 {
-    background-color: #ffff00;
-  }
-  .background-5 {
-    background-image: image-url("canvas-orange.jpg");
-  }
-  .background-6 {
-    background-image: image-url("food.png");
-  }
-  .background-7 {
-    background-image: image-url("restaurant-2.png");
-  }
-  .background-8 {
-    background-color: #215968;
   }
 }
 
 //add nice transition if not touch device
 .no-touch {
   #home {
-    li {
-      a{
-        > div {
-          img {
-            top: 35px;
-          }
-          .encart {
-            transform: translate3d(0, 115px,0);
-          }
-        }
-        &:hover{
+    #portraits_list {
+      li {
+        a {
           > div {
             img {
-              top: 0px
+              top: 35px;
             }
             .encart {
-              transform: translate3d(0, 0px,0);
+              transform: translate3d(0, 115px, 0);
+            }
+          }
+          &:hover {
+            > div {
+              img {
+                top: 0px
+              }
+              .encart {
+                transform: translate3d(0, 0px, 0);
+              }
             }
           }
         }
@@ -253,12 +272,8 @@ $orange: #FF6622 !default;
     padding-right: 0px;
     .portrait-header {
       background-repeat: repeat;
-      transition: background-position 0.5s ease-in;
       text-align: center;
       padding: 0;
-      &:hover {
-        background-position: 10px 0px;
-      }
       > div {
         padding: 5px 0;
         opacity: 0.8;
@@ -282,33 +297,6 @@ $orange: #FF6622 !default;
         margin-top:5px;
         margin-bottom:5px;
       }
-    }
-    .portrait-header.background-0 {
-      background-image: image-url("patterns/dark-triangles.gif"); // thepatternlibrary
-    }
-    .portrait-header.background-1 {
-      background-image: image-url("patterns/purple-cross.jpg"); // thepatternlibrary
-    }
-    .portrait-header.background-2 {
-      background-image: image-url("patterns/colorful-triangles.png"); //http://www.backgroundlabs.com/item/abstract-triangle-pattern/
-    }
-    .portrait-header.background-3 {
-      background-image: image-url("patterns/red-green-collage.png"); // thepatternlibrary
-    }
-    .portrait-header.background-4 {
-      background-image: image-url("patterns/yellow-triangles.jpg"); // backgroundlabs.com
-    }
-    .portrait-header.background-5 {
-      background-image: image-url("patterns/diamond-shaped-retro.png"); // backgroundlabs.com
-    }
-    .portrait-header.background-6 {
-      background-image: image-url("patterns/abstrakt-tile.jpg"); // http://www.dinpattern.com/
-    }
-    .portrait-header.background-7 {
-      background-image: image-url("patterns/starliner.gif"); // dinpattern.com
-    }
-    .portrait-header.background-8 {
-      background-image: image-url("patterns/gridded-blue.gif"); // dinpattern.com
     }
     ul.portrait-keywords {
       text-align: center;
