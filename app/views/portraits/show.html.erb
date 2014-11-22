@@ -24,7 +24,7 @@
         <% @portrait.questions.each do |question| %>
             <li>
               <h4 class="portrait-question-title"><%= question.title %></h4>
-              <p class="portrait-question-answer"><%= question.answer %></p>
+              <p class="portrait-question-answer"><%= raw(question.answer) %></p>
             </li>
         <% end %>
       </ul>
