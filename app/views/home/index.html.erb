@@ -4,49 +4,24 @@
   <li class="active"><a href="<%= portraits_path %>">Portraits</a></li>
 </ol>
 
-<!--<ul id="portraits_list" class="row">-->
-  <!--<% @portraits.each_with_index do |portrait, index| %>-->
-      <!--<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item" >-->
-        <!--<div class="panel panel-default h-card funky background-<%= index %9 %>">-->
-          <!--<div class="panel-heading background-<%= index %9 %>">-->
-            <!--<%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>-->
-            <!--<div>-->
-              <!--<h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>-->
-              <!--<h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>-->
-            <!--</div>-->
-          <!--</div>-->
-
-          <!--<div class="panel-body">-->
-            <!--<% if portrait.answer_to('love_job') %>-->
-                <!--<blockquote class="portrait-love-job">-->
-                  <!--<%= truncate(raw(portrait.answer_to('love_job')), :length => 120, :separator => " ", :omission => "") { link_to("[...]", portrait_path(portrait)) } %>-->
-                <!--</blockquote>-->
-            <!--<% end %>-->
-          <!--</div>-->
-
-          <!--<div class="panel-footer">-->
-            <!--<a href="<%= portrait_path(portrait) %>">En voir +</a>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</li>-->
-  <!--<% end %>-->
-<!--</ul>-->
 
   <ul id="portraits_list" class="row">
     <% @portraits.each_with_index do |portrait, index| %>
         <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">
-          <div class="background-<%= index %9 %>">
-              <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
-              <div class="encart">
-                  <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
-                  <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
-                  <% if portrait.answer_to('love_job') %>
-                    <blockquote class="portrait-love-job">
-                      <%= truncate(raw(portrait.answer_to('love_job')), :length => 120, :separator => " ", :omission => "") { link_to("[...]", portrait_path(portrait)) } %>
-                     </blockquote>
-                  <% end %>
+          <%= link_to(portrait_path(portrait)) do %>
+              <div class="background-<%= index %9 %>">
+                  <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
+                  <div class="encart">
+                      <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
+                      <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
+                      <% if portrait.answer_to('love_job') %>
+                        <blockquote class="portrait-love-job">
+                          <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => " [...]")  %>
+                         </blockquote>
+                      <% end %>
+                  </div>
               </div>
-          </div>
+          <% end %>
         </li>
     <% end %>
   </ul>
