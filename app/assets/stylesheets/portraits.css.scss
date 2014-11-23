@@ -316,11 +316,17 @@ $orange: #FF6622 !default;
     ul.portrait-questions {
       > li {
         list-style-type: none;
+        margin: 0 0 1em;
         .portrait-question-title {
           font-weight: bold;
+          font-size: 1.1em;
+          line-height: 1.5em;
+          margin: 0;
         }
         .portrait-question-answer {
-
+          font-size: 1.1em;
+          line-height: 1.5em;
+          margin: 0;
         }
       }
     }
