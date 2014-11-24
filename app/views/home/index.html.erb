@@ -35,7 +35,7 @@
                   <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
                   <% if portrait.answer_to('love_job') %>
                       <blockquote class="portrait-love-job">
-                        " <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => "")  %> <span style="color:#FF6622;">(<span style=" text-decoration: underline;">...<span>)</span>
+                        " <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => "")  %> <span>(<span>...<span>)</span>
                       </blockquote>
                   <% end %>
                 </div>
