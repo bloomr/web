@@ -7,7 +7,7 @@
   <div id="portrait_details" class="h-card">
     <div class="row">
       <div class="portrait-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
-        <div class="portrait-header background-<%= (@portrait.id) %16 %>">
+        <div class="portrait-header background-<%= (@portrait.id) %22 %>">
           <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
           <div>
             <h3 class="portrait-name p-given-name"><%= @portrait.first_name %></h3>
@@ -29,8 +29,6 @@
               </li>
           <% end %>
         </ul>
-
-
       </div>
       <div class="other-questions-coming">
         <p>

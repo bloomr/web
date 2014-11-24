@@ -5,37 +5,17 @@
 
 
   <ul id="portraits_list" class="row">
-    <!--<% @portraits.each do |portrait| %>-->
-        <!--<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">-->
-        <!--<%= link_to(portrait_path(portrait)) do %>-->
-            <!--<div class="background-<%= (portrait.id) %22 %>">-->
-            <!--<%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>-->
-            <!--<div class="encart">-->
-            <!--<h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>-->
-            <!--<h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>-->
-            <!--<% if portrait.answer_to('love_job') %>-->
-                <!--<blockquote class="portrait-love-job">-->
-                <!--<%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => " [...]")  %>-->
-                <!--</blockquote>-->
-                <!--<% end %>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<% end %>-->
-        <!--</li>-->
-        <!--<% end %>-->
-
-
     <% @portraits.each do |portrait| %>
         <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">
           <%= link_to(portrait_path(portrait)) do %>
-              <div class="background-<%= (portrait.id + @portraits.length) %22 %>">
+              <div class="background-<%= (portrait.id) %22 %>">
                 <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
                 <div class="overlay">
                   <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
                   <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
                   <% if portrait.answer_to('love_job') %>
                       <blockquote class="portrait-love-job">
-                        " <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => "")  %> <span>(<span>...<span>)</span>
+                        " <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => "")  %> <span>(<span>...</span>)</span>
                       </blockquote>
                   <% end %>
                 </div>
@@ -43,8 +23,6 @@
           <% end %>
         </li>
     <% end %>
-
-
   </ul>
 
 
