@@ -1,61 +1,63 @@
-<div id="home">
+<div class="container-fluid">
+  <div id="home">
 
-<ol class="breadcrumb">
-  <li class="active"><a href="/">Portraits</a></li>
-</ol>
+    <ol class="breadcrumb">
+      <li class="active"><a href="/">Galerie</a></li>
+    </ol>
 
 
-  <ul id="portraits_list" class="row">
-    <% @portraits.each do |portrait| %>
-        <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">
-          <%= link_to(portrait_path(portrait)) do %>
-              <div class="background-<%= (portrait.id) %22 %>">
+    <ul id="portraits_list" class="row">
+      <!--<% @portraits.each do |portrait| %>-->
+          <!--<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">-->
+          <!--<%= link_to(portrait_path(portrait)) do %>-->
+              <!--<div class="background-<%= (portrait.id) %22 %>">-->
+              <!--<%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>-->
+              <!--<div class="encart">-->
+              <!--<h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>-->
+              <!--<h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>-->
+              <!--<% if portrait.answer_to('love_job') %>-->
+                  <!--<blockquote class="portrait-love-job">-->
+                  <!--<%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => " [...]")  %>-->
+                  <!--</blockquote>-->
+                  <!--<% end %>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--<% end %>-->
+          <!--</li>-->
+          <!--<% end %>-->
+
+
+      <% @portraits.each do |portrait| %>
+          <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">
+            <%= link_to(portrait_path(portrait)) do %>
+                <div class="background-<%= (portrait.id + @portraits.length) %22 %>">
                   <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
                   <div class="encart">
-                      <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
-                      <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
-                      <% if portrait.answer_to('love_job') %>
+                    <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
+                    <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
+                    <% if portrait.answer_to('love_job') %>
                         <blockquote class="portrait-love-job">
-                          <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => " [...]")  %>
-                         </blockquote>
-                      <% end %>
+                          " <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => "")  %> <span style="color:#FF6622;">(<span style=" text-decoration: underline;">...<span>)</span>
+                        </blockquote>
+                    <% end %>
                   </div>
-              </div>
-          <% end %>
-        </li>
-    <% end %>
-
-
-    <% @portraits.each do |portrait| %>
-        <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 portrait-item">
-          <%= link_to(portrait_path(portrait)) do %>
-              <div class="background-<%= (portrait.id + @portraits.length) %22 %>">
-                <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
-                <div class="encart">
-                  <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
-                  <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
-                  <% if portrait.answer_to('love_job') %>
-                      <blockquote class="portrait-love-job">
-                        <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => " [...]")  %>
-                      </blockquote>
-                  <% end %>
                 </div>
-              </div>
-          <% end %>
-        </li>
-    <% end %>
+            <% end %>
+          </li>
+      <% end %>
 
 
-  </ul>
+    </ul>
 
 
-<script>
-    $(function(){
-        var msnry = new Masonry("#portraits_list");
-        imagesLoaded( "#portraits_list", function() {
-            msnry.layout();
+    <script>
+        $(function(){
+            var msnry = new Masonry("#portraits_list");
+            imagesLoaded( "#portraits_list", function() {
+                msnry.layout();
+            });
         });
-    });
-</script>
+    </script>
 
+  </div>
 </div>
