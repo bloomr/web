@@ -30,7 +30,7 @@
           <%= link_to(portrait_path(portrait)) do %>
               <div class="background-<%= (portrait.id + @portraits.length) %22 %>">
                 <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
-                <div class="encart">
+                <div class="overlay">
                   <h3 class="portrait-infos-right portrait-name p-given-name"><%= portrait.first_name %></h3>
                   <h2 class="panel-title portrait-job-title p-job-title"><%= portrait.job_title %></h2>
                   <% if portrait.answer_to('love_job') %>

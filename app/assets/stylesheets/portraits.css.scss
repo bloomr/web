@@ -68,108 +68,10 @@ $orange: #FF6622 !default;
   background-image: image-url("yellow_swirls.png");
 }
 
-
-
 #portraits_list {
   padding-left: 0px;
   list-style: none;
   > li {
-    .panel {
-      .panel-heading {
-        background-repeat: repeat;
-        transition: background-position 0.5s ease-in;
-        text-align: center;
-        padding: 0;
-        &:hover {
-          background-position: 10px 0px;
-        }
-        > div {
-          padding: 5px 0;
-          opacity: 0.8;
-          background-color: white;
-        }
-        h3.portrait-name {
-          font-size: 1.2em;
-          color: rgb(150, 150, 150);
-          margin-top: 10px;
-          margin-bottom: 5px;
-        }
-        h2.portrait-job-title {
-          font-size: 1.2em;
-          font-weight: bold;
-          margin-bottom: 5px;
-        }
-        img.portrait-avatar {
-          height: 104px;
-          width: 104px;
-          border-radius: 52px;
-          margin-top: 5px;
-          margin-bottom: 5px;
-        }
-      }
-      .panel-body {
-        padding-bottom: 0;
-        blockquote.portrait-love-job {
-          margin: 0px;
-          padding: 0 0 15px 0;
-          border-left: none;
-          border-bottom: 1px solid rgb(194, 194, 194);;
-          text-align: center;
-          font-size: 1.2em;
-          font-weight: bold;
-          color: rgb(25, 25, 25);
-          line-height: 1.6;
-          a {
-            padding-left: 4px;
-          }
-        }
-        blockquote.portrait-love-job:before {
-          content: open-quote;
-        }
-        blockquote.portrait-love-job:after {
-          content: close-quote;
-        }
-        blockquote.portrait-love-job {
-
-        }
-        ul.portrait-keywords {
-          border-top: 1px solid rgb(194, 194, 194);
-          margin-top: 15px;
-          padding-top: 10px;
-          padding-left: 0px;
-          > li {
-            display: inline-block;
-          }
-          > li:before {
-            content: "#";
-          }
-        }
-      }
-      .panel-footer {
-        background-color: transparent;
-        text-align: center;
-        border: 0;
-        a {
-          padding-top: 10px;
-          font-size: 1.2em;
-          border: 2px solid #FF6622;
-          padding: 10px 30px;
-          border-radius: 8px;
-          display: inline-block;
-          margin: 8px;
-        }
-        a:hover {
-          text-decoration: none;
-          border-color: #d44100;
-        }
-      }
-    }
-  }
-
-}
-
-#portraits_list {
-  li {
     overflow: hidden;
     margin-bottom: 10px;
     a {
@@ -191,7 +93,7 @@ $orange: #FF6622 !default;
           transition: top 0.35s;
         }
 
-        .encart {
+        .overlay {
           position: absolute;
           top: 98px;
           left: 0;
@@ -242,7 +144,7 @@ $orange: #FF6622 !default;
           img {
             top: 35px;
           }
-          .encart {
+          .overlay {
             transform: translate3d(0, 115px, 0);
           }
         }
@@ -251,7 +153,7 @@ $orange: #FF6622 !default;
             img {
               top: 0px
             }
-            .encart {
+            .overlay {
               transform: translate3d(0, 0px, 0);
             }
           }
