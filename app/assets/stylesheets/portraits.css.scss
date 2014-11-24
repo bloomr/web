@@ -263,6 +263,9 @@ $orange: #FF6622 !default;
       right: 30px;
       font-size: 1.125em;
       text-align: right;
+      a {
+        cursor: pointer;
+      }
     }
   }
 }
