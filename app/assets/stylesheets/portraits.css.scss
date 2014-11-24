@@ -168,66 +168,64 @@ $orange: #FF6622 !default;
 
 }
 
-#home {
-  #portraits_list {
-    li {
-      overflow: hidden;
-      margin-bottom: 10px;
-      a {
-        color: inherit;
+#portraits_list {
+  li {
+    overflow: hidden;
+    margin-bottom: 10px;
+    a {
+      color: inherit;
 
-        > div {
-          padding-top: 0;
+      > div {
+        padding-top: 0;
+        position: relative;
+        height: 316px;
+        transition: padding 0.35s;
+        text-align: center;
+        border-radius: 10px;
+        img.portrait-avatar {
+          height: 104px;
+          width: 104px;
+          border-radius: 52px;
           position: relative;
-          height: 316px;
-          transition: padding 0.35s;
-          text-align: center;
-          border-radius: 10px;
-          img.portrait-avatar {
-            height: 104px;
-            width: 104px;
-            border-radius: 52px;
-            position: relative;
-            top: 0px;
-            transition: top 0.35s;
-          }
+          top: 0px;
+          transition: top 0.35s;
+        }
 
-          .encart {
-            position: absolute;
-            top: 98px;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            text-align: center;
-            transition: opacity 0.35s, transform 0.35s;
-            h3 {
-              padding-top: 10px;
-            }
-            h3, h2 {
-              opacity: 0.8;
-              background-color: white;
-              margin: 0;
-              padding-bottom: 10px;
-            }
-            h2 {
-              font-size: 1.3em;
-              font-weight: bold;
-              display: block;
-              height: 65px;
-              padding: 0 5px;
-            }
-            h3 {
-              font-size: 1.2em;
-            }
-            blockquote {
-              border-left: 0;
-              background-color: white;
-              opacity: 1;
-              height: 115px;
-              font-size: 1.3em;
-              opacity: 0.98;
-              position: relative;
-            }
+        .encart {
+          position: absolute;
+          top: 98px;
+          left: 0;
+          width: 100%;
+          height: 80px;
+          text-align: center;
+          transition: opacity 0.35s, transform 0.35s;
+          h3 {
+            padding-top: 10px;
+          }
+          h3, h2 {
+            opacity: 0.8;
+            background-color: white;
+            margin: 0;
+            padding-bottom: 10px;
+          }
+          h2 {
+            font-size: 1.3em;
+            font-weight: bold;
+            display: block;
+            height: 65px;
+            padding: 0 5px;
+          }
+          h3 {
+            font-size: 1.2em;
+          }
+          blockquote {
+            border-left: 0;
+            background-color: white;
+            opacity: 1;
+            height: 115px;
+            font-size: 1.3em;
+            opacity: 0.98;
+            position: relative;
           }
         }
       }
@@ -237,26 +235,24 @@ $orange: #FF6622 !default;
 
 //add nice transition if not touch device
 .no-touch {
-  #home {
-    #portraits_list {
-      li {
-        a {
+  #portraits_list {
+    li {
+      a {
+        > div {
+          img {
+            top: 35px;
+          }
+          .encart {
+            transform: translate3d(0, 115px, 0);
+          }
+        }
+        &:hover {
           > div {
             img {
-              top: 35px;
+              top: 0px
             }
             .encart {
-              transform: translate3d(0, 115px, 0);
-            }
-          }
-          &:hover {
-            > div {
-              img {
-                top: 0px
-              }
-              .encart {
-                transform: translate3d(0, 0px, 0);
-              }
+              transform: translate3d(0, 0px, 0);
             }
           }
         }
