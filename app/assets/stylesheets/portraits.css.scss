@@ -212,11 +212,14 @@ $orange: #FF6622 !default;
         }
       }
       ul.portrait-keywords {
+        @media (max-width: 991px) {
+          border-bottom: 1px solid #dddddd;
+        }
         text-align: center;
         margin-top: 15px;
-        margin-bottom: 15px;
+        margin-bottom: 0px;
         padding-top: 10px;
-        padding-bottom: 10px;
+        padding-bottom: 25px;
         padding-left: 0px;
         line-height: 2em;
         font-size: 1.1em;
