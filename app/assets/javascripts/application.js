@@ -17,3 +17,4 @@
 //= require masonry.pkgd.min
 //= require imagesloaded.pkgd.min
 //= require modernizr.custom.17912
+//= require user_voice
