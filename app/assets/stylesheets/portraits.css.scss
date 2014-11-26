@@ -231,7 +231,9 @@ $orange: #FF6622 !default;
     }
     .portrait-main {
       padding: 30px 30px 80px 30px;
-      border-left: 1px solid #dddddd;
+      @media (min-width: 992px) {
+        border-left: 1px solid #dddddd;
+      }
       ul.portrait-questions {
         padding-left: 0px;
         > li {
