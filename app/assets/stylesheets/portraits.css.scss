@@ -174,8 +174,9 @@ $orange: #FF6622 !default;
   > .row {
     position:relative;
     .portrait-sidebar {
-      border-right: 1px solid #dddddd;
-      padding-right: 0px;
+      @media (min-width: 992px) {
+        padding-right: 0px;
+      }
       .portrait-header {
         background-repeat: repeat;
         text-align: center;
@@ -225,6 +226,7 @@ $orange: #FF6622 !default;
     }
     .portrait-main {
       padding: 30px 30px 80px 30px;
+      border-left: 1px solid #dddddd;
       ul.portrait-questions {
         padding-left: 0px;
         > li {
