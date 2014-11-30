@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
     http_basic_authenticate_with :name => ENV['BASIC_AUTH_USER'], :password => ENV['BASIC_AUTH_PASSWORD']
   end
 
+  def https_enabled?
+    #active by default
+    ENV['ONLY_HTTP_ENABLE'] != 'true'
+  end
+
   def record_not_found
     render :text => "404 Not Found", :status => 404
   end
