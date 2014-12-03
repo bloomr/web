@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :portraits, :only => [:index, :show]
-
+  resources :participer, :only => [:index, :create]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
