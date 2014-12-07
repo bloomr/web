@@ -2,25 +2,26 @@ class ParticiperController < ApplicationController
 
   def index
     @user = User.new(:email => params[:email], :job_title => params[:metier])
+    love_job_question = Question.new(:identifier => "love_job", :title => "Au fond, qu'est ce qui fait que vous aimez votre métier ?")
+    but_exactly_question = Question.new(:identifier => "but_exactly", :title => "Que faites vous exactement ?")
+    @user.questions = [love_job_question, but_exactly_question]
   end
 
   def create
-    generated_password = Devise.friendly_token.first(8)
-    registration_params[:password] = generated_password
-    # TODO Faire en sorte que la ligne du dessous accepte ce f%$°&ing password. Je déteste Rails btw.
-    @user = User.new(registration_params)
-    if @user.save
-      redirect_to root_path
-      # TODO Rediriger vers une page de remerciement ou qqc comme ça
-    else
-      render 'participer/index'
-      # TODO Afficher les erreurs éventuelles dans le formulaire (surtout pour l'email)
-    end
+    @user = User.new(user_params)
+    @user.password = Devise.friendly_token.first(8)
+     if @user.save!
+       redirect_to root_path
+    #   # TODO Rediriger vers une page de remerciement ou qqc comme ça
+     else
+       render 'participer/index'
+    #   # TODO Afficher les erreurs éventuelles dans le formulaire (surtout pour l'email)
+     end
   end
 
-  def registration_params
-    # TODO J'arrive pas à faire accepter le champ "questions"
-    params.require(:registration).permit(:email, :job_title, :first_name, :questions)
+  private
+  def user_params
+    params.require(:user).permit(:email, :job_title, :first_name, questions_attributes: [:identifier, :title, :answer])
   end
 
 end
