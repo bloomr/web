@@ -1,7 +1,7 @@
 class PortraitsController < ApplicationController
 
   def index
-    @portraits = User.where.not(:job_title => nil)
+    @portraits = User.where("published = ? and job_title IS NOT NULL", true)
   end
 
   def show

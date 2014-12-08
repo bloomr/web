@@ -36,11 +36,13 @@ ActiveAdmin.register User do
     column :first_name
     column :created_at
     column :current_sign_in_at
+    column :published
     actions
   end
 
   filter :email
   filter :current_sign_in_at
+  filter :published
 
   form do |f|
     f.inputs "Credentials" do
@@ -53,6 +55,7 @@ ActiveAdmin.register User do
       f.input :first_name
       f.input :job_title
       f.input :avatar, :required => false, :as => :file, :hint => f.template.image_tag(f.object.avatar.url(:thumb))
+      f.input :published
     end
 
     f.inputs "Keywords" do
