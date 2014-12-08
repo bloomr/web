@@ -1,47 +1,16 @@
 <div class="container">
   <div class="row">
-    <!--<form role="form" action="<%= participer_index_path %>" style="padding-top: 50px; font-size: 1.125em" class="col-md-6 col-md-offset-3" method="post">-->
-    <!--<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">-->
-    <!--<div class="form-group">-->
-    <!--<label for="email">Votre email</label>-->
-    <!--<input type="email" class="form-control input-lg" id="email" placeholder="jules.bonGateau@mail.com" name="registration[email]" value="<%= @user.email %>">-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<label for="metier">Votre métier</label>-->
-    <!--<input type="text" class="form-control input-lg" id="metier" placeholder="Patissier" name="registration[job_title]" value="<%= @user.job_title %>">-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<label for="prenom">Votre prénom</label>-->
-    <!--<input type="text" class="form-control input-lg" id="prenom" name="registration[first_name]" placeholder="Jules" value="<%= @user.first_name %>">-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<input type="hidden" name="registration[questions][0][identifier]" value="love_job">-->
-    <!--<input type="hidden" name="registration[questions][0][title]" value="Au fond, qu'est ce qui fait que vous aimez votre métier ?">-->
-    <!--<label for="love_job">Au fond, qu'est ce qui fait que vous aimez votre métier ?</label>-->
-    <!--<textarea class="form-control input-lg" id="love_job" rows="6" name="registration[questions][0][answer]"></textarea>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<input type="hidden" name="registration[questions][1][identifier]" value="but_exactly">-->
-    <!--<input type="hidden" name="registration[questions][1][title]" value="Que faites vous exactement ?">-->
-    <!--<label for="but_exactly">Que faites vous exactement ?</label>-->
-    <!--<textarea class="form-control input-lg" id="but_exactly" rows="6" name="registration[questions][1][answer]"></textarea>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<label for="photo">Votre photo !</label>-->
-    <!--<input type="file" id="photo">-->
-    <!--<p class="help-block">C'est pour la galerie.</p>-->
-    <!--</div>-->
-    <!--<div class="checkbox">-->
-    <!--<label>-->
-    <!--<input type="checkbox"> Je vous envoie ma photo par mail à contact@bloomr.org-->
-    <!--</label>-->
-    <!--</div>-->
-    <!--<button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 25px">Enregistrer</button>-->
-    <!--</form>-->
     <%= form_for @user, url: {action: "create"}, html: {class: "col-md-6 col-md-offset-3", style: "padding-top: 50px; font-size: 1.125em"} do |f| %>
+        <% if @user.errors.any? %>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+        <% end %>
         <div class="form-group">
           <%= f.label :email, 'Votre email' %>
-          <%= f.text_field :email, class: "form-control input-lg", :placeholder => "jules.bonGateau@mail.com" %>
+          <%= f.text_field :email, class: "form-control input-lg", :placeholder => "jules.bonGateau@mail.com", :type => "email", :required => "required",  :toto => "test" %>
         </div>
         <div class="form-group">
           <%= f.label :job_title, 'Votre métier' %>
@@ -59,54 +28,14 @@
               <%= questions_form.text_area :answer, :rows=>6, :class=>"form-control input-lg" %>
             </div>
         <% end %>
+        <!--
         <div class="form-group">
           <label for="photo">Votre photo !</label>
           <%= f.file_field :photo %>
           <p class="help-block">C'est pour la galerie.</p>
         </div>
-        <!--<div class="checkbox">-->
-        <!--<label>-->
-        <!--<input type="checkbox"> Je vous envoie ma photo par mail à contact@bloomr.org-->
-        <!--</label>-->
+        -->
         <%= f.submit "Enregistrer", :class=>"btn btn-primary btn-block btn-lg", :style=>"margin-top: 25px"%>
     <% end %>
-
-
-    <!--<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">-->
-    <!--<div class="form-group">-->
-    <!--<label for="email">Votre email</label>-->
-    <!--<input type="email" class="form-control input-lg" id="email" placeholder="jules.bonGateau@mail.com" name="registration[email]" value="<%= @user.email %>">-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<label for="metier">Votre métier</label>-->
-    <!--<input type="text" class="form-control input-lg" id="metier" placeholder="Patissier" name="registration[job_title]" value="<%= @user.job_title %>">-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<label for="prenom">Votre prénom</label>-->
-    <!--<input type="text" class="form-control input-lg" id="prenom" name="registration[first_name]" placeholder="Jules" value="<%= @user.first_name %>">-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<input type="hidden" name="registration[questions][0][identifier]" value="love_job">-->
-    <!--<input type="hidden" name="registration[questions][0][title]" value="Au fond, qu'est ce qui fait que vous aimez votre métier ?">-->
-    <!--<label for="love_job">Au fond, qu'est ce qui fait que vous aimez votre métier ?</label>-->
-    <!--<textarea class="form-control input-lg" id="love_job" rows="6" name="registration[questions][0][answer]"></textarea>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<input type="hidden" name="registration[questions][1][identifier]" value="but_exactly">-->
-    <!--<input type="hidden" name="registration[questions][1][title]" value="Que faites vous exactement ?">-->
-    <!--<label for="but_exactly">Que faites vous exactement ?</label>-->
-    <!--<textarea class="form-control input-lg" id="but_exactly" rows="6" name="registration[questions][1][answer]"></textarea>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <!--<label for="photo">Votre photo !</label>-->
-    <!--<input type="file" id="photo">-->
-    <!--<p class="help-block">C'est pour la galerie.</p>-->
-    <!--</div>-->
-    <!--<div class="checkbox">-->
-    <!--<label>-->
-    <!--<input type="checkbox"> Je vous envoie ma photo par mail à contact@bloomr.org-->
-    <!--</label>-->
-    <!--</div>-->
-    <!--<button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 25px">Enregistrer</button>-->
-    <!--</div>-->
   </div>
+</div>
