@@ -10,15 +10,15 @@
         <% end %>
         <div class="form-group">
           <%= f.label :email, 'Votre email' %>
-          <%= f.text_field :email, class: "form-control input-lg", :placeholder => "jules.bonGateau@mail.com", :type => "email", :required => "required",  :toto => "test" %>
+          <%= f.text_field :email, class: "form-control input-lg", :type => "email", :required => "required" %>
         </div>
         <div class="form-group">
           <%= f.label :job_title, 'Votre métier' %>
-          <%= f.text_field :job_title, class: "form-control input-lg", :placeholder => "Patissier" %>
+          <%= f.text_field :job_title, class: "form-control input-lg" %>
         </div>
         <div class="form-group">
           <%= f.label :first_name, 'Votre prénom' %>
-          <%= f.text_field :first_name, class: "form-control input-lg", :placeholder => "jules" %>
+          <%= f.text_field :first_name, class: "form-control input-lg" %>
         </div>
         <%= f.fields_for :questions do |questions_form| %>
             <div class="form-group">
