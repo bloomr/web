@@ -15,7 +15,7 @@ ActiveAdmin.register User do
   # end
 
   permit_params :email, :password, :password_confirmation, :first_name, :job_title, :avatar,
-                :keyword_list,
+                :keyword_list, :published,
                 questions_attributes: [:id, :title, :answer, :identifier, :_destroy]
 
   controller do
