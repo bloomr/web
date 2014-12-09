@@ -28,4 +28,15 @@ feature "Enrolling" do
     expect(loulou.published).to eq(false)
 
   end
+
+  scenario "my form is already filled" do
+
+    email = "un Truc chélou !# @op"
+    metier = "Ingénieur RD Bling $ ..\/,<>{}~" # & do not work
+
+    visit "/participer?email="+ URI::encode(email) + "&metier=" + URI::encode(metier)
+
+    expect(find_field(:email).value).to eq(email)
+    expect(find_field('Votre métier').value).to eq(metier)
+  end
 end
