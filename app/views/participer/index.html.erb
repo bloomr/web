@@ -20,17 +20,23 @@
           <%= f.label :first_name, 'Votre prénom' %>
           <%= f.text_field :first_name, class: "form-control input-lg" %>
         </div>
-        <%= f.fields_for :questions do |questions_form| %>
-            <div class="form-group">
-              <%= questions_form.hidden_field :identifier %>
-              <%= questions_form.hidden_field :title %>
-              <%= questions_form.label :answer, questions_form.object.title %>
-              <%= questions_form.text_area :answer, :rows=>6, :class=>"form-control input-lg" %>
-            </div>
-        <% end %>
         <div class="form-group">
-          <%= f.label :keyword_list, '5 mots-clés associés à votre métier, séparés par une virgule' %>
-          <%= f.text_field :keyword_list, class: "form-control input-lg" %>
+          <input id="user_questions_attributes_0_identifier" name="user[questions_attributes][0][identifier]" type="hidden" value="specifically" />
+          <input id="user_questions_attributes_0_title" name="user[questions_attributes][0][title]" type="hidden" value="Que faites vous exactement ?" />
+          <label for="user_questions_attributes_0_answer">Que faites-vous exactement ?</label>
+          <textarea class="form-control input-lg" id="user_questions_attributes_0_answer" name="user[questions_attributes][0][answer]" rows="6">
+          </textarea>
+        </div>
+        <div class="form-group">
+          <label for="user_keyword_list">Quels sont les 5 mots clés qui vous viennent spontanément à l’esprit quand vous pensez à votre métier ?</label>
+          <input class="form-control input-lg" id="user_keyword_list" name="user[keyword_list]" type="text" value="" />
+        </div>
+        <div class="form-group">
+          <input id="user_questions_attributes_1_identifier" name="user[questions_attributes][1][identifier]" type="hidden" value="love_job" />
+          <input id="user_questions_attributes_1_title" name="user[questions_attributes][1][title]" type="hidden" value="Au fond, qu'est ce qui fait que vous aimez votre métier ?" />
+          <label for="user_questions_attributes_1_answer">Au fond, qu'est ce qui fait que vous aimez votre métier ?</label>
+          <textarea class="form-control input-lg" id="user_questions_attributes_1_answer" name="user[questions_attributes][1][answer]" rows="6">
+          </textarea>
         </div>
         <div class="form-group">
           <label for="photo">Votre photo !</label>

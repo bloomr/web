@@ -2,9 +2,9 @@ class ParticiperController < ApplicationController
 
   def index
     @user = User.new(:email => params[:email], :job_title => params[:metier])
+    but_exactly_question = Question.new(:identifier => "specifically", :title => "Que faites-vous exactement ?")
     love_job_question = Question.new(:identifier => "love_job", :title => "Au fond, qu'est ce qui fait que vous aimez votre métier ?")
-    but_exactly_question = Question.new(:identifier => "specifically", :title => "Que faites vous exactement ?")
-    @user.questions = [love_job_question, but_exactly_question]
+    @user.questions = [but_exactly_question, love_job_question]
   end
 
   def create
