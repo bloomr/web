@@ -28,6 +28,10 @@
               <%= questions_form.text_area :answer, :rows=>6, :class=>"form-control input-lg" %>
             </div>
         <% end %>
+        <div class="form-group">
+          <%= f.label :keyword_list, '5 mots-clés associés à votre métier, séparés par une virgule' %>
+          <%= f.text_field :keyword_list, class: "form-control input-lg" %>
+        </div>
         <!--
         <div class="form-group">
           <label for="photo">Votre photo !</label>

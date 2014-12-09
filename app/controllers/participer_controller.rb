@@ -19,7 +19,7 @@ class ParticiperController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :job_title, :first_name, questions_attributes: [:identifier, :title, :answer])
+    params.require(:user).permit(:email, :job_title, :first_name, :keyword_list, questions_attributes: [:identifier, :title, :answer])
   end
 
 end
