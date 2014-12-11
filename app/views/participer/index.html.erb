@@ -24,10 +24,12 @@
           <input id="user_questions_attributes_0_identifier" name="user[questions_attributes][0][identifier]" type="hidden" value="specifically" />
           <input id="user_questions_attributes_0_title" name="user[questions_attributes][0][title]" type="hidden" value="Que faites vous exactement ?" />
           <label for="user_questions_attributes_0_answer">Que faites-vous exactement ?</label>
+          <span class="help-block">Exprimez-vous comme si vous le racontiez à quelqu'un assis à côté de vous</span>
           <textarea class="form-control input-lg" id="user_questions_attributes_0_answer" name="user[questions_attributes][0][answer]" rows="6"></textarea>
         </div>
         <div class="form-group">
           <label for="user_keyword_list">Quels sont les 5 mots clés qui vous viennent spontanément à l’esprit quand vous pensez à votre métier ?</label>
+          <span class="help-block">les séparer par des virgules</span>
           <input class="form-control input-lg" id="user_keyword_list" name="user[keyword_list]" type="text" value="" />
         </div>
         <div class="form-group">
@@ -37,9 +39,8 @@
           <textarea class="form-control input-lg" id="user_questions_attributes_1_answer" name="user[questions_attributes][1][answer]" rows="6"></textarea>
         </div>
         <div class="form-group">
-          <label for="photo">Votre photo !</label>
+          <label for="photo">Votre photo !</label><span style="display:inline-block" class="help-block">&nbsp;C'est pour la galerie ;-) .</span>
           <%= f.file_field :avatar %>
-          <p class="help-block">C'est pour la galerie ;-) .</p>
           <p class="help-block">Vous pouvez également envoyer votre photo par email à l’adresse contact@bloomr.org</p>
         </div>
         <%= f.submit "Enregistrer", :class=>"btn btn-primary btn-block btn-lg", :style=>"margin-top: 25px"%>
