@@ -3,6 +3,7 @@
     <li class="active"><a href="/app/assets/images">Galerie</a></li>
   </ol>
 
+  <%= render "shared/catchup_phrase" %>
 
   <ul id="portraits_list" class="row">
     <% @portraits.each do |portrait| %>
@@ -25,6 +26,7 @@
     <% end %>
   </ul>
 
+  <%= render "shared/catchup_phrase" %>
 
   <script>
       $(function(){
