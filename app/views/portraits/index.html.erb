@@ -12,7 +12,7 @@
               <div class="background-<%= (portrait.id) %22 %>">
                 <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar", :width => "104px", :height => "104px", :itemprop => "image"  %>
                 <div class="overlay">
-                  <h3 class="portrait-infos-right portrait-name" itemprop="givenName"><%= portrait.first_name %></h3>
+                  <h3 class="portrait-infos-right portrait-name" itemprop="name"><%= portrait.first_name %></h3>
                   <h2 class="panel-title portrait-job-title" itemprop="jobTitle"><%= portrait.job_title %></h2>
                   <% if portrait.answer_to('love_job') %>
                       <blockquote class="portrait-love-job">
