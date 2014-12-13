@@ -4,14 +4,14 @@
     <li class="active"><a href="<%= portrait_path(@portrait)%>"><%= @portrait .first_name %></a></li>
   </ol>
 
-  <div id="portrait_details" class="h-card">
+  <div id="portrait_details">
     <div class="row">
       <div class="portrait-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
         <div class="portrait-header background-<%= (@portrait.id) %22 %>">
-          <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar u-photo" %>
+          <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar", :itemprop => "image"%>
           <div>
-            <h3 class="portrait-name p-given-name"><%= @portrait.first_name %></h3>
-            <h2 class="portrait-job-title p-job-title"><%= @portrait.job_title %></h2>
+            <h3 class="portrait-name" itemprop="name"><%= @portrait.first_name %></h3>
+            <h2 class="portrait-job-title" itemprop="jobTitle"><%= @portrait.job_title %></h2>
           </div>
         </div>
         <ul class="portrait-keywords">
@@ -23,9 +23,9 @@
       <div class="portrait-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <ul class="portrait-questions">
           <% @portrait.questions.sort_by { |question| question.title }.each do |question| %>
-              <li>
-                <h4 class="portrait-question-title"><%= question.title %></h4>
-                <div class="portrait-question-answer"><%= question.answer.html_safe %></div>
+              <li itemscope itemtype="http://schema.org/Question">
+                <h4 itemprop="name" class="portrait-question-title"><%= question.title %></h4>
+                <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer" itemprop="text"><%= question.answer.html_safe %></div>
               </li>
           <% end %>
         </ul>
