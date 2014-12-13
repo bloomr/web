@@ -1,18 +1,12 @@
 #header {
   height: 70px;
   padding-top: 10px;
-  padding-bottom: 10px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
 
   a.navbar-brand {
     font-size: 21px;
     text-transform: uppercase;
-    padding: 16px 0px;
-
-    @media (max-width: 768px) {
-      padding-left: 15px;
-    }
   }
 
   button.navbar-toggle {
@@ -23,13 +17,10 @@
   }
 
   ul.nav {
-    width: 580px;
     li {
-      margin-left: 15px;
       a {
         font-size: 16px;
         color: #666666;
-        padding: 3px 0px;
       }
     }
   }
