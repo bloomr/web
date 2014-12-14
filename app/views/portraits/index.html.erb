@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <ol class="breadcrumb">
-    <li class="active"><a href="/app/assets/images">Galerie</a></li>
+  <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="/">Galerie</a></li>
   </ol>
 
   <%= render "shared/catchup_phrase" %>
@@ -10,7 +10,7 @@
         <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" itemscope itemtype="http://schema.org/Person">
           <%= link_to(portrait_path(portrait), :itemprop => "url") do %>
               <div class="background-<%= (portrait.id) %22 %>">
-                <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar", :width => "104px", :height => "104px", :itemprop => "image"  %>
+                <%= image_tag portrait.avatar.url("thumb"), :class => "portrait-avatar", :width => "104px", :height => "104px", :itemprop => "image", :alt => "Photo de " + portrait.first_name  %>
                 <div class="overlay">
                   <h3 class="portrait-infos-right portrait-name" itemprop="name"><%= portrait.first_name %></h3>
                   <h2 class="panel-title portrait-job-title" itemprop="jobTitle"><%= portrait.job_title %></h2>

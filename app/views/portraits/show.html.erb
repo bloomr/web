@@ -1,20 +1,20 @@
-<div class="container">
-  <ol class="breadcrumb">
-    <li><a href="/">Galerie</a></li>
-    <li class="active"><a href="<%= portrait_path(@portrait)%>"><%= @portrait .first_name %></a></li>
+<div class="container" itemscope itemtype="http://schema.org/QAPage">
+  <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="/">Galerie</a></li>
+    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="<%= portrait_path(@portrait)%>"><%= @portrait .first_name %></a></li>
   </ol>
 
   <div id="portrait_details">
     <div class="row">
       <div class="portrait-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
-        <div class="portrait-header background-<%= (@portrait.id) %22 %>">
-          <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar", :itemprop => "image"%>
+        <div class="portrait-header background-<%= (@portrait.id) %22 %>" itemscope itemtype="http://schema.org/Person">
+          <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar", :itemprop => "image", :alt => "Photo de " + @portrait.first_name %>
           <div>
             <h3 class="portrait-name" itemprop="name"><%= @portrait.first_name %></h3>
             <h2 class="portrait-job-title" itemprop="jobTitle"><%= @portrait.job_title %></h2>
           </div>
         </div>
-        <ul class="portrait-keywords">
+        <ul class="portrait-keywords" itemprop="keywords">
           <% @portrait.keyword_list.each do |keyword| %>
               <li><% keyword[0] = keyword[0].capitalize %><%= keyword %></li>
           <% end %>
@@ -25,7 +25,7 @@
           <% @portrait.questions.sort_by { |question| question.title }.each do |question| %>
               <li itemscope itemtype="http://schema.org/Question">
                 <h4 itemprop="name" class="portrait-question-title"><%= question.title %></h4>
-                <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer" itemprop="text"><%= question.answer.html_safe %></div>
+                <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer"><span itemprop="text"><%= question.answer.html_safe %></span></div>
               </li>
           <% end %>
         </ul>
