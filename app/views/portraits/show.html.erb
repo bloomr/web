@@ -1,5 +1,7 @@
-<% content_for :title, @portrait.job_title %>
-<% content_for :description, "#{@portrait.first_name} est #{@portrait.job_title} et décrit son métier" %>
+<% content_for :title, "#{@portrait.job_title}" %>
+<% content_for :og_title, "#{@portrait.first_name} partage la passion de son métier sur Bloomr : #{@portrait.job_title}" %>
+<% content_for :description, "#{@portrait.first_name} est #{@portrait.job_title} et décrit son métier " %>
+<% content_for :og_img_url, @portrait.avatar.url("thumb") %>
 <div class="container" itemscope itemtype="http://schema.org/QAPage">
   <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="/">Galerie</a></li>

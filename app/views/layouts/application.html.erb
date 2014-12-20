@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-  <title><%= yield(:title) %></title>
+  <title><%= yield(:title) %> - Bloomr</title>
   <%= favicon_link_tag('favicon.ico')%>
   <meta name="viewport" content="width=device-width">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="<%= yield(:description) %>" />
+  <meta property="og:title" content="<%= yield(:og_title) %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= request.original_url %>" />
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="<%= yield(:og_img_url) %>" />
+  <meta property="og:site_name" content="bloomr" />
+  <meta name="twitter:title" property="og:title" itemprop="title name" content="<%= yield(:og_title) %>" />
+  <meta name="twitter:description" property="og:description" itemprop="description" content="<%= yield(:description) %>" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="community.bloomr.org"/>
   <link href="//fonts.googleapis.com/css?family=Lobster" media="screen" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:300italic,600italic,300,600|Quando|Josefin+Slab:400,700,400italic,700italic|Trocchi|Arvo|Lato:300,400,700,300italic,400italic,700italic|Raleway:200,300,700|Playfair+Display:400,700,400italic,700italic|Bitter:400,700,400italic|Vollkorn:400,400italic|Titillium+Web|EB+Garamond&amp;subset=latin,latin-ext" media="screen" rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
