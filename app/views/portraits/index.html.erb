@@ -30,13 +30,26 @@
     <% end %>
   </ul>
 
+  <% if @portraits.length > 0  %>
+  <nav id="page-nav">
+    <a href="/portraits?page=<%=params[:page]+1%>">page suivante</a>
+  </nav>
+  <% end %>
+
+
   <%= render "shared/catchup_phrase" %>
 
   <script>
       $(function(){
-          var msnry = new Masonry("#portraits_list");
-          imagesLoaded( "#portraits_list", function() {
-              msnry.layout();
+          $('#portraits_list').infinitescroll({
+              loading: {
+                  finishedMsg: "<li><em>Félicitation, vous avez atteint la fin de la galerie</em></li>",
+                  msgText: "<li><em>Chargement des prochains portraits...</em></li>"
+              },
+              navSelector  : '#page-nav',
+              nextSelector : '#page-nav a',
+              itemSelector : '.col-lg-3.col-md-4.col-sm-6.col-xs-12',
+              bufferPx: 400
           });
       });
   </script>

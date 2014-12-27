@@ -14,8 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require masonry.pkgd.min
-//= require imagesloaded.pkgd.min
 //= require modernizr.custom.17912
 //= require universalAnalytics
 //= require optimizely
+//= require jquery.infinitescroll.min
