@@ -22,3 +22,6 @@ run.sh
 
 Procfile.dev
 .env.dev
+*.dump
+Procfile
+.env
