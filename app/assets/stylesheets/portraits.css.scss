@@ -226,9 +226,9 @@ $orange: #FF6622 !default;
         > li {
           display: inline-block;
           padding-right: 5px;
-        }
-        > li:before {
-          content: "#";
+          > .portrait-keyword:before {
+            content: "#";
+          }
         }
       }
     }

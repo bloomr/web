@@ -21,9 +21,9 @@
         <ul class="portrait-keywords" itemprop="keywords">
           <% @portrait.keyword_list.each do |keyword| %>
             <% if @portrait.is_keyword_popular(keyword) %>
-              <li><a href="<%= tag_path(keyword) %>"><% keyword[0] = keyword[0].capitalize %><%= keyword %></a></li>
+              <li><a href="<%= tag_path(keyword) %>" class="portrait-keyword"><% keyword[0] = keyword[0].capitalize %><%= keyword %></a></li>
             <% else %>
-              <li><% keyword[0] = keyword[0].capitalize %><%= keyword %></li>
+              <li><span class="portrait-keyword"><% keyword[0] = keyword[0].capitalize %><%= keyword %></span></li>
             <% end %>
           <% end %>
         </ul>
