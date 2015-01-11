@@ -26,7 +26,7 @@
       </div>
       <div class="portrait-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <ul class="portrait-questions">
-          <% @portrait.questions.sort_by { |question| question.title }.each do |question| %>
+          <% @portrait.questions.sort { |q1, q2| q1 <=> q2 }.each do |question| %>
               <li itemscope itemtype="http://schema.org/Question">
                 <h4 itemprop="name" class="portrait-question-title"><%= question.title %></h4>
                 <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer"><span itemprop="text"><%= question.answer.html_safe %></span></div>
