@@ -5,7 +5,7 @@ class PortraitsController < ApplicationController
     if params[:page] == 0
       params[:page] = 1
     end
-    @portraits = User.where("published = ? and job_title IS NOT NULL", true).limit(12).offset(12* (params[:page]-1))
+    @portraits = User.where("published = ? and job_title IS NOT NULL", true).limit(12).offset(12* (params[:page]-1)).order(updated_at: :desc)
   end
 
   def show
