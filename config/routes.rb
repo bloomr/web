@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   resources :participer, :only => [:index, :create]
   get "participer/merci-beaucoup" => "participer#thanks"
 
+  namespace :api do
+    namespace :v1 do
+      resources :users, :only => [:create, :update]
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
