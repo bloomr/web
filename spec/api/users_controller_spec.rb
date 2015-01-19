@@ -34,7 +34,7 @@ RSpec.describe Api::V1::UsersController, :type => :request do
 
     it "responds yop with 200 code if creation of user" do
       post "api/v1/users", payload, { "Accept" => "application/json" }
-      expect(JSON.parse(response.body)["user_id"]).to eq("1")
+      expect(JSON.parse(response.body)["user_id"]).to eq(1)
       expect(response).to have_http_status(200)
     end
 
