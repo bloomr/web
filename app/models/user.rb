@@ -28,4 +28,9 @@ class User < ActiveRecord::Base
     question.answer if question
   end
 
+  def is_keyword_popular tag
+    users = User.tagged_with(tag, :on => :keywords)
+    return users.length >= 2
+  end
+
 end

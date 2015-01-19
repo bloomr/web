@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :portraits, :only => [:index, :show]
 
+  resources :tag, :only => [:show]
+
   resources :participer, :only => [:index, :create]
   get "participer/merci-beaucoup" => "participer#thanks"
 
