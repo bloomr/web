@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   def is_keyword_popular tag
     users = User.tagged_with(tag, :on => :keywords)
-    return users.length >= 10
+    return users.length >= 2
   end
 
 end
