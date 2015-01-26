@@ -1,0 +1,59 @@
+// Place all the styles related to the static controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+section {
+  -webkit-box-shadow: 0px 4px 5px -2px #cfcfcf;
+  -moz-box-shadow: 0px 4px 5px -2px #cfcfcf;
+  -o-box-shadow: 0px 4px 5px -2px #cfcfcf;
+  box-shadow: 0px 4px 5px -2px #cfcfcf;
+
+  padding: 40px 0px;
+
+  .section-title {
+    font-size: 48px;
+    color: #f62;
+    text-align: center;
+    padding: 20px 0px;
+  }
+
+  em {
+    font-style: normal;
+    color: #f62;
+  }
+
+  .col-md-4 {
+    text-align: center;
+    img.feature-icon {
+      margin: 0px auto;
+    }
+    h2.feature-title {
+      color: #f62;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+    p {
+      font-size: 18px;
+      color: #666;
+    }
+  }
+
+  .col-md-5 {
+    text-align: center;
+    img.feature-icon-side {
+      margin: 30px auto;
+    }
+  }
+
+  .col-md-7 {
+    h2.feature-title {
+      color: #f62;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+    p {
+      font-size: 18px;
+      color: #666;
+    }
+  }
+}

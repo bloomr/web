@@ -36,15 +36,22 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="<%= root_path %>"><i class="glyphicon glyphicon-home"></i></a></li>
+        <li><a href="<%= le_concept_path %>">Le concept</a></li>
+        <li><a href="<%= qui_nous_sommes_path %>">Qui nous sommes</a></li>
         <li><a href="https://bloomr.typeform.com/to/ZDAyNU" class="btn btn-primary">Rejoignez-les !</a></li>
-        <li><a href="http://www.bloomr.org/#qui-sommes-nous">Qui sommes-nous</a></li>
-        <li><a href="http://www.bloomr.org/#contact">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <%= yield %>
+
+<footer id="footer">
+  <div class="container">
+    <p>Bloomr - Copyright 2014-2015 - Déclaration CNIL 1779982v0 - <a href="mailto:contact@bloomr.org">contact@bloomr.org</a></p>
+  </div>
+</footer>
 
 <%= javascript_include_tag "user_voice", "data-turbolinks-track" => false, :async => true  %>
 <script type="text/javascript">
