@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :participer, :only => [:index, :create]
   get "participer/merci-beaucoup" => "participer#thanks"
 
+  # Static pages (Strikingly content)
+  get "le-concept" => "static#le_concept"
+  get "qui-sommes-nous" => "static#qui_sommes_nous"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
