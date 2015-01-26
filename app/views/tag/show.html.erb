@@ -5,6 +5,7 @@
 <div class="container-fluid">
   <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
     <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="/">Galerie</a></li>
+    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="<%= tag_path @tag %>">Mot-clé : <%= @tag %></a></li>
   </ol>
 
   <%= render "shared/catchup_phrase" %>
