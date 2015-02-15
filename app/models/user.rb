@@ -33,9 +33,8 @@ class User < ActiveRecord::Base
     question.answer if question
   end
 
-  def is_keyword_popular tag
-    users = User.tagged_with(tag, :on => :keywords)
-    return users.length >= 2
+  def is_keyword_popular keyword
+    return KeywordAssociation.where(:keyword => keyword).count >= 2
   end
 
 end
