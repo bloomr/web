@@ -31,6 +31,9 @@ gem 'spring',        group: :development
 
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'select2-rails'
+gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
+
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem "paperclip", "~> 4.2"

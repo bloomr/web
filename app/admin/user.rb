@@ -14,8 +14,8 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
-  permit_params :email, :password, :password_confirmation, :first_name, :job_title, :avatar,
-                :keyword_list, :published,
+  permit_params :email, :password, :password_confirmation, :first_name, :job_title, :avatar, :published,
+                keyword_ids: [],
                 questions_attributes: [:id, :title, :answer, :identifier, :_destroy]
 
   controller do
@@ -59,7 +59,7 @@ ActiveAdmin.register User do
     end
 
     f.inputs "Keywords" do
-      f.input :keyword_list, :hint => "Keywords should be separated by commas ','."
+      f.input :keywords, as: :select2_multiple
     end
 
     f.inputs "Questions" do
