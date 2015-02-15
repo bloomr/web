@@ -15,8 +15,6 @@ development:
   encoding: unicode
   database: postgres
   pool: 5
-  username: loulou 
-  password:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
