@@ -19,7 +19,8 @@ RSpec.describe Api::V1::UsersController, :type => :request do
                   title: "Au fond, qu'est ce qui fait que vous aimez votre métier ?",
                   answer: "j'adore le yop"
               }
-          ]
+          ],
+          keyword_list: "tag1, tag2, tag3"
       }
   }
 
@@ -36,6 +37,13 @@ RSpec.describe Api::V1::UsersController, :type => :request do
       post "api/v1/users", payload, { "Accept" => "application/json" }
       expect(JSON.parse(response.body)["user_id"]).to eq(1)
       expect(response).to have_http_status(200)
+    end
+
+    it "create the user correctly" do
+      post "api/v1/users", payload, { "Accept" => "application/json" }
+      user = User.find(1)
+      expect(user.email).to eq("yopyop@yop.com")
+      expect(user.keywords.map{ |k| k.tag }).to eq(["tag1", "tag2", "tag3"])
     end
 
     it "responds yop with 500 code if users mail is already known" do

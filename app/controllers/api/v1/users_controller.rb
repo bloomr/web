@@ -11,6 +11,12 @@ module Api
         @user = User.new(user_params)
         @user.password = Devise.friendly_token.first(8)
         if @user.save
+          tags = user_params["keyword_list"].split(",").map{|t| t.strip}
+
+          tags.each do |tag|
+            keyword = Keyword.find_or_create_by(:tag => tag)
+            KeywordAssociation.find_or_create_by(:keyword => keyword, :user => @user)
+          end
           render json: {message: 'creation ok', user_id: @user.id}
         else
           render json: {error: "creation ko", error_description: @user.errors.full_messages}, status: :bad_request
@@ -24,7 +30,7 @@ module Api
 
       private
       def user_params
-        params.require(:user).permit(:email, :job_title, :first_name, :keyword_list, :avatar, questions_attributes: [:identifier, :title, :answer])
+        params.require(:user).permit(:email, :job_title, :first_name, :avatar, :keyword_list, questions_attributes: [:identifier, :title, :answer])
       end
 
     end

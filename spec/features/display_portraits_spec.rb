@@ -22,7 +22,7 @@ feature "List of portraits" do
 
     visit "/portraits"
 
-    expect(page).to have_content('Galerie')
+    expect(page).to have_content('Quel métier choisir ?')
     expect(page).to have_selector('#portraits_list > li', :count => 2)
 
   end
