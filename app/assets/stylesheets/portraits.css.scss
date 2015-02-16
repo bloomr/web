@@ -173,6 +173,7 @@ $orange: #FF6622 !default;
 #portrait_details {
   border: 1px solid #dddddd;
   border-radius: 15px;
+  margin-top: 30px;
   > .row {
     .portrait-sidebar {
       @media (min-width: 992px) {
