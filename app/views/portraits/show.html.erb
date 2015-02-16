@@ -19,11 +19,11 @@
           </div>
         </div>
         <ul class="portrait-keywords" itemprop="keywords">
-          <% @portrait.keyword_list.each do |keyword| %>
-            <% if @portrait.is_keyword_popular(keyword) %>
-              <li><a href="<%= tag_path(keyword) %>" class="portrait-keyword"><% keyword[0] = keyword[0].capitalize %><%= keyword %></a></li>
+          <% @portrait.keyword_associations.each do |keyword_association| %>
+            <% if @portrait.is_keyword_popular(keyword_association.keyword) %>
+              <li><a href="<%= tag_path(keyword_association.keyword.tag) %>" class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></a></li>
             <% else %>
-              <li><span class="portrait-keyword"><% keyword[0] = keyword[0].capitalize %><%= keyword %></span></li>
+              <li><span class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></span></li>
             <% end %>
           <% end %>
         </ul>
