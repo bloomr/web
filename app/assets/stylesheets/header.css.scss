@@ -25,15 +25,37 @@
           background-color: white;
           color: #ff6622;
         }
+        &.active {
+          color: #ff6622;
+        }
       }
       a.btn-primary {
         color: white;
         font-weight: bold;
+        padding-right: 15px;
+        margin-right: 0px;
+        padding-left: 15px;
+        margin-left: 0px;
         &:hover {
           background-color: white;
           color: #ff6622;
         }
       }
+    }
+  }
+
+  @media (min-width: 768px) {
+    ul.nav {
+      margin-bottom: 8px;
+      li {
+        height: 60px;
+        margin: 0px 5px;
+        a.active {
+          border-bottom: 3px solid #ff6622;
+          padding-bottom: 22px;
+        }
+      }
+
     }
   }
 

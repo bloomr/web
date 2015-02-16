@@ -36,9 +36,9 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%= root_path %>"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li><a href="<%= le_concept_path %>">Le concept</a></li>
-        <li><a href="<%= qui_nous_sommes_path %>">Qui nous sommes</a></li>
+        <li><a href="<%= root_path %>" class="<% if current_page?(root_path) %>active <% end %>"><i class="glyphicon glyphicon-home"></i></a></li>
+        <li><a href="<%= le_concept_path %>" class="<% if current_page?(le_concept_path) %>active <% end %>">Le concept</a></li>
+        <li><a href="<%= qui_nous_sommes_path %>" class="<% if current_page?(qui_nous_sommes_path) %>active <% end %>">Qui nous sommes</a></li>
         <li><a href="https://bloomr.typeform.com/to/ZDAyNU" class="btn btn-primary">Rejoignez-les !</a></li>
       </ul>
     </div>

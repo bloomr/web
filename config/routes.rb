@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   resources :participer, :only => [:index, :create]
   get "participer/merci-beaucoup" => "participer#thanks"
 
+  namespace :api do
+    namespace :v1 do
+      resources :users, :only => [:create, :update]
+    end
+  end
+
   # Static pages (Strikingly content)
   get "le-concept" => "static#le_concept"
   get "qui-nous-sommes" => "static#qui_nous_sommes"

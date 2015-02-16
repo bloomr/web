@@ -2,7 +2,23 @@
 <% content_for :og_title, "Bloomr - Des professionnels passionnés parlent de leur métier" %>
 <% content_for :description, "Choisir un métier épanouissant grâce à une communauté de professionnels passionnés" %>
 <% content_for :og_img_url, "http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,f_auto,fl_progressive,h_1200,q_90,w_2000/v1/123077/7039448345_9741b31e11_k_rqcog0.jpg" %>
-<div class="container-fluid">
+
+<div class="intro">
+  <div class="container">
+    <p>
+      Quel métier choisir ?
+    </p>
+    <p>
+      Plus de <em>200 professionnels enthousiastes</em> nous parlent de leur métier.
+      <br>
+      Comment se voyaient-ils enfant et que sont-ils devenus ?
+      <br>
+      À vous de le découvrir !
+    </p>
+  </div>
+</div>
+
+<div class="container">
   <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
     <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="/">Galerie</a></li>
   </ol>
@@ -31,7 +47,7 @@
   </ul>
 
   <% if @portraits.length > 0  %>
-  <nav id="page-nav">
+  <nav id="page-nav" style="display: none;">
     <a href="/portraits?page=<%=params[:page]+1%>">page suivante</a>
   </nav>
   <% end %>
@@ -43,7 +59,7 @@
       $(function(){
           $('#portraits_list').infinitescroll({
               loading: {
-                  finishedMsg: "<li><em>Félicitation, vous avez atteint la fin de la galerie</em></li>",
+                  finishedMsg: "<li><em>Félicitations, vous avez atteint la fin de la galerie</em></li>",
                   msgText: "<li><em>Chargement des prochains portraits...</em></li>"
               },
               navSelector  : '#page-nav',
