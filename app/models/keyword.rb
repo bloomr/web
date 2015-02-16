@@ -5,4 +5,11 @@ class Keyword < ActiveRecord::Base
   def to_s
     return tag
   end
+
+  def self.popular_keywords
+    return self.joins(:keyword_associations)
+               .select("distinct keywords.*, count(keyword_associations.id) as popularity")
+               .group("keywords.id")
+               .order("popularity DESC").limit(5)
+  end
 end

@@ -24,20 +24,45 @@ ol.breadcrumb {
   }
 }
 
-.intro {
-  background-color: #f5f5f5;
-  color: #a6a6a6;
-  padding: 15px 0px;
-  font-size: 1.25em;
-  text-align: center;
-  em {
-    color: #7a7a7a;
-    font-style: normal;
-    font-weight: bold;
-  }
+.subheader {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
-  a {
-    font-weight: bold;
+  .intro-wrapper {
+    background-color: #f5f5f5;
+    .intro {
+      color: #a6a6a6;
+      padding: 15px 0px;
+      font-size: 1.25em;
+      text-align: center;
+      em {
+        color: #7a7a7a;
+        font-style: normal;
+        font-weight: bold;
+      }
+      a {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .browse-wrapper {
+    background-color: #FFFFFF;
+    .browse {
+      ul.popular-tags {
+        float: right;
+        margin-top: 10px;
+        li {
+          display: inline-block;
+          padding: 4px 6px;
+          &:before {
+            content: "#";
+            color:#FF6622;
+          }
+          a {
+            color: #a6a6a6;
+          }
+        }
+      }
+    }
   }
 }
 
