@@ -27,3 +27,5 @@ Procfile
 .env
 
 /public/assets/*
+
+.DS_Store
