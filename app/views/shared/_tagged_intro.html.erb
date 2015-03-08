@@ -21,13 +21,5 @@
     </div>
   </div>
 
-  <div class="browse-wrapper">
-    <div class="container browse">
-      <ul class="popular-tags">
-        <% @popular_keywords.each do |keyword| %>
-            <li class="popular-tag"><a href="<%= tag_path(keyword.tag) %>"><%= keyword.tag %></a></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+  <%= render "shared/search_and_tags" %>
 </div>

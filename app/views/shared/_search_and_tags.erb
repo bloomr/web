@@ -1,0 +1,13 @@
+<div class="browse-wrapper">
+  <div class="container browse">
+    <div style="float: left; margin-top: 10px; padding-top: 4px;">
+      <span class="glyphicon glyphicon-search" style="color: #a6a6a6; margin-right: 10px; margin-left: 10px"></span>
+      <input id="search" type="text" style="border: 0; border-left: 1px solid #a6a6a6; padding-left: 10px;" placeholder="Rechercher" autofocus="autofocus">
+    </div>
+    <ul class="popular-tags">
+      <% @popular_keywords.each do |keyword| %>
+          <li class="popular-tag"><a href="<%= tag_path(keyword.tag) %>"><%= keyword.tag %></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -28,6 +28,10 @@ module Api
         return render json: User.find(params[:id]).update(user_params)
       end
 
+      def index
+        render json: User.where("published = ?", true), :only => [:id, :job_title]
+      end
+
       private
       def user_params
         params.require(:user).permit(:email, :job_title, :first_name, :avatar, :keyword_list, questions_attributes: [:identifier, :title, :answer])
