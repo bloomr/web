@@ -55,7 +55,7 @@
     jobs.initialize();
 
     $(function() {
-        $('#search').typeahead(null,{
+        $('.search').typeahead(null,{
             name: 'job_title',
             displayKey: 'job_title',
             // `ttAdapter` wraps the suggestion engine in an adapter that
@@ -63,7 +63,7 @@
             source: jobs.ttAdapter()
         });
 
-        $('#search').on('typeahead:selected', function(ev, data){
+        $('.search').on('typeahead:selected', function(ev, data){
             window.location = '/portraits/' + data.id;
         });
 
