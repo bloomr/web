@@ -4,7 +4,8 @@ module Api
     class KeywordsController < ApplicationController
 
       def index
-        render json: Keyword.joins(:keyword_associations).select("distinct keywords.*, count(keyword_associations.id) as popularity").group("keywords.id"), :only => [:id, :tag, :description, :popularity]
+        keywords = Keyword.joins(:keyword_associations).group("keywords.id").having("count(keyword_associations.id) > 0")
+        render json: keywords, :only => [:id, :tag, :description]
       end
 
     end
