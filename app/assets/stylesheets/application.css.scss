@@ -56,6 +56,10 @@ ol.breadcrumb {
         vertical-align: middle;
         height: 35px;
         margin-right: 10px;
+        opacity: 0.8;
+        &:hover {
+          opacity: 1;
+        }
         .boiteAIdee {
           background-image: image-url("icons/icon-boiteidee.png");
           width: 17px;
