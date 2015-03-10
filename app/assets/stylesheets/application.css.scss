@@ -51,26 +51,37 @@ ol.breadcrumb {
         float: left;
         margin-top: 7px;
         border: 1px solid #a6a6a6;
-        padding: 6px 10px;
+        padding: 0px 10px;
         border-radius: 5px;
-        vertical-align: middle;
+        position: relative;
         height: 35px;
         margin-right: 10px;
         opacity: 0.8;
         &:hover {
           opacity: 1;
+          .boiteAIdee .lumineuse {
+            opacity: 1;
+          }
         }
         .boiteAIdee {
           background-image: image-url("icons/icon-boiteidee.png");
           width: 17px;
           height: 22px;
           display: inline-block;
-          vertical-align: middle;
+          position: relative;
+          top: 3px;
+          .lumineuse {
+            background-image: image-url("icons/lumineuse.png");
+            top:0;
+            width: 17px;
+            height: 6px;
+            display: block;
+            position: absolute;
+            transition:opacity 0.5s
+          }
         }
         .boiteAIdeeText {
           color: #a6a6a6;
-          vertical-align: middle;
-          border: 0;
           padding-left: 10px;
         }
       }
@@ -91,6 +102,10 @@ ol.breadcrumb {
       }
     }
   }
+}
+
+.no-touch .boiteAIdee .lumineuse {
+  opacity: 0;
 }
 
 .catchup{
