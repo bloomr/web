@@ -29,7 +29,7 @@ module Api
       end
 
       def index
-        render json: User.where("published = ?", true), :only => [:id, :job_title]
+        render json: User.where("published = ?", true), :only => [:id, :job_title, :first_name]
       end
 
       private

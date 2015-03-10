@@ -2,9 +2,7 @@
   <div class="container browse">
     <div style="float: left; margin-top: 10px; padding-top: 4px;">
       <span class="glyphicon glyphicon-search" style="color: #a6a6a6; margin-right: 10px; margin-left: 10px"></span>
-      <!-- add autofocus only on huge screen-->
-      <input type="text" style="border: 0; border-left: 1px solid #a6a6a6; padding-left: 10px;" placeholder="Rechercher" class="hidden-lg search">
-      <input type="text" style="border: 0; border-left: 1px solid #a6a6a6; padding-left: 10px;" placeholder="Rechercher" autofocus="autofocus" class="visible-lg-inline search">
+      <input type="text" style="border: 0; border-left: 1px solid #a6a6a6; padding-left: 10px;" placeholder="Rechercher" autofocus="autofocus" id="search">
     </div>
     <ul class="popular-tags">
       <% @popular_keywords.each do |keyword| %>

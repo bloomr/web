@@ -4,8 +4,17 @@ module Api
     class KeywordsController < ApplicationController
 
       def index
-        keywords = Keyword.joins(:keyword_associations).group("keywords.id").having("count(keyword_associations.id) > 0")
-        render json: keywords, :only => [:id, :tag, :description]
+
+        raw_sql = "select keywords.tag, count(keyword_associations.id) as popularity
+        from keywords
+        INNER JOIN keyword_associations on keywords.id = keyword_associations.keyword_id
+        INNER JOIN users on users.id = keyword_associations.user_id and users.published = TRUE
+        GROUP BY keywords.tag
+        HAVING count(keyword_associations.id) > 0"
+
+        keywords = ActiveRecord::Base.connection.execute(raw_sql)
+
+        render json: keywords
       end
 
     end

@@ -19,4 +19,3 @@
 //= require optimizely
 //= require jquery.infinitescroll.min
 //= require typeahead.bundle.min
-//= require search
