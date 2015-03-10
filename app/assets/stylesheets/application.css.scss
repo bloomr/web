@@ -47,6 +47,29 @@ ol.breadcrumb {
   .browse-wrapper {
     background-color: #FFFFFF;
     .browse {
+      .boiteAIdeeBox {
+        float: left;
+        margin-top: 7px;
+        border: 1px solid #a6a6a6;
+        padding: 6px 10px;
+        border-radius: 5px;
+        vertical-align: middle;
+        height: 35px;
+        margin-right: 10px;
+        .boiteAIdee {
+          background-image: image-url("icons/icon-boiteidee.png");
+          width: 17px;
+          height: 22px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .boiteAIdeeText {
+          color: #a6a6a6;
+          vertical-align: middle;
+          border: 0;
+          padding-left: 10px;
+        }
+      }
       ul.popular-tags {
         float: right;
         margin-top: 10px;
