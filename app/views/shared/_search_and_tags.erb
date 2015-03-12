@@ -1,19 +1,21 @@
-<div class="browse-wrapper">
-  <div class="container browse">
-    <a href="https://bloomr.typeform.com/to/B6Tb9E">
-    <div class="boiteAIdeeBox">
-      <span class="boiteAIdee"><span class="lumineuse"></span></span>
-      <span class="boiteAIdeeText" type="text" style="">Boite à idées</span>
+<div class="container version2">
+  <div class="row">
+    <div class="col-md-2">
+      <a class="boiteAIdeeBox" href="https://bloomr.typeform.com/to/B6Tb9E">
+        <span class="boiteAIdee"><span class="lumineuse"></span></span>
+        <span class="boiteAIdeeText" type="text" style="">Boite à idées</span>
+      </a>
     </div>
-    </a>
-    <div style="float: left; margin-top: 10px; padding-top: 4px;">
-      <span class="glyphicon glyphicon-search" style="color: #a6a6a6; margin-right: 10px; margin-left: 10px"></span>
-      <input type="text" style="border: 0; border-left: 1px solid #a6a6a6; padding-left: 10px;" placeholder="Rechercher" autofocus="autofocus" id="search">
+    <div class="col-md-4 searchBox">
+      <span class="glyphicon glyphicon-search"></span>
+      <input type="text" placeholder="Rechercher" id="search">
     </div>
-    <ul class="popular-tags">
-      <% @popular_keywords.each do |keyword| %>
-          <li class="popular-tag"><a href="<%= tag_path(keyword.tag) %>"><%= keyword.tag %></a></li>
-      <% end %>
-    </ul>
+    <div class="col-md-6 keywordsBox">
+      <ul class="popular-tags">
+        <% @popular_keywords.each do |keyword| %>
+            <li class="popular-tag"><a href="<%= tag_path(keyword.tag) %>"><%= keyword.tag %></a></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
