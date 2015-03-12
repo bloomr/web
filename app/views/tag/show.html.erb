@@ -28,7 +28,7 @@
   </ul>
 
   <% if @portraits.length > 0  %>
-  <nav id="page-nav">
+  <nav id="page-nav" style="display: none">
     <a href="<%= tag_path(@tag, :page => params[:page]) %>">page suivante</a>
   </nav>
   <% end %>
