@@ -73,7 +73,7 @@
     $(function() {
 
         var $search = $('#search');
-        $search.typeahead(null,{
+        $search.typeahead({hint : false},{
             name: 'job_title',
             displayKey: function(el) { return el.first_name + " - " + el.job_title; },
             // `ttAdapter` wraps the suggestion engine in an adapter that
