@@ -81,61 +81,62 @@ $orange: #FF6622 !default;
       > div {
         padding-top: 0;
         position: relative;
+        top: 1px;
         height: 316px;
         transition: padding 0.35s;
         text-align: center;
-        border-radius: 10px 10px 0 0;
+        border-radius: 10px 10px 0px 0px;
         box-shadow: 0px 1px 3px 0px #656565;
         overflow: hidden;
+
         img.portrait-avatar {
           height: 104px;
           width: 104px;
-          border-radius: 52px;
           position: relative;
-          top: 0px;
-          transition: top 0.35s;
+          top: 50px;
         }
 
         .overlay {
-          position: absolute;
-          top: 98px;
-          left: 0;
-          text-align: center;
           transition: opacity 0.35s, transform 0.35s;
-          width: 100%;
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          background: #ffffff;
+          opacity: 0.9;
+          padding: 10px;
           h3 {
-            padding-top: 10px;
-          }
-          h3, h2 {
-            opacity: 0.9;
-            background-color: white;
-            margin: 0;
-            padding-bottom: 10px;
+            font-size: 16px;
+            margin: 0px;
+            padding: 10px 0px 5px;
           }
           h2 {
-            font-size: 1.3em;
+            font-size: 18px;
             font-weight: bold;
-            display: block;
-            height: 65px;
-            padding: 0 5px;
+            padding: 5px 0px 2px;
+            height: 64px;
           }
-          h3 {
-            font-size: 1.2em;
+          img {
+            position: relative;
+            top: 8px;
+            background: #ffffff;
+            padding: 5px;
           }
           blockquote {
+            border-top: 1px solid gray;
             border-left: 0;
             background-color: white;
-            opacity: 1;
-            height: 115px;
-            font-size: 1.3em;
-            opacity: 0.98;
-            position: relative;
-            > span {
-              color:#FF6622;
-              > span {
-                text-decoration: underline;
-              }
-            }
+            height: 120px;
+            margin-bottom: 10px;
+          }
+          span.btn-primary {
+            font-weight: bold;
+            padding-right: 15px;
+            margin-right: 0px;
+            padding-left: 15px;
+            margin-left: 0px;
+            background-color: white;
+            color: #ff6622;
+            box-shadow: none;
           }
         }
       }
@@ -149,19 +150,14 @@ $orange: #FF6622 !default;
     li {
       a {
         > div {
-          img {
-            top: 35px;
-          }
           .overlay {
-            transform: translate3d(0, 115px, 0);
+            transform: translate3d(0, 198px, 0);
           }
         }
         &:hover {
           > div {
-            img {
-              top: 0px
-            }
             .overlay {
+              border-radius: 10px 10px 0px 0px;
               transform: translate3d(0, 0px, 0);
             }
           }
