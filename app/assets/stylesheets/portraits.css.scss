@@ -92,6 +92,7 @@ $orange: #FF6622 !default;
         img.portrait-avatar {
           height: 104px;
           width: 104px;
+          border-radius: 52px;
           position: relative;
           top: 50px;
         }
@@ -102,7 +103,7 @@ $orange: #FF6622 !default;
           top: 0px;
           bottom: 0px;
           background: #ffffff;
-          opacity: 0.9;
+          opacity: 0.85;
           padding: 10px;
           h3 {
             font-size: 16px;
@@ -127,6 +128,8 @@ $orange: #FF6622 !default;
             background-color: white;
             height: 120px;
             margin-bottom: 10px;
+            padding-left: 0px;
+            padding-right: 0px;
           }
           span.btn-primary {
             font-weight: bold;
