@@ -19,6 +19,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="//cdn.optimizely.com/js/2221001338.js" data-turbolinks-track></script>
+  <script src="https://d26b395fwzu5fz.cloudfront.net/3.2.4/keen-tracker.min.js" type="text/javascript" data-turbolinks-track></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -78,5 +79,13 @@
     }
     $(document).on('page:change', addthis);
 </script>
+
+<script type="text/javascript">
+    window.keenClient = new Keen({
+        projectId: "<%= ENV['KEEN_PROJECT_ID'] %>",
+        writeKey: "<%= ENV['KEEN_WRITE_KEY'] %>"
+    });
+</script>
+
 </body>
 </html>
