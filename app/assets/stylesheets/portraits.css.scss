@@ -212,16 +212,19 @@ $orange: #FF6622 !default;
           margin-bottom:5px;
         }
       }
+      h4.portrait-keywords-title {
+        text-align: center;
+        color: #B1B1B1;
+        margin: 22px 0px 10px;
+      }
       ul.portrait-keywords {
         @media (max-width: 991px) {
           border-bottom: 1px solid #dddddd;
         }
         text-align: center;
-        margin-top: 15px;
+        margin-top: 0px;
         margin-bottom: 0px;
-        padding-top: 10px;
-        padding-bottom: 25px;
-        padding-left: 0px;
+        padding: 10px 10px 25px 10px;
         line-height: 2em;
         font-size: 1.1em;
         > li {

@@ -16,6 +16,7 @@
             <h1 class="portrait-job-title" itemprop="jobTitle"><%= @portrait.job_title %></h1>
           </div>
         </div>
+        <h4 class="portrait-keywords-title">Mon métier en <%= @portrait.keyword_associations.length %> mots</h4>
         <ul class="portrait-keywords" itemprop="keywords">
           <% @portrait.keyword_associations.each do |keyword_association| %>
             <% if @portrait.is_keyword_popular(keyword_association.keyword) %>
