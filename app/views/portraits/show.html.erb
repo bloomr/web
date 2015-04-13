@@ -39,12 +39,14 @@
           <p>
             ... Et bientôt sur Bloomr, d'autres réponses à d'autres questions.
           </p>
-          <p>
-            <a href="/">Retour à la galerie</a>
-          </p>
         </div>
-        <div style="margin-top: 30px;">
-          <%= render "shared/catchup_phrase" %>
+        <div class="portrait-footer">
+          <p>
+            <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary"><i class="glyphicon glyphicon-random"></i>Découverte aléatoire</a>
+          </p>
+          <p>
+            <a href="<%= root_path %>">Retour à la galerie</a>
+          </p>
         </div>
       </div>
     </div>

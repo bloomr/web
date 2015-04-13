@@ -270,6 +270,17 @@ $orange: #FF6622 !default;
         font-size: 1.125em;
         text-align: right;
       }
+      .portrait-footer {
+        margin-top: 30px;
+        text-align: center;
+        a.btn {
+          font-size: 18px;
+          .glyphicon {
+            top: 3px;
+            padding-right: 10px;
+          }
+        }
+      }
     }
   }
 }

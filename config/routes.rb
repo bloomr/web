@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'portraits#index'
 
-  resources :portraits, :only => [:index, :show]
+  resources :portraits, :only => [:index, :show, :aleatoire] do
+    get :aleatoire, on: :collection
+  end
 
   resources :tag, :only => [:show]
 

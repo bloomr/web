@@ -18,4 +18,11 @@ class PortraitsController < ApplicationController
     @popular_keywords = Keyword.popular_keywords
   end
 
+  def aleatoire
+    offset = rand(User.where("published = ? and job_title IS NOT NULL", true).count())
+    portrait = User.offset(offset).first
+
+    redirect_to action: "show", id: portrait.id
+  end
+
 end
