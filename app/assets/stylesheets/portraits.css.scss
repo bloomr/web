@@ -152,6 +152,8 @@ ul#portraits_list {
             background: #ffffff;
             opacity: 0.85;
             padding: 10px;
+            //strange hack to get full width on some cards
+            width: 101%;
             h3 {
               font-size: 16px;
               margin: 0px;
