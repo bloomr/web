@@ -2,17 +2,18 @@
   height: 70px;
   padding-top: 10px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
-
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
   a.navbar-brand {
     font-size: 21px;
     text-transform: uppercase;
   }
-
   button.navbar-toggle {
-    background-color: rgba(0, 0, 0, 0.298039);
+    background-color: white;
+    float: left;
+    margin-left: 15px;
+    margin-right: 0;
     span.icon-bar {
-      background-color: white;
+      background-color: #ff6622;
     }
   }
 
@@ -63,8 +64,16 @@
 
   @media (max-width: 768px) {
     .navbar-collapse {
-      background-color: white;
+      background-color: #FA6B03;
+      text-align: center;
+      ul.nav li a {
+        color: white;
+        &:hover {
+          color: #FA6B03;
+        }
+      }
     }
+
     .navbar-collapse.in {
       box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
     }
