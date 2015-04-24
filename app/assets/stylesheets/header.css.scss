@@ -17,6 +17,16 @@
     }
   }
 
+  .boiteAIdee {
+    margin-top: 11px;
+    margin-right: 30px;
+    background: image-url("icons/icon-boiteidee-complet.png") no-repeat;
+    float: right;
+    height: 22px;
+    width: 17px;
+    cursor: pointer;
+  }
+
   ul.nav {
     li {
       a {
@@ -24,11 +34,31 @@
         color: #a6a6a6;
         &:hover {
           background-color: white;
-          color: #ff6622;
+          color: #a6a6a6;
         }
         &.active {
           color: #ff6622;
         }
+        .social {
+          font-style: italic;
+          margin-left: 20px;
+        }
+      }
+      .twitter {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        background: image-url("icons/twitter.png") no-repeat;
+        vertical-align: middle;
+      }
+      .facebook {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: image-url("icons/facebook.png") no-repeat;
+        vertical-align: middle;
+        position: relative;
+        top: -4px;
       }
       a.btn-primary {
         color: white;
@@ -49,7 +79,6 @@
 
   @media (min-width: 768px) {
     ul.nav {
-      margin-bottom: 8px;
       li {
         height: 60px;
         margin: 0px 5px;
@@ -69,7 +98,7 @@
       ul.nav li a {
         color: white;
         &:hover {
-          color: #FA6B03;
+          background-color: #FA6B03;
         }
       }
     }
