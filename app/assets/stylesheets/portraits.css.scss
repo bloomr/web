@@ -106,12 +106,6 @@ ul#portraits_list {
       h2 {
         margin-bottom: 10px;
       }
-      span.keywords {
-        color: #F62;
-        &:before {
-          content: "#";
-        }
-      }
     }
   }
 
@@ -190,9 +184,6 @@ ul#portraits_list {
               background-color: white;
               color: #ff6622;
               box-shadow: none;
-            }
-            span.keywords {
-              display: none;
             }
           }
         }
