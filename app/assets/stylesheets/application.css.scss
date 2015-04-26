@@ -52,15 +52,6 @@ ol.breadcrumb {
       border-bottom-left-radius: 100% 50px;
     }
 
-    @media (max-width: 990px) {
-      border-bottom-right-radius: 100% 70px;
-      border-bottom-left-radius: 100% 70px;
-    }
-
-    @media (min-width: 970px) {
-      border-bottom-right-radius: 100% 100px;
-      border-bottom-left-radius: 100% 100px;
-    }
     .intro {
       padding: 20px 5px;
       text-align: center;
