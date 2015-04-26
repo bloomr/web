@@ -95,6 +95,7 @@
     .navbar-collapse {
       background-color: #FA6B03;
       text-align: center;
+      text-transform: lowercase;
       ul.nav li a {
         color: white;
         &:hover {
