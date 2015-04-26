@@ -33,7 +33,7 @@ ol.breadcrumb {
 .subheader {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   .intro-wrapper {
     width: 120%;
     margin-left: -10%;
@@ -45,7 +45,7 @@ ol.breadcrumb {
     background-size: contain;
     background-color: #FA6B03;
     color: white;
-    height: 310px;
+    height: 300px;
 
     @media (max-width: 640px) {
       border-bottom-right-radius: 100% 50px;
