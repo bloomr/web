@@ -9,6 +9,10 @@
 
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
 
+html {
+  width: 100%;
+}
+
 body {
   padding-top: 70px;
   background-color: white;
@@ -28,14 +32,35 @@ ol.breadcrumb {
 
 .subheader {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
+  max-width: 100%;
+  overflow-x: hidden;
   .intro-wrapper {
+    width: 120%;
+    margin-left: -10%;
+    margin-right: -10%;
+    padding-left: 10%;
+    padding-right: 10%;
+
     background: image-url("curieux.jpg") no-repeat center;
     background-size: contain;
     background-color: #FA6B03;
     color: white;
-    height: 300px;
-    border-bottom-right-radius: 100% 50px;
-    border-bottom-left-radius: 100% 50px;
+    height: 310px;
+
+    @media (max-width: 640px) {
+      border-bottom-right-radius: 100% 50px;
+      border-bottom-left-radius: 100% 50px;
+    }
+
+    @media (max-width: 990px) {
+      border-bottom-right-radius: 100% 70px;
+      border-bottom-left-radius: 100% 70px;
+    }
+
+    @media (min-width: 970px) {
+      border-bottom-right-radius: 100% 100px;
+      border-bottom-left-radius: 100% 100px;
+    }
     .intro {
       padding: 20px 5px;
       text-align: center;
