@@ -9,5 +9,8 @@
 ga('create', 'UA-52527572-2', 'auto');
 ga('require', 'displayfeatures');
 
-document.addEventListener('page:change', function() { ga('send', 'pageview'); });
+document.addEventListener('page:change', function() {
+    ga('set', 'location', location.href.split('#')[0]);
+    ga('send', 'pageview', { "title": document.title });
+});
 
