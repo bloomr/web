@@ -162,11 +162,15 @@ ol.breadcrumb {
   }
 }
 
-@media (max-width: 971px) {
+@media (max-width: 768px) {
   .version2 {
     .boiteAIdeeBox {
       display: none;
     }
+  }
+}
+@media (max-width: 992px) {
+  .version2 {
     .keywordsBox {
       display: none;
     }
