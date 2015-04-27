@@ -33,11 +33,11 @@ ol.breadcrumb {
 .subheader {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
   max-width: 100%;
-  overflow: hidden;
+  //overflow: hidden; //otherwise search is buggy ...
   .intro-wrapper {
-    width: 120%;
-    margin-left: -10%;
-    margin-right: -10%;
+    /*width: 120%;
+    margin-left: -10%; //otherwise there is a horizontal scrolling bar
+    margin-right: -10%;*/
     padding-left: 10%;
     padding-right: 10%;
 
