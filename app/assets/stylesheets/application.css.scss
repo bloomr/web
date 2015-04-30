@@ -37,9 +37,9 @@ ol.breadcrumb {
   .intro-wrapper {
     /*width: 120%;
     margin-left: -10%; //otherwise there is a horizontal scrolling bar
-    margin-right: -10%;*/
-    padding-left: 10%;
-    padding-right: 10%;
+    margin-right: -10%;
+    padding-left: 10%; //otherwise text is badly centered
+    padding-right: 10%;*/
 
     background: image-url("curieux.jpg") no-repeat center;
     background-size: contain;
