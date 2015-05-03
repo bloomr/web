@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :portraits, :only => [:index, :show, :aleatoire] do
     get :aleatoire, on: :collection
+    get :next, on: :collection
+    get :previous, on: :collection
   end
 
   resources :tag, :only => [:show]

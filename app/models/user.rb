@@ -37,4 +37,12 @@ class User < ActiveRecord::Base
     return KeywordAssociation.where(:keyword => keyword).count >= 2
   end
 
+  def self.next current_id
+    self.where("id > ? and published = ?", current_id, true).order(id: :asc).first() || self.where("published = ?", true).order(id: :asc).first()
+  end
+
+  def self.previous current_id
+    self.where("id < ? and published = ?", current_id, true).order(id: :desc).first() || self.where("published = ?", true).last
+  end
+
 end
