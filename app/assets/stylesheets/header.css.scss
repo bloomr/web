@@ -39,10 +39,6 @@
         &.active {
           color: #ff6622;
         }
-        .social {
-          font-style: italic;
-          margin-left: 20px;
-        }
       }
       .twitter {
         display: inline-block;
@@ -73,6 +69,12 @@
           color: #ff6622;
           box-shadow: none;
         }
+      }
+    }
+    li.social {
+      font-style: italic;
+      span {
+        margin-right: 10px;
       }
     }
   }
