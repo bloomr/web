@@ -16,6 +16,9 @@ html {
 body {
   padding-top: 70px;
   background-color: white;
+  @media(min-width: 768px) {
+    padding-bottom: 70px;
+  }
 }
 
 /* Breadcrumb */
