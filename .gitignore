@@ -23,7 +23,7 @@ run.sh
 Procfile.dev
 .env.dev
 *.dump
-Procfile
+#Procfile
 .env
 
 /public/assets/*
