@@ -12,7 +12,7 @@ class PortraitsController < ApplicationController
   end
 
   def show
-    @portrait = User.where.not(:job_title => nil).find(params[:id])
+    @portrait = User.where("published = ? and job_title IS NOT NULL", true).find(params[:id])
 
     # Get the 5 most popular tags
     @popular_keywords = Keyword.popular_keywords
