@@ -45,4 +45,9 @@ class User < ActiveRecord::Base
     self.where("id < ? and published = ?", current_id, true).order(id: :desc).first() || self.where("published = ?", true).last
   end
 
+  def self.random
+    offset = rand(self.where("published = ? and job_title IS NOT NULL", true).count())
+    self.where("published = ? and job_title IS NOT NULL", true).offset(offset).first
+  end
+
 end

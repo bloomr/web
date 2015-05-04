@@ -27,10 +27,7 @@ class PortraitsController < ApplicationController
   end
 
   def aleatoire
-    offset = rand(User.where("published = ? and job_title IS NOT NULL", true).count())
-    portrait = User.where("published = ? and job_title IS NOT NULL", true).offset(offset).first
-
-    redirect_to action: "show", id: portrait.id
+    redirect_to action: "show", id: (User.random).id
   end
 
 end
