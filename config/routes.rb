@@ -28,7 +28,8 @@ Rails.application.routes.draw do
 
   # Static pages (Strikingly content)
   get "le-concept" => "static#le_concept"
-  get "qui-nous-sommes" => "static#qui_nous_sommes"
+  get "qui-nous-sommes", to: redirect('/qui-sommes-nous')
+  get "qui-sommes-nous" => "static#qui_sommes_nous"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
