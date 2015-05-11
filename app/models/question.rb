@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :user
+  has_many :question_comments
 
   def <=> other_question
     if identifier.length == 0
