@@ -15,7 +15,7 @@ document.addEventListener('page:change', function() {
     var fakeUser = fakeUsers [Math.floor(Math.random() * 5)]
 
     var SideComments = require('side-comments');
-    var currentUser = { id: -1, name: fakeUser.name, avatarUrl: fakeUser.avatarUrl };
+    var currentUser = { name: fakeUser.name, avatarUrl: fakeUser.avatarUrl };
     var sideComments = new SideComments('#portrait_details', currentUser, []);
 
     // Fetch the comments of each questions
@@ -42,6 +42,7 @@ document.addEventListener('page:change', function() {
 
     // Handle the submission of comments
     sideComments.on('commentPosted', function(comment) {
+        comment.authorId = -1;
         var url = "/api/v1/questions/" + comment.sectionId + "/comments";
         var data = {
             comment: {
