@@ -3,8 +3,19 @@
  */
 document.addEventListener('page:change', function() {
     // Init the side comments
+
+    var fakeUsers = [
+        {name: "Aung San Suu Kyi", avatarUrl: "/assets/avatars/aungsansuukyi.png"},
+        {name: "Chewbacca", avatarUrl: "/assets/avatars/chewbacca.png"},
+        {name: "Charles Darwin", avatarUrl: "/assets/avatars/darwin.png"},
+        {name: "Rosa Parks", avatarUrl: "/assets/avatars/rosaparks.png"},
+        {name: "Nikola Tesla", avatarUrl: "/assets/avatars/tesla.png"}
+    ];
+
+    var fakeUser = fakeUsers [Math.floor(Math.random() * 5)]
+
     var SideComments = require('side-comments');
-    var currentUser = { id: -1, name: "John Doe", avatarUrl: "http://f.cl.ly/items/0s1a0q1y2Z2k2I193k1y/default-user.png" };
+    var currentUser = { id: -1, name: fakeUser.name, avatarUrl: fakeUser.avatarUrl };
     var sideComments = new SideComments('#portrait_details', currentUser, []);
 
     // Fetch the comments of each questions
