@@ -67,10 +67,12 @@ ActiveRecord::Schema.define(version: 20150511185800) do
   end
 
   create_table "question_comments", force: true do |t|
-    t.string  "author_avatar_url"
-    t.string  "author_name",       null: false
-    t.text    "comment",           null: false
-    t.integer "question_id"
+    t.string   "author_avatar_url"
+    t.string   "author_name",       null: false
+    t.text     "comment",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "question_id"
   end
 
   add_index "question_comments", ["question_id"], name: "index_question_comments_on_question_id", using: :btree

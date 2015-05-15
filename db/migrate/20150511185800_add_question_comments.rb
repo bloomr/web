@@ -5,6 +5,8 @@ class AddQuestionComments < ActiveRecord::Migration
       t.string :author_name, null: false
       t.text :comment, null: false
 
+      t.timestamps
+
       t.references :question, index:true
     end
   end

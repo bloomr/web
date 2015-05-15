@@ -20,3 +20,4 @@
 //= require jquery.infinitescroll.min
 //= require typeahead.bundle.min
 //= require side-comments.min
+//= require comments

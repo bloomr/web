@@ -5,6 +5,11 @@ module Api
 
       before_filter :load_question
 
+      def index
+        @comments = @question.question_comments
+        render json: @comments
+      end
+
       def create
         @comment = @question.question_comments.new(comment_params)
         if @comment.save
