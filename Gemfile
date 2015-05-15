@@ -44,6 +44,8 @@ gem 'aws-sdk'
 
 gem 'newrelic_rpm'
 
+gem 'rest-client'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

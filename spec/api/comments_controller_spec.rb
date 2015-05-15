@@ -52,6 +52,12 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
         post "api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
         expect(response).to have_http_status(400)
       end
+
+      it "strips HTML tags if h4x00rz" do
+        @payload[:comment][:comment] = "<script>alert('coucou')</script>"
+        post "api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
+        expect(QuestionComment.first.comment).to_not include('<script>')
+      end
     end
 
     describe "POST #comments with valid data" do
