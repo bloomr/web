@@ -5,11 +5,11 @@ document.addEventListener('page:change', function() {
     // Init the side comments
 
     var fakeUsers = [
-        {name: "Aung San Suu Kyi", avatarUrl: "/assets/avatars/aungsansuukyi.png"},
-        {name: "Chewbacca", avatarUrl: "/assets/avatars/chewbacca.png"},
-        {name: "Charles Darwin", avatarUrl: "/assets/avatars/darwin.png"},
-        {name: "Rosa Parks", avatarUrl: "/assets/avatars/rosaparks.png"},
-        {name: "Nikola Tesla", avatarUrl: "/assets/avatars/tesla.png"}
+        {name: "Aung San Suu Kyi", avatarUrl: "<%= asset_path('avatars/aungsansuukyi.png') %>"},
+        {name: "Chewbacca", avatarUrl: "<%= asset_path('avatars/chewbacca.png') %>"},
+        {name: "Charles Darwin", avatarUrl: "<%= asset_path('avatars/darwin.png') %>"},
+        {name: "Rosa Parks", avatarUrl: "<%= asset_path('avatars/rosaparks.png') %>"},
+        {name: "Nikola Tesla", avatarUrl: "<%= asset_path('avatars/tesla.png') %>"}
     ];
 
     var fakeUser = fakeUsers [Math.floor(Math.random() * 5)]
