@@ -3,16 +3,15 @@
  */
 document.addEventListener('page:change', function() {
     // Init the side comments
-
     var fakeUsers = [
-        {name: "Aung San Suu Kyi", avatarUrl: "<%= asset_path('avatars/aungsansuukyi.png') %>"},
-        {name: "Chewbacca", avatarUrl: "<%= asset_path('avatars/chewbacca.png') %>"},
-        {name: "Charles Darwin", avatarUrl: "<%= asset_path('avatars/darwin.png') %>"},
-        {name: "Rosa Parks", avatarUrl: "<%= asset_path('avatars/rosaparks.png') %>"},
-        {name: "Nikola Tesla", avatarUrl: "<%= asset_path('avatars/tesla.png') %>"}
+        {name: "commentaire", avatarUrl: "<%= asset_path('patterns/leather.png') %>"},
+        {name: "commentaire", avatarUrl: "<%= asset_path('patterns/purple-cross.png') %>"},
+        {name: "commentaire", avatarUrl: "<%= asset_path('patterns/colorful-triangles.png') %>"},
+        {name: "commentaire", avatarUrl: "<%= asset_path('patterns/red-green-collage.jpg') %>"},
+        {name: "commentaire", avatarUrl: "<%= asset_path('patterns/yellow-triangles.jpg') %>"}
     ];
 
-    var fakeUser = fakeUsers [Math.floor(Math.random() * 5)]
+    var fakeUser = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
 
     var SideComments = require('side-comments');
     var currentUser = { name: fakeUser.name, avatarUrl: fakeUser.avatarUrl };
