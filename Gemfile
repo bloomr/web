@@ -60,6 +60,10 @@ group :development, :test do
   gem 'growl'
 end
 
+group :test do
+  gem 'rake'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
