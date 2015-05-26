@@ -1,1 +1,3 @@
 language: ruby
+
+script: cp config/database.yml.dist config/database.yml && bundle exec rake
