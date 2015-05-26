@@ -370,3 +370,10 @@ ul#portraits_list {
 .side-comment .marker:after {
   border-color: $orange transparent;
 }
+
+/* Hide side comments on mobile */
+@media (max-width: 640px) {
+  .side-comment {
+    display: none;
+  }
+}
