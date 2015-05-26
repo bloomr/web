@@ -361,3 +361,12 @@ ul#portraits_list {
     }
   }
 }
+
+/* Side comments theming fix */
+.side-comment .marker {
+  background: $orange;
+}
+
+.side-comment .marker:after {
+  border-color: $orange transparent;
+}
