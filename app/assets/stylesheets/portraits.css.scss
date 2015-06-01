@@ -1,5 +1,6 @@
 $orange: #FF6622 !default;
 
+$light_orange: lighten($orange, 30%);
 
 .background-0 {
   background-image: image-url("patterns/leather.png"); // thepatternlibrary
@@ -367,8 +368,42 @@ ul#portraits_list {
   background: $orange;
 }
 
-.side-comment .marker:after {
-  border-color: $orange transparent;
+// Always display the comment bubble, but lighter
+.commentable-section {
+  .side-comment {
+    .marker {
+      display: block;
+      background: $light_orange;
+      width: 28px;
+      height: 24px;
+      border-radius: 6px;
+      span {
+        width: 28px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 14px;
+      }
+      &:after {
+        border-color: $light_orange transparent;
+      }
+      &:before {
+        width: 28px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 14px;
+      }
+    }
+  }
+  &:hover {
+    .side-comment {
+      .marker {
+        background: $orange;
+        &:after {
+          border-color: $orange transparent;
+        }
+      }
+    }
+  }
 }
 
 /* Hide side comments on mobile */
