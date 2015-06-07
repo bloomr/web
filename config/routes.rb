@@ -16,9 +16,6 @@ Rails.application.routes.draw do
 
   resources :tag, :only => [:show]
 
-  resources :participer, :only => [:index, :create]
-  get "participer/merci-beaucoup" => "participer#thanks"
-
   namespace :api do
     namespace :v1 do
       resources :users, :only => [:create, :update, :index]
