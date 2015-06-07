@@ -16,7 +16,7 @@ ActiveAdmin.register User do
 
   permit_params :email, :password, :password_confirmation, :first_name, :job_title, :avatar, :published,
                 keyword_ids: [],
-                questions_attributes: [:id, :title, :answer, :identifier, :_destroy]
+                questions_attributes: [:id, :title, :answer, :identifier, :position, :_destroy]
 
   controller do
     def update
@@ -67,6 +67,7 @@ ActiveAdmin.register User do
         qf.input :title
         qf.input :answer
         qf.input :identifier
+        qf.input :position
       end
     end
 
