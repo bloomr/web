@@ -2,9 +2,13 @@ namespace :heroku do
 	desc 'Pull most recent DB from Heroku and dump into localhost'
 	task :db_pull => :environment do
 		heroku_app = ENV['heroku_app']
+    if heroku_app.nil?
+      puts 'usage: heroku_app=staging-bloomr rake heroku:db_pull'
+      return 1
+    end
 		local_db = "postgres"
-    system "heroku pgbackups:capture --expire --app #{heroku_app}"
-    system "curl -o latest.dump `heroku pgbackups:url --app #{heroku_app}`"
+    system "heroku pg:backups capture --app #{heroku_app}"
+    system "curl -o latest.dump `heroku pg:backups public-url --app #{heroku_app}`"
     system "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d #{local_db} latest.dump"
   end
 
