@@ -68,6 +68,7 @@ ActiveAdmin.register User do
         qf.input :answer
         qf.input :identifier
         qf.input :position
+        qf.input :published
       end
     end
 
