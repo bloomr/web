@@ -58,6 +58,71 @@ RSpec.describe Api::V1::UsersController, :type => :request do
       expect(response).to have_http_status(400)
       expect(JSON.parse(response.body)["error"]).to eq("creation ko")
     end
+
+  end
+
+  describe "Patch #user" do
+
+    question = {
+        key: "yop",
+        user: {
+            questions_attributes: [
+                {
+                    identifier: "a",
+                    title: "Que faites vous exactement ?",
+                    answer: "je vends du yop"
+                },
+                {
+                    identifier: "b",
+                    title: "Au fond, qu'est ce qui fait que vous aimez votre métier ?",
+                    answer: "j'adore le yop"
+                }
+            ]
+        }
+    }
+
+    it "add correctly some questions" do
+
+
+      user = User.create!(
+          :email => "yopyop@yop.com",
+          :first_name => "John",
+          :job_title => "Developer",
+          :password => "abcdfedv",
+          :published => true)
+
+
+      patch "api/v1/users/" + user.id.to_s, question, { "Accept" => "application/json" }
+      user = User.find(1)
+      expect(user.questions.length).to eq(2)
+      expect(user.questions.map{ |k| k.identifier }).to eq(["a", "b"])
+    end
+
+    it "responds yop with 400 code if users questions is already known" do
+      user = User.create!(
+          :email => "yopyop@yop.com",
+          :first_name => "John",
+          :job_title => "Developer",
+          :password => "abcdfedv",
+          :questions => [
+              Question.new(
+                  identifier: "a",
+                  title: "Que faites vous exactement ?",
+                  answer: "je vends du yop"
+              ),
+              Question.new(
+                  identifier: "b",
+                  title: "Au fond, qu'est ce qui fait que vous aimez votre métier ?",
+                  answer: "j'adore le yop"
+              )
+          ],
+          :published => true)
+
+      patch "api/v1/users/" + user.id.to_s, question, { "Accept" => "application/json" }
+      expect(response).to have_http_status(400)
+      expect(JSON.parse(response.body)["error"]).to eq("update ko")
+    end
+
   end
 
 end

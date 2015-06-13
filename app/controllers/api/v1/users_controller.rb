@@ -25,7 +25,15 @@ module Api
 
       def update
         return render json: {error:"invalid key"}, status: :unauthorized unless params["key"] == ENV["API_KEY"]
-        return render json: User.find(params[:id]).update(user_params)
+        begin
+          User.find(params[:id]).update(user_params)
+          result = {message: 'update ok', user_id: params[:id]}
+          status = :ok
+        rescue ActiveRecord::RecordNotUnique => e
+          result = {error: 'update ko', user_id: params[:id], error_description: e.message}
+          status = :bad_request
+        end
+        return render json: result, status: status
       end
 
       def index
