@@ -54,4 +54,8 @@ class User < ActiveRecord::Base
     questions.select {|q| q.published }
   end
 
+  def to_s
+    first_name + " (" + email + ")"
+  end
+
 end
