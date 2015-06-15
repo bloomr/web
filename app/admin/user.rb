@@ -16,7 +16,7 @@ ActiveAdmin.register User do
 
   permit_params :email, :password, :password_confirmation, :first_name, :job_title, :avatar, :published,
                 keyword_ids: [],
-                questions_attributes: [:id, :title, :answer, :identifier, :position, :_destroy]
+                questions_attributes: [:id, :title, :answer, :identifier, :position, :_destroy, :published]
 
   controller do
     def update
