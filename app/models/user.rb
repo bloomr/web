@@ -50,4 +50,8 @@ class User < ActiveRecord::Base
     self.where("published = ? and job_title IS NOT NULL", true).offset(offset).first
   end
 
+  def questions_to_display
+    questions.select {|q| q.published }
+  end
+
 end

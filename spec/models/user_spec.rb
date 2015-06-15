@@ -74,4 +74,16 @@ RSpec.describe User, :type => :model do
 
   end
 
+  describe "questions to display" do
+
+    it 'should be published' do
+      user = User.new()
+      user.questions.push(Question.new({title:'not published', published:false}))
+      user.questions.push(Question.new({title:'published', published:true}))
+
+      expect(user.questions_to_display().length).to eq(1)
+    end
+
+  end
+
 end
