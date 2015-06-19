@@ -6,11 +6,11 @@
         <span class="boiteAIdeeText" type="text" style="">Boite à idées</span>
       </a>
     </div>
-    <div class="col-md-4 searchBox">
+    <div class="col-md-3 col-xs-4 searchBox">
       <span class="glyphicon glyphicon-search"></span>
-      <input type="text" placeholder="Rechercher" id="search">
+      <input type="text" placeholder="Rechercher" class="search-box">
     </div>
-    <div class="col-md-6 keywordsBox">
+    <div class="col-md-7 col-xs-8 keywordsBox">
       <ul class="popular-tags">
         <% @popular_keywords.each do |keyword| %>
             <li class="popular-tag"><a href="<%= tag_path(keyword.tag) %>"><%= keyword.tag %></a></li>
