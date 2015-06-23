@@ -11,10 +11,17 @@ section.static-section {
   padding: 40px 20px;
 
   .section-title {
-    font-size: 48px;
+    font-size: 38px;
     color: #f62;
     text-align: center;
     padding: 20px 0px;
+  }
+
+  h2.lead-text {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #666;
+    line-height: 25px;
   }
 
   em {
