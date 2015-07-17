@@ -78,11 +78,10 @@
         $('a.searchButton').on('click', function(event) {
             event.preventDefault();
             if (!mobileSearchActive) {
-                console.log('Displaying mobile search');
                 $mobileSearch.show('fast');
+                $('input', $mobileSearch).focus();
                 mobileSearchActive = true;
             } else {
-                console.log('Hiding mobile search');
                 $mobileSearch.hide('fast');
                 mobileSearchActive = false;
             }
