@@ -71,8 +71,23 @@
     keywords.initialize();
 
     $(function() {
+        var $mobileSearch = $('.mobile-search .version2');
 
-        var $search = $('#search');
+        var mobileSearchActive = false;
+
+        $('a.searchButton').on('click', function(event) {
+            event.preventDefault();
+            if (!mobileSearchActive) {
+                $mobileSearch.show('fast');
+                $('input', $mobileSearch).focus();
+                mobileSearchActive = true;
+            } else {
+                $mobileSearch.hide('fast');
+                mobileSearchActive = false;
+            }
+        });
+
+        var $search = $('.search-box');
         $search.typeahead({hint : false},{
             name: 'job_title',
             displayKey: function(el) { return el.first_name + " - " + el.job_title; },
