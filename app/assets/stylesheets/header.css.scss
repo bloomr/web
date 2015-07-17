@@ -6,6 +6,10 @@
   a.navbar-brand {
     font-size: 21px;
     text-transform: uppercase;
+    background-image: image_url("logo-97.png");
+    display: block;
+    width: 97px;
+    height: 57px;
   }
   button.navbar-toggle {
     background-color: white;
