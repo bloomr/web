@@ -1,3 +1,10 @@
+$grid-float-breakpoint: 200000px;
+
+$orange: #FF6622 !default;
+$slightly_light_orange: lighten($orange, 15%);
+$light_orange: lighten($orange, 30%);
+
+
 @import "bootstrap-sprockets";
 @import "./bootstrap";
 
