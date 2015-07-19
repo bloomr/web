@@ -1,12 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="keywordsBox pull-right">
-    <ul>
+<div class="container hidden-xs">
+    <ul class="keywordsBox pull-right">
         <li>Top5 des #tag</li>
         <% @popular_keywords.each do |keyword| %>
             <li class="popular-tag"><a href="<%= tag_path(keyword.tag) %>"><%= keyword.tag %></a></li>
         <% end %>
       </ul>
-    </div>
-  </div>
 </div>

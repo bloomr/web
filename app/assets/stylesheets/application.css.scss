@@ -17,6 +17,8 @@ $light_orange: lighten($orange, 30%);
 @import "portraits";
 @import "static";
 
+@import "keywordsbox";
+
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
 
 html {
@@ -124,42 +126,6 @@ ol.breadcrumb {
         }
       }
     }
-  }
-}
-
-//TODO
-//renommer desktop-search en keywords wrapper ou un truc comme ca
-
-.desktop-search {
-  .keywordsBox {
-    height: 40px;
-    margin-bottom: 10px;
-    margin-right: 15px;
-    margin-top: 10px;
-    padding-top: 10px;
-    ul {
-      text-align: right;
-      margin: 0;
-      li {
-        display: inline-block;
-        padding: 0px 6px;
-        a {
-          color: #a6a6a6;
-        }
-      }
-      li.popular-tag {
-        &:before {
-          content: "#";
-          color: #FF6622;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .desktop-search {
-      display: none;
   }
 }
 
