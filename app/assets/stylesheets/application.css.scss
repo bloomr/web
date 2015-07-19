@@ -89,59 +89,27 @@ ol.breadcrumb {
 }
 
 .mobile-search {
+  margin-top: 3px;
   .version2 {
-    background-color: white;
     display: none;
   }
 }
 
+//TODO
+//fusionner les deux version2
+//supprimer le version2 de _search_and_tags
+//renommer desktop-search en keywords wrapper ou un truc comme ca
+
 .version2 {
-  .boiteAIdeeBox {
-    border: 1px solid #a6a6a6;
-    border-radius: 5px;
-    display: block;
-    height: 39px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    opacity: 0.8;
-    padding: 10px;
-    position: relative;
-    text-decoration: none;
-    &:hover {
-      opacity: 1;
-      .boiteAIdee .lumineuse {
-        opacity: 1;
-      }
-    }
-    .boiteAIdee {
-      background: image-url("icons/icon-boiteidee.png") no-repeat;
-      float: left;
-      height: 22px;
-      margin-right: 10px;
-      position: relative;
-      top: -5px;
-      width: 17px;
-      .lumineuse {
-        background-image: image-url("icons/lumineuse.png");
-        top:0;
-        width: 17px;
-        height: 6px;
-        display: block;
-        position: absolute;
-        transition:opacity 0.5s
-      }
-    }
-    .boiteAIdeeText {
-      color: #a6a6a6;
-      float: left;
-    }
-  }
 
   .searchBox {
     height: 40px;
     margin-bottom: 10px;
     margin-top: 10px;
-    padding-top: 10px;
+    padding-top: 7px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    background-color: white;
     .glyphicon-search {
       color: #a6a6a6;
       margin-right: 10px;
@@ -165,10 +133,13 @@ ol.breadcrumb {
       }
     }
   }
+}
 
+.desktop-search {
   .keywordsBox {
     height: 40px;
     margin-bottom: 10px;
+    margin-right: 15px;
     margin-top: 10px;
     padding-top: 10px;
     ul {
@@ -177,12 +148,14 @@ ol.breadcrumb {
       li {
         display: inline-block;
         padding: 0px 6px;
+        a {
+          color: #a6a6a6;
+        }
+      }
+      li.popular-tag {
         &:before {
           content: "#";
           color: #FF6622;
-        }
-        a {
-          color: #a6a6a6;
         }
       }
     }
@@ -191,42 +164,8 @@ ol.breadcrumb {
 
 @media (max-width: 767px) {
   .desktop-search {
-    .version2 {
       display: none;
-    }
   }
-}
-
-@media (min-width: 768px) {
-  .desktop-search {
-    .version2 {
-      display: block;
-    }
-  }
-}
-
-@media (max-width: 991px) {
-  .desktop-search {
-    .version2 {
-      .boiteAIdeeBox {
-        display: none;
-      }
-    }
-  }
-}
-
-@media (min-width: 992px) {
-  .desktop-search {
-    .version2 {
-      .boiteAIdeeBox {
-        display: block;
-      }
-    }
-  }
-}
-
-.no-touch .boiteAIdee .lumineuse {
-  opacity: 0;
 }
 
 .catchup{
@@ -288,14 +227,4 @@ ol.breadcrumb {
 }
 .tt-suggestion p {
   margin: 0;
-}
-
-.navbar-nav.visible-xs-inline-block {
-  margin: -7.5px -15px;
-  > li {
-    display: inline-block;
-    > a.searchButton {
-      color: $slightly_light_orange !important;
-    }
-  }
 }

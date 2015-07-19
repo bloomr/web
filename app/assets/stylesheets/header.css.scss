@@ -22,10 +22,8 @@
   }
 
   .boiteAIdee {
-    margin-top: 11px;
-    margin-right: 30px;
     background: image-url("icons/icon-boiteidee-complet.png") no-repeat;
-    float: right;
+    display: inline-block;
     height: 22px;
     width: 17px;
     cursor: pointer;
@@ -83,35 +81,38 @@
     }
   }
 
-  @media (min-width: 768px) {
-    ul.nav {
-      li {
-        height: 60px;
-        margin: 0px 5px;
-        a.active {
-          border-bottom: 3px solid #ff6622;
-          padding-bottom: 22px;
-        }
-      }
 
-    }
-  }
-
-  @media (max-width: 767px) {
     .navbar-collapse {
       background-color: #FA6B03;
       text-align: center;
-      text-transform: lowercase;
       ul.nav li a {
         color: white;
         &:hover {
-          background-color: #FA6B03;
+          background-color: white;
+          opacity: 0.8;
+          color: #ff6622;
         }
       }
     }
 
     .navbar-collapse.in {
       box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
+      margin-top: 3px;
+    }
+
+
+  .navbar-nav.search-and-idea {
+    margin-right: 15px;
+    margin-top: 0px;
+    > li {
+      display: inline-block;
+      > a.searchButton {
+        color: $slightly_light_orange !important;
+      }
+      > a.btn-primary {
+        margin-left: 15px;
+      }
     }
   }
+
 }

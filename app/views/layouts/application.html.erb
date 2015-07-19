@@ -34,25 +34,27 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/" aria-label="BLOOM'R"></a>
-      <ul class="nav navbar-nav visible-xs-inline-block pull-right">
+      <ul class="nav navbar-nav search-and-idea pull-right">
         <li>
-          <a href="#" class="visible-xs-block searchButton"><span class="glyphicon glyphicon-search"></span></a>
+          <a href="#" class="searchButton"><span class="glyphicon glyphicon-search"></span></a>
         </li>
         <li>
-          <a href="https://bloomr.typeform.com/to/B6Tb9E" class="visible-xs-block"><span class="boiteAIdee"></span></a>
+          <a href="https://bloomr.typeform.com/to/B6Tb9E"><span class="boiteAIdee"></span></a>
+        </li>
+        <li class="hidden-xs" style="font-weight: bold;">
+          <a class="btn btn-primary" href="https://bloomr.typeform.com/to/ZDAyNU">Rejoignez-les !</a>
         </li>
       </ul>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="hidden-xs"><a href="<%= root_path %>" class="<% if current_page?(root_path) %>active <% end %>"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li class="visible-xs-block"><a href="<%= root_path %>">La communauté</a></li>
+        <li><a href="<%= root_path %>">La communauté</a></li>
         <li><a href="<%= le_concept_path %>" class="<% if current_page?(le_concept_path) %>active <% end %>">Le concept</a></li>
         <li><a href="<%= qui_sommes_nous_path %>" class="<% if current_page?(qui_sommes_nous_path) %>active <% end %>">Qui sommes-nous</a></li>
-        <li class="hidden-xs"><a href="https://bloomr.typeform.com/to/ZDAyNU" class="btn btn-primary">Témoignez !</a></li>
-        <li class="visible-xs-block" style="font-weight: bold;"><a href="https://bloomr.typeform.com/to/ZDAyNU">vous aussi, témoignez !</a></li>
-        <li class="visible-xs-block social"><a href="https://twitter.com/bloomr4youth"><span class="twitter"></span><span class="social">Suivez-nous !</span></a></li>
-        <li class="visible-xs-block social"><a href="https://www.facebook.com/bloomr4youth"><span class="facebook"></span><span class="social">Aimez-nous !</span></a></li>
+        <li style="font-weight: bold;"><a href="https://bloomr.typeform.com/to/ZDAyNU">vous aussi, témoignez !</a></li>
+        <li class="social"><a href="https://twitter.com/bloomr4youth"><span class="twitter"></span><span class="social">Suivez-nous !</span></a></li>
+        <li class="social"><a href="https://www.facebook.com/bloomr4youth"><span class="facebook"></span><span class="social">Aimez-nous !</span></a></li>
       </ul>
     </div>
   </div>
