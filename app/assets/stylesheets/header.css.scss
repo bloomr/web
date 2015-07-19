@@ -3,14 +3,7 @@
   padding-top: 10px;
   background-color: white;
   border-bottom: 1px solid #DDD;
-  a.navbar-brand {
-    font-size: 21px;
-    text-transform: uppercase;
-    background-image: image_url("logo-97.png");
-    display: block;
-    width: 97px;
-    height: 57px;
-  }
+
   button.navbar-toggle {
     background-color: white;
     float: left;
@@ -21,6 +14,13 @@
     }
   }
 
+  a.navbar-brand {
+    background-image: image_url("logo-97.png");
+    width: 97px;
+    height: 57px;
+    margin-left: 10px;
+  }
+
   .boiteAIdee {
     background: image-url("icons/icon-boiteidee-complet.png") no-repeat;
     display: inline-block;
@@ -29,76 +29,61 @@
     cursor: pointer;
   }
 
+  .twitter {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: image-url("icons/twitter.png") no-repeat;
+    vertical-align: middle;
+  }
+  .facebook {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: image-url("icons/facebook.png") no-repeat;
+    vertical-align: middle;
+    position: relative;
+    top: -4px;
+  }
+
   ul.nav {
     li {
       a {
         font-size: 16px;
-        color: #a6a6a6;
-        &:hover {
-          background-color: white;
-          color: #a6a6a6;
+      }
+      &.social {
+        font-style: italic;
+        span {
+          margin-right: 10px;
         }
-        &.active {
-          color: #ff6622;
-        }
-      }
-      .twitter {
-        display: inline-block;
-        width: 32px;
-        height: 32px;
-        background: image-url("icons/twitter.png") no-repeat;
-        vertical-align: middle;
-      }
-      .facebook {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        background: image-url("icons/facebook.png") no-repeat;
-        vertical-align: middle;
-        position: relative;
-        top: -4px;
-      }
-      a.btn-primary {
-        color: white;
-        font-weight: bold;
-        padding-right: 15px;
-        margin-right: 0px;
-        padding-left: 15px;
-        margin-left: 0px;
-        box-shadow: 0px 1px 3px 0px #656565;
-        &:hover {
-          background-color: white;
-          color: #ff6622;
-          box-shadow: none;
-        }
-      }
-    }
-    li.social {
-      font-style: italic;
-      span {
-        margin-right: 10px;
       }
     }
   }
 
 
-    .navbar-collapse {
-      background-color: #FA6B03;
-      text-align: center;
-      ul.nav li a {
-        color: white;
-        &:hover {
-          background-color: white;
-          opacity: 0.8;
-          color: #ff6622;
+  .navbar-collapse {
+    background-color: #FA6B03;
+    text-align: center;
+    ul.nav li a {
+      color: white;
+      &:hover {
+        background-color: white;
+        opacity: 0.8;
+        color: #ff6622;
+        .facebook {
+          background: image-url("icons/facebook-orange.png") no-repeat;
+        }
+        .twitter {
+          background: image-url("icons/twitter-orange.png") no-repeat;
         }
       }
     }
+  }
 
-    .navbar-collapse.in {
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
-      margin-top: 3px;
-    }
+  .navbar-collapse.in {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
+    margin-top: 3px;
+  }
 
 
   .navbar-nav.search-and-idea {
@@ -115,4 +100,18 @@
     }
   }
 
+  a.btn-primary {
+    color: white;
+    font-weight: bold;
+    padding-right: 15px;
+    margin-right: 0px;
+    padding-left: 15px;
+    margin-left: 0px;
+    box-shadow: 0px 1px 3px 0px #656565;
+    &:hover {
+      background-color: white;
+      color: #ff6622;
+      box-shadow: none;
+    }
+  }
 }
