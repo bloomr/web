@@ -92,48 +92,43 @@ ol.breadcrumb {
   margin-top: 3px;
   .version2 {
     display: none;
-  }
-}
 
-//TODO
-//fusionner les deux version2
-//supprimer le version2 de _search_and_tags
-//renommer desktop-search en keywords wrapper ou un truc comme ca
-
-.version2 {
-
-  .searchBox {
-    height: 40px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding-top: 7px;
-    border: 1px solid #DDD;
-    border-radius: 5px;
-    background-color: white;
-    .glyphicon-search {
-      color: #a6a6a6;
-      margin-right: 10px;
-      position: absolute;
-      top: 13px;
-      left: 26px;
-    }
-    .twitter-typeahead {
-      width: 100%;
-      padding-right: 26px;
-      input {
-        width: 100%;
-        margin-left: 34px;
-        border: 0;
-        border-left: 1px solid #a6a6a6;
-        padding-left: 10px;
-        outline: none;
+    .searchBox {
+      height: 40px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      padding-top: 7px;
+      border: 1px solid #DDD;
+      border-radius: 5px;
+      background-color: white;
+      .glyphicon-search {
         color: #a6a6a6;
-        border-radius: 0;
-        font-size: 16px;
+        margin-right: 10px;
+        position: absolute;
+        top: 13px;
+        left: 26px;
+      }
+      .twitter-typeahead {
+        width: 100%;
+        padding-right: 26px;
+        input {
+          width: 100%;
+          margin-left: 34px;
+          border: 0;
+          border-left: 1px solid #a6a6a6;
+          padding-left: 10px;
+          outline: none;
+          color: #a6a6a6;
+          border-radius: 0;
+          font-size: 16px;
+        }
       }
     }
   }
 }
+
+//TODO
+//renommer desktop-search en keywords wrapper ou un truc comme ca
 
 .desktop-search {
   .keywordsBox {
