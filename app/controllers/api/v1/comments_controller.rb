@@ -23,7 +23,7 @@ module Api
 
       def destroy
         begin
-          QuestionComment.find(params[:id]).destroy
+          Question.find(params[:question_id]).question_comments.find(params[:id]).destroy
           head :no_content
         rescue ActiveRecord::RecordNotFound
           head :not_found
