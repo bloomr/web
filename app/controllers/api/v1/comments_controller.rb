@@ -21,6 +21,12 @@ module Api
         end
       end
 
+      def destroy
+        QuestionComment.find(params[:id]).delete
+
+        head :no_content
+      end
+
       private
       def load_question
         @question = Question.find(params[:question_id])

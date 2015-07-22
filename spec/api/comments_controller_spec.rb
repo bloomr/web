@@ -79,6 +79,36 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
         end
       end
     end
+
+    describe "DELETE #comments" do
+      before do
+        @comment_to_keep = @question.question_comments.create!(
+            :author_name => "James LeSim",
+            :comment => "Something really interesting!"
+        )
+        @comment_to_delete = @question.question_comments.create!(
+            :author_name => "John Smith",
+            :comment => "Are you sure?"
+        )
+      end
+
+      describe "with valid data" do
+        before do
+          delete "api/v1/questions/1/comments/#{@comment_to_delete.id}", nil, { "Accept" => "application/json" }
+        end
+
+        it "responds with 200 code if deletion of comment" do
+          expect(response).to have_http_status(204)
+        end
+
+        it "deletes the comment correctly" do
+          @question.reload
+          expect(@question.question_comments.length).to eq(1)
+          expect(@question.question_comments.first).to eq(@comment_to_keep)
+        end
+      end
+    end
+
   end
 
 end
