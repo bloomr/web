@@ -107,6 +107,21 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
           expect(@question.question_comments.first).to eq(@comment_to_keep)
         end
       end
+
+      describe "with invalid data" do
+        before do
+          delete "api/v1/questions/1/comments/0", nil, { "Accept" => "application/json" }
+        end
+
+        it "responds with 404 code if unknown comment" do
+          expect(response).to have_http_status(404)
+        end
+
+        it "deletes no comment" do
+          @question.reload
+          expect(@question.question_comments.length).to eq(2)
+        end
+      end
     end
 
   end
