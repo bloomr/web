@@ -3,54 +3,63 @@
 <% content_for :description, "#{@portrait.first_name} est #{@portrait.job_title} et décrit son métier " %>
 <% content_for :og_img_url, @portrait.avatar.url("thumb") %>
 
-<%= render "shared/perso_intro" %>
-
-<div class="container" itemscope itemtype="http://schema.org/QAPage">
-  <div id="portrait_details">
-    <div class="row">
-      <div class="portrait-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
-        <div class="portrait-header background-<%= (@portrait.id) %22 %>" itemscope itemtype="http://schema.org/Person">
-          <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar", :itemprop => "image", :alt => "Photo de " + @portrait.first_name %>
-          <div>
-            <h3 class="portrait-name" itemprop="name"><%= @portrait.first_name %></h3>
-            <h1 class="portrait-job-title" itemprop="jobTitle"><%= @portrait.job_title %></h1>
-          </div>
-        </div>
-        <h4 class="portrait-keywords-title">Mon métier en <%= @portrait.keyword_associations.length %> mots</h4>
-        <ul class="portrait-keywords" itemprop="keywords">
-          <% @portrait.keyword_associations.each do |keyword_association| %>
-            <% if @portrait.is_keyword_popular(keyword_association.keyword) %>
-              <li><a href="<%= tag_path(keyword_association.keyword.tag) %>" class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></a></li>
-            <% else %>
-              <li><span class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></span></li>
+<div id="portrait_details_2" itemscope itemtype="http://schema.org/QAPage">
+  <div class="portrait_header background-<%= (@portrait.id) %22 %>" itemscope itemtype="http://schema.org/Person">
+      <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar", :itemprop => "image", :alt => "Photo de " + @portrait.first_name %>
+      <h3>Hello ! Je m'appelle <span class="portrait-name" itemprop="name"><%= @portrait.first_name %></span></h3>
+      <h1>Je suis <span class="portrait-job-title" itemprop="jobTitle"><%= @portrait.job_title %></span></h1>
+      <div class="container keywords">
+          <div class="mark"></div>
+          <p>
+            Mon métier en <%= @portrait.keyword_associations.length %> mots
+          </p>
+          <ul class="portrait-keywords" itemprop="keywords">
+            <% @portrait.keyword_associations.each do |keyword_association| %>
+                <% if @portrait.is_keyword_popular(keyword_association.keyword) %>
+                    <li><a href="<%= tag_path(keyword_association.keyword.tag) %>" class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></a>
+                    </li>
+                <% else %>
+                    <li><span class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></span>
+                    </li>
+                <% end %>
             <% end %>
-          <% end %>
-        </ul>
-      </div>
-      <div class="portrait-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <ul class="portrait-questions">
-          <% @portrait.questions_to_display.sort { |q1, q2| q1 <=> q2 }.each do |question| %>
-              <li itemscope itemtype="http://schema.org/Question" data-section-id="<%= question.id %>" class="commentable-section">
-                <h4 itemprop="name" class="portrait-question-title"><%= question.title %></h4>
-                <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer"><span itemprop="text"><%= question.answer.html_safe %></span></div>
-              </li>
-          <% end %>
-        </ul>
-
-        <p class="merci">Merci <%= @portrait.first_name %> :)</p>
-
-        <div class="actions">
-          <p class="interested">Ça vous a plu ?</p>
-          <p>Vous en voulez encore ?</p>
-          <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary">Au hasard ? oui !</a>
-
-          <ul>
-            <li><a href="/portraits/previous?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-left"></span>personne précédente</a></li>
-            <li><span>ou</span><a href="<%= root_path %>">retour à la galerie</a></li>
-            <li><a href="/portraits/next?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-right"></span>personne suivante</a></li>
           </ul>
-        </div>
+      </div>
+  </div>
+  <div class="container">
+    <div id="portrait_details">
+      <div class="row">
+        <div class="portrait-main col-md-10 col-md-offset-1">
+          <ul class="portrait-questions">
+            <% @portrait.questions_to_display.sort { |q1, q2| q1 <=> q2 }.each do |question| %>
+                <li itemscope itemtype="http://schema.org/Question" data-section-id="<%= question.id %>" class="commentable-section">
+                  <h4 itemprop="name" class="portrait-question-title"><%= question.title %></h4>
 
+                  <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer">
+                    <span itemprop="text"><%= question.answer.html_safe %></span></div>
+                </li>
+            <% end %>
+          </ul>
+
+          <p class="merci">Merci <%= @portrait.first_name %> :)</p>
+
+          <div class="actions">
+            <p class="interested">Ça vous a plu ?</p>
+
+            <p>Vous en voulez encore ?</p>
+            <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary">Au hasard ? oui !</a>
+
+            <ul>
+              <li>
+                <a href="/portraits/previous?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-left"></span>personne
+                  précédente</a></li>
+              <li><span>ou</span><a href="<%= root_path %>">retour à la galerie</a></li>
+              <li><a href="/portraits/next?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-right"></span>personne
+                suivante</a></li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>

@@ -215,144 +215,77 @@ ul#portraits_list {
 }
 
 #portrait_details {
-  border: 1px solid #dddddd;
-  border-radius: 15px;
-  margin-top: 30px;
-  > .row {
-    .portrait-sidebar {
-      @media (min-width: 992px) {
-        padding-right: 0px;
-      }
-      .portrait-header {
-        background-repeat: repeat;
-        text-align: center;
-        padding: 0;
-        border-radius: 15px 0 0 0;
-        @media (max-width: 991px) {
-          border-radius: 15px 15px 0 0;
-        }
-        > div {
-          padding: 5px 0;
-          opacity: 0.9;
-          background-color: white;
-        }
-        h3.portrait-name {
-          font-size: 1.2em;
-          color: rgb(150, 150, 150);
-          margin-top: 10px;
-          margin-bottom: 5px;
-        }
-        h1.portrait-job-title {
-          font-size: 1.2em;
+  .portrait-main {
+    padding: 30px;
+    ul.portrait-questions {
+      padding-left: 0px;
+      > li {
+        list-style-type: none;
+        margin: 0 0 1em;
+        .portrait-question-title {
           font-weight: bold;
-          margin-bottom: 5px;
-          padding: 0 5px;
+          font-size: 1.125em;
+          line-height: 1.5em;
+          margin: 0;
         }
-        img.portrait-avatar {
-          height: 104px;
-          width: 104px;
-          border-radius: 52px;
-          margin-top:5px;
-          margin-bottom:5px;
-        }
-      }
-      h4.portrait-keywords-title {
-        text-align: center;
-        color: #B1B1B1;
-        margin: 22px 0px 10px;
-      }
-      ul.portrait-keywords {
-        @media (max-width: 991px) {
-          border-bottom: 1px solid #dddddd;
-        }
-        text-align: center;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding: 10px 10px 25px 10px;
-        line-height: 2em;
-        font-size: 1.1em;
-        > li {
-          display: inline-block;
-          padding-right: 5px;
-          > .portrait-keyword:before {
-            content: "#";
-          }
+        .portrait-question-answer {
+          font-size: 1.125em;
+          line-height: 1.5em;
+          margin: 0;
         }
       }
     }
-    .portrait-main {
-      padding: 30px;
-      @media (min-width: 992px) {
-        border-left: 1px solid #dddddd;
+    .portrait-infos {
+      text-align: center;
+      border-bottom: 1px solid gray;
+      img.portrait-avatar {
+        height: 140px;
+        width: 140px;
+        border-radius: 70px;
       }
-      ul.portrait-questions {
-        padding-left: 0px;
-        > li {
-          list-style-type: none;
-          margin: 0 0 1em;
-          .portrait-question-title {
-            font-weight: bold;
-            font-size: 1.125em;
-            line-height: 1.5em;
-            margin: 0;
-          }
-          .portrait-question-answer {
-            font-size: 1.125em;
-            line-height: 1.5em;
-            margin: 0;
-          }
+    }
+    .other-questions-coming {
+      padding-top: 2em;
+      font-size: 1.125em;
+      text-align: right;
+    }
+    .portrait-footer {
+      margin-top: 30px;
+      text-align: center;
+      a.btn {
+        font-size: 18px;
+        .glyphicon {
+          top: 3px;
+          padding-right: 10px;
         }
       }
-      .portrait-infos {
-        text-align: center;
-        border-bottom: 1px solid gray;
-        img.portrait-avatar {
-          height: 140px;
-          width: 140px;
-          border-radius: 70px;
-        }
-      }
-      .other-questions-coming {
-        padding-top: 2em;
-        font-size: 1.125em;
-        text-align: right;
-      }
-      .portrait-footer {
-        margin-top: 30px;
-        text-align: center;
-        a.btn {
-          font-size: 18px;
-          .glyphicon {
-            top: 3px;
-            padding-right: 10px;
-          }
-        }
-      }
-      .merci {
+    }
+    .merci {
+      font-weight: bold;
+      font-size: 1.125em;
+      line-height: 1.5em;
+    }
+    .actions {
+      border-top: 1px #DDD solid;
+      padding-top: 15px;
+      text-align: center;
+      .interested {
         font-weight: bold;
-        font-size: 1.125em;
-        line-height: 1.5em;
       }
-      .actions {
-        border-top: 1px #DDD solid;
-        padding-top: 15px;
-        text-align: center;
-        .interested {
-          font-weight: bold;
+      .btn {
+        margin-bottom: 10px
+      }
+      ul {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+        li {
+          display: inline-block;
+          width: 32%;
+          text-align: center;
         }
-        .btn {
-          margin-bottom: 10px
-        }
-        ul {
-          list-style: none;
-          margin-bottom: 0;
-          padding-left: 0;
-          li {
-            display: inline-block; width: 32%; text-align: center;
-          }
-          span {
-            display: block;
-          }
+        span {
+          display: block;
         }
       }
     }
@@ -406,5 +339,83 @@ ul#portraits_list {
 @media (max-width: 640px) {
   .side-comment {
     display: none;
+  }
+}
+
+#portrait_details_2 {
+  .portrait_header {
+    min-height: 300px;
+    color: white;
+    text-align: center;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 102, 34, 0.8);
+      background: linear-gradient(to bottom,$orange, rgba(255, 102, 34, 0.8));
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+    .portrait-avatar {
+      height: 104px;
+      width: 104px;
+      border-radius: 52px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      position: relative;
+      top: 5px;
+      z-index: 11;
+      box-shadow: 0px 1px 10px 0px black;
+    }
+    h3, h1, p, ul {
+      z-index: 11;
+      position: relative;
+    }
+    h3, h1 {
+      font-size: 24px;
+      span {
+        font-weight: bold;
+      }
+    }
+    h1 {
+      margin-top: 5px;
+    }
+    .keywords {
+      text-align: left;
+      margin-top: 35px;
+      .mark {
+        width: 20px;
+        height: 3px;
+        margin-bottom: 5px;
+        background-color: white;
+        z-index: 11;
+        position: relative;
+        font-size: 0;
+      }
+      p {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        font-size: 16px;
+        li {
+          display: inline-block;
+          margin-right: 5px;
+          a {
+            color: white;
+            text-decoration: underline;
+          }
+          &:before {
+            content: "#";
+          }
+        }
+      }
+    }
   }
 }
