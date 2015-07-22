@@ -22,10 +22,10 @@ module Api
       end
 
       def destroy
-        begin
-          Question.find(params[:question_id]).question_comments.find(params[:id]).destroy
+        if comment = QuestionComment.where(id: params[:id], question_id: params[:question_id]).first
+          comment.destroy
           head :no_content
-        rescue ActiveRecord::RecordNotFound
+        else
           head :not_found
         end
       end
