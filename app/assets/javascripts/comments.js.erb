@@ -59,4 +59,14 @@ document.addEventListener('page:change', function() {
             }
         });
     });
+
+    sideComments.on('commentDeleted', function( comment ) {
+    $.ajax({
+        url: "/api/v1/questions/" + comment.sectionId + '/comments/' + comment.id,
+        type: 'DELETE',
+        success: function( success ) {
+            sideComments.removeComment(comment.sectionId, comment.id) 
+        }
+    });
+  });
 });
