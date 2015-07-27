@@ -250,14 +250,14 @@ ul#portraits_list {
         list-style-type: none;
         margin: 0 0 1em;
         .portrait-question-title {
-          font-weight: bold;
-          font-size: 1.125em;
+          font-size: 1.7em;
           line-height: 1.5em;
           margin: 0;
+          padding-bottom: 10px;
         }
         .portrait-question-answer {
           font-size: 1.125em;
-          line-height: 1.5em;
+          line-height: 1.8em;
           margin: 0;
         }
       }
@@ -414,6 +414,7 @@ ul#portraits_list {
     .keywords {
       text-align: left;
       margin-top: 35px;
+      padding-bottom: 10px;
       .mark {
         width: 20px;
         height: 3px;
