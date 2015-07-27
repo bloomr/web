@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def questions_to_display
-    questions.select {|q| q.published }
+    questions.select {|q| q.published && q.identifier != 'love_job' }
   end
 
 end

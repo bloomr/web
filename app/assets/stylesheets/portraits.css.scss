@@ -215,9 +215,36 @@ ul#portraits_list {
 }
 
 #portrait_details {
+  .portrait-love-job {
+    padding-top: 40px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    border-left: medium none;
+    font-style: italic;
+    font-size: 25px;
+    line-height: 1.5;
+    &:before {
+      background-image: image-url('icons/icon-quote.png');
+      display: block;
+      width: 17px;
+      height: 14px;
+      position: absolute;
+      left: 15px;
+      top: 45px;
+    }
+    &:after {
+      background-image: image-url('icons/icon-quote-close.png');
+      display: inline-block;
+      width: 17px;
+      height: 14px;
+      position: relative;
+      top: -8px;
+    }
+  }
   .portrait-main {
-    padding: 30px;
     ul.portrait-questions {
+      border-top: 2px solid #DDD;
+      padding-top: 30px;
       padding-left: 0px;
       > li {
         list-style-type: none;
@@ -429,4 +456,8 @@ ul#portraits_list {
       }
     }
   }
+  .container-wrapper {
+    background-color: #F6F6F6;
+  }
+
 }
