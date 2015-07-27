@@ -400,6 +400,17 @@ ul#portraits_list {
         font-weight: bold;
         margin-bottom: 0;
       }
+      a.social-share-button{
+        position: relative;
+        z-index: 11;
+        margin-right: 25px;
+        img {
+          width: 18px;
+        }
+        &:hover {
+          text-decoration: none;
+        }
+      }
       ul {
         list-style: none;
         padding-left: 0;
