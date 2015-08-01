@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :users, :only => [:create, :update, :index]
       resources :keywords, :only => [:index]
       resources :questions, :only => [] do
-        resources :comments, :only => [:index, :create]
+        resources :comments, :only => [:index, :create, :destroy]
       end
     end
   end

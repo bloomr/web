@@ -21,6 +21,15 @@ module Api
         end
       end
 
+      def destroy
+        if comment = QuestionComment.where(id: params[:id], question_id: params[:question_id]).first
+          comment.destroy
+          head :no_content
+        else
+          head :not_found
+        end
+      end
+
       private
       def load_question
         @question = Question.find(params[:question_id])
