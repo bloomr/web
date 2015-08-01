@@ -57,10 +57,10 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
           expect(response).to have_http_status(400)
         end
 
-        it "strips HTML tags if h4x00rz" do
-          @payload[:comment][:comment] = "<script>alert('coucou')</script>"
+        it "strips HTML tags if h4x00rz (remove script balise)" do
+          @payload[:comment][:comment] = "<script>alert('coucou')</script>yop"
           post "/api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
-          expect(QuestionComment.first.comment).to_not include('<script>')
+          expect(QuestionComment.first.comment).to eq('yop')
         end
       end
 
