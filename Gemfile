@@ -46,6 +46,8 @@ gem 'newrelic_rpm'
 
 gem 'rest-client'
 
+gem "algoliasearch-rails"
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

@@ -28,6 +28,18 @@ class User < ActiveRecord::Base
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  include AlgoliaSearch
+
+  algoliasearch synchronous: true, per_environment: true, if: :published do
+    attribute :first_name, :job_title
+    attribute :keywords do
+      keywords.map { |k| k.tag }
+    end
+    attribute :questions do
+      questions.map { |q| { answer: q.answer } }
+    end
+  end
+
   def answer_to question_id
     question = questions.find {|q| q.identifier == question_id}
     question.answer if question

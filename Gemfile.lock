@@ -65,6 +65,12 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
+    algoliasearch (1.6.1)
+      httpclient (~> 2.4)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.13.2)
+      algoliasearch (>= 1.2.14)
+      json (>= 1.5.1)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.2)
@@ -144,6 +150,7 @@ GEM
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    httpclient (2.6.0.1)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -328,6 +335,7 @@ DEPENDENCIES
   activeadmin!
   activeadmin-select2!
   acts-as-taggable-on (~> 3.4)
+  algoliasearch-rails
   autoprefixer-rails
   aws-sdk
   bootstrap-sass (~> 3.2.0)
