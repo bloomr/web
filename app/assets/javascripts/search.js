@@ -93,7 +93,7 @@
             displayKey: function(el) { return el.first_name + " - " + el.job_title; },
             // `ttAdapter` wraps the suggestion engine in an adapter that
             // is compatible with the typeahead jQuery plugin
-            source: jobs.ttAdapter(),
+            source: window.algolia.usersIndex.ttAdapter({hitsPerPage: 5}),
             templates: {
                 header: '<h5 style="margin-left: 10px; font-weight: bold; color: #7a7a7a;">Métier</h5>'
             }
@@ -106,24 +106,13 @@
             }
         });
 
-        $search.on('typeahead:selected', function(ev, datum, name){
-            // The text typed by the user (before he clicked on an autocompleted suggestion) is stored in an invisible <pre/> next to the input. We extract it for the analytics.
-            var prefix = $search.next('pre').html();
-            var searchEvent = {
-                prefix: prefix,
-                type: name,
-                referrer: document.referrer,
-                datum: datum
-            };
+        $search.on('typeahead:selected', function (ev, datum, name) {
 
-            // Send the event to Keen.io
-            window.keenClient.addEvent('search', searchEvent, function(err, res) {
-                if (name == 'keyword') {
-                    window.location = '/tag/' + datum.tag;
-                } else if (name == 'job_title') {
-                    window.location = '/portraits/' + datum.id;
-                }
-            });
+            if (name == 'keyword') {
+                window.location = '/tag/' + datum.tag;
+            } else if (name == 'job_title') {
+                window.location = '/portraits/' + datum.objectID;
+            }
 
         });
 
