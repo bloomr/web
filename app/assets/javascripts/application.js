@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore-min
 //= require turbolinks
 //= require bootstrap
 //= require modernizr.custom.17912

@@ -90,10 +90,23 @@
         var $search = $('.search-box');
         $search.typeahead({hint : false},{
             name: 'job_title',
-            displayKey: function(el) { return el.first_name + " - " + el.job_title; },
+            displayKey: function(el) {
+
+                var find_good_question = function (el) {
+                    var question = _.find(el._snippetResult.questions, function(q){ return q.answer.matchLevel == 'full' });
+                    if(question){
+                        return '"... ' + question.answer.value + ' ..."';
+                    } else {
+                        return '';
+                    }
+                };
+
+
+                return el.first_name + " - " + el.job_title + "</br>" + find_good_question(el);
+            },
             // `ttAdapter` wraps the suggestion engine in an adapter that
             // is compatible with the typeahead jQuery plugin
-            source: window.algolia.usersIndex.ttAdapter({hitsPerPage: 5}),
+            source: window.algolia.usersIndex.ttAdapter({hitsPerPage: 5, attributesToSnippet: 'job_title:20,questions:15'}),
             templates: {
                 header: '<h5 style="margin-left: 10px; font-weight: bold; color: #7a7a7a;">Métier</h5>'
             }
