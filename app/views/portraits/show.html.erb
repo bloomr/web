@@ -10,7 +10,7 @@
       <h1>Je suis <span class="portrait-job-title" itemprop="jobTitle"><%= @portrait.job_title %></span></h1>
       <div class="container keywords">
           <div class="row">
-            <div class="col-md-8 col-md-offset-1">
+            <div class="col-md-10">
               <div class="mark"></div>
               <p>
                 Mon métier en <%= @portrait.keyword_associations.length %> mots
@@ -27,7 +27,7 @@
                 <% end %>
               </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="mark"></div>
               <p>Partage mon profil</p>
               <a class="social-share-button fb" href="https://www.facebook.com/sharer/sharer.php?u=<%= portrait_url(@portrait) %>" target="_blank">
@@ -44,12 +44,12 @@
     <div class="container">
       <div id="portrait_details">
         <div class="row">
-          <blockquote class="portrait-love-job col-md-10 col-md-offset-1">
+          <blockquote class="portrait-love-job col-md-8 col-md-offset-2">
             <%= raw(@portrait.answer_to('love_job')) %>
           </blockquote>
         </div>
         <div class="row">
-          <div class="portrait-main col-md-10 col-md-offset-1">
+          <div class="portrait-main col-md-8 col-md-offset-2">
             <ul class="portrait-questions">
               <% @portrait.questions_to_display.sort { |q1, q2| q1 <=> q2 }.each do |question| %>
                   <li itemscope itemtype="http://schema.org/Question" data-section-id="<%= question.id %>" class="commentable-section">
@@ -81,7 +81,20 @@
             </ul>
           </div>
         </div>
-      </div>
+
+    </div>
+  </div>
+</div>
+  <div class="actions2">
+    <div>
+      <a href="/portraits/previous?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-left"></span>personne précédente</a>
+    </div>
+    <div class="middle">
+      <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary">Et un témoignagne au hasard ! Un !</a>
+      <span><a href="<%= root_path %>">retour à la galerie</a></span>
+    </div>
+    <div>
+      <a href="/portraits/next?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-right"></span>personne suivante</a>
     </div>
   </div>
 </div>

@@ -371,7 +371,6 @@ ul#portraits_list {
 
 #portrait_details_2 {
   .portrait_header {
-    min-height: 300px;
     color: white;
     text-align: center;
     position: relative;
@@ -394,7 +393,7 @@ ul#portraits_list {
       margin-right: auto;
       display: block;
       position: relative;
-      top: 5px;
+      top: 15px;
       z-index: 11;
       box-shadow: 0px 1px 10px 0px black;
     }
@@ -403,17 +402,20 @@ ul#portraits_list {
       position: relative;
     }
     h3, h1 {
-      font-size: 24px;
+      font-size: 28px;
       span {
         font-weight: bold;
       }
+    }
+    h3 {
+      margin-top: 35px;
     }
     h1 {
       margin-top: 5px;
     }
     .keywords {
       text-align: left;
-      margin-top: 35px;
+      margin-top: 15px;
       padding-bottom: 10px;
       .mark {
         width: 20px;
@@ -425,7 +427,8 @@ ul#portraits_list {
         font-size: 0;
       }
       p {
-        font-weight: bold;
+        font-size: 13px;
+        font-weight: 600;
         margin-bottom: 0;
       }
       a.social-share-button{
@@ -459,6 +462,31 @@ ul#portraits_list {
   }
   .container-wrapper {
     background-color: #F6F6F6;
+  }
+
+  .actions2 {
+    background-color: white;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    > div {
+      padding-top: 15px;
+      display: inline-block;
+      width: 32%;
+      a {
+        color: #333;
+      }
+      a.btn {
+        color: white;
+      }
+      span {
+        display: block;
+      }
+    }
+    .middle {
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+    }
   }
 
 }

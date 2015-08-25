@@ -70,6 +70,9 @@ ol.breadcrumb {
 
     .intro {
       padding: 20px 5px;
+      @media (min-width: 641px) {
+        padding: 45px 180px;
+      }
       text-align: center;
 
       em {
