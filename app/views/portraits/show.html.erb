@@ -63,25 +63,6 @@
             <p class="merci">Merci <%= @portrait.first_name %> :)</p>
           </div>
         </div>
-        <div class="row">
-          <div class="actions">
-            <p class="interested">Ça vous a plu ?</p>
-
-            <p>Vous en voulez encore ?</p>
-            <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary">Au hasard ? oui !</a>
-
-            <ul>
-              <li>
-                <a href="/portraits/previous?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-left"></span>personne
-                  précédente</a></li>
-              <li><span>ou</span><a href="<%= root_path %>">retour à la galerie</a></li>
-              <li>
-                <a href="/portraits/next?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-right"></span>personne
-                  suivante</a></li>
-            </ul>
-          </div>
-        </div>
-
     </div>
   </div>
 </div>
@@ -90,11 +71,15 @@
       <a href="/portraits/previous?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-left"></span>personne précédente</a>
     </div>
     <div class="middle">
-      <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary">Et un témoignagne au hasard ! Un !</a>
+      <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary hidden-xs">Et un témoignagne au hasard ! Un !</a>
+      <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary visible-xs">au hasard !</a>
       <span><a href="<%= root_path %>">retour à la galerie</a></span>
     </div>
     <div>
       <a href="/portraits/next?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-right"></span>personne suivante</a>
     </div>
+  </div>
+  <div class="enrollment">
+    <p><span>Vous voulez aider nos jeunes ? C'est ici ! > </span><a href="https://bloomr.typeform.com/to/ZDAyNU" class="btn btn-primary">Témoignez</a></p>
   </div>
 </div>

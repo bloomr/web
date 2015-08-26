@@ -293,30 +293,6 @@ ul#portraits_list {
       line-height: 1.5em;
     }
   }
-  .actions {
-    border-top: 1px #DDD solid;
-    padding-top: 15px;
-    text-align: center;
-    .interested {
-      font-weight: bold;
-    }
-    .btn {
-      margin-bottom: 10px
-    }
-    ul {
-      list-style: none;
-      margin-bottom: 0;
-      padding-left: 0;
-      li {
-        display: inline-block;
-        width: 32%;
-        text-align: center;
-      }
-      span {
-        display: block;
-      }
-    }
-  }
 }
 
 /* Side comments theming fix */
@@ -486,6 +462,23 @@ ul#portraits_list {
     .middle {
       border-left: 1px solid #ddd;
       border-right: 1px solid #ddd;
+      .btn {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+    }
+  }
+  .enrollment {
+    background-color: #F6F6F6;
+    min-height: 70px;
+    p {
+      text-align:center;
+      padding-top: 20px;
+      font-size: 1.5em;
+      span {
+        font-family: 'Satisfy',cursive;
+        color: $orange;
+      }
     }
   }
 
