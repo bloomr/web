@@ -248,16 +248,16 @@ ul#portraits_list {
       padding-left: 0px;
       > li {
         list-style-type: none;
-        margin: 0 0 1em;
+        margin: 0 0 30px;
         .portrait-question-title {
-          font-size: 1.7em;
-          line-height: 1.5em;
+          line-height: 1.5;
+          font-size: 22px;
           margin: 0;
-          padding-bottom: 10px;
+          padding-bottom: 20px;
         }
         .portrait-question-answer {
-          font-size: 1.125em;
-          line-height: 1.8em;
+          font-size: 18px;
+          line-height: 1.5;
           margin: 0;
         }
       }
@@ -288,8 +288,8 @@ ul#portraits_list {
       }
     }
     .merci {
-      font-weight: bold;
-      font-size: 1.125em;
+      margin-bottom: 40px;
+      font-size: 1.7em;
       line-height: 1.5em;
     }
   }
@@ -356,7 +356,6 @@ ul#portraits_list {
       top: 0;
       left: 0;
       background-color: rgba(255, 102, 34, 0.8);
-      background: linear-gradient(to bottom,$orange, rgba(255, 102, 34, 0.8));
       width: 100%;
       height: 100%;
       z-index: 10;
@@ -437,7 +436,7 @@ ul#portraits_list {
     }
   }
   .container-wrapper {
-    background-color: #F6F6F6;
+    background-color: rgb(246,246,246);
   }
 
   .actions2 {
@@ -445,15 +444,21 @@ ul#portraits_list {
     text-align: center;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    min-height: 100px;
     > div {
       padding-top: 15px;
       display: inline-block;
       width: 32%;
+      height: 100%;
+      vertical-align: top;
       a {
         color: #333;
       }
       a.btn {
         color: white;
+        margin-bottom: 15px;
+        box-shadow: 0px 1px 3px 0px #656565;
+        font-weight: bold;
       }
       span {
         display: block;
@@ -470,14 +475,18 @@ ul#portraits_list {
   }
   .enrollment {
     background-color: #F6F6F6;
-    min-height: 70px;
+    min-height: 100px;
     p {
       text-align:center;
-      padding-top: 20px;
+      padding-top: 30px;
       font-size: 1.5em;
       span {
         font-family: 'Satisfy',cursive;
         color: $orange;
+      }
+      a.btn {
+        font-weight: bold;
+        box-shadow: 0px 1px 3px 0px #656565;
       }
     }
   }
