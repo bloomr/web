@@ -57,7 +57,22 @@
     // kicks off the loading/processing of `local` and `prefetch`
     keywords.initialize();
 
-    $(function() {
+    var algoliaTtAdapter = window.algolia.usersIndex.ttAdapter({hitsPerPage: 5, attributesToSnippet: 'first_name:20,job_title:20,questions:15'});
+
+    var find_good_question = function (el) {
+        var question = _.find(el._snippetResult.questions, function(q){ return q.answer.matchLevel == 'full' });
+        if(question){
+            return '"... ' + question.answer.value + ' ..."';
+        } else {
+            return '';
+        }
+    };
+
+    var suggestionPresentation = function(el) {
+        return "<div>" + el._snippetResult.first_name.value + " - " + el._snippetResult.job_title.value + "</br>" + find_good_question(el) + "</div>";
+    };
+
+    document.addEventListener('page:change', function() {
         var $mobileSearch = $('.mobile-search .version2');
 
         var mobileSearchActive = false;
@@ -73,22 +88,6 @@
                 mobileSearchActive = false;
             }
         });
-
-        var algoliaTtAdapter = window.algolia.usersIndex.ttAdapter({hitsPerPage: 5, attributesToSnippet: 'first_name:20,job_title:20,questions:15'});
-
-        var find_good_question = function (el) {
-            var question = _.find(el._snippetResult.questions, function(q){ return q.answer.matchLevel == 'full' });
-            if(question){
-                return '"... ' + question.answer.value + ' ..."';
-            } else {
-                return '';
-            }
-        };
-
-        var suggestionPresentation = function(el) {
-            return "<div>" + el._snippetResult.first_name.value + " - " + el._snippetResult.job_title.value + "</br>" + find_good_question(el) + "</div>";
-        };
-
 
         var $search = $('.search-box');
         $search.typeahead({hint : false},{
