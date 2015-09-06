@@ -46,10 +46,5 @@
     });
 </script>
 
-<script type="text/javascript">
-    window.algolia = algoliasearch("<%= ENV['ALGOLIA_APP_ID'] %>", "<%= ENV['ALGOLIA_SEARCH_KEY'] %>");
-    window.algolia.usersIndex = window.algolia.initIndex('User_<%= Rails.env %>');
-</script>
-
 </body>
 </html>

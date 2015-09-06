@@ -163,7 +163,8 @@ ol.breadcrumb {
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-.tt-dropdown-menu {
+
+.tt-menu {
   min-width: 160px;
   margin-top: 2px;
   padding: 5px 0;
@@ -175,6 +176,9 @@ ol.breadcrumb {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box;
   color: #a6a6a6;
+  em {
+    font-weight: bold;
+  }
 }
 .tt-suggestion {
   display: block;
