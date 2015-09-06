@@ -5,7 +5,7 @@
 (function() {
 
     window.algolia = algoliasearch("<%= ENV['ALGOLIA_APP_ID'] %>", "<%= ENV['ALGOLIA_SEARCH_KEY'] %>");
-    window.algolia.usersIndex = window.algolia.initIndex('User_<%= Rails.env %>');
+    window.algolia.usersIndex = window.algolia.initIndex('User_<%= ENV['ALGOLIA_ENV'] %>');
 
     var charMap = {
         "à": "a",
