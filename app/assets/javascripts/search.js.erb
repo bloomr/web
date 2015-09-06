@@ -90,7 +90,7 @@
         });
 
         var $search = $('.search-box');
-        $search.typeahead({hint : false},{
+        $search.typeahead({minLength: 2, hint : false},{
             name: 'job_title',
             limit: 200,
             display: function(el) { return el.first_name + " - " + el.job_title;  },
