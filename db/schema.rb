@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608175117) do
+ActiveRecord::Schema.define(version: 20150906200202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "active_admin_comments", force: true do |t|
-    t.string   "namespace"
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace",     limit: 255
     t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
+    t.string   "resource_id",   limit: 255, null: false
+    t.string   "resource_type", limit: 255, null: false
     t.integer  "author_id"
-    t.string   "author_type"
+    t.string   "author_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,17 +31,17 @@ ActiveRecord::Schema.define(version: 20150608175117) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "admin_users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150608175117) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "keyword_associations", force: true do |t|
+  create_table "keyword_associations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "keyword_id"
     t.datetime "created_at"
@@ -59,45 +59,46 @@ ActiveRecord::Schema.define(version: 20150608175117) do
   add_index "keyword_associations", ["keyword_id"], name: "index_keyword_associations_on_keyword_id", using: :btree
   add_index "keyword_associations", ["user_id"], name: "index_keyword_associations_on_user_id", using: :btree
 
-  create_table "keywords", force: true do |t|
-    t.string   "tag"
+  create_table "keywords", force: :cascade do |t|
+    t.string   "tag",         limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "question_comments", force: true do |t|
-    t.string   "author_avatar_url"
-    t.string   "author_name",       null: false
-    t.text     "comment",           null: false
+  create_table "question_comments", force: :cascade do |t|
+    t.string   "author_avatar_url", limit: 255
+    t.string   "author_name",       limit: 255,                null: false
+    t.text     "comment",                                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "question_id"
+    t.boolean  "published",                     default: true
   end
 
   add_index "question_comments", ["question_id"], name: "index_question_comments_on_question_id", using: :btree
 
-  create_table "questions", force: true do |t|
-    t.string   "title",                      null: false
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",      limit: 255,                 null: false
     t.text     "answer"
-    t.string   "identifier"
+    t.string   "identifier", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "position"
-    t.boolean  "published",  default: false
+    t.string   "position",   limit: 255
+    t.boolean  "published",              default: false
   end
 
   add_index "questions", ["identifier"], name: "index_questions_on_identifier", using: :btree
   add_index "questions", ["user_id", "identifier"], name: "unique_user_id_identifier", unique: true, using: :btree
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type"
+    t.string   "taggable_type", limit: 255
     t.integer  "tagger_id"
-    t.string   "tagger_type"
+    t.string   "tagger_type",   limit: 255
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
@@ -105,33 +106,33 @@ ActiveRecord::Schema.define(version: 20150608175117) do
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
-  create_table "tags", force: true do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+  create_table "tags", force: :cascade do |t|
+    t.string  "name",           limit: 255
+    t.integer "taggings_count",             default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                      default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "job_title"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
+    t.string   "first_name",             limit: 255
+    t.string   "job_title",              limit: 255
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "published",              default: false
+    t.boolean  "published",                          default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

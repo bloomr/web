@@ -75,7 +75,7 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
 
         it "creates the comment correctly" do
           @question = Question.first
-          expect(@question.question_comments.length).to eq(1)
+          expect(@question.published_questions.length).to eq(1)
         end
       end
     end
@@ -103,8 +103,8 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
 
         it "deletes the comment correctly" do
           @question.reload
-          expect(@question.question_comments.length).to eq(1)
-          expect(@question.question_comments.first).to eq(@comment_to_keep)
+          expect(@question.published_questions.length).to eq(1)
+          expect(@question.published_questions.first).to eq(@comment_to_keep)
         end
       end
 
@@ -119,7 +119,7 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
 
         it "deletes no comment" do
           @question.reload
-          expect(@question.question_comments.length).to eq(2)
+          expect(@question.published_questions.length).to eq(2)
         end
       end
 
@@ -139,7 +139,7 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
 
         it "deletes no comment" do
           @question.reload
-          expect(@question.question_comments.length).to eq(2)
+          expect(@question.published_questions.length).to eq(2)
         end
       end
     end

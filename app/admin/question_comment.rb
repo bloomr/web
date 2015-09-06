@@ -14,6 +14,6 @@ ActiveAdmin.register QuestionComment do
   #   permitted
   # end
 
-  permit_params :comment, :author_name, :author_avatar_url
+  permit_params :comment, :author_name, :author_avatar_url, :published
 
 end

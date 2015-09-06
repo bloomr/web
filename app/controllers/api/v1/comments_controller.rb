@@ -8,7 +8,7 @@ module Api
       before_filter :load_question
 
       def index
-        render json: @question.question_comments
+        render json: @question.published_questions
       end
 
       def create
@@ -23,7 +23,7 @@ module Api
 
       def destroy
         if comment = QuestionComment.where(id: params[:id], question_id: params[:question_id]).first
-          comment.destroy
+          comment.update(published: false)
           head :no_content
         else
           head :not_found

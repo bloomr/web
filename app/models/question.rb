@@ -13,4 +13,8 @@ class Question < ActiveRecord::Base
 
     position <=> other_question.position
   end
+
+  def published_questions
+    question_comments.select {|q| q.published }
+  end
 end
