@@ -14,7 +14,7 @@ module Api
       def create
         @comment = @question.question_comments.new(comment_params)
         if @comment.save
-          notify_slack @comment
+          notify_slack @comment, :creation
           render json: { message: "creation ok", comment_id: @comment.id }
         else
           render json: { error: "creation ko", error_description: @comment.errors.full_messages }, status: :bad_request
@@ -23,6 +23,7 @@ module Api
 
       def destroy
         if comment = QuestionComment.where(id: params[:id], question_id: params[:question_id]).first
+          notify_slack comment, :destruction
           comment.update(published: false)
           head :no_content
         else
@@ -40,10 +41,14 @@ module Api
         comment_raw_params.reduce({}) { |hash, (k, v)| hash.merge(k => strip_tags(v)) }
       end
 
-      def notify_slack comment
+      def notify_slack comment, type
         uri = ENV['SLACK_COMMENTS_WEBHOOK']
         if uri
-          message = "Nouveau commentaire '" + comment.comment + "' sur le portrait " + portrait_url(@question.user.id)
+          if type == :creation
+            message = "Nouveau commentaire '" + comment.comment + "' sur le portrait " + portrait_url(@question.user.id)
+          else
+            message = "!!! Destruction du commentaire : '" + comment.comment + "' sur le portrait " + portrait_url(@question.user.id)
+          end
           RestClient.post uri, { 'text' => message }.to_json, :content_type => :json
         end
       end
