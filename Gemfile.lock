@@ -295,7 +295,6 @@ GEM
       thor (~> 0.14)
     shellany (0.0.1)
     slop (3.6.0)
-    spring (1.3.6)
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -359,7 +358,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   select2-rails
-  spring
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
