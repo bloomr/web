@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   include AlgoliaSearch
 
-  algoliasearch index_name: "User_#{ENV['ALGOLIA_ENV']}", synchronous: true, per_environment: true, if: :published do
+  algoliasearch index_name: "User_#{ENV['ALGOLIA_ENV']}", synchronous: true, if: :published do
     attribute :first_name, :job_title
     attribute :keywords do
       keywords.map { |k| k.tag }
