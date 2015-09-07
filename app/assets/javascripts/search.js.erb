@@ -69,7 +69,7 @@
     };
 
     var suggestionPresentation = function(el) {
-        return "<div>" + el._snippetResult.first_name.value + " - " + el._snippetResult.job_title.value + "</br>" + find_good_question(el) + "</div>";
+        return '<div class="tt-selection">' + el._snippetResult.first_name.value + ' - ' + el._snippetResult.job_title.value + '</br>' + find_good_question(el) + '</div>';
     };
 
     document.addEventListener('page:change', function() {
