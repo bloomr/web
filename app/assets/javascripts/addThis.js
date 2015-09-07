@@ -15,8 +15,13 @@ makerAddthis = function () {
         }
     };
 
-    $.getScript("//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53bbc57061dd9f56", function () {
-        addthis.layers(layersConfig);
+    $.ajax({
+        url: "//s7.addthis.com/js/300/addthis_widget.js",
+        cache: true,
+        dataType: "script",
+        success: function() {
+            addthis.layers(layersConfig);
+        }
     });
 };
 
