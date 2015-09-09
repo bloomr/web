@@ -4,8 +4,8 @@
 
 (function() {
 
-    window.algolia = algoliasearch("G5O9392FZ0", "d761ada35b8eb59841da4d17e003bf69");
-    window.algolia.usersIndex = window.algolia.initIndex('User_prod');
+    window.algolia = algoliasearch("<%= ENV['ALGOLIA_APP_ID'] %>", "<%= ENV['ALGOLIA_SEARCH_KEY'] %>");
+    window.algolia.usersIndex = window.algolia.initIndex('User_<%= ENV['ALGOLIA_ENV'] %>');
 
     var charMap = {
         "à": "a",
