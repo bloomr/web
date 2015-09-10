@@ -37,7 +37,7 @@ gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem "paperclip", "~> 4.2"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'newrelic_rpm'
 
