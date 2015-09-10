@@ -32,6 +32,15 @@ Rails.application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
+  config.action_controller.asset_host = Proc.new { |source|
+    if ENV['CDN_HOSTS'].nil?
+      nil
+    else
+      cdn_hosts = ENV['CDN_HOSTS'].split(",")
+      cdn_hosts[Digest::MD5.hexdigest(source).to_i(16) % cdn_hosts.length]
+    end
+  }
+
   # `config.assets.precompile` has moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.

@@ -44,6 +44,7 @@ gem 'newrelic_rpm'
 gem 'rest-client'
 
 gem "algoliasearch-rails"
+gem "rack-cors"
 
 group :production do
   gem 'pg'
