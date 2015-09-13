@@ -4,7 +4,7 @@
       <div class="overlay">
         <h3 class="portrait-infos-right portrait-name" itemprop="name"><%= portrait.first_name %></h3>
         <h2 class="panel-title portrait-job-title" itemprop="jobTitle"><%= truncate(portrait.job_title, :length => 70, :separator => " ", :omission => "...") %></h2>
-        <%= image_tag("icons/icon-quote.png") %>
+        <%= image_tag("icons/icon-quote.png", height: "24px", width: "27px") %>
         <% if portrait.answer_to('love_job') %>
             <blockquote class="portrait-love-job">
               <%= truncate(raw(portrait.answer_to('love_job')), :length => 100, :separator => " ", :omission => "")  %>...
