@@ -17,6 +17,20 @@ RSpec.describe User, :type => :model do
         :password => "abcdfedv",
         :published => true)
 
+    @q21 = Question.create!(
+        :title => "Love Job Title",
+        :answer => "Because...",
+        :identifier => "love_job",
+        :user_id => @yop2.id
+    )
+
+    @q22 = Question.create!(
+        :title => "Other Question Title",
+        :answer => "Because, because...",
+        :identifier => "other_question",
+        :user_id => @yop2.id
+    )
+
     @yop3 = User.create!(
         :email => "yopyop3@yop.com",
         :first_name => "John",
@@ -37,6 +51,20 @@ RSpec.describe User, :type => :model do
         :job_title => "Developer",
         :password => "abcdfedv",
         :published => true)
+
+    @q51 = Question.create!(
+        :title => "Love Job Title",
+        :answer => "Because...",
+        :identifier => "love_job",
+        :user_id => @yop5.id
+    )
+
+    @q52 = Question.create!(
+        :title => "Other Question Title",
+        :answer => "Because, because...",
+        :identifier => "other_question",
+        :user_id => @yop5.id
+    )
 
     @yop6 = User.create!(
         :email => "yopyop6@yop.com",
@@ -84,6 +112,16 @@ RSpec.describe User, :type => :model do
       expect(user.questions_to_display().length).to eq(1)
     end
 
+  end
+
+  describe "find_published_with_love_job_question method" do
+
+    it 'should fetch the `love_job` question for each user' do
+      users = User.find_published_with_love_job_question 1
+      expect(users.length).to eq 2
+      user2 =  users.select { |u| u.email == 'yopyop2@yop.com' }.first
+      expect(user2.questions.length).to eq 1
+    end
   end
 
 end

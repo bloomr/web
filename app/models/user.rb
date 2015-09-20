@@ -66,4 +66,14 @@ class User < ActiveRecord::Base
     questions.select {|q| q.published && q.identifier != 'love_job' }
   end
 
+  def self.find_published_with_love_job_question page
+    self.includes(:questions)
+        .where("questions.identifier = ?", "love_job")
+        .references(:questions)
+        .where("users.published = ? and users.job_title IS NOT NULL", true)
+        .limit(12)
+        .offset(12 * (page - 1))
+        .order(updated_at: :desc)
+  end
+
 end
