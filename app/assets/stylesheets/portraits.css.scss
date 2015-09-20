@@ -520,4 +520,32 @@ ul#portraits_list {
     }
   }
 
+  .sectionsBox {
+    font-family: 'Satisfy', cursive;
+    font-size: 28px;
+    height: 40px;
+    list-style: none;
+    margin-top: 10px;
+    padding: 0;
+    text-align: center;
+    li {
+      width: 48%;
+      display:inline-block;
+      a {
+        color: #a6a6a6;
+        &.active {
+          color: $orange;
+        }
+      }
+
+    }
+  }
+
+  #my-work {
+    ul.relationships {
+      list-style: none;
+      color: $orange;
+    }
+  }
+
 }

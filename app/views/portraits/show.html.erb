@@ -40,16 +40,24 @@
           </div>
       </div>
   </div>
+  <div class="container">
+    <div class="row">
+      <ul class="sectionsBox col-md-8 col-md-offset-2" role="tablist">
+        <li role="presentation"><a id="interview" href="#portrait_details" aria-controls="portrait_details" role="tab" class="active">mon interview</a></li>
+        <li role="presentation"><a id="work" href="#my-work" aria-controls="my-work" role="tab">mon travail</a></li>
+      </ul>
+    </div>
+  </div>
   <div class="container-wrapper">
     <div class="container">
-      <div id="portrait_details">
-        <div class="row">
-          <blockquote class="portrait-love-job col-md-8 col-md-offset-2">
-            <%= raw(@portrait.answer_to('love_job')) %>
-          </blockquote>
-        </div>
-        <div class="row">
-          <div class="portrait-main col-md-8 col-md-offset-2">
+      <div class="row">
+        <div id="portrait_details" role="tabpanel" class="col-md-8 col-md-offset-2">
+          <div class="row">
+            <blockquote class="portrait-love-job">
+              <%= raw(@portrait.answer_to('love_job')) %>
+            </blockquote>
+          </div>
+          <div class="portrait-main">
             <ul class="portrait-questions">
               <% @portrait.questions_to_display.sort { |q1, q2| q1 <=> q2 }.each do |question| %>
                   <li itemscope itemtype="http://schema.org/Question" data-section-id="<%= question.id %>" class="commentable-section">
@@ -63,7 +71,60 @@
             <p class="merci">Merci <%= @portrait.first_name %> :)</p>
           </div>
         </div>
-    </div>
+        <div id="my-work" role="tabpanel" style="display:none;" class="col-md-8 col-md-offset-2">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6"><p>Je travaille dans une structure</p><p>entre 251 et 5000 personnes</p></div>
+                <div class="col-md-6"><img src="<%= image_path("my_work/building.png") %>" alt=""/></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <p>Au quotidien, je travaille plutôt en équipe</p>
+              <img src="<%= image_path("my_work/team.png") %>" alt=""/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <p>Lors d'une journée typique, je suis en relation avec</p>
+            </div>
+            <div class="col-md-3">
+              <ul class="relationships">
+                <li>Des médecins</li>
+                <li>Des collègues</li>
+                <li>Des clients</li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <ul class="relationships">
+                <li>La secrétaire</li>
+                <li>Des développeurs</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p>La connaissance d'une langue étrangère est obligatoire pour exercer mon métier</p>
+            </div>
+            <div class="col-md-6">
+              <img src="<%= image_path("my_work/foreign_language.png") %>" alt=""/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p>Je travaille plutôt à l'extérieur</p>
+              <img src="<%= image_path("my_work/outside.png") %>" alt=""/>
+            </div>
+            <div class="col-md-6">
+              <p>On me dit précisèment ce que je dois faire</p>
+              <img src="<%= image_path("my_work/been_told.png") %>" alt=""/>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--
+
+    -->
   </div>
 </div>
   <div class="actions2">
@@ -83,3 +144,29 @@
     <p><span>Vous voulez aider nos jeunes ? C'est ici ! > </span><a href="https://bloomr.typeform.com/to/ZDAyNU" class="btn btn-primary">Témoignez</a></p>
   </div>
 </div>
+
+
+<script>
+  $(function(){
+      var workLink = $('#work');
+      var interviewLink = $('#interview');
+      var workSection = $('#my-work');
+      var interviewSection = $('#portrait_details');
+      
+      workLink.click(function(e){
+          e.preventDefault();
+          workSection.show();
+          interviewSection.hide();
+          workLink.addClass('active');
+          interviewLink.removeClass('active');
+      });
+
+      interviewLink.click(function(e){
+          e.preventDefault();
+          workSection.hide();
+          interviewSection.show();
+          workLink.removeClass('active');
+          interviewLink.addClass('active');
+      });
+  });
+</script>
