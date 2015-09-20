@@ -5,7 +5,7 @@ class PortraitsController < ApplicationController
     if params[:page] == 0
       params[:page] = 1
     end
-    @portraits = User.where("published = ? and job_title IS NOT NULL", true).limit(12).offset(12* (params[:page]-1)).order(updated_at: :desc)
+    @portraits = User.find_published_with_love_job_question params[:page]
 
     # Get the 5 most popular tags
     @popular_keywords = Keyword.popular_keywords
