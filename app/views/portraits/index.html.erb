@@ -7,6 +7,12 @@
 
 <div class="container">
   <ul id="portraits_list" class="row">
+    <li class="col-lg-6 col-md-8 col-sm-12 col-xs-12 parcours-card">
+      <div class="parcours">
+        <p>participe à notre programme d'emails <br />et challenge ton orientation</p>
+        <a href="http://inscription.bloomr.org">Je m'inscris gratuitement !</a>
+      </div>
+    </li>
     <% @portraits.each do |portrait| %>
         <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" itemscope itemtype="http://schema.org/Person">
           <%= render "portraits/card", :portrait => portrait %>
