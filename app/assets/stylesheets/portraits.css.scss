@@ -523,7 +523,7 @@ ul#portraits_list {
   .sectionsBox {
     font-family: 'Satisfy', cursive;
     font-size: 28px;
-    height: 40px;
+    min-height: 40px;
     list-style: none;
     margin-top: 10px;
     padding: 0;
@@ -533,8 +533,31 @@ ul#portraits_list {
       display:inline-block;
       a {
         color: #a6a6a6;
+        span {
+          margin-right: 15px;
+          position: relative;
+          top: 2px;
+        }
+        .quote {
+          display: inline-block;
+          width: 30px;
+          height: 25px;
+          background: image-url("sprite-desktop.png") left -5px top -226px;
+        }
+        .luggage {
+          display: inline-block;
+          width: 30px;
+          height: 25px;
+          background: image-url("sprite-desktop.png") left -35px top -226px;
+        }
         &.active {
           color: $orange;
+          .quote {
+            background: image-url("sprite-desktop.png") left -5px top -250px;
+          }
+          .luggage {
+            background: image-url("sprite-desktop.png") left -35px top -250px;
+          }
         }
       }
 
@@ -542,8 +565,100 @@ ul#portraits_list {
   }
 
   #my-work {
-    ul.relationships {
-      list-style: none;
+    font-size: 22px;
+    .section {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      .people {
+        color: $orange;
+        font-weight: bold;
+      }
+      .flag {
+        display: inline-block;
+        width: 55px;
+        height: 80px;
+        margin-right: 15px;
+      }
+      .flag-off {
+        background: image-url("sprite-desktop.png") right 410px top 320px;
+      }
+      .flag-on {
+        background: image-url("sprite-desktop.png") right 350px top 320px;
+      }
+      .company-size {
+        display: inline-block;
+        width: 98px;
+        height: 150px;
+      }
+      .company-size-1 {
+        background: image-url("sprite-desktop.png") right 100px top 390px;
+      }
+      .company-size-2 {
+        background: image-url("sprite-desktop.png") right 190px top 390px;
+      }
+      .company-size-3 {
+        background: image-url("sprite-desktop.png") right 280px top 390px;
+      }
+      .team {
+        display: inline-block;
+        width: 185px;
+        height: 90px;
+      }
+      .team-0 {
+        background: image-url("sprite-desktop.png") left -12px top -460px;
+      }
+      .team-1 {
+        background: image-url("sprite-desktop.png") left -197px top -460px;
+      }
+      .team-2 {
+        background: image-url("sprite-desktop.png") left -384px top -460px;
+      }
+      .team-3 {
+        background: image-url("sprite-desktop.png") left -569px top -460px;
+      }
+      .team-4 {
+        background: image-url("sprite-desktop.png") left -759px top -460px;
+      }
+      .team-5 {
+        background: image-url("sprite-desktop.png") left -943px top -460px;
+      }
+      .location {
+        display: inline-block;
+        width: 65px;
+        height: 85px;
+        margin-right: 5px;
+      }
+      .location-outside {
+        background: image-url("sprite-desktop.png") left -412px top -375px;
+      }
+      .location-inside {
+        background: image-url("sprite-desktop.png") left -480px top -375px;
+      }
+      .v {
+        display: inline-block;
+        width: 50px;
+        height: 60px;
+        margin-right: 5px;
+      }
+      .v-ok {
+        background: image-url("sprite-desktop.png") left -550px top -400px;
+      }
+      .v-ko {
+        background: image-url("sprite-desktop.png") left -600px top -400px;
+      }
+
+      .light-container {
+        height: 140px;
+        position: relative;
+        span {
+          position:relative;
+          top: 7px;
+        }
+      }
+
+    }
+
+    .relationships {
       color: $orange;
     }
   }

@@ -43,15 +43,16 @@
   <div class="container">
     <div class="row">
       <ul class="sectionsBox col-md-8 col-md-offset-2" role="tablist">
-        <li role="presentation"><a id="interview" href="#portrait_details" aria-controls="portrait_details" role="tab" class="active">mon interview</a></li>
-        <li role="presentation"><a id="work" href="#my-work" aria-controls="my-work" role="tab">mon travail</a></li>
+        <li role="presentation"><a id="interview" href="#portrait_details" aria-controls="portrait_details" role="tab" class="active"><span class="quote"></span>mon interview</a></li>
+        <li role="presentation"><a id="work" href="#my-work" aria-controls="my-work" role="tab"><span class="luggage"></span>mon travail</a></li>
       </ul>
     </div>
   </div>
-  <div class="container-wrapper">
+
+  <div id="portrait_details" role="tabpanel" style="display: none;" class="container-wrapper">
     <div class="container">
       <div class="row">
-        <div id="portrait_details" role="tabpanel" class="col-md-8 col-md-offset-2">
+        <div  class="col-md-8 col-md-offset-2">
           <div class="row">
             <blockquote class="portrait-love-job">
               <%= raw(@portrait.answer_to('love_job')) %>
@@ -62,7 +63,6 @@
               <% @portrait.questions_to_display.sort { |q1, q2| q1 <=> q2 }.each do |question| %>
                   <li itemscope itemtype="http://schema.org/Question" data-section-id="<%= question.id %>" class="commentable-section">
                     <h4 itemprop="name" class="portrait-question-title"><%= question.title %></h4>
-
                     <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer">
                       <span itemprop="text"><%= question.answer.html_safe %></span></div>
                   </li>
@@ -71,62 +71,95 @@
             <p class="merci">Merci <%= @portrait.first_name %> :)</p>
           </div>
         </div>
-        <div id="my-work" role="tabpanel" style="display:none;" class="col-md-8 col-md-offset-2">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6"><p>Je travaille dans une structure</p><p>entre 251 et 5000 personnes</p></div>
-                <div class="col-md-6"><img src="<%= image_path("my_work/building.png") %>" alt=""/></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="my-work" role="tabpanel">
+
+    <div class="container-wrapper">
+      <div class="container">
+        <div class="row">
+          <div  class="col-md-8 col-md-offset-2">
+
+            <div class="row section">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p>Je travaille dans une structure</p>
+                    <% q = @portrait.questions.select {|q| q.identifier == "how_many_people_in_company" }.first %>
+                    <p class="people"><%= q.answer %></p>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="company-size company-size-<%= q.discret_company_size %>"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6" style="position: relative">
+                <p>Au quotidien, je travaille plutôt en équipe</p>
+                <% q = @portrait.questions.select {|q| q.identifier == "solo_vs_team" }.first %>
+                <span class="team team-<%= q.answer %>"></span>
               </div>
             </div>
-            <div class="col-md-6">
-              <p>Au quotidien, je travaille plutôt en équipe</p>
-              <img src="<%= image_path("my_work/team.png") %>" alt=""/>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <p>Lors d'une journée typique, je suis en relation avec</p>
-            </div>
-            <div class="col-md-3">
-              <ul class="relationships">
-                <li>Des médecins</li>
-                <li>Des collègues</li>
-                <li>Des clients</li>
-              </ul>
-            </div>
-            <div class="col-md-3">
-              <ul class="relationships">
-                <li>La secrétaire</li>
-                <li>Des développeurs</li>
-              </ul>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <p>La connaissance d'une langue étrangère est obligatoire pour exercer mon métier</p>
-            </div>
-            <div class="col-md-6">
-              <img src="<%= image_path("my_work/foreign_language.png") %>" alt=""/>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <p>Je travaille plutôt à l'extérieur</p>
-              <img src="<%= image_path("my_work/outside.png") %>" alt=""/>
-            </div>
-            <div class="col-md-6">
-              <p>On me dit précisèment ce que je dois faire</p>
-              <img src="<%= image_path("my_work/been_told.png") %>" alt=""/>
+
+            <div class="row section">
+              <div class="col-md-4">
+                <p>Lors d'une journée typique, je suis en relation avec</p>
+              </div>
+              <div class="col-md-8 relationships">
+                <% q = @portrait.questions.select {|q| q.identifier == "who_do_you_work_with" }.first %>
+                <p><%= q.answer %></p>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
-    <!--
+    </div>
 
-    -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="row section">
+            <div class="col-md-6">
+              <p>La connaissance d'une langue étrangère est obligatoire pour exercer mon métier</p>
+            </div>
+            <div class="col-md-6">
+              <% q = @portrait.questions.select {|q| q.identifier == "foreign_language_mandatory" }.first %>
+              <% q.answer.to_i.times do %><span class="flag flag-on"></span><% end %><% (5 - q.answer.to_i).times do %><span class="flag flag-off"></span><% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="section">
+              <div class="row">
+                <div class="col-md-6 light-container">
+                  <p>Je travaille plutôt à l'extérieur</p>
+                  <% q = @portrait.questions.select {|q| q.identifier == "inside_or_outside_work" }.first %>
+                  <% q.answer.to_i.times do %><span class="location location-outside"></span><% end %><% (5 - q.answer.to_i).times do %><span class="location location-inside"></span><% end %>
+                </div>
+                <div class="col-md-6">
+                  <p>On me dit précisément ce que<br />je dois faire</p>
+                  <% q = @portrait.questions.select {|q| q.identifier == "self_time_management" }.first %>
+                  <% q.answer.to_i.times do %><span class="v v-ok"></span><% end %><% (5 - q.answer.to_i).times do %><span class="v v-ko"></span><% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+
+
+
   <div class="actions2">
     <div>
       <a href="/portraits/previous?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-left"></span>personne précédente</a>
@@ -152,7 +185,7 @@
       var interviewLink = $('#interview');
       var workSection = $('#my-work');
       var interviewSection = $('#portrait_details');
-      
+
       workLink.click(function(e){
           e.preventDefault();
           workSection.show();
