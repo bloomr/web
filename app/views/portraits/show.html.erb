@@ -40,6 +40,8 @@
           </div>
       </div>
   </div>
+
+  <% if @portrait.has_explained_its_works? %>
   <div class="container">
     <div class="row">
       <ul class="sectionsBox col-md-8 col-md-offset-2" role="tablist">
@@ -48,8 +50,9 @@
       </ul>
     </div>
   </div>
+  <% end %>
 
-  <div id="portrait_details" role="tabpanel" style="display: none;" class="container-wrapper">
+  <div id="portrait_details" role="tabpanel" class="container-wrapper">
     <div class="container">
       <div class="row">
         <div  class="col-md-8 col-md-offset-2">
@@ -75,7 +78,8 @@
     </div>
   </div>
 
-  <div id="my-work" role="tabpanel">
+  <% if @portrait.has_explained_its_works? %>
+  <div id="my-work" role="tabpanel" style="display: none;">
 
     <div class="container-wrapper">
       <div class="container">
@@ -160,9 +164,7 @@
       </div>
     </div>
   </div>
-
-
-
+  <% end %>
 
   <div class="actions2">
     <div>

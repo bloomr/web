@@ -76,4 +76,9 @@ class User < ActiveRecord::Base
         .order(updated_at: :desc)
   end
 
+  def has_explained_its_works?
+    identifiers_needed = %w{how_many_people_in_company solo_vs_team who_do_you_work_with foreign_language_mandatory inside_or_outside_work self_time_management}
+    identifiers_needed.all? {|identifier| questions.find { |q2| q2.identifier == identifier } }
+  end
+
 end
