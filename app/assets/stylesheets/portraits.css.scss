@@ -569,6 +569,7 @@ ul#portraits_list {
     .section {
       margin-top: 30px;
       margin-bottom: 30px;
+      text-align: center;
       .people {
         color: $orange;
         font-weight: bold;
@@ -648,14 +649,24 @@ ul#portraits_list {
       }
 
       .light-container {
-        height: 140px;
+        min-height: 140px;
         position: relative;
         span {
           position:relative;
           top: 7px;
         }
       }
+      @media (min-width: 992px)  {
+        .team-container {
+          border-left: 3px solid #ddd;
+        }
+      }
+    }
 
+    .small-spacer {
+      border-top: 1px solid #ddd;
+      margin-top:15px;
+      margin-bottom:15px;
     }
 
     .relationships {

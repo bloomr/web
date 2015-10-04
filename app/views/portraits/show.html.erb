@@ -95,13 +95,16 @@
                   </div>
                 </div>
               </div>
+              <div class="visible-xs visible-sm small-spacer"></div>
               <div class="col-md-6" style="position: relative">
-                <p>Au quotidien, je travaille plutôt en équipe</p>
-                <% q = @portrait.questions.select {|q| q.identifier == "solo_vs_team" }.first %>
-                <span class="team team-<%= q.answer %>"></span>
+                <div class="team-container">
+                  <p>Au quotidien, je travaille plutôt en équipe</p>
+                  <% q = @portrait.questions.select { |q| q.identifier == "solo_vs_team" }.first %>
+                  <span class="team team-<%= q.answer %>"></span>
+                </div>
               </div>
             </div>
-
+            <div class="visible-xs visible-sm small-spacer"></div>
             <div class="row section">
               <div class="col-md-4">
                 <p>Lors d'une journée typique, je suis en relation avec</p>
@@ -144,6 +147,7 @@
                   <% q = @portrait.questions.select {|q| q.identifier == "inside_or_outside_work" }.first %>
                   <% q.answer.to_i.times do %><span class="location location-outside"></span><% end %><% (5 - q.answer.to_i).times do %><span class="location location-inside"></span><% end %>
                 </div>
+                <div class="visible-xs visible-sm small-spacer"></div>
                 <div class="col-md-6">
                   <p>On me dit précisément ce que<br />je dois faire</p>
                   <% q = @portrait.questions.select {|q| q.identifier == "self_time_management" }.first %>
