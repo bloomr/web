@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require underscore-min
 //= require turbolinks
-//= require bootstrap
+//= require bootstrap-sprockets-custom
 //= require modernizr.custom.17912
 //= require universalAnalytics
 //= require optimizely

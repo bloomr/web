@@ -6,7 +6,7 @@ $light_orange: lighten($orange, 30%);
 
 
 @import "bootstrap-sprockets";
-@import "./bootstrap";
+@import "./bootstrap_custom";
 
 @import "./side-comments/side-comments";
 @import "./side-comments/themes/default-theme.min";
