@@ -19,7 +19,7 @@ namespace :heroku do
     system "aws s3 rm s3://bloomr-data/postgres.dump"
     system "pg_dump -Fc --no-acl --no-owner -h localhost #{local_db} > postgres.dump"
     system "aws s3 cp postgres.dump s3://bloomr-data/postgres.dump --acl public-read"
-    system "heroku pgbackups:restore DATABASE 'https://s3-eu-west-1.amazonaws.com/bloomr-data/postgres.dump' --app #{heroku_app} --confirm #{heroku_app}"
+    system "heroku pg:backups restore 'https://s3-eu-west-1.amazonaws.com/bloomr-data/postgres.dump' DATABASE --app #{heroku_app} --confirm #{heroku_app}"
     system "aws s3 rm s3://bloomr-data/postgres.dump"
   end
 end
