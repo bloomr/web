@@ -67,6 +67,11 @@
 
 ul#portraits_list {
 
+  .panel-title {
+    margin-top: 0;
+    font-size: ceil(($font-size-base * 1.125));
+  }
+
   .parcours-card {
     margin-bottom: 10px;
     .parcours{
