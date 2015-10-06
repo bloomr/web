@@ -153,7 +153,7 @@
                 </div>
                 <div class="visible-xs visible-sm small-spacer"></div>
                 <div class="col-md-6">
-                  <p>On me dit précisément ce que<br />je dois faire</p>
+                  <p>Je gère moi-même<br />mon temps</p>
                   <% q = @portrait.questions.select {|q| q.identifier == "self_time_management" }.first %>
                   <% q.answer.to_i.times do %><span class="v v-ok"></span><% end %><% (5 - q.answer.to_i).times do %><span class="v v-ko"></span><% end %>
                 </div>
