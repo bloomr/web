@@ -594,16 +594,17 @@ ul#portraits_list {
       .company-size {
         display: inline-block;
         width: 98px;
-        height: 150px;
+        height: 185px;
+        background-color: yellow;
       }
       .company-size-1 {
-        background: image-url("sprite-desktop.png") right 100px top 390px;
+        background: image-url("sprite-desktop.png") left 0px top -274px;
       }
       .company-size-2 {
-        background: image-url("sprite-desktop.png") right 190px top 390px;
+        background: image-url("sprite-desktop.png") left -92px top -274px;
       }
       .company-size-3 {
-        background: image-url("sprite-desktop.png") right 280px top 390px;
+        background: image-url("sprite-desktop.png") left -182px top -274px;
       }
       .team {
         display: inline-block;
