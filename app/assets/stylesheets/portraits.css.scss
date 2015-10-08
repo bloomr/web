@@ -74,28 +74,38 @@ ul#portraits_list {
 
   .parcours-card {
     margin-bottom: 10px;
-    .parcours{
-      height: 316px;
-      background: image-url("parcours.png") center;
-      border-radius: 10px 10px 0 0;
-      box-shadow: 0px 1px 3px 0px #656565;
-      text-align: center;
-      position: relative;
-      p {
-        padding-top: 150px;
-        color: white;
-        font-weight: bold;
-        font-size: 18px;
+    a {
+      .parcours{
+        height: 316px;
+        background: image-url("parcours.png") center;
+        border-radius: 10px 10px 0 0;
+        box-shadow: 0px 1px 3px 0px #656565;
+        text-align: center;
+        position: relative;
+        p {
+          padding-top: 150px;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+        }
+        span.inscription {
+          background-color: #278555;
+          margin-top: 20px;
+          padding: 10px;
+          color: white;
+          font-weight: bold;
+          display: inline-block;
+          border-radius: 10px;
+          text-shadow: 0px 2px black;
+          transition: margin-top 0.35s;
+        }
       }
-      a {
-        background-color: #278555;
-        margin-top: 20px;
-        padding: 10px;
-        color: white;
-        font-weight: bold;
-        display: inline-block;
-        border-radius: 10px;
-        text-shadow: 0px 2px black;
+      &:hover {
+        text-decoration: none;
+        span.inscription {
+          text-decoration: underline;
+          margin-top: 10px;
+        }
       }
     }
   }
