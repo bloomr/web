@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  padding-top: 70px;
+  padding-top: 54px;
   background-color: white;
   @media(min-width: 768px) {
     padding-bottom: 60px;
@@ -47,14 +47,7 @@ ol.breadcrumb {
 .subheader {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
   max-width: 100%;
-  //overflow: hidden; //otherwise search is buggy ...
   .intro-wrapper {
-    /*width: 120%;
-    margin-left: -10%; //otherwise there is a horizontal scrolling bar
-    margin-right: -10%;
-    padding-left: 10%; //otherwise text is badly centered
-    padding-right: 10%;*/
-
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3) inset;
     background: image-url("curieux.jpg") no-repeat center;
     background-size: contain;
@@ -191,4 +184,47 @@ ol.breadcrumb {
 .tt-suggestion:hover {
   color: #fff;
   background-color: #ff6622 !important;
+}
+
+.icon-search {
+  display: inline-block;
+  width: 23px;
+  height: 29px;
+  background: image-url("sprite-desktop.png") left -70px top 0px no-repeat;
+}
+
+.icon-blog {
+  background: image-url("sprite-desktop.png") left -93px top 0px no-repeat;
+  display: inline-block;
+  height: 29px;
+  width: 45px;
+}
+
+.icon-twitter {
+  background: image-url("sprite-desktop.png") left -70px top -29px no-repeat;
+  display: inline-block;
+  height: 15px;
+  width: 20px;
+}
+
+.icon-facebook {
+  background: image-url("sprite-desktop.png") left -90px top -29px no-repeat;
+  display: inline-block;
+  height: 18px;
+  width: 15px;
+}
+
+.icon-twitter-white {
+  background: image-url("sprite-desktop.png") left -104px top -190px no-repeat;
+  display: inline-block;
+  width: 30px;
+  height: 26px;
+
+}
+.icon-facebook-white {
+  background: image-url("sprite-desktop.png") left -145px top -189px no-repeat;
+  display: inline-block;
+  width: 14px;
+  height: 29px;
+
 }

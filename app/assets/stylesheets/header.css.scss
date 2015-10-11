@@ -1,5 +1,4 @@
 #header {
-  height: 70px;
   padding-top: 10px;
   background-color: white;
   border-bottom: 1px solid #DDD;
@@ -15,104 +14,122 @@
   }
 
   a.navbar-brand {
-    background-image: image_url("logo-97.png");
-    background-repeat: no-repeat;
-    width: 97px;
-    height: 57px;
+    background: image-url("sprite-desktop.png") left 0px top 6px no-repeat;
+    width: 70px;
+    height: 50px;
     margin-left: 10px;
   }
 
-  .boiteAIdee {
-    background: image-url("icons/icon-boiteidee-complet.png") no-repeat;
-    display: inline-block;
-    height: 22px;
-    width: 17px;
-    cursor: pointer;
-  }
-
-  .twitter {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    background: image-url("icons/twitter.png") no-repeat;
-    vertical-align: middle;
-  }
-  .facebook {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: image-url("icons/facebook.png") no-repeat;
-    vertical-align: middle;
-    position: relative;
-    top: -4px;
-  }
-
-  ul.nav {
-    li {
+  .navbar-collapse {
+    background-color: #FA6B03;
+    text-align: center;
+    ul.nav li {
       a {
-        font-size: 16px;
+        color: white;
+
+        .icon-twitter-white{
+          vertical-align: middle;
+        }
+
+        .icon-facebook-white {
+          vertical-align: middle;
+          position: relative;
+          top: -4px;
+        }
+
+        &:hover {
+          background-color: white;
+          opacity: 0.8;
+          color: #ff6622;
+          .icon-facebook-white {
+            background-color: $orange;
+          }
+          .icon-twitter-white {
+            background-color: $orange;
+          }
+        }
       }
+
       &.social {
         font-style: italic;
         span {
           margin-right: 10px;
         }
       }
-    }
-  }
 
-
-  .navbar-collapse {
-    background-color: #FA6B03;
-    text-align: center;
-    ul.nav li a {
-      color: white;
-      &:hover {
-        background-color: white;
-        opacity: 0.8;
-        color: #ff6622;
-        .facebook {
-          background: image-url("icons/facebook-orange.png") no-repeat;
-        }
-        .twitter {
-          background: image-url("icons/twitter-orange.png") no-repeat;
-        }
-      }
     }
   }
 
   .navbar-collapse.in {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
-    margin-top: 3px;
   }
 
 
   .navbar-nav.search-and-idea {
-    margin-right: 15px;
-    margin-top: 0px;
-    > li {
-      display: inline-block;
-      > a.searchButton {
-        color: $slightly_light_orange !important;
-      }
-      > a.btn-primary {
-        margin-left: 15px;
-      }
-    }
-  }
+    margin: 0 15px 0 auto;
 
-  a.btn-primary {
-    color: white;
-    font-weight: bold;
-    padding-right: 15px;
-    margin-right: 0px;
-    padding-left: 15px;
-    margin-left: 0px;
-    box-shadow: 0px 1px 3px 0px #656565;
-    &:hover {
-      background-color: white;
-      color: #ff6622;
-      box-shadow: none;
+    li {
+      display: inline-block;
+      a {
+        color:#A6A6A6;
+        font-weight: bold;
+        padding-left: 5px;
+        padding-right: 5px;
+        &.active {
+          color: $orange;
+          text-decoration: underline;
+        }
+
+        &.searchButton {
+          padding-left: 40px;
+          .icon-search {
+            position: absolute;
+            left: 10px;
+            top: 8px;
+          }
+        }
+
+        &.blog {
+          padding-left: 60px;
+          .icon-blog {
+            position: absolute;
+            left: 10px;
+            top: 8px;
+          }
+        }
+
+        &.btn-primary {
+          color: white;
+          font-weight: bold;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-left: 15px;
+          box-shadow: 0px 1px 3px 0px #656565;
+          &:hover {
+            background-color: white;
+            color: #ff6622;
+            box-shadow: none;
+          }
+        }
+      }
+
+      @media (min-width: $screen-md-min) {
+        &.search-wrapper {
+          border-left: 1px solid #aeaeae;
+          a {
+            margin-left: 10px;
+          }
+        }
+      }
+
+      @media (min-width: $screen-sm-min) {
+        &.twitter-wrapper {
+          border-left: 1px solid #aeaeae;
+          a {
+            margin-left: 10px;
+          }
+        }
+      }
     }
   }
 }
