@@ -115,7 +115,7 @@
 
       @media (min-width: $screen-md-min) {
         &.search-wrapper {
-          border-left: 1px solid #aeaeae;
+          border-left: 1px solid rgba(174, 174, 174, 0.5);
           a {
             margin-left: 10px;
           }
@@ -124,7 +124,7 @@
 
       @media (min-width: $screen-sm-min) {
         &.twitter-wrapper {
-          border-left: 1px solid #aeaeae;
+          border-left: 1px solid rgba(174, 174, 174, 0.5);
           a {
             margin-left: 10px;
           }
