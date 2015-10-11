@@ -2,80 +2,41 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
 
+  def create_fake_user index, published=true
+    User.create!(
+        :email => "yopyop#{index}@yop.com",
+        :first_name => "John",
+        :job_title => "Developer",
+        :password => "abcdfedv",
+        :published => published)
+  end
+
+  def create_fake_question user, identifier="random"
+    Question.create!(
+        :title => "Title",
+        :answer => "Because...",
+        :identifier => identifier,
+        :user_id => user.id
+    )
+  end
+
   before do
-    @yop1 = User.create!(
-        :email => "yopyop1@yop.com",
-        :first_name => "John",
-        :job_title => "Developer",
-        :password => "abcdfedv",
-        :published => false)
+    @yop1 = create_fake_user(1, false)
 
-    @yop2 = User.create!(
-        :email => "yopyop2@yop.com",
-        :first_name => "John",
-        :job_title => "Developer",
-        :password => "abcdfedv",
-        :published => true)
+    @yop2 = create_fake_user(2, true)
+    @q21 = create_fake_question(@yop2, "love_job")
+    @q22 = create_fake_question(@yop2)
 
-    @q21 = Question.create!(
-        :title => "Love Job Title",
-        :answer => "Because...",
-        :identifier => "love_job",
-        :user_id => @yop2.id
-    )
-
-    @q22 = Question.create!(
-        :title => "Other Question Title",
-        :answer => "Because, because...",
-        :identifier => "other_question",
-        :user_id => @yop2.id
-    )
-
-    @yop3 = User.create!(
-        :email => "yopyop3@yop.com",
-        :first_name => "John",
-        :job_title => "Developer",
-        :password => "abcdfedv",
-        :published => true)
-
-    @yop4 = User.create!(
-        :email => "yopyop4@yop.com",
-        :first_name => "John",
-        :job_title => "Developer",
-        :password => "abcdfedv",
-        :published => false)
-
-    @yop5 = User.create!(
-        :email => "yopyop5@yop.com",
-        :first_name => "John",
-        :job_title => "Developer",
-        :password => "abcdfedv",
-        :published => true)
-
-    @q51 = Question.create!(
-        :title => "Love Job Title",
-        :answer => "Because...",
-        :identifier => "love_job",
-        :user_id => @yop5.id
-    )
-
-    @q52 = Question.create!(
-        :title => "Other Question Title",
-        :answer => "Because, because...",
-        :identifier => "other_question",
-        :user_id => @yop5.id
-    )
-
-    @yop6 = User.create!(
-        :email => "yopyop6@yop.com",
-        :first_name => "John",
-        :job_title => "Developer",
-        :password => "abcdfedv",
-        :published => false)
-
-
+    @yop3 = create_fake_user(3, true)
     @yop3.destroy!
 
+    @yop4 = create_fake_user(4, false)
+
+    @yop5 = create_fake_user(5, true)
+    @q51 = create_fake_question(@yop5, "love_job")
+    @q52 = create_fake_question(@yop5)
+
+    @yop6 = create_fake_user(6, false)
   end
 
   describe "the next method" do
