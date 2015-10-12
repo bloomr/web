@@ -1,3 +1,5 @@
+require 'pp'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -66,14 +68,20 @@ class User < ActiveRecord::Base
     questions.select {|q| q.published && q.identifier != 'love_job' }
   end
 
-  def self.find_published_with_love_job_question page
-    self.includes(:questions)
-        .where("questions.identifier = ?", "love_job")
-        .references(:questions)
-        .where("users.published = ? and users.job_title IS NOT NULL", true)
-        .limit(12)
-        .offset(12 * (page - 1))
-        .order(updated_at: :desc)
+  def self.find_published_with_love_job_question options={}
+    options = { nb_per_page: 12, page: 0}.merge(options)
+
+    users = User.select("users.id, count(questions.id) AS questions_count")
+        .joins(:questions)
+        .where(users: {published: true}, questions: {published: true})
+        .group('users.id, questions.user_id')
+        .order("questions_count DESC, users.id DESC")
+        .limit(options[:nb_per_page])
+        .offset(options[:nb_per_page] * options[:page])
+
+    user_withQuestions = User.includes(:questions).where(questions: {identifier: 'love_job'}, users: {id: [ users.map{|u| u.id } ].flatten })
+
+    users.map{|u| user_withQuestions.select{|uq| uq.id == u.id }.first }
   end
 
   def has_explained_its_works?
