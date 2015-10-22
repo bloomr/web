@@ -42,7 +42,7 @@ module Api
 
       private
       def user_params
-        params.require(:user).permit(:email, :job_title, :first_name, :avatar, :keyword_list, questions_attributes: [:identifier, :title, :answer, :position])
+        params.require(:user).permit(:email, :job_title, :first_name, :avatar, :keyword_list, questions_attributes: [:identifier, :title, :answer, :position, :published])
       end
 
     end

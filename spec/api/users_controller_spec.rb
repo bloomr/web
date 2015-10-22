@@ -70,12 +70,14 @@ RSpec.describe Api::V1::UsersController, :type => :request do
                 {
                     identifier: "a",
                     title: "Que faites vous exactement ?",
-                    answer: "je vends du yop"
+                    answer: "je vends du yop",
+                    published: true
                 },
                 {
                     identifier: "b",
                     title: "Au fond, qu'est ce qui fait que vous aimez votre métier ?",
-                    answer: "j'adore le yop"
+                    answer: "j'adore le yop",
+                    published: true
                 }
             ]
         }
@@ -96,6 +98,7 @@ RSpec.describe Api::V1::UsersController, :type => :request do
       user = User.find(1)
       expect(user.questions.length).to eq(2)
       expect(user.questions.map{ |k| k.identifier }).to eq(["a", "b"])
+      expect(user.questions.all?{ |q| q.published }).to eq(true)
     end
 
     it "responds yop with 400 code if users questions is already known" do
