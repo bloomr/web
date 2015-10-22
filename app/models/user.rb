@@ -64,8 +64,11 @@ class User < ActiveRecord::Base
     self.where("published = ? and job_title IS NOT NULL", true).offset(offset).first
   end
 
+  MY_WORK_QUESTIONS_IDENTIFIERS = %w{how_many_people_in_company solo_vs_team who_do_you_work_with foreign_language_mandatory inside_or_outside_work self_time_management}
+
   def questions_to_display
-    questions.select {|q| q.published && q.identifier != 'love_job' }
+    questions_not_to_display = MY_WORK_QUESTIONS_IDENTIFIERS + ['love_job']
+    questions.select {|q| q.published && !questions_not_to_display.include?(q.identifier) }
   end
 
   def self.find_published_with_love_job_question options={}
@@ -85,8 +88,7 @@ class User < ActiveRecord::Base
   end
 
   def has_explained_its_works?
-    identifiers_needed = %w{how_many_people_in_company solo_vs_team who_do_you_work_with foreign_language_mandatory inside_or_outside_work self_time_management}
-    identifiers_needed.all? {|identifier| questions.find { |q2| q2.identifier == identifier } }
+    MY_WORK_QUESTIONS_IDENTIFIERS.all? {|identifier| questions.find { |q2| q2.identifier == identifier } }
   end
 
 end
