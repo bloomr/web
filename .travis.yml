@@ -8,7 +8,9 @@ deploy:
   provider: heroku
   api_key:
     secure: uic3bSlzs6AKDkA6cxkGcyWJ/dNeN/r8loErU5ZUYrQmDvYB5FpXaa5HqRF4FhU6Bd6/9oM6wFS0h4SnlRKvOxZOiYcT1jCFTRddaKcnftp9AfxtBBP1kwLmQYymukTAUfCuU3dSPp4qJn/P8mTyxy2M5oyCqdAfQMkUW1dgCIrGAWGvqcPIHj2MtfvCVfAGttcImIPnTr70pgXnoz3Bp5zDEijwVzHLDlli1A2rvCuk+mMTZm8erF8QozF3ESYk63f7T9VGMSWuzqfeNVvd7k8/FIRO2tZgbmh5CzwXte2Um5yae8vPJWQc1JOBvRsM7SOzfDzZWU+I8QS64RGE1SuFV5LKLwgGkPYMVU9Pn1kEpzuo7HltmH0Po9VIAVUWWmJwgH4TXYas0IMLrGOIiSBY1Q8AIC5aehG71e3+9C+d2vE7f/gwbjRb5mzoK+ahjoD+/lt3KNNWwOUtOtnI+8OCo7shnh8hZvRISA8gUZeqmRvJNFhIQ2pJdIHeU1OLmmidA1FY1aOzSiW/8+xuvvu7kKWx8Xr2ZhxK7SAf3DF3cKIG7hx2+WhhpzxoQ8qrIsQivKotiVwobWM1NYNJ30WYuqmNsQLU7s6tCBXKee3sUIgEZ3f9riPiRx6NIKNx3aw2uYVD93Z8oRKMh8dMkhMvLuiWlH8abevPcIXRqps=
-  app: staging-bloomr
+  run: rake db:migrate
+  app:
+      develop: staging-bloomr
+      master: bloomr
   on:
     repo: bloomr/web
-    branch: develop
