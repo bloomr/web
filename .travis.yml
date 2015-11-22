@@ -1,3 +1,15 @@
 language: ruby
-
-script: cp config/database.yml.dist config/database.yml && bundle exec rake
+cache: bundler
+sudo: false
+script:
+- cp config/database.yml.dist config/database.yml
+- bundle exec rake
+deploy:
+  provider: heroku
+  api_key:
+    secure: j1UiiA5tmRkD2RoQ8nSCK7lfQ3FLGo8Okd8i84I4ySpHJFEXNGy++ULucLovO089HsExQYtOQo4RQUEidmpSYtcLWBRqn9imC5fkHZHOjpOz+8AFcafAU9msdicqv9Fbyk2HMPW4AgiNh8xeTpya47GDDmFOWZASTqdhCZCZ5Y8m7Z2IhZj+nlyCekujypD0r4+7g0TZqus9bccT6qOawIbMHniEG5DlHSgJa6QaY+cKpW4OmwY2mek3tw5DHDxHl3yFbSPowMqo18cYOODJxIeFLpVL9ZquGCc76ufeCpRjZTyJxZA4ffSMNtiiuRUIPQrZM182q3S/nSzT8q20c/t5tkJeIWPYCNZUmTkjpvrJwVzAKGZ7a63dxzktQ6nTmziyFNRl2oiz3IxK4mj31XaP41Jn1kqOGV6Atv362NKs7ZVfcs+IvcruBmCfjNBAsghL5iBsRXH2156cAFj/BrvPgB1YqOcWmF2+yecUq0IpA76jxn248m6lHCL0uFp7eSMGT7antmJv7bG8m5WX3rFkMNet05wbmATBwY1TjhUOGs81J1IQq1jlNVOr0YOIt9qciMJOyvcj6CFaY8Ea/afuLrE79FYc2/lYoYBjQYfH/h/GRi6o57a8YoU/SpZLaweToGqF7GhVDSQ0LmpShElO2Ca5Jjv8lXh/pEZjnJs=
+  run: rake db:migrate
+  app:
+      develop: staging-bloomr
+  on:
+      repo: bloomr/web
