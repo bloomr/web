@@ -25,3 +25,4 @@
 //= require addThis
 //= require algoliasearch.min
 //= require search
+//= require hotjar
