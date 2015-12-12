@@ -153,10 +153,32 @@
                 </div>
                 <div class="visible-xs visible-sm small-spacer"></div>
                 <div class="col-md-6">
-                  <p>Je gère moi-même<br />mon temps</p>
-                  <% q = @portrait.questions.select {|q| q.identifier == "self_time_management" }.first %>
-                  <% q.answer.to_i.times do %><span class="v v-ok"></span><% end %><% (5 - q.answer.to_i).times do %><span class="v v-ko"></span><% end %>
+                  <p>je me déplace souvent</p>
+                  <% q = @portrait.questions.select {|q| q.identifier == "always_on_the_road" }.first %>
+                  <% q.answer.to_i.times do %><span class="back-bag"></span><% end %><% (5 - q.answer.to_i).times do %><span class="tent"></span><% end %>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="section">
+            <div class="row">
+              <div class="col-md-6 light-container">
+                <p>Je gère moi-même<br />mon temps</p>
+                <% q = @portrait.questions.select {|q| q.identifier == "self_time_management" }.first %>
+                <% q.answer.to_i.times do %><span class="v v-ok"></span><% end %><% (5 - q.answer.to_i).times do %><span class="v v-ko"></span><% end %>
+              </div>
+              <div class="visible-xs visible-sm small-spacer"></div>
+              <div class="col-md-6">
+                <p>Mon métier est plutôt manuel</p>
+                <% q = @portrait.questions.select {|q| q.identifier == "manual_or_intellectual" }.first %>
+                <% q.answer.to_i.times do %><span class="hand"></span><% end %><% (5 - q.answer.to_i).times do %><span class="brain"></span><% end %>
               </div>
             </div>
           </div>

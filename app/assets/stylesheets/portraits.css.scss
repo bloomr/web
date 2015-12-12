@@ -663,6 +663,34 @@ ul#portraits_list {
       .v-ko {
         background: image-url("sprite-desktop.png") left -600px top -400px;
       }
+      .back-bag {
+        display: inline-block;
+        background: image-url("icons/back-bag.png");
+        width: 47px;
+        height: 84px;
+        margin-right: 10px;
+      }
+      .tent {
+        display: inline-block;
+        background: image-url("icons/tent.png");
+        width: 60px;
+        height: 84px;
+        margin-right: 10px;
+      }
+      .hand {
+        display: inline-block;
+        background: image-url("icons/hand.png");
+        width: 54px;
+        height: 84px;
+        margin-right: 10px;
+      }
+      .brain {
+        display: inline-block;
+        background: image-url("icons/brain.png");
+        width: 61px;
+        height: 84px;
+        margin-right: 10px;
+      }
 
       .light-container {
         min-height: 140px;

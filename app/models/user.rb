@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
     self.where("published = ? and job_title IS NOT NULL", true).offset(offset).first
   end
 
-  MY_WORK_QUESTIONS_IDENTIFIERS = %w{how_many_people_in_company solo_vs_team who_do_you_work_with foreign_language_mandatory inside_or_outside_work self_time_management}
+  MY_WORK_QUESTIONS_IDENTIFIERS = %w{how_many_people_in_company solo_vs_team who_do_you_work_with foreign_language_mandatory inside_or_outside_work self_time_management always_on_the_road manual_or_intellectual }
 
   def questions_to_display
     questions_not_to_display = MY_WORK_QUESTIONS_IDENTIFIERS + ['love_job']
