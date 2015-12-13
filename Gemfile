@@ -56,8 +56,12 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'spring-commands-rspec'
   gem 'capybara'
+  gem "rack-livereload"
+  gem 'guard-livereload', '~> 2.4', require: false
   gem 'growl'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :test do
