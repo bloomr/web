@@ -150,6 +150,8 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    haml (4.0.7)
+      tilt
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -357,6 +359,7 @@ DEPENDENCIES
   growl
   guard-livereload (~> 2.4)
   guard-rspec
+  haml
   heroku-deflater
   jbuilder (~> 2.0)
   jquery-rails

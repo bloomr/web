@@ -1,0 +1,45 @@
+.container
+  .row{ style: 'margin-top: 20px;' }
+    .col-md-10.col-md-offset-1
+      %p
+        Déjà un compte ?
+        %a(href='') Se logger
+
+      - @person = User.new
+      = form_for @person, url: {action: "create", controller: "bloomies"} do |person_form|
+        .form-group
+          = person_form.text_field :email, placeholder: 'email', class: 'form-control', type: 'email', required: 'required'
+        .form-group
+          = person_form.text_field :password, placeholder: 'password', class: 'form-control', type: 'password', required: 'required'
+        = submit_tag 'Créer votre compte', class: 'btn btn-default', id: 'create_account'
+
+  .row{ style: 'margin-top: 20px;' }
+    .col-md-10.col-md-offset-1
+      %form#payment
+        %script{  src: 'https://checkout.stripe.com/checkout.js',
+                  class: 'stripe-button',
+                  data: { key: 'pk_test_gwg8v2Rba73NM4PPxoX0eAa8',
+                          amount: '4000',
+                          label: 'payer un parcours',
+                          name: 'Bloomr',
+                          description: '1 parcours (40,00 €)',
+                          currency: 'eur',
+                          image: image_url('logo-97.png'),
+                          locale: 'fr' }}
+
+:javascript
+  var form_submission = function (e) {
+    e.preventDefault();
+    data = $form.serialize();
+    action = $form.attr('action');
+    $.post(action, data, function() {
+     $submit_payment.attr('disabled', false);
+    });
+  };
+  var $form = $('#new_user');
+  var $submit_payment = $('#payment button');
+
+  $(function() {
+    $submit_payment.attr('disabled', true);
+    $form.on('submit', form_submission);
+  });

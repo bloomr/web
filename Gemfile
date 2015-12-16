@@ -46,6 +46,8 @@ gem 'rest-client'
 gem "algoliasearch-rails"
 gem "rack-cors"
 
+gem "haml"
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

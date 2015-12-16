@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  post 'bloomies/create'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
@@ -30,6 +33,7 @@ Rails.application.routes.draw do
   get "le-concept" => "static#le_concept"
   get "qui-nous-sommes", to: redirect('/qui-sommes-nous')
   get "qui-sommes-nous" => "static#qui_sommes_nous"
+  get "le-parcours" => "static#le_parcours"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
