@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :bloomies
   post 'bloomies/create'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
