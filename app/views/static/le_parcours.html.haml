@@ -1,17 +1,24 @@
 .container
   .row{ style: 'margin-top: 20px;' }
     .col-md-10.col-md-offset-1
-      %p
-        Déjà un compte ?
-        %a(href='') Se logger
+      - if bloomy_signed_in?
+        %p bonjour #{ current_bloomy.email }
+        = link_to('Logout', destroy_bloomy_session_path, :method => :delete)
+      - else
+        #registration_part
+          %p
+            Déjà un compte ?
+            %a(href=new_bloomy_session_path) Se logger
 
-      - @person = User.new
-      = form_for @person, url: {action: "create", controller: "bloomies"} do |person_form|
-        .form-group
-          = person_form.text_field :email, placeholder: 'email', class: 'form-control', type: 'email', required: 'required'
-        .form-group
-          = person_form.text_field :password, placeholder: 'password', class: 'form-control', type: 'password', required: 'required'
-        = submit_tag 'Créer votre compte', class: 'btn btn-default', id: 'create_account'
+          - @bloomy = Bloomy.new
+          = form_for @bloomy, url: bloomy_registration_path do |bloomy_form|
+            .form-group
+              = bloomy_form.email_field :email, placeholder: 'email', class: 'form-control', required: 'required'
+            .form-group
+              = bloomy_form.password_field :password, placeholder: 'mot de passe', autocomplete: "off", class: 'form-control', required: 'required'
+            .form-group
+              = bloomy_form.password_field :password_confirmation, placeholder: 'confirmation du mot de passe', autocomplete: "off", class: 'form-control', required: 'required'
+            = submit_tag 'Créer votre compte', class: 'btn btn-default', id: 'create_account'
 
   .row{ style: 'margin-top: 20px;' }
     .col-md-10.col-md-offset-1
@@ -28,18 +35,32 @@
                           locale: 'fr' }}
 
 :javascript
+
+  var is_user_registered = #{ bloomy_signed_in? }
+
   var form_submission = function (e) {
     e.preventDefault();
     data = $form.serialize();
     action = $form.attr('action');
     $.post(action, data, function() {
-     $submit_payment.attr('disabled', false);
+      is_user_registered = true;
+      update_payment_state();
     });
   };
-  var $form = $('#new_user');
+
+  var $form = $('#new_bloomy');
   var $submit_payment = $('#payment button');
 
+
+  var update_payment_state = function() {
+    if(is_user_registered) {
+      $submit_payment.attr('disabled', false);
+    } else {
+      $submit_payment.attr('disabled', true);
+    }
+  }
+
   $(function() {
-    $submit_payment.attr('disabled', true);
+    update_payment_state();
     $form.on('submit', form_submission);
   });
