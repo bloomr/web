@@ -47,6 +47,7 @@ gem "algoliasearch-rails"
 gem "rack-cors"
 
 gem "haml"
+gem 'stripe'
 
 group :production do
   gem 'pg'
