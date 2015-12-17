@@ -2,8 +2,7 @@
   .row{ style: 'margin-top: 20px;' }
     .col-md-10.col-md-offset-1
       - if bloomy_signed_in?
-        %p bonjour #{ current_bloomy.email }
-        = link_to('Logout', destroy_bloomy_session_path, :method => :delete)
+        %p bonjour #{ current_bloomy.email } #{ link_to('(se déconnecter)', destroy_bloomy_session_path, :method => :delete) }
       - else
         #registration_part
           %p
@@ -22,7 +21,7 @@
 
   .row{ style: 'margin-top: 20px;' }
     .col-md-10.col-md-offset-1
-      %form#payment
+      =form_tag charges_path, id: 'payment' do
         %script{  src: 'https://checkout.stripe.com/checkout.js',
                   class: 'stripe-button',
                   data: { key: 'pk_test_gwg8v2Rba73NM4PPxoX0eAa8',
@@ -31,11 +30,10 @@
                           name: 'Bloomr',
                           description: '1 parcours (40,00 €)',
                           currency: 'eur',
-                          image: image_url('logo-97.png'),
+                          image: image_url('bloomr-120.png'),
                           locale: 'fr' }}
 
 :javascript
-
   var is_user_registered = #{ bloomy_signed_in? }
 
   var form_submission = function (e) {
