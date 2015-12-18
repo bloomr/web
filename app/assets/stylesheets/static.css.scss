@@ -64,3 +64,33 @@ section.static-section {
     }
   }
 }
+
+#le-parcours {
+  #cover {
+    background-size: cover;
+    background-image: image-url("jumper.jpg"); // thepatternlibrary
+    background-position: 49% 50%;
+    background-repeat: no-repeat no-repeat;
+    .logged_user {
+      color:white;
+    }
+    .container {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    #catch {
+      text-align: center;
+      color: white;
+      p {
+        margin-top: 20px;
+      }
+    }
+  }
+  .wrapper {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    .stripe-button-el {
+    }
+  }
+}

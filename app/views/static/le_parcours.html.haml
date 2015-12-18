@@ -1,37 +1,60 @@
-.container
-  .row{ style: 'margin-top: 20px;' }
-    .col-md-10.col-md-offset-1
-      - if bloomy_signed_in?
-        %p bonjour #{ current_bloomy.email } #{ link_to('(se déconnecter)', destroy_bloomy_session_path, :method => :delete) }
-      - else
-        #registration_part
-          %p
-            Déjà un compte ?
-            %a(href=new_bloomy_session_path) Se logger
+#le-parcours
+  #cover
+    .container
+      .row{ style: 'margin-top: 20px;' }
+        .col-md-10.col-md-offset-1.logged_user
+          - if bloomy_signed_in?
+            %p bonjour #{ current_bloomy.email } #{ link_to('(se déconnecter)', destroy_bloomy_session_path, :method => :delete) }
 
-          - @bloomy = Bloomy.new
-          = form_for @bloomy, url: bloomy_registration_path do |bloomy_form|
-            .form-group
-              = bloomy_form.email_field :email, placeholder: 'email', class: 'form-control', required: 'required'
-            .form-group
-              = bloomy_form.password_field :password, placeholder: 'mot de passe', autocomplete: "off", class: 'form-control', required: 'required'
-            .form-group
-              = bloomy_form.password_field :password_confirmation, placeholder: 'confirmation du mot de passe', autocomplete: "off", class: 'form-control', required: 'required'
-            = submit_tag 'Créer votre compte', class: 'btn btn-default', id: 'create_account'
 
-  .row{ style: 'margin-top: 20px;' }
-    .col-md-10.col-md-offset-1
-      =form_tag charges_path, id: 'payment' do
-        %script{  src: 'https://checkout.stripe.com/checkout.js',
-                  class: 'stripe-button',
-                  data: { key: 'pk_test_gwg8v2Rba73NM4PPxoX0eAa8',
-                          amount: '4000',
-                          label: 'payer un parcours',
-                          name: 'Bloomr',
-                          description: '1 parcours (40,00 €)',
-                          currency: 'eur',
-                          image: image_url('bloomr-120.png'),
-                          locale: 'fr' }}
+      .row{ style: 'margin-top: 20px;' }
+        .col-md-10.col-md-offset-1#catch
+          %h1 CHALLENGE TON ORIENTATION
+           
+          %p Bloomr est une association à but non lucratif qui t'accompagne vers une vie professionnelle pleine de promesses !
+            
+          %p Programme gratuit par email sur 12 semaines
+             
+          %p Décollage immédiat ;-)
+              
+          %p Merci aux 4000 personnes qui se sont déjà lancées dans l'aventure !
+
+
+  .container
+    .row{ style: 'margin-top: 20px;' }
+      .col-md-10.col-md-offset-1
+        - if !bloomy_signed_in?
+          #registration_part
+            %p
+              Déjà un compte ?
+              %a(href=new_bloomy_session_path) Se logger
+
+            - @bloomy = Bloomy.new
+            = form_for @bloomy, url: bloomy_registration_path do |bloomy_form|
+              .form-group
+                = bloomy_form.email_field :email, placeholder: 'email', class: 'form-control', required: 'required'
+              .form-group
+                = bloomy_form.password_field :password, placeholder: 'mot de passe', autocomplete: "off", class: 'form-control', required: 'required'
+              .form-group
+                = bloomy_form.password_field :password_confirmation, placeholder: 'confirmation du mot de passe', autocomplete: "off", class: 'form-control', required: 'required'
+              = submit_tag 'Créer votre compte', class: 'btn btn-default', id: 'create_account'
+
+    .row{ style: 'margin-top: 20px;' }
+      .col-md-10.col-md-offset-1
+        =form_tag charges_path, id: 'payment' do
+          .wrapper
+            %script{  src: 'https://checkout.stripe.com/checkout.js',
+                      class: 'stripe-button btn-payment',
+                      data: { key: 'pk_test_gwg8v2Rba73NM4PPxoX0eAa8',
+                              amount: '4000',
+                              label: "JE M'INSCRIS",
+                              name: 'Bloomr',
+                              description: '1 parcours (40,00 €)',
+                              currency: 'eur',
+                              image: image_url('bloomr-120.png'),
+                              locale: 'fr' }}
+
+/ class: 'btn btn-primary btn-payment',
 
 :javascript
   var is_user_registered = #{ bloomy_signed_in? }
