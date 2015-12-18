@@ -4,6 +4,7 @@ cache: bundler
 sudo: false
 script:
 - cp config/database.yml.dist config/database.yml
+- bundle exec rake db:reset RAILS_ENV=test
 - bundle exec rake
 deploy:
   provider: heroku
