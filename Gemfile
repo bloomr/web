@@ -64,11 +64,14 @@ group :development, :test do
   gem "rack-livereload"
   gem 'guard-livereload', '~> 2.4', require: false
   gem 'growl'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :test do
   gem 'rake'
+end
+
+group :darwin do
+  gem 'rb-fsevent'
 end
 
 # Use ActiveModel has_secure_password
