@@ -15,7 +15,7 @@ class ChargesController < ApplicationController
     :currency    => 'eur'
   )
 
-  @email = params[:stripeEmail];
+  @email = params[:stripeEmail]
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
