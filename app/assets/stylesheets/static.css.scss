@@ -141,5 +141,13 @@ section.static-section {
       margin-bottom: 20px;
     }
   }
-
+}
+#thank_you {
+  margin-top: 50px;
+  font-size: 22px;
+  text-align: center;
+  color: #666;
+  .mail {
+    color: $orange;
+  }
 }

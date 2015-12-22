@@ -1,7 +1,7 @@
-.container
-  .row{ style: 'margin-top: 20px;' }
-    .col-md-10.col-md-offset-1
-
-      %p Merci beaucoup pour votre achat #{ @email }
-      %p Vous allez rapidement recevoir vos premiers emails
-      %p Stay Tuned 
+#thank_you
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        %p Merci beaucoup <span class='mail'>#{ @email }</span>
+        %p tu vas rapidement recevoir tes premiers emails.
+        %p A très vite !
