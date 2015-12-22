@@ -68,7 +68,7 @@ section.static-section {
 #le-parcours {
   #cover {
     background-size: cover;
-    background-image: image-url("jumper.jpg"); // thepatternlibrary
+    background-image: image-url("jumper.jpg");
     background-position: 49% 50%;
     background-repeat: no-repeat no-repeat;
     .logged_user {
@@ -81,8 +81,15 @@ section.static-section {
     #catch {
       text-align: center;
       color: white;
+      h1 {
+        font-size: 40px;
+      }
       p {
+        font-size: 20px;
         margin-top: 20px;
+        b {
+          font-size: 20px;
+        }
       }
     }
   }
@@ -91,6 +98,48 @@ section.static-section {
     margin-left: auto;
     margin-right: auto;
     .stripe-button-el {
+      background-image: none;
+      background-color: $orange;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      span {
+        background: $orange;
+        font-size: 20px;
+      }
     }
   }
+  #description {
+    .row {
+      margin-top: 20px;
+    }
+    p {
+      font-size: 20px;
+    }
+    .quote {
+      text-align: center;
+    }
+    .head {
+      font-size: 22px;
+      color: $orange;
+      text-align: center;
+    }
+    img {
+      display: block;
+      margin: 20px auto;
+    }
+  }
+  #ocean {
+    margin-top: 30px;
+    background-size: cover;
+    background-image: image-url("ocean.jpg");
+    background-position: 49% 50%;
+    background-repeat: no-repeat no-repeat;
+    h2 {
+      text-align: center;
+      color: white;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+  }
+
 }
