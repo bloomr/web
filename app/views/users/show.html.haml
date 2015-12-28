@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      %h1 #{ @user.email }
+
+      = form_for @user do |f|
+        = f.label :email
+        = f.email_field :email
+        - @user.questions_to_display.sort_by(&:position).each do |question|
+          .form-group
+          = f.fields_for :questions, question do |ff|
+            = ff.label question.title
+            = ff.text_area :answer, class: 'form-control'
+        = f.submit 'modifier'
