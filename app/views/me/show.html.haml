@@ -1,0 +1,18 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      %h1 #{ current_user.email }
+
+      = form_for current_user, url: me_path do |f|
+        .form-group
+          = f.label :email
+          = f.email_field :email, class: 'form-control'
+          - current_user.questions_to_display.sort_by(&:position).each do |question|
+            .form-group
+            = f.fields_for :questions, question do |ff|
+              = ff.label question.title
+              = ff.text_area :answer, col: 10, row: 20, class: 'form-control', style: 'resize: none; height: 150px;'
+          %br
+          = f.submit 'modifier'
+
+        = link_to('Se déconnecter', destroy_user_session_path, :method => :delete)

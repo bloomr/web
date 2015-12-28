@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :charges
 
-  resources :users, only: [:show, :update]
+  get '/me', to: 'me#show'
+  patch '/me', to: 'me#update'
+  put '/me', to: 'me#update'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
