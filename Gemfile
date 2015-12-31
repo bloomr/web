@@ -49,6 +49,8 @@ gem "rack-cors"
 gem "haml"
 gem 'stripe'
 
+gem 'rails-i18n', '~> 4.0.0'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
