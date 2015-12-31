@@ -40,5 +40,8 @@ module Bloomr
       password:             ENV['SMTP_PASSWORD'],
       authentication:       'plain',
       enable_starttls_auto: true  }
+
+    config.action_mailer.default_url_options = { host: ENV['MAILER_URL'] }
+
   end
 end
