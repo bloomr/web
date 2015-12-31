@@ -10,11 +10,11 @@
 
         .form-group
           = f.label :email
-          = f.email_field :email, autofocus: true, class: 'form-control'
+          = f.email_field :email, autofocus: true, class: 'form-control', required: true
 
         .form-group
           = f.label :password, 'Mot de passe'
-          = f.password_field :password, autocomplete: "off", class: 'form-control'
+          = f.password_field :password, autocomplete: "off", class: 'form-control', required: true
 
         - if devise_mapping.rememberable?
           .form-group

@@ -8,15 +8,15 @@
 
         .form-group
           = f.label :email
-          = f.email_field :email, autofocus: true, class: 'form-control'
+          = f.email_field :email, autofocus: true, class: 'form-control', required: true
 
         .form-group
           = f.label :password, 'Mot de passe'
-          = f.password_field :password, autocomplete: "off", class: 'form-control'
+          = f.password_field :password, autocomplete: "off", class: 'form-control', required: true
 
         .form-group
           = f.label :password_confirmation, 'Le même mot de passe, pour être sûr'
-          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', required: true
 
         .actions
           = f.submit "S'inscrire", class: 'form-control'

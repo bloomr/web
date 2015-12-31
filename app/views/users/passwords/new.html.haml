@@ -8,7 +8,7 @@
 
         .form-group
           = f.label :email
-          = f.email_field :email, autofocus: true, class: 'form-control'
+          = f.email_field :email, autofocus: true, class: 'form-control', required: true
 
         .form-group
           = f.submit "Réinitialiser mon mot de passe", class: 'form-control'
