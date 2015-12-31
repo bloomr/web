@@ -1,7 +1,8 @@
 .container
   .row
-    .col-md-10.col-md-offset-1
+    .col-md-6.col-md-offset-3
       %h2 Mot de passe oublié ?
+      %br
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
         = devise_error_messages!
 
@@ -10,6 +11,6 @@
           = f.email_field :email, autofocus: true, class: 'form-control'
 
         .form-group
-          = f.submit "Lancer la procédure de changement de mot de passe", class: 'form-control'
+          = f.submit "Réinitialiser mon mot de passe", class: 'form-control'
 
       = render "users/shared/links"
