@@ -50,6 +50,7 @@ gem "haml"
 gem 'stripe'
 
 gem 'rails-i18n', '~> 4.0.0'
+gem 'factory_girl_rails'
 
 group :production do
   gem 'pg'
