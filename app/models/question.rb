@@ -1,6 +1,10 @@
 class Question < ActiveRecord::Base
+  include ActionView::Helpers::SanitizeHelper
+
   belongs_to :user
   has_many :question_comments
+
+  before_save :strip_injection_from_answer
 
   def <=> other_question
     if position.length == 0
@@ -24,4 +28,7 @@ class Question < ActiveRecord::Base
     return 1
   end
 
+  def strip_injection_from_answer
+    self.answer = sanitize(self.answer, tags: %w( b i p h1 ))
+  end
 end
