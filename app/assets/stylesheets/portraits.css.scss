@@ -65,6 +65,18 @@
   background-image: image-url("patterns/yellow_swirls.png");
 }
 
+@keyframes floating {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(8%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
 ul#portraits_list {
 
   .panel-title {
@@ -98,6 +110,11 @@ ul#portraits_list {
           border-radius: 10px;
           text-shadow: 0px 2px black;
           transition: margin-top 0.35s;
+
+          animation-name: floating;
+          animation-duration: 1.5s;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease-in-out;
         }
       }
       &:hover {
