@@ -9,7 +9,7 @@ class Question < ActiveRecord::Base
 
     if other_question.position.length == 0
       return -1
-      end
+    end
 
     position <=> other_question.position
   end
