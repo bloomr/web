@@ -56,6 +56,9 @@ Rails.application.routes.draw do
   #partner
   get 'partner/:action' => 'partner#:action'
 
+  # discourse sso
+  get '/sso' => 'discourse_sso#sso'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
