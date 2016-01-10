@@ -13,9 +13,9 @@ RSpec.describe Question, :type => :model do
     end
 
    describe 'with some legal tags' do
-      let(:answer) { '<b>b</b><i>i</i><p>p</p><h1>h</h1>' }
+      let(:answer) { '<b>b</b><i>i</i><br/><ul><li>l</li></ul>' }
       it 'keep the tags' do
-        expect(Question.first.answer).to eq('<b>b</b><i>i</i><p>p</p><h1>h</h1>')
+        expect(Question.first.answer).to eq('<b>b</b><i>i</i><br><ul><li>l</li></ul>')
       end
     end
 

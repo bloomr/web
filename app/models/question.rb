@@ -29,6 +29,6 @@ class Question < ActiveRecord::Base
   end
 
   def strip_injection_from_answer
-    self.answer = sanitize(self.answer, tags: %w( b i p h1 ))
+    self.answer = sanitize(self.answer, tags: %w( b i br ul li ))
   end
 end
