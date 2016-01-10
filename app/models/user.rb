@@ -80,9 +80,9 @@ class User < ActiveRecord::Base
         .limit(options[:nb_per_page])
         .offset(options[:nb_per_page] * options[:page])
 
-    user_withQuestions = User.includes(:questions).where(questions: {identifier: 'love_job'}, users: {id: [ users.map{|u| u.id } ].flatten })
+    user_with_questions = User.includes(:questions).where(questions: {identifier: 'love_job'}, users: {id: [ users.map{|u| u.id } ].flatten })
 
-    users.map{|u| user_withQuestions.select{|uq| uq.id == u.id }.first }.compact
+    users.map{|u| user_with_questions.select{|uq| uq.id == u.id }.first }.compact
   end
 
   def has_explained_its_works?
