@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
 
     user_withQuestions = User.includes(:questions).where(questions: {identifier: 'love_job'}, users: {id: [ users.map{|u| u.id } ].flatten })
 
-    users.map{|u| user_withQuestions.select{|uq| uq.id == u.id }.first }
+    users.map{|u| user_withQuestions.select{|uq| uq.id == u.id }.first }.compact
   end
 
   def has_explained_its_works?

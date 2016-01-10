@@ -82,6 +82,18 @@ RSpec.describe User, :type => :model do
 
   describe "find_published_with_love_job_question method" do
 
+    describe 'with one published user with no love_job question' do
+      before do
+        @user1 = create_fake_user()
+        create_fake_question(user: @user1)
+      end
+
+      it 'should fetch no user' do
+        users = User.find_published_with_love_job_question()
+        expect(users.length).to eq 0
+      end
+    end
+
     describe "with one published user with 2 questions" do
       before do
         @user1 = create_fake_user()
