@@ -2,17 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
 
-  def create_fake_user options={}
-    default = {
-        email: "1@a.com",
-        published: true,
-        first_name: "John",
-        job_title: "Developer",
-        password: "abcdfedv",
-    }
-    User.create!(default.merge(options))
-  end
-
   def create_fake_question options={}
     default = {
         :title => "Title",
@@ -30,13 +19,13 @@ RSpec.describe User, :type => :model do
   describe "next and previous method" do
 
     before do
-      @yop1 = create_fake_user(email: "1@a.com", published: false)
-      @yop2 = create_fake_user(email: "2@a.com", published: true)
-      @yop3 = create_fake_user(email: "3@a.com", published: true)
+      @yop1 = create(:user, email: "1@a.com", published: false)
+      @yop2 = create(:user, email: "2@a.com", published: true)
+      @yop3 = create(:user, email: "3@a.com", published: true)
       @yop3.destroy!
-      @yop4 = create_fake_user(email: "4@a.com", published: false)
-      @yop5 = create_fake_user(email: "5@a.com", published: true)
-      @yop6 = create_fake_user(email: "6@a.com", published: false)
+      @yop4 = create(:user, email: "4@a.com", published: false)
+      @yop5 = create(:user, email: "5@a.com", published: true)
+      @yop6 = create(:user, email: "6@a.com", published: false)
     end
 
     describe "the next method" do
@@ -84,7 +73,7 @@ RSpec.describe User, :type => :model do
 
     describe 'with one published user with no love_job question' do
       before do
-        @user1 = create_fake_user()
+        @user1 = create(:user)
         create_fake_question(user: @user1)
       end
 
@@ -96,7 +85,7 @@ RSpec.describe User, :type => :model do
 
     describe "with one published user with 2 questions" do
       before do
-        @user1 = create_fake_user()
+        @user1 = create(:user)
         create_fake_question(user: @user1, identifier: "love_job")
         create_fake_question(user: @user1)
       end
@@ -110,15 +99,15 @@ RSpec.describe User, :type => :model do
 
     describe "with 3 published users with different number of questions" do
       before do
-        @user1 = create_fake_user()
+        @user1 = create(:user, email: "1@a.com")
         create_fake_question(user: @user1, identifier: "love_job")
 
-        @user2 = create_fake_user(email: "2@a.com")
+        @user2 = create(:user, email: "2@a.com")
         create_fake_question(user: @user2, identifier: "love_job")
         create_fake_question(user: @user2, identifier: "random2")
         create_fake_question(user: @user2)
 
-        @user3 = create_fake_user(email: "3@a.com")
+        @user3 = create(:user, email: "3@a.com")
         create_fake_question(user: @user3, identifier: "love_job")
         create_fake_question(user: @user3)
       end
@@ -132,7 +121,7 @@ RSpec.describe User, :type => :model do
     describe "with 3 published users" do
       before do
         (1..3).each do |i|
-          user = create_fake_user(email: "#{i}@a.com")
+          user = create(:user, email: "#{i}@a.com")
           create_fake_question(user: user, identifier: "love_job")
         end
       end
@@ -160,7 +149,7 @@ RSpec.describe User, :type => :model do
 
     describe "with 1 unpublished user" do
       before do
-        user = create_fake_user(published: false)
+        user = create(:user, published: false)
         create_fake_question(user: user, identifier: "love_job")
         @users = User.find_published_with_love_job_question()
       end
@@ -172,14 +161,14 @@ RSpec.describe User, :type => :model do
 
     describe "with 1 published user with 1 published and 1 not published questions" do
       before do
-        user = create_fake_user()
+        user = create(:user, email: "1@a.com")
         create_fake_question(user: user, identifier: "love_job")
         create_fake_question(user: user, identifier: "plop", published: false)
       end
 
       describe "with another published user with 2 published questions" do
         before do
-          user = create_fake_user(email: "2@a.com")
+          user = create(:user, email: "2@a.com")
           create_fake_question(user: user, identifier: "love_job")
           create_fake_question(user: user, identifier: "plop")
           @users = User.find_published_with_love_job_question()
