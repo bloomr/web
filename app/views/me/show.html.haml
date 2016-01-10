@@ -4,22 +4,19 @@
       = image_tag current_user.avatar.url('thumb'), :class => 'img-circle center-block', :alt => 'Photo de ' + current_user.first_name
       %p#first_name #{ current_user.first_name }
 
-    .col-md-6
-      %h1 #{ current_user.email }
+      = link_to('Se déconnecter', destroy_user_session_path, :method => :delete)
+
+    .col-md-8.questions
+      %h1 Mon #{ %w( magnifique incroyable sublime auguste splendide remarquable somptueux ).sample } portrait
 
       = form_for current_user, url: me_path do |f|
-        .form-group
-          = f.label :email
-          = f.email_field :email, class: 'form-control'
         - current_user.questions_to_display.sort_by(&:position).each do |question|
           .form-group.editable-group
             = f.fields_for :questions, question do |ff|
               = ff.label question.title
               = render 'toolbar'
               - name = ff.object_name + '[answer]'
-              %div.editor{ name: name, style: 'border: 1px solid rgba(0, 0, 0, 0.1);' }
+              %div.editor{ name: name }
                 #{ raw(ff.object.answer) }
         %br
-          = f.submit 'modifier'
-
-        = link_to('Se déconnecter', destroy_user_session_path, :method => :delete)
+          = f.submit 'Sauvegarder', class: 'btn btn-primary center-block'
