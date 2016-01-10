@@ -12,7 +12,9 @@
             = f.fields_for :questions, question do |ff|
               = ff.label question.title
               = render 'toolbar'
-              = ff.text_area :answer, col: 11, row: 20, class: 'form-control', class: 'form-control editor'
+              - name = ff.object_name + '[answer]'
+              %div.editor{ name: name, style: 'border: 1px solid rgba(0, 0, 0, 0.1);' }
+                #{ raw(ff.object.answer) }
         %br
           = f.submit 'modifier'
 
