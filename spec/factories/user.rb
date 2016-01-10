@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    email 'yopyop@yop.com'
+    sequence(:email) { |n| "user#{n}@example.com" }
     first_name 'John'
     job_title 'Developer'
     password 'abcdfedv'
@@ -9,10 +9,19 @@ FactoryGirl.define do
     factory :user_with_questions do
       transient do
         questions_count 2
+        question_love_job true
       end
 
       after(:create) do |user, evaluator|
-        create_list(:question, evaluator.questions_count, user: user)
+
+        nb_questions_to_add = evaluator.question_love_job ? evaluator.questions_count - 1 : evaluator.questions_count
+        create_list(:question, nb_questions_to_add, user: user)
+
+        if evaluator.question_love_job
+           user.questions << create(:question, identifier: 'love_job')
+           user.save!
+        end
+
       end
     end
   end
