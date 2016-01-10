@@ -5,13 +5,15 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
+
+  devise_for :users, controllers: { passwords: 'passwords' }
 
   resources :charges
 
   get '/me', to: 'me#show'
   patch '/me', to: 'me#update'
   put '/me', to: 'me#update'
+  get '/me/email_sent', to: 'me#email_sent'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
