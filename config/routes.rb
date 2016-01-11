@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get "qui-nous-sommes", to: redirect('/qui-sommes-nous')
   get "qui-sommes-nous" => "static#qui_sommes_nous"
   get "le-parcours" => "static#le_parcours"
+  get "ouaich" => "static#ouaich"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

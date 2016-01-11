@@ -5,4 +5,7 @@ class StaticController < ApplicationController
 
   def qui_sommes_nous
   end
+
+  def ouaich
+  end
 end

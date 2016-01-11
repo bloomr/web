@@ -23,13 +23,14 @@ $light_orange: lighten($orange, 30%);
 @import 'select2';
 @import 'select2-bootstrap';
 
+@import 'homepage';
 
 html {
   width: 100%;
 }
 
 body {
-  padding-top: 64px;
+  // padding-top: 64px;
   background-color: white;
   @media(min-width: 768px) {
     padding-bottom: 60px;

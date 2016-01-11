@@ -1,0 +1,322 @@
+$blue: #E8F7FF;
+
+@keyframes right_left {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 0px;
+  }
+}
+
+@keyframes left_right {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    right: 0px;
+  }
+}
+
+
+@keyframes oscillation {
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes turn {
+  from {
+    transform: rotate(45deg);
+    opacity: 0;
+    top: 60px;
+    left: 40%;
+  }
+  50% { 
+    transform: rotate(0deg); 
+    opacity: 1;
+  }
+  to {
+    transform: rotate(-45deg);
+    opacity: 0;
+    top: 20px;
+    left: 60%;
+  }
+}
+
+
+#homepage {
+  position: relative;
+  padding-top: 20px;
+  h1 {
+    text-align: center;
+    padding-top: 60px;
+    background-image: image-url('home/logo-bloomr.png');
+    width: 154px;
+    height: 84px;
+    margin: 0 auto;
+    text-indent: -3333px;
+  }
+  #login {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    span {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+  .center-block {
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 60px 3000px;
+      border-color: white white $blue;
+      display: block;
+    }
+    height: 1200px;
+    position: relative;
+    background-color: $blue;
+    overflow: hidden;
+    z-index: -10;
+    .cloud-left {
+      position: absolute;
+      top: -110px;
+      left: -200px;
+    }
+    .cloud-right {
+      position: absolute;
+      right: 0;
+      top: -100px;
+    }
+    .cloud1 {
+      position: absolute;
+      top: 150px;
+      left: 350px;
+      z-index: -1;
+      animation-duration: 40s;
+      animation-name: right_left;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    .cloud2 {
+      position: absolute;
+      top: 280px;
+      left: 285px;
+      animation-duration: 20s;
+      animation-name: right_left;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+     }
+    .cloud3 {
+      position: absolute;
+      right: 40%;
+      top: 250px;
+      animation-duration: 20s;
+      animation-name: left_right;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    .question {
+      position: absolute;
+      left: 50%;
+      top: 130px;
+      animation-duration: 10s;
+      animation-name: oscillation;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      transform: rotate(-5deg);
+    }
+    .people {
+      margin:0 auto;
+      display:block;
+      position: relative;
+      top: 200px;
+    }
+    .headlines {
+      text-align: center;
+      top: 200px;
+      position: relative;
+      h2 {
+        font-family: "Satisfy",cursive;
+        font-size: 60px;
+        font-style: normal;
+      }
+      h3 {
+        font-size: 34px;
+      }
+    }
+    .action {
+      width: 33.33%;
+      text-align: center;
+      float: left;
+      position: relative;
+      top: 250px;
+      .illustration {
+        position: relative;
+        width: 160px;
+        height: 172px;
+        margin: 0 auto;
+        .journey-action {
+          position: absolute;
+          left: 25px;
+          top: 30px;
+        }
+        .inspire-action {
+          position: absolute;
+          left: 30px;
+          top: 50px;
+        }
+        .blog-action {
+          position: absolute;
+          left: 50px;
+          top: 50px;
+        }
+      }
+      h4 {
+        font-weight: semi-bold;
+        font-size: 26px;
+      }
+      btn {
+        margin-top: 20px;
+        background-color: #E47800;
+      }
+    }
+
+    .cloud {
+      animation-duration: 40s;
+      animation-name: right_left;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+  .i-love-my-job {
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 60px 3000px;
+      border-color: $blue $blue #EBEBEB;
+      display: block;
+    }
+    position: relative;
+    text-align: center;
+    overflow:hidden;
+    background-color: #EBEBEB;
+    .flower1 {
+      position: absolute;
+      animation-duration: 20s;
+      animation-name: turn;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      z-index: 1;
+    }
+    .blue-cloud-left {
+      position: absolute;
+      left: 0;
+      top: 100px;
+    }
+    .blue-cloud-right {
+      position: absolute;
+      right: -300px;
+      top: 100px;
+    }
+    h4 {
+      position: relative;
+      font-size: 40px;
+      font-family: "Satisfy",cursive;
+    }
+    .subtitle {
+      margin-top: 20px;
+      font-size: 30px;
+    }
+    .btn {
+      font-size: 30px;
+      margin-top: 10px;
+    }
+    .cestquoi {
+      position: relative;
+      top: 450px;
+      margin: 0 auto;
+      display: block;
+    }
+    h5 {
+      margin-top: 300px;
+      color: #f0ad30;
+      font-size: 50px;
+      font-family: "Satisfy",cursive;
+    }
+    p {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    p,a {
+      font-size: 20px;
+    }
+    a {
+      margin: 20px 0 100px;  
+      display: inline-block;
+      color: #3e3e3e;
+      text-decoration: underline;
+    }
+  }
+  .links {
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 60px 3000px;
+      border-color: #EBEBEB #EBEBEB #FCF1DB;
+      display: block;
+    }
+    background-color: #FCF1DB;
+    overflow: hidden;
+    .section {
+      width: 33.33%;
+      float: left;
+      padding: 20px 0 20px 40px;
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      h3 {
+        font-size: 26px;
+        font-family: Satisfy;
+      }
+    }
+  }
+  .footer {
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 60px 3000px;
+      border-color: #FCF1DB #FCF1DB #F0AD30;
+      display: block;
+      margin-bottom: 20px;
+    }
+    text-align: center;
+    background-color: #F0AD30;
+    overflow: hidden;
+    p {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #FFF;
+    }
+  }
+}
