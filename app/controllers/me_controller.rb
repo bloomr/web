@@ -15,7 +15,7 @@ class MeController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, questions_attributes: [:id, :answer])
+    params.require(:user).permit(:email, :job_title, questions_attributes: [:id, :answer])
   end
 
 end

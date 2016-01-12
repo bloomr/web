@@ -34,6 +34,12 @@ RSpec.describe MeController, :type => :controller do
         end
       end
 
+      describe 'with a new job title' do
+        let(:payload) { { job_title: 'crazy_musician' } }
+
+        it 'saves the new job_title' do
+          expect(user.job_title).to eq('crazy_musician')
+        end
       end
 
     end
