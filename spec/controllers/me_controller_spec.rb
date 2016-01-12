@@ -2,29 +2,40 @@ require 'rails_helper'
 
 RSpec.describe MeController, :type => :controller do
 
-  context 'when a user logged' do
+  context 'when a logged user' do
 
-    let(:user) { user = create(:user_with_questions); sign_in(:user, user); user }
+    let(:user) { create(:user_with_questions) }
 
-    describe 'change its email' do
+    before { sign_in(:user, user) }
+
+    describe 'change it s profile' do
+
       before do
-        put :update, id: user.id, user: { email: 'loulou@loulou.com' }
+        put :update, id: user.id, user: payload
+        user.reload
       end
 
-      it 'the new email is saved' do
-        expect(User.first.email).to eq('loulou@loulou.com')
-      end
-    end
+      describe 'with a new email' do
 
-    describe 'change one answer' do
-      before do
-        question_id = user.questions.first.id
-        put :update, id: user.id, user: { questions_attributes: { id: question_id, answer: 'awesome answer' } }
+        let(:payload) { { email: 'loulou@loulou.com' } }
+
+        it 'saves the new emai' do
+          expect(user.email).to eq('loulou@loulou.com')
+        end
       end
 
-      it 'the new answer is saved' do
-        expect(User.first.questions.first.answer).to eq('awesome answer')
+      describe 'with a modified answer' do
+
+        let(:question_id) { user.questions.first.id }
+        let(:payload) { { questions_attributes: { id: question_id, answer: 'awesome answer' } } }
+
+        it 'saves the new answer' do
+          expect(user.questions.first.answer).to eq('awesome answer')
+        end
       end
+
+      end
+
     end
 
   end
