@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   include AlgoliaSearch
 
-  algoliasearch index_name: "User_#{ENV['ALGOLIA_ENV']}", synchronous: true, if: :published do
+  algoliasearch index_name: "User_#{ENV['ALGOLIA_ENV']}", if: :published do
     attribute :first_name, :job_title
     attribute :keywords do
       keywords.map { |k| k.tag }
@@ -94,5 +94,5 @@ class User < ActiveRecord::Base
   def last_month_view_count
     impressionist_count(start_date: Date.today.beginning_of_month.last_month, end_date: Date.today.beginning_of_month)
   end
-  
+
 end
