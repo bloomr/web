@@ -21,5 +21,40 @@
     });
   };
 
+
+  var activeToogle = function () {
+    var $controlPanelTrigger = $('.control-panel-trigger');
+    var $questionsTrigger = $('.questions-trigger');
+    var $controlPanel = $('.control-panel');
+    var $questions = $('.questions');
+
+    var showControlPanelHideQuestions = function () {
+      $controlPanel.show();
+      $controlPanelTrigger.addClass('on');
+      $questions.hide();
+      $questionsTrigger.removeClass('on');
+    };
+
+    var showQuestionsHideControlPanel = function () {
+      $controlPanel.hide();
+      $controlPanelTrigger.removeClass('on');
+      $questions.show();
+      $questionsTrigger.addClass('on');
+    };
+
+    $controlPanelTrigger.click(showControlPanelHideQuestions);
+    $questionsTrigger.click(showQuestionsHideControlPanel);
+  };
+
+  var disableToogle = function () {
+    var $controlPanel = $('.control-panel');
+    var $questions = $('.questions');
+
+    $controlPanelTrigger.unbind();
+    $questionsTrigger.unbind();
+  };
+
   $(document).on('page:change', make_it_editable);
+  $(document).on('page:change', activeToogle);
+  $(document).on('page:before-unload', disableToogle);
 })();

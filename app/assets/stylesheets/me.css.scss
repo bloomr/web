@@ -10,20 +10,37 @@
       margin-top: 15px;
       font-size: 20px;
     }
-  }
-  .questions {
-    padding-top: 30px;
-    label {
-      margin-bottom: 10px;
+    ul{
+      list-style: none;
+      padding-left: 0;
+      li {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        &.on {
+          font-weight: bold;
+        }
+      }
     }
-    .form-group {
-      margin-top: 40px;
-      .editor {
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 15px;
-        line-height: 2;
-        &:focus {
-          outline: none;
+  }
+  .main-panel {
+    h1 {
+      margin-bottom: 40px;
+    }
+    padding-top: 30px;
+    .questions {
+      label {
+        margin-bottom: 10px;
+      }
+      .form-group {
+        margin-top: 40px;
+        .editor {
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          padding: 15px;
+          line-height: 2;
+          &:focus {
+            outline: none;
+          }
         }
       }
     }
