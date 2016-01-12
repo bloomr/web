@@ -7,6 +7,10 @@
       = link_to('Se déconnecter', destroy_user_session_path, :method => :delete)
 
     .col-md-8.questions
+      %h1 Mon tableau de bord
+      %p mon profil a été vu #{ current_user.last_month_view_count } fois le mois dernier
+
+
       %h1 Mon #{ %w( magnifique incroyable sublime auguste splendide remarquable somptueux ).sample } portrait
 
       = form_for current_user, url: me_path do |f|

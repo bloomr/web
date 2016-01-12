@@ -52,6 +52,8 @@ gem 'stripe'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'factory_girl_rails'
 
+gem 'impressionist'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

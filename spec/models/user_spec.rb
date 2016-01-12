@@ -139,4 +139,16 @@ RSpec.describe User, :type => :model do
     end
 
   end
+
+  describe '.last_month_view_count' do
+    let(:user) { create(:user) }
+    let!(:impression) do
+      user.impressions << Impression.new(created_at: Date.today.beginning_of_month.last_month, request_hash: 'yop')
+    end
+
+    it 'count the number of view of last month' do
+      expect(user.last_month_view_count).to eq(1)
+    end
+  end
+
 end

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  is_impressionable
+
   has_many :questions
   accepts_nested_attributes_for :questions, :allow_destroy => true
 
@@ -89,4 +91,8 @@ class User < ActiveRecord::Base
     MY_WORK_QUESTIONS_IDENTIFIERS.all? {|identifier| questions.find { |q2| q2.identifier == identifier } }
   end
 
+  def last_month_view_count
+    impressionist_count(start_date: Date.today.beginning_of_month.last_month, end_date: Date.today.beginning_of_month)
+  end
+  
 end
