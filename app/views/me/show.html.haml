@@ -6,7 +6,8 @@
       %ul
         %li.control-panel-trigger.on Mon tableau de bord
         %li.questions-trigger Mon portrait
-      = link_to('Se déconnecter', destroy_user_session_path, :method => :delete)
+        %li
+          = link_to('Se déconnecter', destroy_user_session_path, :method => :delete)
 
     .col-md-8.main-panel
       .control-panel
