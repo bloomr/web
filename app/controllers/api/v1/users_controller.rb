@@ -33,7 +33,7 @@ module Api
           result = {error: 'update ko', user_id: params[:id], error_description: e.message}
           status = :bad_request
         end
-        return render json: result, status: status
+        render json: result, status: status
       end
 
       def index
