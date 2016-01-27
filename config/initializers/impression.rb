@@ -5,4 +5,14 @@
 #end
 
 
+class Impression < ActiveRecord::Base
 
+  def self.last_month_count
+    self
+    .where('created_at >= ?', Date.today.beginning_of_month.last_month)
+    .where('created_at <= ?', Date.today.end_of_month.last_month)
+    .group(:session_hash)
+    .count.length
+  end
+
+end
