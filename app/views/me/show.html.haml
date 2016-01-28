@@ -1,13 +1,13 @@
 #me.container
   .row
     .col-md-3.menu
-      = image_tag current_user.avatar.url('thumb'), :class => 'img-circle center-block', :alt => 'Photo de ' + current_user.first_name
+      = image_tag current_user.avatar.url('thumb'), class: 'img-circle center-block', alt: 'Photo de ' + current_user.first_name
       %p#first_name #{ current_user.first_name }
       %ul
         %li.control-panel-trigger.on Mon tableau de bord
         %li.questions-trigger Mon portrait
         %li
-          = link_to('Se déconnecter', destroy_user_session_path, :method => :delete)
+          = link_to('Se déconnecter', destroy_user_session_path, method: :delete)
 
     .col-md-8.main-panel
       .control-panel
