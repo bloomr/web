@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
       thumb: '100x100#',
   }
 
+  has_many :tribe
+
   before_post_process :rename_avatar
   def rename_avatar
     #avatar_file_name - important is the first word - avatar - depends on your column in DB table
