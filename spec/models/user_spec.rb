@@ -126,9 +126,9 @@ RSpec.describe User, :type => :model do
 
       describe 'with another published user with 2 published questions' do
         before do
-        user = create(:user_with_questions, email: '2@a.com')
-        user.questions << create(:question)
-        user.save
+          user = create(:user_with_questions, email: '2@a.com')
+          user.questions << create(:question)
+          user.save
         end
 
         it 'should return the one with the 2 published questions first' do
