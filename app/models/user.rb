@@ -97,4 +97,10 @@ class User < ActiveRecord::Base
     impressionist_count(start_date: Date.today.beginning_of_month.last_month, end_date: Date.today.beginning_of_month)
   end
 
+  # returns the tribe with the more keyword linked to this user
+  def default_tribe
+    hash = keywords.map(&:tribe).inject(Hash.new(0)) { |h,tribe| h[tribe] += 1; h }
+    hash.key(hash.values.max)
+  end
+
 end

@@ -151,4 +151,40 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  describe '.default_tribe' do
+    subject { user.default_tribe }
+
+    context 'and a user with no keyword' do
+      let(:user) { create(:user) }
+      it { is_expected.to eq(nil) }
+    end
+
+    context 'with an user with a keyword not linked to any tribe' do
+      let(:lonely_keyword) { Keyword.create() }
+      let(:user) { create(:user, keywords: [lonely_keyword]) }
+      it { is_expected.to eq(nil) }
+    end
+
+    context 'with a "world" tribe linked to "ecologie" keyword' do
+      let!(:world_tribe) { Tribe.create(name: 'save the world') }
+      let(:ecologie_keyword) { Keyword.create(tribe: world_tribe) }
+
+      context 'and a user with ecologie keyword' do
+        let(:user) { create(:user, keywords: [ecologie_keyword]) }
+        it { is_expected.to eq(world_tribe) }
+      end
+
+      context 'with a "beautiful" tribe linked to "artisanat" and "flowers" keyword' do
+        let(:beautiful_tribe) { Tribe.create(name: 'beautiful') }
+        let(:artisanat_keyword) { Keyword.create(tribe: beautiful_tribe) }
+        let(:flowers_keyword) { Keyword.create(tribe: beautiful_tribe) }
+
+        context 'and a user with the 3 keywords' do
+          let(:user) { create(:user, keywords: [ecologie_keyword, artisanat_keyword, flowers_keyword]) }
+          it { is_expected.to eq(beautiful_tribe) }
+        end
+      end
+    end
+  end
+
 end
