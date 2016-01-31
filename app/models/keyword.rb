@@ -1,6 +1,7 @@
 class Keyword < ActiveRecord::Base
   has_many :keyword_associations
   has_many :users, :through => :keyword_associations
+  belongs_to :tribe
 
   def to_s
     return tag

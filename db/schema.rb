@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130132827) do
+ActiveRecord::Schema.define(version: 20160131202724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,7 +107,10 @@ ActiveRecord::Schema.define(version: 20160130132827) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tribe_id"
   end
+
+  add_index "keywords", ["tribe_id"], name: "index_keywords_on_tribe_id", using: :btree
 
   create_table "question_comments", force: :cascade do |t|
     t.string   "author_avatar_url", limit: 255
