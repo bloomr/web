@@ -152,17 +152,17 @@ RSpec.describe User, :type => :model do
   end
 
   describe '.default_tribe' do
-    subject { user.default_tribe }
+    subject { user.default_tribes }
 
     context 'and a user with no keyword' do
       let(:user) { create(:user) }
-      it { is_expected.to eq(nil) }
+      it { is_expected.to be_empty }
     end
 
     context 'with an user with a keyword not linked to any tribe' do
       let(:lonely_keyword) { Keyword.create() }
       let(:user) { create(:user, keywords: [lonely_keyword]) }
-      it { is_expected.to eq(nil) }
+      it { is_expected.to be_empty }
     end
 
     context 'with a "world" tribe linked to "ecologie" keyword' do
@@ -171,7 +171,17 @@ RSpec.describe User, :type => :model do
 
       context 'and a user with ecologie keyword' do
         let(:user) { create(:user, keywords: [ecologie_keyword]) }
-        it { is_expected.to eq(world_tribe) }
+        it { is_expected.to match_array([world_tribe]) }
+      end
+
+      context 'and two other keywords without tribes' do
+        let(:without_tribe_keyword1) { Keyword.create() }
+        let(:without_tribe_keyword2) { Keyword.create() }
+
+        context 'and a user with this 3 keywords' do
+          let(:user) { create(:user, keywords: [ecologie_keyword, without_tribe_keyword1, without_tribe_keyword2]) }
+          it { is_expected.to eq([world_tribe]) }
+        end
       end
 
       context 'with a "beautiful" tribe linked to "artisanat" and "flowers" keyword' do
@@ -181,7 +191,7 @@ RSpec.describe User, :type => :model do
 
         context 'and a user with the 3 keywords' do
           let(:user) { create(:user, keywords: [ecologie_keyword, artisanat_keyword, flowers_keyword]) }
-          it { is_expected.to eq(beautiful_tribe) }
+          it { is_expected.to match_array([beautiful_tribe, world_tribe]) }
         end
       end
     end
