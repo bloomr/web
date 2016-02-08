@@ -14,8 +14,9 @@
         %h1 Mon tableau de bord
         %h2 Mes infos
         %p Mon profil a été vu #{ current_user.last_month_view_count } fois le mois dernier
-        %h2 Ma (Mes) tribu(s)
-        %p #{ current_user.default_tribes.map(&:name).join(', ') }
+        - if current_user.default_tribes.count > 0
+          %h2 #{ current_user.default_tribes.count == 1 ? 'Ma tribu' : 'Mes tribus' }
+          %p #{ current_user.default_tribes.map(&:name).join(', ') }
         %h2 Les infos Bloomr
         %p #{ Impression.last_month_count } profils ont été vu le mois dernier
 
