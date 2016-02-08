@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable
 
   is_impressionable
 
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :keywords, :allow_destroy => true
 
   has_attached_file :avatar, styles: {
-      thumb: '100x100#',
+    thumb: '100x100#',
   }
 
   has_and_belongs_to_many :tribes
@@ -77,12 +77,12 @@ class User < ActiveRecord::Base
     options = { nb_per_page: 12, page: 0}.merge(options)
 
     users = User.select("users.id, count(questions.id) AS questions_count")
-        .joins(:questions)
-        .where(users: {published: true}, questions: {published: true})
-        .group('users.id, questions.user_id')
-        .order("questions_count DESC, users.id DESC")
-        .limit(options[:nb_per_page])
-        .offset(options[:nb_per_page] * options[:page])
+    .joins(:questions)
+    .where(users: {published: true}, questions: {published: true})
+    .group('users.id, questions.user_id')
+    .order("questions_count DESC, users.id DESC")
+    .limit(options[:nb_per_page])
+    .offset(options[:nb_per_page] * options[:page])
 
     user_with_questions = User.includes(:questions).where(questions: {identifier: 'love_job'}, users: {id: [ users.map{|u| u.id } ].flatten })
 
