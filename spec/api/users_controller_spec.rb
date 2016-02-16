@@ -19,7 +19,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
           answer: "j'adore le yop"
         }
       ],
-      keyword_list: 'tag1, tag2, tag3'
+      keyword_list: 'tag1, tag2, étag3'
     }
   }
 
@@ -50,7 +50,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
       describe 'created user' do
         subject { User.find(1) }
         it { expect(subject.email).to eq('yopyop@yop.com') }
-        it { expect(subject.keywords.map(&:tag)).to match_array(%w(tag1 tag2 tag3)) }
+        it { expect(subject.keywords.map(&:tag)).to match_array(%w(Tag1 Tag2 Étag3)) }
       end
     end
   end

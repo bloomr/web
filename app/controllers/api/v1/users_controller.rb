@@ -14,7 +14,8 @@ module Api
           tags = user_params["keyword_list"].split(",").map{|t| t.strip}
 
           tags.each do |tag|
-            keyword = Keyword.find_or_create_by(:tag => tag)
+            capitalized_tag = tag.mb_chars.capitalize.to_s
+            keyword = Keyword.find_or_create_by(:tag => capitalized_tag)
             KeywordAssociation.find_or_create_by(:keyword => keyword, :user => @user)
           end
           render json: {message: 'creation ok', user_id: @user.id}
