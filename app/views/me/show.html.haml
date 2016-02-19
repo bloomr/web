@@ -23,7 +23,7 @@
       .questions{ style: 'display: none;' }
         %h1 Mon #{ %w( magnifique incroyable sublime auguste splendide remarquable somptueux ).sample } portrait
 
-        = form_for current_user, url: me_path do |f|
+        = form_for current_user, url: me_path, html: { id: 'questions_form' } do |f|
           .form-group
             = f.label :job_title, 'Le nom de votre métier :'
             = f.text_field :job_title, class: 'form-control'

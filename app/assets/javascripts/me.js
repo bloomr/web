@@ -9,7 +9,7 @@
       });
     });
 
-    $('form').on('submit', function() {
+    $('#questions_form').on('submit', function() {
       $('.editor').each(function(i, div) {
         var $div = $(div);
         $('<input />').attr('type', 'hidden')
