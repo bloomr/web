@@ -20,6 +20,9 @@ $light_orange: lighten($orange, 30%);
 @import "keywordsbox";
 @import "me";
 
+@import 'select2';
+@import 'select2-bootstrap';
+
 
 html {
   width: 100%;

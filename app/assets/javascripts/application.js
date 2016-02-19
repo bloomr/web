@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require select2
 //= require underscore-min
 //= require turbolinks
 //= require bootstrap-sprockets-custom
