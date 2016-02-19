@@ -14,6 +14,12 @@
         %h1 Mon tableau de bord
         %h2 Mes infos
         %p Mon profil a été vu #{ current_user.last_month_view_count } fois le mois dernier
+
+        %h2 Mes tribus
+        = form_for current_user, url: me_path do |f|
+          = f.select :tribe_ids, Tribe.all.map {|x| [x.name, x.id]}, {}, multiple: true, class: 'select2 form-control'
+          = f.submit 'Sauvegarder', class: 'btn btn-primary center-block', style: 'margin-top: 20px;'
+
         - if current_user.default_tribes.count > 0
           %h2 #{ current_user.default_tribes.count == 1 ? 'Ma tribu' : 'Mes tribus' }
           %p #{ current_user.default_tribes.map(&:name).join(', ') }
