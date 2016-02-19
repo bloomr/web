@@ -42,6 +42,14 @@ RSpec.describe MeController, :type => :controller do
         end
       end
 
+      describe 'with a new tribe' do
+        let(:tribe) { Tribe.create(name: 'my tribe') }
+        let(:payload) { { tribe_ids: [ tribe.id ] } }
+
+        it 'saves the new tribe' do
+          expect(user.tribes.first).to eq(tribe)
+        end
+      end
     end
 
   end
