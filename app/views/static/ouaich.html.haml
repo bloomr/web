@@ -1,60 +1,69 @@
 #homepage
-  %h1
-    Bloomr
-  %a#login
-    Connexion
-    %span.glyphicon.glyphicon-arrow-right
+  #fullpage
+    .section.first
+      #header2
+        %h1.sprite.sprite-logo-bloomr
+          Bloomr
+        %a#login
+          Connexion
+          %span.glyphicon.glyphicon-arrow-right
 
-  .center-block
-    =image_tag('home/white-cloud-left.png', class: 'cloud-left')
-    =image_tag('home/white-cloud-right.png', class: 'cloud-right')
-    =image_tag('home/blue-cloud-1.png', class: 'cloud1')
-    =image_tag('home/blue-cloud-2.png', class: 'cloud2')
-    =image_tag('home/blue-cloud-3.png', class: 'cloud3')
-    =image_tag('home/icon-question.png', class: 'question')
-    =image_tag('home/boyandgirl.png', class: 'people')
-    .headlines
-      %h2
-        Perdu dans ton orientation ?
-      %h3
-        <b>Bloomr</b> t'embarque dans une orientation de maboule !
-        %br
-        Tu veux ...
+      .center-block
+        %i.sprite-white-cloud-left.sprite.cloud-left
+        %i.sprite.sprite-white-cloud-right.cloud-right
+        #lost-in-orientation
+          %i.sprite.sprite-icon-question.question
+          %i.sprite.sprite-boyandgirl.people
+          .headlines
+            %h2
+              Perdu dans ton orientation ?
+            %span.glyphicon.glyphicon-chevron-down
+          %i.sprite.sprite-blue-cloud-1.cloud1
+          %i.sprite.sprite-blue-cloud-2.cloud2
+          %i.sprite.sprite-blue-cloud-3.cloud3
 
-    .action
-      .illustration
-        =image_tag('home/bg-icon.png', class: 'bg-action')
-        =image_tag('home/icon-journey.png', class: 'journey-action')
-      %h4
-        Y voir plus clair
-        %br
-        dans ton orientation
-      %btn.btn.btn-primary
-        Je suis le parcours
+    .section.actions
+      .headlines
+        %h3
+          <b>Bloomr</b> t'embarque dans une orientation de maboule !
+          %br
+          Tu veux ...
+      .action
+        .illustration
+          =image_tag('home/bg-icon.png', class: 'bg-action')
+          =image_tag('home/icon-journey.png', class: 'journey-action')
+        %h4
+          Y voir plus clair
+          %br
+          dans ton orientation
+        %btn.btn.btn-primary
+          Je suis le parcours
 
-    .action{ style: 'top: 400px' }
-      .illustration
-        =image_tag('home/bg-icon.png', class: 'bg-action')
-        =image_tag('home/icon-inspire.png', class: 'inspire-action')
-      %h4
-        être inspiré
-        %br
-        par des pros qui kiffent ?
-      %btn.btn.btn-primary
-        Je découvre les témoignages
+      .action{ style: 'top: 400px' }
+        .illustration
+          =image_tag('home/bg-icon.png', class: 'bg-action')
+          =image_tag('home/icon-inspire.png', class: 'inspire-action')
+        %h4
+          être inspiré
+          %br
+          par des pros qui kiffent ?
+        %btn.btn.btn-primary
+          Je découvre les témoignages
 
-    .action
-      .illustration
-        =image_tag('home/bg-icon.png', class: 'bg-action')
-        =image_tag('home/icon-blog.png', class: 'blog-action')
-      %h4
-        Zoomer
-        %br
-        sur des sujets-clés ?
-      %btn.btn.btn-primary
-        Je lis le blog
+      .action
+        .illustration
+          =image_tag('home/bg-icon.png', class: 'bg-action')
+          =image_tag('home/icon-blog.png', class: 'blog-action')
+        %h4
+          Zoomer
+          %br
+          sur des sujets-clés ?
+        %btn.btn.btn-primary
+          Je lis le blog
 
-  .i-love-my-job
+    .section Some section
+    .section Some section
+    .i-love-my-job
     =image_tag('home/blue-cloud-left.png', class: 'blue-cloud-left')
     =image_tag('home/blue-cloud-right.png', class: 'blue-cloud-right')
     =image_tag('home/icon-bloomer.png', class: 'flower1')
@@ -107,3 +116,12 @@
   -#     %a qui sommes-nous
   -#     et
   -#     %a que defendons nous ?
+:javascript
+  $(document).ready(function() {
+    $('#fullpage').fullpage({
+        navigation: true,
+        navigationPosition: 'right'
+      }
+    );
+    $('.glyphicon-chevron-down').click(function() { $.fn.fullpage.moveSectionDown(); })
+  });

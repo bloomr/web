@@ -1,5 +1,149 @@
 $blue: #E8F7FF;
 
+.sprite {
+  background-image: image-url('home/spritesheet.png');
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.sprite-bg-icon {
+  width: 160px;
+  height: 172px;
+  background-position: -5px -5px;
+}
+
+.sprite-blue-cloud-1 {
+  width: 185px;
+  height: 85px;
+  background-position: -175px -5px;
+}
+
+.sprite-blue-cloud-2 {
+  width: 60px;
+  height: 40px;
+  background-position: -370px -5px;
+}
+
+.sprite-blue-cloud-3 {
+  width: 85px;
+  height: 52px;
+  background-position: -440px -5px;
+}
+
+.sprite-blue-cloud-left {
+  width: 334px;
+  height: 635px;
+  background-position: -535px -5px;
+}
+
+.sprite-blue-cloud-right {
+  width: 583px;
+  height: 1028px;
+  background-position: -879px -5px;
+}
+
+.sprite-boyandgirl {
+  width: 184px;
+  height: 142px;
+  background-position: -1472px -5px;
+}
+
+.sprite-connexion-arrow {
+  width: 12px;
+  height: 9px;
+  background-position: -1666px -5px;
+}
+
+.sprite-connexion-arrow-white {
+  width: 12px;
+  height: 9px;
+  background-position: -1688px -5px;
+}
+
+.sprite-ditesmenplus-arrow {
+  width: 19px;
+  height: 10px;
+  background-position: -1710px -5px;
+}
+
+.sprite-icon-blog {
+  width: 62px;
+  height: 60px;
+  background-position: -1739px -5px;
+}
+
+.sprite-icon-bloomer {
+  width: 65px;
+  height: 58px;
+  background-position: -1811px -5px;
+}
+
+.sprite-icon-cestquoibloomr {
+  width: 127px;
+  height: 71px;
+  background-position: -370px -73px;
+}
+
+.sprite-icon-inspire {
+  width: 100px;
+  height: 64px;
+  background-position: -1811px -73px;
+}
+
+.sprite-icon-journey {
+  width: 122px;
+  height: 96px;
+  background-position: -175px -147px;
+}
+
+.sprite-icon-menu-white-inspire {
+  width: 81px;
+  height: 51px;
+  background-position: -1666px -147px;
+}
+
+.sprite-icon-menu-white-journey {
+  width: 88px;
+  height: 70px;
+  background-position: -1757px -147px;
+}
+
+.sprite-icon-question {
+  width: 43px;
+  height: 87px;
+  background-position: -307px -147px;
+}
+
+.sprite-logo-bloomr {
+  width: 154px;
+  height: 84px;
+  background-position: -5px -227px;
+}
+
+.sprite-logo-bloomr-white {
+  width: 130px;
+  height: 71px;
+  background-position: -360px -227px;
+}
+
+.sprite-logo-blr-white {
+  width: 109px;
+  height: 84px;
+  background-position: -1472px -227px;
+}
+
+.sprite-white-cloud-left {
+  width: 583px;
+  height: 1028px;
+  background-position: -5px -1043px;
+}
+
+.sprite-white-cloud-right {
+  width: 334px;
+  height: 635px;
+  background-position: -1591px -227px;
+}
+
 @keyframes right_left {
   from {
     opacity: 0;
@@ -38,8 +182,8 @@ $blue: #E8F7FF;
     top: 60px;
     left: 40%;
   }
-  50% { 
-    transform: rotate(0deg); 
+  50% {
+    transform: rotate(0deg);
     opacity: 1;
   }
   to {
@@ -52,45 +196,37 @@ $blue: #E8F7FF;
 
 
 #homepage {
-  position: relative;
-  padding-top: 20px;
-  h1 {
-    text-align: center;
-    padding-top: 60px;
-    background-image: image-url('home/logo-bloomr.png');
-    width: 154px;
-    height: 84px;
-    margin: 0 auto;
-    text-indent: -3333px;
-  }
-  #login {
-    position: absolute;
-    top: 30px;
-    right: 60px;
-    font-weight: bold;
-    font-size: 18px;
-    color: #333;
-    cursor: pointer;
-    span {
-      margin-left: 10px;
-      margin-right: 10px;
+  .section.first {
+    background-color: $blue;
+    #header2 {
+      position: absolute;
+      background-color: #FFF;
+      height: 100px;
+      width: 100%;
+      z-index: 10;
+      h1 {
+        margin: 0 auto;
+        text-indent: -3333px;
+      }
+      #login {
+        position: absolute;
+        top: 30px;
+        right: 60px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+        cursor: pointer;
+        span {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
     }
+
   }
   .center-block {
-    &:before {
-      content: "";
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 0 60px 3000px;
-      border-color: white white $blue;
-      display: block;
-    }
-    height: 1200px;
     position: relative;
-    background-color: $blue;
-    overflow: hidden;
-    z-index: -10;
+    height: 100%;
     .cloud-left {
       position: absolute;
       top: -110px;
@@ -101,50 +237,119 @@ $blue: #E8F7FF;
       right: 0;
       top: -100px;
     }
-    .cloud1 {
+    #lost-in-orientation {
       position: absolute;
-      top: 150px;
-      left: 350px;
-      z-index: -1;
+      height: 400px;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      .question {
+        position: relative;
+        top: -25px;
+        margin: 0 auto;
+        animation-duration: 10s;
+        animation-name: oscillation;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        transform: rotate(-5deg);
+      }
+      .people {
+        margin:0 auto;
+        display:block;
+        position: relative;
+      }
+      .headlines {
+        text-align: center;
+        position: relative;
+        h2 {
+          font-family: "Satisfy",cursive;
+          font-size: 60px;
+          font-style: normal;
+        }
+        .glyphicon-chevron-down {
+          padding-top: 30px;
+          font-size: 60px;
+          cursor: pointer;
+        }
+      }
+      .cloud1 {
+        position: absolute;
+        top: 150px;
+        left: 350px;
+        z-index: 1;
+        animation-duration: 40s;
+        animation-name: right_left;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      .cloud2 {
+        position: absolute;
+        top: 180px;
+        left: 285px;
+        animation-duration: 20s;
+        animation-name: right_left;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      .cloud3 {
+        position: absolute;
+        right: 40%;
+        top: 150px;
+        animation-duration: 20s;
+        animation-name: left_right;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+    }
+    .action {
+      width: 33.33%;
+      text-align: center;
+      float: left;
+      position: relative;
+      top: 250px;
+      .illustration {
+        position: relative;
+        width: 160px;
+        height: 172px;
+        margin: 0 auto;
+        .journey-action {
+          position: absolute;
+          left: 25px;
+          top: 30px;
+        }
+        .inspire-action {
+          position: absolute;
+          left: 30px;
+          top: 50px;
+        }
+        .blog-action {
+          position: absolute;
+          left: 50px;
+          top: 50px;
+        }
+      }
+      h4 {
+        font-weight: semi-bold;
+        font-size: 26px;
+      }
+      btn {
+        margin-top: 20px;
+        background-color: #E47800;
+      }
+    }
+
+    .cloud {
       animation-duration: 40s;
       animation-name: right_left;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
     }
-    .cloud2 {
-      position: absolute;
-      top: 280px;
-      left: 285px;
-      animation-duration: 20s;
-      animation-name: right_left;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-     }
-    .cloud3 {
-      position: absolute;
-      right: 40%;
-      top: 250px;
-      animation-duration: 20s;
-      animation-name: left_right;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-    }
-    .question {
-      position: absolute;
-      left: 50%;
-      top: 130px;
-      animation-duration: 10s;
-      animation-name: oscillation;
-      animation-iteration-count: infinite;
-      animation-timing-function: ease-in-out;
-      transform: rotate(-5deg);
-    }
-    .people {
-      margin:0 auto;
-      display:block;
-      position: relative;
-      top: 200px;
-    }
+  }
+
+  .actions {
+    background-color: $blue;
     .headlines {
       text-align: center;
       top: 200px;
@@ -194,14 +399,8 @@ $blue: #E8F7FF;
         background-color: #E47800;
       }
     }
-
-    .cloud {
-      animation-duration: 40s;
-      animation-name: right_left;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-    }
   }
+
   .i-love-my-job {
     &:before {
       content: "";
@@ -267,7 +466,7 @@ $blue: #E8F7FF;
       font-size: 20px;
     }
     a {
-      margin: 20px 0 100px;  
+      margin: 20px 0 100px;
       display: inline-block;
       color: #3e3e3e;
       text-decoration: underline;
