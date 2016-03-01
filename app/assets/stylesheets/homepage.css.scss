@@ -197,6 +197,7 @@ $blue: #E8F7FF;
 
 #homepage {
   .section.first {
+    position: relative;
     background-color: $blue;
     #header2 {
       position: absolute;
@@ -222,131 +223,90 @@ $blue: #E8F7FF;
         }
       }
     }
-
-  }
-  .center-block {
-    position: relative;
-    height: 100%;
-    .cloud-left {
-      position: absolute;
-      top: -110px;
-      left: -200px;
-    }
-    .cloud-right {
-      position: absolute;
-      right: 0;
-      top: -100px;
-    }
-    #lost-in-orientation {
-      position: absolute;
-      height: 400px;
-      margin: auto;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      .question {
-        position: relative;
-        top: -25px;
-        margin: 0 auto;
-        animation-duration: 10s;
-        animation-name: oscillation;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-        transform: rotate(-5deg);
+    .center-block {
+      position: relative;
+      height: 100%;
+      .cloud-left {
+        position: absolute;
+        top: -110px;
+        left: -200px;
       }
-      .people {
-        margin:0 auto;
-        display:block;
-        position: relative;
+      .cloud-right {
+        position: absolute;
+        right: 0;
+        top: -100px;
       }
-      .headlines {
+      #lost-in-orientation {
+        position: absolute;
+        height: 400px;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         text-align: center;
-        position: relative;
+        .question {
+          position: relative;
+          top: -25px;
+          margin: 0 auto;
+          animation-duration: 10s;
+          animation-name: oscillation;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease-in-out;
+          transform: rotate(-5deg);
+        }
+        .people {
+          margin:0 auto;
+          display:block;
+          position: relative;
+        }
         h2 {
           font-family: "Satisfy",cursive;
           font-size: 60px;
           font-style: normal;
         }
-        .glyphicon-chevron-down {
-          padding-top: 30px;
-          font-size: 60px;
-          cursor: pointer;
+        .cloud1 {
+          position: absolute;
+          top: 0px;
+          left: 350px;
+          z-index: 1;
+          animation-duration: 40s;
+          animation-name: right_left;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+        .cloud2 {
+          position: absolute;
+          top: 80px;
+          left: 285px;
+          animation-duration: 20s;
+          animation-name: right_left;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+        .cloud3 {
+          position: absolute;
+          right: 40%;
+          top: 10px;
+          animation-duration: 20s;
+          animation-name: left_right;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
         }
       }
-      .cloud1 {
-        position: absolute;
-        top: 150px;
-        left: 350px;
-        z-index: 1;
-        animation-duration: 40s;
-        animation-name: right_left;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-      .cloud2 {
-        position: absolute;
-        top: 180px;
-        left: 285px;
-        animation-duration: 20s;
-        animation-name: right_left;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-      .cloud3 {
-        position: absolute;
-        right: 40%;
-        top: 150px;
-        animation-duration: 20s;
-        animation-name: left_right;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
     }
-    .action {
-      width: 33.33%;
+    .go-down {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
       text-align: center;
-      float: left;
-      position: relative;
-      top: 250px;
-      .illustration {
-        position: relative;
-        width: 160px;
-        height: 172px;
-        margin: 0 auto;
-        .journey-action {
-          position: absolute;
-          left: 25px;
-          top: 30px;
-        }
-        .inspire-action {
-          position: absolute;
-          left: 30px;
-          top: 50px;
-        }
-        .blog-action {
-          position: absolute;
-          left: 50px;
-          top: 50px;
-        }
+      .glyphicon-chevron-down {
+        font-size: 60px;
+        cursor: pointer;
       }
-      h4 {
-        font-weight: semi-bold;
-        font-size: 26px;
-      }
-      btn {
-        margin-top: 20px;
-        background-color: #E47800;
-      }
-    }
-
-    .cloud {
-      animation-duration: 40s;
-      animation-name: right_left;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
     }
   }
+
 
   .actions {
     background-color: $blue;
