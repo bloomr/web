@@ -213,17 +213,22 @@ $blue: #E8F7FF;
     #header2 {
       position: absolute;
       background-color: #FFF;
-      height: 100px;
       width: 100%;
       z-index: 10;
       h1 {
-        margin: 0 auto;
+        margin: 10px 5px;
+        @media (min-width: 768px) {
+          margin: 10px auto;
+        }
         text-indent: -3333px;
       }
       #login {
         position: absolute;
         top: 30px;
-        right: 60px;
+        right: 0px;
+        @media (min-width: 768px) {
+          right: 60px;
+        }
         font-weight: bold;
         font-size: 18px;
         color: #333;
@@ -238,11 +243,17 @@ $blue: #E8F7FF;
       position: relative;
       height: 100%;
       .cloud-left {
+        @media (max-width: 767px) {
+          display: none;
+        }
         position: absolute;
         top: -110px;
         left: -200px;
       }
       .cloud-right {
+        @media (max-width: 767px) {
+          display: none;
+        }
         position: absolute;
         right: 0;
         top: -100px;
@@ -273,7 +284,10 @@ $blue: #E8F7FF;
         }
         h2 {
           font-family: "Satisfy",cursive;
-          font-size: 60px;
+          @media (min-width: 768px) {
+            font-size: 60px;
+          }
+          font-size: 40px;
           font-style: normal;
         }
         .cloud1 {
