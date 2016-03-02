@@ -196,6 +196,17 @@ $blue: #E8F7FF;
 
 
 #homepage {
+  .go-down {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    .glyphicon-chevron-down {
+      font-size: 60px;
+      cursor: pointer;
+    }
+  }
   .section.first {
     position: relative;
     background-color: $blue;
@@ -293,16 +304,6 @@ $blue: #E8F7FF;
           animation-iteration-count: infinite;
           animation-timing-function: linear;
         }
-      }
-    }
-    .go-down {
-      position: absolute;
-      bottom: 30px;
-      width: 100%;
-      text-align: center;
-      .glyphicon-chevron-down {
-        font-size: 60px;
-        cursor: pointer;
       }
     }
   }
