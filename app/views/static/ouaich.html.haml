@@ -59,61 +59,54 @@
         %btn.btn.btn-primary
           Je lis le blog
 
-    .section Some section
-    .section Some section
-    .i-love-my-job
-    =image_tag('home/blue-cloud-left.png', class: 'blue-cloud-left')
-    =image_tag('home/blue-cloud-right.png', class: 'blue-cloud-right')
-    =image_tag('home/icon-bloomer.png', class: 'flower1')
-    =image_tag('home/icon-cestquoibloomr.png', class: 'cestquoi')
-    %h4 J'aime mon métier ! Comment je peux vous aider ?
-    %p.subtitle Viens partager la passion de ton métier <br>au monde entier :
-    %btn.btn.btn-primary je témoigne
+    .section.i-love-my-job
+      =image_tag('home/blue-cloud-left.png', class: 'blue-cloud-left')
+      =image_tag('home/blue-cloud-right.png', class: 'blue-cloud-right')
+      =image_tag('home/icon-bloomer.png', class: 'flower1')
+      =image_tag('home/icon-cestquoibloomr.png', class: 'cestquoi')
+      %h4 J'aime mon métier ! Comment je peux vous aider ?
+      %p.subtitle Viens partager la passion de ton métier <br>au monde entier :
+      %btn.btn.btn-primary je témoigne
+
+    .section.what-is-it
+      %h5 Au fait ... c'est quoi Bloomr ?
+      %p.subtitle Bloomr fait éclore les pros épanouis de demain
+      %p Aujourd'hui, beaucoup de jeunes perçoivent leur orientation comme un challenge insurmontable.
+      %p Chez Bloomr, l'orientation est une aventure palpitante et pleine de promesses.
+      %p Nous bousculons les codes en adoptant une approche positive, enthousiaste et rassurante pour <br>redonner confiance et faire éclore les professionnels épanouis de demain.
+
+      %a Oh oui, dites m'en plus
+
+    .section.links
+      .column
+        %h3 Je veux challenger mon orientation
+        %ul
+          %li Le parcours Bloomr
+          %li Les témoignages des bloomers
+          %li Le blog
+
+      .column
+        %h3 C'est quoi Bloomr ?
+        %ul
+          %li Concept
+          %li Équipe
+          %li Manifesto
+          %li Partenaires
+          %li Contact
+          %li Bloomr expliqué aux parents
+
+      .column
+        %h3 Je veux aider
+        %ul
+          %li Connexion bloomer
+          %li Je veux transmettre le plaisir d'exercer mon métier
+          %li Je suis conseiller / prof
+
+      .footer
+        =image_tag('home/logo-bloomr-white.png')
+        %p © Bloomr 2016, charte de confidentialité
 
 
-    %h5 Au fait ... c'est quoi Bloomr ?
-    %p.subtitle Bloomr fait éclore les pros épanouis de demain
-    %p Aujourd'hui, beaucoup de jeunes perçoivent leur orientation comme un challenge insurmontable.
-    %p Chez Bloomr, l'orientation est une aventure palpitante et pleine de promesses.
-    %p Nous bousculons les codes en adoptant une approche positive, enthousiaste et rassurante pour <br>redonner confiance et faire éclore les professionnels épanouis de demain.
-
-    %a Oh oui, dites m'en plus
-
-  .links
-    .section
-      %h3 Je veux challenger mon orientation
-      %ul
-        %li Le parcours Bloomr
-        %li Les témoignages des bloomers
-        %li Le blog
-
-    .section
-      %h3 C'est quoi Bloomr ?
-      %ul
-        %li Concept
-        %li Équipe
-        %li Manifesto
-        %li Partenaires
-        %li Contact
-        %li Bloomr expliqué aux parents
-
-    .section
-      %h3 Je veux aider
-      %ul
-        %li Connexion bloomer
-        %li Je veux transmettre le plaisir d'exercer mon métier
-        %li Je suis conseiller / prof
-
-  .footer
-    =image_tag('home/logo-bloomr-white.png')
-    %p © Bloomr 2016, charte de confidentialité
-
-
-  -# .row{style: 'margin-top: 50px;' }
-  -#   %h4{style: 'text-align: center;'}
-  -#     %a qui sommes-nous
-  -#     et
-  -#     %a que defendons nous ?
 :javascript
   $(document).ready(function() {
     $('#fullpage').fullpage({

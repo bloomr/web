@@ -307,8 +307,6 @@ $blue: #E8F7FF;
       }
     }
   }
-
-
   .actions {
     overflow: hidden;
     background-color: $blue;
@@ -355,16 +353,7 @@ $blue: #E8F7FF;
     }
   }
 
-  .i-love-my-job {
-    &:before {
-      content: "";
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 0 60px 3000px;
-      border-color: $blue $blue #EBEBEB;
-      display: block;
-    }
+  .section.i-love-my-job {
     position: relative;
     text-align: center;
     overflow:hidden;
@@ -406,6 +395,8 @@ $blue: #E8F7FF;
       margin: 0 auto;
       display: block;
     }
+  }
+  .section.what-is-it {
     h5 {
       margin-top: 300px;
       color: #f0ad30;
@@ -427,18 +418,9 @@ $blue: #E8F7FF;
     }
   }
   .links {
-    &:before {
-      content: "";
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 0 60px 3000px;
-      border-color: #EBEBEB #EBEBEB #FCF1DB;
-      display: block;
-    }
     background-color: #FCF1DB;
     overflow: hidden;
-    .section {
+    .column {
       width: 33.33%;
       float: left;
       padding: 20px 0 20px 40px;
@@ -451,25 +433,18 @@ $blue: #E8F7FF;
         font-family: Satisfy;
       }
     }
-  }
-  .footer {
-    &:before {
-      content: "";
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 0 60px 3000px;
-      border-color: #FCF1DB #FCF1DB #F0AD30;
-      display: block;
-      margin-bottom: 20px;
-    }
-    text-align: center;
-    background-color: #F0AD30;
-    overflow: hidden;
-    p {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #FFF;
+    .footer {
+      text-align: center;
+      background-color: #F0AD30;
+      clear: both;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      p {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #FFF;
+      }
     }
   }
 }
