@@ -198,7 +198,7 @@ $blue: #E8F7FF;
 #homepage {
   .go-down {
     position: absolute;
-    bottom: 30px;
+    bottom: 10px;
     width: 100%;
     text-align: center;
     z-index: 1;
@@ -326,16 +326,24 @@ $blue: #E8F7FF;
     background-color: $blue;
     text-align: center;
     h3 {
-      font-size: 34px;
-      margin-top: 60px;
+      font-size: 18px;
+      @media (min-width: 768px) {
+        font-size: 34px;
+        margin-top: 60px;
+      }
     }
     .action {
-      width: 33.33%;
+      @media (min-width: 768px) {
+        width: 33.33%;
+        float: left;
+        position: relative;
+        top: 50px;
+      }
       text-align: center;
-      float: left;
-      position: relative;
-      top: 50px;
       .illustration {
+        @media (max-width: 767px) {
+          display: none;
+        }
         position: relative;
         width: 160px;
         height: 172px;
@@ -358,10 +366,15 @@ $blue: #E8F7FF;
       }
       h4 {
         font-weight: semi-bold;
-        font-size: 26px;
+        @media (min-width: 768px) {
+          font-size: 26px;
+        }
       }
       btn {
-        margin-top: 20px;
+        @media (min-width: 768px) {
+          margin-top: 20px;
+        }
+        margin-bottom: 20px;
         background-color: #E47800;
       }
     }
