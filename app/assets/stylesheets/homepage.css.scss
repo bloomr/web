@@ -309,26 +309,19 @@ $blue: #E8F7FF;
 
 
   .actions {
+    overflow: hidden;
     background-color: $blue;
-    .headlines {
-      text-align: center;
-      top: 200px;
-      position: relative;
-      h2 {
-        font-family: "Satisfy",cursive;
-        font-size: 60px;
-        font-style: normal;
-      }
-      h3 {
-        font-size: 34px;
-      }
+    text-align: center;
+    h3 {
+      font-size: 34px;
+      margin-top: 60px;
     }
     .action {
       width: 33.33%;
       text-align: center;
       float: left;
       position: relative;
-      top: 250px;
+      top: 50px;
       .illustration {
         position: relative;
         width: 160px;
