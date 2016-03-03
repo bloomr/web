@@ -394,23 +394,33 @@ $blue: #E8F7FF;
       z-index: 1;
     }
     .blue-cloud-left {
+      @media (max-width: 767px) {
+        display: none;
+      }
       position: absolute;
       left: 0;
       top: 100px;
     }
     .blue-cloud-right {
+      @media (max-width: 767px) {
+        display: none;
+      }
       position: absolute;
       right: -300px;
       top: 100px;
     }
     h4 {
-      position: relative;
-      font-size: 40px;
+      font-size: 18px;
+      @media (min-width: 768px) {
+        font-size: 40px;
+      }
       font-family: "Satisfy",cursive;
     }
     .subtitle {
       margin-top: 20px;
-      font-size: 30px;
+      @media (min-width: 768px) {
+        font-size: 30px;
+      }
     }
     .btn {
       font-size: 30px;
@@ -418,25 +428,29 @@ $blue: #E8F7FF;
     }
     .cestquoi {
       position: relative;
-      top: 450px;
+      top: 50px;
       margin: 0 auto;
-      display: block;
     }
   }
   .section.what-is-it {
+    text-align: center;
     h5 {
-      margin-top: 300px;
+      @media (min-width: 768px) {
+        font-size: 50px;
+      }
       color: #f0ad30;
-      font-size: 50px;
       font-family: "Satisfy",cursive;
+    }
+    @media (min-width: 768px) {
+     p,a {
+        font-size: 20px;
+      }
     }
     p {
       margin-top: 30px;
       margin-bottom: 30px;
     }
-    p,a {
-      font-size: 20px;
-    }
+    
     a {
       margin: 20px 0 100px;
       display: inline-block;
@@ -448,15 +462,29 @@ $blue: #E8F7FF;
     background-color: #FCF1DB;
     overflow: hidden;
     .column {
-      width: 33.33%;
-      float: left;
-      padding: 20px 0 20px 40px;
+      padding-left: 5px;
+      padding-right: 5px;
+      @media (min-width: 768px) {
+        width: 33.33%;
+        float: left;
+        padding: 20px 0 20px 40px;
+      }
       ul {
         list-style: none;
         padding: 0;
+        @media (max-width: 767px) {
+          li {
+            margin-right: 15px;
+            margin-bottom: 15px;
+            float: left;
+          }
+        }
       }
       h3 {
-        font-size: 26px;
+        clear: both;
+        @media (min-width: 768px) {
+          font-size: 26px;
+        }
         font-family: Satisfy;
       }
     }
