@@ -104,15 +104,27 @@
 
       .footer
         =image_tag('home/logo-bloomr-white.png')
+        %span.glyphicon.glyphicon-chevron-up
         %p © Bloomr 2016, charte de confidentialité
 
 
 :javascript
   $(document).ready(function() {
+    var chevronDown = $('.glyphicon-chevron-down');
+    var chevronUp = $('.glyphicon-chevron-up');
     $('#fullpage').fullpage({
         navigation: true,
-        navigationPosition: 'right'
+        navigationPosition: 'right',
+        afterLoad: function( anchorLink, index){
+          console.log(index);
+          if(index == 5) {
+            chevronDown.hide(); 
+          } else {
+           chevronDown.show(); 
+          }
+        }
       }
     );
-    $('.glyphicon-chevron-down').click(function() { $.fn.fullpage.moveSectionDown(); })
+    chevronDown.click(function() { $.fn.fullpage.moveSectionDown(); });
+    chevronUp.click(function() { $.fn.fullpage.moveTo(1); })
   });
