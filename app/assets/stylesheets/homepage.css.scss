@@ -194,6 +194,24 @@ $blue: #E8F7FF;
   }
 }
 
+@keyframes explosion {
+  from { 
+    transform: scale(0.7);
+  }
+  30% { opacity: 0; }
+  80% { transform: scale(1); }
+  to {
+    opacity: 1;
+  }
+}
+
+.explosion {
+  animation-duration: 4s;
+  animation-name: explosion;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  opacity: 0;
+}
 
 #homepage {
   color: #3e3e3e;
@@ -277,24 +295,47 @@ $blue: #E8F7FF;
       }
       #lost-in-orientation {
         cursor: pointer;
-        height: 300px;
-        .question {
-          @media(max-width: 767px) {
-            visibility: hidden;
-          }
-          position: relative;
-          top: -25px;
-          margin: 0 auto;
-          animation-duration: 10s;
-          animation-name: oscillation;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-          transform: rotate(-5deg);
-        }
+        height: 240px;
+        top: 90px;
         .people {
           margin:0 auto;
           display:block;
           position: relative;
+          .question {
+            @media(max-width: 767px) {
+              visibility: hidden;
+            }
+            position: relative;
+            top: -25px;
+            margin: 0 auto;
+            &.q2 {
+              top: -80px;
+              left: 30px;
+              position: absolute;
+              animation-delay: 2s;
+            }
+            &.q3 {
+              top: 0px;
+              left: -55px;
+              position: absolute;
+              animation-delay: 700ms;
+            }
+            &.q5 {
+              top: -75px;
+              right: 30px;
+              position: absolute;
+              animation-delay: 2500ms;
+            }
+          }
+          .q4 {
+            top: 10px;
+            right: -50px;
+            position: absolute;
+            transform: rotate(20deg);
+            .question {
+              animation-delay: 1s;
+            }
+          }
         }
         h2 {
           font-family: "Satisfy",cursive;
