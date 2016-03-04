@@ -8,4 +8,7 @@ class StaticController < ApplicationController
 
   def ouaich
   end
+
+  def templates
+  end
 end

@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get "qui-sommes-nous" => "static#qui_sommes_nous"
   get "le-parcours" => "static#le_parcours"
   get "ouaich" => "static#ouaich"
+  get "templates" => "static#templates"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
