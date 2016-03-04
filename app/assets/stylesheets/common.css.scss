@@ -1,0 +1,47 @@
+#templates {
+  padding-left: 30px;
+}
+
+.crazy-btn {
+  font-weight: bold;
+  background-color: #ef892c;
+  padding: 15px 20px;
+  border-radius: 5px;
+  color: white;
+  position: relative;
+  font-size: 18px;
+  transition: all 0.3s ease 0s;
+  top: 0px;
+  margin: 0 5px;
+  cursor: pointer;
+  display: inline-block;
+  &:after {
+    content: "";
+    height: 10px;
+    width: 80%;
+    background-color: #b8e5ff;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    margin: auto auto;
+    transition: all 0.3s ease 0s;
+  }
+  &:hover {
+    top: 5px;
+    background-color: darken(#ef892c, 10%);
+    text-decoration: none;
+    color: white;
+    &:after {
+      bottom: -5px;
+      height: 5px;
+    }
+  }
+  &.yellow {
+    background-color: #f0ad30;
+    &:hover {
+      background-color: darken(#f0ad30, 10%);
+    }
+  }
+}

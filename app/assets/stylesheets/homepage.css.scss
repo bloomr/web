@@ -179,7 +179,7 @@ $blue: #E8F7FF;
   from {
     transform: rotate(45deg);
     opacity: 0;
-    top: 60px;
+    top: -20px;
     left: 40%;
   }
   50% {
@@ -189,14 +189,18 @@ $blue: #E8F7FF;
   to {
     transform: rotate(-45deg);
     opacity: 0;
-    top: 20px;
+    top: -60px;
     left: 60%;
   }
 }
 
 
 #homepage {
+  color: #3e3e3e;
   .go-down {
+    @media (max-width: 767px) {
+      display: none;
+    }
     position: absolute;
     bottom: 10px;
     width: 100%;
@@ -206,6 +210,16 @@ $blue: #E8F7FF;
       font-size: 60px;
       cursor: pointer;
     }
+  }
+  .center {
+    position: absolute;
+    height: 400px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
   }
   .section.first {
     position: relative;
@@ -231,7 +245,7 @@ $blue: #E8F7FF;
         }
         font-weight: bold;
         font-size: 18px;
-        color: #333;
+        color: #3e3e3e;
         cursor: pointer;
         span {
           margin-left: 10px;
@@ -259,14 +273,6 @@ $blue: #E8F7FF;
         top: -100px;
       }
       #lost-in-orientation {
-        position: absolute;
-        height: 400px;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
         .question {
           position: relative;
           top: -25px;
@@ -337,17 +343,19 @@ $blue: #E8F7FF;
         width: 33.33%;
         float: left;
         position: relative;
-        top: 50px;
+        top: 10px;
       }
       text-align: center;
+      .bg-action {
+        display: inline-block;
+      }
       .illustration {
         @media (max-width: 767px) {
           display: none;
         }
         position: relative;
         width: 160px;
-        height: 172px;
-        margin: 0 auto;
+        margin: 0 auto 10px;
         .journey-action {
           position: absolute;
           left: 36px;
@@ -367,7 +375,8 @@ $blue: #E8F7FF;
       h4 {
         font-weight: semi-bold;
         @media (min-width: 768px) {
-          font-size: 26px;
+          font-size: 20px;
+          margin-bottom: 35px;
         }
       }
       btn {
@@ -384,7 +393,6 @@ $blue: #E8F7FF;
     position: relative;
     text-align: center;
     overflow:hidden;
-    background-color: #EBEBEB;
     .flower1 {
       position: absolute;
       animation-duration: 20s;
@@ -410,30 +418,34 @@ $blue: #E8F7FF;
       top: 100px;
     }
     h4 {
-      font-size: 18px;
+      font-size: 24px;
       @media (min-width: 768px) {
-        font-size: 40px;
+        font-size: 46px;
       }
       font-family: "Satisfy",cursive;
     }
     .subtitle {
       margin-top: 20px;
+      margin-bottom: 40px;
       @media (min-width: 768px) {
-        font-size: 30px;
+        font-size: 24px;
       }
     }
     .btn {
       font-size: 30px;
       margin-top: 10px;
     }
-    .cestquoi {
-      position: relative;
-      top: 50px;
-      margin: 0 auto;
-    }
   }
   .section.what-is-it {
+    position: relative;
     text-align: center;
+    .cestquoi {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
     h5 {
       @media (min-width: 768px) {
         font-size: 50px;
@@ -442,15 +454,17 @@ $blue: #E8F7FF;
       font-family: "Satisfy",cursive;
     }
     @media (min-width: 768px) {
-     p,a {
-        font-size: 20px;
+      p,a {
+        font-size: 22px;
       }
     }
     p {
       margin-top: 30px;
       margin-bottom: 30px;
     }
-    
+    p.bloomifesto {
+      font-size: 18px;
+    }
     a {
       margin: 20px 0 100px;
       display: inline-block;
@@ -459,9 +473,11 @@ $blue: #E8F7FF;
     }
   }
   .links {
+    position: relative;
     background-color: #FCF1DB;
     overflow: hidden;
     .column {
+      text-align: left;
       padding-left: 5px;
       padding-right: 5px;
       @media (min-width: 768px) {
@@ -483,7 +499,7 @@ $blue: #E8F7FF;
       h3 {
         clear: both;
         @media (min-width: 768px) {
-          font-size: 26px;
+          font-size: 22px;
         }
         font-family: Satisfy;
       }
@@ -495,6 +511,9 @@ $blue: #E8F7FF;
       position: absolute;
       bottom: 0px;
       width: 100%;
+      i {
+        margin: 20px auto;
+      }
       p {
         margin-top: 20px;
         font-size: 14px;

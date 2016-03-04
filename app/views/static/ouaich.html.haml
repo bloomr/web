@@ -13,7 +13,7 @@
       .center-block
         %i.sprite-white-cloud-left.sprite.cloud-left
         %i.sprite.sprite-white-cloud-right.cloud-right
-        #lost-in-orientation
+        #lost-in-orientation.center
           %i.sprite.sprite-icon-question.question
           %i.sprite.sprite-boyandgirl.people
           %h2 Perdu dans ton orientation ?
@@ -28,82 +28,85 @@
         Tu veux ...
       .action
         .illustration
-          =image_tag('home/bg-icon.png', class: 'bg-action')
-          =image_tag('home/icon-journey.png', class: 'journey-action')
+          %i.sprite.sprite-bg-icon.bg-action
+          %i.sprite.sprite-icon-journey.journey-action
         %h4
           Y voir plus clair
           %br
           dans ton orientation
-        %btn.btn.btn-primary
+        %a.crazy-btn
           Je suis le parcours
 
-      .action{ style: 'top: 200px' }
+      .action{ style: 'top: 160px' }
         .illustration
-          =image_tag('home/bg-icon.png', class: 'bg-action')
-          =image_tag('home/icon-inspire.png', class: 'inspire-action')
+          %i.sprite.sprite-bg-icon.bg-action
+          %i.sprite.sprite-icon-inspire.inspire-action
         %h4
           être inspiré
           %br
           par des pros qui kiffent ?
-        %btn.btn.btn-primary
+        %a.crazy-btn.yellow
           Je découvre les témoignages
 
       .action
         .illustration
-          =image_tag('home/bg-icon.png', class: 'bg-action')
-          =image_tag('home/icon-blog.png', class: 'blog-action')
+          %i.sprite.sprite-bg-icon.bg-action
+          %i.sprite.sprite-icon-blog.blog-action
         %h4
           Zoomer
           %br
           sur des sujets-clés ?
-        %btn.btn.btn-primary
+        %a.crazy-btn.yellow
           Je lis le blog
 
     .section.i-love-my-job
-      .sprite.sprite-blue-cloud-left.blue-cloud-left
-      .sprite.sprite-blue-cloud-right.blue-cloud-right
-      .sprite.sprite-icon-bloomer.flower1
-      %h4 J'aime mon métier ! Comment je peux vous aider ?
-      %p.subtitle Viens partager la passion de ton métier <br>au monde entier :
-      %btn.btn.btn-primary je témoigne
-      .sprite.sprite-icon-cestquoibloomr.cestquoi
+      .center
+        .sprite.sprite-blue-cloud-left.blue-cloud-left
+        .sprite.sprite-blue-cloud-right.blue-cloud-right
+        .sprite.sprite-icon-bloomer.flower1
+        %h4 J'aime mon métier ! Comment je peux vous aider ?
+        %p.subtitle Viens partager la passion de ton métier <br>au monde entier :
+        %btn.crazy-btn Je témoigne
 
     .section.what-is-it
-      %h5 Au fait ... c'est quoi Bloomr ?
-      %p.subtitle Bloomr fait éclore les pros épanouis de demain
-      %p Aujourd'hui, beaucoup de jeunes perçoivent leur orientation comme un challenge insurmontable.
-      %p Chez Bloomr, l'orientation est une aventure palpitante et pleine de promesses.
-      %p Nous bousculons les codes en adoptant une approche positive, enthousiaste et rassurante pour <br>redonner confiance et faire éclore les professionnels épanouis de demain.
+      .center
+        .sprite.sprite-icon-cestquoibloomr.cestquoi
+        %h5 Au fait ... c'est quoi Bloomr ?
+        %p.subtitle Bloomr fait éclore les pros épanouis de demain
+        %p.bloomifesto Aujourd'hui, beaucoup de jeunes perçoivent leur orientation comme un challenge insurmontable.
+        %p.bloomifesto Chez Bloomr, l'orientation est une aventure palpitante et pleine de promesses.
+        %p.bloomifesto Nous bousculons les codes en adoptant une approche positive, enthousiaste et rassurante pour <br>redonner confiance et faire éclore les professionnels épanouis de demain.
 
-      %a Oh oui, dites m'en plus
+        %a Oh oui, dites m'en plus
 
     .section.links
-      .column
-        %h3 Je veux challenger mon orientation
-        %ul
-          %li Le parcours Bloomr
-          %li Les témoignages des bloomers
-          %li Le blog
+      .center
+        .column
+          %h3 Je veux challenger mon orientation
+          %ul
+            %li Le parcours Bloomr
+            %li Les témoignages des bloomers
+            %li Le blog
 
-      .column
-        %h3 C'est quoi Bloomr ?
-        %ul
-          %li Concept
-          %li Équipe
-          %li Manifesto
-          %li Partenaires
-          %li Contact
-          %li Bloomr expliqué aux parents
+        .column
+          %h3 C'est quoi Bloomr ?
+          %ul
+            %li Concept
+            %li Équipe
+            %li Manifesto
+            %li Partenaires
+            %li Contact
+            %li Bloomr expliqué aux parents
 
-      .column
-        %h3 Je veux aider
-        %ul
-          %li Connexion bloomer
-          %li Je veux transmettre le plaisir d'exercer mon métier
-          %li Je suis conseiller / prof
+        .column
+          %h3 Je veux aider
+          %ul
+            %li Connexion bloomer
+            %li Je veux transmettre le plaisir d'exercer mon métier
+            %li Je suis conseiller / prof
 
       .footer
-        =image_tag('home/logo-bloomr-white.png')
+        %i.sprite.sprite-logo-bloomr-white
         %span.glyphicon.glyphicon-chevron-up
         %p © Bloomr 2016, charte de confidentialité
 
@@ -118,9 +121,9 @@
         afterLoad: function( anchorLink, index){
           console.log(index);
           if(index == 5) {
-            chevronDown.hide(); 
+            chevronDown.hide();
           } else {
-           chevronDown.show(); 
+           chevronDown.show();
           }
         }
       }
