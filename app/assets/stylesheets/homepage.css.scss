@@ -214,13 +214,15 @@ $blue: #E8F7FF;
   .center {
     padding: 0 10px;
     position: absolute;
-    height: 400px;
     margin: auto;
     top: 0;
-    bottom: 70px;
+    bottom: 0px;
     left: 0;
     right: 0;
     text-align: center;
+    @media (min-width: 768px) {
+      bottom: 70px;
+    }
   }
   .section.first {
     position: relative;
@@ -274,7 +276,8 @@ $blue: #E8F7FF;
         top: -100px;
       }
       #lost-in-orientation {
-        padding-top: 30px;
+        cursor: pointer;
+        height: 300px;
         .question {
           @media(max-width: 767px) {
             visibility: hidden;
@@ -338,14 +341,16 @@ $blue: #E8F7FF;
     text-align: center;
     position: relative;
     .center-for-small {
+      height: 580px;
+      position: absolute;
+      top: 0px;
+      bottom: 70px;
+      margin: auto;
+      left: 0px;
+      right: 0px;
       @media (max-width: 767px) {
-        position: absolute;
         height: 480px;
-        margin: auto;
-        top: 0;
         bottom: 0;
-        left: 0;
-        right: 0;
       }
     }
     h3 {
@@ -409,6 +414,12 @@ $blue: #E8F7FF;
   }
 
   .section.i-love-my-job {
+    .center {
+      height: 230px;
+      @media (min-width: 768px) {
+        height: 320px;
+      }
+    }
     position: relative;
     text-align: center;
     overflow:hidden;
@@ -439,7 +450,7 @@ $blue: #E8F7FF;
       z-index: -1;
     }
     h4 {
-      margin-top: 80px;
+      // margin-top: 80px;
       font-size: 24px;
       @media (min-width: 768px) {
         font-size: 46px;
@@ -459,6 +470,9 @@ $blue: #E8F7FF;
     }
   }
   .section.what-is-it {
+    .center {
+      height: 440px;
+    }
     position: relative;
     text-align: center;
     .cestquoi {
@@ -509,7 +523,11 @@ $blue: #E8F7FF;
   }
   .links {
     .center {
-      bottom: 70px;
+      height: 360px;
+      @media (min-width: 768px) {
+        height: 200px;
+      }
+      bottom: 120px;
     }
     position: relative;
     background-color: #FCF1DB;
@@ -521,7 +539,7 @@ $blue: #E8F7FF;
       @media (min-width: 768px) {
         width: 33.33%;
         float: left;
-        padding: 20px 0 20px 40px;
+        padding-left: 40px;
       }
       ul {
         list-style: none;
