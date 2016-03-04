@@ -427,6 +427,7 @@ $blue: #E8F7FF;
       position: absolute;
       left: 0;
       top: 100px;
+      z-index: -1;
     }
     .blue-cloud-right {
       @media (max-width: 767px) {
@@ -435,6 +436,7 @@ $blue: #E8F7FF;
       position: absolute;
       right: -300px;
       top: 100px;
+      z-index: -1;
     }
     h4 {
       margin-top: 80px;
