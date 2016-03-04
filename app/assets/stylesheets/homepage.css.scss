@@ -212,6 +212,7 @@ $blue: #E8F7FF;
     }
   }
   .center {
+    padding: 0 10px;
     position: absolute;
     height: 400px;
     margin: auto;
@@ -273,7 +274,11 @@ $blue: #E8F7FF;
         top: -100px;
       }
       #lost-in-orientation {
+        padding-top: 30px;
         .question {
+          @media(max-width: 767px) {
+            visibility: hidden;
+          }
           position: relative;
           top: -25px;
           margin: 0 auto;
@@ -418,6 +423,7 @@ $blue: #E8F7FF;
       top: 100px;
     }
     h4 {
+      margin-top: 80px;
       font-size: 24px;
       @media (min-width: 768px) {
         font-size: 46px;
@@ -440,6 +446,9 @@ $blue: #E8F7FF;
     position: relative;
     text-align: center;
     .cestquoi {
+      @media (max-width: 767px) {
+        display:none;
+      }
       position: absolute;
       top: -100px;
       left: 0;
@@ -447,14 +456,22 @@ $blue: #E8F7FF;
       margin: 0 auto;
     }
     h5 {
+      font-size: 30px;
       @media (min-width: 768px) {
         font-size: 50px;
       }
       color: #f0ad30;
       font-family: "Satisfy",cursive;
     }
-    @media (min-width: 768px) {
-      p,a {
+      p.subtitle {
+        font-size: 26px;
+    @media (max-width: 767px) {
+        font-size: 18px;
+      }
+    }
+    p,a {
+      font-size: 15px;
+      @media (min-width: 768px) {
         font-size: 22px;
       }
     }
@@ -462,8 +479,10 @@ $blue: #E8F7FF;
       margin-top: 30px;
       margin-bottom: 30px;
     }
-    p.bloomifesto {
-      font-size: 18px;
+    p.bloomifesto.last {
+      @media (max-width: 767px) {
+        display: none;
+      }
     }
     a {
       margin: 20px 0 100px;
