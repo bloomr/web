@@ -560,6 +560,9 @@ $blue: #E8F7FF;
       display: inline-block;
       color: #3e3e3e;
       text-decoration: underline;
+      span {
+        margin-left: 10px;
+      }
     }
   }
   .links {
