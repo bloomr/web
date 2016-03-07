@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'portraits#index'
+  root 'home#index'
 
   resources :portraits, :only => [:index, :show, :aleatoire] do
     get :aleatoire, on: :collection
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   resources :tag, :only => [:show]
+  resources :home, :only => [:index]
 
   namespace :api do
     namespace :v1 do
@@ -44,7 +45,6 @@ Rails.application.routes.draw do
   get "qui-nous-sommes", to: redirect('/qui-sommes-nous')
   get "qui-sommes-nous" => "static#qui_sommes_nous"
   get "le-parcours" => "static#le_parcours"
-  get "ouaich" => "static#ouaich"
   get "templates" => "static#templates"
 
   # Example of regular route:
