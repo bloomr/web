@@ -1,4 +1,5 @@
 $blue: #E8F7FF;
+$font-color: #3E3E3E;
 
 .sprite {
   background-image: image-url('home/spritesheet.png');
@@ -195,7 +196,7 @@ $blue: #E8F7FF;
 }
 
 @keyframes explosion {
-  from { 
+  from {
     transform: scale(0.7);
   }
   30% { opacity: 0; }
@@ -214,7 +215,7 @@ $blue: #E8F7FF;
 }
 
 #homepage {
-  color: #3e3e3e;
+  color: $font-color;
   .go-down {
     @media (max-width: 767px) {
       display: none;
@@ -588,6 +589,9 @@ $blue: #E8F7FF;
       ul {
         list-style: none;
         padding: 0;
+        a {
+          color: $font-color;
+        }
         @media (max-width: 767px) {
           li {
             margin-right: 15px;

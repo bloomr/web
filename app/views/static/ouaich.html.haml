@@ -6,7 +6,7 @@
     .section.first
       #header2
         %h1.sprite.sprite-logo-bloomr Bloomr
-        %a#login
+        %a#login{ href: '/me' }
           Connexion
           %span.glyphicon.glyphicon-arrow-right
 
@@ -40,7 +40,7 @@
             Y voir plus clair
             %br
             dans ton orientation
-          %a.crazy-btn
+          %a.crazy-btn{ href: 'http://inscription.bloomr.org' }
             Je suis le parcours
 
         .action{ style: 'top: 160px' }
@@ -51,7 +51,7 @@
             être inspiré
             %br
             par des pros qui kiffent ?
-          %a.crazy-btn.yellow
+          %a.crazy-btn.yellow{ href: '/portraits' }
             Je découvre les témoignages
 
         .action
@@ -62,7 +62,7 @@
             Zoomer
             %br
             sur des sujets-clés ?
-          %a.crazy-btn.yellow
+          %a.crazy-btn.yellow{ href: 'https://medium.com/bloom-r' }
             Je lis le blog
 
     .section.i-love-my-job
@@ -72,7 +72,7 @@
         .sprite.sprite-icon-bloomer.flower1
         %h4 J'aime mon métier ! Comment je peux vous aider ?
         %p.subtitle Viens partager la passion de ton métier <br>au monde entier :
-        %btn.crazy-btn Je témoigne
+        %a.crazy-btn{ href: 'http://bloomers.bloomr.org/' } Je témoigne
 
     .section.what-is-it
       .center
@@ -83,7 +83,7 @@
         %p.bloomifesto Chez Bloomr, l'orientation est une aventure palpitante et pleine de promesses.
         %p.bloomifesto.last Nous bousculons les codes en adoptant une approche positive, enthousiaste et rassurante pour <br>redonner confiance et faire éclore les professionnels épanouis de demain.
 
-        %a 
+        %a{ href: '/le-concept' }
           Oh oui, dites m'en plus
           %span.glyphicon.glyphicon-arrow-right
 
@@ -92,26 +92,38 @@
         .column
           %h3 Je veux challenger mon orientation
           %ul
-            %li Le parcours Bloomr
-            %li Les témoignages des bloomers
-            %li Le blog
+            %li
+              %a{ href: 'http://inscription.bloomr.org' } Le parcours Bloomr
+            %li
+              %a{ href: '/portraits' } Les témoignages des bloomers
+            %li
+              %a{ href: 'https://medium.com/bloom-r' } Le blog
 
         .column
           %h3 C'est quoi Bloomr ?
           %ul
-            %li Concept
-            %li Équipe
-            %li Manifesto
-            %li Partenaires
-            %li Contact
-            %li Bloomr expliqué aux parents
+            %li
+              %a{ href: '/le-concept' } Concept
+            %li
+              %a{ href: '/qui-sommes-nous' } Équipe
+            %li
+              %a{ href: '' } Manifesto
+            %li
+              %a{ href: '' } Partenaires
+            %li
+              %a{ href: 'mailto:contact@bloomr.org' } Contact
+            %li
+              %a{ href: '' } Bloomr expliqué aux parents
 
         .column
           %h3 Je veux aider
           %ul
-            %li Connexion bloomer
-            %li Je veux transmettre le plaisir d'exercer mon métier
-            %li Je suis conseiller / prof
+            %li
+              %a{ href: '/me' } Connexion bloomer
+            %li
+              %a{ href: 'http://bloomers.bloomr.org/' } Je veux transmettre le plaisir d'exercer mon métier
+            %li
+              %a{ href: '' } Je suis conseiller / prof
 
       .footer
         %i.sprite.sprite-logo-bloomr-white
