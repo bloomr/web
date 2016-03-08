@@ -1,5 +1,4 @@
 Rails.application.configure do
-
   config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
 
   # Settings specified here will take precedence over those in config/application.rb.
@@ -39,15 +38,15 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.paperclip_defaults = {
-      :storage => :s3,
-      :s3_credentials => {
-          :bucket => ENV['S3_BUCKET_NAME'],
-          :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-      },
-      :path => '/:class/:attachment/:id_partition/:style/:filename',
-      :url => ':s3_domain_url',
-      :default_url => "missing_:style.png",
-      s3_protocol: :https
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['S3_BUCKET_NAME'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    path: '/:class/:attachment/:id_partition/:style/:filename',
+    url: ':s3_domain_url',
+    default_url: 'missing_:style.png',
+    s3_protocol: :https
   }
 end

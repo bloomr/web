@@ -32,11 +32,11 @@ Rails.application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
-  config.action_controller.asset_host = Proc.new { |source|
+  config.action_controller.asset_host = proc { |source|
     if ENV['CDN_HOSTS'].nil?
       nil
     else
-      cdn_hosts = ENV['CDN_HOSTS'].split(",")
+      cdn_hosts = ENV['CDN_HOSTS'].split(',')
       cdn_hosts[Digest::MD5.hexdigest(source).to_i(16) % cdn_hosts.length]
     end
   }
@@ -90,15 +90,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.paperclip_defaults = {
-      :storage => :s3,
-      :s3_credentials => {
-          :bucket => ENV['S3_BUCKET_NAME'],
-          :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-      },
-      :path => '/:class/:attachment/:id_partition/:style/:filename',
-      :url => ':s3_domain_url',
-      :default_url => "missing_:style.png",
-      s3_protocol: :https
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['S3_BUCKET_NAME'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    path: '/:class/:attachment/:id_partition/:style/:filename',
+    url: ':s3_domain_url',
+    default_url: 'missing_:style.png',
+    s3_protocol: :https
   }
 end
