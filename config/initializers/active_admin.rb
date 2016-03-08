@@ -139,7 +139,7 @@ ActiveAdmin.setup do |config|
   # You can add before, after and around filters to all of your
   # Active Admin resources and pages from here.
   #
-  config.before_filter :force_ssl_redirect, if: :https_enabled?
+  #config.before_filter :force_ssl_redirect
 
 
   # == Setting a Favicon
