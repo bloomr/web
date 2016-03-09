@@ -7,142 +7,154 @@ $font-color: #3E3E3E;
   display: block;
 }
 
+.sprite-arrow-bottom {
+    width: 50px;
+    height: 50px;
+    background-position: -5px -5px;
+}
+
+.sprite-arrow-transition {
+    width: 50px;
+    height: 50px;
+    background-position: -65px -5px;
+}
+
 .sprite-bg-icon {
-  width: 120px;
-  height: 129px;
-  background-position: -5px -5px;
+    width: 120px;
+    height: 129px;
+    background-position: -125px -5px;
 }
 
 .sprite-blue-cloud-1 {
-  width: 185px;
-  height: 85px;
-  background-position: -135px -5px;
+    width: 185px;
+    height: 85px;
+    background-position: -255px -5px;
 }
 
 .sprite-blue-cloud-2 {
-  width: 60px;
-  height: 40px;
-  background-position: -330px -5px;
+    width: 60px;
+    height: 40px;
+    background-position: -450px -5px;
 }
 
 .sprite-blue-cloud-3 {
-  width: 85px;
-  height: 52px;
-  background-position: -400px -5px;
+    width: 85px;
+    height: 52px;
+    background-position: -520px -5px;
 }
 
 .sprite-blue-cloud-left {
-  width: 334px;
-  height: 635px;
-  background-position: -495px -5px;
+    width: 334px;
+    height: 635px;
+    background-position: -615px -5px;
 }
 
 .sprite-blue-cloud-right {
-  width: 583px;
-  height: 1028px;
-  background-position: -839px -5px;
+    width: 583px;
+    height: 1028px;
+    background-position: -959px -5px;
 }
 
 .sprite-boyandgirl {
-  width: 184px;
-  height: 142px;
-  background-position: -1432px -5px;
+    width: 184px;
+    height: 142px;
+    background-position: -1552px -5px;
 }
 
 .sprite-connexion-arrow {
-  width: 9px;
-  height: 7px;
-  background-position: -1626px -5px;
+    width: 9px;
+    height: 7px;
+    background-position: -1746px -5px;
 }
 
 .sprite-connexion-arrow-white {
-  width: 9px;
-  height: 7px;
-  background-position: -1645px -5px;
+    width: 9px;
+    height: 7px;
+    background-position: -1765px -5px;
 }
 
 .sprite-ditesmenplus-arrow {
-  width: 14px;
-  height: 8px;
-  background-position: -1664px -5px;
+    width: 14px;
+    height: 8px;
+    background-position: -1784px -5px;
 }
 
 .sprite-icon-blog {
-  width: 58px;
-  height: 62px;
-  background-position: -1688px -5px;
+    width: 58px;
+    height: 62px;
+    background-position: -1808px -5px;
 }
 
 .sprite-icon-bloomer {
-  width: 49px;
-  height: 44px;
-  background-position: -1756px -5px;
+    width: 49px;
+    height: 44px;
+    background-position: -1876px -5px;
 }
 
 .sprite-icon-cestquoibloomr {
-  width: 127px;
-  height: 71px;
-  background-position: -1756px -59px;
+    width: 127px;
+    height: 71px;
+    background-position: -450px -77px;
 }
 
 .sprite-icon-inspire {
-  width: 75px;
-  height: 48px;
-  background-position: -135px -140px;
+    width: 75px;
+    height: 48px;
+    background-position: -5px -77px;
 }
 
 .sprite-icon-journey {
-  width: 92px;
-  height: 72px;
-  background-position: -220px -140px;
+    width: 92px;
+    height: 72px;
+    background-position: -1746px -77px;
 }
 
 .sprite-icon-menu-white-inspire {
-  width: 61px;
-  height: 38px;
-  background-position: -1815px -5px;
+    width: 61px;
+    height: 38px;
+    background-position: -1876px -59px;
 }
 
 .sprite-icon-menu-white-journey {
-  width: 66px;
-  height: 53px;
-  background-position: -322px -140px;
+    width: 66px;
+    height: 53px;
+    background-position: -255px -107px;
 }
 
 .sprite-icon-question {
-  width: 32px;
-  height: 65px;
-  background-position: -1893px -5px;
+    width: 32px;
+    height: 65px;
+    background-position: -331px -107px;
 }
 
 .sprite-logo-bloomr {
-  width: 116px;
-  height: 63px;
-  background-position: -1626px -140px;
+    width: 116px;
+    height: 63px;
+    background-position: -5px -159px;
 }
 
 .sprite-logo-bloomr-white {
-  width: 98px;
-  height: 53px;
-  background-position: -1752px -140px;
+    width: 98px;
+    height: 53px;
+    background-position: -131px -159px;
 }
 
 .sprite-logo-blr-white {
-  width: 82px;
-  height: 63px;
-  background-position: -398px -140px;
+    width: 82px;
+    height: 63px;
+    background-position: -1848px -107px;
 }
 
 .sprite-white-cloud-left {
-  width: 583px;
-  height: 1028px;
-  background-position: -5px -1043px;
+    width: 583px;
+    height: 1028px;
+    background-position: -5px -1043px;
 }
 
 .sprite-white-cloud-right {
-  width: 334px;
-  height: 635px;
-  background-position: -1432px -213px;
+    width: 334px;
+    height: 635px;
+    background-position: -1552px -180px;
 }
 
 @keyframes right_left {
