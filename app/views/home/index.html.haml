@@ -1,6 +1,9 @@
 #home
   .go-down
-    %span.glyphicon.glyphicon-chevron-down
+    %p#transition
+      %span
+        on te propose ...
+      %i.sprite.sprite-arrow-transition
 
   #fullpage
     .section.first
@@ -43,7 +46,7 @@
           %a.crazy-btn{ href: 'http://inscription.bloomr.org' }
             Je suis le parcours
 
-        .action{ style: 'top: 160px' }
+        .action{ style: 'top: 100px' }
           .illustration
             %i.sprite.sprite-bg-icon.bg-action
             %i.sprite.sprite-icon-inspire.inspire-action
@@ -61,7 +64,7 @@
           %h4
             avoir plus de
             %br
-            sur des sujets-clés ?
+            conseils
           %a.crazy-btn.yellow{ href: 'https://medium.com/bloom-r' }
             Je lis le blog
 
@@ -121,5 +124,9 @@
 
       .footer
         %i.sprite.sprite-logo-bloomr-white
-        %span.glyphicon.glyphicon-chevron-up
         %p © Bloomr 2016, charte de confidentialité
+
+        .lift
+          %i.sprite.sprite-arrow-bottom
+          %span lift me up !
+

@@ -233,13 +233,41 @@ $font-color: #3E3E3E;
       display: none;
     }
     position: absolute;
-    bottom: 10px;
     width: 100%;
-    text-align: center;
+    bottom: 0;
     z-index: 1;
-    .glyphicon-chevron-down {
-      font-size: 60px;
+    #transition {
+      height: 90px;
+      text-align: center;
+      font-size: 30px;
+      color: #f09335;
+      font-family: "Satisfy",cursive;
+      position: relative;
       cursor: pointer;
+      transition: opacity 0.5s ease 0s;
+      span {
+        display: block;
+        &:before {
+        content: "";
+        height: 2px;
+        width: 100px;
+        background-color: #b8e5ff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -10px;
+        margin: auto auto;
+        }
+      }
+      i {
+        margin: 5px auto 0;
+        transition: margin 0.5s ease 0s;
+      }
+      &:hover {
+        i {
+          margin-top: 10px;
+        }
+      }
     }
   }
   .center {
@@ -413,6 +441,9 @@ $font-color: #3E3E3E;
       @media (min-width: 768px) {
         font-size: 34px;
         margin-top: 20px;
+        span {
+          font-size: 20px;
+        }
       }
     }
     .action {
@@ -635,11 +666,29 @@ $font-color: #3E3E3E;
         font-size: 14px;
         color: #FFF;
       }
-      .glyphicon-chevron-up {
-        font-size: 20px;
-        color: white;
+      .lift {
+        @media (max-width: 767px) {
+          display: none;
+        }
         position: absolute;
-        right: 20px;
+        right: 0;
+        width: 300px;
+        top: 15px;
+        font-size: 22px;
+        color: white;
+        i {
+          top: 0;
+          vertical-align: middle;
+          display: inline-block;
+          position: relative;
+          transition: top 0.5s ease 0s;
+        }
+        &:hover {
+          cursor: pointer;
+          i {
+            top: -10px;
+          }
+        }
       }
     }
   }
