@@ -665,6 +665,9 @@ $font-color: #3E3E3E;
         margin-top: 20px;
         font-size: 14px;
         color: #FFF;
+        a {
+          color: white;
+        }
       }
       .lift {
         @media (max-width: 767px) {
