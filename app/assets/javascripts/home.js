@@ -23,7 +23,7 @@
               transtion_text = 'mais vous êtes qui ?';
               break;
             case 4:
-              transtion_text = 'footer de malade';
+              transtion_text = 'bas de page de malade';
               break;
           }
           $textWrapper.text(transtion_text);
