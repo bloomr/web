@@ -29,6 +29,5 @@
 //= require hotjar
 //= require wysihtml-toolbar.min
 //= require advanced_and_extended
-//= require me
 //= require jquery.fullPage.min
 //= require home
