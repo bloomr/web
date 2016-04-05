@@ -48,9 +48,6 @@ ol.breadcrumb {
 .subheader {
   margin-top: 64px;
   background-color: white;
-  @media(min-width: 768px) {
-    margin-bottom: 60px;
-  }
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
   max-width: 100%;
   .intro-wrapper {
