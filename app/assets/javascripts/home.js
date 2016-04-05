@@ -40,6 +40,11 @@
     $goUp.click(function() { $.fn.fullpage.moveTo(1); });
     $('#lost-in-orientation').click(function() { $.fn.fullpage.moveSectionDown(); });
   };
-  $(document).on('page:change', sliceIt);
+  var destroyFullPage = function() {
+    $.fn.fullpage.destroy('all');
+    $(document).off('page:before-unload', destroyFullPage);
+  };
+  $(document).on('page:before-unload', destroyFullPage);
+  sliceIt();
 })();
 
