@@ -1,0 +1,25 @@
+#enrollment
+  .center
+    %a.close{ href: '/' } X
+    %h1 Bienvenue dans la communauté de bloomeurs !
+
+    %p Vous êtes ok pour nous rejoindre et expliquer à des jeunes votre parcours, votre métier et pourquoi vous l'aimez ? Merci !
+
+    %p.first Première étape, l'inscription :
+
+    =form_for @user, url: { action: 'create' } do |f|
+      = f.text_field :first_name, placeholder: 'Votre prénom', required: true, class: 'blue'
+      = f.email_field :email, placeholder: 'Votre adresse mail', required: true, class: 'blue'
+      = f.text_field :job_title, placeholder: 'Votre métier', required: true, class: 'blue'
+      %div{style: 'position: relative; display: inline-block'}
+        = f.submit 'Go Go Go !', class: 'crazy-btn yellow'
+        .shadow
+
+    %a.bloomiser{ href: '/me' } Je me suis déjà fait bloomiser
+
+    %a.galerie{ href: '/portraits' }
+      %ul
+        %li.sprite.fondation-card
+        %li.sprite.parole-card
+        %li.sprite.radis-card
+      %span.oeil Jetez un coup d'oeil à la galerie
