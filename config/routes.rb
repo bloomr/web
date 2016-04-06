@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :tag, :only => [:show]
   resources :home, :only => [:index]
   resources :enrollment, :only => [:index, :create]
+  get '/enrollment/thanks', to: 'enrollment#thanks'
 
   namespace :api do
     namespace :v1 do

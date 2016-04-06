@@ -6,5 +6,10 @@ class EnrollmentController < ApplicationController
   end
 
   def create
+    redirect_to enrollment_thanks_path
+  end
+
+  def thanks
+    render layout: 'home'
   end
 end
