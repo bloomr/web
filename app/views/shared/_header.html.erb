@@ -12,7 +12,7 @@
       <a class="navbar-brand" href="/" aria-label="BLOOM'R"></a>
 
       <ul class="nav navbar-nav search-and-idea pull-right" style="">
-        <li class="hidden-xs hidden-sm"><a href="<%= root_path %>" <% if current_page?(root_path) %>class="active"<% end %> href="/">les bloomers</a></li>
+        <li class="hidden-xs hidden-sm"><a href="<%= portraits_path %>" <% if current_page?(portraits_path) %>class="active"<% end %> href="/">les bloomers</a></li>
         <li class="hidden-xs hidden-sm"><a href="<%= le_concept_path %>" <% if current_page?(le_concept_path) %>class="active"<% end %>>le concept</a></li>
         <li class="hidden-xs hidden-sm"><a href="<%= qui_sommes_nous_path %>" <% if current_page?(qui_sommes_nous_path) %>class="active"<% end %>>l'équipe</a></li>
         <!--<li class="hidden-xs hidden-sm"><a href="">les amis</a></li>-->
@@ -33,7 +33,7 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%= root_path %>">Les bloomers</a></li>
+        <li><a href="<%= portraits_path %>">Les bloomers</a></li>
         <li><a href="<%= le_concept_path %>">Le concept</a></li>
         <li><a href="<%= qui_sommes_nous_path %>">L'équipe</a></li>
         <li><a href="https://medium.com/bloom-r">Blog & actu</a></li>
