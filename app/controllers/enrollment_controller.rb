@@ -6,8 +6,8 @@ class EnrollmentController < ApplicationController
   end
 
   def create
-    email = params['user']['email']
-    EnrollmentMailer.enroll_email(email).deliver_now
+    user_hash = params['user']
+    EnrollmentMailer.enroll_email(user_hash).deliver_now
     redirect_to enrollment_thanks_path
   end
 
