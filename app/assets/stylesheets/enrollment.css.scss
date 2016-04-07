@@ -99,6 +99,11 @@
       display: block;
       cursor: pointer;
       color: #3e3e3e;
+      @media (max-width: 767px) {
+        ul {
+          display: none;
+        }
+      }
       ul {
         border-top: 3px solid $blue;
         padding-top: 40px;

@@ -75,7 +75,7 @@
         .sprite.sprite-icon-bloomer.flower1
         %h4 J'aime mon métier ! Comment je peux vous aider ?
         %p.subtitle Venez partager la passion de votre métier <br>avec le monde entier :
-        %a.crazy-btn{ href: 'http://bloomers.bloomr.org/' } Je témoigne
+        = link_to 'Je témoigne', enrollment_index_path, class: 'crazy-btn'
 
     .section.what-is-it
       .center
@@ -120,7 +120,7 @@
             -# %li
             -#   %a{ href: '/me' } Connexion bloomer
             %li
-              %a{ href: 'http://bloomers.bloomr.org/' } Je veux transmettre le plaisir d'exercer mon métier
+              = link_to "Je veux transmettre le plaisir d'exercer mon métier", enrollment_index_path
 
       .footer
         %i.sprite.sprite-logo-bloomr-white
