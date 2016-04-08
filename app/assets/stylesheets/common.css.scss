@@ -70,7 +70,7 @@
     p {
       font-size: 18px;
     }
-    input {
+    input[type='text'], input[type='email'], input[type='password'], input[type='submit'] {
       border: 2px #e6f6ff;
       font-size: 18px;
       padding: 10px;
@@ -80,8 +80,8 @@
       position: relative;
       width: 350px;
       border-radius: 5px;
+      display: block;
       &.blue {
-        display: block;
         background-color: $blue;
       }
       &.crazy-btn {
