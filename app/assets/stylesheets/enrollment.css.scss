@@ -22,78 +22,12 @@
       height: 217px;
       background-position: -5px -232px;
   }
-  background-color: $blue; //TODO remove blue from home.css
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100%;
   .center {
-    background-color: white;
-    max-width: 800px;
-    padding: 30px;
-    text-align: center;
-    color: #3e3e3e;
-    box-shadow: 0px 0px 15px 0px darken($blue, 10%);
-    position: relative;
-    h1 {
-      font-family: "Satisfy",cursive;
-      font-size: 36px;
-      color: #f0ad30;
-      margin-bottom: 30px;
-    }
     p {
-      font-size: 18px;
       &.first {
         font-weight: bold;
         margin-bottom: 20px;
       }
-    }
-    input {
-      border: 2px #e6f6ff;
-      font-size: 18px;
-      padding: 10px;
-      margin: 10px auto;
-      font-style: italic;
-      z-index: 1;
-      position: relative;
-      width: 350px;
-      border-radius: 5px;
-      &.blue {
-        display: block;
-        background-color: $blue;
-      }
-      &.crazy-btn {
-        width: 250px;
-        font-style: normal;
-      }
-    }
-    .shadow {
-      height: 10px;
-      width: 80%;
-      background-color: #b8e5ff;
-      border-radius: 0 0 5px 5px;
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0px;
-      margin: auto auto;
-    }
-    a.close {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      color: darken($blue, 10%);
-      font-weight: bold;
-      font-size: 24px;
-    }
-    a.bloomiser {
-      display: block;
-      margin: 10px auto;
-      color: #3e3e3e;
-      cursor: pointer;
-      width: 250px;
-      margin: 10px auto 10px;
     }
     a.galerie {
       display: block;
@@ -105,12 +39,11 @@
         }
       }
       ul {
-        border-top: 3px solid $blue;
-        padding-top: 40px;
+        padding-top: 20px;
+        margin-bottom: 30px;
       }
       ul>li {
         display: inline-block;
-        margin: auto 10px;
         transition: transform 0.5s ease 0s;
         &:nth-child(1){
         transform: translate(15px) rotate(2deg);
@@ -121,13 +54,6 @@
         &:nth-child(3){
         transform: translate(-20px) rotate(2deg);
         }
-      }
-      .oeil {
-        display: inline-block;
-        border: 2px solid #f0ad30;
-        border-radius: 5px;
-        padding: 10px;
-        margin: 30px auto 0;
       }
       &:hover {
         text-decoration: none;
