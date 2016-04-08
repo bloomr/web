@@ -7,5 +7,6 @@ class StaticController < ApplicationController
   end
 
   def templates
+    render layout: 'home'
   end
 end
