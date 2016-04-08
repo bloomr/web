@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'alfred@bloomr.org'
+  address = Mail::Address.new 'alfred@bloomr.org'
+  address.display_name = 'Alfred de Bloomr'
+  default from: address.format
   layout 'mailer'
 end
