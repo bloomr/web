@@ -3,7 +3,7 @@
     %a.close{ href: '/' } X
     %h1 Bienvenue à vous, ami bloomeur !
 
-    %p Connectez-vous pour transmettre l'amour de votre métier à ceux qui cherchent leur place : les bloomies !
+    %p Connectez-vous pour transmettre l'amour de votre métier à ceux qui cherchent leur place !
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = devise_error_messages!
@@ -21,7 +21,7 @@
     = link_to "(Oups ... j'ai oublié mon mot de passe)", new_password_path(resource_name), class: 'link-center blue-under'
 
     %p
-      Moi aussi je veux devenir un bloomeur et aider ceux qui cherchent leur place
+      Moi aussi je veux devenir un bloomeur
       %a.oeil{ href: '/enrollment', style: 'color: #3e3e3e; cursor: pointer; margin-top: 20px;' }
         S'inscrire sur Bloomr
         %span.glyphicon.glyphicon-arrow-right{style: 'margin: auto 10px;'}
