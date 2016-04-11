@@ -26,6 +26,7 @@ $light_orange: lighten($orange, 30%);
 @import 'home';
 @import 'common';
 @import 'enrollment';
+@import 'payment';
 
 html {
   width: 100%;

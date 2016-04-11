@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { passwords: 'passwords' }
 
-  resources :charges
+  resources :payment, :only => [:index, :create]
+  get '/payment/thanks', to: 'payment#thanks'
 
   get '/me', to: 'me#show'
   patch '/me', to: 'me#update'
