@@ -1,29 +1,27 @@
-.container
-  .row
-    .col-md-6.col-md-offset-3
-      %h2 Se connecter
-      %br
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        = devise_error_messages!
-        - flash.each do |name, msg|
-          = content_tag :div, msg, id: "flash_#{name}"
-        %br
+.full-blue
+  .center
+    %a.close{ href: '/' } X
+    %h1 Bienvenue à vous, ami bloomeur !
 
-        .form-group
-          = f.label :email
-          = f.email_field :email, autofocus: true, class: 'form-control', required: true
+    %p Connectez-vous pour transmettre l'amour de votre métier à ceux qui cherchent leur place : les bloomies !
 
-        .form-group
-          = f.label :password, 'Mot de passe'
-          = f.password_field :password, autocomplete: "off", class: 'form-control', required: true
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = devise_error_messages!
+      - flash.each do |name, msg|
+        = content_tag :div, msg, id: "flash_#{name}", style: 'margin: 30px auto'
+      = f.email_field :email, placeholder: 'Votre adresse mail', required: true, autofocus: true, class: 'blue'
+      = f.password_field :password, placeholder: 'Votre mot de passe', autocomplete: 'off', required: true, class: 'blue'
+      %div
+        = f.check_box :remember_me
+        = f.label :remember_me, 'Se souvenir de moi', style: 'font-weight: normal; font-style: italic'
+      %div{style: 'position: relative; display: inline-block'}
+        = f.submit 'Go Go Go !', class: 'crazy-btn yellow'
+        .shadow
 
-        - if devise_mapping.rememberable?
-          .form-group
-            = f.check_box :remember_me
-            = f.label :remember_me, 'Se souvenir de moi'
+    = link_to "(Oups ... j'ai oublié mon mot de passe)", new_password_path(resource_name), class: 'link-center blue-under'
 
-        .actions
-          = f.submit "Se connecter", class: 'form-control'
-
-      %br
-      = render "users/shared/links"
+    %p
+      Moi aussi je veux devenir un bloomeur et aider ceux qui cherchent leur place
+      %a.oeil{ href: '/enrollment', style: 'color: #3e3e3e; cursor: pointer; margin-top: 20px;' }
+        S'inscrire sur Bloomr
+        %span.glyphicon.glyphicon-arrow-right{style: 'margin: auto 10px;'}

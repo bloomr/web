@@ -14,3 +14,21 @@
       %span
         on te propose ...
       %i.sprite.sprite-arrow-transition
+
+.full-blue
+  .center
+    %a.close{ href: '/' } X
+    %h1 Un super titre
+
+    %p petit texte explicatif
+
+    =form_for User.new, url: '/top' do |f|
+      = f.text_field :first_name, placeholder: 'Votre prénom', required: true, class: 'blue'
+      = f.email_field :email, placeholder: 'Votre adresse mail', required: true, class: 'blue'
+      %div{style: 'position: relative; display: inline-block'}
+        = f.submit 'Go Go Go !', class: 'crazy-btn yellow'
+        .shadow
+
+    %a.link-center.blue-under{ href: '/me' } petit lien au centre
+
+    %span.oeil Jetez un coup d'oeil à la galerie
