@@ -32,3 +32,16 @@
     %a.link-center.blue-under{ href: '/me' } petit lien au centre
 
     %span.oeil Jetez un coup d'oeil à la galerie
+
+%ul.cards
+  %li.col-lg-3.col-md-4.col-sm-6.col-xs-12
+    = link_to(home_index_path) do
+      %div{ class: 'background-1' }
+        = image_tag 'avatars/darwin.png', class: 'portrait-avatar', width: '104px', height: '104px', alt: 'Photo '
+        .overlay
+          %h3.portrait-infos-right.portrait-name pre titre
+          %h2.panel-title.portrait-job-title titre
+          = image_tag 'icons/icon-quote.png', height: '24px', width: '27px'
+          %blockquote.portrait-love-job
+            une description un peu longue qui prend pas mal de lignes et tiens encore une autre
+          %span.btn.btn-primary ... Lire la suite
