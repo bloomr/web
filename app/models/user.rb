@@ -89,6 +89,17 @@ class User < ActiveRecord::Base
     users.map{|u| user_with_questions.select{|uq| uq.id == u.id }.first }.compact
   end
 
+  def self.find_published_with_tag options={}
+    options = { nb_per_page: 12, page: 0}.merge(options)
+
+    User.joins(:keywords)
+    .where('users.published = ? and users.job_title IS NOT NULL AND keywords.tag = ?', true, options[:tag])
+    .select('distinct users.*')
+    .limit(12)
+    .offset(options[:nb_per_page] * options[:page])
+    .order(updated_at: :desc)
+  end
+
   def has_explained_its_works?
     MY_WORK_QUESTIONS_IDENTIFIERS.all? {|identifier| questions.find { |q2| q2.identifier == identifier } }
   end
