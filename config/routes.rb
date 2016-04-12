@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   resources :enrollment, :only => [:index, :create]
   get '/enrollment/thanks', to: 'enrollment#thanks'
 
+  resources :tribes, only: [:index]
+
   namespace :api do
     namespace :v1 do
       resources :users, :only => [:create, :update, :index]
