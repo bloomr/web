@@ -173,7 +173,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe '.default_tribe' do
+  describe '.default_tribes' do
     subject { user.default_tribes }
 
     context 'and a user with no keyword' do
