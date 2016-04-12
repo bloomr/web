@@ -1,10 +1,12 @@
-#payment
+= content_for :title, 'Paiement du Parcours'
+
+#payment.full-blue
   .center
+    =image_tag 'payment/parcours.jpg', class: 'journey-img'
+
     %h1 Fabuleuse décision !
 
-    %p Le paiement se fait par Carte Bancaire ou avec Paypal, mais avant...
-
-    %p.first ...qui es tu, toi qui va suivre le parcours Bloomr ?
+    %p Tu vas embarquer pour l'aventure, il ne te reste plus qu'à compléter ta carte d'embarquement et à procéder au paiement !
     = form_tag '/payment', :id => 'new_payment' do
       = text_field_tag :first_name, nil, placeholder: 'Ton prénom', required: true, class: 'blue'
       = email_field_tag :email, nil, placeholder: 'Ton adresse email', required: true, class: 'blue', 'data-stripe' => 'name'
@@ -13,29 +15,32 @@
       %div{style: 'position: relative; display: inline-block'}
       %p#flash-messages
       <p><span class= 'glyphicon glyphicon-lock'></span> Informations de paiement</p>
-      = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb', 'data-stripe' => 'number'
+      = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb cc-number', 'data-stripe' => 'number'
       %div.form-inline
-        = text_field_tag nil, nil, placeholder: 'MM', required: true, class: 'small-cb', maxlength: 2, 'data-stripe' => 'exp-month'
-        = text_field_tag nil, nil, placeholder: 'YYYY', required: true, class: 'small-cb', maxlength: 4, 'data-stripe' => 'exp-year'
-        = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb', maxlength: 4, 'data-stripe' => 'cvc'
+        = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
+        = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
+
+      %p.legal En t'inscrivant au parcours, tu acceptes les <a href= 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view'><u>conditions générales</u></a> et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
       %div{style: 'position: relative; display: inline-block'}
-      = submit_tag 'Go, je paye 15€ !', class: 'crazy-btn yellow'
+        = submit_tag 'Go, je paye 15€ !', class: 'crazy-btn yellow'
+        .shadow
 
-      %a.bloomiser{ href: 'paypal.me/bloomr/15' } Je préfère payer avec Paypal
-
-      %a.galerie{ href: '/portraits' }
-        %ul
-          %li.sprite.dev-card
-          %li.sprite.parole-card
-          %li.sprite.radis-card
+      %a.link-center{ href: 'paypal.me/bloomr/15' } Je préfère payer avec Paypal
 
 = javascript_include_tag 'https://js.stripe.com/v2/'
 
 :javascript
   $(function(){
-   Stripe.setPublishableKey('pk_test_KFGPFZWb7lEmmfamW83Qsziy');
-   //Stripe.setPublishableKey('<%= Rails.configuration.stripe[:publishable_key] %>');
+    Stripe.setPublishableKey("#{ ENV['STRIPE_PUBLISHABLE_KEY'] }");
   });
+
+:javascript
+  jQuery(function ($) {
+    $('input.cc-number').payment('formatCardNumber');
+    $('input.cc-exp').payment('formatCardExpiry');
+    $('input.cc-cvc').payment('formatCardCVC');
+  })
+
 
 :javascript
   jQuery(function ($) {

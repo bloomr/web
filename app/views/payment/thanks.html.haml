@@ -1,12 +1,31 @@
-#payment
+= content_for :title, 'Paiement du Parcours'
+
+#payment.full-blue
   .center
-    %h1 Merci, bienvenue chez Bloomr !
+    =image_tag 'payment/parcours.jpg', class: 'journey-img'
 
+    %h1 Merci , bienvenue chez Bloomr !
     %p Ton aventure va démarrer dans l'heure qui vient.
-    %p En attendant et pour être sûr de recevoir les mails, ajoute hello@bloomr.org à tes contacts de messagerie.
+    %p En attendant ajoute <strong>hello@bloomr.org</strong> à tes contacts de messagerie pour que nos mails arrivent à destination.
+    %p A tout de suite !
 
-    %a.galerie{ href: '/portraits' }
-      %ul
-        %li.sprite.dev-card
-        %li.sprite.parole-card
-        %li.sprite.radis-card
+<!-- Google Code for Paiement du parcours Bloomr Conversion Page -->
+
+:javascript
+/* <![CDATA[ */
+var google_conversion_id = 959456602;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "3WTICJOPxWUQ2srAyQM";
+var google_remarketing_only = false;
+/* ]]> */
+
+
+= javascript_include_tag 'http://www.googleadservices.com/pagead/conversion.js'
+
+<noscript>
+  <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/959456602/?label=3WTICJOPxWUQ2srAyQM&amp;guid=ON&amp;script=0"/>
+  </div>
+</noscript>
