@@ -6,7 +6,9 @@ class AddInitialTribes < ActiveRecord::Migration
     create_tribe('Les humanistes', "Leur mission : remettre l'humain au centre de notre quotidien", %w( Partage Transmission Empathie Accompagnement ))
     create_tribe("Les orga'", "Logique et organisation sont leurs armes pour mettre un peu d'ordre dans notre monde", %w( Modélisation Anticipation Argumenter ))
     create_tribe('Les 3.0', 'Ils utilisent la technologie pour inventer le monde de demain', %w( Innovation Curiosité Numérique Informatique ))
-    create_tribe('Les scientifiques', 'Résoudre les grands mystères de la vie et explorer de nouveaux horizons', %w(  ))
+    create_tribe('Les scientifiques', 'Résoudre les grands mystères de la vie et explorer de nouveaux horizons', %w( Technique Médecine Recherche ))
+
+    User.all.map{ |u| u.tribes = u.default_tribes; u.save }
   end
 
   def down
