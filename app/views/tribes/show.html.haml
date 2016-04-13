@@ -1,0 +1,10 @@
+.container{ style: 'margin: 55px auto;' }
+  .row
+    %h1 #{ @tribe.name }
+    %h2 #{ @tribe.description }
+
+  .row
+    %ul.cards
+      - @tribe.users.each do |user|
+        %li.col-lg-3.col-md-4.col-sm-6.col-xs-12{ itemscope: true, itemtype: "http://schema.org/Person" }
+          = render "portraits/card", portrait: user

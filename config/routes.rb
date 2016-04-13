@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :enrollment, :only => [:index, :create]
   get '/enrollment/thanks', to: 'enrollment#thanks'
 
-  resources :tribes, only: [:index]
+  resources :tribes, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do
