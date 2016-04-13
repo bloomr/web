@@ -15,7 +15,7 @@ ActiveAdmin.register User do
   # end
 
   permit_params :email, :password, :password_confirmation, :first_name, :job_title, :avatar, :published,
-                keyword_ids: [],
+                keyword_ids: [], tribe_ids: [],
                 questions_attributes: [:id, :title, :answer, :identifier, :position, :_destroy, :published]
 
   controller do
@@ -60,6 +60,10 @@ ActiveAdmin.register User do
 
     f.inputs "Keywords" do
       f.input :keywords, as: :select2_multiple
+    end
+
+    f.inputs 'Tribes' do
+      f.input :tribes, as: :select2_multiple
     end
 
     f.inputs "Questions" do
