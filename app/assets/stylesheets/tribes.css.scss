@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #tribes {
+  margin-top: 85px;
+  h1 {
+    text-align: center;
+    font-family: "Satisfy", cursive;
+  }
   .cards {
     h2 {
       //make the title take the whole place

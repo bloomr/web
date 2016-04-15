@@ -1,14 +1,13 @@
 #tribes
-  .container{ style: 'margin: 55px auto;' }
-    .row
-      %h1{ style: 'text-align: center' } Les tribus
+  .container
+    %h1 Les tribus
     .row
       %ul.cards
-        - @tribes.each do |tribe|
-          %li.col-lg-3.col-md-4.col-sm-6.col-xs-12
+        - @tribes.each_with_index do |tribe, index|
+          %li.col-lg-4.col-md-4.col-sm-6.col-xs-12
             = link_to(tribe_path(tribe.normalized_name)) do
-              %div{ class: 'background-1' }
-                = image_tag 'avatars/darwin.png', class: 'portrait-avatar', width: '104px', height: '104px', alt: 'Photo '
+              %div{ class: "background-#{ index }" }
+                = image_tag tribe.users.sample.avatar.url("thumb"), class: 'portrait-avatar', width: '104px', height: '104px', alt: 'Photo '
                 .overlay
                   %h2.panel-title.portrait-job-title= tribe.name
                   = image_tag 'icons/icon-quote.png', height: '24px', width: '27px'
