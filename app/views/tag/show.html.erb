@@ -16,7 +16,7 @@
 
   <% if @portraits.length > 0  %>
   <nav id="page-nav" style="display: none">
-    <a href="<%= tag_path(@tag, :page => params[:page]) %>">page suivante</a>
+    <a href="<%= tag_path(@tag, page: @page + 1 ) %>">page suivante</a>
   </nav>
   <% end %>
 
@@ -33,7 +33,10 @@
               navSelector  : '#page-nav',
               nextSelector : '#page-nav a',
               itemSelector : '.col-lg-3.col-md-4.col-sm-6.col-xs-12',
-              bufferPx: 400
+              bufferPx: 400,
+              state: {
+                currPage: 0
+              }
           });
       });
   </script>

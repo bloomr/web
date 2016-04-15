@@ -1,0 +1,28 @@
+// Place all the styles related to the Tribes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#tribes {
+  margin-top: 85px;
+  h1 {
+    text-align: center;
+    font-family: "Satisfy", cursive;
+  }
+  .cards {
+    h2 {
+      //make the title take the whole place
+      height: 90px;
+      line-height: 90px;
+    }
+  }
+}
+
+#tribes-show {
+  margin-top: 85px;
+  h1 {
+    text-align: center;
+    font-family: "Satisfy", cursive;
+  }
+  h2 {
+    text-align: center;
+  }
+}

@@ -133,3 +133,158 @@
     }
   }
 }
+
+ul.cards {
+
+  .panel-title {
+    margin-top: 0;
+    font-size: ceil(($font-size-base * 1.125));
+  }
+
+  @media (max-width: 991px) {
+    margin-top: 30px;
+    list-style: none;
+    padding-left: 0;
+    a {
+      color: #333;
+      text-decoration: none;
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      box-shadow: 0px 1px 3px 0px #656565;
+    }
+    img.portrait-avatar {
+      border-radius: 52px;
+      margin: 20px 20px;
+      float: left;
+    }
+    .overlay {
+      background-color: white;
+      opacity: 0.8;
+      overflow: hidden;
+      height: 145px;
+      padding-left: 10px;
+      padding-right: 10px;
+      img {
+        display: none;
+      }
+      blockquote {
+        display: none;
+      }
+      span.btn {
+        display: none;
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    margin-top: 30px;
+    padding-left: 0px;
+    list-style: none;
+
+    > li {
+      overflow: hidden;
+      margin-bottom: 25px;
+      padding-bottom: 5px;
+      a {
+        color: inherit;
+        > div {
+          padding-top: 0;
+          position: relative;
+          top: 1px;
+          height: 316px;
+          transition: padding 0.35s;
+          text-align: center;
+          border-radius: 10px 10px 0px 0px;
+          box-shadow: 0px 1px 3px 0px #656565;
+          overflow: hidden;
+
+          img.portrait-avatar {
+            height: 104px;
+            width: 104px;
+            border-radius: 52px;
+            position: relative;
+            top: 50px;
+          }
+
+          .overlay {
+            transition: opacity 0.35s, transform 0.35s;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            background: #ffffff;
+            opacity: 0.85;
+            padding: 10px;
+            //strange hack to get full width on some cards
+            width: 101%;
+            h3 {
+              font-size: 16px;
+              margin: 0px;
+              padding: 10px 0px 5px;
+            }
+            h2 {
+              font-size: 18px;
+              font-weight: bold;
+              padding: 5px 0px 2px;
+              height: 64px;
+            }
+            img {
+              position: relative;
+              top: 8px;
+              background: #ffffff;
+              padding: 5px;
+            }
+            blockquote {
+              border-top: 1px solid gray;
+              border-left: 0;
+              background-color: white;
+              height: 120px;
+              margin-bottom: 10px;
+              padding-left: 0px;
+              padding-right: 0px;
+            }
+            span.btn-primary {
+              font-weight: bold;
+              padding-right: 15px;
+              margin-right: 0px;
+              padding-left: 15px;
+              margin-left: 0px;
+              background-color: white;
+              color: #ff6622;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//add nice transition if not touch device and big screen
+.no-touch {
+  @media (min-width: 992px) {
+    ul.cards {
+      li {
+        a {
+          > div {
+            .overlay {
+              transform: translate3d(0, 198px, 0);
+            }
+          }
+          &:hover {
+            > div {
+              .overlay {
+                border-radius: 10px 10px 0px 0px;
+                transform: translate3d(0, 0px, 0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -27,6 +27,7 @@ $light_orange: lighten($orange, 30%);
 @import 'common';
 @import 'enrollment';
 @import 'payment';
+@import 'tribes';
 
 html {
   width: 100%;

@@ -1,0 +1,16 @@
+#tribes
+  .container
+    %h1 Les tribus
+    .row
+      %ul.cards
+        - @tribes.each_with_index do |tribe, index|
+          %li.col-lg-4.col-md-4.col-sm-6.col-xs-12
+            = link_to(tribe_path(tribe.normalized_name)) do
+              %div{ class: "background-#{ index }" }
+                = image_tag tribe.users.sample.avatar.url("thumb"), class: 'portrait-avatar', width: '104px', height: '104px', alt: 'Photo '
+                .overlay
+                  %h2.panel-title.portrait-job-title= tribe.name
+                  = image_tag 'icons/icon-quote.png', height: '24px', width: '27px'
+                  %blockquote.portrait-love-job
+                    = tribe.description
+                  %span.btn.btn-primary ... Lire la suite

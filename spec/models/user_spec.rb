@@ -140,6 +140,28 @@ RSpec.describe User, :type => :model do
 
   end
 
+  describe 'find_published_with_tag' do
+    subject { User.find_published_with_tag(tag: tag, nb_per_page: nb_per_page, page: page) }
+    let(:nb_per_page) { 1 }
+    let(:page) { 0 }
+    describe 'with one published user with a tag' do
+
+      let!(:user) { create(:user_with_questions, keywords: [Keyword.create(tag: 'tag')]) }
+      let(:tag) { 'tag' }
+
+      context 'when one asks this tag' do
+        let(:page) { 0 }
+        it { is_expected.to eq([user]) }
+      end
+
+      context 'when one asks a second page' do
+        let(:page) { 1 }
+        it { is_expected.to be_empty }
+      end
+
+    end
+  end
+
   describe '.last_month_view_count' do
     let(:user) { create(:user) }
     let!(:impression) do
@@ -151,7 +173,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe '.default_tribe' do
+  describe '.default_tribes' do
     subject { user.default_tribes }
 
     context 'and a user with no keyword' do
