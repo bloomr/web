@@ -6,7 +6,7 @@
 
     %h1 Fabuleuse décision !
 
-    %p Tu vas embarquer pour l'aventure, il ne te reste plus qu'à compléter ta carte d'embarquement et à procéder au paiement !
+    %p Dernière étape avant de démarrer l'aventure : <br/>t'inscrire et régler le parcours
     = form_tag '/payment', :id => 'new_payment' do
       = text_field_tag :first_name, nil, placeholder: 'Ton prénom', required: true, class: 'blue'
       = email_field_tag :email, nil, placeholder: 'Ton adresse email', required: true, class: 'blue', 'data-stripe' => 'name'
@@ -22,7 +22,7 @@
 
       %p.legal En t'inscrivant au parcours, tu acceptes les <a href= 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view'><u>conditions générales</u></a> et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
       %div{style: 'position: relative; display: inline-block'}
-        = submit_tag 'Go, je paye 15€ !', class: 'crazy-btn yellow'
+        = submit_tag 'Régler mes 15€', class: 'crazy-btn yellow'
         .shadow
 
       %a.link-center{ href: 'paypal.me/bloomr/15' } Je préfère payer avec Paypal
@@ -55,7 +55,7 @@
     expired_card: "La carte a expiré.",
     incorrect_cvc: "Le code de sécurité de la carte est incorrect.",
     card_declined: "Carte rejetée.",
-    processing_error: "Une erreur est survenue.",
+    processing_error: "Une erreur est survenue."
   };
 
   $("#new_payment").submit(function (event) {
