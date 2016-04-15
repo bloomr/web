@@ -55,12 +55,18 @@
     expired_card: "La carte a expiré.",
     incorrect_cvc: "Le code de sécurité de la carte est incorrect.",
     card_declined: "Carte rejetée.",
-    processing_error: "Une erreur est survenue."
+    processing_error: "Une erreur est survenue.",
+    empty_mail: "Veuillez saisir votre adresse mail"
   };
 
   $("#new_payment").submit(function (event) {
-    var $form;
-    $form = $(this);
+    var $form = $(this);
+
+    if($('#email').val() === '') {
+      show_error('empty_mail')
+      return false;
+    }
+
     $form.find("input[type=submit]").prop("disabled", true);
     Stripe.card.createToken($form, stripeResponseHandler);
     return false;
