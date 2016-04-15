@@ -18,9 +18,7 @@ class PaymentController < ApplicationController
       :description  => bloomie
     )
 
-    if (charge.status = 'succeeded')
-      redirect_to payment_thanks_path
-    end
+    redirect_to payment_thanks_path
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
