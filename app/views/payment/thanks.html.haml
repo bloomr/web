@@ -12,20 +12,18 @@
 <!-- Google Code for Paiement du parcours Bloomr Conversion Page -->
 
 :javascript
-/* <![CDATA[ */
-var google_conversion_id = 959456602;
-var google_conversion_language = "en";
-var google_conversion_format = "3";
-var google_conversion_color = "ffffff";
-var google_conversion_label = "3WTICJOPxWUQ2srAyQM";
-var google_remarketing_only = false;
-/* ]]> */
+  /* <![CDATA[ */
+  var google_conversion_id = 959456602;
+  var google_conversion_language = "en";
+  var google_conversion_format = "3";
+  var google_conversion_color = "ffffff";
+  var google_conversion_label = "3WTICJOPxWUQ2srAyQM";
+  var google_remarketing_only = false;
+  /* ]]> */
 
 
 = javascript_include_tag 'http://www.googleadservices.com/pagead/conversion.js'
 
-<noscript>
-  <div style="display:inline;">
-    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/959456602/?label=3WTICJOPxWUQ2srAyQM&amp;guid=ON&amp;script=0"/>
-  </div>
-</noscript>
+%noscript
+  %div{:style => "display:inline;"}
+    %img{:alt => "", :height => "1", :src => "//www.googleadservices.com/pagead/conversion/959456602/?label=3WTICJOPxWUQ2srAyQM&guid=ON&script=0", :style => "border-style:none;", :width => "1"}/
