@@ -11,15 +11,16 @@ class PaymentController < ApplicationController
     token = params[:stripeToken]
     bloomie = params[:email] + '-' + params[:first_name] + '-' + params[:age]
 
-
     charge = Stripe::Charge.create(
       :amount       => @amount,
       :currency     => 'eur',
-      :source       => token,
+      :source       => token, #visiblement si je le supprime le test rspec passe quand même !!
       :description  => bloomie
     )
 
-    redirect_to payment_thanks_path
+    if (charge.status = 'succeeded')
+      redirect_to payment_thanks_path
+    end
 
     rescue Stripe::CardError => e
       flash[:error] = e.message

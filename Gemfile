@@ -70,6 +70,7 @@ group :development, :test do
   gem 'guard-livereload', '~> 2.4', require: false
   gem 'growl'
   gem 'rubocop', require: false
+  gem 'stripe-ruby-mock', '~> 2.2.2', :require => 'stripe_mock'
 end
 
 group :test do
