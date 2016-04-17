@@ -22,7 +22,8 @@ RSpec.describe PaymentController, type: :controller do
         amount: 1500,
         currency: 'eur',
         source: '1234',
-        description: 'loulou@lou.com-loulou-44'
+        description: '1 Parcours Bloomr',
+        metadata: {'info_client'=>'loulou - 44 ans - loulou@lou.com'}
       })
 
       post :create, { first_name: 'loulou', email: 'loulou@lou.com', age: '44', stripeToken: '1234' }

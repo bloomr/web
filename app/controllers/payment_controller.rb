@@ -9,13 +9,14 @@ class PaymentController < ApplicationController
     @amount = 1500
 
     token = params[:stripeToken]
-    bloomie = params[:email] + '-' + params[:first_name] + '-' + params[:age]
+    bloomie = params[:first_name] + ' - ' + params[:age] + ' ans - ' + params[:email]
 
     charge = Stripe::Charge.create(
       :amount       => @amount,
       :currency     => 'eur',
-      :source       => token, #visiblement si je le supprime le test rspec passe quand même !!
-      :description  => bloomie
+      :source       => token,
+      :description  => '1 Parcours Bloomr',
+      :metadata     => {'info_client' => bloomie}
     )
 
     redirect_to payment_thanks_path
