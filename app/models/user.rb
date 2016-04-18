@@ -76,12 +76,14 @@ class User < ActiveRecord::Base
   scope :with_published_questions, -> { joins(:questions).where('questions.published = ?', true) }
   scope :published, -> { where('users.published = ?', true) }
   scope :smart_order, -> { group('users.id, questions.user_id').order('count(questions.id) DESC, users.id DESC') }
+  scope :active_ordered, -> { published.with_published_questions.smart_order }
+
   scope :paged, -> (nb_per_page, page) { limit(nb_per_page).offset(nb_per_page * page) }
 
   def self.find_published_with_love_job_question options={}
     options = { nb_per_page: 12, page: 0}.merge(options)
 
-    users = User.published.with_published_questions.smart_order.paged(options[:nb_per_page], options[:page])
+    users = User.active_ordered.paged(options[:nb_per_page], options[:page])
 
     user_with_questions = User.includes(:questions).where(questions: {identifier: 'love_job'}, users: {id: [ users.map{|u| u.id } ].flatten })
 
