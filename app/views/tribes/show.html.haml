@@ -5,6 +5,6 @@
 
   .row
     %ul.cards
-      - @tribe.users.each do |user|
+      - @tribe.users.active_ordered.each do |user|
         %li.col-lg-3.col-md-4.col-sm-6.col-xs-12{ itemscope: true, itemtype: "http://schema.org/Person" }
           = render "portraits/card", portrait: user
