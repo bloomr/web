@@ -73,16 +73,15 @@ class User < ActiveRecord::Base
     questions.select {|q| q.published && !questions_not_to_display.include?(q.identifier) }
   end
 
+  scope :with_published_questions, -> { joins(:questions).where('questions.published = ?', true) }
+  scope :published, -> { where('users.published = ?', true) }
+  scope :smart_order, -> { group('users.id, questions.user_id').order('count(questions.id) DESC, users.id DESC') }
+  scope :paged, -> (nb_per_page, page) { limit(nb_per_page).offset(nb_per_page * page) }
+
   def self.find_published_with_love_job_question options={}
     options = { nb_per_page: 12, page: 0}.merge(options)
 
-    users = User.select("users.id, count(questions.id) AS questions_count")
-    .joins(:questions)
-    .where(users: {published: true}, questions: {published: true})
-    .group('users.id, questions.user_id')
-    .order("questions_count DESC, users.id DESC")
-    .limit(options[:nb_per_page])
-    .offset(options[:nb_per_page] * options[:page])
+    users = User.published.with_published_questions.smart_order.paged(options[:nb_per_page], options[:page])
 
     user_with_questions = User.includes(:questions).where(questions: {identifier: 'love_job'}, users: {id: [ users.map{|u| u.id } ].flatten })
 
