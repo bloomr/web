@@ -6,9 +6,9 @@ RSpec.describe User, :type => :model do
 
     before do
       @yop1 = create(:user, published: false)
-      @yop2 = create(:user)
+      @yop2 = create(:user_published_with_questions)
       @yop3 = create(:user, published: false)
-      @yop4 = create(:user)
+      @yop4 = create(:user_published_with_questions)
       @yop5 = create(:user, published: false)
     end
 
@@ -53,13 +53,29 @@ RSpec.describe User, :type => :model do
 
   end
 
-  describe 'find_published_with_love_job_question method' do
+  describe 'before_save' do
+    context 'when a user has not a love_job published question' do
+      let(:user) { user = create(:user, published: true); user.reload }
+      it 'unpublishes the user' do
+        expect(user.published).to eq(false)
+      end
+    end
 
-    let(:result) { User.find_published_with_love_job_question() }
+    context 'when a user has a love_job published question' do
+      let(:user) { user = create(:user_published_with_questions); user.reload }
+      it 'keeps the published state of the user' do
+        expect(user.published).to eq(true)
+      end
+    end
 
-    describe 'with one published user with no love_job question' do
+  end
+  describe '.active_ordered' do
 
-      let!(:user) { create(:user_with_questions, question_love_job: false) }
+    let(:result) { User.active_ordered }
+
+    describe 'with one unpublished user' do
+
+      let!(:user) { create(:user) }
 
       it 'should fetch no user' do
         expect(result.length).to eq 0
@@ -68,19 +84,19 @@ RSpec.describe User, :type => :model do
 
     describe 'with one published user with questions' do
 
-      let!(:user_with_questions) { create(:user_with_questions) }
+      let!(:user) { create(:user_published_with_questions) }
 
-      it 'should fetch the user with the `love_job` question' do
-        expect(result.first.questions.length).to eq 1
-        expect(result.first.questions[0].identifier).to eq 'love_job'
+      it 'should fetch the user' do
+        expect(result.length).to eq 1
+        expect(result.first.questions.length).to eq(2)
       end
     end
 
     describe 'with 3 published users with different number of questions' do
       before do
-        create(:user_with_questions, email: '1@a.com', questions_count: 1)
-        create(:user_with_questions, email: '2@a.com', questions_count: 3)
-        create(:user_with_questions, email: '3@a.com', questions_count: 2)
+        create(:user_published_with_questions, email: '1@a.com', questions_count: 1)
+        create(:user_published_with_questions, email: '2@a.com', questions_count: 3)
+        create(:user_published_with_questions, email: '3@a.com', questions_count: 2)
       end
 
       it 'should order the users by their number of question' do
@@ -90,10 +106,10 @@ RSpec.describe User, :type => :model do
 
     describe 'with 3 published users' do
 
-      let!(:with_3_users) { (1..3).each { |i| create(:user_with_questions, email: "#{i}@a.com") } }
+      let!(:with_3_users) { (1..3).each { |i| create(:user_published_with_questions, email: "#{i}@a.com") } }
 
       describe 'when a first page of 2 is asked' do
-        let(:result) { User.find_published_with_love_job_question(nb_per_page: 2) }
+        let(:result) { User.active_ordered.paged(nb_per_page: 2) }
 
         it 'should return only the 2 first users order by their id' do
           expect(result.map(&:email)).to eq %w{3@a.com 2@a.com}
@@ -101,7 +117,7 @@ RSpec.describe User, :type => :model do
       end
 
       describe 'when the second page of 2 is asked' do
-        let(:result) { User.find_published_with_love_job_question(nb_per_page: 2, page: 1) }
+        let(:result) { User.active_ordered.paged(nb_per_page: 2, page: 1) }
 
         it 'should return only the 3rd user' do
           expect(result.map(&:email)).to eq %w{1@a.com}
@@ -109,29 +125,22 @@ RSpec.describe User, :type => :model do
       end
     end
 
-    describe 'with 1 unpublished user' do
-      let!(:unpublished_user) { create(:user_with_questions, published: false) }
-
-      it 'should return no user' do
-        expect(result.length).to eq(0)
-      end
-    end
-
-    describe 'with 1 published user with 1 published and 1 not published questions' do
+    describe 'with 1 published user with 2 published and 2 not published questions' do
       before do
-        user = create(:user_with_questions, email: '1@a.com')
+        user = create(:user_published_with_questions, email: '1@a.com')
+        user.questions << create(:question, published: false)
         user.questions << create(:question, published: false)
         user.save
       end
 
-      describe 'with another published user with 2 published questions' do
+      describe 'with another published user with 3 published questions' do
         before do
-          user = create(:user_with_questions, email: '2@a.com')
+          user = create(:user_published_with_questions, email: '2@a.com')
           user.questions << create(:question)
           user.save
         end
 
-        it 'should return the one with the 2 published questions first' do
+        it 'should return the one with the 3 published questions first' do
           expect(result.map(&:email)).to eq(['2@a.com', '1@a.com'])
         end
 
@@ -146,7 +155,7 @@ RSpec.describe User, :type => :model do
     let(:page) { 0 }
     describe 'with one published user with a tag' do
 
-      let!(:user) { create(:user_with_questions, keywords: [Keyword.create(tag: 'tag')]) }
+      let!(:user) { create(:user_published_with_questions, keywords: [Keyword.create(tag: 'tag')]) }
       let(:tag) { 'tag' }
 
       context 'when one asks this tag' do

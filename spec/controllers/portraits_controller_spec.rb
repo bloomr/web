@@ -4,7 +4,7 @@ RSpec.describe PortraitsController, :type => :controller do
 
   context 'when a portrait is viewed' do
 
-    let(:user) { create(:user_with_questions) }
+    let(:user) { create(:user_published_with_questions) }
 
     before do
       get :show, id: user.id

@@ -4,7 +4,7 @@ RSpec.describe MeController, :type => :controller do
 
   context 'when a logged user' do
 
-    let(:user) { create(:user_with_questions) }
+    let(:user) { create(:user_published_with_questions) }
     let!(:challenge1) { Challenge.create(name: 'the tribes') }
 
     before { sign_in(:user, user) }

@@ -4,9 +4,8 @@ FactoryGirl.define do
     first_name 'John'
     job_title 'Developer'
     password 'abcdfedv'
-    published true
 
-    factory :user_with_questions do
+    factory :user_published_with_questions do
       transient do
         questions_count 2
         question_love_job true
@@ -19,6 +18,7 @@ FactoryGirl.define do
 
         if evaluator.question_love_job
            user.questions << create(:question, identifier: 'love_job')
+           user.published = true
            user.save!
         end
 
