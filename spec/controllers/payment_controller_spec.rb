@@ -23,6 +23,7 @@ RSpec.describe PaymentController, type: :controller do
         currency: 'eur',
         source: '1234',
         description: '1 Parcours Bloomr',
+        receipt_email: 'loulou@lou.com',
         metadata: {'info_client'=>'loulou - 44 ans - loulou@lou.com'}
       })
 

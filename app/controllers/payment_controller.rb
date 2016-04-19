@@ -16,6 +16,7 @@ class PaymentController < ApplicationController
       :currency     => 'eur',
       :source       => token,
       :description  => '1 Parcours Bloomr',
+      :receipt_email => params[:email],
       :metadata     => {'info_client' => bloomie}
     )
 
