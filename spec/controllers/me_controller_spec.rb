@@ -19,7 +19,7 @@ RSpec.describe MeController, :type => :controller do
 
         let(:payload) { { email: 'loulou@loulou.com' } }
 
-        it 'saves the new emai' do
+        it 'saves the new email' do
           expect(user.email).to eq('loulou@loulou.com')
         end
       end
