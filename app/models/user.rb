@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   }
 
   has_and_belongs_to_many :tribes
+  has_and_belongs_to_many :challenges
 
   before_post_process :rename_avatar
   def rename_avatar
