@@ -13,7 +13,7 @@ RSpec.describe MeController, :type => :controller do
 
       context 'accepts its default tribes' do
         before do
-          post :challenge_1, id: user.id
+          post :challenge_1
           user.reload
         end
 
@@ -27,7 +27,7 @@ RSpec.describe MeController, :type => :controller do
         let(:tribe) { Tribe.create(name: 'my tribe') }
 
         before do
-          post :challenge_1, id: user.id, user: { tribe_ids: [ tribe.id ] }
+          post :challenge_1, user: { tribe_ids: [ tribe.id ] }
           user.reload
         end
 
@@ -45,7 +45,7 @@ RSpec.describe MeController, :type => :controller do
     describe 'change it s profile' do
 
       before do
-        put :update, id: user.id, user: payload
+        put :update, user: payload
         user.reload
       end
 
