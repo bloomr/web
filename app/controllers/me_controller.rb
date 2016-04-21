@@ -3,6 +3,11 @@ class MeController < ApplicationController
   before_action :authenticate_user!, except: :email_sent
 
   def show
+    render layout: 'home'
+  end
+
+  def challenge_1
+    redirect_to me_path
   end
 
   def update

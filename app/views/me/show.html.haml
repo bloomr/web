@@ -1,47 +1,110 @@
-#me.container
-  .row
-    .col-md-3.menu
-      = image_tag current_user.avatar.url('thumb'), class: 'img-circle center-block', alt: 'Photo de ' + current_user.first_name
-      %p#first_name #{ current_user.first_name }
-      %ul
-        %li.control-panel-trigger.on Mon tableau de bord
-        %li.questions-trigger Mon portrait
-        %li
-          = link_to('Se déconnecter', destroy_user_session_path, method: :delete)
+#me
+  .background{ class: "background-#{ (current_user.id) %22 }" }
+  .orange
+    .panel
+      .top
+        %a.logo.profile-sprite.sprite-logo{ href:  '/' } bloomr
+        %ul
+          %li.bloomeurs
+            = link_to(tribes_path) do
+              %span.profile-sprite.sprite-flower
+              Les bloomeurs
+          %li.logout
+            = link_to(destroy_user_session_path, method: :delete) do
+              %span.profile-sprite.sprite-exit
+              Déconnexion
+      .bottom
+        = image_tag current_user.avatar.url('thumb'), class: 'img-circle', alt: 'Photo de ' + current_user.first_name
+        .info
+          %p.greetings Salut #{ current_user.first_name.capitalize } !
+          %p
+            = raw current_user.tribes.map{ |t| link_to(t.name, tribe_path(t.normalized_name)) }.join(', ')
+          %ul
+            %li
+              %a.whatsNewTrigger.active Quoi de neuf ?
+            %li
+              %a.myWorkTrigger Mon témoignage
+  .main
+    .whats-new
+      .head
+        %p Le mois dernier ...
+      .data
+        %ul
+          %li
+            = image_tag('profile/portrait.png')
+            %p
+              Votre profil a été vu
+              %br
+              %span #{ current_user.last_month_view_count } fois
+          %li
+            = image_tag('profile/bloomr.png', class: 'bloomr-logo')
+            %p
+              Bloomr a été vu
+              %br
+              %span #{ Impression.last_month_count } fois
+          %li
+            = image_tag('profile/feather.png')
+            %p
+              Vos tribus sont au top !
+              %br
+              Elles ont été consultées
+              %br
+              %span #{ current_user.tribes.reduce(0){ |sum, tribe| sum + tribe.last_month_view_count } } fois
+      .challenges
+        %h2 Challenges !
+        %p Tu as envie d'aider ? Ces challenges sont pour toi !
+        .one-challenge
+          %h3.challenge-title Les tribus#{ ' : challenge réussi !' if current_user.challenges.exists?(name: 'the tribes') }
+          .panel-todo{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'none' : 'block' };" }
+            .panel-default
+              %p Nous avons défini des tribus pour regrouper différents métiers.
+              %p
+                Parmis
+                %span{ style: 'font-style: italic' }
+                  #{ Tribe.all.map(&:name).map(&:downcase).join(', ') },
+                %br
+                %br
+                #{ current_user.tribes.length < 2 ? 'la vôtre serait' : 'les votres seraient' } :
+                %span{ style: 'font-weight: bold' }
+                  #{ current_user.tribes.map(&:name).map(&:downcase).join(', ') }
+                %br
+                %br
+                Ça colle ?
 
-    .col-md-8.main-panel
-      .control-panel
-        %h1 Mon tableau de bord
-        %h2 Mes infos
-        %p Mon profil a été vu #{ current_user.last_month_view_count } fois le mois dernier
+              .choice
+                %a.crazy-btn.tribeChoiceTrigger Nop, je veux changer
+                = link_to('Yep, carrément !', me_challenge1_path, method: 'post', class: 'crazy-btn' )
 
-        %h2 Mes tribus
-        = form_for current_user, url: me_path do |f|
-          = f.select :tribe_ids, Tribe.all.map {|x| [x.name, x.id]}, {}, multiple: true, class: 'select2 form-control'
-          = f.submit 'Sauvegarder', class: 'btn btn-primary center-block', style: 'margin-top: 20px;'
+            .panel-tribe-choice{ style: 'display: none;' }
+              %h3 Quelle(s) tribu(s) te conviendrai(en)t ?
+              = form_for current_user, url: me_challenge1_path, method: 'post' do |f|
+                = f.select :tribe_ids, Tribe.all.map {|x| [x.name, x.id]}, {}, multiple: true, class: 'select2 form-control'
+                %div{ style: 'text-align: center' }
+                  %div{style: 'position: relative; display: inline-block;'}
+                    = f.submit 'Sauvegarde !', class: 'crazy-btn', style: 'border-color: transparent;'
+                    .shadow
+              = link_to('Aucune, je vais vous dire celle que je veux !', ' mailto:contact@bloomr.org')
 
-        - if current_user.default_tribes.count > 0
-          %h2 #{ current_user.default_tribes.count == 1 ? 'Ma tribu' : 'Mes tribus' }
-          %p #{ current_user.default_tribes.map(&:name).join(', ') }
-        %h2 Les infos Bloomr
-        %p #{ Impression.last_month_count } profils ont été vu le mois dernier
+          .panel-done{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'block' : 'none' };" }
+            = image_tag('profile/badge-tribu.png')
+            %h3 Bienvenue chez #{ current_user.tribes.map(&:name).map(&:downcase).to_sentence } !
 
-      .questions{ style: 'display: none;' }
-        %h1 Mon #{ %w( magnifique incroyable sublime auguste splendide remarquable somptueux ).sample } portrait
+    .my-work{ style: 'display: none;' }
+      = form_for current_user, url: me_path, html: { id: 'questions_form' } do |f|
+        .form-group
+          = f.label :job_title, 'Vous êtes : '
+          = f.text_field :job_title, class: 'job_title'
 
-        = form_for current_user, url: me_path, html: { id: 'questions_form' } do |f|
-          .form-group
-            = f.label :job_title, 'Le nom de votre métier :'
-            = f.text_field :job_title, class: 'form-control'
-
-          %h2 Les questions :
-          - current_user.questions_to_display.sort_by(&:position).each do |question|
-            .form-group.editable-group
-              = f.fields_for :questions, question do |ff|
-                = ff.label question.title
-                = render 'toolbar'
-                - name = ff.object_name + '[answer]'
-                %div.editor{ name: name }
-                  #{ raw(ff.object.answer) }
-          %br
-            = f.submit 'Sauvegarder', class: 'btn btn-primary center-block'
+        - current_user.questions_to_display.sort_by(&:position).each do |question|
+          .form-group.editable-group
+            = f.fields_for :questions, question do |ff|
+              = ff.label question.title
+              = render 'toolbar'
+              - name = ff.object_name + '[answer]'
+              %div.editor{ name: name }
+                #{ raw(ff.object.answer) }
+        %br
+        %div{ style: 'text-align: center' }
+          %div{style: 'position: relative; display: inline-block;'}
+            = f.submit 'Sauvegarder', class: 'crazy-btn', style: 'border-color: transparent;'
+            .shadow

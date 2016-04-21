@@ -31,3 +31,4 @@
 //= require advanced_and_extended
 //= require jquery.fullPage.min
 //= require jquery.payment
+//= require me

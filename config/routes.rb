@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch '/me', to: 'me#update'
   put '/me', to: 'me#update'
   get '/me/email_sent', to: 'me#email_sent'
+  post '/me/challenge1', to: 'me#challenge_1'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

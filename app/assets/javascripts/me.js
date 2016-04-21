@@ -1,4 +1,8 @@
 (function() {
+  var showWhatsNew = function(){ $('.my-work').hide(); $('.whats-new').show(); $('.whatsNewTrigger').addClass('active'); $('.myWorkTrigger').removeClass('active');  };
+  var showMyWork = function(){ $('.my-work').show(); $('.whats-new').hide(); $('.whatsNewTrigger').removeClass('active'); $('.myWorkTrigger').addClass('active'); };
+  var showTribeChoice = function(){ console.log('loulou');$('.panel-default').hide(); $('.panel-tribe-choice').show(); };
+
   var make_it_editable = function () {
     $('.editable-group').each(function(i, el) {
       var editor = $('.editor', el)[0];
@@ -20,42 +24,20 @@
       });
     });
   };
-
-
-  var activeToogle = function () {
-    var $controlPanelTrigger = $('.control-panel-trigger');
-    var $questionsTrigger = $('.questions-trigger');
-    var $controlPanel = $('.control-panel');
-    var $questions = $('.questions');
-
-    var showControlPanelHideQuestions = function () {
-      $controlPanel.show();
-      $controlPanelTrigger.addClass('on');
-      $questions.hide();
-      $questionsTrigger.removeClass('on');
-    };
-
-    var showQuestionsHideControlPanel = function () {
-      $controlPanel.hide();
-      $controlPanelTrigger.removeClass('on');
-      $questions.show();
-      $questionsTrigger.addClass('on');
-    };
-
-    $controlPanelTrigger.click(showControlPanelHideQuestions);
-    $questionsTrigger.click(showQuestionsHideControlPanel);
+  var bind = function(){
+    if( $('#me').length === 0 ) { return; }
+    $('.whatsNewTrigger').click(showWhatsNew);
+    $('.myWorkTrigger').click(showMyWork);
+    $('.tribeChoiceTrigger').click(showTribeChoice);
+    make_it_editable();
+    $(".select2").select2();
   };
-
-  var disableToogle = function () {
-    var $controlPanel = $('.control-panel');
-    var $questions = $('.questions');
-
-    $controlPanelTrigger.unbind();
-    $questionsTrigger.unbind();
+  var unbind = function(){
+    if( $('#me').length === 0 ) { return; }
+    $('.whatsNewTrigger').off();
+    $('.myWorkTrigger').off();
+    $('.tribeChoiceTrigger').off();
   };
-
-  $(document).on('page:change', make_it_editable);
-  $(document).on('page:change', activeToogle);
-  $(document).on('page:change', function() { $(".select2").select2(); });
-  $(document).on('page:before-unload', disableToogle);
+  $(document).on('page:change', bind);
+  $(document).on('page:before-unload', unbind);
 })();

@@ -3,77 +3,241 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #me {
-  .menu {
-    padding-top: 20px;
-    text-align: center;
-    #first_name {
-      margin-top: 15px;
-      font-size: 20px;
+  padding-bottom: 30px;
+  position: relative;
+  .profile-sprite {
+      background-image: image-url('profile/sprite.png');
+      background-repeat: no-repeat;
+      display: block;
+  }
+
+  .sprite-bloomr {
+      width: 87px;
+      height: 49px;
+      background-position: -5px -5px;
+  }
+
+  .sprite-cloud1 {
+      width: 49px;
+      height: 34px;
+      background-position: -102px -5px;
+  }
+
+  .sprite-cloud2 {
+      width: 80px;
+      height: 38px;
+      background-position: -102px -49px;
+  }
+
+  .sprite-exit {
+      width: 27px;
+      height: 29px;
+      background-position: -161px -5px;
+  }
+
+  .sprite-feather {
+      width: 61px;
+      height: 100px;
+      background-position: -198px -5px;
+  }
+
+  .sprite-flower {
+      width: 41px;
+      height: 35px;
+      background-position: -5px -115px;
+  }
+
+  .sprite-logo {
+      width: 63px;
+      height: 49px;
+      background-position: -56px -115px;
+  }
+
+  .sprite-portrait {
+      width: 83px;
+      height: 98px;
+      background-position: -129px -115px;
+  }
+
+  .background {
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+  .orange {
+    color: white;
+    a {
+      color: white;
     }
-    ul{
-      list-style: none;
-      padding-left: 0;
-      li {
-        height: 60px;
-        padding-top: 20px;
-        cursor: pointer;
+    font-size: 16px ;
+    background-color:rgba(240, 147, 53, 0.85);
+    z-index: 10;
+    box-shadow: 0px 1px 3px 0px #656565;
+    .panel {
+      max-width: 800px;
+      margin: 0 auto;
+      .top {
+        padding: 30px 0;
         position: relative;
-        @media (max-width: $screen-sm-max) {
-          height: 40px;
-          &:before {
-            bottom: 0px;
+        border-bottom: 1px solid white;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .logo {
+          text-indent: -3000px;
+        }
+        ul {
+          margin: 0;
+          li {
+            vertical-align: bottom;
+            display: inline-block;
+            margin-left: 30px;
+            span {
+              display: inline-block;
+            }
           }
         }
-        @media (min-width: $screen-md) {
-          &:before {
-            bottom: 15px;
+      }
+      .bottom {
+        padding: 30px 0;
+        img {
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 30px;
+          border: 5px solid white;
+          box-shadow: 0px 1px 3px 0px #656565;
+        }
+        .info {
+          display: inline-block;
+          vertical-align: middle;
+          .greetings {
+            font-family: 'Satisfy', cursive;
+            font-size: 28px;
           }
-        }
-        &:before {
-          content: '';
-          position: absolute;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: $orange;
-          transform: scale3d(0, 1, 1);
-          transition: transform 0.1s;
-        }
-        &.on {
-          &:before {
-            transform: scale3d(0.5, 1, 1);
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 0.3s;
+          ul {
+            padding-left: 0;
+            margin-top: 30px;
+            li {
+              display: inline-block;
+              margin-right: 30px;
+              a {
+                padding-bottom: 10px;
+                cursor: pointer;
+                &:hover {
+                  text-decoration: none;
+                  border-bottom: 1px solid white;
+                }
+                &.active {
+                  font-weight: bold;
+                  border-bottom: 1px solid white;
+                }
+              }
+            }
           }
         }
       }
     }
   }
-  .main-panel {
-    h1 {
-      margin-bottom: 40px;
-      @media (max-width: $screen-sm-max) {
-        margin-bottom: 40px;
-        text-align: center;
+  .main {
+    max-width: 800px;
+    margin: 0 auto;
+    .head {
+      border-bottom: 1px solid #DFD9C7;
+      padding: 30px 0 10px;
+      p {
+        font-family: 'Satisfy', cursive;
+        font-size: 32px;
+        margin: 0;
       }
     }
-    h2 {
-      margin-top: 40px;
+    .data {
+      ul {
+        margin-top: 30px;
+        padding-left: 0;
+        display: flex;
+        justify-content: space-around;
+        li {
+          width: 200px;
+          height: 180px;
+          display: inline-block;
+          text-align: center;
+          position: relative;
+          .bloomr-logo {
+            position: relative;
+            top: 20px;
+          }
+          p {
+            bottom: 0px;
+            position: absolute;
+            width: 100%;
+            font-size: 16px;
+            span {
+              color: rgb(240, 147, 53);
+              font-style: italic;
+              font-size: 18px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
     }
-    padding-top: 30px;
-    .questions {
+    .challenges {
+      text-align: center;
+      h2 {
+        display: inline-block;
+        border-top: 2px solid #DFD9C7;
+        padding: 30px 0;
+        font-family: 'Satisfy', cursive;
+        font-size: 32px;
+        margin: 0;
+      }
+      .one-challenge{
+        font-size: 16px;
+        margin-top: 50px;
+        border: 1px solid #DFD9C7;
+        padding: 20px 0;
+        h3.challenge-title {
+          margin: 0 0 20px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #DFD9C7;
+        } 
+        .choice {
+          margin-top: 30px;
+        }
+        .panel-tribe-choice {
+          .select2 {
+            max-width: 400px;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+  .my-work {
+    margin-bottom: 30px;
+    .form-group {
       label {
         margin-bottom: 10px;
+        font-family: 'Satisfy', cursive;
+        font-weight: normal;
+        font-size: 24px;
       }
-      .form-group {
-        margin-top: 40px;
-        .editor {
-          border: 1px solid rgba(0, 0, 0, 0.1);
-          padding: 15px;
-          line-height: 2;
-          &:focus {
-            outline: none;
-          }
+      .job_title {
+        border: none;
+        display: inline;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        width: 100%;
+        line-height: 2;
+        padding: 15px;
+      }
+      margin-top: 40px;
+      .editor {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        line-height: 2;
+        &:focus {
+          outline: none;
         }
       }
     }
