@@ -192,9 +192,12 @@
         font-size: 32px;
         margin: 0;
       }
+      p {
+        font-size: 16px;
+      }
       .one-challenge{
         font-size: 16px;
-        margin-top: 50px;
+        margin-top: 30px;
         border: 1px solid #DFD9C7;
         padding: 20px 0;
         h3.challenge-title {
@@ -209,6 +212,12 @@
           .select2 {
             max-width: 400px;
             margin: 0 auto;
+          }
+        }
+        .done {
+          p {
+            margin: 20px 0;
+            font-size: 18px;
           }
         }
       }

@@ -58,7 +58,7 @@
           %h3.challenge-title Les tribus#{ ' : challenge réussi !' if current_user.challenges.exists?(name: 'the tribes') }
           .panel-todo{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'none' : 'block' };" }
             .panel-default
-              %p Nous avons défini ces tribus pour aider les jeunes à s'orienter
+              %p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
               %p
                 Parmi
                 %span{ style: 'font-style: italic' }
@@ -86,9 +86,10 @@
                     .shadow
               = link_to('Aucune, je vais vous dire celle que je veux !', ' mailto:contact@bloomr.org')
 
-          #tribeOk.panel-done{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'block' : 'none' };" }
+          #tribeOk.panel-done.done{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'block' : 'none' };" }
+            %p Vous avez gagné un tipi :
             = image_tag('profile/badge-tribu.png')
-            %h3 Bienvenue chez #{ current_user.tribes.map(&:name).map(&:downcase).to_sentence } !
+            %p Bienvenue chez #{ raw (current_user.tribes.map{ |tribe| link_to(tribe.name.downcase, tribe_path(tribe.normalized_name)) }.to_sentence) } !
 
     .my-work{ style: 'display: none;' }
       = form_for current_user, url: me_path, html: { id: 'questions_form' } do |f|
