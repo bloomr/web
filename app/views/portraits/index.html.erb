@@ -24,7 +24,7 @@
 
   <% if @portraits.length > 0  %>
   <nav id="page-nav" style="display: none;">
-    <a href="/portraits?page=<%=params[:page]+1%>">page suivante</a>
+    <a href="/portraits?page=<%= @page+1 %>">page suivante</a>
   </nav>
   <% end %>
 

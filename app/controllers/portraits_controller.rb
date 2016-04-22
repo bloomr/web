@@ -1,20 +1,14 @@
 class PortraitsController < ApplicationController
 
   def index
-    params[:page] = params[:page].to_i
-    if params[:page] > 0
-      params[:page] = params[:page] - 1
-    end
-
-    @portraits = User.find_published_with_love_job_question page: params[:page]
-    # Get the 5 most popular tags
+    @page = params[:page].to_i
+    @portraits = User.find_published_with_love_job_question page: @page
     @popular_keywords = Keyword.popular_keywords
   end
 
   def show
     @portrait = User.where("published = ? and job_title IS NOT NULL", true).find(params[:id])
     impressionist(@portrait)
-    # Get the 5 most popular tags
     @popular_keywords = Keyword.popular_keywords
   end
 
