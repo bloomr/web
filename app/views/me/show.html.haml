@@ -57,7 +57,7 @@
         .one-challenge
           %h3.challenge-title Les tribus#{ ' : challenge réussi !' if current_user.challenges.exists?(name: 'the tribes') }
           .panel-todo{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'none' : 'block' };" }
-            .panel-default
+            .panel-default{ style: "display: #{ current_user.tribes.length > 0 ? 'block' : 'none' };" }
               %p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
               %p
                 Parmi
@@ -76,7 +76,15 @@
                 %a.crazy-btn.tribeChoiceTrigger Nop, je veux changer
                 = link_to('Yep, carrément !', me_challenge1_path, method: 'post', class: 'crazy-btn' )
 
-            .panel-tribe-choice{ style: 'display: none;' }
+            .panel-tribe-choice{ style: "display: #{ current_user.tribes.length > 0 ? 'none' : 'block' };" }
+              %p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
+              %p
+                Parmi
+                %span{ style: 'font-style: italic' }
+                  #{ Tribe.all.map(&:name).map(&:downcase).join(', ') }
+                %br
+                %br
+
               %h3 Quelle(s) tribu(s) vous conviendrai(en)t ?
               = form_for current_user, url: me_challenge1_path, method: 'post' do |f|
                 = f.select :tribe_ids, Tribe.all.map {|x| [x.name, x.id]}, {}, multiple: true, class: 'select2 form-control'
