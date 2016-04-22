@@ -52,19 +52,20 @@
               %span #{ current_user.tribes.reduce(0){ |sum, tribe| sum + tribe.last_month_view_count } } fois
       .challenges
         %h2 Challenges !
-        %p Tu as envie d'aider ? Ces challenges sont pour toi !
+        %p Chaque mois, relevez un challenge pour aider concrètement des jeunes !
+        %p Ce mois ci :
         .one-challenge
           %h3.challenge-title Les tribus#{ ' : challenge réussi !' if current_user.challenges.exists?(name: 'the tribes') }
           .panel-todo{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'none' : 'block' };" }
             .panel-default
-              %p Nous avons défini des tribus pour regrouper différents métiers.
+              %p Nous avons défini ces tribus pour aider les jeunes à s'orienter
               %p
-                Parmis
+                Parmi
                 %span{ style: 'font-style: italic' }
                   #{ Tribe.all.map(&:name).map(&:downcase).join(', ') },
                 %br
                 %br
-                #{ current_user.tribes.length < 2 ? 'la vôtre serait' : 'les votres seraient' } :
+                #{ current_user.tribes.length < 2 ? 'la vôtre serait' : 'les vôtres seraient' } :
                 %span{ style: 'font-weight: bold' }
                   #{ current_user.tribes.map(&:name).map(&:downcase).join(', ') }
                 %br
@@ -76,7 +77,7 @@
                 = link_to('Yep, carrément !', me_challenge1_path, method: 'post', class: 'crazy-btn' )
 
             .panel-tribe-choice{ style: 'display: none;' }
-              %h3 Quelle(s) tribu(s) te conviendrai(en)t ?
+              %h3 Quelle(s) tribu(s) vous conviendrai(en)t ?
               = form_for current_user, url: me_challenge1_path, method: 'post' do |f|
                 = f.select :tribe_ids, Tribe.all.map {|x| [x.name, x.id]}, {}, multiple: true, class: 'select2 form-control'
                 %div{ style: 'text-align: center' }
