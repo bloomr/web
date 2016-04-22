@@ -9,9 +9,9 @@ namespace :recall do
   end
 
   def generate_weak_password
-    ['la fraise', 'la framboise', 'la pêche', 'la poire', 'la pomme', 'la banane'].sample + ' ' +
-    ['délicieuse', 'incroyable', 'fantastique', 'merveilleuse'].sample + ' et ' +
-    ['jaune', 'rouge', 'verte', 'bleue', 'rayée'].sample
+    'la ' +
+    %w( fraise framboise pêche poire pomme banane mangue cerise tomate myrtille ).sample + ' '  +
+    %w( délicieuse incroyable fantastique merveilleuse rouge jaune verte bleu orange mauve ).sample
   end
 
 	desc 'reset password and send email'
