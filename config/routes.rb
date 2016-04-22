@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :portraits, :only => [:index, :show, :aleatoire] do
+  resources :portraits, :only => [:show, :aleatoire] do
     get :aleatoire, on: :collection
     get :next, on: :collection
     get :previous, on: :collection

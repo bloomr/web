@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature "List of portraits" do
 
   scenario "Displaying the list of portraits" do
@@ -45,9 +47,9 @@ feature "List of portraits" do
         :user_id => user_not_published.id
     )
 
-    visit "/portraits"
+    visit '/tribes'
 
-    expect(page).to have_content("Quel métier choisir")
+    expect(page).to have_content('les bloomeurs')
     expect(page).to have_selector('#portraits_list > li', :count => 3)
 
   end
