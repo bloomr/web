@@ -20,6 +20,10 @@ RSpec.describe MeController, :type => :controller do
         it 'adds the challenge 1 to the current user' do
           expect(user.challenges).to match_array(challenge1)
         end
+
+        it 'redirect to profile page with an anchor to the result' do
+          expect(response).to redirect_to(me_path(anchor: 'tribeOk'))
+        end
       end
 
       context 'changes its tribes' do

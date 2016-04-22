@@ -86,7 +86,7 @@
                     .shadow
               = link_to('Aucune, je vais vous dire celle que je veux !', ' mailto:contact@bloomr.org')
 
-          .panel-done{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'block' : 'none' };" }
+          #tribeOk.panel-done{ style: "display: #{ current_user.challenges.exists?(name: 'the tribes') ? 'block' : 'none' };" }
             = image_tag('profile/badge-tribu.png')
             %h3 Bienvenue chez #{ current_user.tribes.map(&:name).map(&:downcase).to_sentence } !
 

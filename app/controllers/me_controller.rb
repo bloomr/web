@@ -9,7 +9,7 @@ class MeController < ApplicationController
   def challenge_1
     current_user.update(user_params[:user]) unless user_params[:user].nil?
     current_user.challenges << Challenge.find_by(name: 'the tribes')
-    redirect_to me_path
+    redirect_to me_path(anchor: 'tribeOk')
   end
 
   def update
