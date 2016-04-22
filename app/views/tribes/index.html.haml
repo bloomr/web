@@ -14,3 +14,39 @@
                   %blockquote.portrait-love-job
                     = tribe.description
                   %span.btn.btn-primary ... Lire la suite
+
+.container
+  %h1{ style: 'text-align: center; font-family: "Satisfy", cursive;' } Les bloomeurs
+  
+  %ul#portraits_list.row
+    %li.col-lg-6.col-md-8.col-sm-12.col-xs-12.parcours-card
+      %a{ href: 'http://inscription.bloomr.org' }
+        .parcours
+          %p
+            Participe à notre programme,
+            %br>/
+            vient challenger ton orientation !
+          %span.inscription Je m'inscris !
+    - @portraits.each do |portrait|
+      %li.col-lg-3.col-md-4.col-sm-6.col-xs-12{ itemscope: '', itemtype: 'http://schema.org/Person' }
+        = render 'portraits/card', portrait: portrait
+
+  - if @portraits.length > 0
+    %nav#page-nav{ style: 'display: none;' }
+      %a{ href: "/tribes?page=#{@page+1}" } page suivante
+
+  = render 'shared/catchup_phrase'
+
+  :javascript
+    $(function(){
+        $('#portraits_list').infinitescroll({
+            loading: {
+                finishedMsg: "<li><em>Félicitations, vous avez atteint la fin de la galerie</em></li>",
+                msgText: "<li><em>Chargement des prochains portraits...</em></li>"
+            },
+            navSelector  : '#page-nav',
+            nextSelector : '#page-nav a',
+            itemSelector : '.col-lg-3.col-md-4.col-sm-6.col-xs-12',
+            bufferPx: 400
+        });
+    });
