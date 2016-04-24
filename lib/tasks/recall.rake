@@ -1,7 +1,7 @@
 namespace :recall do
 
   def recall user
-    puts "working for user_id #{user.id}"
+    puts "working for user_id #{user.id}, mail #{user.email}"
     password = generate_weak_password
     user.password = password
     user.save
@@ -22,5 +22,18 @@ namespace :recall do
     end
     emails = ENV['EMAILS'].split
     emails.each{ |email| recall(User.find_by(email: email)) }
+  end
+
+	desc 'reset password and send email to all ! DANGEROUS'
+  task all_users: :environment do
+    User.all.each do |user|
+      next if user.email.nil? || user.published == false
+      begin
+        recall(user)
+      rescue Exception => e
+         puts e.message
+         puts e.backtrace.inspect
+      end
+    end
   end
 end
