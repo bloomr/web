@@ -71,8 +71,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.5.0)
-      activerecord (>= 3.2, < 5)
     algoliasearch (1.7.0)
       httpclient (~> 2.4)
       json (>= 1.5.1)
@@ -379,7 +377,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   activeadmin-select2!
-  acts-as-taggable-on (~> 3.4)
   algoliasearch-rails
   autoprefixer-rails
   aws-sdk (< 2.0)

@@ -8,7 +8,11 @@ module Api
       def create
         return render json: {error:"invalid key"}, status: :unauthorized unless params["key"] == ENV["API_KEY"]
 
-        @user = User.new(user_params)
+        permitted = user_params.to_hash
+        to_save = permitted.dup
+        to_save.delete('keyword_list')
+
+        @user = User.new(to_save)
         @user.password = Devise.friendly_token.first(8)
         if @user.save
           tags = user_params["keyword_list"].split(",").map{|t| t.strip}
