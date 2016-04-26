@@ -47,10 +47,6 @@ class User < ActiveRecord::Base
     question.answer if question
   end
 
-  def is_keyword_popular(keyword)
-    KeywordAssociation.where(keyword: keyword).count >= 2
-  end
-
   def self.next(current_id)
     where('id > ? and published = ?', current_id, true).order(id: :asc).first ||
       where('published = ?', true).order(id: :asc).first

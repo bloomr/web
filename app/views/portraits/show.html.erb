@@ -17,7 +17,7 @@
               </p>
               <ul class="portrait-keywords" itemprop="keywords">
                 <% @portrait.keyword_associations.each do |keyword_association| %>
-                    <% if @portrait.is_keyword_popular(keyword_association.keyword) %>
+                    <% if keyword_association.keyword_popular? %>
                         <li><a href="<%= tag_path(keyword_association.keyword.tag) %>" class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></a>
                         </li>
                     <% else %>
