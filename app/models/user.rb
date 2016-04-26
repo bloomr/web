@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   scope :with_published_questions, -> { joins(:questions).where('questions.published = ?', true) }
-  scope :published, -> { where('users.published = ?', true) }
+  scope :published, -> { where(users: { published: true }) }
   scope :smart_order, -> { group('users.id, questions.user_id').order('count(questions.id) DESC, users.id DESC') }
   scope :active_ordered, -> { published.with_published_questions.smart_order }
 
