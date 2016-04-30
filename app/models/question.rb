@@ -16,6 +16,7 @@ class Question < ActiveRecord::Base
     return 1
   end
 
+  scope :published, -> { where(questions: { published: true }) }
   def strip_injection_from_answer
     self.answer = sanitize(self.answer, tags: %w( b i br ul li ))
   end

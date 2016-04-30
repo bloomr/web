@@ -38,21 +38,6 @@ RSpec.describe User, :type => :model do
 
   end
 
-
-  describe 'questions to display' do
-
-    before do
-      @user = create(:user)
-      @user.questions << Question.new(title: 'not published', published: false)
-      @user.questions << Question.new(title: 'published', published: true)
-    end
-
-    it 'should be published' do
-      expect(@user.questions_to_display().length).to eq(1)
-    end
-
-  end
-
   describe 'before_save' do
     context 'when a user has not a love_job published question' do
       let(:user) { user = create(:user, published: true); user.reload }

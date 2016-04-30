@@ -12,12 +12,22 @@ RSpec.describe Question, :type => :model do
       end
     end
 
-   describe 'with some legal tags' do
+    describe 'with some legal tags' do
       let(:answer) { '<b>b</b><i>i</i><br/><ul><li>l</li></ul>' }
       it 'keep the tags' do
         expect(Question.first.answer).to eq('<b>b</b><i>i</i><br><ul><li>l</li></ul>')
       end
     end
+  end
 
+  describe '.published' do
+    subject { Question.published }
+
+    context 'when there are one published and one not published question' do
+      let!(:published_question) { create(:question, published: true) }
+      let!(:unpublished_question) { create(:question, published: false) }
+
+      it { is_expected.to match_array(published_question) }
+    end
   end
 end
