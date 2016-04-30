@@ -30,4 +30,17 @@ RSpec.describe Question, :type => :model do
       it { is_expected.to match_array(published_question) }
     end
   end
+
+  describe '.interview?' do
+    subject { question.interview? }
+
+    context 'when the question is not in NOT_INTERVIEW_QUESTIONS' do
+      let(:question) { create(:question, identifier: 'toto') }
+      it { is_expected.to be(true) }
+    end
+    context 'when the question is NOT_INTERVIEW_QUESTIONS' do
+      let(:question) { create(:question, identifier: 'love_job') }
+      it { is_expected.to be(false) }
+    end
+  end
 end

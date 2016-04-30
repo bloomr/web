@@ -105,7 +105,7 @@
           = f.label :job_title, 'Vous êtes : '
           = f.text_field :job_title, class: 'job_title'
 
-        - current_user.questions_to_display.sort_by(&:position).each do |question|
+        - current_user.questions.select(&:interview?).sort_by(&:position).each do |question|
           .form-group.editable-group
             = f.fields_for :questions, question do |ff|
               = ff.label question.title

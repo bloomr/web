@@ -63,7 +63,7 @@
           </div>
           <div class="portrait-main">
             <ul class="portrait-questions">
-              <% @portrait.questions_to_display.sort_by(&:position).each do |question| %>
+              <% @portrait.questions.select(&:interview?).sort_by(&:position).each do |question| %>
                   <li itemscope itemtype="http://schema.org/Question" data-section-id="<%= question.id %>" class="commentable-section">
                     <h4 itemprop="name" class="portrait-question-title"><%= question.title %></h4>
                     <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer">

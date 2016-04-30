@@ -70,11 +70,6 @@ class User < ActiveRecord::Base
        foreign_language_mandatory inside_or_outside_work self_time_management
        always_on_the_road manual_or_intellectual ).freeze
 
-  def questions_to_display
-    questions_not_to_display = MY_WORK_QUESTIONS_IDENTIFIERS + ['love_job']
-    questions.select { |q| q.published && !questions_not_to_display.include?(q.identifier) }
-  end
-
   scope :with_published_questions, -> { joins(:questions).where(questions: { published: true }) }
   scope :published, -> { where(users: { published: true }) }
   scope :smart_order, -> { group('users.id, questions.user_id').order('count(questions.id) DESC, users.id DESC') }
