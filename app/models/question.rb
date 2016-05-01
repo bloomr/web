@@ -21,7 +21,7 @@ class Question < ActiveRecord::Base
         foreign_language_mandatory inside_or_outside_work self_time_management
         always_on_the_road manual_or_intellectual ).freeze
 
-  NOT_INTERVIEW_QUESTIONS = MY_WORK_QUESTIONS_IDENTIFIERS + ['love_job']
+  NOT_INTERVIEW_QUESTIONS = MY_WORK_QUESTIONS_IDENTIFIERS + %w( love_job how_fun_was_this_form actually_something_to_add typical_workday qualification_required )
 
   scope :published, -> { where(questions: { published: true }) }
 
