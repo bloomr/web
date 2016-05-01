@@ -65,11 +65,6 @@ class User < ActiveRecord::Base
     where('published = ? and job_title IS NOT NULL', true).offset(offset).first
   end
 
-  MY_WORK_QUESTIONS_IDENTIFIERS =
-    %w(how_many_people_in_company solo_vs_team who_do_you_work_with
-       foreign_language_mandatory inside_or_outside_work self_time_management
-       always_on_the_road manual_or_intellectual ).freeze
-
   scope :with_published_questions, -> { joins(:questions).where(questions: { published: true }) }
   scope :published, -> { where(users: { published: true }) }
   scope :smart_order, -> { group('users.id, questions.user_id').order('count(questions.id) DESC, users.id DESC') }
@@ -93,7 +88,9 @@ class User < ActiveRecord::Base
   end
 
   def has_explained_its_works?
-    MY_WORK_QUESTIONS_IDENTIFIERS.all? { |identifier| questions.find { |q2| q2.identifier == identifier } }
+    #complicated stuff to test an include
+    identifiers = questions.map(&:identifier)
+    Question::MY_WORK_QUESTIONS_IDENTIFIERS.all?{ |my_work_id| identifiers.include?(my_work_id) }
   end
 
   def last_month_view_count
