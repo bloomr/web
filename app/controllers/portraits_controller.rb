@@ -1,7 +1,7 @@
 class PortraitsController < ApplicationController
 
   def show
-    @portrait = User.where("published = ? and job_title IS NOT NULL", true).find(params[:id])
+    @portrait = User.published.includes(:questions).merge(Question.published).find(params[:id])
     impressionist(@portrait)
     @popular_keywords = Keyword.popular_keywords
   end
