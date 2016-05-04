@@ -14,7 +14,12 @@
 
       %div{style: 'position: relative; display: inline-block'}
       %p#flash-messages
-      <p><span class= 'glyphicon glyphicon-lock'></span> Informations de paiement</p>
+      %p
+        %img{:alt => "Visa", :src => "assets/payment/Visa.png", :style => "width:60px; height:auto;"}
+        %img{:alt => "Mastercard", :src => "assets/payment/MasterCard.png", :style => "width:60px; height:auto;"}
+      %p
+        %span.glyphicon.glyphicon-lock
+        Informations de paiement
       = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb cc-number', 'data-stripe' => 'number'
       %div.form-inline
         = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
