@@ -14,9 +14,9 @@
 
       %div{style: 'position: relative; display: inline-block'}
       %p#flash-messages
-      -# %p
-        %img{:alt => "Visa", :src => "assets/payment/Visa.png", :style => "width:60px; height:auto;"}
-        %img{:alt => "Mastercard", :src => "assets/payment/MasterCard.png", :style => "width:60px; height:auto;"}
+      %p
+        =image_tag('payment/Visa.png', alt: 'Visa', width: '60')
+        =image_tag('payment/MasterCard.png', alt: 'Mastercard', width: '60')
       %p
         %span.glyphicon.glyphicon-lock
         Informations de paiement
