@@ -28,6 +28,11 @@ class Question < ActiveRecord::Base
   def interview?
     !NOT_INTERVIEW_QUESTIONS.include?(identifier)
   end
+
+  # TODO:
+  # pour eviter le n+1 sur la gallerie
+  # essayer un includes(:questions).merge(where(questions: {identifier: 'job_title'}))
+  # peut etre en 2 temps: 1 recherche des users, 2 récupérations de leurs questions
   def strip_injection_from_answer
     self.answer = sanitize(answer, tags: %w( b i br ul li ))
   end
