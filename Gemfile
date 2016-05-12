@@ -46,6 +46,7 @@ gem "rack-cors"
 
 gem "haml"
 gem 'stripe'
+gem 'mandrill-api'
 
 gem 'rails-i18n', '~> 4.0.0'
 gem 'factory_girl_rails'
