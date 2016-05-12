@@ -6,7 +6,7 @@ class PaymentController < ApplicationController
 
   def create
     # Amount in cents
-    @amount = 4900
+    @amount = 3500
 
     token = params[:stripeToken]
     bloomie = params[:first_name] + ' - ' + params[:age] + ' ans - ' + params[:email]

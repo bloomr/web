@@ -19,7 +19,7 @@ RSpec.describe PaymentController, type: :controller do
   describe 'POST #create' do
     it 'charge the right amount and redirect to payment_thanks' do
       allow(Stripe::Charge).to receive(:create).with({
-        amount: 4900,
+        amount: 3500,
         currency: 'eur',
         source: '1234',
         description: '1 Parcours Bloomr',
