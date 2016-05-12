@@ -1,19 +1,19 @@
 #enrollment.full-blue
   .center
     %a.close{ href: '/' } X
-    %h1 Bienvenue dans la communauté de bloomeurs* !
+    %h1 Bienvenue dans la communauté des bloomeurs* !
 
-    %p Votre mission: transmettre l'étincelle qui vous fait vous lever le matin pour aider ceux qui s’interrogent sur leur avenir : les bloomies.
-
-    %p{ style: 'margin: 40px 0;' }
-      <b>Inspirer</b>: ouvrir le monde des possibles<br />
-      <b>Rassurer</b>: montrer la diversité des parcours<br />
-      <b>Booster</b>: donner une image positive du travail<br />
-      <b>Lever le voile</b>: sur la réalité des métiers au delà des idées reçues
+    %p Votre mission : transmettre l'étincelle qui vous fait vous lever le matin pour aider ceux qui s’interrogent sur leur avenir : les bloomies.
 
     %p{ style: 'margin: 40px 0;' }
-      Première étape : remplir le formulaire pour en dire plus sur votre métier et votre parcours.<br />
-      Nous vous l'envoyons par e-mail :
+      <b>Inspirer</b> : ouvrir le monde des possibles<br />
+      <b>Rassurer</b> : montrer la diversité des parcours<br />
+      <b>Booster</b> : donner une image positive du travail<br />
+      <b>Lever le voile</b> : sur la réalité des métiers au delà des idées reçues
+
+    %p{ style: 'margin: 40px 0;' }
+      Première étape : vous inscrire puis témoigner sur votre métier et votre parcours.<br />
+      Le témoignage se fait en ligne et par écrit, grâce à un questionnaire que nous vous enverrons dès que vous cliquerez sur le bouton magique.
 
     =form_for @user, url: { action: 'create' } do |f|
       = f.text_field :first_name, placeholder: 'Votre prénom', required: true, class: 'blue'
