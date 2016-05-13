@@ -53,6 +53,9 @@ Rails.application.routes.draw do
   get "le-parcours" => "static#le_parcours"
   get "templates" => "static#templates"
 
+  #partner
+  get 'partner/:action' => 'partner#:action'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
