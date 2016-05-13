@@ -27,7 +27,10 @@
 
       %p.legal En t'inscrivant au parcours, tu acceptes les <a href= 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view'><u>conditions générales</u></a> et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
       %div{style: 'position: relative; display: inline-block'}
-        = submit_tag 'Régler mes 35€', class: 'crazy-btn yellow'
+        - if cookies[:sujetdubac]
+          = submit_tag 'Régler mes 9.90€', class: 'crazy-btn yellow'
+        - else
+          = submit_tag 'Régler mes 35€', class: 'crazy-btn yellow'
         .shadow
 
       %a.link-center{ href: 'https://paypal.me/bloomr/35' } Je préfère payer avec Paypal
