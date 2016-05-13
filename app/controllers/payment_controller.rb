@@ -4,19 +4,26 @@ class PaymentController < ApplicationController
   end
 
   def create
-    # Amount in cents
-    @amount = 3500
-
-    token = params[:stripeToken]
     bloomie = params[:first_name] + ' - ' + params[:age] + ' ans - ' + params[:email]
 
-    charge = Stripe::Charge.create(
-      :amount       => @amount,
-      :metadata     => {'info_client' => bloomie}
+    # Amount in cents
+    if cookies[:sujetdubac]
+      amount = 990
+      metadata = { 'info_client' => bloomie, 'source' => 'sujetdubac' }
+    else
+      amount = 3500
+      metadata = { 'info_client' => bloomie }
+    end
+
+    token = params[:stripeToken]
+
+    Stripe::Charge.create(
+      amount: amount,
       currency: 'eur',
       source: token,
       description: '1 Parcours Bloomr',
       receipt_email: params[:email],
+      metadata: metadata
     )
 
     redirect_to payment_thanks_path
