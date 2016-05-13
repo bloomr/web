@@ -1,5 +1,4 @@
 class PaymentController < ApplicationController
-
   def index
     render layout: 'home'
   end
@@ -13,23 +12,21 @@ class PaymentController < ApplicationController
 
     charge = Stripe::Charge.create(
       :amount       => @amount,
-      :currency     => 'eur',
-      :source       => token,
-      :description  => '1 Parcours Bloomr',
-      :receipt_email => params[:email],
       :metadata     => {'info_client' => bloomie}
+      currency: 'eur',
+      source: token,
+      description: '1 Parcours Bloomr',
+      receipt_email: params[:email],
     )
 
     redirect_to payment_thanks_path
 
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to payment_index_path
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to payment_index_path
   end
 
   def thanks
     render layout: 'home'
   end
-
-
 end
