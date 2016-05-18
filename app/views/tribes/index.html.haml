@@ -1,6 +1,10 @@
 #tribes
   .container
     %h1 Les tribus
+    %h3{style: 'text-align: center'} Bienvenue dans la galerie Bloomr !
+    %h3{style: 'text-align: center'} Des pros heureux t'expliquent pourquoi ils aiment leur métier et leur parcours pour y arriver.
+    %h3{style: 'text-align: center'} Nous avons créé des tribus pour t'aider à naviguer dans l'océan des témoignages.
+
     .row
       %ul.cards
         - @tribes.each_with_index do |tribe, index|
