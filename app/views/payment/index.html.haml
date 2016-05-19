@@ -7,10 +7,10 @@
     %h1 Fabuleuse décision !
 
     %p Dernière étape avant de démarrer l'aventure : <br/>t'inscrire et régler le parcours
-    = form_tag '/payment', :id => 'new_payment' do
-      = text_field_tag :first_name, nil, placeholder: 'Ton prénom', required: true, class: 'blue'
-      = email_field_tag :email, nil, placeholder: 'Ton adresse email', required: true, class: 'blue', 'data-stripe' => 'name'
-      = text_field_tag :age, nil, placeholder: 'Ton age', required: true, class: 'blue'
+    = form_for Bloomy.new, url: '/payment' do |f|
+      = f.text_field :first_name, placeholder: 'Ton prénom', required: true, class: 'blue'
+      = f.email_field :email, placeholder: 'Ton adresse email', required: true, class: 'blue', 'data-stripe' => 'name'
+      = f.text_field :age, placeholder: 'Ton age', required: true, class: 'blue'
 
       %div{style: 'position: relative; display: inline-block'}
       %p#flash-messages
@@ -70,7 +70,7 @@
     empty_mail: "Veuillez saisir votre adresse mail"
   };
 
-  $("#new_payment").submit(function (event) {
+  $("#new_bloomy").submit(function (event) {
     var $form = $(this);
 
     if($('#email').val() === '') {
@@ -85,7 +85,7 @@
 
   stripeResponseHandler = function (status, response) {
     var $form, token;
-    $form = $("#new_payment");
+    $form = $("#new_bloomy");
     if (response.error) {
       show_error(response.error.code);
       $form.find("input[type=submit]").prop("disabled", false);
