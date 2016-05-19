@@ -1,2 +1,7 @@
 AllCops:
     TargetRubyVersion: 2.2
+    Exclude:
+          - 'db/schema.rb'
+
+Style/Documentation:
+    Enabled: false
