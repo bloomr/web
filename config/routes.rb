@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :bloomies
-  post 'bloomies/create'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -58,6 +55,7 @@ Rails.application.routes.draw do
 
   # discourse sso
   get '/sso' => 'discourse_sso#sso'
+  post '/sso/login' => 'discourse_sso#login'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

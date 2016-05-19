@@ -1,13 +1,27 @@
 class DiscourseSsoController < ApplicationController
   def sso
-    secret = "MY_SECRET_STRING"
+    secret = ENV['DISCOURSE_SECRET']
     sso = Discourse::SingleSignOn.parse(request.query_string, secret)
-    sso.email = "user@email.com"
-    sso.name = "Bill Hicks"
-    sso.username = "bill@hicks.com"
-    sso.external_id = "123" # unique id for each user of your application
+    @nonce = sso.nonce
+    @bloomy = Bloomy.new
+    render layout: 'home'
+  end
+
+  def login
+    bloomy = Bloomy.find_by_email(params[:bloomy][:email])
+    if bloomy.nil? || !bloomy.valid_password?(params[:bloomy][:password])
+      flash[:nop] = 'Raté, essaye encore'
+      return redirect_to sso_path
+    end
+
+    sso = Discourse::SingleSignOn.new
+    sso.nonce = params[:nonce]
+    secret = ENV['DISCOURSE_SECRET']
+    sso.email = bloomy.email
+    sso.external_id = bloomy.id
     sso.sso_secret = secret
 
-    redirect_to sso.to_url("http://localhost:8080/session/sso_login")
+    redirect_to sso.to_url("#{ENV['DISCOURSE_URL']}/session/sso_login")
   end
+
 end

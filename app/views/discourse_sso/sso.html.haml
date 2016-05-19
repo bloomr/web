@@ -1,0 +1,17 @@
+#payment.full-blue
+  .center
+
+    %h1 Connectes-toi !
+
+    = form_for(@bloomy, url: '/sso/login') do |f|
+      - flash.each do |name, msg|
+        = content_tag :div, msg, id: "flash_#{name}", style: 'margin: 30px auto'
+      = f.email_field :email, placeholder: 'Ton adresse email', required: true, class: 'blue', autofocus: true
+      = f.password_field :password, autocomplete: 'off', placeholder: 'Ton mot de passe', required: true, class: 'blue'
+      = hidden_field_tag 'nonce', @nonce
+
+      %div{ style: 'position: relative; display: inline-block' }
+
+      %div{ style: 'position: relative; display: inline-block' }
+        = submit_tag "C'est parti !", class: 'crazy-btn yellow'
+        .shadow
