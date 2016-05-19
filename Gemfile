@@ -18,11 +18,12 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', :git => 'https://github.com/turbolinks/turbolinks-classic', ref: '37a7c296232d20a61bd1946f600da7f2009189db'
+gem 'turbolinks', git: 'https://github.com/turbolinks/turbolinks-classic',
+                  ref: '37a7c296232d20a61bd1946f600da7f2009189db'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
@@ -34,17 +35,17 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'select2-rails'
 gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
 
-gem "paperclip", "~> 4.2"
+gem 'paperclip', '~> 4.2'
 gem 'aws-sdk', '< 2.0'
 
 gem 'newrelic_rpm'
 
 gem 'rest-client'
 
-gem "algoliasearch-rails"
-gem "rack-cors"
+gem 'algoliasearch-rails'
+gem 'rack-cors'
 
-gem "haml"
+gem 'haml'
 gem 'stripe'
 gem 'mandrill-api'
 
@@ -65,7 +66,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
   gem 'capybara'
-  gem "rack-livereload"
+  gem 'rack-livereload'
   gem 'guard-livereload', '~> 2.4', require: false
   gem 'growl'
   gem 'rubocop', require: false
@@ -90,4 +91,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
