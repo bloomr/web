@@ -4,9 +4,10 @@ class PaymentController < ApplicationController
   end
 
   def create
-    bloomy = Bloomy.create!(bloomy_params.merge(password: 'totototo'))
+    password = generate_weak_password
+    bloomy = Bloomy.create!(bloomy_params.merge(password: password))
     charge(bloomy)
-    Mailchimp.subscribe_to_journey(bloomy)
+    subscribe_to_mails(bloomy, password)
     redirect_to payment_thanks_path
 
   rescue Stripe::CardError => e
@@ -45,5 +46,22 @@ class PaymentController < ApplicationController
     metadata = { 'info_client' => bloomy_s }
     metadata['source'] = 'sujetdubac' if cookies[:sujetdubac]
     metadata
+  end
+
+  def subscribe_to_mails(bloomy, password)
+    if cookies[:auto]
+      Mailchimp.subscribe_to_journey(bloomy)
+      Mailchimp.send_discourse_email(to_mail: bloomy.email,
+                                     password: password)
+    end
+  end
+
+  def generate_weak_password
+    'la ' +
+      %w( fraise framboise pêche poire pomme
+          banane mangue cerise tomate myrtille ).sample + ' ' +
+
+      %w( délicieuse incroyable fantastique merveilleuse
+          rouge jaune verte bleue orange mauve ).sample
   end
 end

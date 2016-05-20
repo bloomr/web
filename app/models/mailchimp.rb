@@ -5,8 +5,6 @@ class Mailchimp
                 .freeze
 
   def self.subscribe_to_journey(bloomy)
-    return if ENV['MAILCHIMP_ACTIVATED'].nil?
-
     body = { 'status' => 'subscribed', 'email_address' => bloomy.email,
              'merge_fields' =>
     { 'FNAME' => bloomy.first_name, 'MMERGE3' => bloomy.age }

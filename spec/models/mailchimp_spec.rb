@@ -22,23 +22,8 @@ RSpec.describe Mailchimp, type: :model do
     end
 
     context 'when mailchimp option is activated' do
-      before :each do
-        ENV['MAILCHIMP_ACTIVATED'] = 'true'
-      end
-
       it 'calls the mailchimp api' do
         expect(HTTParty).to receive(:post).with(url, post_body)
-        Mailchimp.subscribe_to_journey(bloomy)
-      end
-    end
-
-    context 'when mailchimp option is not activated' do
-      before :each do
-        ENV['MAILCHIMP_ACTIVATED'] = nil
-      end
-
-      it 'calls the mailchimp api' do
-        expect(HTTParty).to receive(:post).with(any_args).exactly(0).times
         Mailchimp.subscribe_to_journey(bloomy)
       end
     end

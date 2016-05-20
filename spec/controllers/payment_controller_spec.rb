@@ -23,6 +23,7 @@ RSpec.describe PaymentController, type: :controller do
 
     before do
       allow(Mailchimp).to receive(:subscribe_to_journey)
+      allow(Mailchimp).to receive(:send_discourse_email)
       allow(Stripe::Charge).to receive(:create)
     end
 
@@ -78,8 +79,18 @@ RSpec.describe PaymentController, type: :controller do
 
     describe 'the journey inscription' do
       after { post :create, payload }
-      it 'subscribes to the journey' do
-        expect(Mailchimp).to receive(:subscribe_to_journey).once
+      context 'when the cookie is set' do
+        before { request.cookies[:auto] = true }
+        it 'subscribes to the journey' do
+          expect(Mailchimp).to receive(:subscribe_to_journey).once
+          expect(Mailchimp).to receive(:send_discourse_email).once
+        end
+      end
+      context 'when the cookie is not set' do
+        it 'does not subscribe to the journey' do
+          expect(Mailchimp).to receive(:subscribe_to_journey).exactly(0).times
+          expect(Mailchimp).to receive(:send_discourse_email).exactly(0).times
+        end
       end
     end
   end
