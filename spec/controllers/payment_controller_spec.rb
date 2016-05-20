@@ -22,7 +22,7 @@ RSpec.describe PaymentController, type: :controller do
     let(:payload) { { bloomy: bloomy, stripeToken: '1234' } }
 
     before do
-      allow(HTTParty).to receive(:post)
+      allow(Mailchimp).to receive(:subscribe_to_journey)
       allow(Stripe::Charge).to receive(:create)
     end
 
@@ -45,6 +45,11 @@ RSpec.describe PaymentController, type: :controller do
           receipt_email: 'loulou@lou.com', metadata: metadata }
       end
 
+      after do
+        post :create, payload
+        expect(response).to redirect_to(payment_thanks_path)
+      end
+
       context 'with no cookie' do
         let(:metadata) do
           { 'info_client' => 'loulou - 44 ans - loulou@lou.com' }
@@ -53,8 +58,6 @@ RSpec.describe PaymentController, type: :controller do
 
         it 'charges the right amount and redirect to payment_thanks' do
           expect(Stripe::Charge).to receive(:create).with(stripes_args)
-          post :create, payload
-          expect(response).to redirect_to(payment_thanks_path)
         end
       end
 
@@ -69,51 +72,14 @@ RSpec.describe PaymentController, type: :controller do
             set the right source and redirect to payment_thanks' do
           request.cookies[:sujetdubac] = true
           expect(Stripe::Charge).to receive(:create).with(stripes_args)
-          post :create, payload
-          expect(response).to redirect_to(payment_thanks_path)
         end
       end
     end
 
-    describe 'the mailchimp inscription' do
-      let(:url) { 'https://us9.api.mailchimp.com/3.0/lists/9ec70e12ca/members' }
-
-      let(:headers) do
-        { 'Authorization' => 'apikey api',
-          'Content-Type' => 'application/json' }
-      end
-
-      let(:body) do
-        { 'status' => 'subscribed', 'email_address' => 'loulou@lou.com',
-          'merge_fields' => { 'FNAME' => 'loulou', 'MMERGE3' => 44 } }.to_json
-      end
-
-      let(:post_body) { { headers: headers, body: body } }
-
-      before do
-        ENV['MAILCHIMP_API_KEY'] = 'api'
-      end
-
-      context 'when mailchimp option is activated' do
-        before :each do
-          ENV['MAILCHIMP_ACTIVATED'] = 'true'
-        end
-
-        it 'calls the mailchimp api' do
-          expect(HTTParty).to receive(:post).with(url, post_body)
-          post :create, payload
-        end
-      end
-
-      context 'when mailchimp option is not activated' do
-        before :each do
-          ENV['MAILCHIMP_ACTIVATED'] = nil
-        end
-
-        it 'calls the mailchimp api' do
-          expect(HTTParty).to receive(:post).with(any_args).exactly(0).times
-          post :create, payload
-        end
+    describe 'the journey inscription' do
+      after { post :create, payload }
+      it 'subscribes to the journey' do
+        expect(Mailchimp).to receive(:subscribe_to_journey).once
       end
     end
   end

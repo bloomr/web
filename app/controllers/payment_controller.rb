@@ -6,7 +6,7 @@ class PaymentController < ApplicationController
   def create
     bloomy = Bloomy.create!(bloomy_params.merge(password: 'totototo'))
     charge(bloomy)
-    subscribe_to_mailchimp(bloomy)
+    Mailchimp.subscribe_to_journey(bloomy)
     redirect_to payment_thanks_path
 
   rescue Stripe::CardError => e
@@ -45,21 +45,5 @@ class PaymentController < ApplicationController
     metadata = { 'info_client' => bloomy_s }
     metadata['source'] = 'sujetdubac' if cookies[:sujetdubac]
     metadata
-  end
-
-  def subscribe_to_mailchimp(bloomy)
-    return if ENV['MAILCHIMP_ACTIVATED'].nil?
-
-    headers = { 'Authorization' => "apikey #{ENV['MAILCHIMP_API_KEY']}",
-                'Content-Type'  => 'application/json' }
-
-    body = { 'status' => 'subscribed', 'email_address' => bloomy.email,
-             'merge_fields' =>
-             { 'FNAME' => bloomy.first_name, 'MMERGE3' => bloomy.age }
-           }.to_json
-
-    url = 'https://us9.api.mailchimp.com/3.0/lists/9ec70e12ca/members'
-
-    HTTParty.post(url, headers: headers, body: body)
   end
 end
