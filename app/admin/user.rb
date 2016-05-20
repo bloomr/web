@@ -5,6 +5,15 @@ ActiveAdmin.register User do
                 questions_attributes: [:id, :title, :answer, :identifier,
                                        :position, :_destroy, :published]
 
+  csv(encoding: 'iso-8859-1') do
+    column :email
+    column :first_name
+    column :published
+    column :job_title
+    column(:tribe) { |user| user.tribes.map(&:name).join(' ') }
+    column :created_at
+  end
+
   controller do
     def update
       if params[:user][:password].blank?
