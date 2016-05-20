@@ -49,6 +49,7 @@ gem 'haml'
 gem 'stripe'
 gem 'mandrill-api'
 gem 'httparty'
+gem 'delayed_job_active_record'
 
 gem 'rails-i18n', '~> 4.0.0'
 gem 'factory_girl_rails'
