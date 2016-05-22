@@ -1,5 +1,6 @@
 class PaymentController < ApplicationController
   def index
+    @price = sprintf("%0.02f", amount.to_f/100)
     render layout: 'home'
   end
 
@@ -10,9 +11,9 @@ class PaymentController < ApplicationController
     subscribe_to_mails(bloomy, password)
     redirect_to payment_thanks_path
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to payment_index_path
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to payment_index_path
   end
 
   def thanks
@@ -37,14 +38,25 @@ class PaymentController < ApplicationController
   end
 
   def amount
-    return 990 if cookies[:sujetdubac]
+    if Campaign.exists?
+      for campaign in Campaign.all
+        #On prend le premier qu'on trouve. Question : si plusieurs cookies, est-on sûr que cela sera le même montant
+        #qui sera retourné à l'affichage du formulaire et au paiement ?!
+        if cookies[campaign.partner] then return campaign.price*100 end
+      end
+    end
     3500
+
   end
 
   def metadata(bloomy)
     bloomy_s = "#{bloomy.first_name} - #{bloomy.age} ans - #{bloomy.email}"
     metadata = { 'info_client' => bloomy_s }
-    metadata['source'] = 'sujetdubac' if cookies[:sujetdubac]
+    if Campaign.exists?
+      for campaign in Campaign.all
+        if cookies[campaign.partner] then metadata['source'] = campaign.partner end
+      end
+    end
     metadata
   end
 
