@@ -2,9 +2,12 @@ require 'rails_helper'
 
 RSpec.describe PartnerController, type: :controller do
 
-  describe 'GET #sujetdubac' do
+  campaign = FactoryGirl.create(:campaign, :partner => 'default', :price => '35.0')
+  campaign = FactoryGirl.create(:campaign, :partner => 'sujetdubac', :price => '13.0', :campaign_url => 'http://bac.bloomr.org/')
+
+  describe 'GET #set_campaign/sujetdubac' do
     before do
-      get :sujetdubac
+      get :set_campaign, :name => 'sujetdubac'
     end
 
     it 'redirect to bac bloomr org' do
@@ -12,7 +15,7 @@ RSpec.describe PartnerController, type: :controller do
     end
 
     it 'set the sujetdubac cookie' do
-      expect(response.cookies['sujetdubac']).to eq('true')
+      expect(response.cookies['partner']).to eq('sujetdubac')
     end
   end
 

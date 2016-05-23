@@ -51,8 +51,7 @@ Rails.application.routes.draw do
   get "templates" => "static#templates"
 
   #partner
-  get 'partner/:name' => 'partner#show_campaign'
-  #get 'partner/:action' => 'partner#:action'
+  get 'partner(/:name)' => 'partner#set_campaign'
 
   # discourse sso
   get '/sso' => 'discourse_sso#sso'

@@ -1,6 +1,8 @@
 class PaymentController < ApplicationController
+  before_action :fetch_customer_campaign, only: [:index, :create]
+
   def index
-    @price = sprintf("%0.02f", amount.to_f/100)
+    @price = price_to_display
     render layout: 'home'
   end
 
@@ -22,6 +24,10 @@ class PaymentController < ApplicationController
 
   private
 
+  def fetch_customer_campaign
+    @campaign = Campaign.find_by_partner_or_default(cookies[:partner])
+  end
+
   def bloomy_params
     params.require(:bloomy).permit(:email, :first_name, :age)
   end
@@ -38,25 +44,13 @@ class PaymentController < ApplicationController
   end
 
   def amount
-    if Campaign.exists?
-      for campaign in Campaign.all
-        #On prend le premier qu'on trouve. Question : si plusieurs cookies, est-on sûr que cela sera le même montant
-        #qui sera retourné à l'affichage du formulaire et au paiement ?!
-        if cookies[campaign.partner] then return campaign.price*100 end
-      end
-    end
-    3500
-
+    return @campaign.price.to_i*100
   end
 
   def metadata(bloomy)
     bloomy_s = "#{bloomy.first_name} - #{bloomy.age} ans - #{bloomy.email}"
     metadata = { 'info_client' => bloomy_s }
-    if Campaign.exists?
-      for campaign in Campaign.all
-        if cookies[campaign.partner] then metadata['source'] = campaign.partner end
-      end
-    end
+    metadata['source'] = @campaign.partner
     metadata
   end
 
@@ -66,6 +60,10 @@ class PaymentController < ApplicationController
       Mailchimp.send_discourse_email(to_mail: bloomy.email,
                                      password: password)
     end
+  end
+
+  def price_to_display
+    return sprintf("%0.02f", amount.to_f/100)
   end
 
   def generate_weak_password
