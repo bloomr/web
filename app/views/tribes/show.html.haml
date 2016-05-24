@@ -1,4 +1,6 @@
 #tribes-show.container
+  - content_for :title, @tribe.name
+
   .row
     %h1 #{ @tribe.name }
     %h2 #{ @tribe.description }
