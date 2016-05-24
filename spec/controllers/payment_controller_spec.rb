@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe PaymentController, type: :controller do
 
-  campaign = FactoryGirl.create(:campaign, :partner => 'default', :price => '35.0')
-  campaign = FactoryGirl.create(:campaign, :partner => 'sujetdubac', :price => '13.0')
+  before do
+    FactoryGirl.create(:campaign, :partner => 'default', :price => '35.0')
+    FactoryGirl.create(:campaign, :partner => 'sujetdubac', :price => '13.0')
+  end
 
   describe 'GET #index' do
     it 'returns http success' do
@@ -60,7 +62,7 @@ RSpec.describe PaymentController, type: :controller do
           { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
             'source' => 'default'}
         end
-        #let(:amount) { 3500 }
+        let(:amount) { 3500 }
 
         it 'charges the right amount and redirect to payment_thanks' do
           expect(Stripe::Charge).to receive(:create).with(stripes_args)
@@ -72,11 +74,11 @@ RSpec.describe PaymentController, type: :controller do
           { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
             'source' => 'sujetdubac' }
         end
-        #let(:amount) { 990 }
+        let(:amount) { 1300 }
 
         it 'charge the right amount,
             set the right source and redirect to payment_thanks' do
-          request.cookies[:sujetdubac] = true
+          request.cookies[:partner] = 'sujetdubac'
           expect(Stripe::Charge).to receive(:create).with(stripes_args)
         end
       end
