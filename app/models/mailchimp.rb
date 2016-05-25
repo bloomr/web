@@ -35,8 +35,6 @@ class Mailchimp
                     })
     end
 
-    private
-
     JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/9ec70e12ca/members'
                   .freeze
 
