@@ -6,6 +6,7 @@ ActiveAdmin.register User do
                                        :position, :_destroy, :published]
 
   csv(encoding: 'iso-8859-1') do
+    column :id
     column :email
     column :first_name
     column :published
