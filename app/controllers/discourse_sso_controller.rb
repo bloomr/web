@@ -18,10 +18,10 @@ class DiscourseSsoController < ApplicationController
     sso.nonce = params[:nonce]
     secret = ENV['DISCOURSE_SECRET']
     sso.email = bloomy.email
+    sso.username = bloomy.first_name
     sso.external_id = bloomy.id
     sso.sso_secret = secret
 
     redirect_to sso.to_url("#{ENV['DISCOURSE_URL']}/session/sso_login")
   end
-
 end
