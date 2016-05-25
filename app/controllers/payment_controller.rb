@@ -13,9 +13,9 @@ class PaymentController < ApplicationController
     subscribe_to_mails(bloomy, password)
     redirect_to payment_thanks_path
 
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to payment_index_path
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to payment_index_path
   end
 
   def thanks
@@ -39,12 +39,11 @@ class PaymentController < ApplicationController
       source: params[:stripeToken],
       description: '1 Parcours Bloomr',
       receipt_email: bloomy.email,
-      metadata: metadata(bloomy)
-    )
+      metadata: metadata(bloomy))
   end
 
   def amount
-    return @campaign.price.to_i*100
+    @campaign.price.to_i * 100
   end
 
   def metadata(bloomy)
@@ -63,7 +62,7 @@ class PaymentController < ApplicationController
   end
 
   def price_to_display
-    return sprintf("%0.02f", amount.to_f/100)
+    format('%0.02f', amount.to_f / 100)
   end
 
   def generate_weak_password
