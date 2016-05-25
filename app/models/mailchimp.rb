@@ -2,9 +2,6 @@ require 'mandrill'
 
 class Mailchimp
   class << self
-    JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/9ec70e12ca/members'
-                  .freeze
-
     def subscribe_to_journey(bloomy)
       body = { 'status' => 'subscribed', 'email_address' => bloomy.email,
                'merge_fields' =>
@@ -14,15 +11,20 @@ class Mailchimp
       HTTParty.post(JOURNEY_URL, headers: headers, body: body)
     end
 
-    def headers
-      { 'Authorization' => "apikey #{ENV['MAILCHIMP_API_KEY']}",
-        'Content-Type'  => 'application/json' }
-    end
-
     def send_discourse_email(to_mail:, password:)
       send_template(template_name: 'mail parcours relance', to_mail: to_mail,
                     from_name: 'Noemie', from_mail: 'noemie@bloomr.org',
                     subject: 'Accès à Discouse', vars: { password: password })
+    end
+
+    private
+
+    JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/9ec70e12ca/members'
+                  .freeze
+
+    def headers
+      { 'Authorization' => "apikey #{ENV['MAILCHIMP_API_KEY']}",
+        'Content-Type'  => 'application/json' }
     end
 
     # rubocop:disable MethodLength, ParameterLists
