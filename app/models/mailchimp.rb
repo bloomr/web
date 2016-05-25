@@ -16,7 +16,7 @@ class Mailchimp
                     to_mail: bloomy.email,
                     from_name: 'Le parcours Bloomr',
                     from_mail: 'hello@bloomr.org',
-                    subject: 'Rejoindre la commaunuté',
+                    subject: '[Mail 1 - Etape 1] Mission #1 : Dis nous qui tu es',
                     vars: {
                       first_name: bloomy.first_name.capitalize,
                       email: bloomy.email,
@@ -29,7 +29,7 @@ class Mailchimp
                     to_mail: bloomy.email,
                     from_name: 'Le parcours Bloomr',
                     from_mail: 'hello@bloomr.org',
-                    subject: 'Inscription confirmée',
+                    subject: 'Bienvenue !',
                     vars: {
                       first_name: bloomy.first_name.capitalize
                     })
