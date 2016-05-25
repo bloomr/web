@@ -11,10 +11,28 @@ class Mailchimp
       HTTParty.post(JOURNEY_URL, headers: headers, body: body)
     end
 
-    def send_discourse_email(to_mail:, password:)
-      send_template(template_name: 'mail parcours relance', to_mail: to_mail,
-                    from_name: 'Noemie', from_mail: 'noemie@bloomr.org',
-                    subject: 'Accès à Discouse', vars: { password: password })
+    def send_premier_parcours_email(bloomy, password)
+      send_template(template_name: 'premier-mail-du-parcours',
+                    to_mail: bloomy.email,
+                    from_name: 'Le parcours Bloomr',
+                    from_mail: 'hello@bloomr.org',
+                    subject: 'Rejoindre la commaunuté',
+                    vars: {
+                      first_name: bloomy.first_name.capitalize,
+                      email: bloomy.email,
+                      password: password
+                    })
+    end
+
+    def send_presentation_email(bloomy)
+      send_template(template_name: 'presentation-du-parcours',
+                    to_mail: bloomy.email,
+                    from_name: 'Le parcours Bloomr',
+                    from_mail: 'hello@bloomr.org',
+                    subject: 'Inscription confirmée',
+                    vars: {
+                      first_name: bloomy.first_name.capitalize
+                    })
     end
 
     private

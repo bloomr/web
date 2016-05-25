@@ -56,8 +56,8 @@ class PaymentController < ApplicationController
   def subscribe_to_mails(bloomy, password)
     if cookies[:auto]
       Mailchimp.subscribe_to_journey(bloomy)
-      Mailchimp.send_discourse_email(to_mail: bloomy.email,
-                                     password: password)
+      Mailchimp.send_presentation_email(bloomy)
+      Mailchimp.send_premier_parcours_email(bloomy, password)
     end
   end
 

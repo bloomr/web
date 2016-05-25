@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe PaymentController, type: :controller do
-
   before do
-    FactoryGirl.create(:campaign, :partner => 'default', :price => '35.0')
-    FactoryGirl.create(:campaign, :partner => 'sujetdubac', :price => '13.0')
+    FactoryGirl.create(:campaign, partner: 'default', price: '35.0')
+    FactoryGirl.create(:campaign, partner: 'sujetdubac', price: '13.0')
   end
 
   describe 'GET #index' do
@@ -29,7 +28,8 @@ RSpec.describe PaymentController, type: :controller do
 
     before do
       allow(Mailchimp).to receive(:subscribe_to_journey)
-      allow(Mailchimp).to receive(:send_discourse_email)
+      allow(Mailchimp).to receive(:send_presentation_email)
+      allow(Mailchimp).to receive(:send_premier_parcours_email)
       allow(Stripe::Charge).to receive(:create)
     end
 
@@ -60,7 +60,7 @@ RSpec.describe PaymentController, type: :controller do
       context 'with no cookie' do
         let(:metadata) do
           { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
-            'source' => 'default'}
+            'source' => 'default' }
         end
         let(:amount) { 3500 }
 
@@ -86,17 +86,22 @@ RSpec.describe PaymentController, type: :controller do
 
     describe 'the journey inscription' do
       after { post :create, payload }
+
+      let(:actions) do
+        [:subscribe_to_journey, :send_presentation_email,
+         :send_premier_parcours_email]
+      end
+
       context 'when the cookie is set' do
         before { request.cookies[:auto] = true }
         it 'subscribes to the journey' do
-          expect(Mailchimp).to receive(:subscribe_to_journey).once
-          expect(Mailchimp).to receive(:send_discourse_email).once
+          actions.each { |s| expect(Mailchimp).to receive(s).once }
         end
       end
+
       context 'when the cookie is not set' do
         it 'does not subscribe to the journey' do
-          expect(Mailchimp).to receive(:subscribe_to_journey).exactly(0).times
-          expect(Mailchimp).to receive(:send_discourse_email).exactly(0).times
+          actions.each { |s| expect(Mailchimp).not_to receive(s) }
         end
       end
     end
