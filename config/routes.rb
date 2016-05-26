@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   get '/sso' => 'discourse_sso#sso'
   post '/sso/login' => 'discourse_sso#login'
 
+  get '/connection' => 'connection#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
