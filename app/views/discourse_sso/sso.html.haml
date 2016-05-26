@@ -9,6 +9,7 @@
       = f.email_field :email, placeholder: 'Ton adresse email', required: true, class: 'blue', autofocus: true
       = f.password_field :password, autocomplete: 'off', placeholder: 'Ton mot de passe', required: true, class: 'blue'
       = hidden_field_tag 'nonce', @nonce
+      = hidden_field_tag 'query_string', @query_string
 
       %div{ style: 'position: relative; display: inline-block' }
 

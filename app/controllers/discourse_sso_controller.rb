@@ -2,6 +2,7 @@ class DiscourseSsoController < ApplicationController
   def sso
     secret = ENV['DISCOURSE_SECRET']
     sso = Discourse::SingleSignOn.parse(request.query_string, secret)
+    @query_string = request.query_string
     @nonce = sso.nonce
     @bloomy = Bloomy.new
     render layout: 'home'
@@ -11,7 +12,7 @@ class DiscourseSsoController < ApplicationController
     bloomy = Bloomy.find_by_email(params[:bloomy][:email])
     if bloomy.nil? || !bloomy.valid_password?(params[:bloomy][:password])
       flash[:nop] = 'Raté, essaye encore'
-      return redirect_to sso_path
+      return redirect_to "#{sso_path}?#{params[:query_string]}"
     end
 
     sso = Discourse::SingleSignOn.new
