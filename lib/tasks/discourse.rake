@@ -22,12 +22,10 @@ namespace :discourse do
 
   desc 'send mail to finishers'
   task finishers: :environment do
-    csv = CSV.read('./test.csv',
-                   col_sep: "\t", headers: true)
-    # csv = CSV.read('./finishers.csv',
-    #                encoding: 'UTF-16:UTF-8', col_sep: "\t", headers: true)
+    csv = CSV.read('./termine.csv',
+                   col_sep: ',', headers: true)
     count = csv.count
-    csv.each do |l, i|
+    csv.each_with_index do |l, i|
       begin
         puts "#{i + 1}/#{count} #{l['email']}"
         bloomy, password = generate_bloomy(l)
@@ -51,10 +49,8 @@ namespace :discourse do
 
   desc 'send mail to current users'
   task current: :environment do
-    csv = CSV.read('./test.csv',
-                   col_sep: "\t", headers: true)
-    # csv = CSV.read('./current.csv',
-    #                encoding: 'UTF-16:UTF-8', col_sep: "\t", headers: true)
+    csv = CSV.read('./encours.csv',
+                   col_sep: ',', headers: true)
     count = csv.count
     csv.each_with_index do |l, i|
       begin
