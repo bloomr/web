@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Mailchimp, type: :model do
   describe '#subscribe_to_journey' do
-    let(:url) { 'https://us9.api.mailchimp.com/3.0/lists/9ec70e12ca/members' }
+    let(:url) { 'https://us9.api.mailchimp.com/3.0/lists/e6faea0c3a/members' }
 
     let(:headers) do
       { 'Authorization' => 'apikey api',

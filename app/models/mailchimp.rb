@@ -23,6 +23,8 @@ class Mailchimp
                       password: password
                     })
     end
+    handle_asynchronously :send_premier_parcours_email,
+                          run_at: proc { 1.hours.from_now }
 
     def send_presentation_email(bloomy)
       send_template(template_name: 'presentation-du-parcours',
@@ -35,7 +37,7 @@ class Mailchimp
                     })
     end
 
-    JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/9ec70e12ca/members'
+    JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/e6faea0c3a/members'
                   .freeze
 
     def headers

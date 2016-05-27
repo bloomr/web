@@ -92,17 +92,8 @@ RSpec.describe PaymentController, type: :controller do
          :send_premier_parcours_email]
       end
 
-      context 'when the cookie is set' do
-        before { request.cookies[:auto] = true }
-        it 'subscribes to the journey' do
-          actions.each { |s| expect(Mailchimp).to receive(s).once }
-        end
-      end
-
-      context 'when the cookie is not set' do
-        it 'does not subscribe to the journey' do
-          actions.each { |s| expect(Mailchimp).not_to receive(s) }
-        end
+      it 'subscribes to the journey' do
+        actions.each { |s| expect(Mailchimp).to receive(s).once }
       end
     end
   end
