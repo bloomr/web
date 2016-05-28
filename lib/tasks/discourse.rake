@@ -40,7 +40,7 @@ namespace :discourse do
             email: bloomy.email,
             password: password })
 
-      rescue Exception => e
+      rescue StandardError => e
         puts e.message
         puts l
       end
@@ -69,7 +69,7 @@ namespace :discourse do
             email: bloomy.email,
             password: password
           })
-      rescue Exception => e
+      rescue StandardError => e
         puts e.message
         puts l
       end
