@@ -25,6 +25,7 @@ Procfile.dev
 *.dump
 #Procfile
 .env
+.env_prod
 
 /public/assets/*
 
