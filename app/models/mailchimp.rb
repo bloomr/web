@@ -13,42 +13,18 @@ class Mailchimp
 
     def send_notif_about_bloomeur(email, first_name, job_title)
       ActionMailer::Base.mail(
-        from: 'alfred@bloomr.org',
-        to: 'contact@bloomr.org',
-        subject: "Nouveau bloomeur: #{first_name}",
-        body: <<-EOF
-Un nouveau bloomeur vient de se déclarer !
-email: #{email}
-nom: #{first_name},
-metier: #{job_title}
-EOF
-      ).deliver_later
+        MailchimpMails::NotifNewBloomer.template(email, first_name, job_title))
+                        .deliver_later
     end
 
     def send_premier_parcours_email(bloomy, password)
-      send_template(
-        template_name: 'premier-mail-du-parcours',
-        to_mail: bloomy.email,
-        from_name: 'Le parcours Bloomr',
-        from_mail: 'hello@bloomr.org',
-        subject: '[Mail 1 - Etape 1] Mission #1 : Dis nous qui tu es',
-        vars: {
-          first_name: bloomy.first_name.capitalize,
-          email: bloomy.email,
-          password: password })
+      send_template(MailchimpMails::Mission1.template(bloomy, password))
     end
     handle_asynchronously :send_premier_parcours_email,
                           run_at: proc { 1.hour.from_now }
 
     def send_presentation_email(bloomy)
-      send_template(template_name: 'presentation-du-parcours',
-                    to_mail: bloomy.email,
-                    from_name: 'Le parcours Bloomr',
-                    from_mail: 'hello@bloomr.org',
-                    subject: 'Bienvenue !',
-                    vars: {
-                      first_name: bloomy.first_name.capitalize
-                    })
+      send_template(MailchimpMails::Presentation.template(bloomy))
     end
 
     JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/e6faea0c3a/members'
