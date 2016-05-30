@@ -1,6 +1,18 @@
 ActiveAdmin.register Bloomy do
   permit_params :email, :first_name, :age, :password
 
+  member_action :journey, method: :post do
+    bloomy = Bloomy.find params[:id]
+    Journey.new(bloomy, WeakPassword.instance)
+    redirect_to collection_path,
+                notice: "Bloomy ajouté au parcours: #{bloomy.email}"
+  end
+
+  action_item :add, only: :show do
+    link_to 'Souscrire au parcours',
+            journey_admin_bloomy_path(bloomy), method: :post
+  end
+
   index do
     selectable_column
     id_column

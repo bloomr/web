@@ -7,10 +7,10 @@ class PaymentController < ApplicationController
   end
 
   def create
-    password = generate_weak_password
+    password = WeakPassword.instance
     bloomy = Bloomy.create!(bloomy_params.merge(password: password))
     charge(bloomy)
-    subscribe_to_mails(bloomy, password)
+    Journey.new(bloomy, password)
     redirect_to payment_thanks_path
 
   rescue Stripe::CardError => e
@@ -53,22 +53,8 @@ class PaymentController < ApplicationController
     metadata
   end
 
-  def subscribe_to_mails(bloomy, password)
-    Mailchimp.subscribe_to_journey(bloomy)
-    Mailchimp.send_presentation_email(bloomy)
-    Mailchimp.send_premier_parcours_email(bloomy, password)
-  end
-
   def price_to_display
     format('%0.02f', amount.to_f / 100)
   end
 
-  def generate_weak_password
-    'la ' +
-      %w( fraise framboise pêche poire pomme
-          banane mangue cerise tomate myrtille ).sample + ' ' +
-
-      %w( délicieuse incroyable fantastique merveilleuse
-          rouge jaune verte bleue orange mauve ).sample
-  end
 end
