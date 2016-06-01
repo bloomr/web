@@ -6,6 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('whatsnew');
+  this.route('interview');
+  this.route('challenges');
 });
 
 export default Router;
