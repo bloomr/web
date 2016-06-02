@@ -1,0 +1,264 @@
+#me {
+  padding-bottom: 30px;
+  position: relative;
+  .profile-sprite {
+      background-image: image-url('profile/sprite.png');
+      background-repeat: no-repeat;
+      display: block;
+  }
+
+  .sprite-bloomr {
+      width: 87px;
+      height: 49px;
+      background-position: -5px -5px;
+  }
+
+  .sprite-cloud1 {
+      width: 49px;
+      height: 34px;
+      background-position: -102px -5px;
+  }
+
+  .sprite-cloud2 {
+      width: 80px;
+      height: 38px;
+      background-position: -102px -49px;
+  }
+
+  .sprite-exit {
+      width: 27px;
+      height: 29px;
+      background-position: -161px -5px;
+  }
+
+  .sprite-feather {
+      width: 61px;
+      height: 100px;
+      background-position: -198px -5px;
+  }
+
+  .sprite-flower {
+      width: 41px;
+      height: 35px;
+      background-position: -5px -115px;
+  }
+
+  .sprite-logo {
+      width: 63px;
+      height: 49px;
+      background-position: -56px -115px;
+  }
+
+  .sprite-portrait {
+      width: 83px;
+      height: 98px;
+      background-position: -129px -115px;
+  }
+
+  .background {
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+  .orange {
+    padding: 0 30px;
+    color: white;
+    a {
+      color: white;
+    }
+    font-size: 16px ;
+    background-color:rgba(240, 147, 53, 0.85);
+    z-index: 10;
+    box-shadow: 0px 1px 3px 0px #656565;
+    .panel {
+      max-width: 800px;
+      margin: 0 auto;
+      .top {
+        padding: 30px 0;
+        position: relative;
+        border-bottom: 1px solid white;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .logo {
+          text-indent: -3000px;
+        }
+        ul {
+          margin: 0;
+          padding: 0;
+          text-align: right;
+          @media (max-width: 767px) {
+            max-width: 200px;
+          }
+          li {
+            vertical-align: bottom;
+            display: inline-block;
+            margin-left: 30px;
+            span {
+              display: inline-block;
+            }
+          }
+        }
+      }
+      .bottom {
+        padding: 30px 0;
+          @media (max-width: 767px) {
+            text-align: center;
+          }
+        img {
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 30px;
+          border: 5px solid white;
+          box-shadow: 0px 1px 3px 0px #656565;
+        }
+        .info {
+          display: inline-block;
+          vertical-align: middle;
+          .greetings {
+            font-family: 'Satisfy', cursive;
+            font-size: 28px;
+          }
+          ul {
+            padding-left: 0;
+            margin: 30px 0 0;
+            li {
+              display: inline-block;
+              margin-right: 30px;
+              a {
+                display: inline-block;
+                padding-bottom: 10px;
+                cursor: pointer;
+                &:hover {
+                  text-decoration: none;
+                  border-bottom: 1px solid white;
+                }
+                &.active {
+                  font-weight: bold;
+                  border-bottom: 1px solid white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .main {
+    padding: 0 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    .head {
+      border-bottom: 1px solid #DFD9C7;
+      padding: 30px 0 10px;
+      p {
+        font-family: 'Satisfy', cursive;
+        font-size: 32px;
+        margin: 0;
+      }
+    }
+    .data {
+      ul {
+        margin-top: 30px;
+        padding-left: 0;
+        display: flex;
+        justify-content: space-around;
+        li {
+          width: 200px;
+          height: 180px;
+          display: inline-block;
+          text-align: center;
+          position: relative;
+          @media (max-width: 767px) {
+            display: block;
+          }
+          .bloomr-logo {
+            position: relative;
+            top: 20px;
+          }
+          p {
+            bottom: 0px;
+            position: absolute;
+            width: 100%;
+            font-size: 16px;
+            span {
+              color: rgb(240, 147, 53);
+              font-style: italic;
+              font-size: 18px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    .challenges {
+      text-align: center;
+      h2 {
+        display: inline-block;
+        border-top: 2px solid #DFD9C7;
+        padding: 30px 0;
+        font-family: 'Satisfy', cursive;
+        font-size: 32px;
+        margin: 0;
+      }
+      p {
+        font-size: 16px;
+      }
+      .one-challenge{
+        font-size: 16px;
+        margin-top: 30px;
+        border: 1px solid #DFD9C7;
+        padding: 20px 10px;
+        h3.challenge-title {
+          margin: 0 0 20px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #DFD9C7;
+        } 
+        .choice {
+          margin-top: 30px;
+        }
+        .panel-tribe-choice {
+          .select2 {
+            max-width: 400px;
+            margin: 0 auto;
+          }
+        }
+        .done {
+          p {
+            margin: 20px 0;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+  .my-work {
+    margin-bottom: 30px;
+    .form-group {
+      label {
+        margin-bottom: 10px;
+        font-family: 'Satisfy', cursive;
+        font-weight: normal;
+        font-size: 24px;
+      }
+      .job_title {
+        border: none;
+        display: inline;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        width: 100%;
+        line-height: 2;
+        padding: 15px;
+      }
+      margin-top: 40px;
+      .editor {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        line-height: 2;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
