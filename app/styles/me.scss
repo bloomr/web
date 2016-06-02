@@ -235,29 +235,29 @@
   }
   .my-work {
     margin-bottom: 30px;
-    .form-group {
-      label {
-        margin-bottom: 10px;
-        font-family: 'Satisfy', cursive;
-        font-weight: normal;
-        font-size: 24px;
-      }
-      .job_title {
-        border: none;
-        display: inline;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        width: 100%;
-        line-height: 2;
-        padding: 15px;
-      }
-      margin-top: 40px;
-      .editor {
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 15px;
-        line-height: 2;
-        &:focus {
-          outline: none;
-        }
+    label {
+      margin-bottom: 10px;
+      font-family: 'Satisfy', cursive;
+      font-weight: normal;
+      font-size: 24px;
+      display: inline-block;
+      margin-top: 30px;
+    }
+    .job_title {
+      border: none;
+      display: inline;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      width: 100%;
+      line-height: 2;
+      padding: 15px;
+    }
+    .editor {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      width: 100%;
+      line-height: 2;
+      &:focus {
+        outline: none;
       }
     }
   }
