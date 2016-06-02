@@ -9,7 +9,7 @@
         <p>
           Votre profil a été vu
           <br>
-          <span>4 fois</span>
+          <span>{{ model.stats.last-month }} fois</span>
         </p>
       </li>
       <li>
@@ -17,7 +17,7 @@
         <p>
           Bloomr a été vu
           <br>
-          <span>378 fois</span>
+          <span>{{ model.stats.all }} fois</span>
         </p>
       </li>
       <li>
@@ -27,7 +27,7 @@
           <br>
           Elles ont été consultées
           <br>
-          <span>154 fois</span>
+          <span>{{ model.stats.tribes }} fois</span>
         </p>
       </li>
     </ul>
