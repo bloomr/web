@@ -1,15 +1,44 @@
-<h3>Bloomr</h3>
-<p>
-  <a>Les bloomeurs</a>
-  <a>Déconnexion</a>
-</p>
-
-<p>
-Salut Simon !
-Les 3.0, Les créatifs
-{{#link-to 'whatsnew'}}Quoi de neuf ?{{/link-to}}
-{{#link-to 'interview'}}Mon témoignage{{/link-to}}
-{{#link-to 'challenges'}}Challenges{{/link-to}}
-</p>
+<div id='me'>
+  <div class='background background-12'></div>
+  <div class='orange'>
+    <div class='panel'>
+      <div class='top'>
+        <a class='logo profile-sprite sprite-logo' href='/'>bloomr</a>
+        <ul>
+          <li class='bloomeurs'>
+            <a href="/tribes"><span class='profile-sprite sprite-flower'></span>
+            Les bloomeurs
+            </a>
+          </li>
+          <li class='logout'>
+            <a rel="nofollow" data-method="delete" href="/users/sign_out"><span class='profile-sprite sprite-exit'></span>
+            Déconnexion
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class='bottom'>
+        <img class="img-circle" alt="Photo de {{ model.first_name }}" src="https://bloomr.s3.amazonaws.com/users/avatars/000/000/012/thumb/abs9sy99mt5S2.jpg?1414674158" />
+        <div class='info'>
+          <p class='greetings'>Salut {{ model.first_name }} !</p>
+          <p>
+            <a href="/tribes/Les%203_0">Les 3.0</a>, <a href="/tribes/Les%20cr%C3%A9atifs">Les créatifs</a>
+          </p>
+          <ul>
+            <li>
+              {{#link-to 'whatsnew'}}Quoi de neuf ?{{/link-to}}
+            </li>
+            <li>
+              {{#link-to 'interview'}}Mon témoignage{{/link-to}}
+            </li>
+            <li>
+              {{#link-to 'challenges'}}Challenges{{/link-to}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{outlet}}
