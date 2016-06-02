@@ -8,10 +8,10 @@
         <div class='panel-todo'>
           <div class='panel-default'>
             <p>Nous avons défini ces tribus pour aider les jeunes à s'orienter.</p>
-            <p>Parmi <span style='font-style: italic'>{{#each model.tribes as |tribe|}}{{tribe}}, {{/each}}</span>
+            <p>Parmi <span style='font-style: italic'>{{#each model.tribes as |tribe|}}{{tribe.name}}, {{/each}}</span>
             <br/>
             <br/>
-            la vôtre serait <span style='font-weight: bold'>??</span>
+            la vôtre serait <span style='font-weight: bold'>{{#each model.user.tribes as |tribe|}}{{tribe.name}}, {{/each}}</span>
             <br/>
             <br/>
             Ça colle ?

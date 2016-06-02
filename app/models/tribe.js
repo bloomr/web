@@ -3,9 +3,8 @@ import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
-  jobTitle: attr('string'),
-  firstName: attr('string'),
-  tribes: hasMany('tribe'),
-  stats: attr(),
-  questions: hasMany('question')
+  name: attr(),
+  description: attr(),
+  normalizedName: attr(),
+  users: hasMany('user')
 });

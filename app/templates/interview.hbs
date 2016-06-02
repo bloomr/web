@@ -1,10 +1,10 @@
 <div class='my-work'>
   <div>
     <label>Vous êtes :</label>
-    <input class='job_title' type='text' value='{{ model.jobTitle }}'/>
+    <input class='job_title' type='text' value='{{ model.user.jobTitle }}'/>
   </div>
 
-  {{#each model.questions as |question| }}
+  {{#each model.user.questions as |question| }}
     <label>{{ question.title }}</label>
     <input id="{{question.id}}" type='hidden' value='{{ question.answer }}'/>
     <trix-editor class='editor' input="{{question.id}}"></trix-editor>
