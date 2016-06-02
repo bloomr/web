@@ -1,1 +1,40 @@
-challenges
+<div class='whats-new'>
+  <div class='challenges'>
+    <h2>Challenges !</h2>
+    <p>chaque mois, relevez un challenge pour aider concrètement des jeunes !</p>
+    <p>Ce mois ci :</p>
+    <div class='one-challenge'>
+      <h3 class='challenge-title'>Les tribus</h3>
+        <div class='panel-todo'>
+          <div class='panel-default'>
+            <p>Nous avons défini ces tribus pour aider les jeunes à s'orienter.</p>
+            <p>Parmi <span style='font-style: italic'>{{#each model.tribes as |tribe|}}{{tribe}}, {{/each}}</span>
+            <br/>
+            <br/>
+            la vôtre serait <span style='font-weight: bold'>??</span>
+            <br/>
+            <br/>
+            Ça colle ?
+            </p>
+            <div class='choice'>
+              <a class='crazy-btn' {{action "tribeKO"}}>Nop, je veux changer</a>
+              <a class='crazy-btn' {{action "tribeOK"}}>Yep, carrément !</a>
+            </div>
+          </div>
+          {{#if showChoice}}
+          <div class='panel-tribe-choice' >
+            <h3>Quelle(s) tribu(s) vous conviendrai(en)t ?</h3>
+            <select class='select2 form-control' multiple>
+              {{#each model.tribes as |tribe|}}
+              <option>{{tribe}}</option>
+              {{/each}}
+            </select>
+            <div style='position: relative;'>
+              <button class='crazy-btn' style='border-color: transparent;'>Sauvegarde !</button>
+            </div>
+          </div>
+          {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
