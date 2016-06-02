@@ -18,9 +18,9 @@
         </ul>
       </div>
       <div class='bottom'>
-        <img class="img-circle" alt="Photo de {{ model.first_name }}" src="https://bloomr.s3.amazonaws.com/users/avatars/000/000/012/thumb/abs9sy99mt5S2.jpg?1414674158" />
+        <img class="img-circle" alt="Photo de {{ model.firstName }}" src="https://bloomr.s3.amazonaws.com/users/avatars/000/000/012/thumb/abs9sy99mt5S2.jpg?1414674158" />
         <div class='info'>
-          <p class='greetings'>Salut {{ model.first_name }} !</p>
+          <p class='greetings'>Salut {{ model.firstName }} !</p>
           <p>
             <a href="/tribes/Les%203_0">Les 3.0</a>, <a href="/tribes/Les%20cr%C3%A9atifs">Les créatifs</a>
           </p>
@@ -39,6 +39,9 @@
       </div>
     </div>
   </div>
+  <div class="main">
+    {{outlet}}
+  </div>
 </div>
 
-{{outlet}}
+
