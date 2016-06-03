@@ -1,4 +1,7 @@
-@import "me";
+$blue: #E8F7FF;
+
+@import 'common';
+@import 'me';
 
 body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
