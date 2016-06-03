@@ -3,7 +3,10 @@ ActiveAdmin.register Bloomy do
 
   member_action :journey, method: :post do
     bloomy = Bloomy.find params[:id]
-    Journey.new(bloomy, WeakPassword.instance)
+    new_password = WeakPassword.instance
+    bloomy.password = new_password
+    bloomy.save
+    Journey.new(bloomy, new_password)
     redirect_to collection_path,
                 notice: "Bloomy ajouté au parcours: #{bloomy.email}"
   end
