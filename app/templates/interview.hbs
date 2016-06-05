@@ -1,12 +1,1 @@
-<div class='my-work'>
-  <div>
-    <label>Vous êtes :</label>
-    <input class='job_title' type='text' value='{{ model.user.jobTitle }}'/>
-  </div>
-
-  {{#each model.user.questions as |question| }}
-    <label>{{ question.title }}</label>
-    <input id="{{question.id}}" type='hidden' value='{{ question.answer }}'/>
-    <trix-editor class='editor' input="{{question.id}}"></trix-editor>
-  {{/each}}
-</div>
+{{ component 'interview-questions' model=model}}
