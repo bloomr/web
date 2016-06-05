@@ -1,9 +1,18 @@
 $blue: #E8F7FF;
 
-@import "ember-power-select";
+@import 'reset';
+@import 'ember-power-select';
 @import 'common';
 @import 'me';
 
-body {
+body, input {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
