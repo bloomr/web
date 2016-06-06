@@ -35,8 +35,8 @@ test('a user can change its tribes', function(assert) {
   assert.equal(this.get('model.user.tribes').length, 2);
   assert.ok(this.get('model.user.tribes').includes(this.tribe2));
   assert.ok(this.$().text().includes(successSentence));
+  assert.ok(this.$().text().includes('Bienvenue chez : tribe2, tribe0 !'));
 });
-
 
 test('a user accepts its default tribe', function(assert) {
   this.render(hbs`{{challenge-1 model=model}}`);
