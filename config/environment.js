@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'ember-quickstart',
     environment: environment,
     baseURL: '/',
+    rootUrl: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -40,7 +41,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.APP.rootElement = '#app';
+    ENV.rootURL = '/me2/';
   }
 
   return ENV;
