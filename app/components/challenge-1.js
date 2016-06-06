@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   selectedTribes: [],
   init() {
     this._super(...arguments);
-    this.set('selectedTribes', this.get('model.user.tribes'));
+    this.set('selectedTribes', this.get('model.user.tribes').toArray());
     if (this.get('model.user.challenges').findBy('name','the tribes')) {
       this.showOnly('Success');
     } else if (this.get('model.user.tribes').length === 0) {
@@ -28,7 +28,7 @@ export default Ember.Component.extend({
       this.showOnly('Choice');
     },
     saveTribes() {
-      this.get('model.user').set('tribes', this.selectedTribes);
+      this.get('model.user.tribes').setObjects(this.get('selectedTribes'));
       this.get('model.user').save();
       this.showOnly('Success');
     },
