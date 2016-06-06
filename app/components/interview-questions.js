@@ -23,7 +23,7 @@ export default Ember.Component.extend({
       question.set('answer', text);
     },
     save() {
-      this.get('model.user.questions').map(q => console.log(q.get('answer')));
+      this.get('model.user.questions').then((q) => q.save());
     }
   }
 });
