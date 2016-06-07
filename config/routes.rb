@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/me/email_sent', to: 'me#email_sent'
   post '/me/challenge1', to: 'me#challenge_1'
 
+  get '/me2', to: redirect('/me2/whatsnew')
+  get '/me2/*other', to: 'me2#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

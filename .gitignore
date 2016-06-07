@@ -30,3 +30,6 @@ Procfile.dev
 /public/assets/*
 
 .DS_Store
+
+node_modules/
+public/ember.html
