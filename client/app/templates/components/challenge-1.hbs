@@ -1,0 +1,40 @@
+<h3 class='challenge-title'>Les tribus</h3>
+  <div class='panel-todo'>
+    {{#if showIntro}}
+    <div class='panel-default'>
+      <p>Nous avons défini ces tribus pour aider les jeunes à s'orienter.</p>
+      <p>Parmi <span style='font-style: italic'>{{join model.tribes 'name'}}</span>
+      <br/>
+      <br/>
+      la vôtre serait <span style='font-weight: bold'>{{join model.user.tribes 'name'}}</span>
+      <br/>
+      <br/>
+      Ça colle ?
+      </p>
+      <div class='choice'>
+        <a class='tribeKO crazy-btn' {{action 'tribeKO'}}>Nop, je veux changer</a>
+        <a class='tribeOK crazy-btn' {{action 'tribeOK'}}>Yep, carrément !</a>
+      </div>
+    </div>
+    {{/if}}
+
+    {{#if showChoice}}
+    <div class='panel-tribe-choice' >
+      <h3>Quelle(s) tribu(s) vous conviendrai(en)t ?</h3>
+      {{#power-select-multiple class='tribesSelector' searchField='name' selected=selectedTribes options=model.tribes onchange=(action (mut selectedTribes)) as |tribe|}}
+        {{tribe.name}}
+      {{/power-select-multiple}}
+      <div style='margin-top: 30px;'>
+        <a class='crazy-btn save' style='border-color: transparent;' {{action 'saveTribes'}}>Sauvegarde !</a>
+      </div>
+    </div>
+    {{/if}}
+
+    {{#if showSuccess}}
+    <div class='panel-done'>
+      <p>Vous avez gagné un tipi :</p>
+      <img src='/assets/images/profile/badge-tribu.png' />
+      <p>Bienvenue chez : {{join model.user.tribes 'name'}} !</p>
+    </div>
+    {{/if}}
+</div>

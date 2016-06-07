@@ -1,0 +1,47 @@
+<div id='me'>
+  <div class='background background-12'></div>
+  <div class='orange'>
+    <div class='panel'>
+      <div class='top'>
+        <a class='logo profile-sprite sprite-logo' href='/'>bloomr</a>
+        <ul>
+          <li class='bloomeurs'>
+            <a href="/tribes"><span class='profile-sprite sprite-flower'></span>
+            Les bloomeurs
+            </a>
+          </li>
+          <li class='logout'>
+            <a rel="nofollow" data-method="delete" href="/users/sign_out"><span class='profile-sprite sprite-exit'></span>
+            Déconnexion
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class='bottom'>
+        <img class="img-circle" alt="Photo de {{ model.user.firstName }}" src="https://bloomr.s3.amazonaws.com/users/avatars/000/000/012/thumb/abs9sy99mt5S2.jpg?1414674158" />
+        <div class='info'>
+          <p class='greetings'>Salut {{ model.user.firstName }} !</p>
+          <p>
+            {{join model.user.tribes 'name'}}
+          </p>
+          <ul>
+            <li>
+              {{#link-to 'whatsnew'}}Quoi de neuf ?{{/link-to}}
+            </li>
+            <li>
+              {{#link-to 'interview'}}Mon témoignage{{/link-to}}
+            </li>
+            <li>
+              {{#link-to 'challenges'}}Challenges{{/link-to}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    {{outlet}}
+  </div>
+</div>
+
+

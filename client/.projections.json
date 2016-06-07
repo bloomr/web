@@ -1,0 +1,45 @@
+{
+  "app/adapters/*.js": {
+    "type": "adapter"
+  },
+
+  "app/components/*.js": {
+    "type": "component",
+  },
+
+  "app/controllers/*.js": {
+    "type": "controller"
+  },
+
+  "app/helpers/*.js": {
+    "type": "helper"
+  },
+
+  "app/models/*.js": {
+    "type": "model"
+  },
+
+  "app/router.js": {
+    "type": "router"
+  },
+
+  "app/routes/*.js": {
+    "type": "route"
+  },
+
+  "app/styles/*.css": {
+    "type": "style"
+  },
+
+  "app/templates/*.hbs": {
+    "type": "template"
+  },
+
+  "app/utils/*.js": {
+    "type": "util"
+  },
+
+  "app/views/*.js": {
+    "type": "view"
+  },
+}
