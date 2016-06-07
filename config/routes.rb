@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, :only => [:create, :update, :index]
+      resources :tribes, only: [:index]
       resources :keywords, :only => [:index]
       resources :questions, :only => [] do
         resources :comments, :only => [:index, :create, :destroy]
