@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      skip_before_action :verify_authenticity_token, only: [:create, :update]
+      skip_before_action :verify_authenticity_token
 
       def create
         return render json: { error: 'invalid key' }, status: :unauthorized unless params['key'] == ENV['API_KEY']
@@ -46,6 +46,65 @@ module Api
       def index
         render json: User.where('published = ?', true),
                only: [:id, :job_title, :first_name]
+      end
+
+      def show
+        user = User.find(params[:id])
+
+        small_questions_data = user.questions.map { |q| { type: 'question', id: q.id } }
+        question_data = user.questions.map do |q|
+          { type: 'question', id: q.id,
+            attributes:
+            { title: q.title, answer: q.answer }
+          }
+        end
+
+        small_tribes_data = user.tribes.map { |t| { type: 'tribe', id: t.id } }
+        tribes_data = user.tribes.map do |t|
+          { type: 'tribe', id: t.id,
+            attributes:
+            { 'name': t.name,
+              'description': t.description,
+              'normalized-name': t.normalized_name
+            }
+          }
+        end
+
+        small_challenges_data = user.challenges.map { |c| { type: 'challenge', id: c.id } }
+        challenges_data = user.challenges.map do |t|
+          { type: 'challenge', id: t.id,
+            attributes: { 'name': t.name }
+          }
+        end
+
+        render json:
+          { data:
+            { type: 'user', id: user.id,
+              attributes:
+              { 'job-title': user.job_title,
+                'first-name': user.first_name,
+                'tribes': user.tribes.map { |t| t.name.downcase },
+                'stats': {
+                  'last-month': user.last_month_view_count,
+                  'tribes': user.tribes.reduce(0) { |sum, tribe| sum + tribe.last_month_view_count  },
+                  'all': Impression.last_month_count
+                }
+              },
+              relationships:
+              {
+                questions: {
+                  data: small_questions_data
+                },
+                tribes: {
+                  data: small_tribes_data
+                },
+                challenges: {
+                  data: small_challenges_data
+                }
+              }
+            },
+            included: question_data + tribes_data + challenges_data
+          }
       end
 
       private
