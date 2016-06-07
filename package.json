@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "postinstall"     : "npm run installNpmDep && npm run installBowerDep && npm run buildApp && npm run copyApp",
+    "installNpmDep"   : "cd client && npm install",
+    "installBowerDep" : "cd client && node_modules/.bin/bower install",
+    "buildApp"        : "cd client && node_modules/.bin/ember build --env=production",
+    "copyApp"         : "cp client/dist/index.html public/ember.html && cp -r client/dist/assets public/assets"
+  },
+  "devDependencies": {
+    "bower": "*"
+  },
+  "cacheDirectories": [
+    "client/node_modules",
+    "client/bower_components",
+    "node_modules"
+  ]
+}
