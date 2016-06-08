@@ -6,8 +6,9 @@ export default Ember.Component.extend({
     this.$().on('trix-change', (e) => {
       Ember.run(() => {
         Ember.run.schedule('actions', () => {
-          let questionId = e.originalEvent.srcElement.getAttribute('input');
-          let text = e.originalEvent.srcElement.value;
+          let trix = e.target;
+          let questionId = trix.getAttribute('input');
+          let text = trix.value;
           this.actions.updateQuestion.call(this, questionId, text);
         });
       }); 
