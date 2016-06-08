@@ -18,7 +18,7 @@
         </ul>
       </div>
       <div class='bottom'>
-        <img class="img-circle" alt="Photo de {{ model.user.firstName }}" src="https://bloomr.s3.amazonaws.com/users/avatars/000/000/012/thumb/abs9sy99mt5S2.jpg?1414674158" />
+        <img class="img-circle" alt="Photo de {{ model.user.firstName }}" src="{{ model.user.avatarUrl }}" />
         <div class='info'>
           <p class='greetings'>Salut {{ model.user.firstName }} !</p>
           <p>

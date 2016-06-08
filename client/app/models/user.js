@@ -8,5 +8,6 @@ export default Model.extend({
   tribes: hasMany('tribe'),
   stats: attr(),
   questions: hasMany('question'),
-  challenges: hasMany('challenge')
+  challenges: hasMany('challenge'),
+  avatarUrl: attr('string')
 });
