@@ -26,6 +26,15 @@ GIT
       select2-rails
 
 GIT
+  remote: https://github.com/cerebris/jsonapi-resources.git
+  revision: a3bdbb94c3c4a6ca966f1386ddfc1466f2cfde40
+  tag: 0.7.1.beta2
+  specs:
+    jsonapi-resources (0.7.1.beta2)
+      concurrent-ruby
+      rails (>= 4.0)
+
+GIT
   remote: https://github.com/turbolinks/turbolinks-classic
   revision: 37a7c296232d20a61bd1946f600da7f2009189db
   ref: 37a7c296232d20a61bd1946f600da7f2009189db
@@ -114,6 +123,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    concurrent-ruby (1.0.2)
     delayed_job (4.1.2)
       activesupport (>= 3.0, < 5.1)
     delayed_job_active_record (4.1.1)
@@ -408,6 +418,7 @@ DEPENDENCIES
   impressionist
   jbuilder (~> 2.0)
   jquery-rails
+  jsonapi-resources!
   mandrill-api
   newrelic_rpm
   paperclip (~> 4.2)
