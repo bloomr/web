@@ -23,7 +23,12 @@ export default Ember.Component.extend({
       question.set('answer', text);
     },
     save() {
-      this.get('model.user.questions').then((q) => q.save());
+      this.get('model.user.questions').then( qs => { 
+        qs.filterBy('hasDirtyAttributes').forEach(q => q.save());
+      });
+
+      let user = this.get('model.user');
+      if(user.get('hasDirtyAttributes')) { user.save(); }
     }
   }
 });
