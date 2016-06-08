@@ -59,6 +59,11 @@ RSpec.describe Api::V1::UsersController, type: :request do
     end
 
     it { is_expected.to have_http_status(:success) }
+    it 'send the right attributes' do
+      keys = body['data']['attributes'].keys
+      expected_keys = ['job-title', 'first-name', 'stats', 'avatar-url']
+      expect(keys).to match(expected_keys)
+    end
   end
 
   describe 'POST #users' do

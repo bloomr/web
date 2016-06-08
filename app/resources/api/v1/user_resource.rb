@@ -3,7 +3,7 @@ module Api
     class UserResource < JSONAPI::Resource
       before_update :authorize_update
 
-      attributes :job_title, :first_name, :stats
+      attributes :job_title, :first_name, :stats, :avatar_url
 
       relationship :tribes, to: :many
       relationship :questions, to: :many
@@ -14,6 +14,10 @@ module Api
           'tribes': tribe_stat,
           'all': Impression.last_month_count
         }
+      end
+
+      def avatar_url
+        @model.avatar.url('thumb')
       end
 
       private
