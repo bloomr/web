@@ -20,6 +20,7 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+  app.import('bower_components/es6-shim/es6-shim.js');
   app.import('bower_components/trix/dist/trix.js');
   app.import('bower_components/trix/dist/trix.css');
   app.import('bower_components/js-cookie/src/js.cookie.js');

@@ -33,7 +33,7 @@ test('a user can change its tribes', function(assert) {
 
   this.$('.save').click();
   assert.equal(this.get('model.user.tribes').length, 2);
-  assert.ok(this.get('model.user.tribes').includes(this.tribe2));
+  assert.ok(this.get('model.user.tribes').indexOf(this.tribe2) !== -1);
   assert.ok(this.$().text().includes(successSentence));
   assert.ok(this.$().text().includes('Bienvenue chez : tribe2, tribe0 !'));
 });
