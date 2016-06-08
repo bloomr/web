@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       resources :users, only: [:update, :show]
       resources :tribes, only: [:index]
       resources :keywords, :only => [:index]
-      resources :questions, :only => [] do
+      resources :questions, only: [:update] do
         resources :comments, :only => [:index, :create, :destroy]
       end
     end
