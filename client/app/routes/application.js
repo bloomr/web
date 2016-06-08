@@ -1,9 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() { 
+  client: Ember.inject.service('client-id'),
+  model() {
     return Ember.RSVP.hash({
-      user: this.store.findRecord('user', 12, { 'include': 'tribes,questions' }),
+      user: this.store.findRecord('user', this.get('client').get(), { 'include': 'tribes,questions' }),
       tribes: this.store.findAll('tribe')
     });
   }
