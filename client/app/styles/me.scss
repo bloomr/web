@@ -54,6 +54,11 @@
       height: 98px;
       background-position: -129px -115px;
   }
+  .background {
+    height: 165px;
+    width: 100%;
+    position: absolute;
+  }
   .orange {
     height: 220px;
     padding: 0 30px;
@@ -64,9 +69,10 @@
       font-size: 14px;
     }
     font-size: 16px ;
-    background-color:rgba(240, 147, 53, 0.85);
+    background-color:rgba(240, 147, 53, 0.75);
     z-index: 10;
     box-shadow: 0px 1px 3px 0px #656565;
+    position: relative;
     .panel {
       max-width: 800px;
       margin: 0 auto;
