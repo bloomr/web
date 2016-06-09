@@ -19,7 +19,11 @@
         </ul>
       </div>
       <div class='bottom'>
-        <img class="img-circle" alt="Photo de {{ model.user.firstName }}" src="{{ model.user.avatarUrl }}" />
+        <div class='image-wrapper'>
+          <img class='photo' alt='Photo de {{ model.user.firstName }}' src="{{ model.user.avatarUrl }}" />
+          <img class='cloud' src='assets/images/profile/cloud.png' />
+          <img class='cloud-left' src='assets/images/profile/cloud-left.png' />
+        </div>
         <div class='info'>
           <p class='greetings'>Salut {{ model.user.firstName }} !</p>
           <p>

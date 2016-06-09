@@ -108,13 +108,31 @@
           @media (max-width: 767px) {
             text-align: center;
           }
-        img {
-          display: inline-block;
-          vertical-align: middle;
-          margin-right: 30px;
-          border: 5px solid white;
-          box-shadow: 0px 1px 3px 0px #656565;
-        }
+          .image-wrapper {
+            display: inline-block;
+            position: relative;
+            .photo {
+              display: inline-block;
+              vertical-align: middle;
+              margin-right: 30px;
+              border: 5px solid white;
+              border-radius: 60px;
+              box-shadow: 0px 1px 3px 0px #656565;
+              height: 92px;
+              width: 92px;
+            }
+            .cloud {
+              position: absolute;
+              left: 73px;
+              top: -5px;
+              z-index: -1;
+            }
+            .cloud-left {
+              position: absolute;
+              left: -40px;
+              top: 50px;
+            }
+          }
         .info {
           display: inline-block;
           vertical-align: middle;
