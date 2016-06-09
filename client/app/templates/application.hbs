@@ -23,7 +23,10 @@
         <div class='info'>
           <p class='greetings'>Salut {{ model.user.firstName }} !</p>
           <p>
-            {{join model.user.tribes 'name'}}
+            <!-- {{join model.user.tribes 'name'}} -->
+            {{#each model.user.tribes as |tribe|}}
+              <a href='/tribes/{{tribe.normalizedName}}'>{{ tribe.name }}</a>
+            {{/each}}
           </p>
           <ul>
             <li>
