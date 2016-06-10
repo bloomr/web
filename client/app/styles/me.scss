@@ -1,3 +1,29 @@
+@keyframes cloud_right_left {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-27px, 0, 0) rotate(0.02deg); //3d for gpu acceleration, rotate for firefox antialising
+  }
+}
+
+@keyframes cloud_left_right {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(27px,0, 0) rotate(0.02deg);;
+  }
+}
+
 #me {
   padding-bottom: 30px;
   position: relative;
@@ -121,16 +147,24 @@
               height: 92px;
               width: 92px;
             }
+            .animated {
+              animation-duration: 8s;
+              animation-iteration-count: infinite;
+              animation-timing-function: linear;
+            }
             .cloud {
               position: absolute;
               left: 73px;
               top: -5px;
               z-index: -1;
+              animation-name: cloud_left_right;
             }
             .cloud-left {
               position: absolute;
               left: -40px;
               top: 50px;
+              animation-name: cloud_right_left;
+              animation-delay: 2s;
             }
           }
         .info {
