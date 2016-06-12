@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   devise_for :users, controllers: { passwords: 'passwords' }
 
-  resources :payment, :only => [:index, :create]
+  resources :payment, only: [:index, :create]
   get '/payment/thanks', to: 'payment#thanks'
 
   get '/me', to: 'me#show'
@@ -23,15 +22,15 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :portraits, :only => [:show, :aleatoire] do
+  resources :portraits, only: [:show, :aleatoire] do
     get :aleatoire, on: :collection
     get :next, on: :collection
     get :previous, on: :collection
   end
 
-  resources :tag, :only => [:show]
-  resources :home, :only => [:index]
-  resources :enrollment, :only => [:index, :create]
+  resources :tag, only: [:show]
+  resources :home, only: [:index]
+  resources :enrollment, only: [:index, :create]
   get '/enrollment/thanks', to: 'enrollment#thanks'
 
   resources :tribes, only: [:index, :show]
@@ -40,22 +39,22 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:update, :show]
       resources :tribes, only: [:index]
-      resources :keywords, :only => [:index]
+      resources :keywords, only: [:index]
       resources :questions, only: [:update] do
-        resources :comments, :only => [:index, :create, :destroy]
+        resources :comments, only: [:index, :create, :destroy]
       end
       get 'books/search' => 'books#search'
     end
   end
 
   # Static pages (Strikingly content)
-  get "le-concept" => "static#le_concept"
-  get "qui-nous-sommes", to: redirect('/qui-sommes-nous')
-  get "qui-sommes-nous" => "static#qui_sommes_nous"
-  get "le-parcours" => "static#le_parcours"
-  get "templates" => "static#templates"
+  get 'le-concept' => 'static#le_concept'
+  get 'qui-nous-sommes', to: redirect('/qui-sommes-nous')
+  get 'qui-sommes-nous' => 'static#qui_sommes_nous'
+  get 'le-parcours' => 'static#le_parcours'
+  get 'templates' => 'static#templates'
 
-  #partner
+  # partner
   get 'partner(/:name)' => 'partner#set_campaign'
 
   # discourse sso
