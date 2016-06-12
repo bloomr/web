@@ -86,7 +86,7 @@
     position: absolute;
   }
   .orange {
-    height: 220px;
+    min-height: 220px;
     padding: 0 30px;
     color: white;
     a {
@@ -115,9 +115,6 @@
         ul {
           margin: auto 0;
           text-align: right; //for small screen
-          @media (max-width: 767px) {
-            max-width: 200px;
-          }
           li {
             display: inline-block;
             margin-left: 30px;
@@ -136,6 +133,9 @@
           }
           .image-wrapper {
             display: inline-block;
+            @media (max-width: 767px) {
+               display: none;
+            }
             position: relative;
             margin-right: 65px;
             .photo {
