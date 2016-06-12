@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       resources :questions, only: [:update] do
         resources :comments, :only => [:index, :create, :destroy]
       end
+      get 'books/search' => 'books#search'
     end
   end
 

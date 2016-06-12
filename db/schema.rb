@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524160519) do
+ActiveRecord::Schema.define(version: 20160610113705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20160524160519) do
 
   add_index "bloomies", ["email"], name: "index_bloomies_on_email", unique: true, using: :btree
   add_index "bloomies", ["reset_password_token"], name: "index_bloomies_on_reset_password_token", unique: true, using: :btree
+
+  create_table "books", force: :cascade do |t|
+    t.string   "author"
+    t.string   "isbn"
+    t.string   "title"
+    t.string   "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "partner"
