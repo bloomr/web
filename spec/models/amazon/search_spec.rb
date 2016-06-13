@@ -40,13 +40,13 @@ RSpec.describe Amazon::Search, type: :model do
       end
 
       context 'with one book' do
-        let(:body) { build_xml(image_url: 'image_url', author: 'author', title: 'title', isbn: 1234) }
+        let(:body) { build_xml(image_url: 'image_url', author: 'author', title: 'title', isbn: '1234') }
 
         it 'returns a book' do
           expect(result.length).to eq(1)
           expect(result[0].author).to eq('author')
           expect(result[0].title).to eq('title')
-          expect(result[0].isbn).to eq(1234)
+          expect(result[0].isbn).to eq('1234')
           expect(result[0].image_url).to eq('image_url')
         end
       end

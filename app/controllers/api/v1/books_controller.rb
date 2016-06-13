@@ -1,6 +1,6 @@
 module Api
   module V1
-    class BooksController < ApplicationController
+    class BooksController < BaseController
       def search
         books = Amazon::Search.books(params[:keywords])
         data = books.map do |book|

@@ -7,6 +7,7 @@ module Api
 
       relationship :tribes, to: :many
       relationship :questions, to: :many
+      relationship :books, to: :many
 
       def stats
         {
