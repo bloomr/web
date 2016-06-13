@@ -27,7 +27,7 @@
     "type": "route"
   },
 
-  "app/styles/*.css": {
+  "app/styles/*.scss": {
     "type": "style"
   },
 
