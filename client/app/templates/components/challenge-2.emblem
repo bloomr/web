@@ -1,0 +1,31 @@
+.challenge.books
+  img src='assets/images/profile/badge-must-read.svg'
+  .content
+    h3.challenge-title Le must read de mon domaine
+
+    if showSearch
+      label Quels livres vous inspirent ou décrivent au mieux votre métier ?
+      = input valueBinding='keywords' placeholder='Titre, auteur, isbn'
+      a.crazy-btn.search click='search' Rechercher !
+      if showWaiting
+        p on cherche dans l'internet ...
+      if showResults
+        p.results {{ resultPresentation }}
+        ul
+          each books as |book|
+            li
+              = component 'book-item' book=book onClick=(action 'addBook')
+
+    if showSelection
+      p Vous avez sélectionné :
+      ul
+        each selectedBooks as |book|
+          li
+            = component 'book-item' book=book
+            a.remove{action 'removeBook' book} Enlever
+
+      a.crazy-btn.oneAgain click='oneAgain' J'ajoute un livre
+      a.crazy-btn.done click='done' J'ai terminé
+
+    if showDone
+      p Bien joué ! Encore un challenge réussi !
