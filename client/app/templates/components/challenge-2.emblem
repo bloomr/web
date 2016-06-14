@@ -5,7 +5,7 @@
 
     if showSearch
       label Quels livres vous inspirent ou décrivent au mieux votre métier ?
-      = input valueBinding='keywords' placeholder='Titre, auteur, isbn'
+      = input valueBinding='keywords' placeholder='Titre, auteur, isbn' action='search'
       a.crazy-btn.search click='search' Rechercher !
       if showWaiting
         p on cherche dans l'internet ...
