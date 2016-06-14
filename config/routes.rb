@@ -45,6 +45,8 @@ Rails.application.routes.draw do
       end
       resources :books, only: [:create]
       get 'books/search' => 'books#search'
+      get 'users/:user_id/books(.:format)' => 'books#get_related_resources',
+          relationship: 'books', source: 'api/v1/users'
     end
   end
 
