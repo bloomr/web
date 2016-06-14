@@ -36,6 +36,21 @@ export default Ember.Component.extend({
     this.set('showResults', false);
     this.set('show' + name, true);
   },
+  saveBookAndUser() {
+    let bookRecordsPromises = this.get('selectedBooks').map(book => {
+      //if its a book model (it has the get model) we dont record it
+      if (book.get) {
+        return book;
+      }
+      let record = this.get('store').createRecord('book', book);
+      return record.save();
+    });
+
+    Promise.all(bookRecordsPromises).then( bookRecords => {
+      this.set('user.books', bookRecords);
+      this.get('user').save();
+    });
+  },
   actions: {
     search() {
       this.set('showWaiting', true);
@@ -53,6 +68,7 @@ export default Ember.Component.extend({
     },
     removeBook(book) {
       this.get('selectedBooks').removeObject(book);
+      this.saveBookAndUser();
       if (this.get('selectedBooks.length') === 0) {
         this.showOnly('Search');
       }
@@ -62,19 +78,7 @@ export default Ember.Component.extend({
     },
     done() {
       this.showOnly('Done');
-      let bookRecordsPromises = this.get('selectedBooks').map(book => {
-        //if its a book model (it has the get model) we dont record it
-        if (book.get) {
-          return book;
-        }
-        let record = this.get('store').createRecord('book', book);
-        return record.save();
-      });
-
-      Promise.all(bookRecordsPromises).then( bookRecords => {
-        this.set('user.books', bookRecords);
-        this.get('user').save();
-      });
+      this.saveBookAndUser();
     }
   }
 });
