@@ -248,47 +248,20 @@
       }
     }
     .challenges {
-      text-align: center;
+      .header {
+        text-align: center;
+      }
       h2 {
-        display: inline-block;
-        padding: 30px 0;
+        display: block;
+        padding: 30px 0 10px;
         font-family: 'Satisfy', cursive;
         font-size: 32px;
         margin: 0;
       }
-      p {
-        font-size: 16px;
-        margin-top: 20px;
-      }
-      .one-challenge {
-        font-size: 16px;
-        margin-top: 30px;
-        border: 1px solid #DFD9C7;
-        padding: 20px 10px;
-        h3.challenge-title {
-          margin: 0 0 20px;
-          padding-bottom: 20px;
-          border-bottom: 1px solid #DFD9C7;
-        } 
-        .choice {
-          margin-top: 30px;
-        }
-        .panel-tribe-choice {
-          h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-          }
-          .tribesSelector {
-            max-width: 400px;
-            margin: 0 auto;
-          }
-        }
-        .panel-done {
-          p {
-            margin: 20px;
-            font-size: 18px;
-          }
-        }
+      h2.section-title {
+        padding-bottom: 14px;
+        margin-bottom: 40px;
+        border-bottom: 2px solid #e6e0d4;
       }
     }
   }
@@ -316,6 +289,95 @@
       .strike, .link, .quote, .code, .list.numbers, .block-level {
         display: none;
       }
+    }
+  }
+}
+
+.challenge {
+  display: flex;
+  align-items: flex-start;
+  .content {
+    width: 100%;
+    margin-left: 15px;
+  }
+  h3.challenge-title {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    margin-bottom: 20px;
+  } 
+}
+
+.challenge.books {
+  label {
+    font-weight: bold;
+    display: block;
+  }
+  input {
+    display: inline-block;
+    margin: 15px 15px 15px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 2;
+    padding: 5px 10px;
+    min-width: 200px;
+  }
+  .results {
+    margin: 35px 0; 
+  }
+  ul {
+    margin: 35px 0;
+    li {
+      display: inline-block;
+      width: 150px;
+      margin: 0 10px;
+      vertical-align: top;
+      p {
+        font-size: 12px;
+        &.author {
+          margin: 10px 0;
+          color: rgba(62, 62, 62, 0.6);
+        }
+      }
+      img {
+        height: 65px;
+        margin-bottom: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  .remove {
+    cursor: pointer;
+  }
+}
+
+.one-challenge {
+  font-size: 16px;
+  margin-top: 30px;
+  border: 1px solid #DFD9C7;
+  padding: 20px 10px;
+  h3.challenge-title {
+    margin: 0 0 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DFD9C7;
+  } 
+  .choice {
+    margin-top: 30px;
+  }
+  .panel-tribe-choice {
+    h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    .tribesSelector {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+  .panel-done {
+    p {
+      margin: 20px;
+      font-size: 18px;
     }
   }
 }
