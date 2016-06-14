@@ -6,6 +6,7 @@ export default Model.extend({
   jobTitle: attr('string'),
   firstName: attr('string'),
   tribes: hasMany('tribe'),
+  books: hasMany('book'),
   stats: attr(),
   questions: hasMany('question'),
   challenges: hasMany('challenge'),
