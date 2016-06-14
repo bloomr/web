@@ -1,0 +1,4 @@
+div click='click'
+  img src="{{ book.imageUrl }}"
+  p.title = book.title
+  p.author = book.author
