@@ -35,6 +35,10 @@
     "type": "template"
   },
 
+  "app/templates/*.emblem": {
+    "type": "template"
+  },
+
   "app/utils/*.js": {
     "type": "util"
   },
