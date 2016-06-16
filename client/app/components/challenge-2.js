@@ -54,7 +54,11 @@ export default Ember.Component.extend({
       let mustReadChallenge = this.get('challenges').findBy('name', 'must read');
 
       user.get('challenges').then((challenges) => {
-        challenges.pushObject(mustReadChallenge);
+        if(bookRecords.length !== 0) {
+          challenges.addObject(mustReadChallenge);
+        } else {
+          challenges.removeObject(mustReadChallenge);
+        }
         user.save();
       });
     });
