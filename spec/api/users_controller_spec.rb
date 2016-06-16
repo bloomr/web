@@ -24,7 +24,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
   end
 
   let(:body) { JSON.parse(response.body) }
-  let(:user) { create(:user) }
+  let(:user) { create(:user_published_with_questions) }
   subject { response }
 
   describe 'PATCH #users' do
@@ -55,7 +55,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
 
   describe 'GET one #users' do
     before :each do
-      get "/api/v1/users/#{user.id}", nil, headers
+      get "/api/v1/users/#{user.id}?include=questions", nil, headers
     end
 
     it { is_expected.to have_http_status(:success) }
@@ -63,6 +63,11 @@ RSpec.describe Api::V1::UsersController, type: :request do
       keys = body['data']['attributes'].keys
       expected_keys = ['job-title', 'first-name', 'stats', 'avatar-url']
       expect(keys).to match(expected_keys)
+    end
+
+    it 'filter the questions and keep only interview' do
+      included = body['included']
+      expect(included.length).to eq(1)
     end
   end
 

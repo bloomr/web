@@ -10,6 +10,10 @@ module Api
       relationship :books, to: :many
       relationship :challenges, to: :many
 
+      def records_for_questions
+        _model.questions.select(&:interview?).sort_by(&:position)
+      end
+
       def stats
         {
           'last-month': @model.last_month_view_count,
