@@ -393,8 +393,14 @@
     border: solid 1px #e6e0d4;
     vertical-align: top;
     img {
-      margin: 30px auto;
+      margin: 20px auto;
     }
+  }
+  .again {
+    margin-top: 15px;
+    font-size: 12px;
+    display: inline-block;
+    cursor: pointer;
   }
   li.not-done {
     .top {

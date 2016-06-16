@@ -3,9 +3,10 @@ if done
     img src=challenge.imageSrc
     p.separator  Challenge
     p.title {{ challenge.title }}
+    a.again click='selectChallenge' recommencer
 else
   li.not-done
     p.top  Challenge
     p.title {{ challenge.title }}
     p.description {{ challenge.description }}
-    a.crazy-btn Go
+    a.crazy-btn click='selectChallenge' Go
