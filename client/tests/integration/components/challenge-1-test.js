@@ -68,10 +68,10 @@ test('a user whith no tribe start with the choice screen', function(assert) {
   });
 });
 
-test('a user who has allready done the challenge start with the succeed screen', function(assert) {
+test('a user who has allready done the challenge start with the intro screen', function(assert) {
   this.get('user.challenges').setObjects([make('challenge', {name: 'the tribes'})]);
   this.render(hbs`{{challenge-1 user=user challenges=challenges}}`);
-  assert.ok(this.$().text().includes(successSentence));
+  assert.ok(this.$().text().includes(introSentence));
 });
 
 test('a user who has allready done another challenge start with the intro screen', function(assert) {

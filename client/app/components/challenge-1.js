@@ -13,9 +13,8 @@ export default Ember.Component.extend({
       this.set('tribes', tribes);
     });
     this.set('selectedTribes', this.get('user.tribes').toArray());
-    if (this.get('user.challenges').findBy('name','the tribes')) {
-      this.showOnly('Success');
-    } else if (this.get('user.tribes.length') === 0) {
+
+    if (this.get('user.tribes.length') === 0) {
       this.showOnly('Choice');
     }
   },
