@@ -42,8 +42,10 @@ export default Ember.Component.extend({
       this.showOnly('Choice');
     },
     saveTribes() {
-      this.showOnly('Success');
-      this.updateUser();
+      if (this.get('selectedTribes.length') !== 0) {
+        this.showOnly('Success');
+        this.updateUser();
+      }
     },
   }
 });
