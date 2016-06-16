@@ -18,7 +18,10 @@ moduleForComponent('challenge-1', 'Integration | Component | challenge 1', {
     let user2 = make('user', {tribes: [tribe2]});
     this.set('user', user2);
     //do not know how to do otherwise
-    user2.save = () => {};
+    let callback = { userSaved: false };
+    user2.save = () => { callback.userSaved = true; };
+    this.set('callback', callback);
+
     let challenge = make('challenge', {name: 'the tribes'});
     this.set('challenges', Ember.A([challenge]));
     this.tribe2 = tribe2;
@@ -39,7 +42,8 @@ test('a user can change its tribes', function(assert) {
   nativeMouseUp('.ember-power-select-option[data-option-index="0"]');
 
   this.$('.save').click();
-  
+  assert.ok(this.get('callback.userSaved'));
+
   assert.equal(this.get('user.tribes.length'), 2);
   assert.ok(this.get('user.tribes').indexOf(this.tribe2) !== -1);
   assert.ok(this.$().text().includes(successSentence));
@@ -52,6 +56,7 @@ test('a user accepts its default tribe', function(assert) {
 
   this.$('.tribeOK').click();
   assert.ok(this.$().text().includes(successSentence));
+  assert.ok(this.get('callback.userSaved'));
 });
 
 test('a user whith no tribe start with the choice screen', function(assert) {
