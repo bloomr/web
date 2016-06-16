@@ -46,9 +46,16 @@ export default Ember.Component.extend({
       return record.save();
     });
 
-    Promise.all(bookRecordsPromises).then( bookRecords => {
+    Promise.all(bookRecordsPromises).then(bookRecords => {
       this.set('user.books', bookRecords);
-      this.get('user').save();
+      let user = this.get('user');
+
+      let mustReadChallenge = this.get('challenges').findBy('name', 'must read');
+
+      user.get('challenges').then((challenges) => {
+        challenges.pushObject(mustReadChallenge);
+        user.save();
+      });
     });
   },
   actions: {

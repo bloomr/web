@@ -5,12 +5,17 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('challenge-2', 'Integration | Component | challenge 2', {
   integration: true,
   beforeEach() {
-    this.set('user', Ember.Object.create({ save(){}, books: { then(f){f([]);} } }));
+    this.set('user', Ember.Object.create({ 
+      save(){},
+      challenges: DS.PromiseArray.create({ promise: new Promise((resolve)=>{ resolve([]); })}), 
+      books: { then(f){f([]);} } })
+    );
+    this.set('challenges', []);
   }
 });
 
 test('I can search a book and add it to my collections', function(assert) {
-  this.render(hbs`{{challenge-2 user=user}}`);
+  this.render(hbs`{{challenge-2 user=user challenges=challenges}}`);
 
   this.$('input').val('super book');
   
