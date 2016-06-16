@@ -3,10 +3,10 @@
     {{#if showIntro}}
     <div class='panel-default'>
       <p>Nous avons défini ces tribus pour aider les jeunes à s'orienter.</p>
-      <p>Parmi <span style='font-style: italic'>{{join model.tribes 'name'}}</span>
+      <p>Parmi <span style='font-style: italic'>{{join tribes 'name'}}</span>
       <br/>
       <br/>
-      la vôtre serait <span style='font-weight: bold'>{{join model.user.tribes 'name'}}</span>
+      la vôtre serait <span style='font-weight: bold'>{{join user.tribes 'name'}}</span>
       <br/>
       <br/>
       Ça colle ?
@@ -21,7 +21,7 @@
     {{#if showChoice}}
     <div class='panel-tribe-choice' >
       <h3>Quelle(s) tribu(s) vous conviendrai(en)t ?</h3>
-      {{#power-select-multiple class='tribesSelector' searchField='name' selected=selectedTribes options=model.tribes onchange=(action (mut selectedTribes)) as |tribe|}}
+      {{#power-select-multiple class='tribesSelector' searchField='name' selected=selectedTribes options=tribes onchange=(action (mut selectedTribes)) as |tribe|}}
         {{tribe.name}}
       {{/power-select-multiple}}
       <div style='margin-top: 30px;'>
@@ -34,7 +34,7 @@
     <div class='panel-done'>
       <p>Vous avez gagné un tipi :</p>
       <img src='/assets/images/profile/badge-tribu.png' />
-      <p>Bienvenue chez : {{join model.user.tribes 'name'}} !</p>
+      <p>Bienvenue chez : {{join user.tribes 'name'}} !</p>
     </div>
     {{/if}}
 </div>
