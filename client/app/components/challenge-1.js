@@ -25,7 +25,7 @@ export default Ember.Component.extend({
     this.set('show' + name, true);
   },
   updateUser() {
-    this.get('user.tribes').setObjects(this.get('selectedTribes'));
+    this.get('user.tribes').addObjects(this.get('selectedTribes'));
     let tribesChallenge = this.get('challenges').findBy('name', 'the tribes');
     this.get('user.challenges').then((challenges) => {
       challenges.addObject(tribesChallenge);
