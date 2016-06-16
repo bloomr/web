@@ -308,6 +308,21 @@
   } 
 }
 
+.challenge.tribes {
+  .choice {
+    margin-top: 30px;
+  }
+  .tribesSelector {
+    max-width: 400px;
+    margin-top: 30px;
+  }
+  .panel-done {
+    p {
+      margin: 20px;
+      font-size: 18px;
+    }
+  }
+}
 .challenge.books {
   label {
     font-weight: bold;
@@ -348,37 +363,6 @@
   }
   .remove {
     cursor: pointer;
-  }
-}
-
-.one-challenge {
-  font-size: 16px;
-  margin-top: 30px;
-  border: 1px solid #DFD9C7;
-  padding: 20px 10px;
-  h3.challenge-title {
-    margin: 0 0 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #DFD9C7;
-  } 
-  .choice {
-    margin-top: 30px;
-  }
-  .panel-tribe-choice {
-    h3 {
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-    .tribesSelector {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-  }
-  .panel-done {
-    p {
-      margin: 20px;
-      font-size: 18px;
-    }
   }
 }
 
