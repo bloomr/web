@@ -8,7 +8,9 @@ export default Ember.Component.extend({
   selectedTribes: [],
   init() {
     this._super(...arguments);
-    this.set('tribes', this.get('store').findAll('tribe'));
+    this.get('store').findAll('tribe').then((tribes) => {
+      this.set('tribes', tribes);
+    });
     this.set('selectedTribes', this.get('user.tribes').toArray());
     if (this.get('user.challenges').findBy('name','the tribes')) {
       this.showOnly('Success');
