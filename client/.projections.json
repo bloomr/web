@@ -16,7 +16,7 @@
   },
 
   "app/models/*.js": {
-    "type": "model"
+    "type": "cmodel"
   },
 
   "app/router.js": {
