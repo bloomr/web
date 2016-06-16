@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   showChoice: false,
   showSuccess: false,
   selectedTribes: [],
+  reinitFlagChanged: Ember.observer('reinitFlag', function() { this.showOnly('Intro'); }),
   init() {
     this._super(...arguments);
     this.get('store').findAll('tribe').then((tribes) => {
