@@ -381,3 +381,51 @@
     }
   }
 }
+
+.challenge-summary {
+  .intro {
+    margin: 40px 0 30px;
+  }
+  .separator {
+    border-top: solid 1px #e6e0d4;
+    padding: 5px 0;
+  }
+  .title {
+    font-weight: bold;
+  }
+  ul {
+    div {
+      display: inline-block;
+    }
+  }
+  li {
+    display: inline-block;
+    margin: 15px;
+    text-align: center;
+    width: 220px;
+    height: 260px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 #e7e1d6;
+    border: solid 1px #e6e0d4;
+    vertical-align: top;
+    img {
+      margin: 30px auto;
+    }
+  }
+  li.not-done {
+    .top {
+      margin: 15px 0 5px;
+    }
+    .title {
+      padding-bottom: 25px;
+      border-bottom: solid 1px #e6e0d4;
+      margin-bottom: 15px;
+    }
+    .description {
+      padding: 0 5px;
+    }
+    a {
+      margin-top: 30px;
+    }
+  }
+}
