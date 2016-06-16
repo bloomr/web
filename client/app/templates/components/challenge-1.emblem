@@ -1,0 +1,33 @@
+.challenge.tribes
+  img src='assets/images/profile/badge-tribu.svg'
+  .content
+    h3.challenge-title Les tribus
+    .panel-todo
+      if showIntro
+        p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
+        p 
+          | Parmi <span style='font-style: italic'>{{join tribes 'name'}}</span>
+            <br/>
+            <br/>
+            Vous seriez chez les :
+            <span style='font-weight: bold'>{{join user.tribes 'name'}}</span>
+            <br/>
+            <br/>
+            Ça colle ?
+
+        .choice
+          a class='tribeKO crazy-btn' click='tribeKO' Nop, je veux changer
+          a class='tribeOK crazy-btn' click='tribeOK' Yep, carrément !
+
+
+      if showChoice
+        h3 Quelle(s) tribu(s) vous conviendrai(en)t ?
+        = power-select-multiple class='tribesSelector' searchField='name' selected=selectedTribes options=tribes onchange=(action (mut selectedTribes)) as |tribe|
+          = tribe.name
+        div style='margin-top: 30px;'
+          a.crazy-btn.save style='border-color: transparent;' click='saveTribes' Sauvegarde !
+   
+    if showSuccess
+      .panel-done
+        p Vous avez gagné le badge tribu !
+        p Bienvenue chez : {{join user.tribes 'name'}} !
