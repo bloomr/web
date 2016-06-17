@@ -10,8 +10,8 @@ module Amazon
 
     attr_accessor :request_url
 
-    def initialize(keywords)
-      params = build_params(keywords)
+    def initialize(keywords, in_english)
+      params = build_params(keywords, in_english)
       query = build_query(params)
       signature = sign_query(query)
       @request_url = build_request_url(query, signature)
@@ -19,8 +19,8 @@ module Amazon
 
     private
 
-    def build_params(keywords)
-      {
+    def build_params(keywords, in_english)
+      result = {
         'Service' => 'AWSECommerceService',
         'Operation' => 'ItemSearch',
         'AWSAccessKeyId' => ENV['AWS_ACCESS_KEY_ID'],
@@ -31,6 +31,8 @@ module Amazon
         'Sort' => 'salesrank',
         'Timestamp' => Time.now.gmtime.iso8601
       }
+      result['SearchIndex'] = 'ForeignBooks' if in_english
+      result
     end
 
     def build_query(params)

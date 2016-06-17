@@ -10,9 +10,9 @@ module Amazon
       'image_url' => 'MediumImage/URL'
     }.freeze
 
-    def self.books(keywords)
+    def self.books(keywords, in_english)
       return [] if keywords.nil?
-      query = Query.new(keywords)
+      query = Query.new(keywords, in_english)
       response = HTTParty.get(query.request_url)
       return [] if response.code != 200
       parse_response_body(response.body)

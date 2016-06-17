@@ -8,7 +8,7 @@ RSpec.describe Amazon::Search, type: :model do
   end
 
   describe '#search' do
-    let(:result) { Amazon::Search.books(keywords) }
+    let(:result) { Amazon::Search.books(keywords, false) }
 
     context 'when no keyword is provided' do
       let(:keywords) { nil }
