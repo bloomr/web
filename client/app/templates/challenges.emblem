@@ -1,10 +1,1 @@
-.challenges
-  .header
-    h2 Mes Challenges !
-    p Tu as envie d'aider ? Ces challenges sont pour toi !
-
-  h2.section-title Mon challenge en cours
-  = component currentChallenge user=model.user challenges=model.challenges reinitFlag=reinitFlag
-
-  h2.section-title Mes challenges
-  = component 'challenge-summary' user=model.user challenges=model.challenges setCurrentChallenge=(action 'setCurrentChallenge')
+= component 'challenge-layout' model=model
