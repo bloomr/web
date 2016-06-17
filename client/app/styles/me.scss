@@ -324,11 +324,11 @@
   }
 }
 .challenge.books {
-  label {
+  label.searchText {
     font-weight: bold;
     display: block;
   }
-  input {
+  .search-input {
     display: inline-block;
     margin: 15px 15px 15px 0;
     border: 1px solid rgba(0, 0, 0, 0.1);

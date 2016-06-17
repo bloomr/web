@@ -11,6 +11,7 @@ export default Ember.Component.extend({
   showDone: false,
   showWaiting: false,
   showResults: false,
+  inEnglish: false,
   reinitFlagChanged: Ember.observer('reinitFlag', function() { this.showOnly('Selection'); }),
   resultPresentation: Ember.computed('books.length', function(){
     let bookNb = this.get('books.length');
