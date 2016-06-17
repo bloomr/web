@@ -1,15 +1,12 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
+import { make } from 'ember-data-factory-guy';
 
 moduleForComponent('challenge-2', 'Integration | Component | challenge 2', {
   integration: true,
   beforeEach() {
-    this.set('user', Ember.Object.create({ 
-      save(){},
-      challenges: DS.PromiseArray.create({ promise: new Promise((resolve)=>{ resolve([]); })}), 
-      books: { then(f){f([]);} } })
-    );
+    this.set('user', make('user'));
     this.set('challenges', []);
     let promiseWrapper = { promise: $.Deferred() };
     this.register('service:book-search', Ember.Service.extend({ search() { return promiseWrapper.promise; } }));
