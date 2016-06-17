@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service('store'),
+  bookSearch: Ember.inject.service('book-search'),
   keywords: '',
   books: Ember.ArrayProxy.create({ content: [] }),
   selectedBooks: Ember.ArrayProxy.create({ content: [] }),
@@ -67,8 +68,8 @@ export default Ember.Component.extend({
     search() {
       this.set('showWaiting', true);
       this.set('showResults', false);
-      let keywords = this.get('keywords');
-      Ember.$.get('/api/v1/books/search?keywords='+keywords).done(data => {
+      this.get('bookSearch').search(this.get('keywords'), { inEnglish: this.get('inEnglish') })
+        .then(data => {
         this.set('showWaiting', false);
         this.set('showResults', true);
         this.set('books.content', data);
