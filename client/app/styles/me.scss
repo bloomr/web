@@ -340,6 +340,11 @@
   .results {
     margin: 35px 0; 
   }
+  .results-books {
+    li {
+      cursor: pointer;
+    }
+  }
   ul {
     margin: 35px 0;
     li {

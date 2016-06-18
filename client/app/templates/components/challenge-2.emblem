@@ -14,7 +14,7 @@
         p on cherche dans l'internet ...
       if showResults
         p.results {{ resultPresentation }}
-        ul
+        ul.results-books
           each books as |book|
             li
               = component 'book-item' book=book onClick=(action 'addBook')
