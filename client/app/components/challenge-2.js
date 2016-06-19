@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  store: Ember.inject.service('store'),
-  bookSearch: Ember.inject.service('book-search'),
+  store: Ember.inject.service(),
+  bookSearch: Ember.inject.service(),
   keywords: '',
   books: Ember.ArrayProxy.create({ content: [] }),
   selectedBooks: Ember.ArrayProxy.create({ content: [] }),
