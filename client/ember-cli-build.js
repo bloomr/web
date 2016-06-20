@@ -23,7 +23,6 @@ module.exports = function(defaults) {
   app.import('bower_components/es6-shim/es6-shim.js');
   app.import('bower_components/trix/dist/trix.js');
   app.import('bower_components/trix/dist/trix.css');
-  app.import('bower_components/js-cookie/src/js.cookie.js');
 
   return app.toTree();
 };

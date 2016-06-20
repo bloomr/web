@@ -6,8 +6,10 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "trix": "^0.9.7",
-    "js-cookie": "^2.1.2",
     "es6-shim": "^0.35.1",
     "jquery-mockjax": "2.2.0"
+  },
+  "resolutions": {
+    "ember": ">=1.4"
   }
 }
