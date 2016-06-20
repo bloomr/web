@@ -6,7 +6,7 @@
     if showSearch
       div
         label.searchText for='inputSearchText' Quels livres faut-il absolument avoir lu quand on exerce votre métier ?
-        = input id='inputSearchText' class='search-input' value=keywords placeholder='Titre, auteur, isbn' action='search'
+        = input id='inputSearchText' class='search-input' value=keywords placeholder='Titre, auteur, isbn' enter='search'
       div style='margin-bottom: 20px;'
         = input type='checkbox' name='inEnglish' checked=inEnglish id='inputSearchCheckbox'
         label style='display: inline-block' for='inEnglish' for='inputSearchCheckbox' le livre est en anglais
