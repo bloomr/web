@@ -1,5 +1,5 @@
 .challenge-summary
-  p.intro Depuis ton inscription, tu as accompli {{ description }}
+  p.intro Depuis votre inscription, vous avez accompli {{ description }}
   ul
     li
       img src='assets/images/profile/badge-profil.svg'
