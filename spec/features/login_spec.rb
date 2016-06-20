@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 feature 'Login' do
-
   scenario 'when i log in' do
-
     user = FactoryGirl.create(:user, password: 'loulou12')
 
     visit '/users/sign_in'
@@ -14,7 +12,6 @@ feature 'Login' do
     end
 
     click_button 'Go Go Go !'
-    expect(current_path).to eq('/me')
+    expect(current_path).to eq('/me/whatsnew')
   end
 end
-

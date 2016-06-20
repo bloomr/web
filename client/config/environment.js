@@ -42,7 +42,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.rootElement = '#app';
-    ENV.rootURL = '/me2/';
+    ENV.rootURL = '/me/';
   }
 
   return ENV;
