@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Amazon::Search, type: :model do
   before :each do
     allow(HTTParty).to receive(:get)
-    ENV['AWS_ACCESS_KEY_ID'] = 'aws_id'
-    ENV['AWS_SECRET_KEY'] = 'aws_secret'
+    ENV['AWS_PARTNER_ACCESS_KEY_ID'] = 'aws_id'
+    ENV['AWS_PARTNER_SECRET_KEY'] = 'aws_secret'
   end
 
   describe '#search' do

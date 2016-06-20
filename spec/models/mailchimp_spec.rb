@@ -27,22 +27,22 @@ RSpec.describe Mailchimp, type: :model do
     end
   end
 
-  describe '.send_premier_parcours_email' do
+  describe '.send_rejoindre_communaute_email' do
     before :each do
       expect(Mailchimp).to receive(:delay).and_return(Mailchimp)
     end
 
     after :each do
-      Mailchimp.send_premier_parcours_email(bloomy, 'toto')
+      Mailchimp.send_rejoindre_communaute_email(bloomy, 'toto')
     end
 
     it 'call send_template with the right params' do
       expect(Mailchimp).to receive(:send_template).with(
-        template_name: 'premier-mail-du-parcours',
+        template_name: 'mission-2-rejoindre-la-communaute',
         to_mail: bloomy.email,
         from_name: 'Le parcours Bloomr',
         from_mail: 'hello@bloomr.org',
-        subject: '[Mail 1 - Etape 1] Mission #1 : Dis nous qui tu es',
+        subject: '[Mail 2 - Etape 1] Mission #2 : Dis nous qui tu es',
         vars: {
           first_name: bloomy.first_name.capitalize,
           email: bloomy.email,

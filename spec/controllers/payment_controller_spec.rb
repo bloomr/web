@@ -29,7 +29,7 @@ RSpec.describe PaymentController, type: :controller do
     before do
       allow(Mailchimp).to receive(:subscribe_to_journey)
       allow(Mailchimp).to receive(:send_presentation_email)
-      allow(Mailchimp).to receive(:send_premier_parcours_email)
+      allow(Mailchimp).to receive(:send_rejoindre_communaute_email)
       allow(Stripe::Charge).to receive(:create)
     end
 
@@ -89,7 +89,7 @@ RSpec.describe PaymentController, type: :controller do
 
       let(:actions) do
         [:subscribe_to_journey, :send_presentation_email,
-         :send_premier_parcours_email]
+         :send_rejoindre_communaute_email]
       end
 
       it 'subscribes to the journey' do
