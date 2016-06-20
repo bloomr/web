@@ -4,12 +4,13 @@
     h3.challenge-title Le must read de mon domaine
 
     if showSearch
-      div style='margin-bottom: 20px;'
-        label.searchText for='inputSearchText' Quels livres vous inspirent ou décrivent au mieux votre métier ?
+      div
+        label.searchText for='inputSearchText' Quels livres faut-il absolument avoir lu quand on exerce votre métier ?
         = input id='inputSearchText' class='search-input' value=keywords placeholder='Titre, auteur, isbn' action='search'
-        label style='display: inline-block' for='inEnglish' for='inputSearchCheckbox' le livre est en anglais
+      div style='margin-bottom: 20px;'
         = input type='checkbox' name='inEnglish' checked=inEnglish id='inputSearchCheckbox'
-      a.crazy-btn.search click='search' Rechercher !
+        label style='display: inline-block' for='inEnglish' for='inputSearchCheckbox' le livre est en anglais
+      a.crazy-btn.search style='margin-bottom: 20px;' click='search' Rechercher !
       if showWaiting
         p on cherche dans l'internet ...
       if showResults
@@ -32,3 +33,4 @@
 
     if showDone
       p Bien joué ! Encore un challenge réussi !
+      p Votre recommandation apparaitra très bientôt sur votre portrait et sur la page de votre tribu.

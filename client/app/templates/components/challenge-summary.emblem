@@ -1,9 +1,9 @@
 .challenge-summary
-  p.intro Depuis ton inscription, tu as accomplis {{ description }}
+  p.intro Depuis ton inscription, tu as accompli {{ description }}
   ul
     li
       img src='assets/images/profile/badge-profil.svg'
       p.separator Challenge
-      p.title Profiler
+      p.title Témoignage
     = component 'challenge-card' challenges=user.challenges challenge=tribeChallenge onClick=(action setCurrentChallenge)
     = component 'challenge-card' challenges=user.challenges challenge=mustReadChallenge onClick=(action setCurrentChallenge)
