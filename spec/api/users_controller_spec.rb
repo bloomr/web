@@ -54,20 +54,10 @@ RSpec.describe Api::V1::UsersController, type: :request do
   end
 
   describe 'GET one #users' do
-    before :each do
-      get "/api/v1/users/#{user.id}?include=questions", nil, headers
-    end
-
-    it { is_expected.to have_http_status(:success) }
     it 'send the right attributes' do
-      keys = body['data']['attributes'].keys
-      expected_keys = ['job-title', 'first-name', 'stats', 'avatar-url']
-      expect(keys).to match(expected_keys)
-    end
-
-    it 'filter the questions and keep only interview' do
-      included = body['included']
-      expect(included.length).to eq(1)
+      expect do
+        get "/api/v1/users/#{user.id}", nil, headers
+      end.to raise_error(ActionController::RoutingError)
     end
   end
 

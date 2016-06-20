@@ -37,7 +37,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:update, :show]
+      get 'me', to: 'me#show'
+      resources :users, only: [:update]
       resources :challenges, only: [:index, :update]
       resources :tribes, only: [:index]
       resources :keywords, only: [:index]
@@ -48,6 +49,15 @@ Rails.application.routes.draw do
       get 'books/search' => 'books#search'
       get 'users/:user_id/books(.:format)' => 'books#get_related_resources',
           relationship: 'books', source: 'api/v1/users'
+
+      get 'users/:user_id/tribes(.:format)' => 'tribes#get_related_resources',
+          relationship: 'tribes', source: 'api/v1/users'
+
+      get 'users/:user_id/questions(.:format)' => 'questions#get_related_resources',
+          relationship: 'questions', source: 'api/v1/users'
+
+      get 'users/:user_id/challenges(.:format)' => 'challenges#get_related_resources',
+          relationship: 'challenges', source: 'api/v1/users'
     end
   end
 
