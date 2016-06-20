@@ -1,5 +1,5 @@
 module MailchimpMails
-  class Mission1
+  class Mission2
     # rubocop:disable MethodLength
     def self.template(bloomy, password)
       {

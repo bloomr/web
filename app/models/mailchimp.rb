@@ -17,10 +17,10 @@ class Mailchimp
                         .deliver_later
     end
 
-    def send_premier_parcours_email(bloomy, password)
-      send_template(MailchimpMails::Mission1.template(bloomy, password))
+    def send_rejoindre_communaute_email(bloomy, password)
+      send_template(MailchimpMails::Mission2.template(bloomy, password))
     end
-    handle_asynchronously :send_premier_parcours_email,
+    handle_asynchronously :send_rejoindre_communaute_email,
                           run_at: proc { 2.hour.from_now }
 
     def send_presentation_email(bloomy)
