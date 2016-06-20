@@ -77,7 +77,7 @@ export default Ember.Component.extend({
       });
     },
     addBook(book) {
-      this.get('selectedBooks').pushObject(book);
+      this.get('selectedBooks').addObject(book);
       this.showOnly('Selection');
     },
     removeBook(book) {
