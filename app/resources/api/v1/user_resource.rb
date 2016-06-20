@@ -6,13 +6,9 @@ module Api
       attributes :job_title, :first_name, :stats, :avatar_url
 
       relationship :tribes, to: :many
-      relationship :questions, to: :many
+      relationship :questions, to: :many, relation_name: :interview_questions
       relationship :books, to: :many
       relationship :challenges, to: :many
-
-      def records_for_questions
-        _model.questions.select(&:interview?).sort_by(&:position)
-      end
 
       def stats
         {
