@@ -21,7 +21,7 @@ class Mailchimp
       send_template(MailchimpMails::Mission1.template(bloomy, password))
     end
     handle_asynchronously :send_premier_parcours_email,
-                          run_at: proc { 1.hour.from_now }
+                          run_at: proc { 2.hour.from_now }
 
     def send_presentation_email(bloomy)
       send_template(MailchimpMails::Presentation.template(bloomy))
