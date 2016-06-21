@@ -16,6 +16,15 @@ export default Ember.Route.extend({
           window.location = '/users/sign_in';
         }
       }
+    },
+    didTransition: function() {
+      if(ga) {
+        Ember.run.once(this, function() {
+          ga('send', 'pageview', {
+            'page': this.router.get('url'),
+            'title': this.router.get('url') });
+        });
+      }
     }
   }
 });
