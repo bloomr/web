@@ -23,7 +23,7 @@ module Amazon
       result = {
         'Service' => 'AWSECommerceService',
         'Operation' => 'ItemSearch',
-        'AWSAccessKeyId' => ENV['AWS_ACCESS_KEY_ID'],
+        'AWSAccessKeyId' => ENV['AWS_PARTNER_ACCESS_KEY_ID'],
         'AssociateTag' => 'bloomr0b-21',
         'SearchIndex' => 'Books',
         'Keywords' => keywords,
@@ -44,7 +44,7 @@ module Amazon
     def sign_query(query)
       string_to_sign = "GET\n#{ENDPOINT}\n#{REQUEST_URI}\n#{query}"
 
-      signed = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), ENV['AWS_SECRET_KEY'], string_to_sign)
+      signed = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), ENV['AWS_PARTNER_SECRET_KEY'], string_to_sign)
       Base64.encode64(signed).strip
     end
 
