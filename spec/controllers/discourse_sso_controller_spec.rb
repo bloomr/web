@@ -17,7 +17,7 @@ RSpec.describe DiscourseSsoController, type: :controller do
   end
 
   describe 'POST #login' do
-    let!(:bloomy) { Bloomy.create(email: 'loulou@lou.com', password: 'loulou12') }
+    let!(:bloomy) { Bloomy.create(email: 'loulou@lou.com', password: 'loulou12', first_name: 'loulou') }
     let(:password) { 'loulou12' }
     let(:email) { bloomy.email }
     let(:qs) { 'sig=2828aa29899722b35a2f191d34ef9b3ce695e0e6eeec47deb46d588d70c7cb56&sso=bm9uY2U9Y2I2ODI1MWVlZmI1MjExZTU4YzAwZmYxMzk1ZjBjMGI%3D%0A' }
