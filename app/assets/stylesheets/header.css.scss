@@ -1,7 +1,8 @@
 #header {
   padding-top: 10px;
-  background-color: white;
+  background-color: #ee933f;
   border-bottom: 1px solid #DDD;
+  font-size: 14px;
 
   button.navbar-toggle {
     background-color: white;
@@ -9,38 +10,35 @@
     margin-left: 15px;
     margin-right: 0;
     span.icon-bar {
-      background-color: #ff6622;
+      background-color: #ee933f;
     }
   }
 
   a.navbar-brand {
-    background: image-url("sprite-desktop.png") left 0px top 6px no-repeat;
-    width: 70px;
-    height: 50px;
+    background: image-url('header/logo.png');
+    width: 74px;
+    height: 41px;
     margin-left: 10px;
   }
 
   .navbar-collapse {
-    background-color: #FA6B03;
+    background-color: #ee933f;
     text-align: center;
     ul.nav li {
       a {
         color: white;
-
         .icon-twitter-white{
           vertical-align: middle;
         }
-
         .icon-facebook-white {
           vertical-align: middle;
           position: relative;
           top: -4px;
         }
-
         &:hover {
+          color: #ee933f;
           background-color: white;
           opacity: 0.8;
-          color: #ff6622;
           .icon-facebook-white {
             background-color: $orange;
           }
@@ -64,62 +62,39 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
   }
 
-
   .navbar-nav.search-and-idea {
     margin: 0 15px 0 auto;
-
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
     li {
       display: inline-block;
       a {
-        color:#A6A6A6;
-        font-weight: bold;
-        padding-left: 5px;
-        padding-right: 5px;
+        color: white;
+        letter-spacing: 0.4px;
         &.active {
-          color: $orange;
           text-decoration: underline;
         }
-
-        &.searchButton {
-          padding-left: 40px;
-          .icon-search {
-            position: absolute;
-            left: 10px;
-            top: 8px;
-          }
+        &:hover{
+          background-color: #ee933f;
         }
 
-        &.blog {
-          padding-left: 60px;
-          .icon-blog {
-            position: absolute;
-            left: 10px;
-            top: 8px;
-          }
-        }
+        &.searchButton { }
 
-        &.btn-primary {
-          color: white;
-          font-weight: bold;
+        &.framed {
           padding-right: 15px;
           padding-left: 15px;
-          margin-left: 15px;
-          box-shadow: 0px 1px 3px 0px #656565;
+          border-radius: 7px;
+          border: solid 1px #ffffff;
           &:hover {
             background-color: white;
             color: #ff6622;
-            box-shadow: none;
           }
         }
       }
 
       @media (min-width: $screen-md-min) {
-        &.search-wrapper {
-          border-left: 1px solid rgba(174, 174, 174, 0.5);
-          a {
-            margin-left: 10px;
-          }
-        }
+        &.search-wrapper { }
       }
 
       @media (min-width: $screen-sm-min) {
