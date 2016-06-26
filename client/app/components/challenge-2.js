@@ -19,7 +19,7 @@ export default Ember.Component.extend({
       return 'heu ... pas de résultat ...';
     } else if (bookNb === 1) {
       return '1 résultat';
-    } 
+    }
     return `${bookNb} resultats :`;
   }),
   init() {
@@ -39,29 +39,29 @@ export default Ember.Component.extend({
     this.set('showResults', false);
     this.set('show' + name, true);
   },
-  saveBookAndUser() {
-    let bookRecordsPromises = this.get('selectedBooks').map(book => {
-      //if its a book model (it has the get model) we dont record it
-      if (book.get) {
-        return book;
-      }
-      let record = this.get('store').createRecord('book', book);
-      return record.save();
+  saveNewBooks(books) {
+    return books.map(book => {
+      //if its a book model (it has the get method) we dont record it
+      if (book.get) { return book; }
+      return this.get('store').createRecord('book', book).save();
     });
+  },
+  addOrRemoveMustReadChallenge(books, userChallenges) {
+    let mustReadChallenge = this.get('challenges').findBy('name', 'must read');
+    if(books.length !== 0) {
+      userChallenges.addObject(mustReadChallenge);
+    } else {
+      userChallenges.removeObject(mustReadChallenge);
+    }
+  },
+  saveBookAndUser() {
+    let bookRecordsPromises = this.saveNewBooks(this.get('selectedBooks'));
 
-    Promise.all(bookRecordsPromises).then(bookRecords => {
+    Ember.RSVP.Promise.all(bookRecordsPromises).then(bookRecords => {
       this.set('user.books', bookRecords);
-      let user = this.get('user');
-
-      let mustReadChallenge = this.get('challenges').findBy('name', 'must read');
-
-      user.get('challenges').then((challenges) => {
-        if(bookRecords.length !== 0) {
-          challenges.addObject(mustReadChallenge);
-        } else {
-          challenges.removeObject(mustReadChallenge);
-        }
-        user.save();
+      this.get('user.challenges').then(challenges => {
+        this.addOrRemoveMustReadChallenge(bookRecords, challenges);
+        this.get('user').save();
       });
     });
   },
@@ -71,10 +71,10 @@ export default Ember.Component.extend({
       this.set('showResults', false);
       this.get('bookSearch').search(this.get('keywords'), { inEnglish: this.get('inEnglish') })
         .then(data => {
-        this.set('showWaiting', false);
-        this.set('showResults', true);
-        this.set('books.content', data);
-      });
+          this.set('showWaiting', false);
+          this.set('showResults', true);
+          this.set('books.content', data);
+        });
     },
     addBook(book) {
       this.get('selectedBooks').addObject(book);

@@ -9,12 +9,23 @@ moduleForComponent('challenge-2', 'Integration | Component | challenge 2', {
   integration: true,
   beforeEach() {
     manualSetup(this.container);
-    this.set('user', make('user'));
-    this.set('challenges', []);
+    this.set('user', make('user', { challenges: [] }));
+    this.set('challenges', [make('challenge', {name: 'must read'})]);
+    this.get('user').save = sinon.stub();
     this.searchStub = sinon.stub(this.container.lookup('service:book-search'), 'search');
     initCustomAssert(this);
   }
 });
+
+let stubAndReturnPromise = (obj, name, result) => {
+  let promise = $.Deferred();
+  if(result) {
+    promise.resolve(result);
+  }
+  obj[name] = sinon.stub();
+  obj[name].returns(promise);
+  return promise;
+};
 
 test('I can search a book and add it to my collections', function(assert) {
 
@@ -22,12 +33,12 @@ test('I can search a book and add it to my collections', function(assert) {
 
   this.$('input').val('super book');
   
-  let promise = $.Deferred();
-  this.searchStub.returns(promise);
+  let promise = stubAndReturnPromise(this.container.lookup('service:book-search'), 'search');
+
   this.$('a.search').click();
   assert.templateContains("on cherche dans l'internet");
 
-  Ember.run(function(){ promise.resolve([{title: 'titre: un super book'}]); });
+  Ember.run(() => promise.resolve([{title: 'titre: un super book'}]));
 
   assert.templateContains('titre: un super book');
   assert.notOk(this.$().text().includes("on cherche dans l'internet"));
@@ -35,9 +46,11 @@ test('I can search a book and add it to my collections', function(assert) {
   this.$('.title').click();
   assert.equal(this.$('input').length, 0);
 
-  sinon.stub(this.container.lookup('service:store'), 'createRecord').returns({save: $.noop});
+  let record = {};
+  stubAndReturnPromise(record, 'save', make('book'));
+  sinon.stub(this.container.lookup('service:store'), 'createRecord').returns(record);
 
-  this.$('a.done').click();
+  Ember.run(() => this.$('a.done').click());
   assert.templateContains('Bien joué !');
 });
 
