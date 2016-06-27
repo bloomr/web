@@ -49,4 +49,53 @@ RSpec.describe Tribe, :type => :model do
       end
     end
   end
+
+  describe '#top_keyword' do
+    let(:tribe) { Tribe.create(name: '3.0') }
+    let(:tribe2) { Tribe.create(name: 'les cuisiniers') }
+    let(:keyword) { Keyword.create(tag: 'numerique') }
+    let(:keyword2) { Keyword.create(tag: 'cuisine') }
+
+    context 'when there is no tag in a tribe' do
+      before :each do
+        create(:user, tribes: [tribe])
+      end
+
+      it 'returns empty array' do
+        expect(tribe.top_keywords).to match_array([])
+      end
+    end
+
+    context 'when there is only on tag in a tribe' do
+      before :each do
+        create(:user, tribes: [tribe], keywords: [keyword])
+      end
+
+      it 'returns this keyword' do
+        expect(tribe.top_keywords).to match_array([keyword])
+      end
+    end
+
+    context 'when a tag is more present' do
+      before :each do
+        create(:user, tribes: [tribe], keywords: [keyword])
+        create(:user, tribes: [tribe], keywords: [keyword, keyword2])
+      end
+
+      it 'appears first' do
+        expect(tribe.top_keywords).to match_array([keyword, keyword2])
+      end
+    end
+
+    context 'when there are  2 tribes' do
+      before :each do
+        create(:user, tribes: [tribe], keywords: [keyword])
+        create(:user, tribes: [tribe2], keywords: [keyword2])
+      end
+
+      it 'returns some tribes keywords' do
+        expect(tribe2.top_keywords).to match_array([keyword2])
+      end
+    end
+  end
 end

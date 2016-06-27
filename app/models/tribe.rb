@@ -13,6 +13,20 @@ class Tribe < ActiveRecord::Base
       .count(:impressionable_id, :request_hash)
   end
 
+  def top_keywords
+    result = Keyword
+             .joins('join keyword_associations on keyword_associations.keyword_id = keywords.id')
+             .joins('join users on users.id = keyword_associations.user_id')
+             .joins('join tribes_users on tribes_users.user_id = keyword_associations.user_id')
+             .order('count_all desc')
+             .group('keywords.id')
+             .where("tribes_users.tribe_id = #{id}")
+             .count
+
+    keyword_ids = result.take(3).map{ |e| e[0].to_i }
+    Keyword.where(id: keyword_ids)
+  end
+
   private
 
   def normalize_name
