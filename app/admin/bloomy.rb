@@ -37,7 +37,8 @@ ActiveAdmin.register Bloomy do
       f.input :email
       f.input :first_name
       f.input :age
-      f.input :password
+      f.input :password, input_html: { value: 'la fraise rouge' },
+                         label: 'Password (default: la fraise rouge)'
     end
     f.actions
   end
