@@ -1,4 +1,10 @@
 #header {
+  a {
+    outline: 0;
+    &:focus {
+      background: inherit;
+    }
+  }
   padding-top: 10px;
   background-color: #ee933f;
   font-size: 14px;
@@ -74,7 +80,8 @@
         color: white;
         letter-spacing: 0.4px;
         &.active {
-          text-decoration: underline;
+          border-bottom: 1px solid;
+          padding-bottom: 5px;
         }
         &:hover{
           background-color: #ee933f;
