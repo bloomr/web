@@ -1,9 +1,11 @@
 class TagController < ApplicationController
   def show
     @page = params[:page].to_i
-    @tag = params[:id]
+    @tag = params[:id].capitalize
     @keyword = Keyword.find_by(tag: @tag)
-    raise ActionController::RoutingError.new('Not Found') if @keyword.nil?
+    if @keyword.nil?
+      raise(ActionController::RoutingError.new('Not Found'), 'tag not found')
+    end
     @portraits = User.find_published_with_tag(tag: @tag, page: @page)
 
     # Get the 5 most popular tags
