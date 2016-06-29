@@ -20,7 +20,7 @@
       </div>
       <div class='bottom'>
         <div class='image-wrapper'>
-          <img class='photo' alt='Photo de {{ model.user.firstName }}' src="{{ model.user.avatarUrl }}" />
+          {{component 'image-upload' user=model.user}}
           <img class='cloud animated' src='assets/images/profile/cloud.png' />
           <img class='cloud-left animated' src='assets/images/profile/cloud-left.png' />
         </div>
