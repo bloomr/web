@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'me', to: 'me#show'
+      post '/me/photo', to: 'me#photo'
       resources :users, only: [:update]
       resources :challenges, only: [:index, :update]
       resources :tribes, only: [:index]

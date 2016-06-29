@@ -28,4 +28,24 @@ RSpec.describe Api::V1::MeController, type: :request do
       expect(keys).to match(expected_keys)
     end
   end
+
+  describe 'POST me #photo' do
+    let(:user) { create(:user_published_with_questions) }
+
+    before :each do
+      Warden.test_mode!
+      login_as(user, scope: :user)
+    end
+
+    it 'saves the new photo and return the new avatar url' do
+      expect(user).to receive(:avatar=).with('binary_photo')
+      avatar_double = double('avatar', url: 'toto.png')
+      expect(user).to receive(:avatar).and_return(avatar_double)
+      expect(user).to receive(:save).twice # dont know ...
+
+      post '/api/v1/me/photo', avatar: 'binary_photo'
+
+      expect(body['avatarUrl']).to eq('toto.png')
+    end
+  end
 end
