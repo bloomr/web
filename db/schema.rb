@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713120137) do
+ActiveRecord::Schema.define(version: 20160630133710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,14 +187,15 @@ ActiveRecord::Schema.define(version: 20160713120137) do
   add_index "question_comments", ["question_id"], name: "index_question_comments_on_question_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title",      limit: 255,                 null: false
+    t.string   "title",       limit: 255,                 null: false
     t.text     "answer"
-    t.string   "identifier", limit: 255
+    t.string   "identifier",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "position",   limit: 255
-    t.boolean  "published",              default: false
+    t.string   "position",    limit: 255
+    t.boolean  "published",               default: false
+    t.string   "description"
   end
 
   add_index "questions", ["identifier"], name: "index_questions_on_identifier", using: :btree

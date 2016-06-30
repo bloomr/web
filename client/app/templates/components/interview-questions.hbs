@@ -7,7 +7,7 @@
   {{#each model.user.questions as |question| }}
     <label>{{ question.title }}</label>
     {{input id=question.id value=question.answer type='hidden'}}
-    <trix-editor input={{ question.id }}></trix-editor>
+    <trix-editor input={{ question.id }} placeholder={{ question.description }}></trix-editor>
   {{/each}}
 
   <div style="text-align: center; margin-top: 30px;">
