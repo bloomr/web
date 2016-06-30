@@ -200,4 +200,30 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '.create_with_default_questions' do
+    describe 'with the mandatory parameters' do
+      let(:user) do
+        User.create_with_default_questions!(
+          password: 'loulou12', email: 'loulou@lou.com'
+        )
+      end
+
+      it 'creates an user with its params' do
+        expect(user.email).to eq('loulou@lou.com')
+      end
+
+      it 'provide default questions' do
+        expect(user.questions.length).to eq(2)
+      end
+    end
+
+    describe 'without the mandatory parameters' do
+      it 'raises an error' do
+        expect do
+          User.create_with_default_questions!(email: 'loulou@lou.com')
+        end.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+  end
 end

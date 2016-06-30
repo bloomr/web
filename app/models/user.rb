@@ -47,6 +47,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.create_with_default_questions!(params)
+    user = User.new(params)
+    user.questions += [
+      Question.create(title: 'Vous aimez les fraise', description: 'avec de la chantilly ?'),
+      Question.create(title: "et la peinture à l'huile", description: 'avec de la chantilly ?')
+    ]
+    user.save!
+    user
+  end
+
   def answer_to(question_id)
     question = questions.find { |q| q.identifier == question_id }
     question.answer if question
