@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     thumb: '100x100#'
   }
 
-  before_save :check_published
+  before_save :check_published, :capitalize_first_name
 
   has_and_belongs_to_many :tribes
   has_and_belongs_to_many :challenges
@@ -129,5 +129,8 @@ class User < ActiveRecord::Base
     true
   end
 
+  def capitalize_first_name
+    return if first_name.nil?
+    self.first_name = first_name.mb_chars.capitalize.to_s
+  end
 end
-

@@ -45,6 +45,14 @@ RSpec.describe User, type: :model do
         expect(user.published).to eq(true)
       end
     end
+
+    context 'when a user has its first_name in downcase' do
+      let(:user) { user = create(:user, first_name: 'élo'); user.reload }
+
+      it 'capitalizes it' do
+        expect(user.first_name).to eq('Élo')
+      end
+    end
   end
 
   describe '.active_ordered' do
