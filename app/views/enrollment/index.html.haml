@@ -16,9 +16,13 @@
       Première étape : vous inscrire puis témoigner sur votre métier et votre parcours.<br />
       Le témoignage se fait en ligne et par écrit, grâce à un questionnaire que nous vous enverrons dès que vous cliquerez sur le bouton magique.
 
+    - if flash[:errors]
+      %p{ style: 'color: red' } #{flash[:errors]}
+
     =form_for @user, url: { action: 'create' } do |f|
       = f.text_field :first_name, placeholder: 'Votre prénom', required: true, class: 'blue'
       = f.email_field :email, placeholder: 'Votre adresse mail', required: true, class: 'blue'
+      = f.password_field :password, placeholder: 'Votre mot de passe (8 caractères min)', required: true, class: 'blue', pattern:'.{8,}', title: '8 caractères au minimum'
       = f.text_field :job_title, placeholder: 'Votre métier', required: true, class: 'blue'
       %div{style: 'position: relative; display: inline-block'}
         = f.submit 'Go Go Go !', class: 'crazy-btn yellow'
