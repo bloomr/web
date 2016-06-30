@@ -7,10 +7,12 @@ class Mailchimp
                'merge_fields' => { 'FNAME' => bloomy.first_name } }
       body['merge_fields']['MMERGE3'] = bloomy.age if bloomy.age
       response = HTTParty.post(JOURNEY_URL, headers: headers, body: body.to_json)
-      fail "Mailchimp Error: #{response}" unless response.success?
+      raise "Mailchimp Error: #{response}" unless response.success?
     end
 
     def send_notif_about_bloomeur(email, first_name, job_title)
+      return if ENV['DISABLE_MAILS']
+
       ActionMailer::Base.mail(
         MailchimpMails::NotifNewBloomer.template(email, first_name, job_title))
                         .deliver_later
@@ -37,6 +39,8 @@ class Mailchimp
     # rubocop:disable MethodLength, ParameterLists
     def send_template(template_name:, to_mail:, from_name:,
                       from_mail:, subject:, vars:)
+
+      return if ENV['DISABLE_MAILS']
 
       vars = vars.inject([]) do |acc, couple|
         acc.push('name' => couple[0].to_s, 'content' => couple[1])
