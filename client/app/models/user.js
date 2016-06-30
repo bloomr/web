@@ -15,4 +15,7 @@ export default Model.extend({
   isPhotoUploaded: Ember.computed('avatarUrl', function() {
     return this.get('avatarUrl') !== 'missing_thumb.png';
   }),
+  isFirstQuestionsAnswered: Ember.computed('questions.@each.hasDirtyAttributes', function() {
+    return this.get('questions').filter((q) => q.get('answer') && !q.get('hasDirtyAttributes')).length > 4;
+  })
 });
