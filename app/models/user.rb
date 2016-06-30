@@ -9,7 +9,10 @@ class User < ActiveRecord::Base
   has_many :questions
   accepts_nested_attributes_for :questions, allow_destroy: true
 
-  has_many :interview_questions, -> { where.not(identifier: Question::NOT_INTERVIEW_QUESTIONS).order(position: :asc) }, class_name: 'Question'
+  has_many :interview_questions, -> {
+    where('identifier IS NULL or identifier NOT IN (?)', Question::NOT_INTERVIEW_QUESTIONS)
+      .order(position: :asc)
+  }, class_name: 'Question'
 
   has_many :keyword_associations
   accepts_nested_attributes_for :keyword_associations, allow_destroy: true

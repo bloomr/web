@@ -201,6 +201,46 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'interview_questions' do
+    let(:user) { create(:user)  }
+
+    context 'a question without identifier' do
+      before :each do
+        user.questions = [Question.create(title: 'good question')]
+        user.save
+      end
+
+      it 'is an interview question' do
+        expect(user.interview_questions.count).to eq(1)
+      end
+    end
+
+    context 'a question with an correct identifier' do
+      before :each do
+        user.questions = [Question.create(title: 'good question', identifier: 'interview')]
+        user.save
+      end
+
+      it 'is an interview question' do
+        expect(user.interview_questions.count).to eq(1)
+      end
+    end
+
+    context 'a question with an NOT_INTERVIEW_QUESTIONS identifier' do
+      before :each do
+        user.questions = [
+          Question.create(title: 'good question',
+                          identifier: Question::NOT_INTERVIEW_QUESTIONS.first)
+        ]
+        user.save
+      end
+
+      it 'is not an interview question' do
+        expect(user.interview_questions.count).to eq(0)
+      end
+    end
+  end
+
   describe '.create_with_default_questions' do
     describe 'with the mandatory parameters' do
       let(:user) do
