@@ -8,13 +8,6 @@ RSpec.describe EnrollmentController, type: :controller do
     end
   end
 
-  describe 'GET #thanks' do
-    it 'returns http success' do
-      get :thanks
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe 'POST #create' do
     context 'when all parameters are sent' do
       before do
