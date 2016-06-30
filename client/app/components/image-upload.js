@@ -16,6 +16,7 @@ export default Ember.Component.extend({
   },
   updateImage(imageUrl) {
     this.set('imageUrl', imageUrl + new Date().getTime());
+    this.set('user.avatarUrl', imageUrl);
   },
   didInsertElement() {
     this._super(...arguments);

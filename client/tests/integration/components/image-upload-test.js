@@ -31,4 +31,5 @@ test('it renders the spinner when its loading', function(assert) {
 test('it renders the new user avatar when loaded', function(assert) {
   Ember.run(() => this.fileuploadArgs.done({}, { result: { avatarUrl: 'newToto.png'} }));
   assert.ok(this.componentStyle().indexOf("background-image: url('newToto.png") === 0);
+  assert.equal(this.user.get('avatarUrl'), 'newToto.png');
 });
