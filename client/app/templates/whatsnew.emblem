@@ -1,4 +1,5 @@
 div.whats-new
+  component 'profile-introduction' user=model.user
   div.head
     p Le mois dernier ...
   div.data

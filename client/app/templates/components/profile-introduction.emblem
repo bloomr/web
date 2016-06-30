@@ -1,0 +1,13 @@
+p Bienvenue dans votre espace perso !
+p 
+  | pour remplir votre premier challenge, il vous faut :
+  br
+  | mettre votre plus belle photo
+  if user.isPhotoUploaded
+    | DONE
+  br
+  | réaliser votre auto interview
+  if user.isFirstQuestionsAnswered
+    | DONE
+  br
+  | une fois réalisé, on valide tout ça et hop, à vous la gloire !
