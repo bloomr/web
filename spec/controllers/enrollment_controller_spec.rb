@@ -12,6 +12,8 @@ RSpec.describe EnrollmentController, type: :controller do
     context 'when all parameters are sent' do
       before do
         expect(Mailchimp).to receive(:send_notif_about_bloomeur)
+        expect(User).to receive(:create_with_default_questions!)
+          .and_call_original
         expect(controller).to receive(:sign_in)
         post :create, user: {
           email: 'loulou@lou.com', job_title: 'job',

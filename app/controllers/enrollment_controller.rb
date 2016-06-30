@@ -5,7 +5,7 @@ class EnrollmentController < ApplicationController
   end
 
   def create
-    user = User.create!(user_params)
+    user = User.create_with_default_questions!(user_params)
     notif(user_params)
     sign_in(user)
     redirect_to me_path
