@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-
+RSpec.describe User, type: :model do
   describe 'next and previous method' do
-
     before do
       @yop1 = create(:user, published: false)
       @yop2 = create(:user_published_with_questions)
@@ -13,7 +11,6 @@ RSpec.describe User, :type => :model do
     end
 
     describe 'the next method' do
-
       it 'return the next published user order by id' do
         expect(User.next(@yop2.id)).to eq(@yop4)
       end
@@ -21,11 +18,9 @@ RSpec.describe User, :type => :model do
       it 'return the first published user if the end is reached' do
         expect(User.next(@yop4.id)).to eq(@yop2)
       end
-
     end
 
     describe 'the previous method' do
-
       it 'return the previous published user order by id' do
         expect(User.previous(@yop4.id)).to eq(@yop2)
       end
@@ -33,9 +28,7 @@ RSpec.describe User, :type => :model do
       it 'return the last user if the start is reached' do
         expect(User.previous(@yop1.id)).to eq(@yop4)
       end
-
     end
-
   end
 
   describe 'before_save' do
@@ -52,14 +45,12 @@ RSpec.describe User, :type => :model do
         expect(user.published).to eq(true)
       end
     end
-
   end
-  describe '.active_ordered' do
 
+  describe '.active_ordered' do
     let(:result) { User.active_ordered }
 
     describe 'with one unpublished user' do
-
       let!(:user) { create(:user) }
 
       it 'should fetch no user' do
@@ -68,7 +59,6 @@ RSpec.describe User, :type => :model do
     end
 
     describe 'with one published user with questions' do
-
       let!(:user) { create(:user_published_with_questions) }
 
       it 'should fetch the user' do
@@ -85,19 +75,18 @@ RSpec.describe User, :type => :model do
       end
 
       it 'should order the users by their number of question' do
-        expect(result.map(&:email)).to eq %w{2@a.com 3@a.com 1@a.com}
+        expect(result.map(&:email)).to eq %w(2@a.com 3@a.com 1@a.com)
       end
     end
 
     describe 'with 3 published users' do
-
       let!(:with_3_users) { (1..3).each { |i| create(:user_published_with_questions, email: "#{i}@a.com") } }
 
       describe 'when a first page of 2 is asked' do
         let(:result) { User.active_ordered.paged(nb_per_page: 2) }
 
         it 'should return only the 2 first users order by their id' do
-          expect(result.map(&:email)).to eq %w{3@a.com 2@a.com}
+          expect(result.map(&:email)).to eq %w(3@a.com 2@a.com)
         end
       end
 
@@ -105,7 +94,7 @@ RSpec.describe User, :type => :model do
         let(:result) { User.active_ordered.paged(nb_per_page: 2, page: 1) }
 
         it 'should return only the 3rd user' do
-          expect(result.map(&:email)).to eq %w{1@a.com}
+          expect(result.map(&:email)).to eq %w(1@a.com)
         end
       end
     end
@@ -128,18 +117,16 @@ RSpec.describe User, :type => :model do
         it 'should return the one with the 3 published questions first' do
           expect(result.map(&:email)).to eq(['2@a.com', '1@a.com'])
         end
-
       end
     end
-
   end
 
   describe 'find_published_with_tag' do
     subject { User.find_published_with_tag(tag: tag, nb_per_page: nb_per_page, page: page) }
     let(:nb_per_page) { 1 }
     let(:page) { 0 }
-    describe 'with one published user with a tag' do
 
+    describe 'with one published user with a tag' do
       let!(:user) { create(:user_published_with_questions, keywords: [Keyword.create(tag: 'tag')]) }
       let(:tag) { 'tag' }
 
@@ -152,7 +139,6 @@ RSpec.describe User, :type => :model do
         let(:page) { 1 }
         it { is_expected.to be_empty }
       end
-
     end
   end
 
@@ -178,7 +164,7 @@ RSpec.describe User, :type => :model do
     end
 
     context 'with an user with a keyword not linked to any tribe' do
-      let(:lonely_keyword) { Keyword.create() }
+      let(:lonely_keyword) { Keyword.create }
       let(:user) { create(:user, keywords: [lonely_keyword]) }
       it { is_expected.to be_empty }
     end
@@ -193,8 +179,8 @@ RSpec.describe User, :type => :model do
       end
 
       context 'and two other keywords without tribes' do
-        let(:without_tribe_keyword1) { Keyword.create() }
-        let(:without_tribe_keyword2) { Keyword.create() }
+        let(:without_tribe_keyword1) { Keyword.create }
+        let(:without_tribe_keyword2) { Keyword.create }
 
         context 'and a user with this 3 keywords' do
           let(:user) { create(:user, keywords: [ecologie_keyword, without_tribe_keyword1, without_tribe_keyword2]) }
@@ -214,5 +200,4 @@ RSpec.describe User, :type => :model do
       end
     end
   end
-
 end
