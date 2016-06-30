@@ -14,10 +14,6 @@ class EnrollmentController < ApplicationController
     redirect_to enrollment_index_path
   end
 
-  def thanks
-    render layout: 'home'
-  end
-
   private
 
   def notif(user_params)
