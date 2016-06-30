@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: { passwords: 'passwords' }
+  devise_for :users, controllers: { passwords: 'passwords',
+                                    sessions: 'sessions' }
 
   resources :payment, only: [:index, :create]
   get '/payment/thanks', to: 'payment#thanks'
