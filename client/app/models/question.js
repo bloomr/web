@@ -6,5 +6,6 @@ export default Model.extend({
   title: attr('string'),
   answer: attr('string'),
   description: attr('string'),
+  step: attr('string'),
   user: belongsTo('user')
 });

@@ -12,10 +12,16 @@ export default Model.extend({
   questions: hasMany('question'),
   challenges: hasMany('challenge'),
   avatarUrl: attr('string'),
+  doAuthorize: attr('boolean'),
   isPhotoUploaded: Ember.computed('avatarUrl', function() {
     return this.get('avatarUrl') !== 'missing_thumb.png';
   }),
   isFirstQuestionsAnswered: Ember.computed('questions.@each.hasDirtyAttributes', function() {
-    return this.get('questions').filter((q) => q.get('answer') && !q.get('hasDirtyAttributes')).length > 4;
+    return this.get('questions')
+      .filter((q) => q.get('step') === 'first_interview')
+      .every((q) => q.get('answer') && !q.get('hasDirtyAttributes'));
+  }),
+  isFirstInterviewAnswered: Ember.computed('doAuthorize', 'jobTitle', 'isFirstQuestionsAnswered', function(){
+    return  this.get('doAuthorize') && this.get('jobTitle') && this.get('isFirstQuestionsAnswered');
   })
 });

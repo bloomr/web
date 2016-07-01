@@ -22,13 +22,23 @@ test('isPhotoUploaded is true if the user change its photo', function(assert) {
   assert.ok(this.subject().get('isPhotoUploaded'));
 });
 
+test('isFirstQuestionsAnswered is true if no interview_question', function(assert) {
+  manualSetup(this.container);
+  let questions = makeList('question', 5);
+  Ember.run(() => this.subject().set('questions', questions));
+  assert.ok(this.subject().get('isFirstQuestionsAnswered'));
+});
+
 test('isFirstQuestionsAnswered is false initially', function(assert) {
+  manualSetup(this.container);
+  let questions = makeList('question', 5, { step: 'first_interview' });
+  Ember.run(() => this.subject().set('questions', questions));
   assert.notOk(this.subject().get('isFirstQuestionsAnswered'));
 });
 
-test('isFirstQuestionsAnswered is false after 5 questions answered but empty', function(assert) {
+test('isFirstQuestionsAnswered is true if all the first_interview step', function(assert) {
   manualSetup(this.container);
-  let questions = makeList('question', 5);
+  let questions = makeList('question', 5, { step: 'first_interview' });
   Ember.run(() => this.subject().set('questions', questions));
 
   Ember.run(() => questions.forEach(q => { 
@@ -41,7 +51,7 @@ test('isFirstQuestionsAnswered is false after 5 questions answered but empty', f
 
 test('isFirstQuestionsAnswered is true after 5 questions answered', function(assert) {
   manualSetup(this.container);
-  let questions = makeList('question', 5);
+  let questions = makeList('question', 5, { step: 'first_interview' });
   Ember.run(() => this.subject().set('questions', questions));
 
   Ember.run(() => questions.forEach(q => { 
@@ -50,4 +60,26 @@ test('isFirstQuestionsAnswered is true after 5 questions answered', function(ass
   }));
 
   assert.ok(this.subject().get('isFirstQuestionsAnswered'));
+});
+
+
+test('isFirstInterviewAnswered is true if firstquestions and jobTitle and doAuthorize', function(assert) {
+  manualSetup(this.container);
+  assert.notOk(this.subject().get('isFirstInterviewAnswered'));
+
+  let questions = makeList('question', 5, { step: 'first_interview' });
+  Ember.run(() => this.subject().set('questions', questions));
+
+  Ember.run(() =>this.subject().set('doAuthorize', true));
+  assert.notOk(this.subject().get('isFirstInterviewAnswered'));
+
+  Ember.run(() =>this.subject().set('jobTitle', 'toto'));
+  assert.notOk(this.subject().get('isFirstInterviewAnswered'));
+
+  Ember.run(() => questions.forEach(q => { 
+    q.set('answer', 'something');
+    q.set('hasDirtyAttributes', false);
+  }));
+
+  assert.ok(this.subject().get('isFirstInterviewAnswered'));
 });
