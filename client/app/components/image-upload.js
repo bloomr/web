@@ -3,20 +3,20 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['image-upload', 'fileinput-button'],
   attributeBindings: ['style'],
-  imageUrl: '',
+  imageUrl: Ember.computed('user.avatarUrl', function() {
+    let avatarUrl = this.get('user.avatarUrl');
+    if(avatarUrl === '') { return 'assets/images/loader.gif'; }
+    if(avatarUrl) { return avatarUrl; }
+    return '';
+  }),
   style: Ember.computed('imageUrl', function() {
     return Ember.String.htmlSafe(`background-image: url('${this.get('imageUrl')}');`);
   }),
-  init() {
-    this._super(...arguments);
-    this.set('imageUrl', this.get('user.avatarUrl'));
-  },
   displaySpinner() {
-    this.set('imageUrl', 'assets/images/loader.gif');
+    this.set('user.avatarUrl', '');
   },
-  updateImage(imageUrl) {
-    this.set('imageUrl', imageUrl + new Date().getTime());
-    this.set('user.avatarUrl', imageUrl);
+  updateImage(avatarUrl) {
+    this.set('user.avatarUrl', avatarUrl);
   },
   didInsertElement() {
     this._super(...arguments);
