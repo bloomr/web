@@ -9,5 +9,10 @@
     | {{input id=question.id value=question.answer type='hidden'}}
     | <trix-editor input={{ question.id }} placeholder={{ question.description }}></trix-editor>
 
+  | {{ input style='cursor: pointer' id='doAuthorize' type='checkbox' name='doAuthorize' checked=user.doAuthorize click='toggleDoAuthorize' }}
+  label style='cursor: pointer' for='doAuthorize' Acceptez la publication de vos réponses (votre adresse email reste confidentielle, bien évidemment)
+  br
+  span style='font-size: 12px; font-style: italic;' Par votre réponse, vous nous autorisez à publier ces informations sur le site bloomr.org, et vous êtes évidemment libres d'en demander la modification ou la suppression sur simple demande à l'adresse <a href='mailto:contact@bloomr.org'>contact@bloomr.org</a>
+
   div style="text-align: center; margin-top: 30px;" 
       a class='crazy-btn' action='save' style="border-color: transparent;" Sauvegarder !

@@ -23,4 +23,24 @@
       display: none;
     }
   }
+  input#doAuthorize {
+    position: absolute;
+    left: -9999px;
+  }
+  input#doAuthorize + label::before {
+    margin-right: 15px;
+    content: ' ';
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  input#doAuthorize:checked + label::before {
+    content: '✔';
+    font-weight: bold; 
+    color: #ee933f;
+    border: none;
+  }
 }

@@ -24,7 +24,7 @@ RSpec.describe Api::V1::MeController, type: :request do
     it { is_expected.to have_http_status(:success) }
     it 'send the right attributes' do
       keys = body['data']['attributes'].keys
-      expected_keys = ['job-title', 'first-name', 'stats', 'avatar-url']
+      expected_keys = ['job-title', 'first-name', 'stats', 'avatar-url', 'do-authorize']
       expect(keys).to match(expected_keys)
     end
   end
