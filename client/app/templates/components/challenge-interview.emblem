@@ -1,0 +1,28 @@
+.challenge.challenge-interview
+  img src='assets/images/profile/badge-profil.svg'
+  .content
+    h3.challenge-title Votre Témoignage
+    .panel-todo
+      p 
+        | Pour remplir votre premier challenge, il vous faut :
+        br
+        br
+        if user.isPhotoUploaded
+          span style='font-weight: bold; color: #ee933f;' ✔&nbsp;
+          .fileinput-button 
+            | Choisir votre plus belle photo
+            input.fileupload type='file' name='avatar' data-url='/api/v1/me/photo' accept='image/*'
+        br
+        br
+        if user.isFirstQuestionsAnswered 
+          span style='font-weight: bold; color: #ee933f;' ✔&nbsp;
+        | remplir votre {{#link-to 'interview'}}témoignage{{/link-to}}
+        if user.isPhotoUploaded
+          if user.isFirstQuestionsAnswered 
+            br
+            br
+            br
+            span style='font-weight: bold; color: #ee933f;' Parfait !
+            br
+            br
+            | On relit tout ça et hop, à vous la gloire et le karma !

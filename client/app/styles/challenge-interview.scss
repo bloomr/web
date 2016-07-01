@@ -1,0 +1,11 @@
+.challenge-interview {
+  .fileinput-button {
+    border: 2px solid #eee;
+    border-radius: 5px;
+    padding: 10px;
+    vertical-align: middle;
+    &:hover {
+      border-color: darken(#eee, 10);
+    }
+  }
+}
