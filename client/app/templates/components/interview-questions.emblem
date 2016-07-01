@@ -1,0 +1,13 @@
+.my-work
+  div
+    label Vous êtes :
+    | {{input value=model.user.jobTitle class='job_title' type='text' }}
+  
+
+  each model.user.questions as |question|
+    label {{ question.title }}
+    | {{input id=question.id value=question.answer type='hidden'}}
+    | <trix-editor input={{ question.id }} placeholder={{ question.description }}></trix-editor>
+
+  div style="text-align: center; margin-top: 30px;" 
+      a class='crazy-btn' action='save' style="border-color: transparent;" Sauvegarder !
