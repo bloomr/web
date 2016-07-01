@@ -1,0 +1,6 @@
+{
+  "app/resources/*_resource.rb": {
+    "type": "resource"
+  },
+
+}
