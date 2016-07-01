@@ -1,10 +1,10 @@
 .my-work
   div
     label Vous êtes :
-    | {{input value=model.user.jobTitle class='job_title' type='text' }}
+    | {{input value=user.jobTitle class='job_title' type='text' }}
   
 
-  each model.user.questions as |question|
+  each user.questions as |question|
     label {{ question.title }}
     | {{input id=question.id value=question.answer type='hidden'}}
     | <trix-editor input={{ question.id }} placeholder={{ question.description }}></trix-editor>

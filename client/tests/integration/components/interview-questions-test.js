@@ -5,8 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('interview-questions', 'Integration | Component | interview questions', {
   integration: true,
   beforeEach() {
-    let user = Ember.Object.create({ jobTitle: 'job', questions: [{ title: 't1', answer: 'r1'  }]  });
-    this.set('model', Ember.Object.create({ user: user }));
+    this.user = Ember.Object.create({ jobTitle: 'job', questions: [{ title: 't1', answer: 'r1'  }]  });
   }
 });
 
@@ -15,7 +14,7 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{interview-questions model=model}}`);
+  this.render(hbs`{{interview-questions user=user}}`);
 
   assert.equal(this.$('.job_title').val(), 'job');
 

@@ -20,15 +20,15 @@ export default Ember.Component.extend({
   },
   actions: {
     updateQuestion(id, text) {
-      let question = this.get('model.user.questions').findBy('id', id);
+      let question = this.get('user.questions').findBy('id', id);
       question.set('answer', text);
     },
     save() {
-      this.get('model.user.questions').then( qs => { 
+      this.get('user.questions').then( qs => { 
         qs.filterBy('hasDirtyAttributes').forEach(q => q.save());
       });
 
-      let user = this.get('model.user');
+      let user = this.get('user');
       if(user.get('hasDirtyAttributes')) { user.save(); }
     }
   }
