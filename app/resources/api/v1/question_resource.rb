@@ -3,7 +3,7 @@ module Api
     class QuestionResource < JSONAPI::Resource
       before_update :authorize_update
 
-      attributes :title, :answer, :description
+      attributes :title, :answer, :description, :step
 
       relationship :user, to: :one
 
