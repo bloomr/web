@@ -44,6 +44,12 @@
       background-color: darken(#f0ad30, 10%);
     }
   }
+  &.disabled {
+    background-color: #E4E3E1;
+    &:after {
+      content: none;
+    }
+  }
 }
 
 input[type='submit'].crazy-btn {

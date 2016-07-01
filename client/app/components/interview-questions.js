@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  disabled: Ember.computed('user.hasDirtyAttributes', 'user.questions.@each.hasDirtyAttributes', function(){
+    return !this.get('user.hasDirtyAttributes') &&
+      this.get('user.questions').every((q) => !q.get('hasDirtyAttributes'));
+  }),
   didInsertElement() {
     this._super(...arguments);
     this.$().on('trix-change', (e) => {
