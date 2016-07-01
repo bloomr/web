@@ -1,1 +1,1 @@
-input id="fileupload" type="file" name="avatar" data-url="/api/v1/me/photo" accept="image/*"
+input.fileupload type='file' name='avatar' data-url='/api/v1/me/photo' accept='image/*'

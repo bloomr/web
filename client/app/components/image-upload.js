@@ -21,7 +21,7 @@ export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
     let self = this;
-    this.$('#fileupload').fileupload({
+    this.$('.fileupload').fileupload({
       dataType: 'json',
       start() { self.displaySpinner(); },
       done(e, data) { self.updateImage(data.result.avatarUrl); }
