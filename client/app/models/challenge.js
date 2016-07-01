@@ -6,6 +6,12 @@ export default Model.extend({
   name: attr('string'),
   user: hasMany('user'),
   init() {
+    if(this.get('name') === 'interview') {
+      this.set('imageSrc', 'assets/images/profile/badge-profil.svg');
+      this.set('description', 'Réalisez votre interview');
+      this.set('title', 'Témoignage');
+      this.set('widget', 'challenge-interview');
+    }
     if(this.get('name') === 'must read') {
       this.set('imageSrc', 'assets/images/profile/badge-must-read.svg');
       this.set('description', 'le livre à lire absolument pour comprendre ce que je fais');
