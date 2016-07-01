@@ -8,21 +8,20 @@
         br
         br
         if user.isPhotoUploaded
-          span style='font-weight: bold; color: #ee933f;' ✔&nbsp;
-          .fileinput-button 
-            | Choisir votre plus belle photo
-            input.fileupload type='file' name='avatar' data-url='/api/v1/me/photo' accept='image/*'
+          span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;
+        .fileinput-button 
+          | Choisir votre plus belle photo
+          input.fileupload type='file' name='avatar' data-url='/api/v1/me/photo' accept='image/*'
         br
         br
-        if user.isFirstQuestionsAnswered 
-          span style='font-weight: bold; color: #ee933f;' ✔&nbsp;
+        if user.isFirstInterviewAnswered 
+          span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;
         | remplir votre {{#link-to 'interview'}}témoignage{{/link-to}}
         if user.isPhotoUploaded
-          if user.isFirstQuestionsAnswered 
-            br
-            br
-            br
-            span style='font-weight: bold; color: #ee933f;' Parfait !
-            br
-            br
-            | On relit tout ça et hop, à vous la gloire et le karma !
+          if user.isFirstInterviewAnswered 
+              br
+              br
+              span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;Parfait !
+              br
+              br
+              | On relit tout ça et hop, à vous la gloire et le karma !
