@@ -3,7 +3,7 @@ module Api
     class UserResource < JSONAPI::Resource
       before_update :authorize_update
 
-      attributes :job_title, :first_name, :stats, :avatar_url
+      attributes :job_title, :first_name, :stats, :avatar_url, :do_authorize
 
       relationship :tribes, to: :many
       relationship :questions, to: :many, relation_name: :interview_questions
