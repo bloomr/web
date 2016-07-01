@@ -24,6 +24,11 @@ class Question < ActiveRecord::Base
   NOT_INTERVIEW_QUESTIONS = MY_WORK_QUESTIONS_IDENTIFIERS + %w( love_job how_fun_was_this_form actually_something_to_add typical_workday qualification_required )
 
   scope :published, -> { where(questions: { published: true }) }
+  scope :first_interview_canonicals, -> {
+    where(step: 'first_interview')
+      .where(user: nil)
+      .order(position: :asc)
+  }
 
   def interview?
     !NOT_INTERVIEW_QUESTIONS.include?(identifier)

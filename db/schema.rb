@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701101200) do
+ActiveRecord::Schema.define(version: 20160701111200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,6 +196,7 @@ ActiveRecord::Schema.define(version: 20160701101200) do
     t.string   "position",    limit: 255
     t.boolean  "published",               default: false
     t.string   "description"
+    t.string   "step"
   end
 
   add_index "questions", ["identifier"], name: "index_questions_on_identifier", using: :btree

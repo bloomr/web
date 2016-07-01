@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Question, :type => :model do
+RSpec.describe Question, type: :model do
 
   context 'when a question is saved' do
     let!(:question) { create(:question, answer: answer) }
@@ -28,6 +28,18 @@ RSpec.describe Question, :type => :model do
       let!(:unpublished_question) { create(:question, published: false) }
 
       it { is_expected.to match_array(published_question) }
+    end
+  end
+
+  describe 'first_interview_canonical' do
+    let!(:user) { create(:user) }
+    let!(:question_inter_user) { create(:question, step: 'first_interview', user: user) }
+    let!(:question_inter_canon2) { create(:question, step: 'first_interview', position: 'b') }
+    let!(:question_inter_canon) { create(:question, step: 'first_interview', position: 'a') }
+    let!(:question) { create(:question) }
+
+    it 'selects questions without user, with first_interview step and order by position' do
+      expect(Question.first_interview_canonicals).to match([question_inter_canon, question_inter_canon2])
     end
   end
 

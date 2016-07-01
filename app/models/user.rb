@@ -52,10 +52,7 @@ class User < ActiveRecord::Base
 
   def self.create_with_default_questions!(params)
     user = User.new(params)
-    user.questions += [
-      Question.create(title: 'Vous aimez les fraise', description: 'avec de la chantilly ?'),
-      Question.create(title: "et la peinture à l'huile", description: 'avec de la chantilly ?')
-    ]
+    user.questions += Question.first_interview_canonicals.map(&:dup)
     user.save!
     user
   end

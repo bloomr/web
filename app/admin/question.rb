@@ -1,6 +1,6 @@
 ActiveAdmin.register Question do
-
-  permit_params :title, :answer, :published
+  scope :first_interview_canonicals
+  permit_params :title, :answer, :published, :description
 
   index do
     selectable_column
@@ -8,6 +8,8 @@ ActiveAdmin.register Question do
     column :user
     column :title
     column :answer
+    column :description
+    column :position
     column :published
   end
 
@@ -16,14 +18,15 @@ ActiveAdmin.register Question do
   filter :published
 
   form do |f|
-
-    f.inputs "User" do
-      f.input :user, :input_html => { :disabled => true }
+    f.inputs 'User' do
+      f.input :user, input_html: { disabled: true }
     end
 
-    f.inputs "General" do
+    f.inputs 'General' do
       f.input :title
       f.input :answer
+      f.input :description
+      f.input :position
       f.input :published
     end
 
