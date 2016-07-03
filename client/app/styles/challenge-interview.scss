@@ -1,9 +1,14 @@
 .challenge-interview {
+  transition:height 1s ease;
   .fileinput-button {
+    display: block;
+    margin: 15px 0;
     border: 2px solid #eee;
     border-radius: 5px;
     padding: 10px;
     vertical-align: middle;
+    width: 250px;
+    text-align: center;
     &:hover {
       border-color: darken(#eee, 10);
     }

@@ -1,27 +1,29 @@
 .challenge.challenge-interview
   img src='assets/images/profile/badge-profil.svg'
   .content
-    h3.challenge-title Votre Témoignage
-    .panel-todo
+    if step1
+      h3.challenge-title Votre Témoignage (1/3)
       p 
         | Pour remplir votre premier challenge, il vous faut :
-        br
-        br
-        if user.isPhotoUploaded
+        if 
           span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;
         .fileinput-button 
           | Choisir votre plus belle photo
           input.fileupload type='file' name='avatar' data-url='/api/v1/me/photo' accept='image/*'
-        br
-        br
-        if user.isFirstInterviewAnswered 
-          span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;
-        | remplir votre {{#link-to 'interview'}}témoignage{{/link-to}}
-        if user.isPhotoUploaded
-          if user.isFirstInterviewAnswered 
-              br
-              br
-              span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;Parfait !
-              br
-              br
-              | On relit tout ça et hop, à vous la gloire et le karma !
+      a.crazy-btn class={ user.isPhotoUploaded::disabled } click='go_step2' continuer
+
+    if step2
+      h3.challenge-title Votre Témoignage (2/3)
+      if user.isFirstInterviewAnswered 
+        span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;
+      | remplir votre {{#link-to 'interview'}}témoignage{{/link-to}}
+      br
+      a.crazy-btn click='go_step3' terminer
+
+    if step3
+      h3.challenge-title Votre Témoignage (3/3)
+      span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;Parfait !
+      br
+      br
+      | On relit tout ça et hop, à vous la gloire et le karma !
+      a.crazy-btn click='go_step1' modifier
