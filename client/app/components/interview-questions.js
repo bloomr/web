@@ -13,9 +13,6 @@ export default Ember.Component.extend({
 
       let user = this.get('user');
       if(user.get('hasDirtyAttributes')) { user.save(); }
-    },
-    toggleDoAuthorize() {
-      this.set('user.doAuthorize', !this.get('user.doAuthorize'));
-    },
+    }
   }
 });

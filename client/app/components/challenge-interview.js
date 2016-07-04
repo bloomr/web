@@ -43,6 +43,9 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.$('#fileupload').fileupload('destroy');
   },
+  toggleDoAuthorize() {
+    this.get('user').toggleProperty('doAuthorize');
+  },
   actions: {
     go_step1(){
       this.showOnly('step1');
