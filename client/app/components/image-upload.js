@@ -12,23 +12,12 @@ export default Ember.Component.extend({
   style: Ember.computed('imageUrl', function() {
     return Ember.String.htmlSafe(`background-image: url('${this.get('imageUrl')}');`);
   }),
-  displaySpinner() {
-    this.set('user.avatarUrl', '');
-  },
-  updateImage(avatarUrl) {
-    this.set('user.avatarUrl', avatarUrl);
-  },
-  didInsertElement() {
-    this._super(...arguments);
-    let self = this;
-    this.$('.fileupload').fileupload({
-      dataType: 'json',
-      start() { self.displaySpinner(); },
-      done(e, data) { self.updateImage(data.result.avatarUrl); }
-    });
-  },
-  willDestroyElement() {
-    this._super(...arguments);
-    this.$('#fileupload').fileupload('destroy');
-  },
+  actions: {
+    displaySpinner() {
+      this.set('user.avatarUrl', '');
+    },
+    updateImage(e, data) {
+      this.set('user.avatarUrl', data.result.avatarUrl);
+    },
+  }
 });

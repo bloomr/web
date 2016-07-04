@@ -1,0 +1,1 @@
+input.fileupload type='file' name=name data-url=data-url accept=accept
