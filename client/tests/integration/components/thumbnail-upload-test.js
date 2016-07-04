@@ -4,15 +4,15 @@ import { manualSetup, make } from 'ember-data-factory-guy';
 import sinon from 'sinon';
 import Ember from 'ember';
 
-moduleForComponent('image-upload', 'Integration | Component | image upload', {
+moduleForComponent('thumbnail-upload', 'Integration | Component | thumbnail-upload', {
   integration: true,
   beforeEach() {
     manualSetup(this.container);
     this.user = make('user', { avatarUrl: 'toto.png' });
     sinon.spy($.fn, 'fileupload');
-    this.render(hbs`{{image-upload user=user}}`);
+    this.render(hbs`{{thumbnail-upload user=user}}`);
     this.fileuploadArgs = $.fn.fileupload.getCall(0).args[0];
-    this.componentStyle = () => this.$('.image-upload').attr('style');
+    this.componentStyle = () => this.$('.thumbnail-upload').attr('style');
   },
   afterEach() {
     $.fn.fileupload.restore();

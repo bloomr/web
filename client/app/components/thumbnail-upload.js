@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['image-upload', 'fileinput-button'],
+  classNames: ['thumbnail-upload', 'fileinput-button'],
   attributeBindings: ['style'],
   imageUrl: Ember.computed('user.avatarUrl', function() {
     let avatarUrl = this.get('user.avatarUrl');
