@@ -3,16 +3,7 @@
     label Vous êtes :
     | {{input value=user.jobTitle class='job_title' type='text' tabindex=1 }}
   
-
-  each user.questions as |question|
-    label {{ question.title }}
-    | {{input id=question.id value=question.answer type='hidden'}}
-    | <trix-editor input={{ question.id }} placeholder={{ question.description }} tabindex=2></trix-editor>
-
-  | {{ input style='cursor: pointer' id='doAuthorize' type='checkbox' name='doAuthorize' checked=user.doAuthorize click='toggleDoAuthorize' }}
-  label style='cursor: pointer' for='doAuthorize' Acceptez la publication de vos réponses (votre adresse email reste confidentielle, bien évidemment)
-  br
-  span style='font-size: 12px; font-style: italic;' Par votre réponse, vous nous autorisez à publier ces informations sur le site bloomr.org, et vous êtes évidemment libres d'en demander la modification ou la suppression sur simple demande à l'adresse <a href='mailto:contact@bloomr.org'>contact@bloomr.org</a>
+  component 'questions-editor' questions=user.questions
 
   div style='text-align: center; margin-top: 30px;' 
     a class={ disabled:disabled true:crazy-btn} click='save' style='border-color: transparent;' Sauvegarder !

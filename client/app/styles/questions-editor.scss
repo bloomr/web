@@ -1,0 +1,25 @@
+.questions-editor {
+  label {
+    margin-bottom: 10px;
+    font-family: 'Satisfy', cursive;
+    font-weight: normal;
+    font-size: 24px;
+    display: inline-block;
+    margin-top: 55px;
+  }
+  trix-editor {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 2;
+    padding: 15px;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+  trix-toolbar {
+    .strike, .link, .quote, .code, .list.numbers, .block-level {
+      display: none;
+    }
+  }
+}
