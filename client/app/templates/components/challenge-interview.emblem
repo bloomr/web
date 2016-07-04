@@ -20,7 +20,7 @@
       label style='cursor: pointer' for='doAuthorize' Acceptez la publication de vos réponses (votre adresse email reste confidentielle, bien évidemment)
       br
       span style='font-size: 12px; font-style: italic;' Par votre réponse, vous nous autorisez à publier ces informations sur le site bloomr.org, et vous êtes évidemment libres d'en demander la modification ou la suppression sur simple demande à l'adresse <a href='mailto:contact@bloomr.org'>contact@bloomr.org</a>
-      a.crazy-btn click='go_step3' Terminer
+      a.crazy-btn class={ user.isFirstInterviewAnswered::disabled } click='go_step3' Terminer
 
     if step3
       h3.challenge-title Votre Témoignage (3/3)

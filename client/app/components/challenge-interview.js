@@ -20,14 +20,8 @@ export default Ember.Component.extend({
     updateImage(e, data) {
       this.set('user.avatarUrl', data.result.avatarUrl);
     },
-    go_step1(){
-      this.showOnly('step1');
-    },
-    go_step2(){
-      this.showOnly('step2');
-    },
-    go_step3(){
-      this.showOnly('step3');
-    }
+    go_step1(){ this.showOnly('step1'); },
+    go_step2(){ this.showOnly('step2'); },
+    go_step3(){ this.showOnly('step3'); }
   }
 });
