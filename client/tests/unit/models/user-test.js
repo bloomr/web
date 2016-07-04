@@ -17,6 +17,11 @@ test('isPhotoUploaded is false initially', function(assert) {
   assert.notOk(this.subject().get('isPhotoUploaded'));
 });
 
+test('isPhotoUploaded is false if avatarUrl is empty', function(assert) {
+  Ember.run(() => this.subject().set('avatarUrl', ''));
+  assert.notOk(this.subject().get('isPhotoUploaded'));
+});
+
 test('isPhotoUploaded is true if the user change its photo', function(assert) {
   Ember.run(() => this.subject().set('avatarUrl', 'toto.png'));
   assert.ok(this.subject().get('isPhotoUploaded'));

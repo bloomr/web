@@ -14,7 +14,8 @@ export default Model.extend({
   avatarUrl: attr('string'),
   doAuthorize: attr('boolean'),
   isPhotoUploaded: Ember.computed('avatarUrl', function() {
-    return this.get('avatarUrl') !== 'missing_thumb.png';
+    let avatarUrl = this.get('avatarUrl');
+    return avatarUrl !== 'missing_thumb.png' && avatarUrl !== '';
   }),
   isFirstQuestionsAnswered: Ember.computed('questions.@each.hasDirtyAttributes', function() {
     return this.get('questions')
