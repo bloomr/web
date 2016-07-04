@@ -14,6 +14,8 @@
 
     if step2
       h3.challenge-title Votre Témoignage (2/3)
+      component 'questions-editor' questions=user.questions
+
       if user.isFirstInterviewAnswered 
         span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;
       | remplir votre {{#link-to 'interview'}}témoignage{{/link-to}}
