@@ -24,9 +24,13 @@ module.exports = function(defaults) {
   app.import('bower_components/trix/dist/trix.js');
   app.import('bower_components/trix/dist/trix.css');
   app.import('bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js');
+  app.import('bower_components/blueimp-load-image/js/load-image.all.min.js');
+  app.import('bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.min.js');
   app.import('bower_components/blueimp-file-upload/js/jquery.iframe-transport.js');
   app.import('bower_components/blueimp-file-upload/js/jquery.fileupload.js');
   app.import('bower_components/blueimp-file-upload/css/jquery.fileupload.css');
+  app.import('bower_components/blueimp-file-upload/js/jquery.fileupload-process.js');
+  app.import('bower_components/blueimp-file-upload/js/jquery.fileupload-image.js');
 
   return app.toTree();
 };

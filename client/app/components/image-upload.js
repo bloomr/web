@@ -6,6 +6,9 @@ export default Ember.Component.extend({
     let self = this;
     this.$('.fileupload').fileupload({
       dataType: 'json',
+      disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator && navigator.userAgent),
+      imageMaxWidth: 500,
+      imageMaxHeight: 500,
       start() { self.get('start')(); },
       done(e, data) { self.get('done')(e, data); }
     });
