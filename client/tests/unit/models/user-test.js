@@ -48,7 +48,6 @@ test('isFirstQuestionsAnswered is true if all the first_interview step', functio
 
   Ember.run(() => questions.forEach(q => { 
     q.set('answer', '');
-    q.set('hasDirtyAttributes', false);
   }));
 
   assert.notOk(this.subject().get('isFirstQuestionsAnswered'));
@@ -61,7 +60,6 @@ test('isFirstQuestionsAnswered is true after 5 questions answered', function(ass
 
   Ember.run(() => questions.forEach(q => { 
     q.set('answer', 'something');
-    q.set('hasDirtyAttributes', false);
   }));
 
   assert.ok(this.subject().get('isFirstQuestionsAnswered'));
@@ -83,7 +81,6 @@ test('isFirstInterviewAnswered is true if firstquestions and jobTitle and doAuth
 
   Ember.run(() => questions.forEach(q => { 
     q.set('answer', 'something');
-    q.set('hasDirtyAttributes', false);
   }));
 
   assert.ok(this.subject().get('isFirstInterviewAnswered'));

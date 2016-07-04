@@ -17,10 +17,10 @@ export default Model.extend({
     let avatarUrl = this.get('avatarUrl');
     return avatarUrl !== 'missing_thumb.png' && avatarUrl !== '';
   }),
-  isFirstQuestionsAnswered: Ember.computed('questions.@each.hasDirtyAttributes', function() {
+  isFirstQuestionsAnswered: Ember.computed('questions.@each.answer', function() {
     return this.get('questions')
-      .filter((q) => q.get('step') === 'first_interview')
-      .every((q) => q.get('answer') && !q.get('hasDirtyAttributes'));
+      .filter(q => q.get('step') === 'first_interview')
+      .every(q => q.get('answer') && q.get('answer') !== '');
   }),
   isFirstInterviewAnswered: Ember.computed('doAuthorize', 'jobTitle', 'isFirstQuestionsAnswered', function(){
     return  this.get('doAuthorize') && this.get('jobTitle') && this.get('isFirstQuestionsAnswered');
