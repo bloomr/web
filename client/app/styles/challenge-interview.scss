@@ -1,5 +1,8 @@
 .challenge-interview {
   transition:height 1s ease;
+  h3.challenge-title {
+    margin-bottom: 30px;
+  }
   .fileinput-button {
     display: block;
     margin: 15px 0;
@@ -12,5 +15,10 @@
     &:hover {
       border-color: darken(#eee, 10);
     }
+  }
+  .crazy-btn {
+    margin-top: 30px;
+    display: block;
+    width: 120px;
   }
 }
