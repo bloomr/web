@@ -9,7 +9,7 @@
           span style='font-weight: bold; color: #ee933f;' ✔&nbsp;&nbsp;
         .fileinput-button 
           | Choisir votre plus belle photo
-          component 'file-upload' name='avatar' data-url='/api/v1/me/photo' accept='image/*' start=(action 'displaySpinner') done=(action 'updateImage')
+          component 'image-upload' name='avatar' data-url='/api/v1/me/photo' accept='image/*' start=(action 'displaySpinner') done=(action 'updateImage')
       a.crazy-btn class={ user.isPhotoUploaded::disabled } click='go_step2' continuer
 
     if step2
