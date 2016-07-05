@@ -5,7 +5,7 @@ import { make, manualSetup } from 'ember-data-factory-guy';
 import sinon from 'sinon';
 import { initCustomAssert } from '../../assertions/custom';
 
-moduleForComponent('challenge-2', 'Integration | Component | challenge 2', {
+moduleForComponent('challenge-mustread', 'Integration | Component | challenge mustread', {
   integration: true,
   beforeEach() {
     manualSetup(this.container);
@@ -29,7 +29,7 @@ let stubAndReturnPromise = (obj, name, result) => {
 
 test('I can search a book and add it to my collections', function(assert) {
 
-  this.render(hbs`{{challenge-2 user=user challenges=challenges}}`);
+  this.render(hbs`{{challenge-mustread user=user challenges=challenges}}`);
 
   this.$('input').val('super book');
   
@@ -55,7 +55,7 @@ test('I can search a book and add it to my collections', function(assert) {
 });
 
 test('I can search a book and another one', function(assert) {
-  this.render(hbs`{{challenge-2 user=user}}`);
+  this.render(hbs`{{challenge-mustread user=user}}`);
 
   this.$('input').val('super book');
   this.searchStub.returns({ then(callback) { callback([{title: 'titre: un super book'}]); }});

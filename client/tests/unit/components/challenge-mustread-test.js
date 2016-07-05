@@ -11,7 +11,7 @@ let stubAndReturnPromise = (obj, name, result) => {
   return [obj[name], promise];
 };
 
-moduleForComponent('challenge-2', {
+moduleForComponent('challenge-mustread', {
   unit: true,
   needs: ['model:user', 'model:book', 'model:challenge'],
   beforeEach() {
