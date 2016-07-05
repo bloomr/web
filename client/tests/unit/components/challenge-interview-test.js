@@ -5,7 +5,7 @@ import sinon from 'sinon';
 
 moduleForComponent('challenge-interview', {
   unit: true,
-  needs: ['model:user', 'model:question'],
+  needs: ['model:user', 'model:question', 'model:challenge'],
   beforeEach() {
     manualSetup(this.container);
     let questions = makeList('question', 3);
@@ -13,7 +13,10 @@ moduleForComponent('challenge-interview', {
 
     this.user = make('user', { questions: questions });
     sinon.stub(this.user, 'save');
-    this.component = this.subject({user: this.user});
+
+    this.challengeInterview = make('challenge', { name: 'interview' });
+
+    this.component = this.subject({user: this.user, challenges: [this.challengeInterview]});
   }
 });
 
@@ -26,8 +29,9 @@ test('toggle doAuthorize', function(assert) {
 });
 
 
-test('go to step 3 saves the user and its questions', function(assert) {
+test('go to step 3 saves the user and its questions and add challenge interview', function(assert) {
   this.component.actions.go_step3.apply(this.component);
+  assert.ok(this.user.get('challenges').findBy('name', 'interview'));
   assert.ok(this.user.save.called);
   assert.ok(this.user.get('questions').every(q => q.save.called));
 });

@@ -35,6 +35,7 @@ export default Ember.Component.extend({
       this.set('step', '2');
     },
     go_step3(){ 
+      this.get('user.challenges').addObject(this.get('challenges').findBy('name', 'interview'));
       this.get('user.questions').forEach(q => q.save());
       this.get('user').save();
       this.set('step', '3');
