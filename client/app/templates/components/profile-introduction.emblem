@@ -1,4 +1,6 @@
 div.head
   p Bienvenue dans votre espace perso !
 div style='margin-top: 40px;'
-  component 'challenge-interview' user=user
+  p 
+    | Aller remplir vos challenges,  
+    =link-to 'challenges' | cliquez-donc sans plus attendre !
