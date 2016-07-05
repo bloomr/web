@@ -33,13 +33,18 @@ test('nextChallenge', function(assert) {
   assert.equal(this.component.nextChallenge(), this.challenge2);
 });
 
+test('nextChallenge', function(assert) {
+  Ember.run(() => this.user.get('challenges').addObjects([this.challenge1, this.challenge2, this.challenge3]));
+  assert.equal(this.component.nextChallenge().get('widget'), 'challenge-finish');
+});
+
 test('updateCurrentWidget with no name given should set nextChallenge widget', function(assert) {
   sinon.stub(this.component, 'nextChallenge').returns(this.challenge1);
   this.component.updateCurrentWidget();
   assert.equal(this.component.get('currentChallenge'), 'widget1');
 });
 
-test('updateCurrentWidget should set name widhet', function(assert) {
+test('updateCurrentWidget should set name widget', function(assert) {
   this.component.set('name', 'toto');
   this.component.updateCurrentWidget();
   assert.equal(this.component.get('currentChallenge'), 'challenge-toto');

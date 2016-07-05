@@ -18,8 +18,12 @@ export default Ember.Component.extend({
     this.updateCurrentWidget();
   },
   nextChallenge(){
-    return this.get('challenges')
+    let nextChallenge = this.get('challenges')
       .sortBy('position')
       .find(c => !this.get('user.challenges').contains(c));
+    if (!nextChallenge) {
+      nextChallenge = Ember.Object.create({ widget: 'challenge-finish' });
+    }
+    return nextChallenge;
   }
 });
