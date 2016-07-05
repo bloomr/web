@@ -3,7 +3,7 @@ import { make, makeList, mockFindAll, manualSetup } from 'ember-data-factory-guy
 import Ember from 'ember';
 import sinon from 'sinon';
 
-moduleForComponent('challenge-1', {
+moduleForComponent('challenge-tribes', {
   unit: true,
   needs: ['model:user', 'model:challenge', 'model:tribe'],
   beforeEach() {

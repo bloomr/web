@@ -24,8 +24,8 @@ export default Model.extend({
       this.set('imageSrc', 'assets/images/profile/badge-tribu.svg');
       this.set('description', 'Dites-nous à quelle(s) tribu(s) vous appartenez');
       this.set('title', 'Tribu');
-      this.set('widget', 'challenge-1');
-      this.set('query', '1');
+      this.set('widget', 'challenge-tribes');
+      this.set('query', 'tribes');
     }
   }
 });

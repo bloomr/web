@@ -9,7 +9,7 @@ const introSentence = "Nous avons défini ces tribus pour aider les jeunes à s'
 const choiceSentence = "Quelle(s) tribu(s) vous conviendrai(en)t ?";
 const successSentence = 'Vous avez gagné';
 
-moduleForComponent('challenge-1', 'Integration | Component | challenge 1', {
+moduleForComponent('challenge-tribes', 'Integration | Component | challenge tribes', {
   integration: true,
   beforeEach() {
     manualSetup(this.container);
@@ -29,7 +29,7 @@ moduleForComponent('challenge-1', 'Integration | Component | challenge 1', {
 });
 
 test('a user can change its tribes', function(assert) {
-  this.render(hbs`{{challenge-1 user=user challenges=challenges}}`);
+  this.render(hbs`{{challenge-tribes user=user challenges=challenges}}`);
 
   assert.ok(this.$().text().includes(introSentence));
   
@@ -52,7 +52,7 @@ test('a user can change its tribes', function(assert) {
 });
 
 test('a user accepts its default tribe', function(assert) {
-  this.render(hbs`{{challenge-1 user=user challenges=challenges}}`);
+  this.render(hbs`{{challenge-tribes user=user challenges=challenges}}`);
 
   this.$('.tribeOK').click();
   assert.ok(this.$().text().includes(successSentence));
@@ -63,19 +63,19 @@ test('a user whith no tribe start with the choice screen', function(assert) {
   let self = this;
   Ember.run(function(){
     self.set('user.tribes', []);
-    self.render(hbs`{{challenge-1 user=user challenges=challenges}}`);
+    self.render(hbs`{{challenge-tribes user=user challenges=challenges}}`);
     assert.ok(self.$().text().includes(choiceSentence));
   });
 });
 
 test('a user who has allready done the challenge start with the intro screen', function(assert) {
   this.get('user.challenges').setObjects([make('challenge', {name: 'the tribes'})]);
-  this.render(hbs`{{challenge-1 user=user challenges=challenges}}`);
+  this.render(hbs`{{challenge-tribes user=user challenges=challenges}}`);
   assert.ok(this.$().text().includes(introSentence));
 });
 
 test('a user who has allready done another challenge start with the intro screen', function(assert) {
   this.get('user.challenges').setObjects([make('challenge', {name: 'another'})]);
-  this.render(hbs`{{challenge-1 user=user challenges=challenges}}`);
+  this.render(hbs`{{challenge-tribes user=user challenges=challenges}}`);
   assert.ok(this.$().text().includes(introSentence));
 });
