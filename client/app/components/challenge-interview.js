@@ -4,6 +4,17 @@ export default Ember.Component.extend({
   step1: true,
   step2: false,
   step3: false,
+  observeStep: Ember.observer('step', function(){
+    this.updateView();
+  }),
+  updateView() {
+    if(!this.get('step')) { this.set('step', 1); }
+    this.showOnly('step' + this.get('step'));
+  },
+  init() {
+    this._super(...arguments);
+    this.updateView();
+  },
   showOnly(step){
     this.set('step1', false);
     this.set('step2', false);
@@ -20,12 +31,13 @@ export default Ember.Component.extend({
     updateImage(e, data) {
       this.set('user.avatarUrl', data.result.avatarUrl);
     },
-    go_step1(){ this.showOnly('step1'); },
-    go_step2(){ this.showOnly('step2'); },
+    go_step2(){
+      this.set('step', '2');
+    },
     go_step3(){ 
       this.get('user.questions').forEach(q => q.save());
       this.get('user').save();
-      this.showOnly('step3'); 
+      this.set('step', '3');
     }
   }
 });

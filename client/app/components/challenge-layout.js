@@ -1,23 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  currentChallenge: 'challenge-1',
+  currentChallenge:  'challenge-interview',
+  nameObserver: Ember.observer('name', function() {
+    this.updateView();
+  }),
+  updateView() {
+    if(!this.get('name')) { return 'challenge-interview'; }
+    this.set('currentChallenge', 'challenge-' + this.get('name'));
+  },
   reinitFlag: false,
   init() {
     this._super(...arguments);
-    this.get('model.user.challenges').then((challenges) => {
-      if(challenges.findBy('name', 'the tribes')) {
-        this.set('currentChallenge', 'challenge-2');
-      }
-    });
+    this.updateView();
   },
-  actions: {
-    setCurrentChallenge(challenge) {
-      if (this.get('currentChallenge') !== challenge.get('widget')) {
-        this.set('currentChallenge', challenge.get('widget'));
-      } else {
-        this.toggleProperty('reinitFlag');
-      }
-    }
-  }
 });

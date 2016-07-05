@@ -10,7 +10,7 @@
         component 'image-upload' name='avatar' data-url='/api/v1/me/photo' accept='image/*' start=(action 'displaySpinner') done=(action 'updateImage')
 
       component 'thumbnail-upload' user=user
-      a.crazy-btn class={ user.isPhotoUploaded::disabled } click='go_step2' Continuer
+      button.crazy-btn click='go_step2' disabled={ unless user.isPhotoUploaded true } class={ user.isPhotoUploaded::disabled } Continuer
 
     if step2
       h3.challenge-title Votre Témoignage (2/3)
@@ -22,7 +22,7 @@
       label style='cursor: pointer' for='doAuthorize' Acceptez la publication de vos réponses (votre adresse email reste confidentielle, bien évidemment)
       br
       span style='font-size: 12px; font-style: italic;' Par votre réponse, vous nous autorisez à publier ces informations sur le site bloomr.org, et vous êtes évidemment libres d'en demander la modification ou la suppression sur simple demande à l'adresse <a href='mailto:contact@bloomr.org'>contact@bloomr.org</a>
-      a.crazy-btn class={ user.isFirstInterviewAnswered::disabled } click='go_step3' Terminer
+      button.crazy-btn click='go_step3' disabled={ unless user.isFirstInterviewAnswered true } class={ user.isFirstInterviewAnswered::disabled } Terminer
 
     if step3
       h3.challenge-title Votre Témoignage (3/3)
@@ -30,4 +30,4 @@
       br
       br
       | On relit tout ça et hop, à vous la gloire et le karma !
-      a.crazy-btn click='go_step1' Modifier
+      = link-to (query-params step=1) class='crazy-btn' | Modifier

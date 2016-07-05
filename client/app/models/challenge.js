@@ -11,18 +11,21 @@ export default Model.extend({
       this.set('description', 'Réalisez votre interview');
       this.set('title', 'Témoignage');
       this.set('widget', 'challenge-interview');
+      this.set('query', 'interview');
     }
     if(this.get('name') === 'must read') {
       this.set('imageSrc', 'assets/images/profile/badge-must-read.svg');
       this.set('description', 'le livre à lire absolument pour comprendre ce que je fais');
       this.set('title', 'Must Read');
       this.set('widget', 'challenge-2');
+      this.set('query', '2');
     }
     if(this.get('name') === 'the tribes') {
       this.set('imageSrc', 'assets/images/profile/badge-tribu.svg');
       this.set('description', 'Dites-nous à quelle(s) tribu(s) vous appartenez');
       this.set('title', 'Tribu');
       this.set('widget', 'challenge-1');
+      this.set('query', '1');
     }
   }
 });
