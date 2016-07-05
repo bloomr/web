@@ -34,3 +34,6 @@
     if showDone
       p Bien joué ! Encore un challenge réussi !
       p Votre recommandation apparaitra très bientôt sur votre portrait et sur la page de votre tribu.
+
+      div style='margin-top: 20px;'
+        = link-to .crazy-btn (query-params name=undefined step=undefined) | Challenge Suivant !

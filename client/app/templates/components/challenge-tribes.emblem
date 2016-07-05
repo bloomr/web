@@ -31,3 +31,6 @@
       .panel-done
         p Vous avez gagné le badge tribu !
         p Bienvenue chez : {{join user.tribes 'name'}} !
+
+        div style='margin-top: 20px;'
+          = link-to .crazy-btn (query-params name=undefined step=undefined) | Challenge Suivant !
