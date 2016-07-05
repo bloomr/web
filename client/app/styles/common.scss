@@ -45,11 +45,17 @@
     }
   }
   &.disabled {
+    top: 0;
     background-color: #E4E3E1;
+    cursor: default;
     &:after {
       content: none;
     }
   }
+}
+
+button.crazy-btn {
+  border-width: 0px;
 }
 
 input[type='submit'].crazy-btn {
