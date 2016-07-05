@@ -12,6 +12,7 @@ export default Model.extend({
       this.set('title', 'Témoignage');
       this.set('widget', 'challenge-interview');
       this.set('query', 'interview');
+      this.set('position', 1);
     }
     if(this.get('name') === 'must read') {
       this.set('imageSrc', 'assets/images/profile/badge-must-read.svg');
@@ -19,6 +20,7 @@ export default Model.extend({
       this.set('title', 'Must Read');
       this.set('widget', 'challenge-mustread');
       this.set('query', 'mustread');
+      this.set('position', 3);
     }
     if(this.get('name') === 'the tribes') {
       this.set('imageSrc', 'assets/images/profile/badge-tribu.svg');
@@ -26,6 +28,7 @@ export default Model.extend({
       this.set('title', 'Tribu');
       this.set('widget', 'challenge-tribes');
       this.set('query', 'tribes');
+      this.set('position', 2);
     }
   }
 });

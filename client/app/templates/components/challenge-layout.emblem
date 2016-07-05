@@ -4,7 +4,7 @@
     p Tu as envie d'aider ? Ces challenges sont pour toi !
 
   h2.section-title Mon challenge en cours
-  = component currentChallenge user=model.user challenges=model.challenges step=step
+  = component currentChallenge user=user challenges=challenges step=step
 
   h2.section-title Mes challenges
-  = component 'challenge-summary' user=model.user challenges=model.challenges
+  = component 'challenge-summary' user=user challenges=challenges

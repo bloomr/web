@@ -1,1 +1,1 @@
-= component 'challenge-layout' model=model name=name step=step
+= component 'challenge-layout' user=model.user challenges=model.challenges name=name step=step
