@@ -11,14 +11,16 @@ moduleFor('component:challenge-layout', 'Unit | Component | challenge-layout', {
     this.user = make('user', { challenges: [] });
     this.challenge1 = make('challenge');
     this.challenge1.set('position', 1);
-    this.challenge1.set('widget', 'widget1');
+    this.challenge1.set('query', 'cha1');
     this.challenge2 = make('challenge');
     this.challenge2.set('position', 2);
     this.challenge3 = make('challenge');
     this.challenge3.set('position', 3);
+    this.updateName = sinon.stub();
     this.component = this.subject({
       user: this.user, 
-      challenges: [this.challenge2, this.challenge3, this.challenge1]
+      challenges: [this.challenge2, this.challenge3, this.challenge1],
+      updateName: this.updateName
     });
   }
 });
@@ -41,7 +43,9 @@ test('nextChallenge', function(assert) {
 test('updateCurrentWidget with no name given should set nextChallenge widget', function(assert) {
   sinon.stub(this.component, 'nextChallenge').returns(this.challenge1);
   this.component.updateCurrentWidget();
-  assert.equal(this.component.get('currentChallenge'), 'widget1');
+  assert.equal(this.component.get('currentChallenge'), 'challenge-cha1');
+  assert.equal(this.component.get('name'), 'cha1');
+  assert.ok(this.updateName.calledWith('cha1'));
 });
 
 test('updateCurrentWidget should set name widget', function(assert) {

@@ -1,1 +1,1 @@
-= component 'challenge-layout' user=model.user challenges=model.challenges name=name step=step
+= component 'challenge-layout' user=model.user challenges=model.challenges name=name updateName=(action 'updateName') step=step
