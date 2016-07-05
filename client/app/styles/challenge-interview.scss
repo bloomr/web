@@ -6,6 +6,28 @@
   p {
     margin-bottom: 20px;
   }
+
+  label.job {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-family: 'Satisfy', cursive;
+    font-weight: normal;
+    font-size: 24px;
+    display: inline-block;
+  }
+
+  input.job {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 2;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 50px;
+    &:focus {
+      outline: none;
+    }
+  }
+
   .fileinput-button.interview {
     display: inline-block;
     margin: 15px 0;

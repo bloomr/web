@@ -16,6 +16,9 @@
       h3.challenge-title Votre Témoignage (2/3)
       p Super ! À présent, pourriez-vous remplir ces questions :
 
+      label.job Le nom de votre métier :
+      | {{input class='job' value=user.jobTitle type='text' tabindex=1 }}
+
       component 'questions-editor' questions=user.questions
 
       | {{ input style='cursor: pointer' id='doAuthorize' type='checkbox' name='doAuthorize' checked=user.doAuthorize click='toggleDoAuthorize' }}
