@@ -12,6 +12,6 @@ feature 'Login' do
     end
 
     click_button 'Go Go Go !'
-    expect(current_path).to eq('/me/whatsnew')
+    expect(current_path).to eq('/me')
   end
 end
