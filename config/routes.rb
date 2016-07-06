@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/payment/thanks', to: 'payment#thanks'
 
   get '/me/email_sent', to: 'me#email_sent'
-  get '/me', to: redirect('/me/whatsnew')
+  get '/me/', to: 'me#show'
   get '/me/*other', to: 'me#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
