@@ -1,0 +1,32 @@
+div#me
+  .background.background-12
+  .orange
+    .panel
+      .top
+        a.logo.profile-sprite.sprite-logo href='/' bloomr
+        ul
+          li.bloomeurs
+            a href="/tribes"
+              span.profile-sprite.sprite-flower 
+              | Les bloomeurs
+          li.logout
+            component 'log-out'
+      .bottom
+        .image-wrapper
+          component 'thumbnail-upload' user=model.user
+          img.cloud.animated src='assets/images/profile/cloud.png'
+          img.cloud-left.animated src='assets/images/profile/cloud-left.png' 
+        .info
+          p.greetings Salut {{ model.user.firstName }} !
+          p
+            each model.user.tribes as |tribe|
+              a href='/tribes/{{tribe.normalizedName}}' {{ tribe.name }}
+          ul
+            li
+              = link-to 'whatsnew' | Quoi de Neuf ?
+            li
+              = link-to 'interview' | Mon Témoignage
+            li
+              = link-to 'challenges' | Mes Challenges
+  .main
+    = outlet
