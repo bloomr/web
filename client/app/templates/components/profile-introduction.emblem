@@ -1,6 +1,2 @@
-div.head
-  p Bienvenue dans votre espace perso !
-div style='margin-top: 40px;'
-  p 
-    | Aller remplir vos challenges,  
-    =link-to 'challenges' | cliquez-donc sans plus attendre !
+h2 Bienvenue dans votre espace perso !
+p Partagez le sel de votre métier en réussissant ces défis :
