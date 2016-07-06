@@ -32,7 +32,8 @@
       a.crazy-btn.done click='done' J'ai terminé
 
     if showDone
-      p Bien joué ! Encore un challenge réussi !
+      p Bien joué ! <span style='font-weight: bold;'>Encore un challenge réussi !</span>
+      br
       p Votre recommandation apparaitra très bientôt sur votre portrait et sur la page de votre tribu.
 
       div style='margin-top: 20px;'

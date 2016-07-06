@@ -29,7 +29,7 @@
    
     if showSuccess
       .panel-done
-        p Vous avez gagné le badge tribu !
+        p Vous avez gagné <span style='font-weight: bold'>le badge tribu</span> !
         p Bienvenue chez : {{join user.tribes 'name'}} !
 
         div style='margin-top: 20px;'
