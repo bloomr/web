@@ -3,7 +3,7 @@
 
     = component 'profile-introduction' user=user
     
-    = component 'challenges-intro' user=user
+  = component 'challenges-intro' user=user
 
   = component currentChallenge user=user challenges=challenges step=step
 

@@ -1,12 +1,14 @@
 if done
-  li
+  li.done
     img src=challenge.imageSrc
-    p.separator  Challenge
-    p.title {{ challenge.title }}
-    = link-to 'challenges' (query-params name=challenge.query step=undefined) | recommencer
+    .legend
+      p.separator  Challenge
+      p.title {{ challenge.title }}
+      = link-to 'challenges' (query-params name=challenge.query step=undefined) | recommencer
 else
   li.not-done
     p.top  Challenge
     p.title {{ challenge.title }}
     p.description {{ challenge.description }}
-    = link-to .crazy-btn 'challenges' (query-params name=challenge.query step=undefined) | Go
+    .go-wrapper
+      = link-to .crazy-btn 'challenges' (query-params name=challenge.query step=undefined) | Go
