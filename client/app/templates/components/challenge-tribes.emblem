@@ -3,13 +3,13 @@
   .content
     h3.challenge-title Les tribus
     .panel-todo
-      p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
-      p 
-        | Parmi <span style='font-style: italic'>{{join tribes 'name'}}</span>
-          <br/>
-          <br/>
       if showIntro
-        |   Vous seriez chez les :
+        p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
+        p 
+          | Parmi <span style='font-style: italic'>{{join tribes 'name'}}</span>
+            <br/>
+            <br/>
+            Vous seriez chez les :
             <span style='font-weight: bold'>{{join user.tribes 'name'}}</span>
             <br/>
             <br/>
@@ -21,6 +21,11 @@
 
 
       if showChoice
+        p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
+        p 
+          | Parmi <span style='font-style: italic'>{{join tribes 'name'}}</span>
+            <br/>
+            <br/>
         h3 Quelle(s) tribu(s) vous conviendrai(en)t ?
         = power-select-multiple class='tribesSelector' searchField='name' renderInPlace=true selected=selectedTribes options=tribes onchange=(action (mut selectedTribes)) as |tribe|
           = tribe.name
