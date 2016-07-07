@@ -3,13 +3,13 @@
   .content
     h3.challenge-title Les tribus
     .panel-todo
+      p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
+      p 
+        | Parmi <span style='font-style: italic'>{{join tribes 'name'}}</span>
+          <br/>
+          <br/>
       if showIntro
-        p Nous avons défini ces tribus pour aider les jeunes à s'orienter.
-        p 
-          | Parmi <span style='font-style: italic'>{{join tribes 'name'}}</span>
-            <br/>
-            <br/>
-            Vous seriez chez les :
+        |   Vous seriez chez les :
             <span style='font-weight: bold'>{{join user.tribes 'name'}}</span>
             <br/>
             <br/>
