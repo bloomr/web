@@ -4,7 +4,7 @@ if done
     .legend
       p.separator  Challenge
       p.title {{ challenge.title }}
-      = link-to 'challenges' (query-params name=challenge.query step=undefined) | recommencer
+      = link-to 'challenges' (query-params name=challenge.query step=undefined) | modifier
 else
   li.not-done
     p.top  Challenge

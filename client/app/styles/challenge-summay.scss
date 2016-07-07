@@ -45,7 +45,9 @@
     a {
       position: absolute;
       bottom: 10px;
-      left: 60px;
+      left: 0;
+      margin: 0 auto;
+      width: 100%;
     }
   }
   li.not-done {
