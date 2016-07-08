@@ -55,6 +55,9 @@ Rails.application.routes.draw do
 
       get 'users/:user_id/challenges(.:format)' => 'challenges#get_related_resources',
           relationship: 'challenges', source: 'api/v1/users'
+
+      get 'users/:user_id/keywords(.:format)' => 'keywords#get_related_resources',
+          relationship: 'keywords', source: 'api/v1/users'
     end
   end
 
