@@ -43,7 +43,11 @@
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('normalized'),
         queryTokenizer: queryTokenizer,
         prefetch: {
-            url: '/api/v1/keywords',
+            url: '/api/v1/keywords/top',
+            prepare: function(settings){
+              settings['headers'] = { "Accept": "application/vnd.api+json" },
+              return settings;
+            },
             filter: function(array) {
                 return $.map(array, function (el) {
                     // Normalize the name - use this for searching
