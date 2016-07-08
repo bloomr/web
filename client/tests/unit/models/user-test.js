@@ -4,7 +4,7 @@ import { makeList, manualSetup } from 'ember-data-factory-guy';
 
 moduleForModel('user', 'Unit | Model | user', {
   // Specify the other units that are required for this test.
-  needs: ['model:tribe', 'model:question', 'model:challenge', 'model:book']
+  needs: ['model:tribe', 'model:question', 'model:challenge', 'model:book', 'model:keyword']
 });
 
 test('it exists', function(assert) {

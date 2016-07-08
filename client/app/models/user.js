@@ -11,6 +11,7 @@ export default Model.extend({
   stats: attr(),
   questions: hasMany('question'),
   challenges: hasMany('challenge'),
+  keywords: hasMany('keyword'),
   avatarUrl: attr('string'),
   doAuthorize: attr('boolean'),
   isPhotoUploaded: Ember.computed('avatarUrl', function() {
