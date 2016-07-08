@@ -1,8 +1,8 @@
 .my-work
   div
-    label Vous êtes :
+    label Quel est votre métier ?
     | {{input value=user.jobTitle class='job_title' type='text' tabindex=1 }}
-  
+
   component 'questions-editor' questions=user.questions
 
   div style='text-align: center; margin-top: 30px;' 

@@ -20,7 +20,7 @@
       h3.challenge-title Votre Témoignage (2/3)
       p Super ! À présent, pourriez-vous remplir ces questions :
 
-      label.job Quel est votre métier :
+      label.job Quel est votre métier ?
       | {{input class='job' value=user.jobTitle type='text' tabindex=1 }}
 
       div style='margin-bottom: 50px;'
