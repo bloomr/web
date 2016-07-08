@@ -48,4 +48,8 @@
     margin-top: 30px;
     margin-right: 30px;
   }
+  // weird inline style on powerselect
+  .ember-power-select-trigger-multiple-input {
+    width: inherit !important;
+  }
 }
