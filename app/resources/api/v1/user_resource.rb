@@ -9,6 +9,7 @@ module Api
       relationship :questions, to: :many, relation_name: :interview_questions
       relationship :books, to: :many
       relationship :challenges, to: :many
+      relationship :keywords, to: :many
 
       def stats
         {
