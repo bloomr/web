@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { manualSetup, make } from 'ember-data-factory-guy';
+import { manualSetup, make, mockFindAll } from 'ember-data-factory-guy';
 import sinon from 'sinon';
 import Ember from 'ember';
 
@@ -8,6 +8,7 @@ moduleForComponent('challenge-interview', 'Integration | Component | challenge i
   integration: true,
   beforeEach() {
     manualSetup(this.container);
+    mockFindAll('keyword');
     this.user = make('user');
     sinon.spy($.fn, 'fileupload');
     this.render(hbs`{{challenge-interview user=user}}`);

@@ -23,6 +23,10 @@
       label.job Quel est votre métier :
       | {{input class='job' value=user.jobTitle type='text' tabindex=1 }}
 
+      div style='margin-bottom: 50px;'
+        label.job Quels sont les 5 mots clés qui vous viennent à l'esprit spontanément lorsque vous pensez à votre métier&nbsp;?
+        = component 'keywords-select' options=options selected=selectedKeywords tabindex=2
+
       component 'questions-editor' questions=user.questions
 
       | {{ input style='cursor: pointer' id='doAuthorize' type='checkbox' name='doAuthorize' checked=user.doAuthorize click='toggleDoAuthorize' }}
@@ -30,7 +34,7 @@
       br
       span style='font-size: 12px; font-style: italic;' Par votre réponse, vous nous autorisez à publier ces informations sur le site bloomr.org, et vous êtes évidemment libres d'en demander la modification ou la suppression sur simple demande à l'adresse <a href='mailto:contact@bloomr.org'>contact@bloomr.org</a>
       div style='margin-top: 20px;'
-        button.crazy-btn click='go_step3' disabled={ unless user.isFirstInterviewAnswered true } class={ user.isFirstInterviewAnswered::disabled } Terminer
+        button.crazy-btn click='go_step3' disabled={ unless step3Enable true } class={ step3Enable::disabled } Terminer
 
     if step3
       h3.challenge-title Votre Témoignage (3/3)
