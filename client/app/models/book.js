@@ -3,7 +3,7 @@ import attr from 'ember-data/attr';
 
 export default Model.extend({
   author: attr('string'),
-  isbn: attr('number'),
+  isbn: attr('string'),
   title: attr('string'),
   imageUrl: attr('string')
 });
