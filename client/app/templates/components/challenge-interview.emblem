@@ -7,7 +7,7 @@
         | Pour remplir ce challenge :
       .fileinput-button.interview 
         if user.isPhotoUploaded
-          | Changez votre photo ?
+          | Changez votre photo ...
         else
           | Choisissez votre plus belle photo
         component 'image-upload' name='avatar' data-url='/api/v1/me/photo' accept='image/*' start=(action 'displaySpinner') done=(action 'updateImage')

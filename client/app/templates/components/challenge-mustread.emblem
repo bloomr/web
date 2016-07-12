@@ -1,7 +1,7 @@
 .challenge.books
   img src='assets/images/profile/badge-must-read.svg'
   .content
-    h3.challenge-title Le must read de mon domaine
+    h3.challenge-title Le Must Read de mon domaine
 
     if showSearch
       div

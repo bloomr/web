@@ -8,7 +8,7 @@ export default Model.extend({
   init() {
     if(this.get('name') === 'interview') {
       this.set('imageSrc', 'assets/images/profile/badge-profil.svg');
-      this.set('description', 'Réalisez votre interview');
+      this.set('description', 'Parlez-nous de votre métier');
       this.set('title', 'Témoignage');
       this.set('widget', 'challenge-interview');
       this.set('query', 'interview');
