@@ -3,7 +3,7 @@ module Api
     class BookResource < JSONAPI::Resource
       before_create :authorize_create
 
-      attributes :title, :author, :image_url, :isbn
+      attributes :title, :author, :image_url, :isbn, :asin
 
       relationship :user, to: :many
 

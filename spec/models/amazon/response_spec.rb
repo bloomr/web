@@ -13,6 +13,7 @@ RSpec.describe Amazon::Response, type: :model do
         expect(result[0].title).to eq('title')
         expect(result[0].isbn).to eq('1234')
         expect(result[0].image_url).to eq('image_url')
+        expect(result[0].asin).to eq('2070643026')
       end
     end
 
@@ -33,6 +34,7 @@ RSpec.describe Amazon::Response, type: :model do
 <ItemSearchResponse>
   <Items>
     <Item>
+      <ASIN>2070643026</ASIN>
       <MediumImage><URL>#{options[:image_url]}</URL></MediumImage>
       <ItemAttributes>
         <Author>#{options[:author]}</Author>

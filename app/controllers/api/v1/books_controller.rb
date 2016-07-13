@@ -9,7 +9,8 @@ module Api
             author: book.author,
             isbn: book.isbn,
             title: book.title,
-            imageUrl: book.image_url
+            imageUrl: book.image_url,
+            asin: book.asin
           }
         end
         render json: data

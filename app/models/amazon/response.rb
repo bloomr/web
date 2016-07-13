@@ -8,6 +8,7 @@ module Amazon
       'title' => 'ItemAttributes/Title',
       'author' => 'ItemAttributes/Author',
       'isbn' => 'ItemAttributes/ISBN',
+      'asin' => 'ASIN',
       'image_url' => 'MediumImage/URL'
     }.freeze
 

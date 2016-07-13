@@ -15,6 +15,7 @@ RSpec.describe Api::V1::BooksController, type: :request do
         attributes: {
           'author': 'author',
           'isbn': 'isbn',
+          'asin': 'asin',
           'title': 'title',
           'image-url': 'imageUrl'
         },
@@ -47,6 +48,7 @@ RSpec.describe Api::V1::BooksController, type: :request do
       it 'create the book and give an id' do
         expect(book.author).to eq('author')
         expect(book.isbn).to eq('isbn')
+        expect(book.asin).to eq('asin')
         expect(book.title).to eq('title')
         expect(book.image_url).to eq('imageUrl')
         @id_saved = body['data']['id']
