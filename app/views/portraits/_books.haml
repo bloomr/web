@@ -1,0 +1,9 @@
+- if @portrait.books.length == 1
+  - book = @portrait.books.first
+  .books
+    %a{ href: "http://www.amazon.fr/dp/#{book.asin}/?tag=#{ENV['AWS_PARTNER_TRACKING_ID']}", target: '_blank' }
+      %img{ src: book.image_url, height: '100px' }
+      .description
+        %p.bedside Mon livre de chevet
+        %p.title #{book.title}
+        %p.author de <b>#{book.author}</b>

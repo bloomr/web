@@ -42,16 +42,19 @@
   </div>
 
   <% if @portrait.has_explained_its_works? %>
-  <div class="container">
-    <div class="row">
-      <ul class="sectionsBox col-md-8 col-md-offset-2" role="tablist">
-        <li role="presentation"><a id="interview" href="#portrait_details" aria-controls="portrait_details" role="tab" class="active"><span class="quote"></span>mon interview</a></li>
-        <li role="presentation"><a id="work" href="#my-work" aria-controls="my-work" role="tab"><span class="luggage"></span>mon travail</a></li>
-      </ul>
+  <div style='box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);'>
+    <div class="container">
+      <div class="row">
+        <ul class="sectionsBox col-md-8 col-md-offset-2" role="tablist">
+          <li role="presentation"><a id="interview" href="#portrait_details" aria-controls="portrait_details" role="tab" class="active"><span class="quote"></span>mon interview</a></li>
+          <li role="presentation"><a id="work" href="#my-work" aria-controls="my-work" role="tab"><span class="luggage"></span>mon travail</a></li>
+        </ul>
+      </div>
     </div>
   </div>
   <% end %>
 
+  <%= render 'books' %>
   <div id="portrait_details" role="tabpanel" class="container-wrapper">
     <div class="container">
       <div class="row">
