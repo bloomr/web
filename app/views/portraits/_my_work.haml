@@ -1,0 +1,84 @@
+- if @portrait.has_explained_its_works?
+  #my-work{ role: 'tabpanel', style: 'display: none;' }
+    .container-wrapper
+      .container
+        .row
+          .col-md-8.col-md-offset-2
+            .row.section
+              .col-md-6
+                .row
+                  .col-md-6
+                    %p Dans la structure dans laquelle je travaille, il y a
+                    - q = @portrait.questions.select {|q| q.identifier == 'how_many_people_in_company' }.first
+                    %p.people= q.answer
+                  .col-md-6
+                    %span{class: "company-size company-size-#{q.discret_company_size}"}
+              .visible-xs.visible-sm.small-spacer
+              .col-md-6{style: 'position: relative'}
+                .team-container
+                  %p Au quotidien, je travaille plutôt en équipe
+                  - q = @portrait.questions.select { |q| q.identifier == 'solo_vs_team' }.first
+                  %span{class: "team team-#{q.answer}"}
+            .visible-xs.visible-sm.small-spacer
+            .row.section
+              .col-md-4
+                %p Lors d'une journée typique, je suis en relation avec
+              .col-md-8.relationships
+                - q = @portrait.questions.select {|q| q.identifier == 'who_do_you_work_with' }.first
+                %p= q.answer
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          .row.section
+            .col-md-6
+              %p La connaissance d'une langue étrangère est obligatoire pour exercer mon métier
+            .col-md-6
+              - q = @portrait.questions.select {|q| q.identifier == 'foreign_language_mandatory' }.first
+              - q.answer.to_i.times do
+                %span.flag.flag-on
+              - (5 - q.answer.to_i).times do
+                %span.flag.flag-off
+    .container-wrapper
+      .container
+        .row
+          .col-md-8.col-md-offset-2
+            .section
+              .row
+                .col-md-6.light-container
+                  %p Je travaille plutôt à l'extérieur
+                  - q = @portrait.questions.select {|q| q.identifier == 'inside_or_outside_work' }.first
+                  - q.answer.to_i.times do
+                    %span.location.location-outside
+                  - (5 - q.answer.to_i).times do
+                    %span.location.location-inside
+                .visible-xs.visible-sm.small-spacer
+                .col-md-6
+                  %p je me déplace souvent
+                  - q = @portrait.questions.select {|q| q.identifier == 'always_on_the_road' }.first
+                  - q.answer.to_i.times do
+                    %span.back-bag
+                  - (5 - q.answer.to_i).times do
+                    %span.tent
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          .section
+            .row
+              .col-md-6.light-container
+                %p
+                  Je gère moi-même
+                  %br>/
+                  mon temps
+                - q = @portrait.questions.select {|q| q.identifier == 'self_time_management' }.first
+                - q.answer.to_i.times do
+                  %span.v.v-ok
+                - (5 - q.answer.to_i).times do
+                  %span.v.v-ko
+              .visible-xs.visible-sm.small-spacer
+              .col-md-6
+                %p Mon métier est plutôt manuel
+                - q = @portrait.questions.select {|q| q.identifier == 'manual_or_intellectual' }.first
+                - q.answer.to_i.times do
+                  %span.hand
+                - (5 - q.answer.to_i).times do
+                  %span.brain
