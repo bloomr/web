@@ -58,32 +58,8 @@
   </div>
 
   <%= render 'books' %>
-  <div id="portrait_details" role="tabpanel" class="container-wrapper">
-    <div class="container">
-      <div class="row">
-        <div  class="col-md-8 col-md-offset-2">
-          <div class="row">
-            <blockquote class="portrait-love-job">
-              <%= raw(@portrait.answer_to('love_job')) %>
-            </blockquote>
-          </div>
-          <div class="portrait-main">
-            <ul class="portrait-questions">
-              <% @portrait.questions.select(&:interview?).sort_by(&:position).each do |question| %>
-                  <li itemscope itemtype="http://schema.org/Question" data-section-id="<%= question.id %>" class="commentable-section">
-                    <h4 itemprop="name" class="portrait-question-title"><%= question.title %></h4>
-                    <div class="portrait-question-answer" itemscope itemtype="http://schema.org/Answer">
-                      <span itemprop="text"><%= question.answer.html_safe %></span></div>
-                  </li>
-              <% end %>
-            </ul>
-            <p class="merci">Merci <%= @portrait.first_name %> :)</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
+  <%= render 'my_interview' %>
   <%= render 'my_books' %>
   <%= render 'my_work' %>
 

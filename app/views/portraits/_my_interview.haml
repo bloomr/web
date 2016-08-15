@@ -1,0 +1,16 @@
+#portrait_details.container-wrapper{ role: 'tabpanel' }
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        .row
+          %blockquote.portrait-love-job
+            = raw(@portrait.answer_to('love_job'))
+        .portrait-main
+          %ul.portrait-questions
+            - @portrait.questions.select(&:interview?).sort_by(&:position).each do |question|
+              %li.commentable-section{ 'data-section-id' => question.id, itemscope: '', itemtype: 'http://schema.org/Question' }
+                %h4.portrait-question-title{ itemprop: 'name' }= question.title
+                .portrait-question-answer{ itemscope: '', itemtype: 'http://schema.org/Answer' }
+                  %span{ itemprop: 'text' }= question.answer.html_safe
+          %p.merci
+            Merci #{@portrait.first_name} :)
