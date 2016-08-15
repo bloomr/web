@@ -32,3 +32,4 @@
 //= require jquery.fullPage.min
 //= require jquery.payment
 //= require me
+//= require portrait
