@@ -1,0 +1,18 @@
+%div{ style: 'box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);' }
+  .container
+    .row
+      %ul.sectionsBox.col-md-8.col-md-offset-2{ role: 'tablist' }
+        %li{ role: 'presentation' }
+          %a#interview.active{ 'aria-controls' => 'portrait_details', href: '#portrait_details', role: 'tab' }
+            %span.quote
+            mon interview
+        - if @portrait.has_explained_its_works?
+          %li{ role: 'presentation' }
+            %a#work{ 'aria-controls' => 'my-work', href: '#my-work', role: 'tab' }
+              %span.luggage
+              mon travail
+        - if @portrait.books.count > 1
+          %li{ role: 'presentation' }
+            %a#books{ 'aria-controls' => 'my-books', href: '#my-books', role: 'tab' }
+              %span.luggage
+              mes livres de chevet

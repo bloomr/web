@@ -4,79 +4,20 @@
 <% content_for :og_img_url, @portrait.avatar.url("thumb") %>
 
 <div id="portrait_details_2" itemscope itemtype="http://schema.org/QAPage">
-  <div class="portrait_header background-<%= (@portrait.id) %22 %>" itemscope itemtype="http://schema.org/Person">
-      <%= image_tag @portrait.avatar.url("thumb"), :class => "portrait-avatar", :itemprop => "image", :alt => "Photo de " + @portrait.first_name %>
-      <h3>Hello ! Je m'appelle <span class="portrait-name" itemprop="name"><%= @portrait.first_name %></span></h3>
-      <h1>Je suis <span class="portrait-job-title" itemprop="jobTitle"><%= @portrait.job_title %></span></h1>
-      <div class="container keywords">
-          <div class="row">
-            <div class="col-md-10">
-              <div class="mark"></div>
-              <p>
-                Mon métier en <%= @portrait.keyword_associations.length %> mots
-              </p>
-              <ul class="portrait-keywords" itemprop="keywords">
-                <% @portrait.keyword_associations.each do |keyword_association| %>
-                    <% if keyword_association.keyword_popular? %>
-                        <li><a href="<%= tag_path(keyword_association.keyword.tag) %>" class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></a>
-                        </li>
-                    <% else %>
-                        <li><span class="portrait-keyword"><% keyword_association.keyword.tag[0] = keyword_association.keyword.tag[0].capitalize %><%= keyword_association.keyword.tag %></span>
-                        </li>
-                    <% end %>
-                <% end %>
-              </ul>
-            </div>
-            <div class="col-md-2">
-              <div class="mark"></div>
-              <p>Partage mon profil</p>
-              <a class="social-share-button fb" href="https://www.facebook.com/sharer/sharer.php?u=<%= portrait_url(@portrait) %>" target="_blank">
-                <img src="<%= image_path('icons/facebook.png') %>">
-              </a>
-              <a class="social-share-button" href="https://twitter.com/intent/tweet?url=<%= portrait_url(@portrait) %>" target="_blank">
-                <img src="<%= image_path('icons/twitter.png') %>">
-              </a>
-            </div>
-          </div>
-      </div>
-  </div>
+  <%= render 'header' %>
 
-  <div style='box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);'>
-    <div class="container">
-      <div class="row">
-        <ul class="sectionsBox col-md-8 col-md-offset-2" role="tablist">
-          <li role='presentation'><a id="interview" href="#portrait_details" aria-controls="portrait_details" role="tab" class="active"><span class="quote"></span>mon interview</a></li>
-          <% if @portrait.has_explained_its_works? %>
-            <li role='presentation'><a id="work" href="#my-work" aria-controls="my-work" role="tab"><span class="luggage"></span>mon travail</a></li>
-          <% end %>
-          <% if @portrait.books.count > 1 %>
-            <li role='presentation'><a id='books' href='#my-books' aria-controls='my-books' role='tab'><span class='luggage'></span>mes livres de chevet</a></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <%= render 'header' %>
 
+  <%= render 'links' %>
   <%= render 'books' %>
 
   <%= render 'my_interview' %>
   <%= render 'my_books' %>
   <%= render 'my_work' %>
 
-  <div class="actions2">
-    <div>
-      <a href="/portraits/previous?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-left"></span>personne précédente</a>
-    </div>
-    <div class="middle">
-      <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary hidden-xs">Et un témoignagne au hasard ! Un !</a>
-      <a href="<%= aleatoire_portraits_path %>" class="btn btn-primary visible-xs">au hasard !</a>
-      <span><a href="<%= root_path %>">Retour à la galerie</a></span>
-    </div>
-    <div>
-      <a href="/portraits/next?id=<%= @portrait.id %>"><span class="glyphicon glyphicon-arrow-right"></span>personne suivante</a>
-    </div>
-  </div>
-  <div class="enrollment">
-    <p><span>Vous voulez aider nos jeunes ? C'est ici ! > </span><a href="http://eepurl.com/1-BOT" class="btn btn-primary">Témoignez</a></p>
+  <%= render 'actions' %>
+
+  <div class='enrollment'>
+    <p><span>Vous voulez aider nos jeunes ? C'est ici ! > </span><a href='http://eepurl.com/1-BOT' class='btn btn-primary'>Témoignez</a></p>
   </div>
 </div>

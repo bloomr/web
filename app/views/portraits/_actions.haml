@@ -1,0 +1,14 @@
+.actions2
+  %div
+    %a{ href: "/portraits/previous?id=#{@portrait.id}" }
+      %span.glyphicon.glyphicon-arrow-left
+      personne précédente
+  .middle
+    %a.btn.btn-primary.hidden-xs{ href: aleatoire_portraits_path } Et un témoignagne au hasard ! Un !
+    %a.btn.btn-primary.visible-xs{ href: aleatoire_portraits_path } au hasard !
+    %span
+      %a{ href: root_path } Retour à la galerie
+  %div
+    %a{ href: "/portraits/next?id=#{@portrait.id}" }
+      %span.glyphicon.glyphicon-arrow-right
+      personne suivante
