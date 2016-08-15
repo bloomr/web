@@ -1,0 +1,12 @@
+= link_to(portrait_path(portrait), itemprop: 'url') do
+  %div{ class: "background-#{(portrait.id) %22}" }
+    = image_tag portrait.avatar.url('thumb'), class: 'portrait-avatar', width: '104px', height: '104px', itemprop: 'image', alt: 'Photo de ' + portrait.first_name
+    .overlay
+      %h3.portrait-infos-right.portrait-name{ itemprop: 'name' }= portrait.first_name
+      %h2.panel-title.portrait-job-title{ itemprop: 'jobTitle' }= truncate(portrait.job_title, length: 70, separator: ' ', omission: '...')
+      = image_tag('icons/icon-quote.png', height: '24px', width: '27px')
+      - if portrait.answer_to('love_job')
+        %blockquote.portrait-love-job
+          = truncate(raw(portrait.answer_to('love_job')), length: 100, separator: ' ', omission: '')
+          \...
+      %span.btn.btn-primary ... Lire la suite
