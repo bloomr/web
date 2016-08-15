@@ -1,0 +1,9 @@
+#my-books{ role: 'tabpanel', style: 'display:none;' }
+  %ul
+    - @portrait.books.each do |book|
+      %li
+        %a{ href: "http://www.amazon.fr/dp/#{book.asin}/?tag=#{ENV['AWS_PARTNER_TRACKING_ID']}", target: '_blank' }
+          %img{ src: book.image_url }
+          .description
+            %p.title #{book.title}
+            %p.author de #{book.author}

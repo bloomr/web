@@ -410,6 +410,56 @@ ul#portraits_list {
   top: 64px;
   position: relative;
   margin-bottom: 100px;
+  #my-books {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        max-width: 600px;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .description {
+      max-width: 450px;
+    }
+    background-color: #f6f6f6;
+    a {
+      outline: none;
+      margin-top: 4px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      display: flex;
+      color: #3e3e3e;
+      img {
+        transform: rotate(-10deg);
+        margin-right: 50px;
+        transition: all 0.3s ease 0s;
+      }
+      .bedside {
+        font-family: Satisfy;
+        font-size: 26px;
+        letter-spacing: 0.8px;
+      }
+      .title {
+        font-family: 'Open Sans';
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: bold;
+      }
+      .author {
+        font-family: 'Open Sans';
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      &:hover {
+        img {
+          transform: rotate(0);
+        }
+      }
+    }
+  }
+
   .books {
     background-color: #f6f6f6;
     a {

@@ -41,18 +41,21 @@
       </div>
   </div>
 
-  <% if @portrait.has_explained_its_works? %>
   <div style='box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);'>
     <div class="container">
       <div class="row">
         <ul class="sectionsBox col-md-8 col-md-offset-2" role="tablist">
-          <li role="presentation"><a id="interview" href="#portrait_details" aria-controls="portrait_details" role="tab" class="active"><span class="quote"></span>mon interview</a></li>
-          <li role="presentation"><a id="work" href="#my-work" aria-controls="my-work" role="tab"><span class="luggage"></span>mon travail</a></li>
+          <li role='presentation'><a id="interview" href="#portrait_details" aria-controls="portrait_details" role="tab" class="active"><span class="quote"></span>mon interview</a></li>
+          <% if @portrait.has_explained_its_works? %>
+            <li role='presentation'><a id="work" href="#my-work" aria-controls="my-work" role="tab"><span class="luggage"></span>mon travail</a></li>
+          <% end %>
+          <% if @portrait.books.count > 1 %>
+            <li role='presentation'><a id='books' href='#my-books' aria-controls='my-books' role='tab'><span class='luggage'></span>mes livres de chevet</a></li>
+          <% end %>
         </ul>
       </div>
     </div>
   </div>
-  <% end %>
 
   <%= render 'books' %>
   <div id="portrait_details" role="tabpanel" class="container-wrapper">
@@ -80,6 +83,8 @@
       </div>
     </div>
   </div>
+
+  <%= render 'my_books' %>
 
   <% if @portrait.has_explained_its_works? %>
   <div id="my-work" role="tabpanel" style="display: none;">
