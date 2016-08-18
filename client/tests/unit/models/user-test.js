@@ -1,15 +1,13 @@
 import { moduleForModel, test } from 'ember-qunit';
 import Ember from 'ember';
-import { makeList, manualSetup } from 'ember-data-factory-guy';
+import { make, makeList, manualSetup } from 'ember-data-factory-guy';
 
 moduleForModel('user', 'Unit | Model | user', {
   // Specify the other units that are required for this test.
-  needs: ['model:tribe', 'model:question', 'model:challenge', 'model:book', 'model:keyword']
-});
-
-test('it exists', function(assert) {
-  let model = this.subject();
-  assert.ok(!!model);
+  needs: ['model:tribe', 'model:question', 'model:challenge', 'model:book', 'model:keyword'],
+  beforeEach() {
+    manualSetup(this.container);
+  }
 });
 
 test('isPhotoUploaded is false initially', function(assert) {
@@ -84,4 +82,24 @@ test('isFirstInterviewAnswered is true if firstquestions and jobTitle and doAuth
   }));
 
   assert.ok(this.subject().get('isFirstInterviewAnswered'));
+});
+
+test('add challenge', function(assert) {
+  let challenge = make('challenge');
+  let model = this.subject();
+
+  return model.addChallenge(challenge)
+    .then((user) => { assert.equal(user.get('challenges.length'), 1); });
+});
+
+test('set tribes', function(assert) {
+  let [t0, t1] = makeList('tribe', 2);
+  let model = this.subject();
+  model.get('tribes').addObject(t0);
+
+  return model.setTribes([t1])
+    .then((user) => { 
+      assert.equal(user.get('tribes.length'), 1); 
+      assert.equal(user.get('tribes').objectAt(0), t1); 
+    });
 });

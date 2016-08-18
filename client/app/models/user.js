@@ -25,5 +25,20 @@ export default Model.extend({
   }),
   isFirstInterviewAnswered: Ember.computed('doAuthorize', 'jobTitle', 'isFirstQuestionsAnswered', function(){
     return  this.get('doAuthorize') && this.get('jobTitle') && this.get('isFirstQuestionsAnswered');
-  })
+  }),
+
+  addChallenge(challenge) {
+    return this.get('challenges')
+      .then(userChallenges => {
+        userChallenges.addObject(challenge);
+        return this;
+      });
+  },
+  setTribes(tribe) {
+    return this.get('tribes')
+      .then(userTribes => {
+        userTribes.setObjects(tribe);
+        return this;
+      });
+  }
 });

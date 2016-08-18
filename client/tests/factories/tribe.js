@@ -6,8 +6,8 @@ FactoryGuy.define('tribe', {
   },
 
   default: {
-  name: FactoryGuy.generate('tribeName'),
-  description: 'description',
-  normalizedName: 'normalizedName',
+    name: FactoryGuy.generate('tribeName'),
+    description: 'description',
+    normalizedName: 'normalizedName',
   },
 });
