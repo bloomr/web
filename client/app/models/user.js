@@ -34,10 +34,10 @@ export default Model.extend({
         return this;
       });
   },
-  setTribes(tribe) {
+  setTribes(tribes) {
     return this.get('tribes')
       .then(userTribes => {
-        userTribes.setObjects(tribe);
+        userTribes.setObjects(tribes);
         return this;
       });
   }

@@ -89,16 +89,17 @@ test('add challenge', function(assert) {
   let model = this.subject();
 
   return model.addChallenge(challenge)
-    .then((user) => { assert.equal(user.get('challenges.length'), 1); });
+    .then(user => assert.equal(user.get('challenges.length'), 1));
 });
 
 test('set tribes', function(assert) {
   let [t0, t1] = makeList('tribe', 2);
   let model = this.subject();
-  model.get('tribes').addObject(t0);
 
-  return model.setTribes([t1])
-    .then((user) => { 
+  return model.get('tribes')
+    .then(tribes => tribes.addObjects([t0]))
+    .then(() => model.setTribes([t1]))
+    .then(user => { 
       assert.equal(user.get('tribes.length'), 1); 
       assert.equal(user.get('tribes').objectAt(0), t1); 
     });
