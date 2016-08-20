@@ -62,6 +62,12 @@ test('a user whith no tribe start with the choice screen', function(assert) {
   assert.ok(this.$().text().includes(choiceSentence));
 });
 
+test('the choice screen includes the tribes name', function(assert) {
+  this.set('user.tribes', []);
+  this.render(hbs`{{challenge-tribes user=user}}`);
+  assert.ok(this.$().text().includes('tribe1'));
+});
+
 test('a user who has allready done the challenge start with the intro screen', function(assert) {
   this.get('user.challenges').setObjects([make('challenge', {name: 'the tribes'})]);
   this.render(hbs`{{challenge-tribes user=user}}`);

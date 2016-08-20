@@ -11,7 +11,8 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
 
-    this.set('tribes', this.get('store').findAll('tribe'));
+    this.get('store').findAll('tribe')
+      .then(t => this.set('tribes', t));
 
     this.get('user.tribes')
       .then(tribes => tribes.toArray())
