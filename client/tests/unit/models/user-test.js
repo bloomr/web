@@ -104,3 +104,17 @@ test('set tribes', function(assert) {
       assert.equal(user.get('tribes').objectAt(0), t1); 
     });
 });
+
+test('questions_by_step', function(assert) {
+  let [q0, q1] = makeList('question', {step: 'first_interview'}, {step: 'other'});
+
+  let model = this.subject();
+
+  return model.get('questions')
+    .then(questions => questions.addObjects([q0, q1]))
+    .then(() => model.questions_by_step('first_interview'))
+    .then(questions => { 
+      assert.equal(questions.get('length'), 1); 
+      assert.equal(questions[0], q0); 
+    });
+});

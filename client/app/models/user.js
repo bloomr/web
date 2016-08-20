@@ -27,6 +27,10 @@ export default Model.extend({
     return  this.get('doAuthorize') && this.get('jobTitle') && this.get('isFirstQuestionsAnswered');
   }),
 
+  questions_by_step(step) {
+    return this.get('questions')
+      .then(questions => questions.filterBy('step', step));
+  },
   addChallenge(challenge) {
     return this.get('challenges')
       .then(userChallenges => {
