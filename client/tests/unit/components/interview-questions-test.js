@@ -7,10 +7,15 @@ moduleForComponent('interview-questions', {
   needs: ['model:user', 'model:question'],
   beforeEach() {
     manualSetup(this.container);
-    this.questions = makeList('question', 2);
+    let options = { step: 'first_interview' };
+    this.questions = makeList('question', options, {});
     this.user = make('user', { questions: this.questions });
     this.component = this.subject({user: this.user});
   }
+});
+
+test('fill firstQuestions', function(assert){
+  assert.equal(this.component.get('firstQuestions.length'), 1);
 });
 
 test('disabled is true at the beginning', function(assert) {

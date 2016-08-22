@@ -10,7 +10,8 @@ moduleForComponent('challenge-interview', {
     manualSetup(this.container);
     mockFindAll('keyword');
 
-    let questions = makeList('question', 3);
+    let interviewQ = { step: 'first_interview' };
+    let questions = makeList('question', interviewQ, interviewQ, interviewQ);
     questions.forEach(q => sinon.stub(q, 'save'));
 
     this.user = make('user', { questions: questions });
@@ -30,6 +31,9 @@ test('toggle doAuthorize', function(assert) {
   assert.notOk(this.user.get('doAuthorize'));
 });
 
+test('populates first interview questions', function(assert) {
+  assert.equal(this.component.get('firstInterviewQuestions.length'), 3);
+});
 
 test('saveNewKeyword', function(assert) {
   let saveStub = sinon.stub();

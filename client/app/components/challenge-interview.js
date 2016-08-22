@@ -10,6 +10,7 @@ export default Ember.Component.extend({
   step1: true,
   step2: false,
   step3: false,
+  firstInterviewQuestions: null,
   observeStep: Ember.observer('step', function(){
     this.updateView();
   }),
@@ -27,6 +28,8 @@ export default Ember.Component.extend({
     this.get('user.keywords').then(keywords => {
       this.set('selectedKeywords', keywords.toArray());
     });
+    this.get('user').questions_by_step('first_interview')
+      .then(questions => this.set('firstInterviewQuestions', questions));
   },
   showOnly(step){
     this.set('step1', false);

@@ -27,7 +27,7 @@
         label.job Quels sont les 5 mots clés qui vous viennent à l'esprit spontanément lorsque vous pensez à votre métier&nbsp;?
         = component 'keywords-select' options=options selected=selectedKeywords tabindex=2
 
-      component 'questions-editor' questions=user.questions
+      component 'questions-editor' questions=firstInterviewQuestions
 
       | {{ input style='cursor: pointer' id='doAuthorize' type='checkbox' name='doAuthorize' checked=user.doAuthorize click='toggleDoAuthorize' }}
       label style='cursor: pointer' for='doAuthorize' Acceptez la publication de vos réponses (votre adresse email reste confidentielle, bien évidemment)
