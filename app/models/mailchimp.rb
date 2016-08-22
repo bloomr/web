@@ -40,7 +40,10 @@ class Mailchimp
     def send_template(template_name:, to_mail:, from_name:,
                       from_mail:, subject:, vars:)
 
-      return if ENV['DISABLE_MAILS']
+      if ENV['DISABLE_MAILS']
+        puts 'sending mail is desactivated by conf'
+        return
+      end
 
       vars = vars.inject([]) do |acc, couple|
         acc.push('name' => couple[0].to_s, 'content' => couple[1])
