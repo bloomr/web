@@ -62,7 +62,7 @@ RSpec.describe Api::V1::MeController, type: :request do
         'step' => nil,
         'title' => 'title'
       }
-      expect_includes_relation('questions', [hash])
+      expect_includes_relation('questions', [hash, hash])
     end
 
     it 'includes the challenges relation' do
