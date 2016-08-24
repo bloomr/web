@@ -38,10 +38,24 @@ export default Model.extend({
         return this;
       });
   },
+  removeChallenge(challenge) {
+    return this.get('challenges')
+      .then(userChallenges => {
+        userChallenges.removeObject(challenge);
+        return this;
+      });
+  },
   setTribes(tribes) {
     return this.get('tribes')
       .then(userTribes => {
         userTribes.setObjects(tribes);
+        return this;
+      });
+  },
+  setBooks(books) {
+    return this.get('books')
+      .then(userBooks => {
+        userBooks.setObjects(books);
         return this;
       });
   }

@@ -92,6 +92,16 @@ test('add challenge', function(assert) {
     .then(user => assert.equal(user.get('challenges.length'), 1));
 });
 
+test('remove challenge', function(assert) {
+  let challenge = make('challenge');
+  let model = this.subject();
+
+  return model.get('challenges')
+    .then(c => c.addObject(challenge))
+    .then(() => model.removeChallenge(challenge))
+    .then(u => assert.equal(u.get('challenges.length'), 0));
+});
+
 test('set tribes', function(assert) {
   let [t0, t1] = makeList('tribe', 2);
   let model = this.subject();
@@ -102,6 +112,19 @@ test('set tribes', function(assert) {
     .then(user => { 
       assert.equal(user.get('tribes.length'), 1); 
       assert.equal(user.get('tribes').objectAt(0), t1); 
+    });
+});
+
+test('set books', function(assert) {
+  let [b0, b1] = makeList('book', 2);
+  let model = this.subject();
+
+  return model.get('books')
+    .then(books => books.addObjects([b0]))
+    .then(() => model.setBooks([b1]))
+    .then(user => { 
+      assert.equal(user.get('books.length'), 1); 
+      assert.equal(user.get('books').objectAt(0), b1); 
     });
 });
 
