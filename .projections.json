@@ -3,4 +3,55 @@
     "type": "resource"
   },
 
+  "client/app/adapters/*.js": {
+    "type": "cadapter"
+  },
+
+  "client/app/components/*.js": {
+    "type": "ccomponent",
+  },
+
+  "client/app/services/*.js": {
+    "type": "cservice",
+  },
+
+  "client/app/controllers/*.js": {
+    "type": "ccontroller"
+  },
+
+  "client/app/helpers/*.js": {
+    "type": "chelper"
+  },
+
+  "client/app/models/*.js": {
+    "type": "cmodel"
+  },
+
+  "client/app/router.js": {
+    "type": "crouter"
+  },
+
+  "client/app/routes/*.js": {
+    "type": "croute"
+  },
+
+  "client/app/styles/*.scss": {
+    "type": "cstyle"
+  },
+
+  "client/app/templates/*.hbs": {
+    "type": "ctemplate"
+  },
+
+  "client/app/templates/*.emblem": {
+    "type": "ctemplate"
+  },
+
+  "client/app/utils/*.js": {
+    "type": "cutil"
+  },
+
+  "client/app/views/*.js": {
+    "type": "cview"
+  },
 }
