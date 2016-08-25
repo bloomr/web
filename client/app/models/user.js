@@ -33,30 +33,22 @@ export default Model.extend({
   },
   addChallenge(challenge) {
     return this.get('challenges')
-      .then(userChallenges => {
-        userChallenges.addObject(challenge);
-        return this;
-      });
+      .then(userChallenges => userChallenges.addObject(challenge))
+      .then(() => this);
   },
   removeChallenge(challenge) {
     return this.get('challenges')
-      .then(userChallenges => {
-        userChallenges.removeObject(challenge);
-        return this;
-      });
+      .then(userChallenges => userChallenges.removeObject(challenge))
+      .then(() => this);
   },
   setTribes(tribes) {
     return this.get('tribes')
-      .then(userTribes => {
-        userTribes.setObjects(tribes);
-        return this;
-      });
+      .then(userTribes => userTribes.setObjects(tribes))
+      .then(() => this);
   },
   setBooks(books) {
     return this.get('books')
-      .then(userBooks => {
-        userBooks.setObjects(books);
-        return this;
-      });
+      .then(userBooks => userBooks.setObjects(books))
+      .then(() => this);
   }
 });
