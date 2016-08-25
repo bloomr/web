@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
-import { make, manualSetup } from 'ember-data-factory-guy';
+import { make, makeList, manualSetup, mockFindAll } from 'ember-data-factory-guy';
 import sinon from 'sinon';
 import { initCustomAssert } from '../../assertions/custom';
 
@@ -28,6 +28,9 @@ let stubAndReturnPromise = (obj, name, result) => {
 };
 
 test('I can search a book and add it to my collections', function(assert) {
+  let [interview, tribes, mustRead] = 
+    makeList('challenge', {name: 'interview'}, {name: 'tribes'}, {name: 'must read'});
+  mockFindAll('challenge').returns({models: [interview, tribes, mustRead]});
 
   this.render(hbs`{{challenge-mustread user=user challenges=challenges}}`);
 

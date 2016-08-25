@@ -3,6 +3,8 @@ import { make, manualSetup } from 'ember-data-factory-guy';
 import Ember from 'ember';
 import sinon from 'sinon';
 
+let Promise = Ember.RSVP.Promise; // jshint ignore:line
+
 let stubAndReturnPromise = (obj, name, result) => {
   let promise = $.Deferred();
   promise.resolve(result);
@@ -45,11 +47,12 @@ test('saveNewBooks saves ... new book', function(assert) {
   saveStub.returns(result);
   createRecordStub.returns({save: saveStub});
 
-  let records = component.saveNewBooks([{title: 'title'}]);
-
-  assert.ok(createRecordStub.called);
-  assert.ok(saveStub.called);
-  assert.equal(records[0], result);
+  return component.saveNewBooks([{title: 'title'}])
+    .then(records => {
+      assert.ok(createRecordStub.called);
+      assert.ok(saveStub.called);
+      assert.equal(records[0], result);
+    });
 });
 
 test('saveNewBooks does not save ... old book', function(assert) {
@@ -57,50 +60,30 @@ test('saveNewBooks does not save ... old book', function(assert) {
   let book = make('book');
   let createRecordStub = sinon.stub(this.container.lookup('service:store'), 'createRecord');
 
-  let records = component.saveNewBooks([book]);
-
-  assert.notOk(createRecordStub.called);
-  assert.equal(records[0], book);
-});
-
-test('addOrRemoveMustReadChallenge removes challenge if not books left', function(assert) {
-  let mustReadChallenge = make('challenge', { name: 'must read' });
-  let component = this.subject({user: this.user, challenges: [mustReadChallenge]});
-  let userChallenges = [mustReadChallenge];
-  component.addOrRemoveMustReadChallenge([], userChallenges);
-
-  assert.equal(userChallenges.length, 0);
-});
-
-test('addOrRemoveMustReadChallenge add challenge if at least a book', function(assert) {
-  let mustReadChallenge = make('challenge', { name: 'must read' });
-  let component = this.subject({user: this.user, challenges: [mustReadChallenge]});
-  let userChallenges = [];
-  component.addOrRemoveMustReadChallenge(make('book'), userChallenges);
-
-  assert.equal(userChallenges.length, 1);
-  assert.equal(userChallenges[0], mustReadChallenge);
+  return component.saveNewBooks([book])
+    .then(records => {
+      assert.notOk(createRecordStub.called);
+      assert.equal(records[0], book);
+    });
 });
 
 test('saveBookAndUser', function(assert) {
-  let component = this.subject({user: this.user, challenges: this.challenges});
+
+  let challengeService = { updateMustReadChallenge: sinon.spy(u => Promise.resolve(u)) };
+  let component = this.subject({user: this.user, challenges: this.challenges, challengeService});
   component.selectedBooks = [{title: 'title'}];
 
   let book = make('book');
-  let bookPromise = $.Deferred();
-  bookPromise.resolve(book);
+  let records = Promise.resolve([book]);
   let saveNewBooksStub = sinon.stub(component, 'saveNewBooks');
-  saveNewBooksStub.returns([bookPromise]);
+  saveNewBooksStub.returns(records);
 
-  sinon.stub(component, 'addOrRemoveMustReadChallenge');
+  return component.saveBookAndUser()
+    .then(u => {
+      assert.equal(u.get('books.length'), 1);
+      assert.ok(challengeService.updateMustReadChallenge.calledWith(u));
+      assert.ok(u.save.called);
+      assert.ok(component.saveNewBooks.calledWith(component.selectedBooks));
+    });
 
-  Ember.run(() => { component.saveBookAndUser(); });
-
-  assert.equal(this.user.get('books.length'), 1);
-  assert.ok(this.user.save.called);
-  assert.ok(component.saveNewBooks.calledWith(component.selectedBooks));
-
-  this.user.get('challenges').then(challenges => {
-    assert.ok(component.addOrRemoveMustReadChallenge.calledWith([book], challenges));
-  });
 });

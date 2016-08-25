@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   store: Ember.inject.service(),
   bookSearch: Ember.inject.service(),
+  challengeService: Ember.inject.service(),
   keywords: '',
   books: Ember.ArrayProxy.create({ content: [] }),
   selectedBooks: Ember.ArrayProxy.create({ content: [] }),
@@ -40,30 +41,22 @@ export default Ember.Component.extend({
     this.set('show' + name, true);
   },
   saveNewBooks(books) {
-    return books.map(book => {
+    return Ember.RSVP.Promise.all(books.map(book => {
       //if its a book model (it has the get method) we dont record it
       if (book.get) { return book; }
       return this.get('store').createRecord('book', book).save();
-    });
-  },
-  addOrRemoveMustReadChallenge(books, userChallenges) {
-    let mustReadChallenge = this.get('challenges').findBy('name', 'must read');
-    if(books.length !== 0) {
-      userChallenges.addObject(mustReadChallenge);
-    } else {
-      userChallenges.removeObject(mustReadChallenge);
-    }
+    }));
   },
   saveBookAndUser() {
-    let bookRecordsPromises = this.saveNewBooks(this.get('selectedBooks'));
+    let user = this.get('user');
+    let challengeService = this.get('challengeService');
+    let books = this.get('selectedBooks');
 
-    Ember.RSVP.Promise.all(bookRecordsPromises).then(bookRecords => {
-      this.set('user.books', bookRecords);
-      this.get('user.challenges').then(challenges => {
-        this.addOrRemoveMustReadChallenge(bookRecords, challenges);
-        this.get('user').save();
-      });
-    });
+    return this.saveNewBooks(books)
+      .then(books => user.setBooks(books))
+      .then(user => challengeService.updateMustReadChallenge(user))
+      .then(u => u.save())
+      .then(() => user);
   },
   actions: {
     search() {
