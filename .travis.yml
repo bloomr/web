@@ -1,7 +1,12 @@
 language: ruby
-bundler_args: --without darwin --jobs=3 --retry=3 --deployment --path=${BUNDLE_PATH:-vendor/bundle}
+bundler_args: "--without darwin --jobs=3 --retry=3 --deployment --path=${BUNDLE_PATH:-vendor/bundle}"
 cache: bundler
-sudo: false
+env:
+  secure: AxjpR8GPCmN3YBpPsriYdDxFb2GcbXnd4YYHnNnQXA+7epmMOFdT2BoCV9IZ1SivVrKjiA94T931LAo97oqQRShLawdt13N1podRWN/ZX1pgvRtfIoScr8nd6L7olNjVEGz5uoKe/rfF6BvPXX3OHABMeRY4oE4EKgDbZR7tEt2thJktcS0gbRK3/U7yqW+FpOMqq0NXgRsemp2ZaNyQrDbIjS0slF4beQd0wFrw3qRqD4bZj5qfvja7NtpIjwZJn1VP/X+/l738nPWwX/a8ql40bMxk9u8sYP+xA19QrnxQjooiFUewJD1v1hXq5lUuCI3b83na7ITdWUW6LEHYkceH6XvLC/t7j/zMbVc32gnfxJi3N6d+/4Xp44r9bmmqk3aoO8dbSjjTsG4GHTf9xh0/FI3LdiTM+EK1nCoydpbLBwnG9uf2R7i6TOiO2x5YTkoxn3PT/LAHWFmJJwMoqofUali4sK1X8x0yicYezx1kFPkg7X95WYOqadBwZqEth7KcxAX13txTd15dvX1fX10YwxcWbUZWtghZewXbrS7Mp0oy9WTb+XKJTx1tNYKRyI374FAiq1VDl4AeOxtWqeutGc1T6kmOTAtrFNnN9n/OkdulpHAWdVSvIiLwXjpRKexSjSfZaIoI3okHPvKhohHQCk5eXD3uSCMqvFl23+w=
+addons:
+  sauce_connect: true
+before_install:
+- nvm install node
 script:
 - cp config/database.yml.dist config/database.yml
 - bundle exec rake db:reset RAILS_ENV=test
@@ -12,7 +17,7 @@ deploy:
     secure: uic3bSlzs6AKDkA6cxkGcyWJ/dNeN/r8loErU5ZUYrQmDvYB5FpXaa5HqRF4FhU6Bd6/9oM6wFS0h4SnlRKvOxZOiYcT1jCFTRddaKcnftp9AfxtBBP1kwLmQYymukTAUfCuU3dSPp4qJn/P8mTyxy2M5oyCqdAfQMkUW1dgCIrGAWGvqcPIHj2MtfvCVfAGttcImIPnTr70pgXnoz3Bp5zDEijwVzHLDlli1A2rvCuk+mMTZm8erF8QozF3ESYk63f7T9VGMSWuzqfeNVvd7k8/FIRO2tZgbmh5CzwXte2Um5yae8vPJWQc1JOBvRsM7SOzfDzZWU+I8QS64RGE1SuFV5LKLwgGkPYMVU9Pn1kEpzuo7HltmH0Po9VIAVUWWmJwgH4TXYas0IMLrGOIiSBY1Q8AIC5aehG71e3+9C+d2vE7f/gwbjRb5mzoK+ahjoD+/lt3KNNWwOUtOtnI+8OCo7shnh8hZvRISA8gUZeqmRvJNFhIQ2pJdIHeU1OLmmidA1FY1aOzSiW/8+xuvvu7kKWx8Xr2ZhxK7SAf3DF3cKIG7hx2+WhhpzxoQ8qrIsQivKotiVwobWM1NYNJ30WYuqmNsQLU7s6tCBXKee3sUIgEZ3f9riPiRx6NIKNx3aw2uYVD93Z8oRKMh8dMkhMvLuiWlH8abevPcIXRqps=
   run: rake db:migrate
   app:
-      develop: staging-bloomr
-      master: bloomr
+    develop: staging-bloomr
+    master: bloomr
   on:
     repo: bloomr/web

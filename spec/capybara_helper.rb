@@ -1,12 +1,37 @@
 require 'rails_helper'
 require 'database_cleaner'
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
-end
+require 'selenium/webdriver'
 
-Capybara.default_driver = :selenium
-# Capybara.app_host = 'http://localhost:3000'
+if ENV['TRAVIS']
+  caps = {
+    platform: 'OS X 10.10',
+    browserName: 'Chrome',
+    version: '52',
+    'tunnel-identifier': ENV['TRAVIS_JOB_NUMBER'],
+    'name': "Travis #{ENV['TRAVIS_JOB_NUMBER']}"
+  }
+
+  webdriver_config = {
+    browser: :remote,
+    url: "http://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:80/wd/hub",
+    desired_capabilities: caps
+  }
+
+  Capybara.register_driver :light_sauce do |app|
+    Capybara::Selenium::Driver.new(app,
+                                   webdriver_config)
+  end
+  Capybara.default_driver = :light_sauce
+  Capybara.javascript_driver = :light_sauce
+else
+
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+
+  Capybara.default_driver = :selenium
+end
 
 require 'capybara/rspec'
 
