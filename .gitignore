@@ -33,3 +33,4 @@ Procfile.dev
 
 node_modules/
 public/ember.html
+public/system
