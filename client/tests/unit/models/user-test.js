@@ -11,7 +11,7 @@ moduleForModel('user', 'Unit | Model | user', {
 });
 
 test('isPhotoUploaded is false initially', function(assert) {
-  Ember.run(() => this.subject().set('avatarUrl', 'missing_thumb.png-0123'));
+  Ember.run(() => this.subject().set('avatarUrl', 'missing.png-0123'));
   assert.notOk(this.subject().get('isPhotoUploaded'));
 });
 
