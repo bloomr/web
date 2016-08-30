@@ -1,8 +1,5 @@
 require 'capybara_helper'
 
-# build ember app
-`npm install`
-
 feature 'the private profile' do
   describe 'with some default data', js: true do
     QUESTION_COUNT = 3

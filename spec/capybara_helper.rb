@@ -22,15 +22,13 @@ if ENV['TRAVIS']
     Capybara::Selenium::Driver.new(app,
                                    webdriver_config)
   end
-  Capybara.default_driver = :light_sauce
   Capybara.javascript_driver = :light_sauce
 else
-
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
-  Capybara.default_driver = :selenium
+  Capybara.javascript_driver = :selenium
 end
 
 require 'capybara/rspec'

@@ -10,7 +10,7 @@ before_install:
 script:
 - cp config/database.yml.dist config/database.yml
 - bundle exec rake db:reset RAILS_ENV=test
-- bundle exec rake
+- bundle exec rake testing:all
 deploy:
   provider: heroku
   api_key:
