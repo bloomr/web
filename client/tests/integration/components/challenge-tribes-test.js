@@ -45,7 +45,7 @@ test('a user can change its tribes', function(assert) {
   assert.ok(this.get('user.tribes').indexOf(this.tribe2) !== -1);
   assert.ok(this.$().text().includes(successSentence));
 
-  assert.ok(this.$().text().includes('Bienvenue chez : tribe3, tribe1 !'));
+  assert.ok(this.$().text().includes('Bienvenue chez : tribe3 et tribe1 !'));
 });
 
 test('a user accepts its default tribe', function(assert) {
