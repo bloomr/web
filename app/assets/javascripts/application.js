@@ -27,8 +27,6 @@
 //= require algoliasearch.min
 //= require search
 //= require hotjar
-//= require wysihtml-toolbar.min
-//= require advanced_and_extended
 //= require jquery.fullPage.min
 //= require jquery.payment
 //= require me
