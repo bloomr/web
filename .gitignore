@@ -34,3 +34,5 @@ Procfile.dev
 node_modules/
 public/ember.html
 public/system
+TODO.txt
+client/note_ember.txt
