@@ -32,6 +32,9 @@ feature 'the private profile' do
       end
       click_button 'Go Go Go !'
 
+      find('.greetings', wait: 15)
+      wait_for_ajax
+
       yield
     end
 
@@ -58,7 +61,10 @@ feature 'the private profile' do
         within('.fileinput-button.interview') do
           attach_file('avatar', Rails.root + 'spec/fixtures/chewbacca.png')
         end
-        click_button 'Continuer'
+
+        wait_for_ajax
+
+        click_button 'Continuer', wait: 30
         (1..3).each { |e| add_in_multiple_select("k#{e}") }
 
         fill_trix_editors = <<-SCRIPT
