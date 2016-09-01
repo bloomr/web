@@ -21,7 +21,7 @@ RSpec.describe Mailchimp, type: :model do
       let(:body) do
         { 'status' => 'subscribed', 'email_address' => bloomy.email,
           'merge_fields' =>
-        { 'FNAME' => bloomy.first_name, 'MMERGE3' => bloomy.age } }.to_json
+        { 'FNAME' => bloomy.first_name, 'AGE' => bloomy.age } }.to_json
       end
 
       it 'calls the mailchimp api with all the data' do

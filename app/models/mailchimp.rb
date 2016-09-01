@@ -5,7 +5,7 @@ class Mailchimp
     def subscribe_to_journey(bloomy)
       body = { 'status' => 'subscribed', 'email_address' => bloomy.email,
                'merge_fields' => { 'FNAME' => bloomy.first_name } }
-      body['merge_fields']['MMERGE3'] = bloomy.age if bloomy.age
+      body['merge_fields']['AGE'] = bloomy.age if bloomy.age
       response = HTTParty.post(JOURNEY_URL, headers: headers, body: body.to_json)
       raise "Mailchimp Error: #{response}" unless response.success?
     end
