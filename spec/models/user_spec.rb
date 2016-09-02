@@ -252,7 +252,7 @@ RSpec.describe User, type: :model do
   describe '.create_with_default_questions' do
     describe 'with the mandatory parameters' do
       let!(:first_interview_question) do
-        create(:question, step: 'first_interview', title: 'fi')
+        create(:question, step: 'first_interview', title: 'fi', published: false)
       end
       let(:user) do
         User.create_with_default_questions!(
@@ -264,9 +264,10 @@ RSpec.describe User, type: :model do
         expect(user.email).to eq('loulou@lou.com')
       end
 
-      it 'provide default questions' do
+      it 'provide default questions in published state' do
         expect(user.questions.length).to eq(1)
         expect(user.questions.first.title).to eq('fi')
+        expect(user.questions.first.published).to be(true)
         expect(user.questions.first).not_to eq(first_interview_question)
       end
     end

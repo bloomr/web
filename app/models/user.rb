@@ -50,9 +50,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  # by default the questions are published by default to ease
+  # the human validation step
   def self.create_with_default_questions!(params)
     user = User.new(params)
     user.questions += Question.first_interview_canonicals.map(&:dup)
+    user.questions.each { |e| e.published = true }
     user.save!
     user
   end
