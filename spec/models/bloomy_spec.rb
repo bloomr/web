@@ -6,12 +6,26 @@ RSpec.describe Bloomy, type: :model do
                password: 'totototototo')
   end
 
-  it 'can be saved without a first_name' do
+  it 'can not be saved without a first_name' do
     bloomy.first_name = nil
     expect(bloomy.save).to be(false)
   end
 
   it 'is saved otherwise' do
     expect(bloomy.save).to be(true)
+  end
+
+  describe 'an old bloomy with no first_name' do
+    let(:old_bloomy) do
+      bloomy.save!
+      bloomy.first_name = nil
+      bloomy.save!
+      bloomy.reload
+    end
+
+    it 'can change its password' do
+      old_bloomy.password = 'tatatatatata'
+      expect(old_bloomy.save).to be(true)
+    end
   end
 end

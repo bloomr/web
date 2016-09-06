@@ -4,5 +4,5 @@ class Bloomy < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, presence: true
+  validates :first_name, presence: true, on: :create
 end
