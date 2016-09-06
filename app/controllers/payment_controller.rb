@@ -39,7 +39,8 @@ class PaymentController < ApplicationController
       source: params[:stripeToken],
       description: '1 Parcours Bloomr',
       receipt_email: bloomy.email,
-      metadata: metadata(bloomy))
+      metadata: metadata(bloomy)
+    )
   end
 
   def amount
@@ -56,5 +57,4 @@ class PaymentController < ApplicationController
   def price_to_display
     format('%0.02f', amount.to_f / 100)
   end
-
 end
