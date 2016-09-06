@@ -1,0 +1,11 @@
+.full-blue
+  .center
+    %h1 Mot de passe oublié ?
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+
+      = f.email_field :email, placeholder: 'Votre adresse mail', autofocus: true, class: 'blue', required: true
+
+      %div{ style: 'position: relative; display: inline-block' }
+        = f.submit 'Réinitialiser mon mot de passe', class: 'crazy-btn', style: 'width: inherit;'
+        .shadow

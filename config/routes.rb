@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { passwords: 'passwords',
                                     sessions: 'sessions' }
 
+  devise_for :bloomies, only: :passwords,
+                        controllers: { passwords: 'passwords' }
+
   resources :payment, only: [:index, :create]
   get '/payment/thanks', to: 'payment#thanks'
 

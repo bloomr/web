@@ -8,23 +8,14 @@ class ApplicationController < ActionController::Base
     render :text => "404 Not Found", :status => 404
   end
 
-  after_filter :store_action
-
-  def store_action
-    return unless request.get?
-    if (request.path != "/users/sign_in" &&
-        request.path != "/users/sign_up" &&
-        request.path != "/users/password/new" &&
-        request.path != "/users/password/edit" &&
-        request.path != "/users/confirmation" &&
-        request.path != "/users/sign_out" &&
-        !request.xhr?) # don't store ajax calls
-      store_location_for(:user, '/me')
+  def after_sign_in_path_for(resources)
+    case resources
+    when User
+      me_path
+    when AdminUser
+      admin_root_path
+    when Bloomy
+      ENV['DISCOURSE_URL']
     end
   end
-
-  def after_sign_in_path_for(resources)
-    me_path
-  end
-
 end

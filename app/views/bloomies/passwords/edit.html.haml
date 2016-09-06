@@ -1,0 +1,15 @@
+.full-blue
+  .center
+    %h1 Changer votre mot de passe
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+
+      = f.password_field :password, placeholder: 'Nouveau mot de passe', autofocus: true, 
+                                    autocomplete: 'off', class: 'blue'
+      = f.password_field :password_confirmation, placeholder: 'Confirmer votre nouveau mot de passe', 
+                                    autocomplete: 'off', class: 'blue'
+
+      %div{ style: 'position: relative; display: inline-block' }
+        = f.submit 'Changer mon mot de passe', class: 'crazy-btn', style: 'width: inherit;'
+        .shadow
