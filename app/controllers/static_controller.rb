@@ -1,5 +1,4 @@
 class StaticController < ApplicationController
-
   def le_concept
   end
 
@@ -8,5 +7,9 @@ class StaticController < ApplicationController
 
   def templates
     render layout: 'home'
+  end
+
+  def new_home
+    render layout: 'new_home'
   end
 end

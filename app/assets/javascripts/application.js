@@ -31,3 +31,4 @@
 //= require jquery.payment
 //= require me
 //= require portrait
+//= require new_home
