@@ -50,14 +50,19 @@ feature 'the private profile' do
       end
     end
 
-    # TODO: handle upload file on remote selenium
-    unless ENV['TRAVIS']
-      it 'lets me complete the interview challenge' do
-        with_a_new_user do
+    it 'lets me complete the interview challenge' do
+      with_a_new_user do
+        # cannot test file upload yet on CI
+        if ENV['TRAVIS']
+          force_next_button = <<-SCRIPT
+          $('.crazy-btn', '.challenge-interview').prop('disabled', false)
+          SCRIPT
+          page.execute_script(force_next_button)
+        else
           find('.fileinput-button.interview')
           make_input_file_visible = <<-SCRIPT
-          window.$('input[type=file]').css('position', 'inherit');
-          window.$('input[type=file]').css('opacity', 1);
+            window.$('input[type=file]').css('position', 'inherit');
+            window.$('input[type=file]').css('opacity', 1);
           SCRIPT
           page.execute_script(make_input_file_visible)
           within('.fileinput-button.interview') do
@@ -65,32 +70,32 @@ feature 'the private profile' do
           end
 
           wait_for_ajax
+        end
 
           click_button 'Continuer', wait: 30
           (1..3).each { |e| add_in_multiple_select("k#{e}") }
 
-          fill_trix_editors = <<-SCRIPT
-          trixEditors = document.querySelectorAll('trix-editor');
-          trixEditors.forEach(function(element) {
-            element.editor.setSelectedRange([0, 0]);
-            element.editor.insertString("Hello");
-          });
-          SCRIPT
-          page.execute_script(fill_trix_editors)
+        fill_trix_editors = <<-SCRIPT
+        trixEditors = document.querySelectorAll('trix-editor');
+        trixEditors.forEach(function(element) {
+          element.editor.setSelectedRange([0, 0]);
+          element.editor.insertString("Hello");
+        });
+        SCRIPT
+        page.execute_script(fill_trix_editors)
 
-          check('doAuthorize')
+        check('doAuthorize')
 
-          click_button 'Terminer'
+        click_button 'Terminer'
 
-          wait_for_ajax
+        wait_for_ajax
 
-          expect(test_user.questions.count).to be(QUESTION_COUNT)
-          expect(test_user.questions.all? { |e| e.answer == 'Hello' }).to be(true)
-          expect(test_user.do_authorize).to be(true)
+        expect(test_user.questions.count).to be(QUESTION_COUNT)
+        expect(test_user.questions.all? { |e| e.answer == 'Hello' }).to be(true)
+        expect(test_user.do_authorize).to be(true)
 
-          challenge_interview = Challenge.find_by(name: 'interview')
-          expect(test_user.challenges.include?(challenge_interview)).to be(true)
-        end
+        challenge_interview = Challenge.find_by(name: 'interview')
+        expect(test_user.challenges.include?(challenge_interview)).to be(true)
       end
     end
 
