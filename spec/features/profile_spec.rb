@@ -14,7 +14,7 @@ feature 'the private profile' do
         Question.create(title: "q#{e}", step: 'first_interview')
       end
 
-      keywords = (1..3).map { |e| Keyword.create(tag: "k#{e}") }
+      keywords = (1..5).map { |e| Keyword.create(tag: "k#{e}") }
       FactoryGirl.create(:user_published_with_questions, keywords: keywords)
     end
 
@@ -72,8 +72,8 @@ feature 'the private profile' do
           wait_for_ajax
         end
 
-          click_button 'Continuer', wait: 30
-          (1..3).each { |e| add_in_multiple_select("k#{e}") }
+        click_button 'Continuer', wait: 30
+        (1..5).each { |e| add_in_multiple_select("k#{e}") }
 
         fill_trix_editors = <<-SCRIPT
         trixEditors = document.querySelectorAll('trix-editor');
