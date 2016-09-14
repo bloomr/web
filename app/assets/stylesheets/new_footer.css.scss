@@ -1,4 +1,41 @@
  footer {
-   display: flex;
-   justify-content: space-around;
+   max-width: 1024px;
+   margin: 0 auto;
+   background: #f0ad30 image-url('footer/footer.png');
+   color: white;
+   padding: 30px 40px 50px;
+   .wrapper {
+     display: flex;
+     justify-content: space-around;
+     flex-wrap: wrap;
+   }
+   section {
+     margin-top: 20px;
+     max-width: 140px;
+     &:first-child {
+       max-width: 200px;
+     }
+   }
+
+   h1 { font-size: 16px; font-weight: 600; }
+   p,a { font-size: 12px; }
+
+   .copyright { text-align: center; }
+
+   .wrapper2 {
+     align-items: center;
+   }
+
+   .spacer {
+     flex-grow: 1;
+     background-color: white;
+     height: 1px;
+   }
+
+   .bloomr {
+     background: image-url('footer/bloomr.png'); 
+     width: 74px;
+     height: 41px;
+     margin: 20px;
+   }
  }
