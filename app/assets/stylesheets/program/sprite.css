@@ -1,0 +1,83 @@
+.sprite {
+    background-image: image-url('program/sprites/spritesheet.png');
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-balloon1 {
+    width: 89px;
+    height: 146px;
+    background-position: -5px -5px;
+}
+
+.sprite-balloon2 {
+    width: 105px;
+    height: 200px;
+    background-position: -104px -5px;
+}
+
+.sprite-bonne-attitude {
+    width: 95px;
+    height: 90px;
+    background-position: -219px -5px;
+}
+
+.sprite-boy {
+    width: 95px;
+    height: 81px;
+    background-position: -219px -105px;
+}
+
+.sprite-concret {
+    width: 95px;
+    height: 82px;
+    background-position: -219px -196px;
+}
+
+.sprite-confiance {
+    width: 95px;
+    height: 91px;
+    background-position: -5px -288px;
+}
+
+.sprite-dialog {
+    width: 95px;
+    height: 81px;
+    background-position: -110px -288px;
+}
+
+.sprite-done {
+    width: 46px;
+    height: 41px;
+    background-position: -324px -5px;
+}
+
+.sprite-mail {
+    width: 197px;
+    height: 195px;
+    background-position: -380px -5px;
+}
+
+.sprite-pen {
+    width: 95px;
+    height: 81px;
+    background-position: -324px -210px;
+}
+
+.sprite-reflexes {
+    width: 95px;
+    height: 81px;
+    background-position: -429px -210px;
+}
+
+.sprite-reflexion {
+    width: 97px;
+    height: 81px;
+    background-position: -215px -301px;
+}
+
+.sprite-soutien {
+    width: 95px;
+    height: 81px;
+    background-position: -322px -301px;
+}
