@@ -1,17 +1,21 @@
 //TODO: responsive pour smartphone < 480px;
+
 header.new_header {
   nav {
     position: fixed;
-    background-color: #FFF;
-    opacity: 0.8;
-    left: $main_margin;
-    right: $main_margin;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 1024px;
     z-index: 10;
+    color: white;
+    background-color: transparent;
+    transition: background-color 500ms;
     > ul {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      height: 100px;
+      height: 80px;
       flex-wrap: wrap;
       > li {
         position: relative;
@@ -33,6 +37,7 @@ header.new_header {
       background-color: #FFF;
       transform: rotate(-135deg);
     }
+    color: $text_color;
     position: absolute;
     z-index: 10;
     padding: 15px;

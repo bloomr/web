@@ -1,6 +1,6 @@
 body, input {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #3e3e3e;
+  color: $text_color;
   font-size: 16px;
   line-height: 1.6;
 }
@@ -30,6 +30,7 @@ html {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .crazy-btn {
