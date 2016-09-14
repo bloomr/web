@@ -1,4 +1,18 @@
 @import 'reset';
+
+$main_margin: 15px;
+
+$orange: #ee933f;
+$light_orange: #fdf4e4;
+$sky_blue: #e8f7ff;
+$darker_sky_blue: #c1e0f2;
+$grass_green: #5eb467;
+
+@import 'main';
+
+@import 'new_header';
+@import 'new_footer';
+
 @import 'new_home';
 @import 'program';
 @import 'program/sprite';

@@ -1,13 +1,13 @@
 (function() {
   var pageChange = function() {
-    if ($('#new_home').length === 0) { return; }
+    if ($('.new_header').length === 0) { return; }
 
     var $submenus = $('.submenu');
     var $navHeaders = $('header nav > ul > li > a');
-    var $newHome = $('#new_home');
+    var $body = $('body');
 
     var hideSubemus = function() { $submenus.hide(); };
-    $newHome.click(hideSubemus);
+    $body.click(hideSubemus);
 
     var showOnlySubmenu = function($submenu) {
       var localSubmenus = $submenus.slice();
@@ -31,8 +31,8 @@
   };
 
   var beforeUnload = function() {
-    if ($('#new_home').length === 0) { return; }
-    $('#new_home').off();
+    if ($('.new_header').length === 0) { return; }
+    $('body').off();
     $('header nav > ul > li > a').off();
   };
 

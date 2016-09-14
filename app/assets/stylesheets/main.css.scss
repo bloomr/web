@@ -1,0 +1,73 @@
+body, input {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #3e3e3e;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+H1, H2, H3, H4 {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+H1 { font-size: 32px; }
+H2 { font-size: 24px; }
+H3 { font-size: 22px; }
+H4 { font-size: 20px; font-weight: 400; }
+
+.title { 
+  font-family: Satisfy;
+  font-size: 36px;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.crazy-btn {
+  background-color: $orange;
+  padding: 15px 20px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  position: relative;
+  font-size: 18px;
+  transition: all 0.3s ease 0s;
+  top: 0px;
+  margin: 0 5px 10px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  &:after {
+    content: "";
+    height: 10px;
+    width: 80%;
+    background-color:  rgba(238, 147, 63, 0.2);
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    margin: auto auto;
+    transition: all 0.3s ease 0s;
+  }
+  &:hover {
+    top: 5px;
+    background-color: darken(#ef892c, 10%);
+    text-decoration: none;
+    color: white;
+    &:after {
+      bottom: -5px;
+      height: 5px;
+    }
+  }
+}

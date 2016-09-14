@@ -1,6 +1,5 @@
 //TODO: responsive pour smartphone < 480px;
 #new_home {
-  $main_margin: 15px;
   margin: 0 $main_margin;
 
   .press, .why, .solution {
@@ -10,58 +9,6 @@
       font-size: 32px;
       letter-spacing: 1px;
       color: #ee933f;
-    }
-  }
-
-  header {
-    $header_height: 100px;
-    height: $header_height;
-    nav {
-      position: fixed;
-      background-color: #FFF;
-      left: $main_margin;
-      right: $main_margin;
-      > ul {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: $header_height;
-        flex-wrap: wrap;
-        > li {
-          position: relative;
-          padding: 0 5px;
-          .submenu {
-            display: none;
-          }
-        }
-      }
-    }
-    .submenu {
-      &:before {
-        content: '';
-        position: absolute;
-        box-shadow: 1px 1px 1px #e7e1d6;
-        top: -5px;
-        width: 10px;
-        height: 10px;
-        background-color: #FFF;
-        transform: rotate(-135deg);
-      }
-      position: absolute;
-      z-index: 10;
-      padding: 15px;
-      border-radius: 5px;
-      background-color: #FFF;
-      box-shadow: 0 2px 4px 0 #e7e1d6;
-      border: solid 1px #e6e0d4;
-      white-space: nowrap;
-      top: 30px;
-      &.right {
-        right: 0;
-        &:before {
-         right: 20px; 
-        } 
-      }
     }
   }
   .headlines {
@@ -95,9 +42,5 @@
      text-align: center;
      background-color: #FCF2DA;
      min-height: 300px;
-   }
-   footer {
-     display: flex;
-     justify-content: space-around;
    }
  }

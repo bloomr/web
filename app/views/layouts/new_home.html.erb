@@ -34,7 +34,7 @@
   <meta name="twitter:description" property="og:description" itemprop="description" content="<%= yield(:description) %>" />
   <meta name="twitter:card" content="summary">
   <meta name="twitter:domain" content="community.bloomr.org"/>
-  <link href="//fonts.googleapis.com/css?family=Satisfy|Open+Sans:300italic,600italic,300,600&amp;subset=latin,latin-ext" media="screen" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Satisfy" rel="stylesheet">
   <%= stylesheet_link_tag    'application2', media: 'all' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="//cdn.optimizely.com/js/2221001338.js" data-turbolinks-track></script>
@@ -42,8 +42,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body style='height: 100%'>
-
+  <%= render 'shared/new_header' %>
 <%= yield %>
 
+  <%= render 'shared/new_footer' %>
 </body>
 </html>
