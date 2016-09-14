@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   get 'le-parcours' => 'static#le_parcours'
   get 'templates' => 'static#templates'
   get 'new_home' => 'static#new_home'
+  get 'programme' => 'static#programme'
 
   # partner
   get 'partner(/:name)' => 'partner#set_campaign'

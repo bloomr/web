@@ -12,4 +12,8 @@ class StaticController < ApplicationController
   def new_home
     render layout: 'new_home'
   end
+
+  def programme
+    render layout: 'new_home'
+  end
 end

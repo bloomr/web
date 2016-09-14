@@ -1,0 +1,167 @@
+#program {
+  button {
+    margin: 60px auto 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+  }
+
+  > section {
+    > h1, h4, p {
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    text-align: center;
+    padding: 50px 5px;
+    .title {
+      color: $orange;
+    }
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .goodChoice { font-size: 18px; }
+
+  .list-wrapper { 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    > * { 
+      max-width: 220px;
+      text-align: left; 
+      margin: 25px;
+    }
+  }
+
+  .intro {
+    background: image-url('program/girl.jpg') no-repeat center;
+    min-height: 500px;
+    padding-top: 150px;
+    padding-right: 10px;
+    color: white;
+    border-bottom: 2px solid $orange;
+    .catch {
+      position: relative;
+      width: 50%;
+      max-width: 500px;
+      left: 50%;
+    }
+  }
+
+  .advantages {
+    text-align: center;
+    h1 { margin-top: 30px; font-size: 22px; }
+  }
+
+  .progress {
+    background-color: $light_orange;
+    ol {
+      position:absolute;
+      left:-10000px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    img { margin-top: 40px; }
+  }
+
+  .benefits {
+    ul { 
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    li {
+      max-width: 160px;
+    }
+    h3 { margin-top: 15px; }
+  }
+
+  .exercises { 
+    background-color: $sky_blue;
+    padding-bottom: 0;
+    border-bottom: 5px solid $darker_sky_blue;
+    p { font-size: 20px; }
+    img { margin-top: 70px; }
+  }
+
+  .program {
+    background-color: $sky_blue;
+    h1 { margin-bottom: 50px; }
+    h2 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+    p { letter-spacing: 0.7px; margin-bottom: 50px;}
+    .motivation { font-weight: 600 }
+  }
+
+  .mails {
+    p { margin: inherit; margin-right: 30px; }
+  }
+
+  .warning {
+    background-color: $light_orange;
+  }
+
+  .community {
+    h1 { color: $grass_green; }
+    img { margin-top: 30px; }
+  }
+
+  .success {
+    background-color: $sky_blue;
+    ul { position: relative; }
+    li { display: inline-block; margin-top: 60px; }
+    .trust { position: relative; right: 10px; top: 30px; }
+    i { display: inline-block; vertical-align: top; }
+    p {
+      text-align: left;
+      display: inline-block;
+      max-width: 260px;
+      margin-left: 20px;
+    }
+    .number { font-size: 50px; }
+    .registered { font-size: 26px; display: inline-block; width: 135px; line-height: 1;}
+  }
+
+  .subscription {
+    i { display: inline-block; vertical-align: middle; margin: 0 10px; }
+    h2 { font-size: 26px; margin-top: 40px; margin-bottom: 40px; }
+    ul {
+      text-align: left;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    .relative { font-size: 14px; }
+    button { margin-bottom: 60px; }
+    a { 
+      font-weight: 600;
+      margin-top: 10px;
+      display: inline-block;
+    }
+  }
+
+  .spacer { 
+    background-color: $orange; 
+    height: 4px; 
+    max-width: 280px; 
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+
+  .faq {
+    text-align: left;
+    h1 { text-align: center; }
+    h4 { margin-bottom: 5px; }
+    p { margin-bottom: 20px; font-weight: 300; }
+  }
+}
