@@ -1,0 +1,13 @@
+$max_phone_size: 480px;
+
+.hide-phone {
+  @media (max-width: $max_phone_size) {
+    display: none;
+  }
+}
+
+.show-phone {
+  @media (min-width: $max_phone_size + 1) {
+    display: none;
+  }
+}
