@@ -49,6 +49,8 @@ header.new_header {
       position: fixed;
       left: 0;
       right: 0;
+      max-width: 3000px;
+      margin: 0 auto;
       z-index: 10;
       color: white;
       background-color: transparent;
