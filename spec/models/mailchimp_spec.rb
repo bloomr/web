@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Mailchimp, type: :model do
   let(:bloomy) { create(:bloomy) }
   describe '#subscribe_to_journey' do
-    let(:url) { 'https://us9.api.mailchimp.com/3.0/lists/e6faea0c3a/members' }
+    let(:url) { 'https://us9.api.mailchimp.com/3.0/lists/58fadd9d86/members' }
     let(:ok_response) { double('response', success?: true) }
     let(:ko_response) { double('response', success?: false) }
 
