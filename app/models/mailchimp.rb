@@ -28,7 +28,7 @@ class Mailchimp
       send_template(MailchimpMails::Presentation.template(bloomy))
     end
 
-    JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/e6faea0c3a/members'
+    JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/58fadd9d86/members'
                   .freeze
 
     def headers
