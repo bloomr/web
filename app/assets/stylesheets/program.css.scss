@@ -1,5 +1,5 @@
 #program {
-  button {
+  .crazy-btn {
     margin: 60px auto 0;
   }
 
@@ -17,16 +17,14 @@
     }
     text-align: center;
     padding: 50px 5px;
-    .title {
-      color: $orange;
-    }
   }
 
   .title {
+    color: $orange;
     margin-bottom: 20px;
   }
 
-  .goodChoice { font-size: 18px; }
+  .goodChoice { font-size: 18px; margin-bottom: 20px; }
 
   .list-wrapper { 
     display: flex; 
@@ -69,8 +67,15 @@
     }
   }
 
+  .exercises { 
+    background-color: $sky_blue;
+    padding-bottom: 0;
+    border-bottom: 5px solid $darker_sky_blue;
+    p { font-size: 20px; }
+    img { margin-top: 70px; }
+  }
+
   .advantages {
-    text-align: center;
     h1 { margin-top: 30px; font-size: 22px; }
   }
 
@@ -99,14 +104,6 @@
     h3 { margin-top: 15px; }
   }
 
-  .exercises { 
-    background-color: $sky_blue;
-    padding-bottom: 0;
-    border-bottom: 5px solid $darker_sky_blue;
-    p { font-size: 20px; }
-    img { margin-top: 70px; }
-  }
-
   .program {
     background-color: $sky_blue;
     h1 { margin-bottom: 50px; }
@@ -119,9 +116,7 @@
     p { margin: inherit; margin-right: 30px; }
   }
 
-  .warning {
-    background-color: $light_orange;
-  }
+  .warning { background-color: $light_orange; }
 
   .community {
     h1 { color: $grass_green; }
@@ -157,8 +152,8 @@
       letter-spacing: 1px;
     }
     .relative { font-size: 14px; }
-    button { margin-bottom: 60px; }
-    a { 
+    .crazy-btn { margin-bottom: 60px; }
+    .gift { 
       font-weight: 600;
       margin-top: 10px;
       display: inline-block;
