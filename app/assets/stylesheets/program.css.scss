@@ -19,23 +19,7 @@
     padding: 50px 5px;
   }
 
-  .title {
-    color: $orange;
-    margin-bottom: 20px;
-  }
-
   .goodChoice { font-size: 18px; margin-bottom: 20px; }
-
-  .list-wrapper { 
-    display: flex; 
-    justify-content: center; 
-    flex-wrap: wrap; 
-    > * { 
-      max-width: 220px;
-      text-align: left; 
-      margin: 25px;
-    }
-  }
 
   .intro {
     max-width: 3000px;

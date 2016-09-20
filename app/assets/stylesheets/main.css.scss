@@ -18,6 +18,8 @@ H4 { font-size: 20px; font-weight: 400; }
 .title { 
   font-family: Satisfy;
   font-size: 36px;
+  color: $orange;
+  margin-bottom: 20px;
 }
 
 html {
@@ -70,5 +72,16 @@ a {
       bottom: -5px;
       height: 5px;
     }
+  }
+}
+
+.list-wrapper { 
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  > * { 
+    max-width: 220px;
+    text-align: left; 
+    margin: 25px;
   }
 }
