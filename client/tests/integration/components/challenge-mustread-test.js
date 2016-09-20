@@ -18,13 +18,13 @@ moduleForComponent('challenge-mustread', 'Integration | Component | challenge mu
 });
 
 let stubAndReturnPromise = (obj, name, result) => {
-  let promise = $.Deferred();
+  let deferred = Ember.RSVP.defer();
   if(result) {
-    promise.resolve(result);
+    deferred.resolve(result);
   }
   obj[name] = sinon.stub();
-  obj[name].returns(promise);
-  return promise;
+  obj[name].returns(deferred.promise);
+  return deferred;
 };
 
 test('I can search a book and add it to my collections', function(assert) {
@@ -36,13 +36,13 @@ test('I can search a book and add it to my collections', function(assert) {
 
   this.$('input').val('super book');
   
-  let promise = stubAndReturnPromise(this.container.lookup('service:book-search'), 'search');
+  let deferred = stubAndReturnPromise(this.container.lookup('service:book-search'), 'search');
 
   this.$('a.search').click();
   assert.templateContains("on cherche dans l'internet");
 
-  Ember.run(() => promise.resolve([{title: 'titre: un super book'}]));
-
+  Ember.run(() => deferred.resolve([{title: 'titre: un super book'}]));
+  
   assert.templateContains('titre: un super book');
   assert.notOk(this.$().text().includes("on cherche dans l'internet"));
 
