@@ -102,6 +102,7 @@
       }
       @media (max-width: 599px){
         label { display: block; }
+        input, input.number { text-align: center; }
       }
 
       label, span {
