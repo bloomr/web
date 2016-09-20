@@ -16,4 +16,8 @@ class StaticController < ApplicationController
   def programme
     render layout: 'new_home'
   end
+
+  def bred
+    render layout: 'new_home'
+  end
 end

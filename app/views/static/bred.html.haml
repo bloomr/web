@@ -1,0 +1,95 @@
+- content_for :hide_header, true
+- content_for :hide_footer, true
+
+#bred
+  %header
+    %a.logo{ href: '/' }
+    .center
+      %h1 Bienvenue dans le parcours Bloomr !
+      %p Avec ton inscription à la convention dédiée Jeunes, la BRED t'offre le parcours d'orientation Bloomr
+    %a.bred{ href: 'https://www.bred.fr/' }
+
+  #goodNews
+
+  %section#subscription
+    %p Pour commencer illico à te poser les bonnes questions et tracer ta voie vers ton bonheur professionnel, renseigne ces quelques infos :
+    = form_for Bloomy.new, url: '/' do |f|
+      .input-wrapper
+        = f.label :first_name, "Je m'appelle"
+        = f.text_field :first_name, required: true
+      .input-wrapper
+        = f.label :email, 'Mon adresse mail est'
+        = f.email_field :email, required: true
+      .input-wrapper
+        = f.label :age, 'Et je suis agé de'
+        = f.number_field :age, required: true, class: 'number'
+        %span ans
+      = button_tag 'Inscription', class: 'crazy-btn', disabled: true
+
+  %section.for-you
+    %h1.title Ce parcours est fait pour toi si :
+    %ul.list-wrapper
+      %li Tu ne sais du tout quoi faire après tes études et tu ne sais pas par où commencer
+      %li Ta formation ne convient pas à tes aspirations et tu aimerais être entouré et accompagné pour mieux faire ton prochain choix
+      %li Tu as commencé un boulot et tu ne te sens pas à ta place
+
+  %section.solution
+    .centered-columns
+      .left-column
+        %h1.title Une solution qui sort de l’ordinaire pour t’aider à réfléchir
+        %p 
+          Pour faire les bons choix, pas de recette miracle : il faut prendre le temps de se poser les bonnes questions.
+          %br
+          %br
+          Le parcours Bloomr est un programme d'orientation en ligne qui te guide dans ta réflexion pour trouver ta voie tout en restant zen.
+      = image_tag 'bred/map.png'
+
+    %a.crazy-btn{ href: '#goodNews' } Je démarre l'aventure
+
+  %section.program
+    .cloud1.animated
+    .cloud2.animated
+    .cloud3.animated
+    %h1.title.green_and_underlined Au programme
+    %h2 21 exercices originaux pour une expérience unique
+    %p 
+      Le plus dur quand on se demande quel métier faire, c'est de savoir par ou commencer.
+      %br
+      Sors du flou en 4 étapes.
+    
+    = image_tag 'bred/steps.png'
+
+    %p.mails Tu reçois les missions par mail. Le parcours se fait de manière autonome et à ton rythme.
+
+    %a.crazy-btn{ href: '#goodNews' } Ok c'est parti !
+
+  %section.community
+    .bulle1.animated
+    .bulle2.animated
+    .bulle3.animated
+    %h1.title.green_and_underlined Un espace de discussion
+    %p Tu peux rejoindre un espace de discussion réservé aux inscrits et à l'équipe Bloomr pour partager tes résultats, avoir des retours et échanger avec le reste de la communauté.
+    = image_tag 'bred/forum.png'
+
+  %section.not-lonely
+    .centered-columns
+      .left-column
+        %h1.title Tu n'est <del>pas</del> plus seul
+        %p 
+          A vos côtés, il y a bien sûr l’équipe Bloomr.
+          Il y a aussi les centaines de pros épanouis qui partagent leur parcours sur Bloomr pour vous montrer l'immense variété des chemins possibles et vous inspirer dans votre quête.
+          %br
+          %br
+          Et enfin, il y a tous ceux qui font le parcours en même temps que vous. Vous aurez accès à un espace de discussion privé où vous trouverez des conseils et des infos, et où vous pourrez glaner et partager des idées. Un vrai coup de boost pour garder la motiv’, rester inspiré et inspirer les autres.
+
+        %a{ href: '#goodNews' } HOP ! Je rejoins les chanceux qui ont déjà commencé
+
+      = image_tag 'bred/people.png'
+
+  %footer
+    %a.white-logo{ href: '/' }
+    %p
+      © Bloomr 2016,
+      %a{ href: 'https://drive.google.com/open?id=0B6t2xBTfe9gaQnl0cURXT0xHZ2c' } charte de confidentialité, 
+      %a{ href: 'https://drive.google.com/open?id=0B6t2xBTfe9gaNlZjYmtoQ250a0U' } CGV
+

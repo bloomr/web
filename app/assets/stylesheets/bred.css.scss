@@ -1,0 +1,232 @@
+#bred {
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+  }
+
+  > section {
+    text-align: center;
+    padding: 50px 5px;
+  }
+
+  .animated {
+    position: absolute;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0;
+
+    @media(max-width: 999px) {
+      display: none;
+    }
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 120px;
+    margin: 0 auto;
+    max-width: 1024px;
+    text-align: center;
+    padding: 0 5px;
+
+    .center {
+      max-width: 500px;
+      margin: 20px auto;
+      @media (max-width: 770px) {
+        order: 1;
+      }
+    }
+
+    .logo-bred {
+      width: 164px;
+      height: 96px;
+      background: image-url('bred/bred.png') no-repeat center top;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.4;
+      color: rgba(62, 62, 62, 0.7);
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 0.9;
+      text-align: center;
+      color: #b9b6af;
+    }
+  }
+
+  .centered-columns { 
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    > * { margin-bottom: 20px; }
+  }
+  .left-column { max-width: 500px; }
+
+  #goodNews {
+    background: image-url('bred/goodNews.jpg') no-repeat center top;
+    margin: 0 auto;
+    max-width: 1024px;
+    height: 347px;
+  }
+
+  #subscription {
+    background-color: #FFF;
+    min-height: 300px;
+    margin: 0 auto;
+    max-width: 670px;
+    background-color:rgba(255,255,255,0.9);
+    box-shadow: 0 4px 6px 0 rgba(185, 182, 175, 0.5);
+    padding: 30px 75px;
+    position: relative;
+    top: -180px;
+
+
+    p {
+      margin-bottom: 25px;
+    }
+
+    .input-wrapper {
+      margin-bottom: 10px;
+      @media (min-width: 600px) {
+        display: flex;
+        text-align: left;
+      }
+      @media (max-width: 599px){
+        label { display: block; }
+      }
+
+      label, span {
+        font-size: 18px;
+        font-weight: 600;
+        margin-right: 15px;
+      }
+
+      input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #979797;
+        flex-grow: 1;
+      }
+
+      .number {
+        text-align: right;
+        width: 150px;
+        flex-grow: 0;
+        margin-right: 15px;
+      }
+    }
+
+    button { margin-top: 10px; }
+
+  }
+
+  .for-you {
+    margin-top: -150px;
+    padding-top: 0px;
+    h1 { font-size: 44px; }
+  }
+
+  .solution {
+    img { margin-right: 70px; margin-left: 70px; }
+  }
+
+  .green_and_underlined {
+    border-bottom: 1px solid $darker_sky_blue;
+    color: $grass_green; 
+    display: inline-block;
+    padding-bottom: 15px;
+  }
+
+  .program {
+    background-color: $sky_blue;
+    position: relative;
+
+    p { margin: 20px 0 40px; }
+
+    .mails { 
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.7px;
+    }
+
+    .cloud1 { top: 100px; left: 10%; animation-name: bred_cloud1; animation-delay: 1.5s; }
+    .cloud2 { top: 70px; right: 25%; animation-name: bred_cloud2; }
+    .cloud3 { top: 140px; right: 20%; animation-name: bred_cloud3; }
+  }
+
+  .community {
+    background-color: $light_green;
+    padding-bottom: 0;
+    position: relative;
+
+    p { max-width: 500px; margin: 15px auto; }
+
+    h1 { color: $grass_green; }
+
+    .bulle1 { top: 400px; left: 5%; animation-name: bred_bulle1; }
+    .bulle2 { top: 100px; left: 10%; animation-name: bred_bulle2; animation-delay: 1.5s; }
+    .bulle3 { top: 200px; right: 5%; animation-name: bred_bulle3; animation-delay: .7s}
+  }
+
+  .not-lonely {
+    img { margin-right: 70px; margin-left: 70px; }
+    a {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.7px;
+      text-decoration: underline;
+      margin-top: 40px;
+      display: inline-block;
+    }
+  }
+
+  footer {
+    text-align: center;
+    padding-bottom: 30px;
+    .white-logo {
+      display: inline-block;
+      margin: 0 auto 20px;
+    }
+  }
+}
+
+@keyframes bred_bulle1 {
+  20% { opacity: 1; }
+  to { opacity: 0; transform: translate3d(0, -50px, 0) rotate(5deg); }
+}
+
+@keyframes bred_bulle2 {
+  20% { opacity: 1; }
+  to { opacity: 0; transform: translate3d(0, -27px, 0) rotate(10deg); }
+}
+
+@keyframes bred_bulle3 {
+  20% { opacity: 1; }
+  to { opacity: 0; transform: translate3d(0, -13px, 0) rotate(0.02deg); }
+}
+
+@keyframes bred_cloud1 {
+  20% { opacity: 1; }
+  to { opacity: 0; transform: translate3d(-60px, 0, 0) rotate(0.02deg); }
+}
+
+@keyframes bred_cloud2 {
+  20% { opacity: 1; }
+  to { opacity: 0; transform: translate3d(140px, 0, 0) rotate(0.02deg); }
+}
+
+@keyframes bred_cloud3 {
+  20% { opacity: 1; }
+  to { opacity: 0; transform: translate3d(100px, 0, 0) rotate(0.02deg); }
+}

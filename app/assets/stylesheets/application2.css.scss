@@ -8,6 +8,7 @@ $light_orange: #fdf4e4;
 $sky_blue: #e8f7ff;
 $darker_sky_blue: #c1e0f2;
 $grass_green: #5eb467;
+$light_green: rgba(93, 180, 103, 0.26);
 
 @import 'responsive';
 
@@ -19,3 +20,6 @@ $grass_green: #5eb467;
 @import 'new_home';
 @import 'program';
 @import 'program/sprite';
+
+@import 'bred';
+@import 'bred-sprite';

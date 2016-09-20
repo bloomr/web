@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   get 'templates' => 'static#templates'
   get 'new_home' => 'static#new_home'
   get 'programme' => 'static#programme'
+  get 'bred' => 'static#bred'
 
   # partner
   get 'partner(/:name)' => 'partner#set_campaign'

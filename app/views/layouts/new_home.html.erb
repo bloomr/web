@@ -42,9 +42,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body style='height: 100%'>
-  <%= render 'shared/new_header' %>
-<%= yield %>
+  <% unless content_for?(:hide_header) %>
+    <%= render 'shared/new_header' %>
+  <% end %>
 
-  <%= render 'shared/new_footer' %>
+  <%= yield %>
+
+  <% unless content_for?(:hide_footer) %>
+    <%= render 'shared/new_footer' %>
+  <% end %>
 </body>
 </html>
