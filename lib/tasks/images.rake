@@ -1,4 +1,3 @@
-require 'sprite_factory'
 
 namespace :images do
   def root_folder_path
@@ -11,6 +10,9 @@ namespace :images do
 
   desc 'make sprite, usage: rake images:sprite path=.'
   task sprite: :environment do
+    #lazy load sprite_factory to avoid pb in heroku
+    require 'sprite_factory'
+
     image_file_path = File.join(Dir.pwd, ENV['path'])
     unless File.exist?(image_file_path)
       puts "Directory not found: #{image_file_path}"
