@@ -24,7 +24,7 @@ export default Ember.Component.extend({
   nextChallenge(){
     let nextChallenge = this.get('challenges')
       .sortBy('position')
-      .find(c => !this.get('user.challenges').contains(c));
+      .find(c => !this.get('user.challenges').includes(c));
     if (!nextChallenge) {
       nextChallenge = Ember.Object.create({ widget: 'challenge-finish', query: 'finish' });
     }
