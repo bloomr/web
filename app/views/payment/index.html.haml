@@ -1,4 +1,4 @@
-= content_for :title, 'Paiement du Parcours'
+= content_for :title, 'Paiement du Programme'
 
 #payment.full-blue
   .center
@@ -6,7 +6,7 @@
 
     %h1 Fabuleuse décision !
 
-    %p Dernière étape avant de démarrer l'aventure : <br/>t'inscrire et régler le parcours
+    %p Dernière étape avant de démarrer l'aventure : <br/>t'inscrire et régler le programme
     = form_for Bloomy.new, url: '/payment' do |f|
       = f.text_field :first_name, placeholder: 'Ton prénom', required: true, class: 'blue'
       = f.email_field :email, placeholder: 'Ton adresse email', required: true, class: 'blue', 'data-stripe' => 'name'
@@ -25,7 +25,7 @@
         = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
         = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
 
-      %p.legal En t'inscrivant au parcours, tu acceptes les <a href= 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view'><u>conditions générales</u></a> et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
+      %p.legal En t'inscrivant au programme, tu acceptes les <a href= 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view'><u>conditions générales</u></a> et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
       %div{style: 'position: relative; display: inline-block'}
         = submit_tag "Régler mes #{@price} €", class: 'crazy-btn yellow'
         .shadow
