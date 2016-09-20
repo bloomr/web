@@ -77,6 +77,8 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'sprite-factory'
+  gem 'rmagick'
 end
 
 group :test do
