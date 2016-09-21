@@ -1,0 +1,95 @@
+#press {
+  .intro {
+    background: image-url('new_header/header-bg.png') center;
+    color: #FFF;
+    min-height: 300px;
+    padding-top: 150px;
+    text-align: center;
+
+    > * {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    .list-wrapper > * { max-width: inherit; }
+
+    h1 {
+      font-family: Satisfy;
+      font-size: 44px;
+      line-height: 0.8;
+      letter-spacing: 1.4px;
+      margin-bottom: 30px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.6px;
+      text-align: center;
+      margin: auto;
+      @media (max-width: 699px) { 
+        flex-basis: 100%;
+        order: -1;
+      }
+    }
+
+    a {
+      font-family: Satisfy;
+      font-size: 18px;
+
+      span { border-bottom: 1px solid #FFF; }
+    }
+  }
+
+  .centered {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  .lci {
+    margin: 60px auto;
+    width: 300px;
+    @media (min-width: $max_phone_size + 1) {
+      width: 600px;
+    }
+  }
+
+  .list-wrapper { 
+    align-items: flex-end; 
+    justify-content: space-between;
+
+    > li {
+      margin: 25px auto;
+      max-width: 220px;
+    }
+  }
+
+  .referral {
+
+    h2 { 
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    p {
+      opacity: 0.8;
+      font-family: OpenSans;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    a {
+      display: block; 
+      color: $orange;
+    }
+  }
+
+  .journalism {
+    margin-top: 60px;
+    text-align: center;
+
+    .crazy-btn {
+      margin: 40px 0;
+    }
+  }
+}

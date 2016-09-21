@@ -1,0 +1,6 @@
+.press-mondecampus { width: 175px; height: 106px; background: image-url('press/sprite.png') 0px 0px no-repeat; }
+.press-mouv { width: 175px; height: 106px; background: image-url('press/sprite.png') -175px 0px no-repeat; }
+.press-skytea { width: 175px; height: 106px; background: image-url('press/sprite.png') -350px 0px no-repeat; }
+.press-socialter { width: 175px; height: 106px; background: image-url('press/sprite.png') -525px 0px no-repeat; }
+.press-up { width: 175px; height: 106px; background: image-url('press/sprite.png') -700px 0px no-repeat; }
+.press-workup { width: 175px; height: 106px; background: image-url('press/sprite.png') -875px 0px no-repeat; }
