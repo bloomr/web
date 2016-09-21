@@ -160,9 +160,9 @@
       letter-spacing: 0.7px;
     }
 
-    .cloud1 { top: 100px; left: 10%; animation-name: bred_cloud1; animation-delay: 1.5s; }
-    .cloud2 { top: 70px; right: 25%; animation-name: bred_cloud2; }
-    .cloud3 { top: 140px; right: 20%; animation-name: bred_cloud3; }
+    .bred-cloud1 { top: 100px; left: 10%; animation-name: bred_cloud1; animation-delay: 1.5s; }
+    .bred-cloud2 { top: 70px; right: 25%; animation-name: bred_cloud2; }
+    .bred-cloud3 { top: 140px; right: 20%; animation-name: bred_cloud3; }
   }
 
   .community {
@@ -174,9 +174,9 @@
 
     h1 { color: $grass_green; }
 
-    .bulle1 { top: 400px; left: 5%; animation-name: bred_bulle1; }
-    .bulle2 { top: 100px; left: 10%; animation-name: bred_bulle2; animation-delay: 1.5s; }
-    .bulle3 { top: 200px; right: 5%; animation-name: bred_bulle3; animation-delay: .7s}
+    .bred-bulle1 { top: 400px; left: 5%; animation-name: bred_bulle1; }
+    .bred-bulle2 { top: 100px; left: 10%; animation-name: bred_bulle2; animation-delay: 1.5s; }
+    .bred-bulle3 { top: 200px; right: 5%; animation-name: bred_bulle3; animation-delay: .7s}
   }
 
   .not-lonely {
