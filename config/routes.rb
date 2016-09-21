@@ -64,15 +64,14 @@ Rails.application.routes.draw do
     end
   end
 
-  # Static pages (Strikingly content)
-  get 'le-concept' => 'static#le_concept'
+  # Static pages
   get 'qui-nous-sommes', to: redirect('/qui-sommes-nous')
-  get 'qui-sommes-nous' => 'static#qui_sommes_nous'
-  get 'le-parcours' => 'static#le_parcours'
-  get 'templates' => 'static#templates'
-  get 'new_home' => 'static#new_home'
-  get 'programme' => 'static#programme'
-  get 'bred' => 'static#bred'
+
+  statics = %w( le-concept qui-sommes-nous le-parcours templates
+                new_home programme bred press )
+  statics.each do |name|
+    get name => "static##{name}"
+  end
 
   # partner
   get 'partner(/:name)' => 'partner#set_campaign'

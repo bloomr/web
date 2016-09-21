@@ -9,15 +9,7 @@ class StaticController < ApplicationController
     render layout: 'home'
   end
 
-  def new_home
-    render layout: 'new_home'
-  end
-
-  def programme
-    render layout: 'new_home'
-  end
-
-  def bred
-    render layout: 'new_home'
+  %w( new_home programme bred press ).each do |name|
+    define_method(name) { render layout: 'new_home' }
   end
 end
