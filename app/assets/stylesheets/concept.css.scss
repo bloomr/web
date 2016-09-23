@@ -1,0 +1,112 @@
+#concept {
+  .intro {
+    background: image-url('new_header/header-bg.png') center;
+    color: #FFF;
+    min-height: 300px;
+    padding-top: 150px;
+    text-align: center;
+
+    > * {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    .list-wrapper > * { max-width: inherit; }
+
+    h1 {
+      font-family: Satisfy;
+      font-size: 44px;
+      line-height: 0.8;
+      letter-spacing: 1.4px;
+      margin-bottom: 30px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.6px;
+      text-align: center;
+      margin: auto;
+
+      // change !
+      max-width: 600px;
+
+      @media (max-width: 699px) { 
+        flex-basis: 100%;
+        order: -1;
+      }
+    }
+
+    a {
+      font-family: Satisfy;
+      font-size: 18px;
+
+      span { border-bottom: 1px solid #FFF; }
+    }
+  }
+
+  .columns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+
+    > * {
+      max-width: 460px;
+      position: relative;
+    }
+
+    span { margin: 0 40px; }
+  }
+
+  .description {
+    span { 
+      margin: 20px auto; 
+      display: inline-block; 
+    }
+    margin-top: 60px;
+
+    @media(max-width: $max_phone_size){
+      li { text-align: center; }
+    }
+  }
+
+  .spacer {
+    width: 50px;
+    height: 2px;
+    background-color: $orange;
+    margin: 0 auto;
+  }
+
+  .motivations {
+    h1 {
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    @media(max-width: $max_phone_size){
+      text-align: center;
+
+      .concept-icon-positif {
+        order: -1;
+      }
+    }
+
+
+  }
+
+  .bloomifesto {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+
+    h1 {
+      margin: 50px auto;
+    }  
+    a { 
+      margin: 30px auto;
+      display: inline-block;
+      font-weight: 600;
+    }
+  }
+}
