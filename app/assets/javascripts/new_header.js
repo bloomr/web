@@ -2,7 +2,8 @@
   var isMobile = ($(window).width() <= 480);
 
   var makeNavReadable = function (ev){
-    if (window.pageYOffset>430) {
+    var trigger = $('.intro').outerHeight();
+    if (window.pageYOffset> trigger) {
       $('nav').css('background-color','#ee933f');
     } else {
       $('nav').css('background-color','transparent');
