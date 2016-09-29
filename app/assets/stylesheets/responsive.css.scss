@@ -1,5 +1,3 @@
-$max_phone_size: 480px;
-
 .hide-phone {
   @media (max-width: $max_phone_size) {
     display: none;

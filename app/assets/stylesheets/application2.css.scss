@@ -10,6 +10,8 @@ $darker_sky_blue: #c1e0f2;
 $grass_green: #5eb467;
 $light_green: rgba(93, 180, 103, 0.26);
 
+$max_phone_size: 480px;
+
 @import 'responsive';
 
 @import 'main';
@@ -31,3 +33,6 @@ $light_green: rgba(93, 180, 103, 0.26);
 @import 'concept-sprite';
 
 @import 'bloomifesto';
+
+@import 'payment2';
+@import 'payment2-sprite';

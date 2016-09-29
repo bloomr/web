@@ -1,16 +1,30 @@
 = content_for :title, 'Paiement du Parcours'
+= content_for :hide_header, true
+= content_for :hide_footer, true
 
-#payment.full-blue
-  .center
-    =image_tag 'payment/parcours.jpg', class: 'journey-img'
+#payment.flexy
+  %header
+    %div.left
+      %span.white-logo
+      %span.sub.second Inscription au programme d’orientation Bloomr
+    %p.hide-phone Paiement sécurisé par <b>stripe</b>
 
-    %h1 Merci, bienvenue chez Bloomr !
-    %p Ton aventure va démarrer dans l'heure qui vient.
-    %p Pour que nos mails arrivent à destination, ajoute <strong>hello@bloomr.org</strong> à tes contacts de messagerie.
-    %p A tout de suite :)
+  %section.thanks
+    %h1.title Merci, bienvenue chez Bloomr !
+    %p 
+      Ton aventure va démarrer dans l'heure qui vient.
+      %br
+      %br
+      Pour que nos mails arrivent à destination, ajoute <strong>hello@bloomr.org</strong> à tes contacts de messagerie.
+      %br
+      %br
+      A tout de suite :)
 
 
-    %a.oeil{ href: tribes_path, style: 'margin-top: 30px; cursor: pointer;' } En attendant, va voir la galerie !
+    %a{ href: tribes_path } En attendant, va voir la galerie !
+
+  %footer
+    %a{ href: '/' } Bloomr
 
 <!-- Google Code for Paiement du parcours Bloomr Conversion Page -->
 

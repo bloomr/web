@@ -1,35 +1,49 @@
 = content_for :title, 'Paiement du Programme'
+= content_for :hide_header, true
+= content_for :hide_footer, true
 
-#payment.full-blue
-  .center
-    =image_tag 'payment/parcours.jpg', class: 'journey-img'
+#payment
+  %header
+    %div.left
+      %span.white-logo
+      %a.second{ href: 'javascript:history.back();' }
+        ←&nbsp;
+        %span.back RETOUR
+        %br
+        %span.sub Inscription au programme d’orientation Bloomr
+    %p.hide-phone Paiement sécurisé par <b>stripe</b>
+  %section.main
+    %h1.title Fabuleuse décision !
 
-    %h1 Fabuleuse décision !
-
-    %p Dernière étape avant de démarrer l'aventure : <br/>t'inscrire et régler le programme
+    %p.last-step Dernière étape avant de commencer le programme : l’inscription !
     = form_for Bloomy.new, url: '/payment' do |f|
-      = f.text_field :first_name, placeholder: 'Ton prénom', required: true, class: 'blue'
-      = f.email_field :email, placeholder: 'Ton adresse email', required: true, class: 'blue', 'data-stripe' => 'name'
-      = f.text_field :age, placeholder: 'Ton age', required: true, class: 'blue'
+      = f.text_field :first_name, placeholder: 'Ton prénom', required: true
+      = f.email_field :email, placeholder: 'Ton adresse email', required: true, 'data-stripe' => 'name'
+      = f.text_field :age, placeholder: 'Ton âge', required: true
 
-      %div{style: 'position: relative; display: inline-block'}
       %p#flash-messages
-      %p
-        =image_tag('payment/Visa.png', alt: 'Visa', width: '60')
-        =image_tag('payment/MasterCard.png', alt: 'Mastercard', width: '60')
-      %p
-        %span.glyphicon.glyphicon-lock
-        Informations de paiement
-      = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb cc-number', 'data-stripe' => 'number'
-      %div.form-inline
-        = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
-        = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
 
-      %p.legal En t'inscrivant au programme, tu acceptes les <a href= 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view'><u>conditions générales</u></a> et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
-      %div{style: 'position: relative; display: inline-block'}
-        = submit_tag "Régler mes #{@price} €", class: 'crazy-btn yellow'
-        .shadow
-          %a.link-center{ href: "https://paypal.me/bloomr/#{@price}" } Je préfère payer avec Paypal
+      %p Et le paiement :)
+      .payment2-cards
+
+      %p
+      = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb cc-number', 'data-stripe' => 'number'
+      = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
+      = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
+
+      %p.cgu
+        En t'inscrivant au programme, tu acceptes les
+        %a{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view' }conditions générales
+        et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
+
+      = button_tag "Régler mes #{@price} €", class: 'crazy-btn yellow'
+      %p ou
+      %a.paypal{ href: "https://paypal.me/bloomr/#{@price}" }
+        %span Payer avec 
+        %span.payment2-paypal Paypal
+
+  %footer
+    %a{ href: '/' } Bloomr
 
 = javascript_include_tag 'https://js.stripe.com/v2/'
 

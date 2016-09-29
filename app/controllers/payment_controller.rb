@@ -3,7 +3,7 @@ class PaymentController < ApplicationController
 
   def index
     @price = price_to_display
-    render layout: 'home'
+    render layout: 'new_home'
   end
 
   def create
@@ -19,7 +19,7 @@ class PaymentController < ApplicationController
   end
 
   def thanks
-    render layout: 'home'
+    render layout: 'new_home'
   end
 
   private
