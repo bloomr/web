@@ -9,7 +9,7 @@ class StaticController < ApplicationController
     render layout: 'home'
   end
 
-  %w( new_home programme bred press concept bloomifesto ).each do |name|
+  %w( new_home program bred press concept bloomifesto ).each do |name|
     define_method(name) { render layout: 'new_home' }
   end
 end
