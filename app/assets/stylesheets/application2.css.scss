@@ -9,6 +9,8 @@ $sky_blue: #e8f7ff;
 $darker_sky_blue: #c1e0f2;
 $grass_green: #5eb467;
 $light_green: rgba(93, 180, 103, 0.26);
+$indigo : #64c0c2;
+$light_indigo : rgba(99, 191, 194, 0.3);
 
 $max_phone_size: 480px;
 
@@ -36,3 +38,4 @@ $max_phone_size: 480px;
 
 @import 'payment2';
 @import 'payment2-sprite';
+@import 'new_home-sprite';

@@ -1,44 +1,152 @@
-//TODO: responsive pour smartphone < 480px;
 #new_home {
-  .press, .why, .solution {
-    padding: 30px 15px;
+  max-width: 1024px;
+  margin: 0 auto;
+
+  > * {
+    padding: 40px 0;
+  }
+
+  .new_home-boussole, .new_home-mains, .new_home-blog{ margin: 0 auto;  }
+
+
+  .intro {
+    background: url(/assets/new_home/accroche.jpg) no-repeat;
+    color: #FFF;
+    min-height: 580px;
+    position: relative;
+
+    .catch {
+      position: relative;
+      left: 300px;
+      padding-top: 207px;
+
+      h1 {
+        transform: rotate(-4deg);
+        font-family: Satisfy;
+        font-size: 60px;
+      }
+
+      p {
+        max-width: 440px;
+        font-size: 20px;
+        line-height: 1.5;
+        padding-top: 40px;
+        padding-left: 140px;
+      }
+
+      @media(max-width: $max_phone_size) {
+        left: 0;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 100px;
+        text-align: center;
+
+        h1 { font-size: 36px; }
+        p { padding: 100px 5px 0; }
+      }
+    }
+
+  }
+
+  .for {
+    &.list-wrapper {
+      > section {
+        max-width: 400px;
+        text-align: center;
+      }
+    }
+
+    .new_home-mains { margin-bottom: 5px; }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      padding: 10px 0;
+    }
+
     h1 {
+      color: $orange;
       font-family: Satisfy;
-      font-size: 32px;
-      letter-spacing: 1px;
-      color: #ee933f;
+      font-size: 23px;
+      line-height: 1.4;
+      min-height: 70px;
+    }
+
+    p {
+      line-height: 1.7;
+      margin: 20px 40px;
+      min-height: 170px;
+    }
+
+    .crazy-btn { width: 300px; }
+
+    .know {
+      h1 { color: $indigo; }
+      .crazy-btn { background-color: $indigo; }
+      .crazy-btn:after { background-color: $light_indigo; }
     }
   }
-  .headlines {
-    height: 250px;
-    background-color: yellow;
+
+  .blog {
+    text-align: center;
+    .crazy-btn { width: 300px; margin-top: 60px;}
+
+    li {
+      max-width: 270px;
+      h1 { font-size: 20px; line-height: 1.7; }
+      span { font-size: 14px; color: #b9b6af; }
+      img { display: block; margin-bottom: 10px; }
+      a { font-size: 16px; font-weight: 600; letter-spacing: 0.5px; }
+
+      @media(max-width: $max_phone_size) {
+        text-align: center;
+        img { margin-right: auto; margin-left: auto; }
+      }
+    }
   }
-  .categories {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    min-height: 350px;
-    section {
-       width: 33%;
-       padding: 0 5%;
-       img {
-         border-radius: 52px;
-       }
-     }
-     .avatar-wrapper {
-        max-width: 320px;
-     }
-   }
-   .press {
-     text-align: center;
-     ul {
-       display: flex;
-       justify-content: space-around;
-     }
-   }
-   .why {
-     text-align: center;
-     background-color: #FCF2DA;
-     min-height: 300px;
-   }
- }
+
+  .philosophy, .love-job {
+    background-color: $light_orange;
+    text-align: center;
+    > * {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .main {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 0.7px;
+      margin: 40px auto 20px;
+    }
+    .second {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  }
+
+  .philosophy {
+    a {
+      margin-top: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+  }
+
+  .love-job { .crazy-btn { margin-top: 50px; } }
+
+
+  .thanks {
+    a { display: block; }
+    .title { margin: 50px auto 10px; }
+    .sub { font-size: 20px; margin-bottom: 90px; }
+    text-align: center;
+    .list-wrapper {
+      justify-content: space-around;
+      > li {
+        margin: auto 0;
+      }
+    }
+  }
+}

@@ -2,46 +2,104 @@
 - content_for :description, "Une combinaison d'inspiration et de réflexion pour faire éclore les pros épanouis de demain en les accompagnant dans leur orientation professionnelle"
 
 #new_home
-  .headlines
-  .categories
+  %section.intro
+    .catch
+      %h1 Prends ton envol professionel !
+      %p Pose toi les bonnes questions, identifie des pistes et décolle vers une vie professionnelle qui te correspond.
+
+  %div.for.list-wrapper
+    %section.know
+      .img.new_home-boussole
+      %h2 Pour apprendre à te connaitre
+      %h1 Pour apprendre à te connaitre, savoir ce que tu veux, faire des choix et passer à l’action
+      %p
+        Des exercices, de l’entraide et de l’optimisme directement dans ta boite mail pour rassembler les bons indices et trouver ta place tout en restant zen.
+        %br
+        %br
+        %b Déjà + de 1500 inscrits !
+
+      %a.crazy-btn{ href: programme_path } Trouve ta voie
+
     %section
-      %h1 le blog
-      %h2 le flow, secret du bonheur
-      %a ➞ La suite !
-      %a{ href: 'https://blog.bloomr.org' } ➞ Consulter le blog
-    %section
-      %h1 Les pros épanouis
-      %h2 Les derniers bloomeurs inscrits sont ...
-      .avatar-wrapper
-        - users = User.published.last(8).each do |user|
-          = image_tag user.avatar.url('thumb'), class: 'portrait-avatar', width: '104px', height: '104px', itemprop: 'image', alt: 'Photo de ' + user.first_name
-      %a{ href: tribes_path } ➞ Voir les #{User.published.count} pros
-    %section
-      %h1 Le programme bloomr
-      %h2 Pour ceux qui se sentent dés-orientés
-      %a{ href: 'http://inscription.bloomr.org' } ➞ Rejoins-les
-  %section.press
-    %h1 Ils parlent de nous
-    %p (merci à eux)
-    %ul
+      .img.new_home-mains
+      %h2 Des métiers racontés par ceux qui les vivent
+      %h1 Pour explorer le champ des possibles
+      %p
+        Les témoignages de pros qui aiment leur job sont une source d’inspiration qui t’ouvre la voie et les horizons.
+        %br
+        %br
+        %a{ href: enrollment_index_path }Bien dans ton job ? Viens en parler
+
+      %a.crazy-btn{ href: tribes_path } Découvre les métiers
+
+  %section.blog
+    .img.new_home-blog
+    %h1.title Un zeste d’optimisme sur notre blog...
+    %p pour reprendre confiance en toi et en l'avenir.
+    %ul.list-wrapper
       %li
-        %a Le Monde Campus
+        %span 17-09-2016
+        %h1 7 astuces pour cultiver sa confiance en soi
+        %img{ src: 'https://blogdotbloomrdotorg.files.wordpress.com/2016/09/preview-chat-confiance-1.jpg?h=104', height: '104px' }
+        %a{ href: 'https://blog.bloomr.org/2016/09/17/7-astuces-pour-cultiver-sa-confiance-en-soi' } →&nbsp;Lire l'article
       %li
-        %a Mouv
+        %span 16-09-2016
+        %h1 Donne un coup de boost à ta rentrée professionnelle
+        %img{ src: 'https://blogdotbloomrdotorg.files.wordpress.com/2016/09/boost.png?h=104', height: '104px' }
+        %a{ href: 'https://blog.bloomr.org/2016/09/16/coup-boost-rentree-professionnelle' } →&nbsp;Lire l'article
       %li
-        %a Socialter
+        %span 16-09-2016
+        %h1 Identifier des actions pour avancer dans ta réflexion
+        %img{ src: 'https://blogdotbloomrdotorg.files.wordpress.com/2016/09/portes1.png?h=104', height: '104px' }
+        %a{ href: 'https://blog.bloomr.org/2016/09/16/identifier-actions/' } →&nbsp;Lire l'article
+
+    %a.crazy-btn{ href: 'https://blog.bloomr.org' } Découvre le blog
+
+  %section.philosophy
+    %h1.title La philosophie Bloomr
+    %p.main Se frayer son chemin dans le monde professionnel est devenu un art. Se construire un parcours qui a du sens est l'aventure de toute une vie.
+    %p.second
+      Par où commencer pour trouver ta place dans ce monde ultra-mouvant, où tout est virtuellement possible ?
+      %br
+      %br
+      Bloomr te donne des repères et te guide avec bienveillance pour que tu traces ta propre route vers une vie professionnelle épanouissante. A ton rythme et avec plaisir.
+      %br
+      %br
+      Apprends à t’orienter maintenant et pour le reste de ta vie : nous t’aidons à développer les compétences et les réflexes pour te connecter à tes envies, saisir les opportunités et faire des choix en toute confiance.
+
+    %a{ href: bloomifesto_path } →&nbsp;En savoir plus
+
+  %section.thanks
+    %p.title Remerciements
+    %p.sub Nos partenaires qui nous soutiennent
+    %ul.list-wrapper
       %li
-        %a Up
+        %a.new_home-mondecampus{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaY2s4c1djby1VN0E/view' }
       %li
-        %a LCI
-  %section.why
-    %h1 Bloomr, c'est qui c'est, c'est pour quoi ...
-    %h2 Notre mission : faire de l'orientation une aventure exitante et collective
-    %p bla bla
-    %a ➞ En savoir plus
-  %section.solution
-    %h1 Une solution qui sort de l'ordinaire pour t'aider à réfléchir
-    %p Pour faire les bons choix, pas de miracle ...
-    %p Le parcours Bloomr est un programme d'orientation
-    %button
-      je démarre l'aventure
+        %a.new_home-mouv{ href: 'http://www.mouv.fr/player/reecouter?play=214587' }
+      %li
+        %a.new_home-socialter{ href: 'http://www.socialter.fr/fr/module/99999672/222/choisir_sa_prochaine_cole_comme_sur_tripadvisor' }
+      %li
+        %a.new_home-up{ href: 'http://www.up-inspirer.fr/27967-orientation-professionnelle-une-asso-bouscule-les-codes' }
+      %li
+        %a.new_home-lci{ href: 'http://www.wat.tv/embedframe/134938chuPP3r13133910' }
+
+    %p.title ainsi que
+    %p.sub Ceux qui relaient notre message
+    %ul.list-wrapper
+      %li
+        %a.new_home-mondecampus{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaY2s4c1djby1VN0E/view' }
+      %li
+        %a.new_home-mouv{ href: 'http://www.mouv.fr/player/reecouter?play=214587' }
+      %li
+        %a.new_home-socialter{ href: 'http://www.socialter.fr/fr/module/99999672/222/choisir_sa_prochaine_cole_comme_sur_tripadvisor' }
+      %li
+        %a.new_home-up{ href: 'http://www.up-inspirer.fr/27967-orientation-professionnelle-une-asso-bouscule-les-codes' }
+      %li
+        %a.new_home-lci{ href: 'http://www.wat.tv/embedframe/134938chuPP3r13133910' }
+
+  %section.love-job
+    %h1.title J'aime mon métier !<br/> Comment je peux vous aider ?
+    %p.main Venez partager la passion de votre métier avec le monde entier, et ouvrir la voie à ceux qui cherchent la leur.
+    %p.second Prenez quelques minutes pour raconter votre parcours.
+    %a.crazy-btn{ href: enrollment_index_path } Je témoigne
