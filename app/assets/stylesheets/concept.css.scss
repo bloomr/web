@@ -66,6 +66,9 @@
     }
     margin-top: 60px;
 
+    .concept-parcours { margin-bottom: 28px; }
+    .concept-projet { margin-bottom: 35px; }
+
     @media(max-width: $max_phone_size){
       li { text-align: center; }
     }

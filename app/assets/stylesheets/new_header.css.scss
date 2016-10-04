@@ -67,8 +67,11 @@ header.new_header {
           .submenu {
             display: none;
           }
-          > a { cursor: pointer; }
+          > a { 
+            cursor: pointer;
+          }
         }
+        a:hover { text-decoration: underline;  }
       }
       .logo {
         width: 80px;

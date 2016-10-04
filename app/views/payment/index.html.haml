@@ -17,13 +17,13 @@
 
     %p.last-step Dernière étape avant de commencer le programme : l’inscription !
     = form_for Bloomy.new, url: '/payment' do |f|
-      = f.text_field :first_name, placeholder: 'Ton prénom', required: true
-      = f.email_field :email, placeholder: 'Ton adresse email', required: true, 'data-stripe' => 'name'
-      = f.text_field :age, placeholder: 'Ton âge', required: true
+      = f.text_field :first_name, placeholder: 'Prénom', required: true
+      = f.email_field :email, placeholder: 'Adresse email', required: true, 'data-stripe' => 'name'
+      = f.text_field :age, placeholder: 'Âge', required: true
 
       %p#flash-messages
 
-      %p Et le paiement :)
+      %p.and Et le paiement :)
       .payment2-cards
 
       %p
@@ -36,8 +36,8 @@
         %a{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view' }conditions générales
         et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
 
-      = button_tag "Régler mes #{@price} €", class: 'crazy-btn yellow'
-      %p ou
+      = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
+      %p ou bien
       %a.paypal{ href: "https://paypal.me/bloomr/#{@price}" }
         %span Payer avec 
         %span.payment2-paypal Paypal

@@ -51,6 +51,7 @@
     .cc-exp, .cc-cvc {
       display: inline-block;
       width: 145px;
+      text-align: center;
     }
 
     .cc-exp { margin-right: 10px; }
@@ -70,6 +71,8 @@
     line-height: 1.6;
     margin: 20px 0;
   }
+
+  .and { margin-top: 25px; }
 
   .payment2-cards { margin: 10px auto 30px; }
   .payment2-paypal {
