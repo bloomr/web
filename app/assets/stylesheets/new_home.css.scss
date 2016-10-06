@@ -1,6 +1,6 @@
 #new_home {
   > * {
-    padding: 40px 0;
+    padding: 40px 10px;
   }
 
   .new_home-boussole, .new_home-mains, .new_home-blog{ margin: 0 auto;  }
@@ -146,9 +146,11 @@
   .thanks {
     a { display: block; }
     .title { margin: 50px auto 10px; }
-    .sub { font-size: 20px; margin-bottom: 90px; }
+    .sub { font-size: 20px; margin-bottom: 50px; }
     text-align: center;
     .list-wrapper {
+      max-width: 1024px;
+      margin: 0 auto;
       justify-content: space-around;
       > li {
         margin: auto 0;
