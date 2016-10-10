@@ -68,10 +68,9 @@ Rails.application.routes.draw do
   get 'qui-nous-sommes', to: redirect('/qui-sommes-nous')
 
   get 'qui-sommes-nous' => 'static#qui_sommes_nous'
-  get 'le-concept' => 'static#le_concept'
 
-  statics = %w( le-concept qui-sommes-nous le-parcours templates
-                 program press concept bloomifesto)
+  statics = %w( qui-sommes-nous le-parcours templates
+                program press concept bloomifesto )
   statics.each do |name|
     get name => "static##{name}"
   end
