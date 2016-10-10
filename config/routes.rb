@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'static#home'
 
   resources :portraits, only: [:show, :aleatoire] do
     get :aleatoire, on: :collection
@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   get 'le-concept' => 'static#le_concept'
 
   statics = %w( le-concept qui-sommes-nous le-parcours templates
-                new_home program press concept bloomifesto)
+                 program press concept bloomifesto)
   statics.each do |name|
     get name => "static##{name}"
   end

@@ -26,8 +26,6 @@
 //= require algoliasearch.min
 //= require search
 //= require hotjar
-//= require jquery.fullPage.min
 //= require jquery.payment
-//= require me
 //= require portrait
 //= require new_header

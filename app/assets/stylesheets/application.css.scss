@@ -1,5 +1,6 @@
 $grid-float-breakpoint: 200000px;
 
+$blue: #E8F7FF;
 $orange: #FF6622 !default;
 $slightly_light_orange: lighten($orange, 15%);
 $light_orange: lighten($orange, 30%);
@@ -20,7 +21,6 @@ $light_orange: lighten($orange, 30%);
 @import "keywordsbox";
 @import "me";
 
-@import 'home';
 @import 'common';
 @import 'enrollment';
 @import 'payment';
