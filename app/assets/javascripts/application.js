@@ -25,6 +25,7 @@
 //= require addThis
 //= require algoliasearch.min
 //= require search
+//= require search2
 //= require hotjar
 //= require jquery.payment
 //= require portrait

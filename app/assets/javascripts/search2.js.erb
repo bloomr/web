@@ -1,0 +1,97 @@
+/**
+ * Created by slehericey on 08/03/15.
+ */
+
+(function() {
+
+  window.algolia = algoliasearch("<%= ENV['ALGOLIA_APP_ID'] %>", "<%= ENV['ALGOLIA_SEARCH_KEY'] %>");
+  window.algolia.usersIndex = window.algolia.initIndex('User_<%= ENV['ALGOLIA_ENV'] %>');
+
+  var find_good_question = function (el) {
+    var question = _.find(el._snippetResult.questions, function(q){ return q.answer.matchLevel == 'full' });
+    if(question){
+      return '"... ' + question.answer.value + ' ..."';
+    } else {
+      return '';
+    }
+  };
+
+  var suggestionPresentation = function(el) {
+    return  "<li>" +
+      "<a href='/portraits/" + el.objectID + "'>" +
+      "<img src='" + el.avatar_url + "' width='62px' height='62px' class='round'>" +
+      "<div class='details'>" +
+      "<p class='firstName'>" + el._snippetResult.first_name.value + "</p>" +
+      "<p class='jobTitle'>" + el._snippetResult.job_title.value + "</p>" +
+      "</div>" +
+      "<q class='hide-phone'>" + find_good_question(el) + "</q>" +
+      "</a>" +
+      "</li>";
+  };
+
+  var displayResults = function(result) {
+    $('.results ul').html('');
+    _.each(result.hits, function(el) { $('.results ul').append(suggestionPresentation(el)); });
+    $('.results ul').css('opacity', 1);
+    $('.results ul').css('max-height', '2000px');
+  };
+
+  var clearResults = function() {
+    $('.results ul').css('opacity', 0);
+    $('.results ul').css('max-height', 0);
+  };
+
+  var updateUrl = function(query) {
+    if (history.pushState) {
+      var newurl = window.location.protocol + "//" 
+        + window.location.host + window.location.pathname ;
+
+      if(query) { newurl += '?q=' + query; }
+  
+      if(window.location.href != newurl) {
+        window.history.pushState({path:newurl},'',newurl);
+      }
+    }
+  }
+
+  var getParameterByName = function() {
+    var url = window.location.href;
+    var regex = new RegExp("[?&]q(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  var search = function(query) {
+    clearResults();
+    var params = {hitsPerPage: 5, attributesToSnippet: 'first_name:20,job_title:20,questions:15'};
+    if(query && query.length > 2){
+      window.algolia.usersIndex.search(query, params).then(displayResults);
+      updateUrl(query);
+    } else {
+      updateUrl();
+    }
+  }
+
+  var retrieveAndSearch = function () {
+    var query = $(this).val();
+    search(query);
+  }
+
+  var lazySearch = _.debounce(retrieveAndSearch, 300);
+
+  var activeSearch = function() {
+    $('.search').bind("change paste keyup", lazySearch);
+    var currentQuery = getParameterByName();
+    if(currentQuery) {
+      $('.search').val(currentQuery);
+      search(currentQuery);
+    }
+  }
+
+  $(document).on('page:change', activeSearch);
+
+})();
+
+

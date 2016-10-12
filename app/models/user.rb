@@ -42,6 +42,9 @@ class User < ActiveRecord::Base
 
   algoliasearch index_name: "User_#{ENV['ALGOLIA_ENV']}", if: :published do
     attribute :first_name, :job_title
+    attribute :avatar_url do
+      avatar.url('thumb')
+    end
     attribute :keywords do
       keywords.map(&:tag)
     end

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :enrollment, only: [:index, :create]
 
   resources :tribes, only: [:index, :show]
+  resources :jobs, only: [:index]
 
   namespace :api do
     namespace :v1 do

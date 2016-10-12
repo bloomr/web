@@ -1,0 +1,74 @@
+#jobs
+  .top
+    %h1.title Les métiers présentés par ceux qui aiment leur job
+    %input.search{ type: 'text', placeholder: 'Je cherche un métier, ou une qualité' }
+
+    .results
+      %ul
+
+  .grey-spacer
+
+  .bloomeurs
+    %section.of-the-month
+      %h1.title Le Bloomeur du mois
+      .columns
+        = image_tag @bloomeur_of_month.avatar.url('thumb'),
+          width: '62px', height: '62px', itemprop: 'image', 
+          alt: 'Photo de ' + @bloomeur_of_month.first_name,
+          class: 'round'
+        %div
+          %h3 #{@bloomeur_of_month.first_name}
+          %h2 #{@bloomeur_of_month.job_title}
+          %ul
+            %li
+      %q 
+        « #{truncate(raw(@bloomeur_of_month.answer_to('love_job')), length: 100, separator: ' ', omission: ' ...')}
+      %p.suggestion #{@bloomeur_of_month.first_name} nous recommande
+      - book = @bloomeur_of_month.books.first
+      %a.columns{ href: "http://www.amazon.fr/dp/#{book.asin}/?tag=#{ENV['AWS_PARTNER_TRACKING_ID']}", target: '_blank' }
+        = image_tag book.image_url, width: '62px', height: '62px'
+        %div.book-details
+          %p.book-title #{book.title}
+          %p.author #{book.author}
+
+      %a.crazy-btn{ href: portrait_path(@bloomeur_of_month) } Voir le portrait
+
+    %section.last
+      %h1.title Les derniers Bloomeurs
+      %ul
+        - @bloomeurs.each do |b|
+          %li
+            %a{ href: portrait_path(b) }
+              = image_tag b.avatar.url('thumb'), width: '62px', height: '62px', 
+                class: 'round', itemprop: 'image', alt: 'Photo de ' + b.first_name
+
+      %a.crazy-btn Découvre leur métier
+
+    %section.tribes
+      %h1.title Les tribus de pro
+      %ul
+      - @tribes.each do |t|
+        %li
+          %a{ href: tribe_path(t.normalized_name) }
+            = image_tag "tribes/#{t.name.gsub(' ', '').downcase}.png", 
+              width: '62px', height: '62px',
+              class: "round #{t.name.gsub(' ', '').gsub("'", '').gsub('.', '').downcase}"
+            %span #{t.name}
+
+  .grey-spacer
+
+  %section.trend
+    %h1.title Les Tendances
+    %ol
+      - @popular_keywords.each_with_index do |k, i|
+        %li{ class: "keyword-#{i}" } 
+          %a{ href: tag_path(k.tag) } ##{k.tag}
+
+  %section.program
+    %h1.title Toi aussi tu recherches le job qui va te faire vibrer&nbsp;?
+    %p Pose-toi les bonnes questions avec le programme d’orientation Bloomr&nbsp;:
+    %a.crazy-btn{ href: program_path } Découvre le programme
+
+  %section.dictionnary
+    %h1.title Les métiers d’hier, aujourd’hui, et surtout demain&nbsp;!
+    %a{ href: 'https://stample.co/link/libraries/56d8caac44f4c40d78a5c214/le-dico-des-metiers' } →&nbsp;Le dico des métiers
