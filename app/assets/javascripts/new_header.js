@@ -2,12 +2,16 @@
   var isMobile = ($(window).width() <= 480);
 
   var makeNavReadable = function (ev){
-    var headerHeight = 80;
-    var trigger = $('.intro').outerHeight() - headerHeight;
-    if (window.pageYOffset> trigger) {
-      $('nav').css('background-color','#ee933f');
+    if($('.intro').length > 0) {
+      var headerHeight = 80;
+      var trigger = $('.intro').outerHeight() - headerHeight;
+      if (window.pageYOffset> trigger) {
+        $('nav').css('background-color','#ee933f');
+      } else {
+        $('nav').css('background-color','transparent');
+      }
     } else {
-      $('nav').css('background-color','transparent');
+        $('nav').css('background-color','#ee933f');
     }
   };
 
@@ -62,6 +66,7 @@
       $navHeaders.hover(menuHover, hideAfter);
       $('.submenu').hover(clearExitTimer, hideAfter);
       window.addEventListener('scroll', makeNavReadable, false);
+      makeNavReadable();
     }
     $navHeaders.click(menuClick);
     $('body').click(hideSubmenus);
