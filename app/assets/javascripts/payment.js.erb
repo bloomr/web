@@ -39,10 +39,7 @@
   var activateStripe = function () {
     if ( $('#payment').length === 0 ) { return; }
 
-    console.log('activated !');
     Stripe.setPublishableKey("<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>");
-    console.log($('input.cc-number').length);
-    console.log($('input.cc-number').payment);
 
     $('input.cc-number').payment('formatCardNumber');
     $('input.cc-exp').payment('formatCardExpiry');
@@ -64,11 +61,11 @@
 
   var unActivateStripe = function () {
     if ( $('#payment').length === 0 ) { return; }
-    console.log('unactivate')
 
     $('input.cc-number').off();
     $('input.cc-exp').off();
     $('input.cc-cvc').off();
+    $("#new_bloomy").off();
   };
 
   $(document).on('page:change', activateStripe);
