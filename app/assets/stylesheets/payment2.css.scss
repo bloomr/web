@@ -74,6 +74,17 @@
 
   .and { margin-top: 25px; }
 
+  .flash-messages {
+    p {
+      color: #b94a48;
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      width: 300px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+  }
+
   .payment2-cards { margin: 10px auto 30px; }
   .payment2-paypal {
     display: inline-block; 

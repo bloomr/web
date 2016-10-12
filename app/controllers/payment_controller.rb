@@ -13,7 +13,7 @@ class PaymentController < ApplicationController
     Journey.new(bloomy, password)
     redirect_to payment_thanks_path
 
-  rescue Stripe::CardError => e
+  rescue StandardError => e
     flash[:error] = e.message
     redirect_to payment_index_path
   end

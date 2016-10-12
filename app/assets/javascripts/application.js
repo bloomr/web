@@ -30,3 +30,4 @@
 //= require jquery.payment
 //= require portrait
 //= require new_header
+//= require payment
