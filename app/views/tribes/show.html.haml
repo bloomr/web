@@ -5,7 +5,18 @@
   %section.intro
     %h1 #{@tribe.name}
     .list-wrapper
+      %a{ href: tribe_path(@tribe.previous.normalized_name) }
+        %span.other-tribe tribu précédente
+        %br
+        ←&nbsp;
+        %span #{@tribe.previous.name}
       %p.subtitle #{@tribe.description}
+      %a.right{ href: tribe_path(@tribe.next.normalized_name) }
+        %span.other-tribe{style: 'text-align: right'} tribu suivante
+        %br
+        %span #{@tribe.next.name}
+        →&nbsp;
+
   %ul
     - @tribe.users.active_ordered.each do |user|
       %li{ itemscope: true, itemtype: 'http://schema.org/Person' }

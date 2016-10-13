@@ -27,9 +27,17 @@ class Tribe < ActiveRecord::Base
     Keyword.where(id: keyword_ids)
   end
 
+  def next
+    Tribe.where('id > ?', id).order('id ASC').first || Tribe.first
+  end
+
+  def previous
+    Tribe.where('id < ?', id).order('id DESC').first || Tribe.last
+  end
+
   private
 
   def normalize_name
-    self.normalized_name = self.name.gsub('.','_')
+    self.normalized_name = name.gsub('.','_')
   end
 end
