@@ -8,5 +8,6 @@ class TribesController < ApplicationController
 
   def show
     @tribe = Tribe.find_by normalized_name: params[:id]
+    render layout: 'new_home'
   end
 end

@@ -1,13 +1,12 @@
 - content_for :title, @tribe.name
 - content_for :description, @tribe.description
 
-#tribes-show.container
-  .row
-    %h1 #{ @tribe.name }
-    %h2 #{ @tribe.description }
-
-  .row
-    %ul.cards
-      - @tribe.users.active_ordered.each do |user|
-        %li.col-lg-3.col-md-4.col-sm-6.col-xs-12{ itemscope: true, itemtype: "http://schema.org/Person" }
-          = render "portraits/card", portrait: user
+#tribes-show
+  %section.intro
+    %h1 #{@tribe.name}
+    .list-wrapper
+      %p.subtitle #{@tribe.description}
+  %ul
+    - @tribe.users.active_ordered.each do |user|
+      %li{ itemscope: true, itemtype: 'http://schema.org/Person' }
+        = render 'portraits/card', portrait: user
