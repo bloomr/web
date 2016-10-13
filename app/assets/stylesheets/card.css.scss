@@ -1,0 +1,115 @@
+$card-height: 316px;
+$card-overlay-offset: 198px;
+$card-overlay-height: $card-height - $card-overlay-offset;
+
+
+.card {
+  @media(max-width: $max_phone_size){
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px #656565;
+    text-align: center;
+
+    img { border-radius: 52px; margin: 20px;}
+    .overlay {
+      background-color: white;
+      opacity: 0.8;
+      padding: 0 5px;
+    }
+
+    .overlay {
+      flex-grow: 1;
+    }
+
+    h3 {
+      font-size: 16px;
+      padding-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.1;
+    }
+  }
+  @media(min-width: $max_phone_size + 1){
+    height: $card-height;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px #656565;
+    text-align: center;
+    position: relative;
+    overflow:hidden;
+
+    > img {
+      border-radius: 52px;
+      position: relative;
+      top: 50px;
+    }
+
+    .overlay {
+      background-color: white;
+      height: 316px;
+      opacity: 0.8;
+      padding: 0 5px;
+      position: absolute;
+      top: $card-overlay-offset;
+      transition: top 0.35s;
+      width: 100%;
+    }
+
+    $card-h3-height: 50px;
+
+    h3 {
+      font-size: 16px;
+      padding-top: 15px;
+      height: $card-h3-height;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: bold;
+      height: $card-overlay-height - $card-h3-height;
+      line-height: 1.1;
+    }
+
+    .quote {
+      border-top: 1px solid gray;
+      height: 120px;
+      position: relative;
+      margin-top: 7px;
+      > img {
+        background: #ffffff;
+        padding: 0 5px;
+        position: relative;
+        top: -12px;
+      }
+    }
+
+    blockquote {
+      height: 100px;
+      overflow: hidden;
+    }
+
+    button {
+      font-weight: bold;
+      font-size: 14px;
+      padding: 5px 15px;
+      color: #ff6622;
+      border: 1px solid;
+      border-radius: 5px;
+      background-color: #FFF;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    &:hover {
+      .overlay { top: 0 }
+    }
+  }
+}
+
+.touch .card .overlay {
+  top: 0;
+}
