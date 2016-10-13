@@ -17,7 +17,7 @@
 
     %p.last-step Dernière étape avant de commencer le programme : l’inscription !
     = form_for Bloomy.new, url: '/payment' do |f|
-      = f.text_field :first_name, placeholder: 'Prénom', required: true
+      = f.text_field :first_name, placeholder: 'Prénom', required: true, autofocus: true
       = f.email_field :email, placeholder: 'Adresse email', required: true, 'data-stripe' => 'name'
       = f.text_field :age, placeholder: 'Âge', required: true
 
