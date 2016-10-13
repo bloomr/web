@@ -1,5 +1,6 @@
 %header.new_header
-  %nav
+  - bg = yield(:header_background)
+  %nav{ style: (bg.blank? ? '' : "background-image: url(#{bg})") }
     .top.show-phone
       %a.logo{ href: '/' } Bloomr
       %a.menu Menu
