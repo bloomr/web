@@ -1,71 +1,166 @@
 #enrollment {
-  .sprite {
-      background-image: image-url('login/sprite.png');
-      background-repeat: no-repeat;
+  header {
+    background: image-url('new_header/header-bg.png') center;
+    color: #FFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100px;
+
+    .left {
+      display: flex;
+      align-items: center;
+    }
+
+    .back { font-size: 13px }
+    .sub { font-size: 18px; font-weight: 600; }
+
+    @media(max-width: $max_phone_size) {
+      .second { max-width: 200px; }
+    }
+
+    .white-logo {
+      background-image: image-url('new_header/white_logo.png');
+      width: 80px;
+      height: 68px;
       display: block;
+      margin-right: 30px;
+    }
+
+    b { font-weight: 800; }
+  }
+
+  .main {
+    max-width: 620px;
+    margin: 30px auto;
+    text-align: center;
+    padding: 0 10px;
+  }
+  
+  .mission { font-weight: 600; line-height: 1.6; }
+
+  .reasons { margin: 30px auto; }
+
+  .inscription { 
+    margin: 25px auto;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.8px;
+  }
+
+  .first-step { font-weight: 600; }
+
+  .nice-input {
+    display: block;
+    width: 300px;
+    margin: 5px auto;
+    height: 50px;
+    border-radius: 2px;
+    background-color: #f3efe9;
+    border: solid 1px #e6e0d4;
+    padding: 5px 10px;
+  }
+
+  .crazy-btn {
+    width: 300px;
+    font-size: 16px;
+  }
+
+  b { font-weight: 600; }
+
+  .sprite {
+    background-image: image-url('login/sprite.png');
+    background-repeat: no-repeat;
+    display: block;
   }
 
   .dev-card {
-      width: 180px;
-      height: 216px;
-      background-position: -5px -5px;
+    width: 180px;
+    height: 216px;
+    background-position: -5px -5px;
   }
 
   .parole-card {
-      width: 180px;
-      height: 217px;
-      background-position: -195px -5px;
+    width: 180px;
+    height: 217px;
+    background-position: -195px -5px;
   }
 
   .radis-card {
-      width: 180px;
-      height: 217px;
-      background-position: -5px -232px;
+    width: 180px;
+    height: 217px;
+    background-position: -5px -232px;
   }
-  .center {
-    a.galerie {
-      display: block;
-      cursor: pointer;
-      color: #3e3e3e;
-      @media (max-width: 767px) {
-        ul {
-          display: none;
-        }
-      }
+
+  .subtitle { margin: 40px auto; }
+
+  a.galerie {
+    display: block;
+    cursor: pointer;
+    color: #3e3e3e;
+    margin-top: 15px;
+    @media (max-width: 767px) {
       ul {
-        padding-top: 20px;
-        margin-bottom: 30px;
+        display: none;
       }
-      ul>li {
-        display: inline-block;
-        transition: transform 0.5s ease 0s;
-        &:nth-child(1){
+    }
+    ul {
+      padding-top: 20px;
+      margin-bottom: 30px;
+    }
+    ul>li {
+      display: inline-block;
+      transition: transform 0.5s ease 0s;
+      &:nth-child(1){
         transform: translate(15px) rotate(2deg);
+      }
+      &:nth-child(2){
+        transform: translate(0px) rotate(-10deg);
+      }
+      &:nth-child(3){
+        transform: translate(-20px) rotate(2deg);
+      }
+    }
+    &:hover {
+      ul>li {
+        &:nth-child(1){
+          transform: translate(0px) rotate(-3deg);
         }
         &:nth-child(2){
-        transform: translate(0px) rotate(-10deg);
+          transform: translate(-2px) rotate(-15deg);
         }
         &:nth-child(3){
-        transform: translate(-20px) rotate(2deg);
-        }
-      }
-      &:hover {
-        text-decoration: none;
-        .oeil {
-          text-decoration: underline;
-        }
-        ul>li {
-          &:nth-child(1){
-          transform: translate(0px) rotate(-3deg);
-          }
-          &:nth-child(2){
-          transform: translate(-2px) rotate(-15deg);
-          }
-          &:nth-child(3){
           transform: translate(-10px) rotate(7deg);
-          }
         }
       }
+      .oeil {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .oeil {
+    width: 300px;
+    height: 60px;
+    border-radius: 7px;
+    border: solid 2px $orange;
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    color: $orange;
+    padding: 13px 5px 0;
+  }
+
+  footer {
+    height: 50px;
+    background: none;
+    background-color: rgba(242, 239, 232, 0.6);
+    a {
+      background: image-url('new_header/transparent_logo.png') center;
+      display: block;
+      width: 55px;
+      height: 30px;
+      font-size: 0;
     }
   }
 }

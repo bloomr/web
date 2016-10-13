@@ -30,7 +30,7 @@ feature 'the private profile' do
         fill_in 'user_password', with: 'password'
         fill_in 'user_job_title', with: 'job'
       end
-      click_button 'Go Go Go !'
+      click_button 'GO GO GO !'
 
       find('.greetings', wait: 15)
       wait_for_ajax
