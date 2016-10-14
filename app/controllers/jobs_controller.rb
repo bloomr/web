@@ -4,6 +4,7 @@ class JobsController < ApplicationController
     @tribes = Tribe.all
     @bloomeur_of_month =
       User
+      .where(published: true)
       .joins(:books).group('users.id').having('count(books.id)> ?', 2)
       .order(created_at: :desc).first
     @popular_keywords = Keyword.popular_keywords
