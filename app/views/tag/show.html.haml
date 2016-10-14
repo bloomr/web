@@ -1,0 +1,23 @@
+- content_for :title, 'Des professionnels passionnés parlent de leur métier'
+- content_for :og_title, 'Bloomr - Des professionnels passionnés parlent de leur métier'
+- content_for :description, 'Choisir un métier épanouissant grâce à une communauté de professionnels passionnés'
+- content_for :header_background, asset_path('new_header/header-bg.png')
+
+#tag
+  %section.intro
+    %h1 #{@keyword.tag}
+    .list-wrapper
+      - if @keyword.description
+        %p.subtitle #{@keyword.description}
+      - else
+        %p.subtitle
+          Plus de 200 professionnels enthousiastes nous parlent de leur métier.
+          %br
+          Comment se voyaient-ils enfant et que sont-ils devenus ?
+          %br
+          À vous de le découvrir !
+
+  %ul
+    - @portraits.each do |portrait|
+      %li{ itemscope: true, itemtype: 'http://schema.org/Person' }
+        = render 'portraits/card', portrait: portrait
