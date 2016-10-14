@@ -1,0 +1,6 @@
+.jobs-les30 { width: 35px; height: 35px; background: image-url('jobs/sprite.png') 0px 0px no-repeat; }
+.jobs-lescréatifs { width: 38px; height: 35px; background: image-url('jobs/sprite.png') -35px 0px no-repeat; }
+.jobs-leshumanistes { width: 37px; height: 35px; background: image-url('jobs/sprite.png') -73px 0px no-repeat; }
+.jobs-lesorga { width: 45px; height: 29px; background: image-url('jobs/sprite.png') -110px -3px no-repeat; }
+.jobs-lesscientifiques { width: 38px; height: 36px; background: image-url('jobs/sprite.png') -155px 0px no-repeat; }
+.jobs-lesécolos { width: 35px; height: 36px; background: image-url('jobs/sprite.png') -193px 0px no-repeat; }
