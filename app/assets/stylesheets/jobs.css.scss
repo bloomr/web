@@ -103,6 +103,7 @@
       .suggestion { font-weight: bold; margin-bottom: 5px;}
 
       img { margin-right: 15px; }
+      img.book-picture { margin: auto 15px auto 0; }
 
       .book-title, .author { font-size: 12px; }
       .author { color: rgba(62, 62, 62, 0.6); margin-top: 5px; }
@@ -117,35 +118,26 @@
         display: flex;
         flex-wrap: wrap;
       }
+      li { margin: 5px; }
     }
 
     .tribes {
-      .lesécolos { background-color: rgba(138,87,42,0.48); }
-      .lescréatifs { background-color: #c6acd8; }
-      .leshumanistes { background-color: #f0ad30; }
-      .lesorga { background-color: rgba(208,1,27, 0.45); }
-      .les30 { background-color: rgba(73,143,225, 0.68); }
-      .lesscientifiques { background-color: rgba(126,210,33,0.56); }
-
       li { margin: 15px 0; }
 
       a { 
         align-items: center;
         display: flex; 
 
-        img { margin-right: 10px; }
         span {
           font-size: 15px;
           font-weight: bold;
         }
+        .icon { margin-right: 10px; }
       }
     }
 
 
     .crazy-btn { margin-top: 30px; }
-    @media(min-width: $max_phone_size + 1) {
-      .crazy-btn { position: absolute; bottom: 10px; top: inherit; }
-    }
 
     li { list-style: none; }
 

@@ -1,3 +1,6 @@
+- content_for :title, 'les métiers'
+- content_for :header_background, asset_path('portrait/bg.png')
+
 #jobs
   .top
     %h1.title Les métiers présentés par ceux qui aiment leur job
@@ -11,7 +14,7 @@
   .bloomeurs
     %section.of-the-month
       %h1.title Le Bloomeur du mois
-      .columns
+      %a.columns{ href: portrait_path(@bloomeur_of_month) }
         = image_tag @bloomeur_of_month.avatar.url('thumb'),
           width: '62px', height: '62px', itemprop: 'image', 
           alt: 'Photo de ' + @bloomeur_of_month.first_name,
@@ -19,14 +22,12 @@
         %div
           %h3 #{@bloomeur_of_month.first_name}
           %h2 #{@bloomeur_of_month.job_title}
-          %ul
-            %li
       %q 
         « #{truncate(raw(@bloomeur_of_month.answer_to('love_job')), length: 100, separator: ' ', omission: ' ...')}
       %p.suggestion #{@bloomeur_of_month.first_name} nous recommande
       - book = @bloomeur_of_month.books.first
       %a.columns{ href: "http://www.amazon.fr/dp/#{book.asin}/?tag=#{ENV['AWS_PARTNER_TRACKING_ID']}", target: '_blank' }
-        = image_tag book.image_url, width: '62px', height: '62px'
+        = image_tag book.image_url.gsub('_SL160_', '_SL62_'), height: '62px', class: 'book-picture'
         %div.book-details
           %p.book-title #{book.title}
           %p.author #{book.author}
@@ -42,17 +43,13 @@
               = image_tag b.avatar.url('thumb'), width: '62px', height: '62px', 
                 class: 'round', itemprop: 'image', alt: 'Photo de ' + b.first_name
 
-      %a.crazy-btn Découvre leur métier
-
     %section.tribes
       %h1.title Les tribus de pro
       %ul
       - @tribes.each do |t|
         %li
           %a{ href: tribe_path(t.normalized_name) }
-            = image_tag "tribes/#{t.name.gsub(' ', '').downcase}.png", 
-              width: '62px', height: '62px',
-              class: "round #{t.name.gsub(' ', '').gsub("'", '').gsub('.', '').downcase}"
+            %span.icon{ class: "jobs-#{t.name.gsub(' ', '').gsub("'", '').gsub('.', '').downcase}" }
             %span #{t.name}
 
   .grey-spacer
