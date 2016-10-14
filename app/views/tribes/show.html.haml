@@ -18,6 +18,6 @@
         →&nbsp;
 
   %ul
-    - @tribe.users.active_ordered.each do |user|
+    - @users.each do |user|
       %li{ itemscope: true, itemtype: 'http://schema.org/Person' }
         = render 'portraits/card', portrait: user
