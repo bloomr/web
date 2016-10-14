@@ -1,0 +1,32 @@
+.links {
+    margin: auto;
+    font-family: Satisfy;
+    font-size: 22px;
+    letter-spacing: 0.7px;
+    color: #b9b6af;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    span { 
+      display: inline-block; 
+      top: 3px;
+      right: 5px;
+      position: relative
+    }
+
+    .portrait-luggage-on, .portrait-quote-on {
+      display: none;
+    }
+
+    .active { 
+      color: #ee933f; 
+
+      .portrait-luggage-on, .portrait-quote-on {
+        display: inline-block;
+      }
+
+      .portrait-luggage, .portrait-quote {
+        display: none;
+      }
+    }
+  }

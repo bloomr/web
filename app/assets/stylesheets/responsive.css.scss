@@ -1,11 +1,11 @@
 .hide-phone {
   @media (max-width: $max_phone_size) {
-    display: none;
+    display: none !important;
   }
 }
 
 .show-phone {
   @media (min-width: $max_phone_size + 1) {
-    display: none;
+    display: none !important;
   }
 }

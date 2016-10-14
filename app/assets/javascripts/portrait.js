@@ -11,7 +11,7 @@
       sections: {
         work: $('#my-work'),
         books: $('#my-books'),
-        interview: $('#portrait_details')
+        interview: $('#my-interview')
       }
     };
 

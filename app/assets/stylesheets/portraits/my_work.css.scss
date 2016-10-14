@@ -1,0 +1,74 @@
+#my-work {
+  margin: 30px 0 50px;
+
+  span { display: inline-block; }
+
+  > * {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+
+    @media(max-width: $max_phone_size) {
+      flex-direction: column;
+      > * { margin: auto; }
+    }
+    @media(min-width: $max_phone_size + 1) {
+      > *:first-child {
+        margin-right: 30px;
+      }
+    }
+
+    > * {
+      width: 310px;
+    }
+
+    .question {
+      height: 50px;
+    }
+  }
+
+  @media(max-width: $max_phone_size) {
+    text-align: center;
+
+    .team {
+      margin-top: 15px;
+    }
+    .knowledge {
+      .question {
+        height: 120px;
+      }
+    }
+  }
+
+  .spacer {
+    max-width: 665px;
+    height: 2px;
+    border: solid 1px #e6e0d4;
+    margin: 50px auto;
+  }
+
+  .typical {
+    text-align: center;
+    max-width: 600px;
+    .answer { margin-top: 10px; }
+  }
+
+  .question, .answer {
+    font-size: 20px;
+    color: #0e0e0e;
+  }
+
+  .answer { color: $orange; }
+
+  .structure {
+    display: flex;
+    .question { max-width: 200px; }
+  }
+
+  .team { .question { height: 100px; } }
+}

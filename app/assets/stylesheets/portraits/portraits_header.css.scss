@@ -1,0 +1,71 @@
+.portrait_header {
+  padding-top: 80px;
+  background-image: image-url('portrait/bg.png');
+  color: #FFF;
+
+  .top {
+    margin: 40px 0 5px; 
+    text-align: center;
+
+    img {
+      border-radius: 46px;
+      border: 5px solid #FFF;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h3 { font-size: 28px; letter-spacing: 0.9px; }
+
+    span { font-weight: 600; }
+  }
+
+  .list-wrapper {
+    max-width: 1024px;
+    margin: auto;
+    justify-content: space-between;
+
+    > * { max-width: 260px; }
+
+    .spacer {
+      width: 20px;
+      height: 4px;
+      background-color: #fdf4e4;
+    }
+
+    .sub {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.4px;
+      margin: 8px 0;
+      opacity: 0.8;
+    }
+
+    a { text-decoration: underline; }
+
+    li { 
+      display: inline-block;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .keywords {
+      li { &::before { content: '#'; margin-right: -4px; } }
+    }
+
+    .tribes {
+      li { &::after { content: ','; } }
+      li:last-child { &::after { content: ''; } }
+    }
+  }
+
+  .social {
+    position: relative;
+  a { text-decoration: none; display: inline-block; } 
+  .fb { 
+    padding-bottom: 3px;
+    position: relative;
+    top: -4px;
+    margin-right: 5px;
+  }
+}
+}

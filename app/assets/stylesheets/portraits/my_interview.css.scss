@@ -1,0 +1,83 @@
+#my-interview {
+  .main {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .spacer {
+    max-width: 665px;
+    height: 2px;
+    border: solid 1px #e6e0d4;
+    margin: 50px auto;
+  }
+
+  blockquote {
+    margin-top: 30px;
+    font-size: 20px;
+    font-style: italic;
+    color: #0e0e0e;
+    position: relative;
+
+    .portrait-icon-quote, .portrait-icon-quote-close {
+      display: inline-block;
+      position: relative;
+      top: -8px;
+    }
+
+    .portrait-icon-quote-close { left: 4px; }
+  }
+
+  li { margin-bottom: 60px; }
+
+  h4 { 
+    margin-bottom: 25px;
+    color: #0e0e0e;
+  }
+
+  .merci {
+    font-size: 30px;
+    color: #0e0e0e;
+    margin-bottom: 60px;
+  }
+
+
+  .books {
+    background-color: #f6f6f6;
+    a {
+      margin-top: 4px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      color: #3e3e3e;
+      img {
+        transform: rotate(-10deg);
+        margin-right: 50px;
+        transition: all 0.3s ease 0s;
+        box-shadow: 6px 6px 14px 0 rgba(62, 62, 62, 0.19);
+      }
+      .bedside {
+        font-family: Satisfy;
+        font-size: 26px;
+        letter-spacing: 0.8px;
+      }
+      .title {
+        font-family: 'Open Sans';
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: bold;
+      }
+      .author {
+        font-family: 'Open Sans';
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      &:hover {
+        img {
+          transform: rotate(0);
+        }
+      }
+    }
+  }
+}

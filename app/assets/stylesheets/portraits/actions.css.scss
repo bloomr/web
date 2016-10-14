@@ -1,0 +1,25 @@
+.actions2 {
+  height: 150px;
+  border: solid 1px #f3efe9;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > * {
+    width: 32%;
+  }
+
+  .middle {
+    border-right: solid 1px #f3efe9;
+    border-left: solid 1px #f3efe9;
+
+    .crazy-btn {
+      font-size: 14px;
+      display: block;
+    }
+  }
+
+  // a { display: block; }
+  a:hover { text-decoration: underline; }
+}
