@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
     User.joins(:keywords)
         .where('users.published = ? and users.job_title IS NOT NULL AND keywords.tag = ?', true, options[:tag])
         .select('distinct users.*')
-        .limit(12)
+        .limit(options[:nb_per_page])
         .offset(options[:nb_per_page] * options[:page])
         .order(updated_at: :desc)
   end
