@@ -22,7 +22,6 @@
 //= require typeahead.bundle.min
 //= require side-comments.min
 //= require comments
-//= require addThis
 //= require algoliasearch.min
 //= require search
 //= require search2
