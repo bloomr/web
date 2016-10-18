@@ -117,7 +117,12 @@
       ul { 
         display: flex;
         flex-wrap: wrap;
+
+        @media(max-width: $max_phone_size) {
+          justify-content: center;
+        }
       }
+
       li { margin: 5px; }
     }
 
@@ -153,6 +158,12 @@
     .keyword-2 { font-size: 34px; }
     .keyword-3 { font-size: 24px; }
     .keyword-4 { font-size: 18px; }
+
+    p {
+      margin: 15px 0 40px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
   }
 
   .program { 
@@ -172,6 +183,14 @@
       color: #4a4a4a;
       margin-top: 10px;
       margin-bottom: 30px;
+    }
+  }
+
+  .dictionnary {
+    h1 {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }

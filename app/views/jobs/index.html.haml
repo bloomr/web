@@ -1,5 +1,5 @@
 - content_for :title, 'les métiers'
-- content_for :header_background, asset_path('portrait/bg.png')
+- content_for :header_background, asset_path('new_header/header-bg.png')
 
 #jobs
   .top
@@ -44,7 +44,7 @@
                 class: 'round', itemprop: 'image', alt: 'Photo de ' + b.first_name
 
     %section.tribes
-      %h1.title Les tribus de pro
+      %h1.title Les tribus de pros
       %ul
       - @tribes.each do |t|
         %li
@@ -56,6 +56,7 @@
 
   %section.trend
     %h1.title Les Tendances
+    %p Les Bloomeurs décrivent, entre autres, leur métier en 5 mots. Les mots les plus cités du moment :
     %ol
       - @popular_keywords.each_with_index do |k, i|
         %li{ class: "keyword-#{i}" } 
@@ -67,5 +68,5 @@
     %a.crazy-btn{ href: program_path } Découvre le programme
 
   %section.dictionnary
-    %h1.title Les métiers d’hier, aujourd’hui, et surtout demain&nbsp;!
+    %h1.title Les métiers d’hier et d’aujourd’hui, et surtout de demain&nbsp;!
     %a{ href: 'https://stample.co/link/libraries/56d8caac44f4c40d78a5c214/le-dico-des-metiers' } →&nbsp;Le dico des métiers

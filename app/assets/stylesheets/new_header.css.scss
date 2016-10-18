@@ -7,7 +7,7 @@ header.new_header {
     $mobile_header_height: 65px;
     .top { 
       height: $mobile_header_height;
-      background: image-url('new_header/header-bg.png');
+      background-color: $orange;
       position: fixed;
       top: 0;
       left: 0;

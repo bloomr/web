@@ -1,10 +1,11 @@
 .actions2 {
-  height: 150px;
+  min-height: 150px;
   border: solid 1px #f3efe9;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
 
   > * {
     width: 32%;
@@ -15,11 +16,12 @@
     border-left: solid 1px #f3efe9;
 
     .crazy-btn {
-      font-size: 14px;
+      @media(max-width: $max_phone_size){
+        font-size: 14px;
+      }
       display: block;
     }
   }
 
-  // a { display: block; }
   a:hover { text-decoration: underline; }
 }
