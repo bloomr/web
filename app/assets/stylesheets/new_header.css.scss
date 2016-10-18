@@ -1,21 +1,30 @@
 //TODO: responsive pour smartphone < 480px;
 
+.down { transform: rotate(90deg); }
+
 header.new_header {
   @media (max-width: $max_phone_size) {
     color: white;
     font-size: 14px;
     $mobile_header_height: 65px;
-    .top { 
-      height: $mobile_header_height;
-      background-color: $orange;
+
+    nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
+      z-index: 11;
+      height: 100%;
+      overflow: auto;
+      opacity: 0.95;
+    }
+
+    .top { 
+      height: $mobile_header_height;
+      background-color: $orange;
       display: flex; 
       justify-content: space-between;
       > a { margin: 15px 20px; }
-      z-index: 11;
     }
     .logo { 
       background-image: image-url('new_header/initials.png');
@@ -28,20 +37,46 @@ header.new_header {
       border: solid 1px #ffffff;
       padding: 5px 15px;
     }
+
+    nav > ul { display: none; }
+    nav.visible { 
+      height: 100%; 
+      > ul { display: block; }
+    }
+
     nav > ul {
-      padding-bottom: 20px;
-      display: none;
-      position: fixed;
       top: $mobile_header_height;
-      left: 0px;
-      right: 0px;
-      z-index: 10;
       background-color: $orange;
-      text-align: center;
+      text-align: left;
       > li {
-        margin-top: 20px;
+        margin: 0 20px;
+        border-bottom: solid 1px #ffffff;
+        font-size: 18px;
+        line-height: 1.7;
+        &:last-child { border: none; }
+        > a {
+          padding: 20px 0;
+        }
       }
-      .submenu { display: none; }
+      .submenu { 
+        display: none;
+        color: $orange;
+        background-color: white;
+        margin: 0 -20px;
+        padding: 0 20px;
+
+        li {
+          padding: 10px 0;
+          border-bottom: 1px solid #e6e0d4;
+          &:last-child { border: none; }
+        }
+      }
+      a {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .iam { color: $text_color; }
     }
   }
   @media (min-width: $max_phone_size + 1px) {

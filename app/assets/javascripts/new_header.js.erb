@@ -15,7 +15,7 @@
     }
   };
 
-  var toogleMobileMenu = function() { $('nav > ul').toggle(); };
+  var toogleMobileMenu = function() { $('nav').toggleClass('visible'); };
   var hideSubmenus = function() { $('.submenu').hide(); };
 
   var exitTimer;
@@ -41,13 +41,15 @@
 
     var menuClick = function(e) {
       e.stopPropagation();
-      var $target = $('.submenu', e.target.parentNode);
+      var liParent = $(e.target).closest('li');
+      var $target = $('.submenu', liParent);
       toggleOnlySubmenu($target);
     };
 
     var menuHover = function(e) {
       clearTimeout(exitTimer);
-      var $target = $('.submenu', e.target.parentNode);
+      var liParent = $(e.target).closest('li');
+      var $target = $('.submenu', liParent);
       showOnlySubmenu($target);
     };
 
