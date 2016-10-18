@@ -36,4 +36,4 @@
       .spacer
       %p.sub Partage mon profil
       %a.portrait-facebook.fb{ href: "https://www.facebook.com/sharer/sharer.php?u=#{portrait_url(@portrait)}", target: '_blank' }
-      %a.portrait-twitter{ href: "https://twitter.com/intent/tweet?url=#{portrait_url(@portrait)}", target: '_blank' }
+      %a.portrait-twitter{ href: "https://twitter.com/intent/tweet?text=#{ yield(:description) }&url=#{portrait_url(@portrait)}", target: '_blank' }
