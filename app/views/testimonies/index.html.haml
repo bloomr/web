@@ -1,0 +1,26 @@
+- content_for :title, 'Les témoignages'
+- content_for :description, ''
+- content_for :header_background, asset_path('new_header/header-bg.png')
+
+#testimony
+  %section.intro
+    %h1 Témoignages
+    .list-wrapper
+      %a{ href: bloomifesto_path }
+        ←&nbsp;
+        %span Le bloomifesto
+      %p.subtitle Ils ont suivi le programme Bloomr, ils nous ont écrit des mots doux qui nous donnent des ailes !
+      %a.right{ href: qui_sommes_nous_path }
+        %span L'équipe 
+        →&nbsp;
+
+  %section
+    %ul
+      - Testimony.all.sort_by(&:position).each_with_index do |t, i|
+        %li{ class: "testi-#{i%5}" }
+          %h2 #{t.title}
+          %p #{t.body}
+          .legend
+            %span #{t.person}
+            %span.spacer
+            %span &nbsp;#{t.date}

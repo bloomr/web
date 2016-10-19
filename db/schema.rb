@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901144641) do
+ActiveRecord::Schema.define(version: 20161019151045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -202,6 +202,16 @@ ActiveRecord::Schema.define(version: 20160901144641) do
   add_index "questions", ["identifier"], name: "index_questions_on_identifier", using: :btree
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
+  create_table "testimonies", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.string   "person"
+    t.string   "date"
+    t.string   "position",   default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "tribes", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",      null: false
@@ -238,8 +248,10 @@ ActiveRecord::Schema.define(version: 20160901144641) do
     t.datetime "avatar_updated_at"
     t.boolean  "published",                          default: false
     t.boolean  "do_authorize",                       default: false
+    t.string   "authentication_token",   limit: 30
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
