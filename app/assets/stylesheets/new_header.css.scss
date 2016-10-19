@@ -14,7 +14,6 @@ header.new_header {
       left: 0;
       right: 0;
       z-index: 11;
-      height: 100%;
       overflow: auto;
       opacity: 0.95;
     }
@@ -46,6 +45,7 @@ header.new_header {
 
     nav > ul {
       top: $mobile_header_height;
+      height: calc(100% - #{$mobile_header_height});
       background-color: $orange;
       text-align: left;
       > li {
