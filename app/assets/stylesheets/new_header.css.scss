@@ -37,10 +37,17 @@ header.new_header {
       padding: 5px 15px;
     }
 
-    nav > ul { display: none; }
+    nav {
+      .close { display: none; }
+      .open { display: block; }
+      > ul { display: none; }
+    }
     nav.visible { 
       height: 100%; 
       background-color: $orange !important;
+
+      .close { display: block; }
+      .open { display: none; }
       > ul { display: block; }
     }
 
