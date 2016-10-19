@@ -16,11 +16,11 @@ header.new_header {
       z-index: 11;
       overflow: auto;
       opacity: 0.95;
+      transition: background-color 500ms;
     }
 
     .top { 
       height: $mobile_header_height;
-      background-color: $orange;
       display: flex; 
       justify-content: space-between;
       > a { margin: 15px 20px; }
@@ -40,13 +40,13 @@ header.new_header {
     nav > ul { display: none; }
     nav.visible { 
       height: 100%; 
+      background-color: $orange !important;
       > ul { display: block; }
     }
 
     nav > ul {
       top: $mobile_header_height;
       height: calc(100% - #{$mobile_header_height});
-      background-color: $orange;
       text-align: left;
       > li {
         margin: 0 20px;

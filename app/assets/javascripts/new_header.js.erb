@@ -67,10 +67,10 @@
     } else {
       $navHeaders.hover(menuHover, hideAfter);
       $('.submenu').hover(clearExitTimer, hideAfter);
-      if($('nav').css('background-image') === 'none') {
-        window.addEventListener('scroll', makeNavReadable, false);
-        makeNavReadable();
-      }
+    }
+    if($('nav').css('background-image') === 'none') {
+      window.addEventListener('scroll', makeNavReadable, false);
+      makeNavReadable();
     }
     $navHeaders.click(menuClick);
     $('body').click(hideSubmenus);
