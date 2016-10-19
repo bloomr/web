@@ -42,6 +42,10 @@
             %a{ href: portrait_path(b) }
               = image_tag b.avatar.url('thumb'), width: '62px', height: '62px', 
                 class: 'round', itemprop: 'image', alt: 'Photo de ' + b.first_name
+              .info.hide-phone
+                %h3 #{b.first_name}
+                %h2 #{b.job_title}
+                %p #{b.tribes.map{ |t| t.name }.join(', ')}
 
     %section.tribes
       %h1.title Les tribus de pros
