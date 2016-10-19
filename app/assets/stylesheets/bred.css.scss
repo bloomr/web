@@ -72,10 +72,20 @@
   .left-column { max-width: 500px; }
 
   #goodNews {
-    background: image-url('bred/goodNews.jpg') no-repeat center top;
+    @media(max-width: $max_phone_size) {
+      background: image-url('bred/goodNews-mobile.jpg') no-repeat center top;
+    }
+    @media(min-width: $max_phone_size + 1) {
+      background: image-url('bred/goodNews.jpg') no-repeat center top;
+    }
     margin: 0 auto;
     max-width: 1024px;
     height: 347px;
+    font-size: 30px;
+    text-align: center;
+    color: #ee933f;
+    font-family: Satisfy;
+    padding-top: 15px;
   }
 
   #subscription {
