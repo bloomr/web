@@ -23,3 +23,5 @@
 //= require portrait
 //= require header
 //= require deferred_imgs
+//= require webfontloader
+//= require loadFont

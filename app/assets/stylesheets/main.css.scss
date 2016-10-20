@@ -1,12 +1,12 @@
 body, input {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: $text_color;
   font-size: 16px;
   line-height: 1.6;
 }
 
 H1, H2, H3, H4 {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
 
@@ -16,18 +16,34 @@ H3 { font-size: 22px; }
 H4 { font-size: 20px; font-weight: 400; }
 
 .title { 
-  font-family: Satisfy;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 36px;
   color: $orange;
   margin-bottom: 20px;
 }
 
+.wf-active {
+  body, input {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  H1, H2, H3, H4 {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+
+  .title { 
+    font-family: Satisfy;
+  }
+
+}
+
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *, *:before, *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 a {
