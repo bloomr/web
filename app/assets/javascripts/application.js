@@ -14,16 +14,10 @@
 //= require jquery_ujs
 //= require underscore-min
 //= require turbolinks
-//= require bootstrap-sprockets-custom
 //= require modernizr.custom.17912
 //= require universalAnalytics
 //= require optimizely
-//= require jquery.infinitescroll.min
-//= require typeahead.bundle.min
-//= require side-comments.min
-//= require comments
 //= require algoliasearch.min
-//= require search
 //= require search2
 //= require hotjar
 //= require jquery.payment
