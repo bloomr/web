@@ -74,9 +74,14 @@
     }
   }
 
+  var previousQuery = '';
+
   var retrieveAndSearch = function () {
     var query = $(this).val();
-    search(query);
+    if(previousQuery !== query) {
+      previousQuery = query;
+      search(query);
+    }
   }
 
   var lazySearch = _.debounce(retrieveAndSearch, 300);
