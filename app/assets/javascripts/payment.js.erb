@@ -36,39 +36,33 @@
     return false;
   };
 
+  $(document).on('submit', "#payment #new_bloomy", function (event) {
+    var $form = $(this);
+
+    if($('#email').val() === '') {
+      show_error('empty_mail');
+      return false;
+    }
+
+    $form.find("input[type=submit]").prop("disabled", true);
+    Stripe.card.createToken($form, stripeResponseHandler);
+    return false;
+  });
+
   var activateStripe = function () {
     if ( $('#payment').length === 0 ) { return; }
 
     Stripe.setPublishableKey("<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>");
 
-    $('input.cc-number').payment('formatCardNumber');
-    $('input.cc-exp').payment('formatCardExpiry');
-    $('input.cc-cvc').payment('formatCardCVC');
-
-    $("#new_bloomy").submit(function (event) {
-      var $form = $(this);
-
-      if($('#email').val() === '') {
-        show_error('empty_mail');
-        return false;
-      }
-
-      $form.find("input[type=submit]").prop("disabled", true);
-      Stripe.card.createToken($form, stripeResponseHandler);
-      return false;
-    });
-  };
-
-  var unActivateStripe = function () {
-    if ( $('#payment').length === 0 ) { return; }
-
     $('input.cc-number').off();
     $('input.cc-exp').off();
     $('input.cc-cvc').off();
-    $("#new_bloomy").off();
+
+    $('input.cc-number').payment('formatCardNumber');
+    $('input.cc-exp').payment('formatCardExpiry');
+    $('input.cc-cvc').payment('formatCardCVC');
   };
 
-  $(document).on('page:change', activateStripe);
-  $(document).on('page:before-unload', unActivateStripe);
 
+  document.addEventListener('turbolinks:load', activateStripe);
 })();

@@ -49,7 +49,7 @@
       if(query) { newurl += '?q=' + query; }
   
       if(window.location.href != newurl) {
-        window.history.pushState({path:newurl},'',newurl);
+        window.history.pushState({turbolinks: true, url: newurl}, '', newurl)
       }
     }
   }
@@ -81,17 +81,18 @@
 
   var lazySearch = _.debounce(retrieveAndSearch, 300);
 
-  var activeSearch = function() {
-    $('.search').bind("change paste keyup", lazySearch);
-    var currentQuery = getParameterByName();
-    if(currentQuery) {
-      $('.search').val(currentQuery);
-      search(currentQuery);
+  var searchFromQuery = function() {
+    if($('input.search').length !== 0) {
+      var currentQuery = getParameterByName();
+      if(currentQuery) {
+        $('.search').val(currentQuery);
+        search(currentQuery);
+      }
     }
   }
+  $(document).on({ change: lazySearch, paste: lazySearch, keyup: lazySearch}, '.search');
 
-  $(document).on('page:change', activeSearch);
-
+  document.addEventListener('turbolinks:load', searchFromQuery);
 })();
 
 

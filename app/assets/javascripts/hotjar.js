@@ -8,6 +8,6 @@ init_hotjar = function(h,o,t,j,a,r){
 };
 
 
-document.addEventListener('page:change', function() {
+document.addEventListener('turbolinks:load', function() {
   init_hotjar(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
 });

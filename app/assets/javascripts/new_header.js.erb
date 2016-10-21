@@ -1,5 +1,6 @@
 (function() {
   var isMobile = ($(window).width() <= 480);
+  var isTouch = ($('html.touch').length === 1);
 
   var makeNavReadable = function (ev){
     if($('.intro').length > 0) {
@@ -11,7 +12,7 @@
         $('nav').css('background-color','transparent');
       }
     } else {
-        $('nav').css('background-color','#ee933f');
+      $('nav').css('background-color','#ee933f');
     }
   };
 
@@ -20,72 +21,68 @@
 
   var exitTimer;
 
-  var pageChange = function() {
-    if ($('.new_header').length === 0) { return; }
+  var showOnlySubmenu = function($submenu) {
+    var localSubmenus = $('.submenu').slice();
+    localSubmenus.splice(localSubmenus.index($submenu), 1);
+    $submenu.show();
+    $(localSubmenus).hide();
+  };
 
-    var $navHeaders = $('header nav > ul > li > a');
+  var toggleOnlySubmenu = function($submenu) {
+    var localSubmenus = $('.submenu').slice();
+    localSubmenus.splice(localSubmenus.index($submenu), 1);
+    $submenu.toggle();
+    $(localSubmenus).hide();
+  };
 
-    var showOnlySubmenu = function($submenu) {
-      var localSubmenus = $('.submenu').slice();
-      localSubmenus.splice(localSubmenus.index($submenu), 1);
-      $submenu.show();
-      $(localSubmenus).hide();
-    };
+  var menuClick = function(e) {
+    var liParent = $(e.target).closest('li');
+    var $target = $('.submenu', liParent);
 
-    var toggleOnlySubmenu = function($submenu) {
-      var localSubmenus = $('.submenu').slice();
-      localSubmenus.splice(localSubmenus.index($submenu), 1);
-      $submenu.toggle();
-      $(localSubmenus).hide();
-    };
-
-    var menuClick = function(e) {
+    //if there is a submenu, stop the event
+    //otherwise, this is a link and let turbolinks to its jobs
+    if($target.length !== 0) {
       e.stopPropagation();
-      var liParent = $(e.target).closest('li');
-      var $target = $('.submenu', liParent);
-      toggleOnlySubmenu($target);
-    };
-
-    var menuHover = function(e) {
-      clearTimeout(exitTimer);
-      var liParent = $(e.target).closest('li');
-      var $target = $('.submenu', liParent);
-      showOnlySubmenu($target);
-    };
-
-    var hideAfter = function () {
-      clearTimeout(exitTimer);
-      exitTimer = setTimeout(hideSubmenus, 3000);
-    };
-
-    var clearExitTimer = function () {
-      clearTimeout(exitTimer);
-    };
-
-    if(isMobile) {
-      $('.top .menu').click(toogleMobileMenu);
-    } else {
-      $navHeaders.hover(menuHover, hideAfter);
-      $('.submenu').hover(clearExitTimer, hideAfter);
     }
+
+    toggleOnlySubmenu($target);
+  };
+
+  var menuHover = function(e) {
+    clearTimeout(exitTimer);
+    var liParent = $(e.target).closest('li');
+    var $target = $('.submenu', liParent);
+    showOnlySubmenu($target);
+  };
+
+  var hideAfter = function () {
+    clearTimeout(exitTimer);
+    exitTimer = setTimeout(hideSubmenus, 3000);
+  };
+
+  var clearExitTimer = function () {
+    clearTimeout(exitTimer);
+  };
+
+  if(isMobile) {
+    $(document).on('click', '.top .menu', toogleMobileMenu)
+  } else {
+    if(!isTouch) {
+      $(document).on({ mouseenter: menuHover, mouseleave: hideAfter }, 'header nav > ul > li > a');
+      $(document).on('hover', '.submenu', { mouseenter: clearExitTimer, mouseleave: hideAfter });
+    }
+  }
+
+  var adaptHeaderBackground = function () {
+    window.removeEventListener('scroll', makeNavReadable, false);
     if($('nav').css('background-image') === 'none') {
       window.addEventListener('scroll', makeNavReadable, false);
       makeNavReadable();
     }
-    $navHeaders.click(menuClick);
-    $('body').click(hideSubmenus);
-  };
+  }
 
-  var beforeUnload = function() {
-    if ($('.new_header').length === 0) { return; }
-    $('body').off('click', hideSubmenus);
-    $('header nav > ul > li > a').off();
-    window.removeEventListener('scroll', makeNavReadable, false);
-    $('.top .menu').off();
-    $('.submenu').off();
-  };
+  $(document).on('click', 'header nav > ul > li > a', menuClick);
+  $(document).on('click', 'body', hideSubmenus);
 
-  $(document).on('page:change', pageChange);
-  $(document).on('page:before-unload', beforeUnload);
-
+  document.addEventListener('turbolinks:load', adaptHeaderBackground);
 })();
