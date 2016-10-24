@@ -1,20 +1,18 @@
-#payment.full-blue
+- content_for :title, 'Connection'
+- content_for :hide_header, true
+- content_for :hide_footer, true
+
+#sso
   .center
-
-    %h1 Connecte-toi !
-
+    %h1.title Connecte-toi !
     = form_for(@bloomy, url: '/sso/login') do |f|
       - flash.each do |name, msg|
         = content_tag :div, msg, id: "flash_#{name}", style: 'margin: 30px auto'
-      = f.email_field :email, placeholder: 'Ton adresse email', required: true, class: 'blue', autofocus: true
-      = f.password_field :password, autocomplete: 'off', placeholder: 'Ton mot de passe', required: true, class: 'blue'
+      = f.email_field :email, placeholder: 'Ton adresse email', required: true, class: 'nice-input', autofocus: true
+      = f.password_field :password, autocomplete: 'off', placeholder: 'Ton mot de passe', required: true, class: 'nice-input'
       = hidden_field_tag 'nonce', @nonce
       = hidden_field_tag 'query_string', @query_string
 
-      %div{ style: 'position: relative; display: inline-block' }
-
-      %div{ style: 'position: relative; display: inline-block' }
-        = submit_tag "C'est parti !", class: 'crazy-btn yellow'
-        .shadow
+      = submit_tag "C'est parti !", class: 'crazy-btn'
 
     = link_to "(Oups ... j'ai oublié mon mot de passe)", new_password_path('bloomy'), class: 'link-center blue-under'
