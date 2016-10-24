@@ -95,10 +95,15 @@
     max-width: 670px;
     background-color:rgba(255,255,255,0.9);
     box-shadow: 0 4px 6px 0 rgba(185, 182, 175, 0.5);
-    padding: 30px 75px;
     position: relative;
     top: -180px;
 
+    @media(max-width: $max_phone_size) {
+      padding: 30px 10px;
+    }
+    @media(min-width: $max_phone_size + 1) {
+      padding: 30px 75px;
+    }
 
     p {
       margin-bottom: 25px;
@@ -106,26 +111,13 @@
 
     .input-wrapper {
       margin-bottom: 10px;
-      @media (min-width: 600px) {
-        display: flex;
-        text-align: left;
-      }
-      @media (max-width: 599px){
-        label { display: block; }
-        input, input.number { text-align: center; }
-      }
+    }
 
-      label, span {
-        font-size: 18px;
-        font-weight: 600;
-        margin-right: 15px;
-      }
-
+    form.show-phone {
       input {
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid #979797;
-        flex-grow: 1;
+        border: solid 1px #b9b6af;
+        padding: 10px;
+        &.large { width: 300px; }
       }
 
       .number {
@@ -134,7 +126,67 @@
         flex-grow: 0;
         margin-right: 15px;
       }
+
+      .cgu { 
+        font-weight: normal; 
+        a { text-decoration: underline; font-weight: 600; } 
+      }
+
+      input[type=checkbox] {
+        width: 24px;
+        height: 24px;
+        border-radius: 7px;
+        border: solid 2px #b9b6af;
+        margin: 0;
+        background-color: transparent;
+        flex-grow: 0;
+        padding: 0;
+      }
     }
+
+    form.hide-phone {
+      .input-wrapper {
+        display: flex;
+        text-align: left;
+
+        input {
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid #979797;
+          flex-grow: 1;
+        }
+
+        label, span {
+          font-size: 18px;
+          font-weight: 600;
+          margin-right: 15px;
+        }
+
+        .number {
+          text-align: right;
+          width: 150px;
+          flex-grow: 0;
+          margin-right: 15px;
+        }
+
+        .cgu { 
+          font-weight: normal; 
+          a { text-decoration: underline; font-weight: 600; } 
+        }
+
+        input[type=checkbox] {
+          width: 24px;
+          height: 24px;
+          border-radius: 7px;
+          border: solid 2px #b9b6af;
+          margin-right: 10px;
+          background-color: transparent;
+          flex-grow: 0;
+        }
+      }
+    }
+
+    .cgu-wrapper { margin-top: 30px; }
 
     button { margin-top: 10px; }
 

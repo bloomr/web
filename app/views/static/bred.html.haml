@@ -15,7 +15,8 @@
 
   %section#subscription
     %p Pour commencer illico à te poser les bonnes questions et tracer ta voie vers ton bonheur professionnel, renseigne ces quelques infos :
-    = form_for Bloomy.new, url: '/' do |f|
+
+    = form_for Bloomy.new, url: '/', html: { class: 'hide-phone' } do |f|
       .input-wrapper
         = f.label :first_name, "Je m'appelle"
         = f.text_field :first_name, required: true
@@ -26,6 +27,23 @@
         = f.label :age, 'Et je suis agé de'
         = f.number_field :age, required: true, class: 'number'
         %span ans
+      .input-wrapper.cgu-wrapper
+        %input#cgu{ type: 'checkbox', name: 'cgu' }
+        %label.cgu{ for: 'cgu' } J'ai lu et j'accepte <a href="https://drive.google.com/open?id=0B6t2xBTfe9gaNlZjYmtoQ250a0U">les conditions générales d'utilisation</a> et je certifie avoir 14 ans minimum
+      = button_tag 'Inscription', class: 'crazy-btn', disabled: true
+
+    = form_for Bloomy.new, url: '/', html: { class: 'show-phone' } do |f|
+      .input-wrapper
+        = f.text_field :first_name, required: true, class: 'large', placeholder: "Je m'appelle"
+      .input-wrapper
+        = f.email_field :email, required: true, class: 'large', placeholder: "Mon adresse mail est"
+      .input-wrapper
+        = f.label :age, "Et j'ai"
+        = f.number_field :age, required: true, class: 'number'
+        %span ans
+      .input-wrapper.cgu-wrapper
+        %input#cgu{ type: 'checkbox', name: 'cgu' }
+        %label.cgu{ for: 'cgu' } J'ai lu et j'accepte <a href="https://drive.google.com/open?id=0B6t2xBTfe9gaNlZjYmtoQ250a0U">les conditions générales d'utilisation</a> et je certifie avoir 14 ans minimum
       = button_tag 'Inscription', class: 'crazy-btn', disabled: true
 
   %section.for-you
@@ -50,15 +68,15 @@
 
   %section.program
     .bred-cloud1.animated
-    .bred-cloud2.animated
-    .bred-cloud3.animated
-    %h1.title.green_and_underlined Au programme
+      .bred-cloud2.animated
+        .bred-cloud3.animated
+          %h1.title.green_and_underlined Au programme
     %h2 21 exercices originaux pour une expérience unique
     %p 
       Le plus dur quand on se demande quel métier faire, c'est de savoir par ou commencer.
       %br
       Sors du flou en 4 étapes.
-    
+
     = image_tag 'bred/steps.png'
 
     %p.mails Tu reçois les missions par mail. Le parcours se fait de manière autonome et à ton rythme.
@@ -67,9 +85,9 @@
 
   %section.community
     .bred-bulle1.animated
-    .bred-bulle2.animated
-    .bred-bulle3.animated
-    %h1.title.green_and_underlined Un espace de discussion
+      .bred-bulle2.animated
+        .bred-bulle3.animated
+          %h1.title.green_and_underlined Un espace de discussion
     %p Tu peux rejoindre un espace de discussion réservé aux inscrits et à l'équipe Bloomr pour partager tes résultats, avoir des retours et échanger avec le reste de la communauté.
     = image_tag 'bred/forum.png'
 
@@ -90,8 +108,8 @@
 
   %footer
     %a.white-logo{ href: '/' }
-    %p
-      © Bloomr 2016,
+      %p
+        © Bloomr 2016,
       %a{ href: 'https://drive.google.com/open?id=0B6t2xBTfe9gaQnl0cURXT0xHZ2c' } charte de confidentialité, 
       %a{ href: 'https://drive.google.com/open?id=0B6t2xBTfe9gaNlZjYmtoQ250a0U' } CGV
 
