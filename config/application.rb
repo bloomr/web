@@ -46,8 +46,5 @@ module Bloomr
     config.action_mailer.default_url_options = { host: ENV['MAILER_URL'] }
 
     config.active_record.raise_in_transactional_callbacks = true
-    config.to_prepare do
-      Devise::SessionsController.layout 'home'
-    end
   end
 end

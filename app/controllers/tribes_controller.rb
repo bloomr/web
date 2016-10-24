@@ -11,7 +11,5 @@ class TribesController < ApplicationController
     ids = @tribe.users.active_ordered.pluck(:id)
     index = User.includes(:questions).find(ids).group_by(&:id)
     @users = ids.map { |i| index[i].first }
-
-    render layout: 'new_home'
   end
 end

@@ -5,7 +5,6 @@ class DiscourseSsoController < ApplicationController
     @query_string = request.query_string
     @nonce = sso.nonce
     @bloomy = Bloomy.new
-    render layout: 'home'
   end
 
   def login

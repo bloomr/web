@@ -8,6 +8,5 @@ class JobsController < ApplicationController
       .joins(:books).group('users.id').having('count(books.id)> ?', 2)
       .order(created_at: :desc).first
     @popular_keywords = Keyword.popular_keywords
-    render layout: 'new_home'
   end
 end

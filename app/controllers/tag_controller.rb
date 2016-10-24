@@ -10,7 +10,5 @@ class TagController < ApplicationController
 
     # Get the 5 most popular tags
     @popular_keywords = Keyword.popular_keywords
-
-    render layout: 'new_home'
   end
 end

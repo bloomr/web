@@ -8,8 +8,6 @@ class PortraitsController < ApplicationController
 
     impressionist(@portrait)
     @popular_keywords = Keyword.popular_keywords
-
-    render layout: 'new_home'
   end
 
   def next

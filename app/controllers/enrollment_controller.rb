@@ -1,7 +1,6 @@
 class EnrollmentController < ApplicationController
   def index
     @user = User.new
-    render layout: 'new_home'
   end
 
   def create
