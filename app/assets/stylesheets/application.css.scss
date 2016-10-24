@@ -18,11 +18,11 @@ $max_phone_size: 480px;
 
 @import 'main';
 
-@import 'new_header';
-@import 'new_footer';
+@import 'header';
+@import 'footer';
 
-@import 'new_home';
-@import 'new_home-sprite';
+@import 'home';
+@import 'home-sprite';
 
 @import 'program';
 @import 'program/sprite';
@@ -38,8 +38,8 @@ $max_phone_size: 480px;
 
 @import 'bloomifesto';
 
-@import 'payment2';
-@import 'payment2-sprite';
+@import 'payment';
+@import 'payment-sprite';
 
 @import 'whoarewe';
 
@@ -54,7 +54,7 @@ $max_phone_size: 480px;
 
 @import 'tribes-show';
 
-@import 'portraits2';
+@import 'portraits';
 @import 'portrait-sprite';
 
 @import 'tag';
