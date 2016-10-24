@@ -1,16 +1,19 @@
-.full-blue
+- content_for :title, 'Connection au profil'
+- content_for :hide_header, true
+- content_for :hide_footer, true
+
+.centered-square
   .center
-    %a.close{ href: '/' } X
-    %h1 Bienvenue à vous, ami bloomeur !
+    %h1.title Bienvenue à vous, ami bloomeur !
 
     %p Connectez-vous pour transmettre l'amour de votre métier à ceux qui cherchent leur place !
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = devise_error_messages!
       - flash.each do |name, msg|
-        = content_tag :div, msg, id: "flash_#{name}", style: 'margin: 30px auto'
-      = f.email_field :email, placeholder: 'Votre adresse mail', required: true, autofocus: true, class: 'blue'
-      = f.password_field :password, placeholder: 'Votre mot de passe', autocomplete: 'off', required: true, class: 'blue'
+        %p.error #{msg}
+      = f.email_field :email, placeholder: 'Votre adresse mail', required: true, autofocus: true, class: 'nice-input'
+      = f.password_field :password, placeholder: 'Votre mot de passe', autocomplete: 'off', required: true, class: 'nice-input'
       %div
         = f.check_box :remember_me
         = f.label :remember_me, 'Se souvenir de moi', style: 'font-weight: normal; font-style: italic'

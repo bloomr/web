@@ -1,9 +1,12 @@
-#sso {
+.centered-square {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100%;
+  background: #f0ad30 image-url('new_header/header-bg.png');
+
   > div {
+    background: #fff;
     max-width: 800px;
     padding: 30px;
     margin: auto;
@@ -29,4 +32,9 @@
   }
 
   a { text-decoration: underline; }
+
+  #error_explanation, .error {
+    margin: 30px auto;
+    color: red;
+  }
 }
