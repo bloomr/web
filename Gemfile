@@ -45,6 +45,8 @@ gem 'algoliasearch-rails'
 gem 'rack-cors'
 
 gem 'haml'
+gem 'haml-rails'
+
 gem 'stripe'
 gem 'mandrill-api'
 gem 'httparty'
