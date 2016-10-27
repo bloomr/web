@@ -6,7 +6,7 @@ div#me
         a.logo.profile-sprite.sprite-logo href='/' bloomr
         ul
           li.bloomeurs
-            a href="/tribes"
+            a href="/jobs"
               span.profile-sprite.sprite-flower 
               | Les bloomeurs
           li.logout

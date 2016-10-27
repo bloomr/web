@@ -30,7 +30,7 @@
         = power-select-multiple class='tribesSelector' searchField='name' renderInPlace=true selected=selectedTribes options=tribes onchange=(action (mut selectedTribes)) as |tribe|
           = tribe.name
         div style='margin-top: 30px;'
-          a.crazy-btn.save style='border-color: transparent;' click='saveTribes' Sauvegarde !
+          a.crazy-btn.save style='border-color: transparent;' click='saveTribes' Enregistrer !
    
     if showSuccess
       .panel-done
