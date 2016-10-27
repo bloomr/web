@@ -74,7 +74,9 @@ RSpec.describe Mailchimp, type: :model do
         vars: {
           first_name: bloomy.first_name.capitalize,
           email: bloomy.email,
-          password: 'toto' })
+          password: 'toto'
+        }
+      )
     end
   end
 
@@ -92,7 +94,58 @@ RSpec.describe Mailchimp, type: :model do
         subject: 'Bienvenue !',
         vars: {
           first_name: bloomy.first_name.capitalize
-        })
+        }
+      )
+    end
+  end
+
+  describe 'send_template' do
+    let(:message_double) { double }
+    let(:mandrill_double) { double }
+
+    let(:options) do
+      { 'merge_vars' => [{ 'rcpt' => 'to_mail', 'vars' => [] }],
+        'merge_language' => 'mailchimp',
+        'merge' => true,
+        'headers' => { 'Reply-To' => 'from_mail' },
+        'to' => [{ 'type' => 'to', 'email' => 'to_mail' }],
+        'from_name' => 'from_name',
+        'from_email' => 'from_mail' }
+    end
+
+    before :each do
+      expect(message_double).to receive(:send_template)
+        .with('template_name', nil, options, false, 'Main Pool', nil)
+
+      expect(mandrill_double).to receive(:messages).and_return(message_double)
+      expect(Mandrill::API).to receive(:new).and_return(mandrill_double)
+    end
+
+    it 'call mandrill with the right args' do
+      Mailchimp.send_template(
+        template_name: 'template_name',
+        to_mail: 'to_mail',
+        from_mail: 'from_mail',
+        from_name: 'from_name',
+        vars: {}
+      )
+    end
+
+    describe 'with a subject' do
+      before :each do
+        options['subject'] = 'subject'
+      end
+
+      it 'call mandrill with the right args' do
+        Mailchimp.send_template(
+          template_name: 'template_name',
+          to_mail: 'to_mail',
+          from_mail: 'from_mail',
+          from_name: 'from_name',
+          vars: {},
+          subject: 'subject'
+        )
+      end
     end
   end
 end

@@ -38,7 +38,7 @@ class Mailchimp
 
     # rubocop:disable MethodLength, ParameterLists
     def send_template(template_name:, to_mail:, from_name:,
-                      from_mail:, subject:, vars:)
+                      from_mail:, subject: '', vars:)
 
       if ENV['DISABLE_MAILS']
         puts 'sending mail is desactivated by conf'
@@ -57,9 +57,12 @@ class Mailchimp
           'merge_language' => 'mailchimp', 'merge' => true,
           'headers' => { 'Reply-To' => from_mail },
           'to' => [{ 'type' => 'to', 'email' => to_mail }],
-          'from_name' => from_name, 'subject' => subject,
+          'from_name' => from_name,
           'from_email' => from_mail
         }
+
+        message['subject'] = subject unless subject.blank?
+
         async = false
         ip_pool = 'Main Pool'
         mandrill.messages.send_template(template_name, nil, message,
