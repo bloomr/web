@@ -5,12 +5,17 @@ class Tribe < ActiveRecord::Base
 
   def last_month_view_count
     user_ids = self.users.pluck(:id)
-    Impression
-      .where(impressionable_type:'User', impressionable_id: user_ids,
-            created_at: Date.today.beginning_of_month.last_month..Date.today.beginning_of_month)
-      .select(:impressionable_id, :request_hash)
-      .distinct
-      .count(:impressionable_id, :request_hash)
+    sql = <<-EOF
+select count(*) from
+  (select distinct impressionable_id, session_hash from impressions
+  where impressionable_type='User'
+  AND created_at >= '#{Date.today.beginning_of_month.last_month}'
+  AND created_at <= '#{Date.today.beginning_of_month}'
+  AND impressionable_id in ( #{user_ids.join(',')} )
+  group by impressionable_id, session_hash) as temp1;
+    EOF
+
+    ActiveRecord::Base.connection.select_value(sql).to_i
   end
 
   def top_keywords
