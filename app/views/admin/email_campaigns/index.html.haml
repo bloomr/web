@@ -1,0 +1,40 @@
+- content_for :title, 'Liste des campagnes'
+- content_for :hide_header, true
+- content_for :hide_footer, true
+
+%style
+  = '.wrapper { padding: 30px; }'
+  table { text-align: left; }
+  th, td { padding: 10px; border-bottom: 1px solid black; }
+  a { text-decoration: underline; }
+
+.wrapper
+  %h1 Liste des campagnes
+
+  = link_to 'Nouvelle campagne', new_admin_email_campaign_path, class: 'crazy-btn', style: 'margin: 20px 0;'
+
+  %table
+    %thead
+      %tr
+        %th Date
+        %th Nom du template
+        %th Envoi aux bloomeurs
+        %th Destinataires de test
+        %th mails ok
+        %th mails ko
+        %th Terminé
+        %th
+
+    %tbody
+      - @admin_email_campaigns.sort_by(&:created_at).reverse.each do |admin_email_campaign|
+        %tr
+          %td= admin_email_campaign.created_at
+          %td= admin_email_campaign.template_name
+          %td= admin_email_campaign.published_bloomeurs
+          %td= admin_email_campaign.recipients
+          %td= admin_email_campaign.logs['success'].length
+          %td= admin_email_campaign.logs['errors'].length
+          %td= admin_email_campaign.finished
+          %td= link_to 'Details', admin_email_campaign
+
+  %br

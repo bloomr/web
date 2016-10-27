@@ -1,0 +1,15 @@
+- content_for :title, 'Nouvelle campagne'
+- content_for :hide_header, true
+- content_for :hide_footer, true
+
+%style
+  = '.wrapper { padding: 30px; }'
+  a { text-decoration: underline; }
+
+.wrapper
+  %h1 Nouvelle campagne
+
+  = render 'form'
+
+.wrapper
+  = link_to 'Liste des campagnes', admin_email_campaigns_path

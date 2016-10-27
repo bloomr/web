@@ -1,0 +1,50 @@
+%style
+  form { padding: 30px 0; }
+  = '.field { margin: 10px 0; }'
+  span { font-style: italic; }
+  b { font-weight: bold }
+  input[type=text] { padding: 10px; }
+
+= form_for @admin_email_campaign do |f|
+  - if @admin_email_campaign.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@admin_email_campaign.errors.count, "error")} prohibited this admin_email_campaign from being saved:"
+      %ul
+        - @admin_email_campaign.errors.full_messages.each do |msg|
+          %li= msg
+
+  - blooms_var = [''] + %w(first_name job_title email)
+
+  .field
+    = f.label :template_name, 'Template Slug'
+    = f.text_field :template_name, style: 'width: 300px;', required: true
+    %a{ href: 'https://mandrillapp.com/templates', target: '_blank' } liste des templates
+    %i , <b>clique sur edit</b> pour trouver le template slug
+    %span ex: c-est-l-heure-bloomr-challenge-2
+  .field
+    = f.label :var1_name, 'la variable mandrill'
+    = f.text_field :var1_name
+    = f.label :var1_value, "correspond au bloomeur's"
+    = f.select(:var1_value) do
+      - options_for_select(blooms_var, selected: @admin_email_campaign.var1_value )
+  .field
+    = f.label :var2_name, 'la variable mandrill'
+    = f.text_field :var2_name
+    = f.label :var2_value, "correspond au bloomeur's"
+    = f.select(:var2_value) do
+      - options_for_select(blooms_var, selected: @admin_email_campaign.var2_value )
+  .field
+    = f.label :var3_name, 'la variable mandrill'
+    = f.text_field :var3_name
+    = f.label :var3_value, "correspond au bloomeur's"
+    = f.select(:var3_value) do
+      - options_for_select(blooms_var, selected: @admin_email_campaign.var3_value )
+  .field
+    = f.label :recipients, 'Destinataires de test'
+    = f.text_field :recipients, style: 'width: 300px;'
+    %span doit être dans la base, séparés par des virgules
+  .field
+    = f.label :published_bloomeurs, 'Envoyer pour de vrai aux bloomeurs ?', style: 'color: red;'
+    = f.check_box :published_bloomeurs
+  .actions
+    = f.submit 'Envoyez !', class: 'crazy-btn'

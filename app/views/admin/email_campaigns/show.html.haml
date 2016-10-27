@@ -1,0 +1,71 @@
+- content_for :title, 'détail d une campagne'
+- content_for :hide_header, true
+- content_for :hide_footer, true
+
+%style
+  = '.wrapper { padding: 30px; }'
+  table { text-align: left; }
+  th, td { padding: 10px; border-bottom: 1px solid black; }
+  a { text-decoration: underline; }
+  b { font-weight: bold; }
+  p { margin: 15px 0; }
+
+.wrapper
+  %p#notice= notice
+
+  = link_to 'Toutes les campagnes', admin_email_campaigns_path
+
+  %h1 Détail de la campagne
+
+  %p{ style:'font-style: italic;' }
+    Rafraichir la page pour voir les mises à jour
+
+  %p
+    %b Fini:
+    = @admin_email_campaign.finished
+  
+  %p
+    %b Nombre d'envoi ok:
+    = @admin_email_campaign.logs['success'].length
+
+  %p
+    %b Nombre d'envoi ko:
+    = @admin_email_campaign.logs['errors'].length
+
+  %p
+    %b Nom du template: 
+    = @admin_email_campaign.template_name
+
+  %p
+    %b Desinataires:
+    = @admin_email_campaign.recipients
+
+  %p
+    %b Envoi aux bloomeurs:
+    = @admin_email_campaign.published_bloomeurs
+  %p
+    %b Date
+    = @admin_email_campaign.created_at
+
+  %p
+    %b Variable 1 nom:
+    = @admin_email_campaign.var1_name
+    %b |  valeur:
+    = @admin_email_campaign.var1_value
+
+  %p
+    %b Variable 2 nom:
+    = @admin_email_campaign.var2_name
+    %b | valeur:
+    = @admin_email_campaign.var2_value
+
+  %p
+    %b Variable 3 nom:
+    = @admin_email_campaign.var3_name
+    %b | valeur:
+    = @admin_email_campaign.var3_value
+
+  %p
+    %b logs detaillés:
+    = @admin_email_campaign.logs
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019151045) do
+ActiveRecord::Schema.define(version: 20161026103254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 20161019151045) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "admin_email_campaigns", force: :cascade do |t|
+    t.string   "template_name"
+    t.string   "var1_name",           default: "first_name"
+    t.string   "var1_value",          default: "first_name"
+    t.string   "var2_name"
+    t.string   "var2_value"
+    t.string   "var3_name"
+    t.string   "var3_value"
+    t.string   "recipients"
+    t.boolean  "published_bloomeurs", default: false
+    t.boolean  "finished",            default: false
+    t.text     "logs_text"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

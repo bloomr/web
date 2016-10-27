@@ -89,6 +89,9 @@ Rails.application.routes.draw do
 
   get '/connection' => 'connection#index'
 
+  namespace :admin do
+    resources :email_campaigns, only: [:index, :show, :create, :new]
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
