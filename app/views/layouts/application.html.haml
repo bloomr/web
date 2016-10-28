@@ -50,3 +50,5 @@
 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true , 'data-turbolinks-eval' => false
     %script{ 'data-turbolinks-eval' => 'false', 'data-turbolinks-track' => '', src: '//cdn.optimizely.com/js/2221001338.js' }
+
+    = yield(:additional_javascript)
