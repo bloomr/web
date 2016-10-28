@@ -1,7 +1,4 @@
 (function () {
-
-  var show_error, stripeResponseHandler;
-
   var errorMessages = {
     incorrect_number: "Le numéro de carte est incorrect.",
     invalid_number: "Le numéro de carte n'est pas valide.",
@@ -15,8 +12,7 @@
     empty_mail: "Veuillez saisir votre adresse mail"
   };
 
-
-  stripeResponseHandler = function (status, response) {
+  var stripeResponseHandler = function (status, response) {
     var $form, token;
     $form = $("#new_bloomy");
     if (response.error) {
@@ -30,13 +26,13 @@
     return false;
   };
 
-  show_error = function (code) {
+  var show_error = function (code) {
     $(".flash-messages").html('<p class="alert">' + errorMessages[code] + '</p>');
     $('.alert').delay(5000).fadeOut(3000);
     return false;
   };
 
-  $(document).on('submit', "#payment #new_bloomy", function (event) {
+  var stripeFormHandler = function (event) {
     var $form = $(this);
 
     if($('#email').val() === '') {
@@ -47,22 +43,17 @@
     $form.find("input[type=submit]").prop("disabled", true);
     Stripe.card.createToken($form, stripeResponseHandler);
     return false;
-  });
+  };
 
   var activateStripe = function () {
-    if ( $('#payment').length === 0 ) { return; }
-
     Stripe.setPublishableKey("<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>");
-
-    $('input.cc-number').off();
-    $('input.cc-exp').off();
-    $('input.cc-cvc').off();
 
     $('input.cc-number').payment('formatCardNumber');
     $('input.cc-exp').payment('formatCardExpiry');
     $('input.cc-cvc').payment('formatCardCVC');
+    
+    $('#new_bloomy').submit(stripeFormHandler)
   };
 
-
-  document.addEventListener('turbolinks:load', activateStripe);
+  $(activateStripe)
 })();

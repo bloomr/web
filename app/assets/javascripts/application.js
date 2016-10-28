@@ -20,7 +20,5 @@
 //= require algoliasearch.min
 //= require search2
 //= require hotjar
-//= require jquery.payment
 //= require portrait
 //= require new_header
-//= require payment
