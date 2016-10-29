@@ -7,7 +7,7 @@ ga('create', 'UA-52527572-2', 'auto');
 ga('require', 'displayfeatures');
 
 document.addEventListener('turbolinks:load', function() {
-    ga('set', 'location', location.href.split('#')[0]);
+    ga('set', 'page', window.location.pathname);
     ga('send', 'pageview', { "title": document.title });
 });
 
