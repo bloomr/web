@@ -1,13 +1,13 @@
-#new_home {
+#home {
   > * {
     padding: 40px 10px;
   }
 
-  .new_home-boussole, .new_home-mains, .new_home-blog{ margin: 0 auto;  }
+  .home-boussole, .home-mains, .home-blog{ margin: 0 auto;  }
 
 
   .intro {
-    background: image-url('new_home/accroche.jpg') no-repeat;
+    background: image-url('home/accroche.jpg') no-repeat;
 
     background-position: center 0;
     @media(max-width: $max_phone_size) {
@@ -85,7 +85,7 @@
       }
     }
 
-    .new_home-mains { margin-bottom: 5px; }
+    .home-mains { margin-bottom: 5px; }
 
     h2 {
       font-size: 14px;
