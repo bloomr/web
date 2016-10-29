@@ -21,4 +21,4 @@
 //= require search2
 //= require hotjar
 //= require portrait
-//= require new_header
+//= require header

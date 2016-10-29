@@ -7,7 +7,7 @@
   }
 
   header {
-    background: image-url('new_header/header-bg.png');
+    background: image-url('header/header-bg.png');
     color: #FFF;
     display: flex;
     justify-content: space-around;
@@ -27,7 +27,7 @@
     }
 
     .white-logo {
-      background-image: image-url('new_header/white_logo.png');
+      background-image: image-url('header/white_logo.png');
       width: 80px;
       height: 68px;
       display: block;
@@ -139,7 +139,7 @@
     background: none;
     background-color: rgba(242, 239, 232, 0.6);
     a {
-      background: image-url('new_header/transparent_logo.png') center;
+      background: image-url('header/transparent_logo.png') center;
       display: block;
       width: 55px;
       height: 30px;

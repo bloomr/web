@@ -1,55 +1,81 @@
-%nav#header.navbar.navbar-fixed-top{role: 'navigation', style: 'margin-bottom: 0px; padding-top: 10px;' }
-  .container
-    .navbar-header
-      %button.visible-xs.visible-sm.navbar-toggle.collapsed{'data-target' => '.navbar-collapse', 'data-toggle' => 'collapse', type: 'button' }
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{'aria-label' => "BLOOM'R", href: '/' }
-      %ul.nav.navbar-nav.search-and-idea
-        %li.hidden-xs.hidden-sm
-          %a{ href: 'http://inscription.bloomr.org' } Le parcours
-        %li.hidden-xs.hidden-sm
-          %a{ href: jobs_path, class: current_page?(jobs_path) ? 'active' : '' } Les tribus
-        %li
-          %a.blog{ href: 'https://blog.bloomr.org' }
-            %span.hidden-xs Le blog
-        %li.hidden-xs.hidden-sm
-          %a{ href: concept_path, class: current_page?(concept_path) ? 'active' : '' } Le concept
-        %li.hidden-xs.hidden-sm
-          %a{ href: qui_sommes_nous_path, class: current_page?(qui_sommes_nous_path) ? 'active' : '' } L'équipe
-        %li.search-wrapper
-          %a.searchButton{ href: '#' } Rechercher
-        %li.hidden-xs
-          = link_to 'Rejoignez-les !', enrollment_index_path, class: 'framed'
-
-    .collapse.navbar-collapse
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{ href: 'http://inscription.bloomr.org' } Le parcours
-        %li
-          %a{ href: jobs_path, class: current_page?(jobs_path) ? 'active' : '' } Les tribus
-        %li
-          %a{ href: concept_path, class: current_page?(concept_path) ? 'active' : '' } Le concept
-        %li
-          %a{ href: qui_sommes_nous_path, class: current_page?(qui_sommes_nous_path) ? 'active' : '' } L'équipe
-        %li
-          %a{ href: 'https://blog.bloomr.org' } Le blog
-        %li{style: 'font-weight: bold;' }
-          = link_to 'J’aime mon job, je veux participer !', enrollment_index_path
-        %li.social
-          %a{ href: 'https://twitter.com/bloomr4youth' }
-            %span.icon-twitter-white
-            %span.social Suivez-nous !
-        %li.social
-          %a{ href: 'https://www.facebook.com/bloomr4youth' }
-            %span.icon-facebook-white
-            %span.social Aimez-nous !
-
-  .mobile-search
-    .container.version2
-      .row
-        .col-md-12.searchBox
-          %span.glyphicon.glyphicon-search
-          %input.search-box{placeholder: 'Rechercher', type: 'text' }
+%header.header
+  - bg = yield(:header_background)
+  %nav{ style: (bg.blank? ? '' : "background-image: url(#{bg})") }
+    .top.show-phone
+      %a.logo{ href: '/' } Bloomr
+      %a.menu.open Menu
+      %a.menu.close ✕
+    %ul
+      %li.hide-phone
+        %a.logo{ href: '/' } Bloomr
+      %li
+        %a 
+          %span À propos de Bloomr 
+          %span.down.show-phone ❭
+        %ul.submenu
+          %li
+            %a{ href: concept_path }
+              %span Le concept
+              %span.show-phone ❭
+          %li
+            %a{ href: qui_sommes_nous_path }
+              %span L'équipe
+              %span.show-phone ❭
+          %li
+            %a{ href: bloomifesto_path }
+              %span Le manifesto
+              %span.show-phone ❭
+          %li
+            %a{ href: press_path }
+              %span La presse
+              %span.show-phone ❭
+          %li
+            %a{ href: 'mailto:contact@bloomr.org' }
+              %span Contact
+              %span.show-phone ❭
+      %li
+        %a 
+          %span Vous êtes
+          %span.down.show-phone ❭
+        %ul.submenu.right
+          %li
+            %a{ href: program_path }
+              %span À la recherche de votre voie
+              %span.show-phone ❭
+          %li
+            %a{ href: enrollment_index_path }
+              %span Un professionnel heureux
+              %span.show-phone ❭
+          %li
+            %a{ href: 'http://entreprises.bloomr.org/' }
+              %span Une entreprise
+              %span.show-phone ❭
+          %li
+            %a{ href: 'http://parents.bloomr.org' }
+              %span Parent
+              %span.show-phone ❭
+      %li
+        %a{ href: program_path, style: 'font-weight: bold;' } Programme de réflexion
+      %li
+        %a{ href: jobs_path } Métiers
+      %li
+        %a{ href: 'https://blog.bloomr.org', target: '_blank' } Blog
+      %li
+        %a 
+          %span Connexion
+          %span.down.show-phone ❭
+        .submenu.right
+          %p.iam Je suis ...
+          %ul
+            %li
+              %a{ href: enrollment_index_path }
+                %span Un pro heureux qui veut témoigner
+                %span.show-phone ❭
+            %li
+              %a{ href: user_session_path, 'data-turbolinks' => 'false'}
+                %span Un pro heureux qui veut accéder à son profil
+                %span.show-phone ❭
+            %li
+              %a{ href: ENV['DISCOURSE_URL'] }
+                %span Inscrit(e) au programme Bloomr
+                %span.show-phone ❭
