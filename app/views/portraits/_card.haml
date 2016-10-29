@@ -4,7 +4,7 @@
     %h3 #{ portrait.first_name }
     %h2 #{ truncate(portrait.job_title, length: 70, separator: ' ', omission: '...') } 
     .quote.hide-phone
-      = image_tag('icons/icon-quote.png', height: '14px', width: '27px')
+      = image_tag('portrait/icon-quote_in.png', height: '14px', width: '27px')
       - if portrait.answer_to('love_job')
         %blockquote
           = truncate(raw(portrait.answer_to('love_job')), length: 100, separator: ' ', omission: '')
