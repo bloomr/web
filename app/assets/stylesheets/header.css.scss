@@ -121,7 +121,7 @@ header.header {
         width: 80px;
         height: 68px;
         font-size: 0;
-        background-image: image-url('header/white_logo.png');
+        background-image: asset-data-url('header/white_logo.png');
         display: inline-block;
         position: relative;
         top: -10px;

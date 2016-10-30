@@ -1,5 +1,5 @@
  footer {
-   background: #f0ad30 image-url('footer/footer.png');
+   background: #f0ad30 asset-data-url('footer/footer.png');
    color: white;
    padding: 30px 40px 50px;
    .wrapper {
@@ -31,7 +31,7 @@
    }
 
    .bloomr {
-     background: image-url('footer/bloomr.png'); 
+     background: asset-data-url('footer/bloomr.png'); 
      width: 74px;
      height: 41px;
      margin: 20px;
