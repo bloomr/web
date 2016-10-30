@@ -22,3 +22,4 @@
 //= require hotjar
 //= require portrait
 //= require header
+//= require deferred_imgs
