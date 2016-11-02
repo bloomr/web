@@ -280,4 +280,14 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'a user has multiples strengths' do
+    let(:brave) { Strength.create(name: 'brave') }
+    let(:funny) { Strength.create(name: 'funny') }
+    let(:strength_user) { create(:user, strengths: [brave, funny]) }
+
+    subject { strength_user.strengths }
+
+    it { is_expected.to eq([brave, funny]) }
+  end
 end

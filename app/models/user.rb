@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :tribes
   has_and_belongs_to_many :challenges
   has_and_belongs_to_many :books
+  has_and_belongs_to_many :strengths
 
   before_post_process :rename_avatar
   def rename_avatar
