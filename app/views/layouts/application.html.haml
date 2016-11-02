@@ -48,7 +48,7 @@
     - unless content_for?(:hide_footer)
       = render 'shared/new_footer'
 
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true , 'data-turbolinks-eval' => false
-    %script{ 'data-turbolinks-eval' => 'false', 'data-turbolinks-track' => '', src: '//cdn.optimizely.com/js/2221001338.js' }
-
+    = javascript_include_tag '//cdn.optimizely.com/js/2221001338.js', 'data-turbolinks-eval' => false
+    - unless content_for?(:remove_application_js)
+      = javascript_include_tag 'application', 'data-turbolinks-eval' => false, async:  (Rails.env == 'production') 
     = yield(:additional_javascript)
