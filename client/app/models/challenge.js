@@ -14,14 +14,6 @@ export default Model.extend({
       this.set('query', 'interview');
       this.set('position', 1);
     }
-    if(this.get('name') === 'must read') {
-      this.set('imageSrc', 'assets/images/profile/badge-must-read.svg');
-      this.set('description', 'le livre à lire absolument pour comprendre ce que je fais');
-      this.set('title', 'Must Read');
-      this.set('widget', 'challenge-mustread');
-      this.set('query', 'mustread');
-      this.set('position', 3);
-    }
     if(this.get('name') === 'the tribes') {
       this.set('imageSrc', 'assets/images/profile/badge-tribu.svg');
       this.set('description', 'Dites-nous à quelle(s) tribu(s) vous appartenez');
@@ -29,6 +21,14 @@ export default Model.extend({
       this.set('widget', 'challenge-tribes');
       this.set('query', 'tribes');
       this.set('position', 2);
+    }
+    if(this.get('name') === 'must read') {
+      this.set('imageSrc', 'assets/images/profile/badge-must-read.svg');
+      this.set('description', 'le livre à lire absolument pour comprendre ce que je fais');
+      this.set('title', 'Must Read');
+      this.set('widget', 'challenge-mustread');
+      this.set('query', 'mustread');
+      this.set('position', 3);
     }
   }
 });
