@@ -7,5 +7,5 @@
       } 
     } 
   };
-  window.onload = init;
+  document.addEventListener('turbolinks:load', init);
 })()
