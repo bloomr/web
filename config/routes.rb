@@ -64,6 +64,8 @@ Rails.application.routes.draw do
 
       get 'users/:user_id/keywords(.:format)' => 'keywords#get_related_resources',
           relationship: 'keywords', source: 'api/v1/users'
+
+      jsonapi_resources :strengths
     end
   end
 
