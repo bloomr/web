@@ -1,8 +1,11 @@
 .portrait_header.intro{ itemscope: '', itemtype: 'http://schema.org/Person' }
   .top
-    = image_tag @portrait.avatar.url('thumb'), class: 'portrait-avatar', 
-      itemprop: 'image', alt: 'Photo de ' + @portrait.first_name,
-      width: '92px', height: '92px'
+    .image-wrapper
+      = image_tag @portrait.avatar.url('thumb'), class: 'portrait-avatar', 
+        itemprop: 'image', alt: 'Photo de ' + @portrait.first_name,
+        width: '92px', height: '92px'
+      %span.portrait-cloud.animated
+      %span.portrait-cloud-left.animated
 
     %h3
       Hello ! Je m'appelle

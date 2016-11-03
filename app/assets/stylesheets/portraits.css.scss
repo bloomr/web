@@ -1,3 +1,29 @@
+@keyframes cloud_right_left {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-27px, 0, 0) rotate(0.02deg); //3d for gpu acceleration, rotate for firefox antialising
+  }
+}
+
+@keyframes cloud_left_right {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(27px,0, 0) rotate(0.02deg);;
+  }
+}
+
 #portrait_details_2{
   @import 'portraits/portraits_header';
   @import 'portraits/links';

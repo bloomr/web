@@ -7,6 +7,8 @@
     margin: 40px 0 5px; 
     text-align: center;
 
+    .image-wrapper { position: relative; display: inline-block; }
+
     img {
       border-radius: 46px;
       border: 5px solid #FFF;
@@ -17,6 +19,26 @@
     h1, h3 { font-size: 28px; letter-spacing: 0.9px; }
 
     span { font-weight: 600; }
+
+
+    .animated {
+      display: inline-block; 
+      position: absolute; 
+      animation-duration: 8s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    .portrait-cloud {
+      top: 0px;
+      left: 83px;
+      animation-name: cloud_left_right;
+    }
+    .portrait-cloud-left {
+      right: 70px;
+      top: 50px;
+      animation-name: cloud_right_left;
+      animation-delay: 2s;
+    }
   }
 
   .list-wrapper {
