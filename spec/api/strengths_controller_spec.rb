@@ -44,19 +44,8 @@ RSpec.describe Api::V1::StrengthsController, type: :request do
   end
 
   describe 'POST #strengths' do
-    let(:payload) do
-      {
-        data: {
-          attributes: {
-            'name': 'new'
-          },
-          type: 'strengths'
-        }
-      }
-    end
-
     it 'has not route' do
-      expect_no_route { post '/api/v1/strengths', payload, headers }
+      expect_no_route { post '/api/v1/strengths', nil, headers }
     end
   end
 end
