@@ -11,6 +11,7 @@ export default Model.extend({
   stats: attr(),
   questions: hasMany('question'),
   challenges: hasMany('challenge'),
+  strengths: hasMany('strength'),
   keywords: hasMany('keyword'),
   avatarUrl: attr('string'),
   doAuthorize: attr('boolean'),

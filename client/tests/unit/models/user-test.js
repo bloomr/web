@@ -4,7 +4,8 @@ import { make, makeList, manualSetup } from 'ember-data-factory-guy';
 
 moduleForModel('user', 'Unit | Model | user', {
   // Specify the other units that are required for this test.
-  needs: ['model:tribe', 'model:question', 'model:challenge', 'model:book', 'model:keyword'],
+  needs: ['model:tribe', 'model:question', 'model:challenge', 
+    'model:book', 'model:keyword', 'model:strength'],
   beforeEach() {
     manualSetup(this.container);
   }
