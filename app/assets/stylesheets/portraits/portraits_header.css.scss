@@ -41,12 +41,9 @@
     }
   }
 
-  .list-wrapper {
+  .center {
     max-width: 1024px;
     margin: auto;
-    justify-content: space-between;
-
-    > * { max-width: 260px; }
 
     .spacer {
       width: 20px;
@@ -61,6 +58,13 @@
       margin: 8px 0;
       opacity: 0.8;
     }
+  }
+
+  .list-wrapper {
+    justify-content: space-between;
+
+    > * { max-width: 260px; }
+
 
     a { text-decoration: underline; }
 
@@ -82,12 +86,22 @@
 
   .social {
     position: relative;
-  a { text-decoration: none; display: inline-block; } 
-  .fb { 
-    padding-bottom: 3px;
-    position: relative;
-    top: -4px;
-    margin-right: 5px;
+    a { text-decoration: none; display: inline-block; } 
+    .fb { 
+      padding-bottom: 3px;
+      position: relative;
+      top: -4px;
+      margin-right: 5px;
+    }
   }
-}
+
+  .strengths {
+    padding: 0 25px;
+
+    .list-wrapper {
+      > * {
+        margin: 10px 10px 10px 0;
+      }
+    }
+  }
 }
