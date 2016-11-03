@@ -5,7 +5,8 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       user: this.store.queryRecord('user', {}),
       tribes: this.store.findAll('tribe'),
-      challenges: this.store.findAll('challenge')
+      challenges: this.store.findAll('challenge'),
+      strengths: this.store.findAll('strength')
     });
   },
   actions: {

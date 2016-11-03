@@ -1,0 +1,24 @@
+.challenge.strengths
+  img src='assets/images/profile/badge-strength.png'
+  .content
+    if showIntro
+      h3.challenge-title Vos Forces (1/3)
+      p Trouvez vos forces et indiquons aux autres pourquoi ce métier vous correspond
+      p 
+        | 1er étape : s'inscrire et remplir le questionnaire :&nbsp;
+        a href='https://www.viacharacter.org/survey/account/register' target='blank' clique ici !
+      a.crazy-btn.go-to-form click='goToForm' C'est fait
+
+    if showForm
+      h3.challenge-title Vos Forces (2/3)
+      p Partagez-nous vos résultats !
+      p Vos principales forces sont :
+      = power-select-multiple class='strengthsSelector' searchField='name' renderInPlace=true selected=selectedStrengths options=strengths onchange=(action (mut selectedStrengths)) as |strength|
+        = strength.name
+      a.crazy-btn.save click='saveStrengths' Enregistrer
+
+    if showSuccess
+      h3.challenge-title Vos Forces (3/3)
+      p Bien reçu !
+      p Vos forces vont apparaître sur votre profil.
+      = link-to .crazy-btn (query-params name=undefined step=undefined) | Challenge Suivant !

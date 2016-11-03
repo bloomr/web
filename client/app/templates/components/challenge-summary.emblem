@@ -4,3 +4,4 @@
     = component 'challenge-card' challenges=user.challenges challenge=interviewChallenge
     = component 'challenge-card' challenges=user.challenges challenge=tribeChallenge
     = component 'challenge-card' challenges=user.challenges challenge=mustReadChallenge
+    = component 'challenge-card' challenges=user.challenges challenge=strengthsChallenge

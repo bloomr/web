@@ -5,13 +5,17 @@ feature 'the private profile' do
     QUESTION_COUNT = 3
 
     before :each do
-      challenge_names = ['the tribes', 'must read', 'interview']
+      challenge_names = ['the tribes', 'must read', 'interview', 'strengths']
       challenge_names.each { |name| Challenge.create(name: name) }
 
       ['les ecolos', 'les moustachus'].each { |name| Tribe.create(name: name) }
 
       (1..QUESTION_COUNT).each do |e|
         Question.create(title: "q#{e}", step: 'first_interview')
+      end
+
+      (1..3).each do |i|
+        Strength.create(name: "strength#{i}")
       end
 
       keywords = (1..5).map { |e| Keyword.create(tag: "k#{e}") }
@@ -135,6 +139,24 @@ feature 'the private profile' do
         expect(test_user.books[0].title).to eq('toto')
         challenge_must_read = Challenge.find_by(name: 'must read')
         expect(test_user.challenges.include?(challenge_must_read)).to be(true)
+      end
+    end
+
+    it 'lets me complete the strength challenge' do
+      with_a_new_user do
+        find('a[href="/me/challenges?name=strengths"]').click
+        find('.go-to-form').click
+
+        find('.ember-basic-dropdown-trigger').click
+        find('li.ember-power-select-option', text: 'strength1').click
+
+        find('.save').click
+
+        wait_for_ajax
+
+        expect(test_user.strengths[0].name).to eq('strength1')
+        challenge_strength = Challenge.find_by(name: 'strengths')
+        expect(test_user.challenges.include?(challenge_strength)).to be(true)
       end
     end
   end

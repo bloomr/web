@@ -15,5 +15,8 @@ export default Ember.Component.extend({
   }),
   tribeChallenge: Ember.computed(function() {
     return this.get('challenges').findBy('name', 'the tribes');
+  }),
+  strengthsChallenge: Ember.computed(function() {
+    return this.get('challenges').findBy('name', 'strengths');
   })
 });

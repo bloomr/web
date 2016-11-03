@@ -30,5 +30,13 @@ export default Model.extend({
       this.set('query', 'mustread');
       this.set('position', 3);
     }
+    if(this.get('name') === 'strengths') {
+      this.set('imageSrc', 'assets/images/profile/badge-strength.png');
+      this.set('description', 'les points forts qui me caractérisent');
+      this.set('title', 'Mes forces');
+      this.set('widget', 'challenge-strengths');
+      this.set('query', 'strengths');
+      this.set('position', 4);
+    }
   }
 });
