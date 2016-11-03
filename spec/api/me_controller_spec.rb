@@ -14,11 +14,14 @@ RSpec.describe Api::V1::MeController, type: :request do
   let(:tribe1) { Tribe.create(name: 'tribe1', description: 'description') }
   let(:challenge1) { Challenge.create(name: 'challenge1') }
   let(:keyword1) { Keyword.create(tag: 'keyword1') }
+  let(:strength1) { Strength.create(name: 'strength1') }
+
   let(:user) do
     user = create(:user_published_with_questions,
                   tribes: [tribe1],
                   challenges: [challenge1],
-                  keywords: [keyword1])
+                  keywords: [keyword1],
+                  strengths: [strength1])
     user
   end
   subject { response }
@@ -73,6 +76,11 @@ RSpec.describe Api::V1::MeController, type: :request do
     it 'includes the keywords relation' do
       hash = { 'tag' => 'keyword1' }
       expect_includes_relation('keywords', [hash])
+    end
+
+    it 'includes the strengths relation' do
+      hash = { 'name' => 'strength1' }
+      expect_includes_relation('strengths', [hash])
     end
   end
 

@@ -10,6 +10,7 @@ module Api
       relationship :books, to: :many
       relationship :challenges, to: :many
       relationship :keywords, to: :many
+      relationship :strengths, to: :many
 
       def stats
         {

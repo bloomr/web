@@ -6,7 +6,7 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def show
-        included = %w(tribes questions challenges keywords)
+        included = %w(tribes questions challenges keywords strengths)
         render json: JSONAPI::ResourceSerializer.new(UserResource, include: included)
           .serialize_to_hash(UserResource.new(current_user, nil)).to_json
       end
