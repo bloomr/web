@@ -116,6 +116,19 @@ test('set tribes', function(assert) {
     });
 });
 
+test('set strengths', function(assert) {
+  let [s0, s1] = makeList('strength', 2);
+  let model = this.subject();
+
+  return model.get('strengths')
+    .then(tribes => tribes.addObjects([s0]))
+    .then(() => model.setStrengths([s1]))
+    .then(user => { 
+      assert.equal(user.get('strengths.length'), 1); 
+      assert.equal(user.get('strengths').objectAt(0), s1); 
+    });
+});
+
 test('set books', function(assert) {
   let [b0, b1] = makeList('book', 2);
   let model = this.subject();

@@ -51,5 +51,10 @@ export default Model.extend({
     return this.get('books')
       .then(userBooks => userBooks.setObjects(books))
       .then(() => this);
-  }
+  },
+  setStrengths(strengths) {
+    return this.get('strengths')
+      .then(userStrengths => userStrengths.setObjects(strengths))
+      .then(() => this);
+  },
 });
