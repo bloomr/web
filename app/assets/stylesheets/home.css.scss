@@ -119,6 +119,45 @@
     .good_job { text-decoration: underline; font-weight: 600; }
   }
 
+  .crowdfunding {
+    background-color: $sky_blue;
+    .white {
+      max-width: 550px;
+      min-height: 176px;
+      border-radius: 7px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 0 0 #c1e0f2;
+      border: solid 1px #c1e0f2;
+      margin: auto;
+      padding: 25px 5px 25px 25px;
+      @media(max-width: $max_phone_size) {
+        padding: 25px;
+      }
+      text-align: center;
+    }
+
+    p {
+      color: $indigo;
+      font-family: Satisfy;
+      font-size: 22px;
+      line-height: 1.5;
+      display: inline-block;
+      width: 290px;
+      position: relative;
+      top: -20px;
+    }
+
+    .img {
+      display: inline-block;
+    }
+
+    .crazy-btn {
+      font-size: 16px;
+      margin-top: 20px;
+      letter-spacing: 1px;
+    }
+  }
+
   .blog {
     h1 { margin-bottom: 0px; }
     text-align: center;
