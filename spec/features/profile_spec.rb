@@ -56,6 +56,23 @@ feature 'the private profile' do
 
     it 'lets me complete the interview challenge' do
       with_a_new_user do
+        (1..5).each { |e| add_in_multiple_select("k#{e}") }
+
+        fill_trix_editors = <<-SCRIPT
+        trixEditors = document.querySelectorAll('trix-editor');
+        trixEditors.forEach(function(element) {
+          element.editor.setSelectedRange([0, 0]);
+          element.editor.insertString("Hello");
+        });
+        SCRIPT
+        page.execute_script(fill_trix_editors)
+
+        check('doAuthorize')
+
+        click_button 'Continuer', wait: 30
+
+        wait_for_ajax
+
         # cannot test file upload yet on CI
         if ENV['TRAVIS']
           force_next_button = <<-SCRIPT
@@ -76,23 +93,7 @@ feature 'the private profile' do
           wait_for_ajax
         end
 
-        click_button 'Continuer', wait: 30
-        (1..5).each { |e| add_in_multiple_select("k#{e}") }
-
-        fill_trix_editors = <<-SCRIPT
-        trixEditors = document.querySelectorAll('trix-editor');
-        trixEditors.forEach(function(element) {
-          element.editor.setSelectedRange([0, 0]);
-          element.editor.insertString("Hello");
-        });
-        SCRIPT
-        page.execute_script(fill_trix_editors)
-
-        check('doAuthorize')
-
-        click_button 'Terminer'
-
-        wait_for_ajax
+        click_button 'Continuer'
 
         expect(test_user.questions.count).to be(QUESTION_COUNT)
         expect(test_user.questions.all? { |e| e.answer == 'Hello' }).to be(true)

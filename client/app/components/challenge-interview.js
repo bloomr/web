@@ -3,10 +3,11 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   options: [],
   selectedKeywords: [],
-  step3Enable: Ember.computed('user.isFirstInterviewAnswered', 'selectedKeywords.length', function(){
+  step2Enable: Ember.computed('user.isFirstInterviewAnswered', 'selectedKeywords.length', function(){
     return this.get('user.isFirstInterviewAnswered') && this.get('selectedKeywords.length') > 2;
   }),
   store: Ember.inject.service(),
+  challengeService: Ember.inject.service(),
   step1: true,
   step2: false,
   step3: false,
@@ -53,9 +54,13 @@ export default Ember.Component.extend({
     Ember.RSVP.Promise.all(keywordRecordsPromises).then(keywordRecords => {
       this.set('user.keywords', keywordRecords);
       this.get('user.questions').forEach(q => q.save());
-      this.get('user.challenges').addObject(this.get('challenges').findBy('name', 'interview'));
       this.get('user').save();
     });
+  },
+  saveChallengeAndUser() {
+    return  this.get('challengeService')
+      .addChallenge(this.get('user'), 'interview')
+      .then(u => u.save());
   },
   actions: {
     displaySpinner() {
@@ -65,10 +70,12 @@ export default Ember.Component.extend({
       this.set('user.avatarUrl', data.result.avatarUrl);
     },
     go_step2(){
+      this.saveKeywordsAndUser();
       this.set('step', '2');
+      document.querySelectorAll('.challenge-interview')[0].scrollIntoView();
     },
     go_step3(){ 
-      this.saveKeywordsAndUser();
+      this.saveChallengeAndUser();
       this.set('step', '3');
     }
   }

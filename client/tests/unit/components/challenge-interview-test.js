@@ -57,27 +57,44 @@ test('saveKeywordsAndUser saves a lot', function(assert) {
   Ember.run(() => this.component.saveKeywordsAndUser());
 
   assert.ok(saveNewKeywordsStub.calledWith(selectedKeywords));
-  assert.ok(this.user.get('challenges').findBy('name', 'interview'));
   assert.ok(this.user.save.called);
   assert.ok(this.user.get('questions').every(q => q.save.called));
   assert.equal(this.user.get('keywords').objectAt(0), keyword);
 });
 
-test('step3Enable', function(assert){
+test('saveChallengeAndUser', function(assert){
+  let addChallenge = sinon.spy((user) => Promise.resolve(user));
+
+  this.component.set('challengeService', { addChallenge });
+
+  return this.component.saveChallengeAndUser()
+    .then(() => {
+      assert.ok(addChallenge.calledWith(this.user, 'interview'));
+      assert.ok(this.user.save.called);
+    });
+});
+
+test('go_step3 saveTheChallenge', function(assert){
+  let saveChallengeAndUserStub = sinon.stub(this.component, 'saveChallengeAndUser');
+  Ember.run(() => this.component.actions.go_step3.apply(this.component));
+  assert.ok(saveChallengeAndUserStub.called);
+});
+
+test('step2Enable', function(assert){
   this.component.set('selectedKeywords', []);
   this.user.set('isFirstInterviewAnswered', false);
 
-  assert.notOk(this.component.get('step3Enable'));
+  assert.notOk(this.component.get('step2Enable'));
 
   this.component.set('selectedKeywords', [1, 2, 3]);
   this.user.set('isFirstInterviewAnswered', false);
-  assert.notOk(this.component.get('step3Enable'));
+  assert.notOk(this.component.get('step2Enable'));
 
   this.component.set('selectedKeywords', [1, 2]);
   this.user.set('isFirstInterviewAnswered', true);
-  assert.notOk(this.component.get('step3Enable'));
+  assert.notOk(this.component.get('step2Enable'));
 
   this.component.set('selectedKeywords', [1, 2, 3]);
   this.user.set('isFirstInterviewAnswered', true);
-  assert.ok(this.component.get('step3Enable'));
+  assert.ok(this.component.get('step2Enable'));
 });

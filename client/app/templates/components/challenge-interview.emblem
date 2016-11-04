@@ -3,22 +3,6 @@
   .content
     if step1
       h3.challenge-title Votre Témoignage (1/3)
-      p
-        | Pour remplir ce challenge :
-      .fileinput-button.interview 
-        if user.isPhotoUploaded
-          | Changez votre photo ...
-        else
-          | Choisissez votre plus belle photo
-        component 'image-upload' name='avatar' data-url='/api/v1/me/photo' accept='image/*' start=(action 'displaySpinner') done=(action 'updateImage')
-
-      component 'thumbnail-upload' user=user
-      div style='margin-top: 20px;'
-        button.crazy-btn click='go_step2' disabled={ unless user.isPhotoUploaded true } class={ user.isPhotoUploaded::disabled } Continuer
-
-    if step2
-      h3.challenge-title Votre Témoignage (2/3)
-      p Super ! À présent, pourriez-vous remplir ces questions :
 
       label.job Quel est votre métier ?
       | {{input class='job' value=user.jobTitle type='text' tabindex=1 }}
@@ -33,8 +17,24 @@
       label style='cursor: pointer' for='doAuthorize' Acceptez la publication de vos réponses (votre adresse email reste confidentielle, bien évidemment)
       br
       span style='font-size: 12px; font-style: italic;' Par votre réponse, vous nous autorisez à publier ces informations sur le site bloomr.org, et vous êtes évidemment libres d'en demander la modification ou la suppression sur simple demande à l'adresse <a href='mailto:contact@bloomr.org'>contact@bloomr.org</a>
+
       div style='margin-top: 20px;'
-        button.crazy-btn click='go_step3' disabled={ unless step3Enable true } class={ step3Enable::disabled } Terminer
+        button.crazy-btn click='go_step2' disabled={ unless step2Enable true } class={ step2Enable::disabled } Continuer
+
+    if step2
+      h3.challenge-title Votre Témoignage (2/3)
+      p Super ! À présent,
+      .fileinput-button.interview 
+        if user.isPhotoUploaded
+          | voulez-vous changer votre photo ...
+        else
+          | choisissez votre plus belle photo
+        component 'image-upload' name='avatar' data-url='/api/v1/me/photo' accept='image/*' start=(action 'displaySpinner') done=(action 'updateImage')
+
+      component 'thumbnail-upload' user=user
+      div style='margin-top: 20px;'
+        button.crazy-btn click='go_step3' disabled={ unless user.isPhotoUploaded true } class={ user.isPhotoUploaded::disabled } Continuer
+
 
     if step3
       h3.challenge-title Votre Témoignage (3/3)
