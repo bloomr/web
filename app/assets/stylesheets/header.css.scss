@@ -3,6 +3,8 @@
 .down { transform: rotate(90deg); }
 
 header.new_header {
+  a { cursor: pointer; }
+
   @media (max-width: $max_phone_size) {
     color: white;
     font-size: 14px;
