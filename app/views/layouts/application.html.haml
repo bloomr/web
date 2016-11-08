@@ -1,5 +1,5 @@
 !!!
-%html.no-js{ style: 'height: 100%' }
+%html.no-js
   %head
     %title #{yield(:title)} - Bloomr
 
@@ -38,7 +38,7 @@
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
 
-  %body{ style: 'height: 100%' }
+  %body
     - unless content_for?(:hide_header)
       = render 'shared/header'
 
