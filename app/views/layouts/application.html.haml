@@ -50,5 +50,5 @@
 
     = javascript_include_tag '//cdn.optimizely.com/js/2221001338.js', 'data-turbolinks-eval' => false
     - unless content_for?(:remove_application_js)
-      = javascript_include_tag 'application', 'data-turbolinks-eval' => false, async:  (Rails.env == 'production') 
+      = javascript_include_tag 'application', 'data-turbolinks-eval' => false
     = yield(:additional_javascript)
