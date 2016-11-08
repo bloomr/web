@@ -47,7 +47,7 @@
     - unless content_for?(:hide_footer)
       = render 'shared/new_footer'
 
-    = javascript_include_tag '//cdn.optimizely.com/js/2221001338.js', 'data-turbolinks-eval' => false
+    = javascript_include_tag '//cdn.optimizely.com/js/2221001338.js', 'data-turbolinks-eval' => false, async: true
     - unless content_for?(:remove_application_js)
       = javascript_include_tag 'application', 'data-turbolinks-eval' => false
     = yield(:additional_javascript)
