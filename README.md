@@ -15,8 +15,7 @@ RACK_ENV=production
 RAILS_ENV=production
 SECRET_KEY_BASE=production
 in config/production: config.force_ssl=false
-precompile assets: foreman run bundle exec rake assets:precompile
-foreman s -f Procfile.dev
+RAILS_ENV=production foreman run bundle exec rake assets:precompile && foreman s -e .env_prod  -f Procfile.dev
 
 Run Capybara Chrome Test
 ========================
