@@ -17,3 +17,8 @@ SECRET_KEY_BASE=production
 in config/production: config.force_ssl=false
 precompile assets: foreman run bundle exec rake assets:precompile
 foreman s -f Procfile.dev
+
+Run Capybara Chrome Test
+========================
+add var
+LC_NUMERIC='en_US.UTF-8’
