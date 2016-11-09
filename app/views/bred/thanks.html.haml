@@ -1,0 +1,35 @@
+- content_for :hide_header, true
+- content_for :hide_footer, true
+- content_for :title, 'Inscription'
+
+#bred
+  %header
+    %a.bred-logo{ href: '/' }
+    .center
+      %h1 Bienvenue dans le parcours Bloomr !
+      %p Avec ton inscription à la convention dédiée Jeunes, la BRED t'offre le parcours d'orientation Bloomr
+    %a.bred-bred{ href: 'https://www.bred.fr/' }
+
+  #goodNews
+
+  %section#subscription
+    %h1.title Merci, bienvenue chez Bloomr !
+    %p 
+      Ton aventure va démarrer dans l'heure qui vient.
+      %br
+      %br
+      Pour que nos mails arrivent à destination, ajoute <strong>hello@bloomr.org</strong> à tes contacts de messagerie.
+      %br
+      %br
+      A tout de suite :)
+
+
+    %a{ href: jobs_path, style: 'text-decoration: underline;' } En attendant, promène-toi dans les métiers !
+
+  %footer
+    %a.white-logo{ href: '/' }
+      %p
+        © Bloomr 2016,
+      %a{ href: 'https://drive.google.com/open?id=0B6t2xBTfe9gaQnl0cURXT0xHZ2c' } charte de confidentialité, 
+      %a{ href: 'https://drive.google.com/open?id=0B6t2xBTfe9gaNlZjYmtoQ250a0U' } CGV
+

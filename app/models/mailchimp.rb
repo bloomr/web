@@ -2,11 +2,12 @@ require 'mandrill'
 
 class Mailchimp
   class << self
-    def subscribe_to_journey(bloomy)
+    def subscribe_to_journey(bloomy, options = {})
       body = { 'status' => 'subscribed', 'email_address' => bloomy.email,
                'merge_fields' => { 'FNAME' => bloomy.first_name } }
       body['merge_fields']['AGE'] = bloomy.age if bloomy.age
-      response = HTTParty.post(JOURNEY_URL, headers: headers, body: body.to_json)
+      url = options[:bred] ? BRED_JOURNEY_URL : JOURNEY_URL
+      response = HTTParty.post(url, headers: headers, body: body.to_json)
       raise "Mailchimp Error: #{response}" unless response.success?
     end
 
@@ -30,6 +31,8 @@ class Mailchimp
 
     JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/58fadd9d86/members'
                   .freeze
+
+    BRED_JOURNEY_URL = 'https://us9.api.mailchimp.com/3.0/lists/f8bf4277a3/members'.freeze
 
     def headers
       { 'Authorization' => "apikey #{ENV['MAILCHIMP_API_KEY']}",

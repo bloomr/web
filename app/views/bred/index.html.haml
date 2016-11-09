@@ -17,7 +17,8 @@
   %section#subscription
     %p Pour commencer illico à te poser les bonnes questions et tracer ta voie vers ton bonheur professionnel, renseigne ces quelques infos :
 
-    = form_for Bloomy.new, url: '/', html: { class: 'hide-phone' } do |f|
+    = form_for Bloomy.new, url: '/bred/program/create', html: { class: 'hide-phone' } do |f|
+      = f.hidden_field :source, value: "bred - #{params[:s]}"
       .input-wrapper
         = f.label :first_name, "Je m'appelle"
         = f.text_field :first_name, required: true
@@ -29,11 +30,12 @@
         = f.number_field :age, required: true, class: 'number'
         %span ans
       .input-wrapper.cgu-wrapper
-        %input#cgu{ type: 'checkbox', name: 'cgu' }
+        %input#cgu{ type: 'checkbox', name: 'cgu', required: true }
         %label.cgu{ for: 'cgu' } J'ai lu et j'accepte <a href="https://drive.google.com/open?id=0B6t2xBTfe9gaNlZjYmtoQ250a0U">les conditions générales d'utilisation</a> et je certifie avoir 14 ans minimum
-      = button_tag 'Inscription', class: 'crazy-btn', disabled: true
+      = button_tag 'Inscription', class: 'crazy-btn'
 
-    = form_for Bloomy.new, url: '/', html: { class: 'show-phone' } do |f|
+    = form_for Bloomy.new, url: '/bred/program/create', html: { class: 'show-phone' } do |f|
+      = f.hidden_field :source, value: "bred - #{params[:s]}"
       .input-wrapper
         = f.text_field :first_name, required: true, class: 'large', placeholder: "Je m'appelle"
       .input-wrapper
@@ -43,9 +45,9 @@
         = f.number_field :age, required: true, class: 'number'
         %span ans
       .input-wrapper.cgu-wrapper
-        %input#cgu{ type: 'checkbox', name: 'cgu' }
+        %input#cgu{ type: 'checkbox', name: 'cgu', required: true }
         %label.cgu{ for: 'cgu' } J'ai lu et j'accepte <a href="https://drive.google.com/open?id=0B6t2xBTfe9gaNlZjYmtoQ250a0U">les conditions générales d'utilisation</a> et je certifie avoir 14 ans minimum
-      = button_tag 'Inscription', class: 'crazy-btn', disabled: true
+      = button_tag 'Inscription', class: 'crazy-btn'
 
   %section.for-you
     %h1.title Ce parcours est fait pour toi si :

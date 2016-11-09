@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -83,8 +82,6 @@ Rails.application.routes.draw do
     get name => "static##{name}"
   end
 
-  get 'bred/program' => 'static#bred'
-
   # partner
   get 'partner(/:name)' => 'partner#set_campaign'
 
@@ -97,6 +94,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :email_campaigns, only: [:index, :show, :create, :new]
   end
+
+  get  'bred/program' => 'bred#index'
+  post 'bred/program/create' => 'bred#create'
+  get  'bred/program/thanks' => 'bred#thanks'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

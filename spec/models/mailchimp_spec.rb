@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Mailchimp, type: :model do
   let(:bloomy) { create(:bloomy) }
   describe '#subscribe_to_journey' do
+    let(:bred_url) { 'https://us9.api.mailchimp.com/3.0/lists/f8bf4277a3/members'}
     let(:url) { 'https://us9.api.mailchimp.com/3.0/lists/58fadd9d86/members' }
     let(:ok_response) { double('response', success?: true) }
     let(:ko_response) { double('response', success?: false) }
@@ -28,6 +29,14 @@ RSpec.describe Mailchimp, type: :model do
         expect(HTTParty).to receive(:post).with(url, post_body)
           .and_return(ok_response)
         Mailchimp.subscribe_to_journey(bloomy)
+      end
+
+      context 'when the bloomy comes from the bred' do
+        it 'calls the mailchimp api with the bred url' do
+          expect(HTTParty).to receive(:post).with(bred_url, post_body)
+            .and_return(ok_response)
+          Mailchimp.subscribe_to_journey(bloomy, bred: true)
+        end
       end
 
       it 'raises an exception if mailchimp return a not success answer' do
