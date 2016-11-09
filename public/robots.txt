@@ -2,3 +2,4 @@ User-agent: *
 Disallow: /connection
 Disallow: /me
 Disallow: /payment
+Disallow: /users/sign_up
