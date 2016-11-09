@@ -20,7 +20,7 @@
     %div
       .spacer
       %p.sub Mon métier en #{@portrait.keyword_associations.length} mots
-      %ul.keywords{itemprop: 'keywords'}
+      %ul.keywords
         - @portrait.keyword_associations.each do |keyword_association|
           %li
             - if keyword_association.keyword_popular?

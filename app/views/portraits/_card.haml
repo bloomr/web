@@ -1,8 +1,8 @@
-= link_to(portrait_path(portrait), class: "card background-#{(portrait.id) %22}") do
-  = image_tag portrait.avatar.url('thumb'), width: '104px', height: '104px', alt: 'Photo de ' + portrait.first_name
+= link_to(portrait_path(portrait), class: "card background-#{(portrait.id) %22}", itemprop: 'url') do
+  = image_tag portrait.avatar.url('thumb'), width: '104px', height: '104px', alt: 'Photo de ' + portrait.first_name, itemprop: 'image'
   .overlay
-    %h3 #{ portrait.first_name }
-    %h2 #{ truncate(portrait.job_title, length: 70, separator: ' ', omission: '...') } 
+    %h3{ itemprop: 'name' } #{ portrait.first_name }
+    %h2{ itemprop: 'jobTitle' } #{ truncate(portrait.job_title, length: 70, separator: ' ', omission: '...') } 
     .quote.hide-phone
       = image_tag('portrait/icon-quote_in.png', height: '14px', width: '27px')
       - if portrait.answer_to('love_job')
