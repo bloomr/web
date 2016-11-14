@@ -1,0 +1,21 @@
+- content_for :title, 'Blooms stats !'
+- content_for :hide_header, true
+- content_for :hide_footer, true
+
+%style
+  b { font-weight: bold; }
+  \ #stats { padding: 10px 30px; }
+  \h2 { margin: 20px 0 10px; }
+
+#stats
+  %h1 Stats
+
+  %h2 Générales
+  %p Il y a <b>#{User.where(published: true).count} bloomeurs publiés</b> sur un total de #{User.count}.
+  %p Le taux d'engagement des bloomeurs est de <b>#{Stat.engagement_rate} %</b>
+
+  %h2 Challenges
+  %ul
+    - Challenge.all.each do |c|
+      %li <b>#{ChallengesUser.where(challenge_id: c.id).count}</b> bloomeurs ont réalisé le challenge <b>#{c.name}</b>
+

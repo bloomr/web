@@ -278,10 +278,8 @@ ActiveRecord::Schema.define(version: 20161109153247) do
     t.datetime "avatar_updated_at"
     t.boolean  "published",                          default: false
     t.boolean  "do_authorize",                       default: false
-    t.string   "authentication_token",   limit: 30
   end
 
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

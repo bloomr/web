@@ -93,6 +93,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :email_campaigns, only: [:index, :show, :create, :new]
+    resources :stats, only: [:index]
   end
 
   get  'bred/program' => 'bred#index'
