@@ -43,9 +43,10 @@
       %a.portrait-facebook.fb{ href: "https://www.facebook.com/sharer/sharer.php?u=#{portrait_url(@portrait)}", target: '_blank' }
       %a.portrait-twitter{ href: "https://twitter.com/intent/tweet?text=#{ yield(:description) }&url=#{portrait_url(@portrait)}", target: '_blank' }
 
-  .strengths.center.hide-phone
-    .spacer
-    %p.sub Mes forces
-    %ul.list-wrapper
-      - @portrait.strengths.map(&:name).each do |strength|
-        %li #{strength}
+  - if @portrait.strengths.count > 0
+    .strengths.center.hide-phone
+      .spacer
+      %p.sub Mes forces
+      %ul.list-wrapper
+        - @portrait.strengths.map(&:name).each do |strength|
+          %li #{strength}
