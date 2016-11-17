@@ -77,7 +77,7 @@ RSpec.describe Mailchimp, type: :model do
       expect(Mailchimp).to receive(:send_template).with(
         template_name: 'mission-2-rejoindre-la-communaute',
         to_mail: bloomy.email,
-        from_name: 'Le programme Bloomr',
+        from_name: 'Vi & No de Bloomr',
         from_mail: 'hello@bloomr.org',
         subject: '[Mail 2 - Etape 1] Mission #2 : Dis nous qui tu es',
         vars: {
@@ -98,7 +98,7 @@ RSpec.describe Mailchimp, type: :model do
       expect(Mailchimp).to receive(:send_template).with(
         template_name: 'presentation-du-parcours',
         to_mail: bloomy.email,
-        from_name: 'Le programme Bloomr',
+        from_name: 'Vi & No de Bloomr',
         from_mail: 'hello@bloomr.org',
         subject: 'Bienvenue !',
         vars: {
