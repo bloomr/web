@@ -4,7 +4,7 @@ module MailchimpMails
       {
         template_name: 'presentation-du-parcours',
         to_mail: bloomy.email,
-        from_name: 'Le programme Bloomr',
+        from_name: 'Vi & No de Bloomr',
         from_mail: 'hello@bloomr.org',
         subject: 'Bienvenue !',
         vars: {
