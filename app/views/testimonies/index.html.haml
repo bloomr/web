@@ -21,6 +21,7 @@
           %h2 #{t.title}
           %p #{t.body}
           .legend
-            %span #{t.person}
-            %span.spacer
-            %span &nbsp;#{t.date}
+            = image_tag t.avatar.url('thumb'), width: 50, height: 50 unless t.avatar_file_name.blank?
+            .text
+              %span #{t.person} <br/> #{t.date}
+

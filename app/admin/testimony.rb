@@ -1,5 +1,5 @@
 ActiveAdmin.register Testimony do
-  permit_params :title, :body, :person, :date, :position
+  permit_params :title, :body, :person, :date, :position, :avatar
 
   index do
     selectable_column
@@ -23,6 +23,9 @@ ActiveAdmin.register Testimony do
       f.input :person
       f.input :date
       f.input :position
+      f.input :avatar, required: false,
+                       as: :file,
+                       hint: f.template.image_tag(f.object.avatar.url(:thumb))
     end
     f.actions
   end

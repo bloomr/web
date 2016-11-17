@@ -107,30 +107,23 @@
   }
 
   .legend {
-    display: inline-block;
-    border-radius: 4px;
-    border: solid 1px #AC947E;
-    padding: 10px;
-    position: relative;
     margin-top: 10px;
 
-    &:before {
-      content: '';
-      position: absolute;
-      border-right: 1px solid #AC947E;
-      border-bottom: 1px solid #AC947E;
-      top: -5px;
-      width: 10px;
-      height: 10px;
-      background-color: #FFF;
-      transform: rotate(-135deg);
+    > * { vertical-align: middle; }
+
+    img {
+      border-radius: 25px;
+      margin-right: 10px;
     }
 
-    .spacer {
-      width: 3px;
-      height: 27px;
-      border: solid 1px #e6e0d4;
-      margin: 0 5px;
+    .text { 
+      display: inline-block;
+    }
+
+    span {
+      opacity: 0.8;
+      font-size: 14px;
+      line-height: 1.9;
     }
   }
 }
