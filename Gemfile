@@ -58,6 +58,7 @@ gem 'factory_girl_rails'
 gem 'impressionist'
 
 gem 'jsonapi-resources', git: 'https://github.com/cerebris/jsonapi-resources.git', tag: '0.7.1.beta2'
+gem 'intercom', '~> 3.5.9'
 
 group :production do
   gem 'pg'

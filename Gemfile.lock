@@ -207,6 +207,8 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 5)
       responders
+    intercom (3.5.9)
+      json (~> 1.8)
     jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -437,6 +439,7 @@ DEPENDENCIES
   heroku-deflater
   httparty
   impressionist
+  intercom (~> 3.5.9)
   jbuilder (~> 2.0)
   jquery-rails
   jsonapi-resources!
