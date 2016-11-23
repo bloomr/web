@@ -26,7 +26,9 @@ class User < ActiveRecord::Base
   before_save :check_published, :capitalize_first_name
 
   has_and_belongs_to_many :tribes
-  has_and_belongs_to_many :challenges
+
+  has_many :challengesUsers
+  has_many :challenges, through: :challengesUsers
   has_and_belongs_to_many :books
   has_and_belongs_to_many :strengths
 
