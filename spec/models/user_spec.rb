@@ -290,4 +290,17 @@ RSpec.describe User, type: :model do
 
     it { is_expected.to eq([brave, funny]) }
   end
+
+  describe '.sync_with_intercom' do
+    let(:user) { User.new(email: 'loulou@lou.com', password: 'loulouloulou') }
+    before :each do
+      expect(Intercom::Wrapper.instance).to receive(:create_or_update_user).with(user).twice
+    end
+
+    it 'is called when the user is saved' do
+      user.save
+      user.first_name = 'loulou'
+      user.save
+    end
+  end
 end

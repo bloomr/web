@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   }
 
   before_save :check_published, :capitalize_first_name
+  after_save :sync_with_intercom
 
   has_and_belongs_to_many :tribes
 
@@ -129,6 +130,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def sync_with_intercom
+    Intercom::Wrapper.instance.create_or_update_user(self)
+  end
 
   def check_published
     self.published = false unless self.questions.where(identifier: 'love_job', published: true).exists?
