@@ -303,4 +303,17 @@ RSpec.describe User, type: :model do
       user.save
     end
   end
+
+  describe '.sync_challenge_with_intercom' do
+    let(:user) { create(:user) }
+    let(:challenge) { create(:challenge) }
+
+    before :each do
+      expect(Intercom::Wrapper.instance).to receive(:user_complete_challenge)
+    end
+
+    it 'is called when a challenge is added' do
+      user.challenges << challenge
+    end
+  end
 end
