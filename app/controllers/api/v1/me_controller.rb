@@ -6,6 +6,7 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def show
+        Intercom::Wrapper.instance.create_or_update_user(current_user)
         included = %w(tribes questions challenges keywords strengths)
         render json: JSONAPI::ResourceSerializer.new(UserResource, include: included)
           .serialize_to_hash(UserResource.new(current_user, nil)).to_json
