@@ -132,7 +132,7 @@ class User < ActiveRecord::Base
   private
 
   def sync_with_intercom
-    Intercom::Wrapper.instance.create_or_update_user(self)
+    Intercom::Wrapper.create_or_update_user(self)
   end
 
   def check_published

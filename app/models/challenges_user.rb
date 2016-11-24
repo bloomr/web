@@ -7,6 +7,6 @@ class ChallengesUser < ActiveRecord::Base
   private
 
   def sync_challenge_with_intercom
-    Intercom::Wrapper.instance.user_complete_challenge(self)
+    Intercom::Wrapper.user_complete_challenge(challenge.name, Time.now.to_i, user_id)
   end
 end

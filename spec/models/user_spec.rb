@@ -294,7 +294,8 @@ RSpec.describe User, type: :model do
   describe '.sync_with_intercom' do
     let(:user) { User.new(email: 'loulou@lou.com', password: 'loulouloulou') }
     before :each do
-      expect(Intercom::Wrapper.instance).to receive(:create_or_update_user).with(user).twice
+      expect(Intercom::Wrapper).to receive(:create_or_update_user)
+        .with(user).twice
     end
 
     it 'is called when the user is saved' do
@@ -309,7 +310,7 @@ RSpec.describe User, type: :model do
     let(:challenge) { create(:challenge) }
 
     before :each do
-      expect(Intercom::Wrapper.instance).to receive(:user_complete_challenge)
+      expect(Intercom::Wrapper).to receive(:user_complete_challenge)
     end
 
     it 'is called when a challenge is added' do
