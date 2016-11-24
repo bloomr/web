@@ -43,8 +43,4 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   config.include Devise::TestHelpers, :type => :controller
-
-  config.before(:each) do
-    allow(Intercom::Wrapper).to receive(:instance).and_return(double().as_null_object)
-  end
 end
