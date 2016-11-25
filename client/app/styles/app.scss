@@ -1,6 +1,7 @@
 $blue: #E8F7FF;
 
 @import 'reset';
+@import 'main';
 @import 'backgrounds';
 @import 'ember-power-select';
 @import 'common';
@@ -13,32 +14,3 @@ $blue: #E8F7FF;
 @import 'challenge-summay';
 @import 'challenge-strengths';
 
-body, input {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #3e3e3e;
-}
-
-html {
-    box-sizing: border-box;
-}
-
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
-.hidden {
-  display: none;
-}
-
-//style use by trix-editor
-strong {
-  font-weight: bold;
-}
-
-em {
-  font-style: italic;
-}
-
-ul {
-   list-style: disc;
-}
