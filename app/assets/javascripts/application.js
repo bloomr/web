@@ -25,3 +25,4 @@
 //= require deferred_imgs
 //= require webfontloader
 //= require loadFont
+//= require blog
