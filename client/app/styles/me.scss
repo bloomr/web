@@ -162,13 +162,21 @@
         .info {
           display: inline-block;
           vertical-align: middle;
+          ul.tribes {
+            li { 
+              display: inline-block;
+              &::after { content: ','; margin-right: 5px; } 
+              &:last-child { &::after { content: ''; } }
+            }
+          }
           .greetings {
             font-family: 'Satisfy', cursive;
             font-size: 28px;
+            line-height:1;
           }
-          ul {
+          ul.categories {
             padding-left: 0;
-            margin: 35px 0 0;
+            margin: 22px 0 0;
             li {
               display: inline-block;
               margin-right: 30px;

@@ -18,10 +18,11 @@ div#me
           img.cloud-left.animated src='assets/images/profile/cloud-left.png' 
         .info
           p.greetings Salut {{ model.user.firstName }} !
-          p
+          ul.tribes
             each model.user.tribes as |tribe|
-              a href='/tribes/{{tribe.normalizedName}}' {{ tribe.name }}
-          ul
+             li 
+                a href='/tribes/{{tribe.normalizedName}}' {{ tribe.name }}
+          ul.categories
             li
               = link-to 'whatsnew' | Quoi de Neuf ?
             li
