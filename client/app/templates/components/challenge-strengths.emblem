@@ -3,10 +3,10 @@
   .content
     if showIntro
       h3.challenge-title Vos Forces (1/3)
-      p Trouvez vos forces et indiquons aux autres pourquoi ce métier vous correspond
+      p Identifiez vos forces grâce au test international du VIA Institute, pour vous et pour inspirer les personnes qui partagent les même forces que vous
       p 
-        | 1er étape : s'inscrire et remplir le questionnaire :&nbsp;
-        a href='https://www.viacharacter.org/survey/account/register' target='blank' clique ici !
+        | 1ère étape, s’inscrire et faire le test :&nbsp;
+        a href='https://www.dropbox.com/s/ikzc3zb7fkwo4gn/journey-mission-3-connaistesforces-1-1-bloomeur.pdf?dl=1' target='blank' mode d’emploi ici !
       a.crazy-btn.go-to-form click='goToForm' C'est fait
 
     if showForm
