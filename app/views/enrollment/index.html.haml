@@ -10,7 +10,7 @@
       %a.second{ href: 'javascript:history.back();' }
         ←&nbsp;
         %span.back RETOUR
-    %a.hide-phone{ href: '/me' } Déjà Bloomeur, je me connecte →&nbsp;
+    %a.hide-phone{ href: user_session_path, 'data-turbolinks' => 'false'} Déjà Bloomeur, je me connecte →&nbsp;
 
   .main
     %h1.title Bienvenue dans la communauté des bloomeurs*&nbsp;!
