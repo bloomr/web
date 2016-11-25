@@ -94,6 +94,7 @@ feature 'the private profile' do
         end
 
         click_button 'Continuer'
+        wait_for_ajax
 
         expect(test_user.questions.count).to be(QUESTION_COUNT)
         expect(test_user.questions.all? { |e| e.answer == 'Hello' }).to be(true)
