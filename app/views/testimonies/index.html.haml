@@ -19,9 +19,16 @@
       - Testimony.all.sort_by(&:position).each_with_index do |t, i|
         %li{ class: "testi-#{i%5}" }
           %h2 #{t.title}
-          %p #{t.body}
-          .legend
-            = image_tag t.avatar.url('thumb'), width: 50, height: 50 unless t.avatar_file_name.blank?
-            .text
-              %span #{t.person} <br/> #{t.date}
-
+          %p.main #{t.body}
+          - if t.avatar_file_name.blank?
+            .legend.no-photo
+              %p.text
+                %span #{t.person}
+                #{t.date}
+          - else t.avatar_file_name.blank?
+            .legend
+              = image_tag t.avatar.url('thumb'), width: 50, height: 50
+              %p.text
+                %span #{t.person}
+                %br
+                #{t.date}

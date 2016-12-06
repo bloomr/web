@@ -60,7 +60,7 @@
   }
 
   .testi-0, .testi-2, .testi-3 {
-    h2 { font-size: 22px; line-height: 1.2; }
+    h2 { font-size: 22px; line-height: 1.2; margin-bottom: 5px; }
   }
 
   .testi-0 {
@@ -70,6 +70,7 @@
   .testi-2, .testi-3 {
     max-width: 250px;
     display: inline-block;
+    vertical-align: top;
   }
 
   .testi-2 {
@@ -79,9 +80,9 @@
   }
 
   .testi-1, .testi-4 {
-    max-width: 620px;
+    max-width: 440px;
     h2 { display: none; }
-    p { 
+    p.main { 
       font-size: 26px;
       line-height: 1.3; 
       position: relative;
@@ -108,6 +109,7 @@
 
   .legend {
     margin-top: 10px;
+    width: 170px;
 
     > * { vertical-align: middle; }
 
@@ -118,12 +120,34 @@
 
     .text { 
       display: inline-block;
-    }
-
-    span {
       opacity: 0.8;
       font-size: 14px;
       line-height: 1.9;
+      letter-spacing: -0.3px;
+    }
+
+    span {
+      font-size: 18px;
+    }
+  }
+
+  .legend.no-photo {
+    margin-top: 20px;
+    border-top: solid 2px $orange;
+    border-radius: 1px;
+    color: $orange;
+    position: relative;
+
+    &::before { 
+      position: absolute;
+      content: " ";
+      width: 0;
+      height: 0;
+      top: -10px;
+      left: 10px;
+      border-style: solid;
+      border-width: 10px 0 0 10px;
+      border-color: transparent transparent transparent $orange;
     }
   }
 }
