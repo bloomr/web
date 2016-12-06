@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   resources :home, only: [:index]
   resources :enrollment, only: [:index, :create]
 
-  resources :tribes, only: [:index, :show]
+  resources :tribes, only: [:show]
+  get '/tribes', to: redirect('/jobs')
+
   resources :jobs, only: [:index]
   resources :testimonies, only: [:index]
 
