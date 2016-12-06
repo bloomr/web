@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe TribesController, type: :controller do
-  describe 'GET #index' do
-    it 'returns http success' do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe 'GET #show' do
     context 'when there is a tribe' do
       let!(:tribe) { Tribe.create(name: 'tiptop') }
