@@ -6,8 +6,6 @@ module Intercom
       end
 
       def create_or_update_user(user)
-        Delayed::Worker.logger.info 'et hop ======= create_or_update_user'
-
         h = {
           email: user.email,
           name: user.first_name,
