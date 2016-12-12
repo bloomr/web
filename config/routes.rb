@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   resources :enrollment, only: [:index, :create]
 
   resources :tribes, only: [:show]
-  get '/tribes', to: redirect('/jobs')
 
   get 'metiers', to: 'jobs#index', as: 'jobs'
   get 'metiers/:normalized_job_title/:normalized_first_name',
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
   resources :testimonies, only: [:index], path: 'avis'
 
   get 'jobs', to: redirect('/metiers')
+  get 'tribes', to: redirect('/metiers')
   get 'portraits/:id', to: 'jobs#show_by_id'
   get 'testimonies', to: redirect('/avis')
 
