@@ -27,7 +27,7 @@ feature 'the private profile' do
     end
 
     def with_a_new_user
-      visit '/enrollment'
+      visit '/inscription'
       within('#new_user') do
         fill_in 'user_first_name', with: 'first_name'
         fill_in 'user_email', with: 'test@test.com'

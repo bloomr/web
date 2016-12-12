@@ -23,9 +23,9 @@ Rails.application.routes.draw do
 
   resources :tag, only: [:show]
   resources :home, only: [:index]
-  resources :enrollment, only: [:index, :create]
+  resources :enrollment, only: [:index, :create], path: 'inscription'
 
-  resources :tribes, only: [:show]
+  resources :tribes, only: [:show], path: 'tribus'
 
   get 'metiers', to: 'jobs#index', as: 'jobs'
   get 'metiers/:normalized_job_title/:normalized_first_name',
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   get 'jobs', to: redirect('/metiers')
   get 'tribes', to: redirect('/metiers')
+  get 'tribes/:id', to: redirect('tribus/%{id}')
   get 'portraits/:id', to: 'jobs#show_by_id'
   get 'testimonies', to: redirect('/avis')
 
@@ -80,10 +81,13 @@ Rails.application.routes.draw do
   get 'qui-sommes-nous' => 'static#qui_sommes_nous'
 
   statics = %w( qui-sommes-nous templates
-                program press concept bloomifesto )
+                concept bloomifesto )
   statics.each do |name|
     get name => "static##{name}"
   end
+
+  get 'presse' => 'static#press', as: 'press'
+  get 'programme' => 'static#program', as: 'program'
 
   # partner
   get 'partner(/:name)' => 'partner#set_campaign'
