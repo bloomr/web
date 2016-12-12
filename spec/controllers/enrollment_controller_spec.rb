@@ -28,7 +28,7 @@ RSpec.describe EnrollmentController, type: :controller do
       it 'creates the user' do
         user = User.find_by(email: 'loulou@lou.com')
         expect(user.first_name).to eq('Loulou')
-        expect(user.job_title).to eq('job')
+        expect(user.job_title).to eq('Job')
         expect(user.valid_password?('loulou12')).to be(true)
       end
     end

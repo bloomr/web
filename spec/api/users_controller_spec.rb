@@ -39,7 +39,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
       it { is_expected.to have_http_status(:success) }
       it 'updates the users' do
         expect(user.first_name).to eq('Simon')
-        expect(user.job_title).to eq('coder')
+        expect(user.job_title).to eq('Coder')
       end
     end
 

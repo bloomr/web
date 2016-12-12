@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     thumb: '100x100#'
   }
 
-  before_save :check_published, :capitalize_first_name
+  before_save :check_published, :clean_first_name_and_job_title
   after_save :sync_with_intercom
 
   has_and_belongs_to_many :tribes
@@ -140,8 +140,11 @@ class User < ActiveRecord::Base
     true
   end
 
-  def capitalize_first_name
-    return if first_name.nil?
-    self.first_name = first_name.mb_chars.capitalize.to_s
+  def clean_first_name_and_job_title
+    self.first_name = first_name.strip.mb_chars.capitalize.to_s unless first_name.nil?
+    unless job_title.nil?
+      self.job_title = job_title.strip
+      self.job_title[0] = job_title[0].capitalize
+    end
   end
 end

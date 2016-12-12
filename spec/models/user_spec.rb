@@ -46,11 +46,12 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'when a user has its first_name in downcase' do
-      let(:user) { user = create(:user, first_name: 'élo'); user.reload }
+    context 'when a user has its first_name in downcase and a space' do
+      let(:user) { user = create(:user, first_name: 'élo ', job_title: ' controlleur SNCF '); user.reload }
 
-      it 'capitalizes it' do
+      it 'capitalizes and trims its first_name, and capitizes first letter and trim job_title' do
         expect(user.first_name).to eq('Élo')
+        expect(user.job_title).to eq('Controlleur SNCF')
       end
     end
   end
