@@ -10,14 +10,10 @@ This is the repo for the Bloom'r web app.
 Run as prod
 ===========
 
-add to .env
-RACK_ENV=production
-RAILS_ENV=production
-SECRET_KEY_BASE=production
 in config/production: config.force_ssl=false
-RAILS_ENV=production foreman run bundle exec rake assets:precompile && foreman s -e .env_prod  -f Procfile.dev
+foreman run bundle exec rake assets:precompile && foreman s -e .env_prod -f Procfile.dev
 
 Run Capybara Chrome Test
 ========================
 add var
-LC_NUMERIC='en_US.UTF-8’
+LC_NUMERIC='en_US.UTF-8'
