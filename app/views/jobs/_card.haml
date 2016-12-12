@@ -1,4 +1,4 @@
-= link_to(portrait_path(portrait), class: "card background-#{(portrait.id) %22}", itemprop: 'url') do
+= link_to(job_vanity_path(portrait.to_param), class: "card background-#{(portrait.id) %22}", itemprop: 'url') do
   = image_tag portrait.avatar.url('thumb'), width: '104px', height: '104px', alt: 'Photo de ' + portrait.first_name, itemprop: 'image'
   .overlay
     %h3{ itemprop: 'name' } #{ portrait.first_name }

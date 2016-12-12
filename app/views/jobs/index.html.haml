@@ -15,7 +15,7 @@
   .bloomeurs
     %section.of-the-month
       %h1.title Le Bloomeur du mois
-      %a.columns{ href: portrait_path(@bloomeur_of_month) }
+      %a.columns{ href: job_vanity_path(@bloomeur_of_month.to_param) }
         = image_tag @bloomeur_of_month.avatar.url('thumb'),
           width: '62px', height: '62px', itemprop: 'image', 
           alt: 'Photo de ' + @bloomeur_of_month.first_name,
@@ -33,14 +33,14 @@
           %p.book-title #{book.title}
           %p.author #{book.author}
 
-      %a.crazy-btn{ href: portrait_path(@bloomeur_of_month) } Voir le portrait
+      %a.crazy-btn{ href: job_vanity_path(@bloomeur_of_month.to_param) } Voir le portrait
 
     %section.last
       %h1.title Les derniers Bloomeurs
       %ul
         - @bloomeurs.each do |b|
           %li
-            %a{ href: portrait_path(b) }
+            %a{ href: job_vanity_path(b.to_param) }
               = image_tag b.avatar.url('thumb'), width: '62px', height: '62px', 
                 class: 'round', itemprop: 'image', alt: 'Photo de ' + b.first_name
               .info.hide-phone

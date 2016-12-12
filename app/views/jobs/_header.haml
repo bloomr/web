@@ -40,8 +40,8 @@
     %div.social
       .spacer
       %p.sub Partage mon profil
-      %a.portrait-facebook.fb{ href: "https://www.facebook.com/sharer/sharer.php?u=#{portrait_url(@portrait)}", target: '_blank' }
-      %a.portrait-twitter{ href: "https://twitter.com/intent/tweet?text=#{ yield(:description) }&url=#{portrait_url(@portrait)}", target: '_blank' }
+      %a.portrait-facebook.fb{ href: "https://www.facebook.com/sharer/sharer.php?u=#{job_vanity_path(@portrait.to_param)}", target: '_blank' }
+      %a.portrait-twitter{ href: "https://twitter.com/intent/tweet?text=#{ yield(:description) }&url=#{job_vanity_path(@portrait.to_param)}", target: '_blank' }
 
   - if @portrait.strengths.count > 0
     .strengths.center.hide-phone

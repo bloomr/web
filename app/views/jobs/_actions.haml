@@ -1,9 +1,9 @@
 .actions2
-  %a{ href: "/portraits/previous?id=#{@portrait.id}" }
+  %a{ href: job_vanity_path(User.previous(@portrait.id).to_param) }
     ←&nbsp;métier précédent
   .middle
-    %a.crazy-btn.hide-phone{ href: aleatoire_portraits_path } Et un métier au hasard ! Un !
-    %a.crazy-btn.show-phone{ href: aleatoire_portraits_path } au hasard !
+    %a.crazy-btn.hide-phone{ href: job_vanity_path(User.random.to_param) } Et un métier au hasard ! Un !
+    %a.crazy-btn.show-phone{ href: job_vanity_path(User.random.to_param) } au hasard !
     %a{ href: jobs_path } Retour à la galerie de métiers
-  %a{ href: "/portraits/next?id=#{@portrait.id}" }
+  %a{ href: job_vanity_path(User.next(@portrait.id).to_param) }
     métier suivant&nbsp;→
