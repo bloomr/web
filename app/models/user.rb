@@ -130,7 +130,8 @@ class User < ActiveRecord::Base
   end
 
   def to_param
-    { normalized_job_title: normalized_job_title, normalized_first_name: normalized_first_name }
+    { normalized_job_title: normalized_job_title,
+      normalized_first_name: normalized_first_name }
   end
 
   private
