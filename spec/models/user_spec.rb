@@ -54,6 +54,68 @@ RSpec.describe User, type: :model do
         expect(user.job_title).to eq('Controlleur SNCF')
       end
     end
+    context 'when a user has a complicated job_title' do
+      let(:user) { user = create(:user, job_title: 'Électro çituby'); user.reload }
+
+      it 'normalize it' do
+        expect(user.normalized_job_title).to eq('electro_cituby')
+      end
+    end
+
+    context 'when a user has a complicated first_name' do
+      let(:complicated_first_name) { "élo~ T`n\"d'ie`" }
+      let(:normalized_first_name) { 'elo~_t_n_d_ie_' }
+      let!(:user) { user = create(:user, first_name: complicated_first_name); user.reload }
+
+      it 'normalizes it' do
+        expect(user.normalized_first_name).to eq(normalized_first_name)
+      end
+
+      context 'when a second user has a complicated first_name and the same job' do
+        let!(:user2) { user = create(:user, first_name: complicated_first_name); user.reload }
+
+        it 'normalizes it with 1' do
+          expect(user2.normalized_first_name).to eq("1-#{normalized_first_name}")
+        end
+
+        context 'when a third user has a complicated first_name and the same job' do
+          let!(:user3) { user = create(:user, first_name: complicated_first_name); user.reload }
+
+          it 'normalizes it with 2' do
+            expect(user3.normalized_first_name).to eq("2-#{normalized_first_name}")
+          end
+
+          context 'when this third user update an other property' do
+            before :each do
+              user3.do_authorize = true
+              user3.save
+            end
+
+            it 'keeps its normalized_first_name' do
+              expect(user3.normalized_first_name).to eq("2-#{normalized_first_name}")
+            end
+          end
+
+          context 'when this third user updates its job_title' do
+            before :each do
+              user3.job_title = 'gardener'
+              user3.save
+            end
+
+            it 'computes its normalized_first_name again' do
+              expect(user3.normalized_first_name).to eq(normalized_first_name)
+            end
+          end
+        end
+      end
+
+      context 'when a second user has a complicated first_name and a different job' do
+        let!(:user2) { user = create(:user, first_name: complicated_first_name, job_title: 'boucher'); user.reload  }
+        it 'normalizes it without prefix' do
+          expect(user2.normalized_first_name).to eq(normalized_first_name)
+        end
+      end
+    end
   end
 
   describe '.active_ordered' do

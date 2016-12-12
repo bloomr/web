@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     thumb: '100x100#'
   }
 
-  before_save :check_published, :clean_first_name_and_job_title
+  before_save :check_published, :clean_first_name_and_job_title, :normalize_job_title, :normalize_first_name
   after_save :sync_with_intercom
 
   has_and_belongs_to_many :tribes
@@ -129,7 +129,32 @@ class User < ActiveRecord::Base
     hash.to_a.sort_by { |e| e[1] }.reverse.map { |e| e[0] }
   end
 
+  def to_param
+    { normalized_job_title: normalized_job_title, normalized_first_name: normalized_first_name }
+  end
+
   private
+
+  def normalize_job_title
+    self.normalized_job_title = job_title.nil? ? '' : normalize(job_title)
+  end
+
+  def normalize_first_name
+    return unless normalized_first_name.nil? || changed.include?('job_title')
+    first_try = first_name.nil? ? '' : normalize(first_name)
+
+    normalized_first_names =
+      User.where(normalized_job_title: normalized_job_title)
+          .where('normalized_first_name LIKE ?', "%#{first_try}")
+          .pluck(:normalized_first_name)
+
+    if normalized_first_names.count == 0
+      self.normalized_first_name = first_try
+    else
+      index = normalized_first_names.map(&:to_i).sort.last + 1
+      self.normalized_first_name = index.to_s + '-' + first_try
+    end
+  end
 
   def sync_with_intercom
     Intercom::Wrapper.create_or_update_user(self)
@@ -146,5 +171,10 @@ class User < ActiveRecord::Base
       self.job_title = job_title.strip
       self.job_title[0] = job_title[0].capitalize
     end
+  end
+
+  def normalize(text)
+    ActiveSupport::Inflector.transliterate(text).downcase
+                            .gsub(/[\s`'"]/, '_')
   end
 end
