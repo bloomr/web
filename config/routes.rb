@@ -21,12 +21,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static#home'
 
-  resources :portraits, only: [:show, :aleatoire] do
-    get :aleatoire, on: :collection
-    get :next, on: :collection
-    get :previous, on: :collection
-  end
-
   resources :tag, only: [:show]
   resources :home, only: [:index]
   resources :enrollment, only: [:index, :create]
@@ -34,8 +28,12 @@ Rails.application.routes.draw do
   resources :tribes, only: [:show]
   get '/tribes', to: redirect('/jobs')
 
-  resources :jobs, only: [:index]
   resources :testimonies, only: [:index]
+  get 'metiers', to: 'jobs#index', as: 'jobs'
+  get 'metiers/:normalized_job_title/:normalized_first_name',
+      to: 'jobs#show', as: 'job_vanity'
+  get 'jobs', to: redirect('/metiers')
+  get 'portraits/:id', to: 'jobs#show_by_id'
 
   namespace :api do
     namespace :v1 do

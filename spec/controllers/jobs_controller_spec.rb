@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe PortraitsController, :type => :controller do
-
+RSpec.describe JobsController, type: :controller do
   context 'when a portrait is viewed' do
-
     let(:user) do
       result = create(:user_published_with_questions, questions_count: 2)
       result.questions << create(:question, published: false)
@@ -11,7 +9,8 @@ RSpec.describe PortraitsController, :type => :controller do
     end
 
     before do
-      get :show, id: user.id
+      get :show, normalized_job_title: user.normalized_job_title,
+                 normalized_first_name: user.normalized_first_name
     end
 
     it 'counts the view' do
@@ -19,8 +18,8 @@ RSpec.describe PortraitsController, :type => :controller do
     end
 
     it 'displays only published questions' do
-        expect(assigns[:portrait].questions).to match_array(user.questions.published)
+      expect(assigns[:portrait].questions)
+        .to match_array(user.questions.published)
     end
   end
-
 end
