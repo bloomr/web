@@ -10,7 +10,7 @@ module Intercom
           email: user.email,
           name: user.first_name,
           signed_up_at: user.created_at.to_i,
-          last_request_at: Time.now.to_i,
+          last_request_at: user.current_sign_in_at.to_i,
           user_id: user.id,
           last_seen_ip: user.current_sign_in_ip,
           custom_attributes: {
