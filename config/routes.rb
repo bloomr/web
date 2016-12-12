@@ -28,12 +28,15 @@ Rails.application.routes.draw do
   resources :tribes, only: [:show]
   get '/tribes', to: redirect('/jobs')
 
-  resources :testimonies, only: [:index]
   get 'metiers', to: 'jobs#index', as: 'jobs'
   get 'metiers/:normalized_job_title/:normalized_first_name',
       to: 'jobs#show', as: 'job_vanity'
+
+  resources :testimonies, only: [:index], path: 'avis'
+
   get 'jobs', to: redirect('/metiers')
   get 'portraits/:id', to: 'jobs#show_by_id'
+  get 'testimonies', to: redirect('/avis')
 
   namespace :api do
     namespace :v1 do
