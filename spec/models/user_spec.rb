@@ -58,13 +58,13 @@ RSpec.describe User, type: :model do
       let(:user) { user = create(:user, job_title: 'Électro çituby'); user.reload }
 
       it 'normalize it' do
-        expect(user.normalized_job_title).to eq('electro_cituby')
+        expect(user.normalized_job_title).to eq('electro-cituby')
       end
     end
 
     context 'when a user has a complicated first_name' do
       let(:complicated_first_name) { "élo~ T`n\"d'ie`" }
-      let(:normalized_first_name) { 'elo~_t_n_d_ie_' }
+      let(:normalized_first_name) { 'elo-t-n-d-ie' }
       let!(:user) { user = create(:user, first_name: complicated_first_name); user.reload }
 
       it 'normalizes it' do

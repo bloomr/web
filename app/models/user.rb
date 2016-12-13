@@ -137,12 +137,12 @@ class User < ActiveRecord::Base
   private
 
   def normalize_job_title
-    self.normalized_job_title = job_title.nil? ? '' : normalize(job_title)
+    self.normalized_job_title = job_title.nil? ? '' : ActiveSupport::Inflector.parameterize(job_title)
   end
 
   def normalize_first_name
     return unless normalized_first_name.nil? || changed.include?('job_title')
-    first_try = first_name.nil? ? '' : normalize(first_name)
+    first_try = first_name.nil? ? '' : ActiveSupport::Inflector.parameterize(first_name)
 
     normalized_first_names =
       User.where(normalized_job_title: normalized_job_title)
@@ -172,10 +172,5 @@ class User < ActiveRecord::Base
       self.job_title = job_title.strip
       self.job_title[0] = job_title[0].capitalize
     end
-  end
-
-  def normalize(text)
-    ActiveSupport::Inflector.transliterate(text).downcase
-                            .gsub(/[\s`'"]/, '_')
   end
 end
