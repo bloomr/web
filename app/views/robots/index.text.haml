@@ -1,0 +1,20 @@
+- if Rails.env == 'production'
+  User-agent: *
+  Disallow: /admin
+  Disallow: /admin/
+  Disallow: /bloomies/password/
+  Disallow: /bred/program
+  Disallow: /connection
+  Disallow: /me
+  Disallow: /partner/
+  Disallow: /payment
+  Disallow: /sso
+  Disallow: /templates
+  Disallow: /users/password/
+  Disallow: /users/sign_up
+
+  Sitemap: https://s3-#{ENV['S3_REGION']}.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/sitemaps/sitemap.xml.gz
+
+- else
+  User-agent: *
+  Disallow: /

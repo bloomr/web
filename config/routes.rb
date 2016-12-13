@@ -89,6 +89,8 @@ Rails.application.routes.draw do
   get 'presse' => 'static#press', as: 'press'
   get 'programme' => 'static#program', as: 'program'
 
+  get 'robots.:format', to: 'robots#index'
+
   # partner
   get 'partner(/:name)' => 'partner#set_campaign'
 
