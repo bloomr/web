@@ -5,7 +5,7 @@ RSpec.describe Tribe, :type => :model do
     context 'when a new tribe is created' do
       let!(:tribe) { Tribe.create( name: '3.0') }
       it 'normalize name is saved' do
-        expect(tribe.normalized_name).to eq('3_0')
+        expect(tribe.normalized_name).to eq('3-0')
       end
     end
   end

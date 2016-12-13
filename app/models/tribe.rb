@@ -43,6 +43,6 @@ select count(*) from
   private
 
   def normalize_name
-    self.normalized_name = name.gsub('.','_')
+    self.normalized_name = ActiveSupport::Inflector.parameterize(name)
   end
 end
