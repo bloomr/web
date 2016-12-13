@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208090033) do
+ActiveRecord::Schema.define(version: 20161213154107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,11 +182,12 @@ ActiveRecord::Schema.define(version: 20161208090033) do
   add_index "keyword_associations", ["user_id"], name: "index_keyword_associations_on_user_id", using: :btree
 
   create_table "keywords", force: :cascade do |t|
-    t.string   "tag",         limit: 255
+    t.string   "tag",            limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tribe_id"
+    t.string   "normalized_tag"
   end
 
   add_index "keywords", ["tribe_id"], name: "index_keywords_on_tribe_id", using: :btree

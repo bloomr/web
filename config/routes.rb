@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static#home'
 
-  resources :tag, only: [:show]
+  resources :tag, only: [:show], param: 'normalized_tag'
   resources :home, only: [:index]
   resources :enrollment, only: [:index, :create], path: 'inscription'
 

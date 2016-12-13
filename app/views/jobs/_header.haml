@@ -24,7 +24,7 @@
         - @portrait.keyword_associations.each do |keyword_association|
           %li
             - if keyword_association.keyword_popular?
-              %a{ href: tag_path(keyword_association.keyword.tag) }
+              %a{ href: tag_path(keyword_association.keyword.normalized_tag) }
                 = keyword_association.keyword.tag.downcase
             - else
               = keyword_association.keyword.tag.downcase

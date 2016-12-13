@@ -12,4 +12,11 @@ RSpec.describe Keyword, type: :model do
       expect(Keyword.published).to match([published_keyword])
     end
   end
+  describe 'normalize_tag' do
+    let!(:keyword) { Keyword.create(tag: 'Compl iCatèd') }
+
+    it 'normalized the tag' do
+      expect(keyword.normalized_tag).to eq('compl-icated')
+    end
+  end
 end
