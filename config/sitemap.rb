@@ -23,7 +23,7 @@ SitemapGenerator::Sitemap.create do
                 .pluck('keyword_id')
   Keyword.find(keyword_ids).each { |k| add(tag_path(k.normalized_tag)) unless k.normalized_tag.blank? }
 
-  one_pages = %w(press concept bloomifesto qui_sommes_nous testimonies program)
+  one_pages = %w(press concept bloomifesto qui_sommes_nous testimonies program jobs)
   one_pages.each { |path| add(send(path + '_path')) }
   # Put links creation logic here.
   #
