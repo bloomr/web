@@ -2,6 +2,7 @@
 - content_for :og_title, 'Bloomr - Des professionnels passionnés parlent de leur métier'
 - content_for :description, "#{@keyword.tag} : c'est le mot qui caractérise le métier de ces professionnels. Découvre leurs parcours et ce qui les fait vibrer"
 - content_for :header_background, asset_path('header/header-bg.png')
+- content_for :canonical, "https://www.bloomr.org#{tag_path(@keyword.normalized_tag)}"
 
 #tag
   %section.intro

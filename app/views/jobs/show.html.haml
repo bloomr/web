@@ -3,6 +3,7 @@
 - content_for :description, "#{@portrait.first_name} est #{@portrait.job_title} et décrit son métier "
 - content_for :og_img_url, @portrait.avatar.url('thumb')
 - content_for :header_background, asset_path('portrait/bg.png')
+- content_for :canonical, "https://www.bloomr.org#{job_vanity_path(@portrait.to_param)}"
 
 #portrait_details_2{ itemscope: '', itemtype: 'http://schema.org/QAPage' }
   = render 'header'

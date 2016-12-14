@@ -19,6 +19,9 @@
     %link{ href: '/favicon-16x16.png', rel: 'icon', sizes: '16x16', type: 'image/png' }
     %link{ href: '/manifest.json', rel: 'manifest' }
     %link{ color: '#5bbad5', href: '/safari-pinned-tab.svg', rel: 'mask-icon' }
+    - if content_for?(:canonical)
+      %link{ href: yield(:canonical), rel: 'canonical' }
+
     %meta{ content: 'Bloomr', name: 'apple-mobile-web-app-title' }
     %meta{ content: 'Bloomr', name: 'application-name' }
     %meta{ content: '#da532c', name: 'msapplication-TileColor' }

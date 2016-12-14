@@ -1,6 +1,7 @@
 - content_for :title, @tribe.name
 - content_for :description, @tribe.description
 - content_for :header_background, asset_path('header/header-bg.png')
+- content_for :canonical, "https://www.bloomr.org#{tribe_path(@tribe.normalized_name)}"
 
 #tribes-show
   %section.intro
