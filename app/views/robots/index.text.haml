@@ -1,4 +1,4 @@
-- if Rails.env == 'production'
+- unless ENV['ROBOTS'] == 'false'
   User-agent: *
   Disallow: /admin
   Disallow: /admin/
