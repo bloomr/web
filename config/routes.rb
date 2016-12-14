@@ -108,6 +108,8 @@ Rails.application.routes.draw do
   get  'bred/program' => 'bred#index'
   post 'bred/program/create' => 'bred#create'
   get  'bred/program/thanks' => 'bred#thanks'
+
+  get 'sitemap.xml.gz', to: redirect("https://s3-#{ENV['S3_REGION']}.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/sitemaps/sitemap.xml.gz")
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
