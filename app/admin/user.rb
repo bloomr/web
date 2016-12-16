@@ -77,4 +77,23 @@ ActiveAdmin.register User do
 
     f.actions
   end
+
+  around_filter do |controller, action|
+    User.class_eval do
+      def to_param
+        id.to_s
+      end
+    end
+
+    begin
+      action.call
+    ensure
+      User.class_eval do
+        def to_param
+          { normalized_job_title: normalized_job_title,
+            normalized_first_name: normalized_first_name }
+        end
+      end
+    end
+  end
 end
