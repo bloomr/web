@@ -14,18 +14,18 @@
       position: relative
     }
 
-    .portrait-luggage-on, .portrait-quote-on {
+    .portrait-luggage-on, .portrait-quote-on, .portrait-icon-book-on {
       display: none;
     }
 
     .active { 
       color: #ee933f; 
 
-      .portrait-luggage-on, .portrait-quote-on {
+      .portrait-luggage-on, .portrait-quote-on, .portrait-icon-book-on {
         display: inline-block;
       }
 
-      .portrait-luggage, .portrait-quote {
+      .portrait-luggage, .portrait-quote, .portrait-icon-book {
         display: none;
       }
     }
