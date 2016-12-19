@@ -1,4 +1,4 @@
-- content_for :title, 'Paiement du Parcours'
+- content_for :title, 'Paiement du Programme'
 - content_for :hide_header, true
 - content_for :hide_footer, true
 
@@ -8,7 +8,7 @@
   %header
     %div.left
       %span.white-logo
-      %span.sub.second Inscription au programme d’orientation Bloomr
+      %span.sub.second Inscription au programme Bloomr
 
   %section.thanks
     - if gift
@@ -17,7 +17,9 @@
         Paiement réalisé avec succès.
         %br
         %br
-        Voici le coupon que vous pouvez imprimer pour le jour-J
+        Il suffit au bénéficiaire de nous écrire à cadeau@bloom.org dès qu’il souhaite démarrer le programme !
+        %br
+        Ci-dessous un “bon pour” à télécharger si vous le souhaitez ;-)
       %a.boxed{ href: payment_voucher_url, 'data-turbolinks' => 'false' }
         = image_tag 'payment2/voucher.jpg'
 
