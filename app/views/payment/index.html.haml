@@ -2,6 +2,8 @@
 - content_for :hide_header, true
 - content_for :hide_footer, true
 
+- gift = !params[:gift].nil?
+
 #payment
   %header
     %div.left
@@ -14,35 +16,70 @@
     %p.hide-phone Paiement sécurisé par <b>stripe</b>
   %section.main
     %h1.title Fabuleuse décision !
+    
+    - if gift
+      %p.last-step Vous souhaitez offrir le programme à un proche, nous applaudissons.
+    - else
+      %p.last-step Dernière étape avant de commencer le programme : l’inscription !
 
-    %p.last-step Dernière étape avant de commencer le programme : l’inscription !
-    = form_for Bloomy.new, url: '/payment' do |f|
-      = f.text_field :first_name, placeholder: 'Prénom', required: true, autofocus: true
-      = f.email_field :email, placeholder: 'Adresse email', required: true, 'data-stripe' => 'name'
-      = f.text_field :age, placeholder: 'Âge', required: true
+    - if gift
+      = form_for Bloomy.new, url: '/payment' do |f|
+        = f.text_field :first_name, placeholder: 'Son prénom', required: true, autofocus: true
+        = f.email_field :email, placeholder: 'Son adresse email', required: true
+        = f.text_field :age, placeholder: 'Son âge', required: true
+        = hidden_field_tag :gift, true
 
-      .flash-messages
-        - if flash[:error]
-          %p #{flash[:error]}
+        .flash-messages
+          - if flash[:error]
+            %p #{flash[:error]}
 
-      %p.and Et le paiement :)
-      .payment2-cards
+        %p.and Et le paiement :)
+        .payment2-cards
 
-      %p
-      = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb cc-number', 'data-stripe' => 'number'
-      = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
-      = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
+        %p
+        = email_field_tag 'buyer_email', nil, placeholder: 'Votre adresse email', required: true, 'data-stripe' => 'name'
+        = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb cc-number', 'data-stripe' => 'number'
+        = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
+        = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
 
-      %p.cgu
-        En t'inscrivant au programme, tu acceptes les
-        %a{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view' }conditions générales
-        et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
+        %p.cgu
+          En achetant un programme, vous acceptez les
+          %a{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view' }conditions générales
+          et vous certifiez que l'inscrit a 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
 
-      = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
-      %p ou bien
-      %a.paypal{ href: "https://paypal.me/bloomr/#{@price}" }
-        %span Payer avec 
-        %span.payment2-paypal Paypal
+        = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
+        %p ou bien
+        %a.paypal{ href: "https://paypal.me/bloomr/#{@price}" }
+          %span Payer avec 
+          %span.payment2-paypal Paypal
+    - else
+      = form_for Bloomy.new, url: '/payment' do |f|
+        = f.text_field :first_name, placeholder: 'Prénom', required: true, autofocus: true
+        = f.email_field :email, placeholder: 'Adresse email', required: true, 'data-stripe' => 'name'
+        = f.text_field :age, placeholder: 'Âge', required: true
+
+        .flash-messages
+          - if flash[:error]
+            %p #{flash[:error]}
+
+        %p.and Et le paiement :)
+        .payment2-cards
+
+        %p
+        = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb cc-number', 'data-stripe' => 'number'
+        = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
+        = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
+
+        %p.cgu
+          En t'inscrivant au programme, tu acceptes les
+          %a{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view' }conditions générales
+          et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
+
+        = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
+        %p ou bien
+        %a.paypal{ href: "https://paypal.me/bloomr/#{@price}" }
+          %span Payer avec 
+          %span.payment2-paypal Paypal
 
   %footer
     %a{ href: '/' } Bloomr

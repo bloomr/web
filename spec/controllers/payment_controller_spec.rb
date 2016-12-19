@@ -45,6 +45,37 @@ RSpec.describe PaymentController, type: :controller do
       it { expect(subject.age).to eq(44) }
     end
 
+    context 'if it s a gift' do
+      let(:gift_payload) { payload.merge(gift: true, buyer_email: 'money@rich.com') }
+
+      let(:stripes_args) do
+        { amount: amount, currency: 'eur', source: '1234',
+          description: '1 Parcours Bloomr',
+          receipt_email: 'money@rich.com', metadata: metadata }
+      end
+
+      after do
+        post :create, gift_payload
+        expect(response).to redirect_to(payment_thanks_path + '?gift=true')
+      end
+
+      context 'with no cookie' do
+        let(:metadata) do
+          { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
+            'source' => 'default', 'gift' => true }
+        end
+        let(:amount) { 3500 }
+
+        it 'charges the right amount and redirect to payment_thanks' do
+          expect(Stripe::Charge).to receive(:create).with(stripes_args)
+        end
+
+        it 'doesnt subscribe to the journey yet' do
+          expect(Mailchimp).not_to receive(:subscribe_to_journey)
+        end
+      end
+    end
+
     describe 'the stripe charges' do
       let(:stripes_args) do
         { amount: amount, currency: 'eur', source: '1234',
@@ -54,13 +85,13 @@ RSpec.describe PaymentController, type: :controller do
 
       after do
         post :create, payload
-        expect(response).to redirect_to(payment_thanks_path)
+        expect(response).to redirect_to(payment_thanks_path + '?gift=false')
       end
 
       context 'with no cookie' do
         let(:metadata) do
           { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
-            'source' => 'default' }
+            'source' => 'default', 'gift' => false }
         end
         let(:amount) { 3500 }
 
@@ -72,7 +103,7 @@ RSpec.describe PaymentController, type: :controller do
       context 'with sujetdubac cookie' do
         let(:metadata) do
           { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
-            'source' => 'sujetdubac' }
+            'source' => 'sujetdubac', 'gift' => false }
         end
         let(:amount) { 1300 }
 

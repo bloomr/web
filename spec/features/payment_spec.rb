@@ -12,6 +12,17 @@ feature 'Buy a journey' do
     expect(page).to have_css('a[href="https://paypal.me/bloomr/35.00"]')
   end
 
+  scenario 'I ve got a special form if its a gift' do
+    visit '/payment?gift=true'
+    expect(page).to have_field('buyer_email')
+    expect(page.find('#gift', visible: false).value).to eq('true')
+  end
+
+  scenario 'i ve got a voucher if its a gift' do
+    visit '/payment/thanks?gift=true'
+    click_link 'Télécharger le coupon PDF'
+  end
+
   scenario 'I get a discount if I come from a partner' do
     visit '/partner/sujetdubac'
     visit '/payment'

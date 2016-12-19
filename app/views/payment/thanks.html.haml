@@ -1,6 +1,8 @@
-= content_for :title, 'Paiement du Parcours'
-= content_for :hide_header, true
-= content_for :hide_footer, true
+- content_for :title, 'Paiement du Parcours'
+- content_for :hide_header, true
+- content_for :hide_footer, true
+
+- gift = !params[:gift].nil?
 
 #payment.flexy
   %header
@@ -9,18 +11,32 @@
       %span.sub.second Inscription au programme d’orientation Bloomr
 
   %section.thanks
-    %h1.title Merci, bienvenue chez Bloomr !
-    %p 
-      Ton aventure va démarrer dans l'heure qui vient.
-      %br
-      %br
-      Pour que nos mails arrivent à destination, ajoute <strong>hello@bloomr.org</strong> à tes contacts de messagerie.
-      %br
-      %br
-      A tout de suite :)
+    - if gift
+      %h1.title Félicitations !
+      %p 
+        Paiement réalisé avec succès.
+        %br
+        %br
+        Voici le coupon que vous pouvez imprimer pour le jour-J
+      %a.boxed{ href: payment_voucher_url, 'data-turbolinks' => 'false' }
+        = image_tag 'payment2/voucher.jpg'
 
+      %a.download{ href: payment_voucher_url, 'data-turbolinks' => 'false' } Télécharger le coupon PDF
 
-    %a{ href: jobs_path } En attendant, promène-toi dans les métiers !
+      %a.go_home{ href: root_path } Retour à l'accueil
+
+    - else
+      %h1.title Merci, bienvenue chez Bloomr !
+      %p 
+        Ton aventure va démarrer dans l'heure qui vient.
+        %br
+        %br
+        Pour que nos mails arrivent à destination, ajoute <strong>hello@bloomr.org</strong> à tes contacts de messagerie.
+        %br
+        %br
+        A tout de suite :)
+
+      %a.walking{ href: jobs_path } En attendant, promène-toi dans les métiers !
 
   %footer
     %a{ href: '/' } Bloomr

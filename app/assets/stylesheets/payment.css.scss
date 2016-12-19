@@ -123,7 +123,24 @@
     
     p { font-weight: 600; }
 
-    a {
+    a.boxed {
+      border-radius: 8px;
+      border: solid 3px #e6e0d4;
+      display: block;
+      height: 218px;
+      margin: 40px auto 5px;
+      width: 317px;
+    }
+
+    a.download { text-decoration: underline; }
+    a.go_home { 
+      color: $orange; 
+      font-size: 16px;
+      display: block;
+      margin: 30px auto;
+    }
+
+    a.walking {
       border-radius: 7px;
       border: solid 2px $orange;
       width: 300px;

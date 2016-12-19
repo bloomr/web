@@ -1,5 +1,6 @@
 class PaymentController < ApplicationController
   before_action :fetch_customer_campaign, only: [:index, :create]
+  before_action :fetch_gift_and_buyer_email, only: [:create]
 
   def index
     @price = price_to_display
@@ -9,8 +10,8 @@ class PaymentController < ApplicationController
     password = WeakPassword.instance
     bloomy = Bloomy.create!(bloomy_params.merge(password: password))
     charge(bloomy)
-    Journey.new(bloomy, password)
-    redirect_to payment_thanks_path
+    Journey.new(bloomy, password) unless @gift
+    redirect_to(payment_thanks_path(gift: @gift))
 
   rescue StandardError => e
     flash[:error] = e.message
@@ -20,10 +21,19 @@ class PaymentController < ApplicationController
   def thanks
   end
 
+  def voucher
+    send_file("#{Rails.root}/public/voucher.pdf", filename: 'coupon_bloomr.pdf')
+  end
+
   private
 
   def fetch_customer_campaign
     @campaign = Campaign.find_by_partner_or_default(cookies[:partner])
+  end
+
+  def fetch_gift_and_buyer_email
+    @gift = !params[:gift].nil?
+    @buyer_email = @gift ? params[:buyer_email] : bloomy_params[:email]
   end
 
   def bloomy_params
@@ -31,14 +41,16 @@ class PaymentController < ApplicationController
   end
 
   def charge(bloomy)
-    Stripe::Charge.create(
+    payload = {
       amount: amount,
       currency: 'eur',
       source: params[:stripeToken],
       description: '1 Parcours Bloomr',
-      receipt_email: bloomy.email,
+      receipt_email: @buyer_email,
       metadata: metadata(bloomy)
-    )
+    }
+
+    Stripe::Charge.create(payload)
   end
 
   def amount
@@ -49,6 +61,7 @@ class PaymentController < ApplicationController
     bloomy_s = "#{bloomy.first_name} - #{bloomy.age} ans - #{bloomy.email}"
     metadata = { 'info_client' => bloomy_s }
     metadata['source'] = @campaign.partner
+    metadata['gift'] = @gift
     metadata
   end
 
