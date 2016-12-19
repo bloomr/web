@@ -11,7 +11,11 @@ class PaymentController < ApplicationController
     bloomy = Bloomy.create!(bloomy_params.merge(password: password))
     charge(bloomy)
     Journey.new(bloomy, password) unless @gift
-    redirect_to(payment_thanks_path(gift: @gift))
+    if @gift
+      redirect_to(payment_thanks_path(gift: true))
+    else
+      redirect_to(payment_thanks_path)
+    end
 
   rescue StandardError => e
     flash[:error] = e.message

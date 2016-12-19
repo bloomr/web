@@ -85,7 +85,7 @@ RSpec.describe PaymentController, type: :controller do
 
       after do
         post :create, payload
-        expect(response).to redirect_to(payment_thanks_path + '?gift=false')
+        expect(response).to redirect_to(payment_thanks_path)
       end
 
       context 'with no cookie' do
