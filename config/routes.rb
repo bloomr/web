@@ -73,6 +73,8 @@ Rails.application.routes.draw do
           relationship: 'strengths', source: 'api/v1/users'
 
       jsonapi_resources :strengths
+
+      resources :bloomies, only: [:index]
     end
   end
 
