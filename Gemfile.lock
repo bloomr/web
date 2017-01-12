@@ -404,6 +404,10 @@ GEM
       websocket (~> 1.0)
     sexp_processor (4.7.0)
     shellany (0.0.1)
+    simple_token_authentication (1.14.0)
+      actionmailer (>= 3.2.6, < 6)
+      actionpack (>= 3.2.6, < 6)
+      devise (>= 3.2, < 6)
     sitemap_generator (5.2.0)
       builder (~> 3.0)
     slop (3.6.0)
@@ -495,6 +499,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   select2-rails
   selenium-webdriver
+  simple_token_authentication (~> 1.0)
   sitemap_generator
   spring-commands-rspec
   sprite-factory
