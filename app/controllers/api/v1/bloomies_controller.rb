@@ -2,6 +2,8 @@ module Api
   module V1
     class BloomiesController < ApplicationController
       skip_before_filter :verify_authenticity_token
+      acts_as_token_authentication_handler_for Bloomy, fallback: :exception
+
       def show
         bloomy = Bloomy.find(params[:id])
         render json: bloomy, include: ['missions']
