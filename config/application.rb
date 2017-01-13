@@ -26,6 +26,13 @@ module Bloomr
       allow do
         origins '*'
 
+        %w(/bloomies/sign_in /api/v1/missions /api/v1/bloomies/*).each do |e|
+          resource e,
+                   headers: :any,
+                   methods: [:get, :options, :head, :post, :put, :patch],
+                   max_age: 86400
+        end
+
         resource '*',
                  :headers => :any,
                  :methods => [:get, :options, :head],
