@@ -26,7 +26,7 @@ module Bloomr
       allow do
         origins '*'
 
-        %w(/bloomies/sign_in /api/v1/missions /api/v1/bloomies/*).each do |e|
+        %w(/bloomies/sign_in /api/v1/missions /api/v1/programs/* /api/v1/bloomies/*).each do |e|
           resource e,
                    headers: :any,
                    methods: [:get, :options, :head, :post, :put, :patch],
