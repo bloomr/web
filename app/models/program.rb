@@ -1,4 +1,4 @@
 class Program < ActiveRecord::Base
-  has_and_belongs_to_many :bloomies
+  belongs_to :bloomies
   has_and_belongs_to_many :missions
 end

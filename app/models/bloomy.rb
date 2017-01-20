@@ -8,5 +8,5 @@ class Bloomy < ActiveRecord::Base
 
   validates :first_name, presence: true, on: :create
 
-  has_and_belongs_to_many :programs
+  has_many :programs, dependent: :destroy
 end
