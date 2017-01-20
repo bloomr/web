@@ -74,7 +74,7 @@ Rails.application.routes.draw do
 
       jsonapi_resources :strengths
 
-      resources :bloomies, only: [:show, :update]
+      resources :bloomies, only: [:show]
       resources :programs, only: [:show, :update]
       resources :missions, only: [:create]
     end

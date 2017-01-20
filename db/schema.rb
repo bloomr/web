@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112095502) do
+ActiveRecord::Schema.define(version: 20170119220659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,12 +88,12 @@ ActiveRecord::Schema.define(version: 20170112095502) do
   add_index "bloomies", ["email"], name: "index_bloomies_on_email", unique: true, using: :btree
   add_index "bloomies", ["reset_password_token"], name: "index_bloomies_on_reset_password_token", unique: true, using: :btree
 
-  create_table "bloomies_missions", id: false, force: :cascade do |t|
+  create_table "bloomies_programs", id: false, force: :cascade do |t|
     t.integer "bloomy_id",  null: false
-    t.integer "mission_id", null: false
+    t.integer "program_id", null: false
   end
 
-  add_index "bloomies_missions", ["bloomy_id", "mission_id"], name: "index_bloomies_missions_on_bloomy_id_and_mission_id", unique: true, using: :btree
+  add_index "bloomies_programs", ["bloomy_id", "program_id"], name: "index_bloomies_programs_on_bloomy_id_and_program_id", using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "author"
@@ -208,6 +208,19 @@ ActiveRecord::Schema.define(version: 20170112095502) do
   end
 
   add_index "missions", ["prismic_id"], name: "index_missions_on_prismic_id", unique: true, using: :btree
+
+  create_table "missions_programs", id: false, force: :cascade do |t|
+    t.integer "mission_id", null: false
+    t.integer "program_id", null: false
+  end
+
+  add_index "missions_programs", ["program_id", "mission_id"], name: "index_missions_programs_on_program_id_and_mission_id", using: :btree
+
+  create_table "programs", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "question_comments", force: :cascade do |t|
     t.string   "author_avatar_url", limit: 255

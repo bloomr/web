@@ -7,13 +7,7 @@ module Api
 
       def show
         bloomy = Bloomy.find(params[:id])
-        render json: bloomy, include: ['missions']
-      end
-
-      def update
-        h = create_params
-        bloomy = Bloomy.update(h[:id], h)
-        render json: bloomy
+        render json: bloomy, include: %w(programs programs.missions)
       end
 
       private
