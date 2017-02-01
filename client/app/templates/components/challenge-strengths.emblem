@@ -3,11 +3,14 @@
   .content
     if showIntro
       h3.challenge-title Mes Forces (1/3)
-      p Identifiez vos forces grce au test international du VIA Institute on Character que nous proposons dans notre programme de réflexion. Une fois que vous aurez renseigné vos 5 forces principales, nous les afficherons sur votre profil Bloomr.
+      p Identifiez vos forces grâce au test international du VIA Institute on Character que nous proposons dans notre programme de réflexion. Une fois que vous aurez renseigné vos 5 forces principales, nous les afficherons sur votre profil Bloomr.
       p Ainsi les participants au programme Bloomr qui ont eu les mêmes résultats que vous pourront vous trouver et s'inspirer de votre parcours.
       p 
         | 1ère étape, s’inscrire et faire le test :&nbsp;
         a href='https://s3-eu-west-1.amazonaws.com/bloomr/static/journey-mission-3-connaistesforces-1-1-bloomeur.pdf' target='blank' mode d’emploi ici !
+      p 
+        | Je suis prêt(e),&nbsp;
+        a href='https://www.viacharacter.org/survey/account/register' target='blank' je fais le test. 
       a.crazy-btn.go-to-form click='goToForm' C'est fait
 
     if showForm
