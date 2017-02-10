@@ -50,7 +50,9 @@ RSpec.describe PaymentController, type: :controller do
     end
 
     context 'if it s a gift' do
-      let(:gift_payload) { payload.merge(gift: true, buyer_email: 'money@rich.com') }
+      let(:gift_payload) do
+        payload.merge(gift: true, buyer_email: 'money@rich.com')
+      end
 
       let(:stripes_args) do
         { amount: amount, currency: 'eur', source: '1234',
