@@ -1,5 +1,8 @@
 ActiveAdmin.register Bloomy do
-  permit_params :email, :first_name, :age, :password, programs_attributes: [:name, :id, :_destroy]
+  permit_params :email, :first_name, :age, :password,
+                programs_attributes: [
+                  :name, :id, :discourse, :intercom, :_destroy
+                ]
 
   member_action :journey, method: :post do
     bloomy = Bloomy.find params[:id]
@@ -39,15 +42,16 @@ ActiveAdmin.register Bloomy do
       f.input :age
       if f.object.encrypted_password.blank?
         f.input :password, input_html: { value: 'la fraise rouge' },
-                         label: 'Password (default: la fraise rouge)'
+                           label: 'Password (default: la fraise rouge)'
       else
         f.input :password, label: 'remplir pour changer le password'
 
       end
 
-
       f.has_many :programs, heading: 'Programs', allow_destroy: true do |a|
         a.input :name
+        a.input :intercom
+        a.input :discourse
       end
     end
     f.actions
