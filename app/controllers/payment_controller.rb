@@ -9,7 +9,6 @@ class PaymentController < ApplicationController
   def create
     bloomy = Bloomy.create!(bloomy_params)
     charge(bloomy)
-    Journey.new(bloomy, password) unless @gift
     if @gift
       redirect_to(payment_thanks_path(gift: true))
     else

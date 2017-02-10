@@ -33,9 +33,6 @@ RSpec.describe PaymentController, type: :controller do
     let(:payload) { { bloomy: bloomy, stripeToken: '1234' } }
 
     before do
-      allow(Mailchimp).to receive(:subscribe_to_journey)
-      allow(Mailchimp).to receive(:send_presentation_email)
-      allow(Mailchimp).to receive(:send_rejoindre_communaute_email)
       allow(Stripe::Charge).to receive(:create)
     end
 
@@ -76,10 +73,6 @@ RSpec.describe PaymentController, type: :controller do
         it 'charges the right amount and redirect to payment_thanks' do
           expect(Stripe::Charge).to receive(:create).with(stripes_args)
         end
-
-        it 'doesnt subscribe to the journey yet' do
-          expect(Mailchimp).not_to receive(:subscribe_to_journey)
-        end
       end
     end
 
@@ -119,19 +112,6 @@ RSpec.describe PaymentController, type: :controller do
           request.cookies[:partner] = 'sujetdubac'
           expect(Stripe::Charge).to receive(:create).with(stripes_args)
         end
-      end
-    end
-
-    describe 'the journey inscription' do
-      after { post :create, payload }
-
-      let(:actions) do
-        [:subscribe_to_journey, :send_presentation_email,
-         :send_rejoindre_communaute_email]
-      end
-
-      it 'subscribes to the journey' do
-        actions.each { |s| expect(Mailchimp).to receive(s).once }
       end
     end
   end
