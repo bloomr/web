@@ -22,8 +22,14 @@ RSpec.describe PaymentController, type: :controller do
 
   describe 'POST #create' do
     let(:bloomy) do
-      { first_name: 'loulou', email: 'loulou@lou.com', age: '44' }
+      {
+        first_name: 'loulou',
+        email: 'loulou@lou.com',
+        age: '44',
+        password: 'yopyopyop'
+      }
     end
+
     let(:payload) { { bloomy: bloomy, stripeToken: '1234' } }
 
     before do
@@ -43,6 +49,7 @@ RSpec.describe PaymentController, type: :controller do
       it { expect(subject.first_name).to eq('loulou') }
       it { expect(subject.email).to eq('loulou@lou.com') }
       it { expect(subject.age).to eq(44) }
+      it { expect(subject.valid_password?('yopyopyop')).to be(true) }
     end
 
     context 'if it s a gift' do

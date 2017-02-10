@@ -7,8 +7,7 @@ class PaymentController < ApplicationController
   end
 
   def create
-    password = WeakPassword.instance
-    bloomy = Bloomy.create!(bloomy_params.merge(password: password))
+    bloomy = Bloomy.create!(bloomy_params)
     charge(bloomy)
     Journey.new(bloomy, password) unless @gift
     if @gift
@@ -41,7 +40,7 @@ class PaymentController < ApplicationController
   end
 
   def bloomy_params
-    params.require(:bloomy).permit(:email, :first_name, :age)
+    params.require(:bloomy).permit(:email, :first_name, :age, :password)
   end
 
   def charge(bloomy)
