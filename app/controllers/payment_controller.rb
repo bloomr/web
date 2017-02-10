@@ -7,7 +7,9 @@ class PaymentController < ApplicationController
   end
 
   def create
-    bloomy = Bloomy.create!(bloomy_params)
+    bloomy = Bloomy.new(bloomy_params)
+    bloomy.programs << Program.standard
+    bloomy.save!
     charge(bloomy)
     if @gift
       redirect_to(payment_thanks_path(gift: true))

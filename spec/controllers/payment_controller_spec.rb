@@ -34,6 +34,7 @@ RSpec.describe PaymentController, type: :controller do
 
     before do
       allow(Stripe::Charge).to receive(:create)
+      expect(Program).to receive(:standard).and_call_original
     end
 
     describe 'the bloomy creation' do
