@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120162242) do
+ActiveRecord::Schema.define(version: 20170210091932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -211,9 +211,11 @@ ActiveRecord::Schema.define(version: 20170120162242) do
 
   create_table "programs", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "bloomy_id"
+    t.boolean  "discourse",  default: false
+    t.boolean  "intercom",   default: false
   end
 
   add_index "programs", ["bloomy_id"], name: "index_programs_on_bloomy_id", using: :btree

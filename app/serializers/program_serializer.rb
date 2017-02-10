@@ -1,4 +1,4 @@
 class ProgramSerializer < ActiveModel::Serializer
-  attributes :name
+  attributes [:name, :discourse, :intercom]
   has_many :missions
 end
