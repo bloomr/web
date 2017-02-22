@@ -10,6 +10,7 @@ class PaymentController < ApplicationController
     bloomy = Bloomy.new(bloomy_params)
     bloomy.programs << Program.standard
     bloomy.save!
+    Intercom::Wrapper.create_bloomy(bloomy, @gift)
     charge(bloomy)
     if @gift
       redirect_to(payment_thanks_path(gift: true))

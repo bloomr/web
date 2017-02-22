@@ -5,6 +5,24 @@ module Intercom
         @intercom ||= Intercom::Client.new(token: ENV['INTERCOM_PAT'])
       end
 
+      def create_bloomy(bloomy, gift)
+        h = {
+          email: bloomy.email,
+          name: bloomy.first_name,
+          signed_up_at: Time.now.to_i,
+          last_request_at: Time.now.to_i,
+          last_seen_ip: bloomy.current_sign_in_ip,
+          custom_attributes: {
+            age: bloomy.age,
+            bloomy: true,
+            programName: bloomy.programs.first.name,
+            gift: gift
+          }
+        }
+        intercom.users.create(h)
+      end
+      handle_asynchronously :create_bloomy
+
       def create_or_update_user(user)
         h = {
           email: user.email,
