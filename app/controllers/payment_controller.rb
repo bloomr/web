@@ -15,7 +15,7 @@ class PaymentController < ApplicationController
     if @gift
       redirect_to(payment_thanks_path(gift: true))
     else
-      redirect_to(payment_thanks_path)
+      redirect_to(payment_thanks_path(email: URI.encode(bloomy.email)))
     end
 
   rescue StandardError => e

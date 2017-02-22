@@ -89,7 +89,7 @@ RSpec.describe PaymentController, type: :controller do
 
       after do
         post :create, payload
-        expect(response).to redirect_to(payment_thanks_path)
+        expect(response).to redirect_to(payment_thanks_path + '?email=loulou%40lou.com')
       end
 
       context 'with no cookie' do

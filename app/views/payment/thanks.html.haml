@@ -3,6 +3,7 @@
 - content_for :hide_footer, true
 
 - gift = !params[:gift].nil?
+- email = params[:email]
 
 #payment.flexy
   %header
@@ -30,15 +31,13 @@
     - else
       %h1.title Merci, bienvenue chez Bloomr !
       %p 
-        Ton aventure va démarrer dans l'heure qui vient.
+        Pour débuter ton aventure, connecte-toi sur la plateforme
         %br
         %br
-        Pour que nos mails arrivent à destination, ajoute <strong>hello@bloomr.org</strong> à tes contacts de messagerie.
+        %a.toPlateform{ href: "#{ENV['BLOOMR_PROGRAM_LOGIN_URL']}?email=#{CGI.escape(email)}" } en cliquant ici !
         %br
         %br
         A tout de suite :)
-
-      %a.walking{ href: jobs_path } En attendant, promène-toi dans les métiers !
 
   %footer
     %a{ href: '/' } Bloomr
