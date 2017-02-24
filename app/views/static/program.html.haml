@@ -10,11 +10,11 @@
   %section
     %h1.title Une solution qui sort de l’ordinaire pour réfléchir à ton avenir
     %p.goodChoice Pour faire les bons choix, pas de recette miracle : il faut prendre le temps de se poser les bonnes questions.
-    %p L’approche Bloomr c’est un cocktail d’exercices éclairants, d’entraide, d’optimisme et d’inspiration qui atterrit directement dans ta boite mail.
+    %p L’approche Bloomr c’est un cocktail d’exercices éclairants, d’entraide, d’optimisme et d’inspiration que tu dégustes à ton rythme.<br><br>Sur ordi, tablette ou téléphone, tu débloques les étapes au fur et à mesure de ta progression dans le programme.
 
   %section.exercises
     %p Une série d'exercices originaux pour structurer ta réflexion et rassembler les bons indices 
-    = image_tag 'program/missions.png'
+    = image_tag 'program/plateform.png'
 
   %section.advantages
     .list-wrapper
@@ -32,17 +32,22 @@
         %p qui ont trouvé leur voie racontent leur métier pour faire découvrir de nouvelles pistes
 
     %a.crazy-btn{ href: payment_index_path, 'data-turbolinks'  => 'false'} Je m'inscris au programme
-    %p.only pour seulement 19 €<br/> une seule fois et pour la vie (si si !)
+    %p.only pour seulement 24 € !
 
   %section.progress
     %h1.title Le déroulement
-    = image_tag 'program/progress.png'
+    = image_tag 'program/progress2.png'
     %ol
       %li Inscris-toi
-      %li Reçoit les exercices par mails
+      %li Reçoit les exercices
       %li Viens chercher de l'aide sur le forum
       %li Fais des choix
       %li Passe à l'action
+
+  %section.community
+    %h1.title La force d'une communauté
+    %p Pas facile de sortir du flou quand on n’a personne avec qui échanger. Avec Bloomr, tu n’es plus seul. La plateforme te donne accès à notre communauté sur un forum privé. Tu pourras partager ton expérience avec d’autres inscrits, échanger et recevoir des conseils.
+    = image_tag 'program/computer.png'
 
   %section.program
     %h1.title Au programme
@@ -50,23 +55,17 @@
     %p 
       Chaque exercice a été sélectionné par la coach de l’équipe et cible un thème précis. Il y en a pour tous les goûts : tests en ligne, questionnaires, mindmaps...
       <br/><br/>
-      %span.motivation Le tout additionné de contenu inspirant pour garder la motiv'.
+      %span.motivation Le tout additionné de contenu inspirant pour garder une motivation en béton.
     = image_tag 'program/steps.png', class: 'hide-phone'
 
-
-  %section.community
-    %h1.title La force d'une communauté
-    %p Pas facile de sortir du flou quand on n’a personne avec qui échanger. Avec Bloomr, tu n’es plus seul. L’inscription te donne accès à notre communauté sur un forum privé. Tu pourras partager ton expérience avec d’autres inscrits, échanger et recevoir des conseils.
-    = image_tag 'program/forum.png'
-
   %section.mails
-    %h1.title Un programme décontracté par mails
+    %h1.title Un programme décontracté et guidé
     .list-wrapper
       %p
-        Tu recevras chaque exercice par mail. Le parcours se fait de chez toi, de manière autonome et à ton rythme.
+        Le parcours se fait sur la plateforme Bloomr : de chez toi, de manière autonome, un exercice après l’autre.
         <br/><br/>
         Le programme est décontracté dans sa forme et positif dans son approche pour que tu restes zen et enthousiaste et que tu gardes l’esprit ouvert.
-      %i.sprite.sprite-mail
+      = image_tag 'program/compass.png', class: 'compass'
 
   %section.warning
     %h1.title On préfère te prévenir ...
@@ -122,14 +121,14 @@
 
   %section.subscription
     %h1.title Inscris-toi !
-    %h2 C’est 19€ une seule fois, en tout et pour tout !
+    %h2 C’est 24€ une seule fois, en tout et pour tout !
     %ul
       %li
         %i.sprite.sprite-done
-        La totalité du programme par mails (21 exercices)
+        La totalité du programme (21 exercices)
       %li
         %i.sprite.sprite-done
-        L’accès au forum privé à vie
+        L’accès au forum privé
 
     %a.crazy-btn{ href: payment_index_path, 'data-turbolinks' => 'false' } Je m’inscris au programme
 
@@ -144,16 +143,13 @@
     %p Ce n’est pas un abonnement, on paye une seule fois en tout et pour tout.
 
     %h4 Ça commence quand ?
-    %p Tout de suite : tu reçevras le premier mail dans l’heure qui suit ton inscription.
+    %p Tout de suite : tu accèdes directement à ton premier exercice, en ligne dans une plateforme dédiée.
 
     %h4 Ça va me prendre combien de temps ?
     %p Nous encourageons les inscrits à faire le parcours à leur rythme. Tu peux donc le faire en 4 semaines comme en trois mois, selon tes disponibilités. Tu peux compter 30mn à 1h30 par mission, à raison d’une mission tous les un ou deux jours.
 
     %h4 Et si je suis en retard ?
-    %p Pas de problème ! Tu continueras à recevoir les mails mais tu pourras attendre autant que tu veux avant de les ouvrir.
+    %p Il n'y a pas de retard, pas de compétition, le seul rythme c'est le tien. Les exercices s'activent au fur et à mesure que tu les effectues. Si tu oublies complètement de venir pendant un certain temps, on te fera peut-être un petit coucou de rappel !
 
     %h4 Est-ce que je suis sûr de trouver mon prochain métier avec le parcours ?
-    %p Le parcours Bloomr n’est pas une recette miracle. On ne peut pas te garantir d'un coup de baguette magique que tadaaaa, tu connaitras ton futur métier (personne ne peut te promettre ça). Ce parcours demande du temps de réflexion. Mais 84% de ceux qui ont fini le parcours ont pu grâce à cela avancer dans leur orientation.
-
-    %h4 Est-ce que j'ai toujours accès à l'espace de discussion après avoir terminé le parcours ?
-    %p Oui bien sûr, tu conserves l'accès au forum privé Bloomr, et tu pourras y revenir quand tu le souhaites pour continuer à échanger, poser des questions et partager ta situation.
+    %p Le parcours Bloomr n’est pas une recette miracle. On ne peut pas te garantir d'un coup de baguette magique que tadaaaa, tu connaîtras ton futur métier (personne ne peut te promettre ça). Ce parcours demande du temps de réflexion. Mais 84% de ceux qui ont fini le parcours ont pu grâce à cela avancer dans leur orientation.

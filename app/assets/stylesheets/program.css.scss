@@ -77,8 +77,8 @@
     background-color: $sky_blue;
     padding-bottom: 0;
     border-bottom: 5px solid $darker_sky_blue;
-    p { font-size: 20px; }
-    img { margin-top: 70px; }
+    p { font-size: 20px; line-height: 1.8; }
+    img { margin: 50px 0 40px; }
   }
 
   .advantages {
@@ -87,7 +87,7 @@
   }
 
   .progress {
-    background-color: $light_orange;
+    background-color: $sky_blue;
     ol {
       position:absolute;
       left:-10000px;
@@ -124,7 +124,10 @@
     max-width: 620px;
     margin: auto;
     p { margin: inherit; margin-right: 30px;  max-width: 300px; margin-bottom: 20px; }
-    i { margin: 0; }
+    .compass {
+      display: block;
+      margin: 0;
+    }
   }
 
   .warning { background-color: $light_orange; }
