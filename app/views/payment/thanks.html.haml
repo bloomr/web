@@ -29,15 +29,17 @@
       %a.go_home{ href: root_path } Retour à l'accueil
 
     - else
-      %h1.title Merci, bienvenue chez Bloomr !
+      %h1.title Merci, bienvenue chez Bloomr : bienvenue chez toi !
+      %h2 Pour débuter ton aventure, connecte-toi sur la plateforme
+
       %p 
-        Pour débuter ton aventure, connecte-toi sur la plateforme
+        Bravo pour cette excellente décision.
         %br
-        %br
-        %a.toPlateform{ href: "#{ENV['BLOOMR_PROGRAM_LOGIN_URL']}?email=#{CGI.escape(email)}" } en cliquant ici !
-        %br
-        %br
-        A tout de suite :)
+        %b Ton aventure peut démarrer. A tout de suite !
+
+      %a.crazy-btn.toPlateform{ href: "#{ENV['BLOOMR_PROGRAM_LOGIN_URL']}?email=#{CGI.escape(email)}" } Je me connecte
+
+      %p.notice Nous t'avons aussi envoyé un mail pour que tu retrouves le lien vers ton programme Bloomr à chaque fois que tu en auras besoin.
 
   %footer
     %a{ href: '/' } Bloomr

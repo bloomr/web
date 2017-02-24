@@ -119,10 +119,12 @@
 
   .thanks {
     flex-grow: 1;
+    padding: 0 15px;
     text-align: center;
-    
-    p { font-weight: 600; }
 
+    h2 { margin-bottom: 20px; }
+    b { font-weight: 600; }
+    
     a.boxed {
       border-radius: 8px;
       border: solid 3px #e6e0d4;
@@ -140,12 +142,14 @@
       margin: 30px auto;
     }
     a.toPlateform {
-      color: $orange;
-      font-size: 24px;
-      text-decoration: underline;
+      margin: 30px 0;
+    }
+
+    .notice {
+      max-width: 620px;
+      margin: 0 auto;
     }
   }
-
 
   footer {
     height: 50px;
