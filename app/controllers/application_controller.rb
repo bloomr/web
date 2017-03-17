@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     when AdminUser
       admin_root_path
     when Bloomy
-      ENV['DISCOURSE_URL']
+      'https://programs.bloomr.org'
     end
   end
 end

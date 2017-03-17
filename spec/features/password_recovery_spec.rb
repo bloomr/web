@@ -63,6 +63,6 @@ feature 'password recovery' do
 
     bloomy.reload
     expect(bloomy.valid_password?('loulou34')).to be(true)
-    expect(current_url).to eq(ENV['DISCOURSE_URL'] + '/')
+    expect(current_url).to eq('https://programs.bloomr.org/')
   end
 end
