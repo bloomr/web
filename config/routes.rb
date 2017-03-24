@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :payment, only: [:index, :create]
   get '/payment/thanks', to: 'payment#thanks'
   get '/payment/voucher'
+  get '/payment/:program_name', to: 'payment#index', as: 'payment_program'
 
   get '/me/email_sent', to: 'me#email_sent'
   get '/me/', to: 'me#show'

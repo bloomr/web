@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe PaymentController, type: :controller do
-  before do
-    FactoryGirl.create(:campaign, partner: 'default', price: '35.0')
-    FactoryGirl.create(:campaign, partner: 'sujetdubac', price: '13.0')
+  let!(:default_campaign) do
+    FactoryGirl.create(:campaign, partner: 'default', standard_price: '35.0', premium_price: '50.0')
+  end
+
+  let!(:sujetdubac_campaign) do
+    FactoryGirl.create(:campaign, partner: 'sujetdubac', standard_price: '13.0', 'premium_price': '26')
   end
 
   describe 'GET #index' do
@@ -21,6 +24,17 @@ RSpec.describe PaymentController, type: :controller do
   end
 
   describe 'POST #create' do
+    let(:stripes_args) do
+      { amount: amount, currency: 'eur', source: '1234',
+        description: '1 Parcours Bloomr',
+        receipt_email: 'loulou@lou.com', metadata: metadata }
+    end
+
+    let(:metadata) do
+      { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
+        'source' => 'default', 'gift' => false }
+    end
+
     let(:bloomy) do
       {
         first_name: 'loulou',
@@ -30,20 +44,17 @@ RSpec.describe PaymentController, type: :controller do
       }
     end
 
-    let(:payload) { { bloomy: bloomy, stripeToken: '1234' } }
+    let(:payload) { { bloomy: bloomy, stripeToken: '1234', program_name: 'standard' } }
+
+    subject { Bloomy.first }
 
     before do
       allow(Stripe::Charge).to receive(:create)
-      expect(Program).to receive(:standard).and_call_original
       expect(Intercom::Wrapper).to receive(:create_bloomy)
     end
 
     describe 'the bloomy creation' do
-      subject { Bloomy.first }
-
-      before do
-        post :create, payload
-      end
+      before { post :create, payload }
 
       it { expect(subject.first_name).to eq('loulou') }
       it { expect(subject.email).to eq('loulou@lou.com') }
@@ -51,70 +62,74 @@ RSpec.describe PaymentController, type: :controller do
       it { expect(subject.valid_password?('yopyopyop')).to be(true) }
     end
 
+    context 'if its a premium program' do
+      before { post :create, payload.merge(program_name: 'premium') }
+      it { expect(subject.programs.first.name).to eq('premium') }
+    end
+
+    context 'if its a standard program' do
+      before { post :create, payload.merge(program_name: 'standard') }
+      it { expect(subject.programs.first.name).to eq('standard') }
+    end
+
     context 'if it s a gift' do
-      let(:gift_payload) do
-        payload.merge(gift: true, buyer_email: 'money@rich.com')
-      end
+      let(:payload) { super().merge(gift: true, buyer_email: 'money@rich.com') }
+      let(:stripes_args) { super().merge(receipt_email: 'money@rich.com') }
+      let(:metadata) { super().merge('gift' => true) }
+      let(:amount) { 3500 }
 
-      let(:stripes_args) do
-        { amount: amount, currency: 'eur', source: '1234',
-          description: '1 Parcours Bloomr',
-          receipt_email: 'money@rich.com', metadata: metadata }
-      end
-
-      after do
-        post :create, gift_payload
+      it 'charges the right amount and redirect to payment_thanks' do
+        expect(Stripe::Charge).to receive(:create).with(stripes_args)
+        post :create, payload
         expect(response).to redirect_to(payment_thanks_path + '?gift=true')
-      end
-
-      context 'with no cookie' do
-        let(:metadata) do
-          { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
-            'source' => 'default', 'gift' => true }
-        end
-        let(:amount) { 3500 }
-
-        it 'charges the right amount and redirect to payment_thanks' do
-          expect(Stripe::Charge).to receive(:create).with(stripes_args)
-        end
       end
     end
 
     describe 'the stripe charges' do
-      let(:stripes_args) do
-        { amount: amount, currency: 'eur', source: '1234',
-          description: '1 Parcours Bloomr',
-          receipt_email: 'loulou@lou.com', metadata: metadata }
-      end
-
       after do
         post :create, payload
         expect(response).to redirect_to(payment_thanks_path + '?email=loulou%40lou.com')
       end
 
-      context 'with no cookie' do
-        let(:metadata) do
-          { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
-            'source' => 'default', 'gift' => false }
-        end
-        let(:amount) { 3500 }
+      context 'with the standard program' do
+        context 'with no cookie' do
+          let(:amount) { 3500 }
 
-        it 'charges the right amount and redirect to payment_thanks' do
-          expect(Stripe::Charge).to receive(:create).with(stripes_args)
+          it 'charges the right amount and redirect to payment_thanks' do
+            expect(Stripe::Charge).to receive(:create).with(stripes_args)
+          end
+        end
+
+        context 'with sujetdubac cookie' do
+          let(:metadata) { super().merge('source' => 'sujetdubac') }
+          let(:amount) { 1300 }
+
+          it 'charge the right amount and set the right source' do
+            request.cookies[:partner] = 'sujetdubac'
+            expect(Stripe::Charge).to receive(:create).with(stripes_args)
+          end
         end
       end
 
-      context 'with sujetdubac cookie' do
-        let(:metadata) do
-          { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
-            'source' => 'sujetdubac', 'gift' => false }
-        end
-        let(:amount) { 1300 }
+      context 'with the premium program' do
+        let(:payload) { super().merge('program_name' => 'premium') }
 
-        it 'charge the right amount,
-            set the right source and redirect to payment_thanks' do
-          request.cookies[:partner] = 'sujetdubac'
-          expect(Stripe::Charge).to receive(:create).with(stripes_args)
+        context 'with no cookie' do
+          let(:amount) { default_campaign.amount('premium') }
+
+          it 'charges the right amount and redirect to payment_thanks' do
+            expect(Stripe::Charge).to receive(:create).with(stripes_args)
+          end
+        end
+
+        context 'with sujetdubac cookie' do
+          let(:metadata) { super().merge('source' => 'sujetdubac') }
+          let(:amount) { sujetdubac_campaign.amount('premium') }
+
+          it 'charge the right amount and set the right source' do
+            request.cookies[:partner] = 'sujetdubac'
+            expect(Stripe::Charge).to receive(:create).with(stripes_args)
+          end
         end
       end
     end

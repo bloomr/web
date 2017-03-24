@@ -28,6 +28,7 @@
         = f.email_field :email, placeholder: 'Son adresse email', required: true
         = f.number_field :age, placeholder: 'Son âge', required: true
         = hidden_field_tag :gift, true
+        = hidden_field_tag :program_name, @program_name
 
         .flash-messages
           - if flash[:error]
@@ -58,6 +59,7 @@
         = f.email_field :email, placeholder: 'Adresse email', required: true, 'data-stripe' => 'name'
         = f.password_field :password, placeholder: 'Mot de passe', required: true
         = f.number_field :age, placeholder: 'Âge', required: true
+        = hidden_field_tag :program_name, @program_name
 
         .flash-messages
           - if flash[:error]
