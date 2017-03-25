@@ -1,6 +1,16 @@
 #program {
+  
+  a[data-link] { cursor: pointer; }
+
   .crazy-btn {
     margin: 60px auto 0;
+  }
+
+  .green-btn { 
+    background-color: $grass_green;
+    &:after{
+      background-color: lighten($grass_green, 20%);
+    } 
   }
 
   img {
@@ -16,10 +26,8 @@
       margin-right: auto;
     }
     text-align: center;
-    padding: 50px 10px;
+    padding: 50px 15px;
   }
-
-  .goodChoice { font-size: 18px; margin-bottom: 20px; }
 
   .intro {
     max-width: 3000px;
@@ -30,7 +38,8 @@
 
     h1 { 
       font-family: Satisfy;  
-      font-size: 36px; 
+      font-size: 38px; 
+      line-height: 1.16;
     }
 
     @media (max-width: $max_phone_size) {
@@ -56,7 +65,7 @@
     @media (min-width: $max_phone_size + 1px) {
       min-height: 500px;
       background: image-url('program/city-woman.jpg') no-repeat;
-      background-position: calc(50% + 150px) 0;
+      background-position: calc(50% + 150px) -100px;
       .catch {
         position: relative;
         width: 50%;
@@ -66,37 +75,41 @@
       }
     }
     .subtitle {
-      padding-top: 10px;
+      padding-top: 20px;
+      font-size: 18px;
       @media (max-width: 650px) {
         display: none;
       }
     }
   }
 
+  .summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: $orange;
+    color: #fff;
+    min-height: 70px;
+    text-transform: uppercase;
+    @media (max-width: $max_phone_size) { display: none; }
+  }
+
+  .solution {
+    text-align: left;
+    font-size: 18px;
+    .goodChoice { margin-bottom: 20px; }
+  }
+
   .exercises { 
     background-color: $sky_blue;
     padding-bottom: 0;
     border-bottom: 5px solid $darker_sky_blue;
-    p { font-size: 20px; line-height: 1.8; }
-    img { margin: 50px 0 40px; }
+    img { margin-bottom: 40px; }
   }
 
   .advantages {
     h1 { margin-top: 30px; font-size: 22px; }
     .only { margin-top: 30px; }
-  }
-
-  .progress {
-    background-color: $sky_blue;
-    ol {
-      position:absolute;
-      left:-10000px;
-      top:auto;
-      width:1px;
-      height:1px;
-      overflow:hidden;
-    }
-    img { margin-top: 40px; }
   }
 
   .benefits {
@@ -109,68 +122,228 @@
       max-width: 160px;
     }
     h3 { margin-top: 15px; margin-bottom: 10px; line-height: 1.3; }
+
     p { line-height: 1.4; }
+
+    p.win {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
   }
 
   .program {
     background-color: $sky_blue;
     h1 { margin-bottom: 50px; }
-    h2 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
     p { letter-spacing: 0.7px; margin-bottom: 50px;}
     .motivation { font-weight: 600 }
   }
 
-  .mails {
-    max-width: 620px;
-    margin: auto;
-    p { margin: inherit; margin-right: 30px;  max-width: 300px; margin-bottom: 20px; }
-    .compass {
-      display: block;
-      margin: 0;
+  .progress {
+    background-color: $light_orange;
+    ol {
+      position:absolute;
+      left:-10000px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
     }
+    img { margin-top: 40px; }
+  }
+
+  .inscription {
+    background-color: #fde8d6;
+    h1 { margin-bottom: 30px; }
+    a { margin: 50px 20px 30px; }
   }
 
   .warning { background-color: $light_orange; }
 
   .community {
-    h1 { color: $grass_green; }
-    img { margin-top: 30px; }
+    a { cursor: pointer; }
+    strong { font-weight: bold; }
+    img { margin: 30px auto; }
+
+    h2 { 
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    @media(max-width: 799px) {
+      img { max-width: 184px; }
+      .columns-wrapper {
+        text-align: left;
+        margin: 30px 0;
+      }
+      .big { display: none; }
+    }
+    @media(min-width: 800px) {
+      .small { display: none; }
+      .columns-wrapper {
+        display: flex;
+        justify-content: center;
+        margin: 50px auto 0;
+        width: 800px;
+
+        > * {
+          max-width: 400px;
+        }
+
+        div:last-child {
+          text-align: left;
+        }
+
+        div:first-child {
+          text-align: right;
+        }
+      }
+    }
   }
 
   .success {
     background-color: $sky_blue;
-    ul { position: relative; }
-    li { display: inline-block; margin-top: 60px; }
-    .trust { position: relative; right: 10px; top: 30px; }
-    i { display: inline-block; vertical-align: top; }
-    p {
-      text-align: left;
-      display: inline-block;
-      max-width: 260px;
-      margin-left: 20px;
+
+    ul.ballon {
+      position: relative; 
+      li { display: inline-block; margin-top: 60px; }
+      .trust { position: relative; right: 10px; top: 30px; }
+      i { display: inline-block; vertical-align: top; }
+      p {
+        text-align: left;
+        display: inline-block;
+        max-width: 260px;
+        margin-left: 20px;
+      }
+      .number { font-size: 50px; }
+      .registered { font-size: 26px; display: inline-block; width: 135px; line-height: 1;}
     }
-    .number { font-size: 50px; }
-    .registered { font-size: 26px; display: inline-block; width: 135px; line-height: 1;}
+
+    .blue-spacer {
+      background-color: #c1e1f3;
+      border-radius: 4px;
+      height: 8px;
+      margin: 50px auto;
+      width: 201px;
+    }
+
+    ul.testimony {
+      display: flex;
+      max-width: 800px;
+      margin: auto;
+      align-items: top;
+      justify-content: space-around;
+      li {
+        max-width: 220px;
+
+        h2 { font-size: 22px; line-height: 1.18; margin-bottom: 15px; }
+      }
+    }
+
+    @media(max-width: 799px) {
+      ul.testimony, .blue-spacer {
+        display: none;
+      }
+    }
   }
 
   .subscription {
-    i { display: inline-block; vertical-align: middle; margin: 0 10px; }
-    h2 { font-size: 26px; margin-top: 40px; margin-bottom: 40px; }
-    ul {
-      text-align: left;
-      max-width: 620px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 22px;
-      font-weight: 300;
-      letter-spacing: 1px;
+    b { font-weight: bold; }
+
+    .wrapper {
+
+      @media(max-width: 799px) {
+      }
+      @media(min-width: 800px) {
+        max-width: 800px;
+        display: flex;
+        align-items: stretch;
+        text-align: center;
+      }
+      margin: 50px auto 0;
+
+      ul {
+        text-align: left;
+        @media(min-width: 800px) {
+          margin-bottom: 120px;
+        }
+        li {
+          margin: 30px;
+          &:before {
+            content: '✓';
+            margin-right: 15px;
+            font-size: 18px;
+          }
+        }
+      }
+
+      > * {
+        padding: 0 50px;
+        position: relative;
+        @media(max-width: 799px) {
+          margin: 0 auto;
+        }
+        @media(min-width: 800px) {
+          width: 400px;
+        }
+      }
+
+      .left { 
+        @media(min-width: 800px) {
+          border-right: 1px solid #e6e0d4;
+        }
+        .detail, .price, li:before { color: $orange; }
+      }
+
+      .right {
+        .detail, .price, li:before { color: $grass_green; }
+      }
+
+      h2 { 
+        font-size: 32px;
+        letter-spacing: 1.4px;
+        margin-bottom: 20px;
+      }
+
+      .detail {
+        font-size: 18px;
+        line-height: 1.33;
+        letter-spacing: 0.9px;
+      }
+
+      .price {
+        font-size: 36px;
+        line-height: 0.61;
+        letter-spacing: 0.9px;
+        margin: 20px 0 30px;
+      }
+
+      .btn-wrapper {
+        @media(max-width: 799px) {
+          a.crazy-btn { margin: 30px auto 50px; }
+        }
+        @media(min-width: 800px) {
+          position: absolute;
+          bottom: 10px;
+        }
+      }
     }
-    .relative { font-size: 14px; }
-    .crazy-btn { margin-bottom: 60px; }
-    .gift { 
-      font-weight: 600;
-      margin-top: 10px;
-      display: inline-block;
+
+    .links {
+      margin: 60px auto 0 ;
+
+      @media(max-width: 799px) {
+        background-color: $sky-blue;
+      }
+      @media(min-width: 800px) {
+        background: image-url('program/rectangle.svg') no-repeat;
+        max-width: 423px;
+        min-height: 103px;
+      }
+
+      padding: 20px;
+
+      .gift { display: block; margin-bottom: 10px; &:hover { text-decoration: underline; } }
+      .help {  &:hover { text-decoration: underline; } }
     }
   }
 
@@ -183,6 +356,7 @@
   }
 
   .faq {
+    background-color: $sky_blue;
     text-align: left;
     h1 { text-align: center; }
     h4 { margin-bottom: 5px; }

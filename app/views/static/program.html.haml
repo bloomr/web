@@ -4,79 +4,108 @@
 #program
   .intro
     .catch
-      %h1 Tu rêves de t'épanouir au travail mais tu ne sais pas par où commencer&nbsp;?
-      %p.subtitle Le programme Bloomr t’aide à sortir du flou. Décide quelles études suivre, dans quel métier te reconvertir, ou quelle sera la prochaine étape de ton parcours.
+      %h1 Nous te guidons dans ton orientation, vers un métier où tu t'épanouiras
+      %p.subtitle Notre programme d'orientation t'aide à découvrir qui tu es, ce que tu veux, et comment y arriver.
+      %p.subtitle Vous êtes déjà plus de 2000 à avoir adopté notre approche innovante de l'orientation scolaire et professionnelle.
 
-  %section
-    %h1.title Une solution qui sort de l’ordinaire pour réfléchir à ton avenir
+  %ul.summary
+    %li
+      %a{ 'data-link': 'presentation' } présentation du programme
+    %li
+      %a{ 'data-link': 'deroulement' } le déroulement
+    %li
+      %a{ 'data-link': 'inscription' } je m'inscris
+    %li
+      %a{ 'data-link': 'faq' } faq
+
+  %section.solution#presentation
+    %h1.title Une solution qui sort de l'ordinaire pour t'aider à trouver ta voie
     %p.goodChoice Pour faire les bons choix, pas de recette miracle : il faut prendre le temps de se poser les bonnes questions.
-    %p L’approche Bloomr c’est un cocktail d’exercices éclairants, d’entraide, d’optimisme et d’inspiration que tu dégustes à ton rythme.<br><br>Sur ordinateur, tablette ou téléphone, tu débloques les étapes au fur et à mesure de ta progression dans le programme.
+    %p
+      L’approche Bloomr c’est un cocktail d’exercices éclairants, d’entraide, d’optimisme et d’inspiration concentré sur une plateforme en ligne, accessible d'où tu veux et quand tu veux.
+      <br><br>
+      Une série d'exercices originaux que tu peux débloquer à ton rythme, pour structurer ta réflexion et rassembler les bons indices
 
   %section.exercises
-    %p Une série d'exercices originaux pour structurer ta réflexion et rassembler les bons indices 
     = image_tag 'program/plateform.png'
 
   %section.advantages
     .list-wrapper
       %section
         %i.sprite.sprite-pen
-        %h1 Des conseils positifs
-        %p pour booster ta confiance en toi et en ton avenir 
+        %h1 Des exercices et des tests
+        %p qui te permettront de faire le point et de te poser les bonnes questions pour sortir du flou.
       %section
         %i.sprite.sprite-dialog
-        %h1 Un forum
-        %p où les inscrits avancent ensemble et les coachs professionels répondent aux questions 
+        %h1 Un espace de discussion
+        %p où les inscrits avancent ensemble et où des coachs professionnels répondent à tes questions.
       %section
         %i.sprite.sprite-boy
-        %h1 Des pros
-        %p qui ont trouvé leur voie racontent leur métier pour faire découvrir de nouvelles pistes
+        %h1 Des pros heureux
+        %p qui ont trouvé leur voie et racontent leur métier pour te faire découvrir de nouvelles pistes.
 
-    %a.crazy-btn{ href: payment_index_path, 'data-turbolinks'  => 'false'} Je m'inscris au programme
-    %p.only pour seulement 24 € !
+  %section.program#deroulement
+    %h1.title 4 étapes. 21 exercices concrets 
+    %p 
+      Chaque exercice cible un thème précis.
+      %br
+      Il y en a pour tous les goûts : tests en ligne, questionnaires, mindmaps...
+    = image_tag 'program/steps.png', class: 'hide-phone'
 
   %section.progress
     %h1.title Le déroulement
     = image_tag 'program/progress2.png'
     %ol
       %li Inscris-toi
-      %li Reçoit les exercices
+      %li Reçois les exercices
       %li Viens chercher de l'aide sur le forum
       %li Fais des choix
       %li Passe à l'action
 
+  %section.inscription
+    %h1.title Inscription
+    %p Choisis le programme qui te<br> correspond, et inscris-toi :
+    %a.crazy-btn 24€ bloomyclassique
+    %a.crazy-btn.green-btn 74€ bloomytandem
+
   %section.community
     %h1.title La force d'une communauté
-    %p Pas facile de sortir du flou quand on n’a personne avec qui échanger. Avec Bloomr, tu n’es plus seul. La plateforme te donne accès à notre communauté sur un forum privé. Tu pourras partager ton expérience avec d’autres inscrits, échanger et recevoir des conseils.
-    = image_tag 'program/computer.png'
 
-  %section.program
-    %h1.title Au programme
-    %h2 4 étapes. 21 exercices concrets 
-    %p 
-      Chaque exercice a été sélectionné par la coach de l’équipe et cible un thème précis. Il y en a pour tous les goûts : tests en ligne, questionnaires, mindmaps...
-      <br/><br/>
-      %span.motivation Le tout additionné de contenu inspirant pour garder une motivation en béton.
-    = image_tag 'program/steps.png', class: 'hide-phone'
+    .columns-wrapper
+      = image_tag 'program/forum.svg'
+      %div
+        %h2 Le forum
+        %p 
+          Pas facile de sortir du flou quand on n’a personne avec qui échanger. Avec Bloomr, tu n’es plus seul(e).
+          %br 
+          L’inscription te donne accès à notre communauté sur un forum privé. Tu pourras partager ton expérience avec d’autres inscrits, échanger et recevoir des conseils.
+          %br 
+          %br 
+          %strong Offre présente dans tous les <a><u data-link='inscription'>programmes</u></a>
 
-  %section.mails
-    %h1.title Un programme décontracté et guidé
-    .list-wrapper
-      %p
-        Le parcours se fait sur la plateforme Bloomr : de chez toi, de manière autonome, un exercice après l’autre.
-        <br/><br/>
-        Le programme est décontracté dans sa forme et positif dans son approche pour que tu restes zen et enthousiaste et que tu gardes l’esprit ouvert.
-      = image_tag 'program/compass.png', class: 'compass'
+    .columns-wrapper
+      = image_tag 'program/coachs.svg', class: 'small'
+      %div 
+        %h2 Les coachs
+        %p 
+          L'accès à un dialogue écrit confidentiel avec un coach professionnel : une option pour ceux qui souhaitent être accompagnés personnellement dans leur réflexion, et ainsi bénéficier d'éclairages pour préparer leurs décisions.
+          %br 
+          %br 
+          %strong Offre présente dans le programme <a><u data-link='inscription'>bloomitandem</u></a>
+      = image_tag 'program/coachs.svg', class: 'big'
+
 
   %section.warning
     %h1.title On préfère te prévenir ...
     %p
-      Tu rêves peut être du test ultime ou d’une formule magique qui t’indiquerait le métier idéal. Selon nous, ça n’existe pas.
+      Tu rêves peut-être du test ultime ou d’une formule magique qui t’indiquerait le métier idéal. Selon nous, ça n’existe pas.
       <br/><br/>
       Avec le programme Bloomr, pas de réponses toutes faites : notre méthode te permet de trouver par toi-même une direction bien plus pertinente et qui vienne de toi. Mais pour ça, tu dois être prêt à y consacrer un peu de temps.
-    %a.crazy-btn{ href: payment_index_path, 'data-turbolinks' => 'false' } Je m'inscris !
+    %a.crazy-btn{ 'data-link': 'inscription' } Je suis prêt !
 
   %section.benefits
     %h1.title Ce que tu y gagnes
+    %p.win Le programme Bloomr t'apprend à t'orienter, quelle que soit l'étape de ton parcours professionnel où tu te trouves.
     %ul.list-wrapper
       %li
         %i.sprite.sprite-confiance
@@ -105,7 +134,7 @@
 
   %section.success
     %h1.title Ils ont avancé grâce à Bloomr ...
-    %ul
+    %ul.ballon
       %li.trust
         %i.sprite.sprite-balloon1
         %p
@@ -119,24 +148,50 @@
           %span.registered des inscrits
           <br/>y voient plus clair dans leur orientation.
 
-  %section.subscription
-    %h1.title Inscris-toi !
-    %h2 C’est 24€ une seule fois, en tout et pour tout !
-    %ul
+    .blue-spacer 
+
+    %ul.testimony
       %li
-        %i.sprite.sprite-done
-        La totalité du programme (21 exercices)
+        %h2 Maëlle, 17 ans
+        %p “Ce programme m'a énormément aidé. J'ai pris confiance en moi et j'ai vu que les idées que j'avais étaient loin d'être hors de portée.”
       %li
-        %i.sprite.sprite-done
-        L’accès au forum privé
+        %h2 Benoît, 25 ans
+        %p "Le programme m'a permis de me poser des questions auxquelles je n'aurais pas pensé, de mieux me connaître donc mieux me situer."
+      %li
+        %h2 Sabine, 35 ans
+        %p "J’apprécie beaucoup l’orientation choisie à savoir une réflexion sur l’être au-delà des savoir-faire, ce qui permet à chacun de s’y retrouver qu’on ait 20 ans, 35 ans ou plus."
 
-    %a.crazy-btn{ href: payment_index_path, 'data-turbolinks' => 'false' } Je m’inscris au programme
+  %section.subscription#inscription
+    %h1.title Inscris-toi au programme !
 
-    %p.relative Si tu as un ami, un enfant, un petit-enfant ou une nièce perdue dans son orientation, offre lui le programme
-    %a.gift{ href: '/partner/cadeau', 'data-turbolinks' => 'false' } ➞ J'offre le programme
+    .wrapper
+      .left
+        %h2 le bloomi<b>classic</b>
+        %p.detail Si tu veux explorer de manière autonome
+        %p.price 24€
+        %ul
+          %li 25 exercices à réaliser
+          %li Les échanges avec la communauté sur le forum
 
-  .spacer
-  %section.faq
+        .btn-wrapper
+          %a.crazy-btn{ href: payment_program_path('standard'), 'data-turbolinks' => 'false' } Inscription au bloomiclassic
+
+      .right
+        %h2 le bloomi<b>tandem</b>
+        %p.detail Si tu veux être accompagné par un coach bienveillant
+        %p.price 74€
+        %ul
+          %li 25 exercices à réaliser
+          %li Les échanges avec la communauté sur le forum
+          %li Dialogue par écrit avec un coach professionnel (illimité)
+        .btn-wrapper
+          %a.crazy-btn.green-btn{ href: payment_program_path('premium'), 'data-turbolinks' => 'false' } Inscription au bloomitandem
+
+    .links
+      %a.gift{ href: '/partner/cadeau', 'data-turbolinks' => 'false' } Je souhaite offrir le programme à 24€ ➞ 
+      %a.help{ href: 'mailto:contact@bloomr.org' } Je n’ai pas les moyens de m’offrir le programme ➞
+
+  %section.faq#faq
     %h1.title FAQ
 
     %h4 Est-ce que c’est un abonnement où on doit payer régulièrement pour continuer ?
@@ -146,7 +201,7 @@
     %p Tout de suite : tu accèdes directement à ton premier exercice, en ligne dans une plateforme dédiée.
 
     %h4 Ça va me prendre combien de temps ?
-    %p Nous encourageons les inscrits à faire le parcours à leur rythme. Tu peux donc le faire en 4 semaines comme en trois mois, selon tes disponibilités. Tu peux compter 30mn à 1h30 par mission, à raison d’une mission tous les un ou deux jours.
+    %p Nous encourageons les inscrits à faire le parcours à leur rythme. Tu peux donc le faire en 4 semaines comme en trois mois, selon tes disponibilités. Tu peux compter 30min à 1h30 par mission, à raison d’une mission tous les uns ou deux jours.
 
     %h4 Et si je suis en retard ?
     %p Il n'y a pas de retard, pas de compétition, le seul rythme c'est le tien. Les exercices s'activent au fur et à mesure que tu les effectues. Si tu oublies complètement de venir pendant un certain temps, on te fera peut-être un petit coucou de rappel !
