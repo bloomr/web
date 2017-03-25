@@ -33,6 +33,7 @@ module Intercom
           last_seen_ip: user.current_sign_in_ip,
           custom_attributes: {
             published: user.published,
+            bloomeur: true,
             profile: "https://www.bloomr.org/portraits/#{user.id}"
           }
         }
