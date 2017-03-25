@@ -101,6 +101,7 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.2)
+    byebug (9.0.6)
     capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
@@ -460,6 +461,7 @@ DEPENDENCIES
   algoliasearch-rails
   autoprefixer-rails
   aws-sdk (< 2.0)
+  byebug
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner

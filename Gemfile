@@ -86,6 +86,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'sprite-factory'
   gem 'rmagick'
+  gem 'byebug'
 end
 
 group :test do
