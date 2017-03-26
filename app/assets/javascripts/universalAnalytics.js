@@ -10,5 +10,7 @@ ga('require', 'displayfeatures');
 document.addEventListener('turbolinks:load', function() {
     ga('set', 'page', window.location.pathname);
     ga('send', 'pageview', { "title": document.title });
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({'event': 'optimize.activate'});
 });
 

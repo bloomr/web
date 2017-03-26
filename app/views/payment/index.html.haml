@@ -102,6 +102,8 @@
     ga('require', 'GTM-T22KQ2Q');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({'event': 'optimize.activate'});
 
   %script
     (function(h,o,t,j,a,r){
