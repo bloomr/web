@@ -10,6 +10,10 @@ RSpec.describe Campaign, type: :model do
         expect(campaign.amount('standard')).to eq(1000)
         expect(campaign.amount('premium')).to  eq(2000)
       end
+
+      it 'returns a Fixnum' do
+        expect(campaign.amount('standard').is_a? Fixnum).to be(true)
+      end
     end
 
     context 'when the values are nil' do

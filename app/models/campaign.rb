@@ -11,7 +11,7 @@ class Campaign < ActiveRecord::Base
                 when 'premium'
                   premium_price.nil? ? Campaign.default.premium_price : premium_price
                 end
-    to_return * 100
+    (to_return * 100).to_i
   end
 
   def self.default
