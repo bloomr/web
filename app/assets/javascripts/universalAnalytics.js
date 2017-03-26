@@ -4,6 +4,7 @@
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-52527572-2', 'auto');
+ga('require', 'GTM-T22KQ2Q');
 ga('require', 'displayfeatures');
 
 document.addEventListener('turbolinks:load', function() {
