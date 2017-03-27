@@ -4,7 +4,7 @@ class PaymentController < ApplicationController
   before_action :fetch_gift_and_buyer_email, only: [:create]
 
   def index
-    @price = price_to_display(@program_name)
+    @price = @campaign.amount_to_display(@program_name)
   end
 
   def create
@@ -74,9 +74,5 @@ class PaymentController < ApplicationController
     metadata['source'] = @campaign.partner
     metadata['gift'] = @gift
     metadata
-  end
-
-  def price_to_display(program_name)
-    format('%0.02f', @campaign.amount(program_name).to_f / 100)
   end
 end
