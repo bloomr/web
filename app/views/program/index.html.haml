@@ -65,8 +65,8 @@
   %section.inscription
     %h1.title Inscription
     %p Choisis le programme qui te<br> correspond, et inscris-toi :
-    %a.crazy-btn 24€ bloomyclassique
-    %a.crazy-btn.green-btn 74€ bloomytandem
+    %a.crazy-btn #{ @campaign.amount_to_display('standard', '%d') }€ bloomyclassique
+    %a.crazy-btn.green-btn #{ @campaign.amount_to_display('premium', '%d') }€ bloomytandem
 
   %section.community
     %h1.title La force d'une communauté
@@ -168,7 +168,7 @@
       .left
         %h2 le bloomi<b>classic</b>
         %p.detail Si tu veux explorer de manière autonome
-        %p.price 24€
+        %p.price #{ @campaign.amount_to_display('standard', '%d') }€
         %ul
           %li 25 exercices à réaliser
           %li Les échanges avec la communauté sur le forum
@@ -179,7 +179,7 @@
       .right
         %h2 le bloomi<b>tandem</b>
         %p.detail Si tu veux être accompagné par un coach bienveillant
-        %p.price 74€
+        %p.price #{ @campaign.amount_to_display('premium', '%d') }€
         %ul
           %li 25 exercices à réaliser
           %li Les échanges avec la communauté sur le forum
@@ -188,7 +188,7 @@
           %a.crazy-btn.green-btn{ href: payment_program_path('premium'), 'data-turbolinks' => 'false' } Inscription au bloomitandem
 
     .links
-      %a.gift{ href: '/partner/cadeau', 'data-turbolinks' => 'false' } Je souhaite offrir le programme à 24€ ➞ 
+      %a.gift{ href: '/partner/cadeau', 'data-turbolinks' => 'false' } Je souhaite offrir le programme à #{ @campaign.amount_to_display('standard', '%d') }€ ➞ 
       %a.help{ href: 'mailto:contact@bloomr.org' } Je n’ai pas les moyens de m’offrir le programme ➞
 
   %section.faq#faq
