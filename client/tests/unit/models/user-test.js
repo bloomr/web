@@ -52,7 +52,7 @@ test('isFirstQuestionsAnswered is false if all the first_interview step are blan
   let questions = makeList('question', 5, { step: 'first_interview', mandatory: true });
   Ember.run(() => this.subject().set('questions', questions));
 
-  Ember.run(() => questions.forEach(q => { 
+  Ember.run(() => questions.forEach(q => {
     q.set('answer', '');
   }));
 
@@ -86,7 +86,7 @@ test('isFirstInterviewAnswered is true if firstquestions and jobTitle and doAuth
   Ember.run(() =>this.subject().set('jobTitle', 'toto'));
   assert.notOk(this.subject().get('isFirstInterviewAnswered'));
 
-  Ember.run(() => questions.forEach(q => { 
+  Ember.run(() => questions.forEach(q => {
     q.set('answer', 'something');
   }));
 
@@ -118,9 +118,9 @@ test('set tribes', function(assert) {
   return model.get('tribes')
     .then(tribes => tribes.addObjects([t0]))
     .then(() => model.setTribes([t1]))
-    .then(user => { 
-      assert.equal(user.get('tribes.length'), 1); 
-      assert.equal(user.get('tribes').objectAt(0), t1); 
+    .then(user => {
+      assert.equal(user.get('tribes.length'), 1);
+      assert.equal(user.get('tribes').objectAt(0), t1);
     });
 });
 
@@ -131,9 +131,9 @@ test('set strengths', function(assert) {
   return model.get('strengths')
     .then(tribes => tribes.addObjects([s0]))
     .then(() => model.setStrengths([s1]))
-    .then(user => { 
-      assert.equal(user.get('strengths.length'), 1); 
-      assert.equal(user.get('strengths').objectAt(0), s1); 
+    .then(user => {
+      assert.equal(user.get('strengths.length'), 1);
+      assert.equal(user.get('strengths').objectAt(0), s1);
     });
 });
 
@@ -144,9 +144,9 @@ test('set books', function(assert) {
   return model.get('books')
     .then(books => books.addObjects([b0]))
     .then(() => model.setBooks([b1]))
-    .then(user => { 
-      assert.equal(user.get('books.length'), 1); 
-      assert.equal(user.get('books').objectAt(0), b1); 
+    .then(user => {
+      assert.equal(user.get('books.length'), 1);
+      assert.equal(user.get('books').objectAt(0), b1);
     });
 });
 
@@ -158,8 +158,8 @@ test('questions_by_step', function(assert) {
   return model.get('questions')
     .then(questions => questions.addObjects([q0, q1]))
     .then(() => model.questions_by_step('first_interview'))
-    .then(questions => { 
-      assert.equal(questions.get('length'), 1); 
-      assert.equal(questions[0], q0); 
+    .then(questions => {
+      assert.equal(questions.get('length'), 1);
+      assert.equal(questions[0], q0);
     });
 });
