@@ -7,5 +7,6 @@ export default Model.extend({
   answer: attr('string'),
   description: attr('string'),
   step: attr('string'),
+  mandatory: attr('boolean'),
   user: belongsTo('user')
 });
