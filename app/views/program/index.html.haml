@@ -65,8 +65,8 @@
   %section.inscription
     %h1.title Inscription
     %p Choisis le programme qui te<br> correspond, et inscris-toi :
-    %a.crazy-btn #{ @campaign.amount_to_display('standard', '%d') }€ bloomyclassique
-    %a.crazy-btn.green-btn #{ @campaign.amount_to_display('premium', '%d') }€ bloomytandem
+    %a.crazy-btn{ 'data-link': 'inscription' } #{ @campaign.amount_to_display('standard', '%d') }€ bloomiclassique
+    %a.crazy-btn.green-btn{ 'data-link': 'inscription' } #{ @campaign.amount_to_display('premium', '%d') }€ bloomitandem
 
   %section.community
     %h1.title La force d'une communauté
@@ -101,7 +101,7 @@
       Tu rêves peut-être du test ultime ou d’une formule magique qui t’indiquerait le métier idéal. Selon nous, ça n’existe pas.
       <br/><br/>
       Avec le programme Bloomr, pas de réponses toutes faites : notre méthode te permet de trouver par toi-même une direction bien plus pertinente et qui vienne de toi. Mais pour ça, tu dois être prêt à y consacrer un peu de temps.
-    %a.crazy-btn{ 'data-link': 'inscription' } Je suis prêt !
+    %a.crazy-btn{ 'data-link': 'inscription' } Je m'inscris !
 
   %section.benefits
     %h1.title Ce que tu y gagnes
