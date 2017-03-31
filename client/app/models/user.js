@@ -21,7 +21,8 @@ export default Model.extend({
   }),
   isFirstQuestionsAnswered: Ember.computed('questions.@each.answer', function() {
     return this.get('questions')
-      .filter(q => q.get('step') === 'first_interview')
+      .filterBy('step', 'first_interview')
+      .filterBy('mandatory', true)
       .every(q => q.get('answer') && q.get('answer') !== '');
   }),
   isFirstInterviewAnswered: Ember.computed('doAuthorize', 'jobTitle', 'isFirstQuestionsAnswered', function(){

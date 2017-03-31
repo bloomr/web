@@ -4,7 +4,7 @@ import { make, makeList, manualSetup } from 'ember-data-factory-guy';
 
 moduleForModel('user', 'Unit | Model | user', {
   // Specify the other units that are required for this test.
-  needs: ['model:tribe', 'model:question', 'model:challenge', 
+  needs: ['model:tribe', 'model:question', 'model:challenge',
     'model:book', 'model:keyword', 'model:strength'],
   beforeEach() {
     manualSetup(this.container);
@@ -33,16 +33,23 @@ test('isFirstQuestionsAnswered is true if no interview_question', function(asser
   assert.ok(this.subject().get('isFirstQuestionsAnswered'));
 });
 
+test('isFirstQuestionsAnswered is true if no mandatory questions', function(assert) {
+  manualSetup(this.container);
+  let questions = makeList('question', 5, { step: 'first_interview', mandatory: false });
+  Ember.run(() => this.subject().set('questions', questions));
+  assert.ok(this.subject().get('isFirstQuestionsAnswered'));
+});
+
 test('isFirstQuestionsAnswered is false initially', function(assert) {
   manualSetup(this.container);
-  let questions = makeList('question', 5, { step: 'first_interview' });
+  let questions = makeList('question', 5, { step: 'first_interview', mandatory: true });
   Ember.run(() => this.subject().set('questions', questions));
   assert.notOk(this.subject().get('isFirstQuestionsAnswered'));
 });
 
-test('isFirstQuestionsAnswered is true if all the first_interview step', function(assert) {
+test('isFirstQuestionsAnswered is false if all the first_interview step are blank', function(assert) {
   manualSetup(this.container);
-  let questions = makeList('question', 5, { step: 'first_interview' });
+  let questions = makeList('question', 5, { step: 'first_interview', mandatory: true });
   Ember.run(() => this.subject().set('questions', questions));
 
   Ember.run(() => questions.forEach(q => { 
@@ -52,12 +59,13 @@ test('isFirstQuestionsAnswered is true if all the first_interview step', functio
   assert.notOk(this.subject().get('isFirstQuestionsAnswered'));
 });
 
-test('isFirstQuestionsAnswered is true after 5 questions answered', function(assert) {
+test('isFirstQuestionsAnswered is true after all mandatory questions are answerd', function(assert) {
   manualSetup(this.container);
-  let questions = makeList('question', 5, { step: 'first_interview' });
-  Ember.run(() => this.subject().set('questions', questions));
+  let mandatory_qs = makeList('question', 2, { step: 'first_interview', mandatory: true });
+  let qs = makeList('question', 2, { step: 'first_interview', mandatory: false });
+  Ember.run(() => this.subject().set('questions', mandatory_qs.concat(qs)));
 
-  Ember.run(() => questions.forEach(q => { 
+  Ember.run(() => mandatory_qs.forEach(q => {
     q.set('answer', 'something');
   }));
 
@@ -69,7 +77,7 @@ test('isFirstInterviewAnswered is true if firstquestions and jobTitle and doAuth
   manualSetup(this.container);
   assert.notOk(this.subject().get('isFirstInterviewAnswered'));
 
-  let questions = makeList('question', 5, { step: 'first_interview' });
+  let questions = makeList('question', 5, { step: 'first_interview', mandatory: true });
   Ember.run(() => this.subject().set('questions', questions));
 
   Ember.run(() =>this.subject().set('doAuthorize', true));
