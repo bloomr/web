@@ -63,7 +63,8 @@ RSpec.describe Api::V1::MeController, type: :request do
         'answer' => 'answer',
         'description' => nil,
         'step' => nil,
-        'title' => 'title'
+        'title' => 'title',
+        'mandatory' => false
       }
       expect_includes_relation('questions', [hash, hash])
     end
