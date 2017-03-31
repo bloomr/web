@@ -189,14 +189,8 @@
           max-width: 400px;
         }
 
-        div:last-child {
-          text-align: left;
-        }
-
-        div:first-child {
-          text-align: right;
-        }
       }
+      > div:last-child { text-align: right; }
     }
   }
 
