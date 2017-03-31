@@ -38,6 +38,7 @@ RSpec.describe PaymentController, type: :controller do
     let(:bloomy) do
       {
         first_name: 'loulou',
+        name: 'yop',
         email: 'loulou@lou.com',
         age: '44',
         password: 'yopyopyop'
@@ -57,6 +58,7 @@ RSpec.describe PaymentController, type: :controller do
       before { post :create, payload }
 
       it { expect(subject.first_name).to eq('loulou') }
+      it { expect(subject.name).to eq('yop') }
       it { expect(subject.email).to eq('loulou@lou.com') }
       it { expect(subject.age).to eq(44) }
       it { expect(subject.valid_password?('yopyopyop')).to be(true) }

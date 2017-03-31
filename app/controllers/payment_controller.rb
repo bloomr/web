@@ -52,7 +52,7 @@ class PaymentController < ApplicationController
   end
 
   def bloomy_params
-    params.require(:bloomy).permit(:email, :first_name, :age, :password)
+    params.require(:bloomy).permit(:email, :first_name, :age, :password, :name)
   end
 
   def charge(bloomy)

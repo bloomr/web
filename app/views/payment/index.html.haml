@@ -56,9 +56,10 @@
     - else
       = form_for Bloomy.new, url: '/payment' do |f|
         = f.text_field :first_name, placeholder: 'Prénom', required: true, autofocus: true
+        = f.text_field :name, placeholder: 'Nom', required: true, autofocus: true
+        = f.number_field :age, placeholder: 'Âge', required: true
         = f.email_field :email, placeholder: 'Adresse email', required: true, 'data-stripe' => 'name'
         = f.password_field :password, placeholder: 'Mot de passe', required: true
-        = f.number_field :age, placeholder: 'Âge', required: true
         = hidden_field_tag :program_name, @program_name
 
         .flash-messages
