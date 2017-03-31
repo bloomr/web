@@ -5,8 +5,8 @@ import { clickTrigger, nativeMouseUp } from '../../helpers/ember-power-select';
 import { make, makeList, manualSetup, mockFindAll } from 'ember-data-factory-guy';
 import sinon from 'sinon';
 
-const introSentence = 'Trouvez vos forces';
-const formSentence = 'Partagez-nous vos résultats !';
+const introSentence = 'Identifiez vos forces';
+const formSentence = 'Partagez vos résultats';
 const successSentence = 'Bien reçu !';
 
 moduleForComponent('challenge-strengths', 'Integration | Component | challenge strengths', {
@@ -29,7 +29,7 @@ test('a user can add its strengths', function(assert) {
   this.render(hbs`{{challenge-strengths user=user}}`);
 
   assert.ok(this.$().text().includes(introSentence));
-  
+
   this.$('.go-to-form').click();
   assert.ok(this.$().text().includes(formSentence));
 
