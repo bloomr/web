@@ -1,4 +1,9 @@
 #press {
+
+  > * {
+    padding: 0 15px;
+  }
+
   .intro {
     background: image-url('header/header-bg.png');
     color: #FFF;
@@ -43,25 +48,46 @@
 
   .centered {
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 1000px;
   }
 
   .lci {
-    margin: 60px auto;
+    margin: 60px 0;
     width: 300px;
     @media (min-width: $max_phone_size + 1) {
       width: 600px;
     }
   }
 
+  .cp {
+    margin-bottom: 100px;
+
+    li {
+      border-bottom: solid 1px #e6e0d4;
+      padding: 15px 0;
+
+      .date { float: left; width: 110px; }
+      .details {
+        overflow: hidden;
+        p { font-size: 22px; line-height: 1.18; }   
+        a { margin-top: 15px; }
+      }
+
+      &:last-child { border: none; }
+    }
+  }
+
   .list-wrapper { 
-    align-items: flex-end; 
+    align-items: flex-start; 
     justify-content: space-between;
 
     > li {
       margin: 25px auto;
       max-width: 220px;
     }
+
+
+    h3 { font-size: 14px; margin: 10px 0; }
   }
 
   .referral {
@@ -85,11 +111,22 @@
   }
 
   .journalism {
-    margin-top: 60px;
-    text-align: center;
+    display: flex;
+    max-width: 830px;
+    margin: 60px auto 0;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    .crazy-btn {
-      margin: 40px 0;
+    > section {
+      text-align: center;
+      max-width: 400px;
+      min-width: 200px;
+      display: inline-block;
+
+      .crazy-btn {
+        margin: 40px 0;
+      }
     }
   }
 }
