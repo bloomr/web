@@ -24,6 +24,7 @@ ActiveAdmin.register Bloomy do
     id_column
     column :email
     column :first_name
+    column :name
     column :age
     column :created_at
     column :current_sign_in_at
