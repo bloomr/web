@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
-ruby '2.2.5'
+ruby '2.4.1'
 
 gem 'unicorn'
 gem 'rack-timeout'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.7'
+gem 'rails', '4.2.8'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
