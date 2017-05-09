@@ -36,7 +36,7 @@ feature 'the private profile' do
       end
       click_button 'GO GO GO !'
 
-      find('.greetings', wait: 15)
+      find('.greetings', wait: 30)
       wait_for_ajax
 
       yield
