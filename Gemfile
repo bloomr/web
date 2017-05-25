@@ -58,7 +58,7 @@ gem 'factory_girl_rails'
 
 gem 'impressionist'
 
-gem 'jsonapi-resources', git: 'https://github.com/cerebris/jsonapi-resources.git', tag: '0.7.1.beta2'
+gem 'jsonapi-resources'
 gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'intercom', '~> 3.5.9'
