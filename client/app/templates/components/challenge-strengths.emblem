@@ -1,5 +1,5 @@
 .challenge.strengths
-  img src='assets/images/profile/badge-strength.png'
+  img src='/assets/images/profile/badge-strength.png'
   .content
     if showIntro
       h3.challenge-title Mes Forces (1/3)

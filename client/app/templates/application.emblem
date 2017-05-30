@@ -14,8 +14,8 @@ div#me
       .bottom
         .image-wrapper
           component 'thumbnail-upload' user=model.user
-          img.cloud.animated src='assets/images/profile/cloud.png'
-          img.cloud-left.animated src='assets/images/profile/cloud-left.png' 
+          img.cloud.animated src='/assets/images/profile/cloud.png'
+          img.cloud-left.animated src='/assets/images/profile/cloud-left.png' 
         .info
           p.greetings Salut {{ model.user.firstName }} !
           ul.tribes

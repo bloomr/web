@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   attributeBindings: ['style'],
   imageUrl: Ember.computed('user.avatarUrl', function() {
     let avatarUrl = this.get('user.avatarUrl');
-    if(avatarUrl === '') { return 'assets/images/loader.gif'; }
+    if(avatarUrl === '') { return '/assets/images/loader.gif'; }
     if(avatarUrl) { return avatarUrl; }
     return '';
   }),

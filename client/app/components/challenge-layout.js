@@ -8,13 +8,13 @@ export default Ember.Component.extend({
   updateCurrentWidget() {
     if(!this.get('name')) {
       let nextChallenge = this.nextChallenge();
-      this.get('updateName')(nextChallenge.get('query'));
+      Ember.run(this, function() { this.get('updateName')(nextChallenge.get('query')); });
       this.set('name', nextChallenge.get('query'));
       //for init, dont know
       this.set('currentChallenge', 'challenge-' + nextChallenge.get('query'));
     } else {
       this.set('currentChallenge', 'challenge-' + this.get('name'));
-    } 
+    }
   },
   reinitFlag: false,
   init() {

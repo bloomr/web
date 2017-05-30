@@ -1,3 +1,5 @@
+ /* global Promise:false */
+
 import { moduleForComponent, test } from 'ember-qunit';
 import { make, makeList, manualSetup, mockFindAll } from 'ember-data-factory-guy';
 import Ember from 'ember';
@@ -5,7 +7,7 @@ import sinon from 'sinon';
 
 moduleForComponent('challenge-interview', {
   unit: true,
-  needs: ['model:user', 'model:question', 'model:challenge', 'model:keyword'],
+  needs: ['model:user', 'model:question', 'model:challenge', 'model:keyword', 'service:challengeService'],
   beforeEach() {
     manualSetup(this.container);
     mockFindAll('keyword');

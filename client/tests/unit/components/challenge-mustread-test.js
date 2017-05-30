@@ -6,7 +6,7 @@ import sinon from 'sinon';
 let Promise = Ember.RSVP.Promise; // jshint ignore:line
 
 let stubAndReturnPromise = (obj, name, result) => {
-  let promise = $.Deferred();
+  let promise = Ember.$.Deferred();
   promise.resolve(result);
   obj[name] = sinon.stub();
   obj[name].returns(promise);
@@ -15,7 +15,7 @@ let stubAndReturnPromise = (obj, name, result) => {
 
 moduleForComponent('challenge-mustread', {
   unit: true,
-  needs: ['model:user', 'model:book', 'model:challenge'],
+  needs: ['model:user', 'model:book', 'model:challenge', 'service:challengeService'],
   beforeEach() {
     manualSetup(this.container);
     this.user = make('user');

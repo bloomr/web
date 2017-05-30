@@ -9,13 +9,13 @@ moduleForComponent('thumbnail-upload', 'Integration | Component | thumbnail-uplo
   beforeEach() {
     manualSetup(this.container);
     this.user = make('user', { avatarUrl: 'toto.png' });
-    sinon.spy($.fn, 'fileupload');
+    sinon.spy(Ember.$.fn, 'fileupload');
     this.render(hbs`{{thumbnail-upload user=user}}`);
-    this.fileuploadArgs = $.fn.fileupload.getCall(0).args[0];
+    this.fileuploadArgs = Ember.$.fn.fileupload.getCall(0).args[0];
     this.componentStyle = () => this.$('.thumbnail-upload').attr('style');
   },
   afterEach() {
-    $.fn.fileupload.restore();
+    Ember.$.fn.fileupload.restore();
   }
 });
 
@@ -25,12 +25,12 @@ test('it renders the user avatar', function(assert) {
 
 test('it renders the spinner when user avatar is empty string', function(assert) {
   Ember.run(() => this.fileuploadArgs.start());
-  assert.equal(this.componentStyle(), "background-image: url('assets/images/loader.gif');");
+  assert.equal(this.componentStyle(), "background-image: url('/assets/images/loader.gif');");
 });
 
 test('it renders the spinner when its loading', function(assert) {
   Ember.run(() => this.set('user.avatarUrl', ''));
-  assert.equal(this.componentStyle(), "background-image: url('assets/images/loader.gif');");
+  assert.equal(this.componentStyle(), "background-image: url('/assets/images/loader.gif');");
 });
 
 test('it renders the new user avatar when loaded', function(assert) {

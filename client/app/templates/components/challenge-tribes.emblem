@@ -1,5 +1,5 @@
 .challenge.tribes
-  img src='assets/images/profile/badge-tribu.svg'
+  img src='/assets/images/profile/badge-tribu.svg'
   .content
     h3.challenge-title Les tribus
     .panel-todo

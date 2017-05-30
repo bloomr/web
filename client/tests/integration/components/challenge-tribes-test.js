@@ -29,13 +29,13 @@ test('a user can change its tribes', function(assert) {
   this.render(hbs`{{challenge-tribes user=user}}`);
 
   assert.ok(this.$().text().includes(introSentence));
-  
+
   this.$('.tribeKO').click();
   assert.ok(this.$().text().includes(choiceSentence));
 
   clickTrigger();
 
-  assert.equal($('.ember-power-select-option').length, 3);
+  assert.equal(this.$('.ember-power-select-option').length, 3);
   nativeMouseUp('.ember-power-select-option[data-option-index="0"]');
 
   this.$('.save').click();

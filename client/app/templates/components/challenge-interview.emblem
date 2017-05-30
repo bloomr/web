@@ -1,5 +1,5 @@
 .challenge.challenge-interview
-  img src='assets/images/profile/badge-profil.svg'
+  img src='/assets/images/profile/badge-profil.svg'
   .content
     if step1
       h3.challenge-title Votre Témoignage (1/3)

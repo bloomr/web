@@ -4,11 +4,11 @@ if done
     .legend
       p.separator  Challenge
       p.title {{ challenge.title }}
-      = link-to 'challenges' (query-params name=challenge.query step=undefined) | modifier
+      = link-to 'challenges' (query-params name=challenge.query) | modifier
 else
   li.not-done
     p.top  Challenge
     p.title {{ challenge.title }}
     p.description {{ challenge.description }}
     .go-wrapper
-      = link-to .crazy-btn 'challenges' (query-params name=challenge.query step=undefined) | Go
+      = link-to .crazy-btn 'challenges' (query-params name=challenge.query) | Go

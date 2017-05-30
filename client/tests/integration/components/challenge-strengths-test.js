@@ -35,7 +35,7 @@ test('a user can add its strengths', function(assert) {
 
   clickTrigger();
 
-  assert.equal($('.ember-power-select-option').length, 3);
+  assert.equal(this.$('.ember-power-select-option').length, 3);
   nativeMouseUp('.ember-power-select-option[data-option-index="0"]');
 
   this.$('.save').click();
