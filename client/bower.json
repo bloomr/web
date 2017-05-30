@@ -1,9 +1,6 @@
 {
   "name": "ember-quickstart",
   "dependencies": {
-    "ember": "2.8.0",
-    "ember-cli-shims": "0.1.1",
-    "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "trix": "^0.9.7",
     "es6-shim": "^0.35.1",
@@ -11,8 +8,5 @@
     "blueimp-file-upload": "jquery-file-upload#^9.12.5",
     "blueimp-load-image": "javascript-load-image#^2.6.1",
     "blueimp-canvas-to-blob": "canvas-to-blob#^3.3.0"
-  },
-  "resolutions": {
-    "ember": "2.8.0"
   }
 }
