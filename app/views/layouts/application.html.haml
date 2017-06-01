@@ -40,6 +40,7 @@
     %meta{ content: 'www.bloomr.org', name: 'twitter:domain' }
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
+    = render 'shared/facebook_pixel'
 
   %body
     - unless content_for?(:hide_header)
