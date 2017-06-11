@@ -8,65 +8,172 @@
     .list-wrapper
       %a{ href: concept_path }
         ←&nbsp;
-        %span Le concept 
-      %p.subtitle Nous sommes les Bloom's, et notre fibre est altruiste et optimiste.
+        %span Le concept
+      %p.subtitle Nous sommes les Bloom's : une équipe composée de 3 femmes et 3 hommes à la fibre altruiste et optimiste !
       %a.right{ href: bloomifesto_path }
         %span Le bloomifesto
         →&nbsp;
 
-  %ul
-    %li
-      = image_tag('team/laurent.png', alt: 'Laurent Morel', height: '160', width: '160')
-      %div
-        %h2 Laurent Morel
-        %p
-          Curieux né, ingénieur de formation, c'est complètement par hasard que je suis devenu un professionnel de l'informatique
-          à l'heure où celle-ci transforme nos sociétés.
-        %q
-          « Je pense que le moment est venu d'utiliser le numérique pour transformer l'orientation et accompagner tous ceux qui se posent des questions sur leur avenir. »
-    %li
-      = image_tag('team/virginie.png', alt: 'Virginie Boutin', height: '160', width: '160')
-      %div
-        %h2 Virginie Boutin
-        %p
-          Passionnée par les interactions humaines, je pratique avec enthousiasme l'ergonomie web et le coaching de professionnels. J'exerce à Paris et dans le Cloud.
-        %q
-          « Le travail occupe une place importante dans notre vie et il est pour moi essentiel d'y trouver du plaisir et du sens.
-          Bloomr c'est notamment un réseau de professionnels heureux, et on a très envie de faire boule de neige&nbsp;! »
-    %li
-      = image_tag('team/simon.png', alt: 'Simon Lehericey', height: '160', width: '160')
-      %div
-        %h2 Simon Lehericey
-        %p
-          J'aime construire et aider à construire des logiciels qui répondent réellement à un besoin. C'est donc naturellement, et grâce à quelques passionnés,
-          que je me suis rapproché des méthodes 'Lean' et agiles.
-        %q
-          « Je suis convaincu qu'en facilitant les échanges entre jeunes et professionnels, nous pouvons créer des vocations et donner du sens à leur travail. »
-    %li
-      = image_tag('team/guillaume.png', alt: 'Guillaume Baptiste', height: '160', width: '160')
-      %div
-        %h2 Guillaume Baptiste
-        %p
-          Autodidacte, toujours un crayon à la main, je suis passionné par tout ce qui ressemble de près ou de loin à la création visuelle, l'identité graphique, la peinture, les interfaces, la sculpture...
-        %q
-          « Je suis frappé par la fracture entre les écoles et le monde du travail. Je pense que l’orientation devrait avoir une place aussi importante que l’éducation en elle-même. »
-    %li
-      = image_tag('team/stephanie.png', alt: 'Stéphanie Pfeiffer', height: '160', width: '160')
-      %div
-        %h2 Stéphanie Pfeiffer
-        %p
-          Fraîchement diplômée d’école de commerce, je suis déterminée à relever le challenge d'inspirer les jeunes étudiants !
-        %q
-          « Mon truc, c’est créer de la magie : que ça soit à travers la photo de rue ou l’organisation d’événements insolites pour l’éducation.
-          Ma mission ? Enrichir l'expérience Bloomr et rendre contagieux notre enthousiasme&nbsp;! »
-    %li
-      = image_tag('team/noemie.png', alt: 'Noëmie Martin-Pascual', height: '160', width: '160')
-      %div
-        %h2 Noëmie Martin-Pascual
-        %p
-          Spécialisée dans le marketing, j'aime surtout jouer le rôle de couteau-suisse. Ce qui m’anime, c’est de
-          découvrir et de partager des choses nouvelles.
-        %q
-          « Trouver un travail qui nous correspond demande de se poser les bonnes questions et de faire preuve d’un peu
-          d’audace et de beaucoup de volonté. Avec Bloomr, j'ai envie de créer les outils pour que chacun puisse prendre
-          plaisir à trouver son propre chemin. »
+  %section.number
+    %h1.title les chiffres
+
+    %ul
+      %li
+        =image_tag('team/age.svg', alt: 'bougies')
+        %p{ style: 'line-height: 0.91;' } <span>de<br></span> 24 à 45<br><span>ans</span>
+      %li
+        =image_tag('team/parite.svg', alt: 'parité')
+        %p parité<br> <span>homme / femme</span>
+      %li
+        =image_tag('team/world.svg', alt: 'international')
+        %p à l’international<br> <span style='font-size: 22px;'>(Paris - New York - La Rochelle)</span>
+    %ul
+      %li
+        =image_tag('team/68.svg', alt: 'levée de fond')
+        %p levés en financement participatif
+      %li
+        =image_tag('team/600.svg', alt: 'neurones')
+        %p milliards de neurones enthousiastes
+
+    %p.discover Découvrez notre cocktail énergique de personnalités, d’expérience et de compétences, qui mettent à la fois toute leur folie et tout leur sérieux dans Bloomr.
+
+  %section.members
+    %ul
+      %li
+        .left
+          = image_tag('team/no.jpg', alt: 'Noémie Martin-Pascual', height: '160', width: '160')
+          %h2 Noémie Martin-Pascual
+          %p Accompagnement et contenu
+          %p.nickname Couteau-suisse ultime
+          %ul.links
+            %li
+              %a{ href: '' }
+                =image_tag('team/twitter.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/linkedin.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/facebook.svg')
+        .right
+          %p
+            Noémie est la plume qui se cache derrière les conseils avisés du blog et du programme d'orientation qu'elle a écrit avec Virginie. Bulldozer de productivité, elle est inarrêtable une fois lancée.
+            %br
+            %br
+            Sa mission : être la voix de Bloomr pour aider le plus grand nombre à avancer dans leur réflexion, à travers la création de programmes et de contenu pédagogique sur le blog.
+          %q
+            Trouver un travail qui nous correspond demande de se poser les bonnes questions sur soi et ses envies, d'oser expérimenter, et de faire preuve d'audace et de volonté. Avec Bloomr, j'ai envie de créer des outils qui permettent à chacun de prendre plaisir à tracer son propre parcours.
+      %li
+        .left
+          = image_tag('team/steph.jpg', alt: 'Stéphanie Pfeiffer', height: '160', width: '160')
+          %h2 Stéphanie Pfeiffer
+          %p Business & Communautés
+          %p.nickname Poète embarquante
+          %ul.links
+            %li
+              %a{ href: '' }
+                =image_tag('team/twitter.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/linkedin.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/facebook.svg')
+        .right
+          %p
+            Stéphanie allie le regard acéré d’une modeuse, l’émerveillement d’une artiste et le dynamisme d’une fusée magique : plus il y a de monde à bord, plus elle va loin.
+            %br
+            %br
+            Sa mission est de dénicher des perles professionnelles des personnalités qui adorent leur métier, et de les embarquer dans l'aventure Bloomr pour inspirer tous ceux qui cherchent leur voie.
+          %q
+            Mon truc, c’est créer de la magie : que ça soit à travers la photo de rue ou l’organisation d’évènements insolites pour l’éducation.
+      %li
+        .left
+          = image_tag('team/vi.jpg', alt: 'Virginie Boutin', height: '160', width: '160')
+          %h2 Virginie Boutin
+          %p B2B & Coaching
+          %p.nickname Éclaireuse de richesses humaines
+          %ul.links
+            %li
+              %a{ href: '' }
+                =image_tag('team/twitter.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/linkedin.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/facebook.svg')
+        .right
+          %p
+            Virigine c’est le mot juste au bon moment pour aider les inscrits à sortir de leur flou professionnel.
+            %br
+            %br
+            Sa mission : Avec Noémie et en partenariat avec le CNAM, concevoir des programmes ciblés pour chaque moment de la vie professionnelle et fédérer la communauté des coachs Bloomr.
+          %q
+            Le travail représente une durée importante de notre vie, il est donc essentiel pour moi d'y trouver du plaisir et du sens. C’est déjà le cas pour les professionnels heureux de Bloomr, notre but c’est que ce soit possible pour le plus grand nombre !
+      %li
+        .left
+          = image_tag('team/laurent.jpg', alt: 'Laurent Morel', height: '160', width: '160')
+          %h2 Laurent Morel
+          %p B2B & Produit
+          %p.nickname Papa Bloomr
+          %ul.links
+            %li
+              %a{ href: '' }
+                =image_tag('team/twitter.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/linkedin.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/facebook.svg')
+        .right
+          %p
+            C’est dans la tête de Laurent que l’aventure a commencé. L’idée originale de faire témoigner des professionnels heureux et passionnés, il l'a eue un soir, en rentrant du travail . Son petit côté ingénieur ressort dans ses tableaux excel qui donnent un peu le tournis, mais qui sont super précis.
+            %br
+            %br
+            Aujourd’hui il est en charge de l’amélioration continue du produit et du développement de l’offre Bloomr pour les entreprises.
+          %q
+            Je pense que le moment est venu d'utiliser le numérique pour transformer l'orientation et accompagner tous ceux qui se posent des questions sur leur avenir.
+      %li
+        .left
+          = image_tag('team/sim.jpg', alt: 'Simon Lehericey', height: '160', width: '160')
+          %h2 Simon Lehericey
+          %p Lean & Tech
+          %p.nickname Wise Geek
+          %ul.links
+            %li
+              %a{ href: 'https://www.linkedin.com/in/simon-lehericey-48a9ab44' }
+                =image_tag('team/linkedin.svg')
+        .right
+          %p
+            Son expérience de consultant fait de Simon le pro des méthodes lean & agiles : pas de ligne de code superflue ! Mais la vraie “Sim Magic” c’est son regard humaniste et son petit côté avocat du diable, qu’il fait sortir quand l’équipe s’emballe un peu trop vite.
+            %br
+            %br
+            Sa mission : piloter le développement de notre plateforme interactive pour que Bloomr vous offre une expérience encore plus innovante.
+          %q
+            Je suis convaincu qu'en facilitant les échanges et le partage, nous pouvons créer des vocations et donner du sens à leur travail.
+      %li
+        .left
+          = image_tag('team/gui.jpg', alt: 'Guillaume Baptiste', height: '160', width: '160')
+          %h2 Guillaume Baptiste
+          %p Design & UX
+          %p.nickname Dompteur d'interface
+          %ul.links
+            %li
+              %a{ href: '' }
+                =image_tag('team/twitter.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/linkedin.svg')
+            %li
+              %a{ href: '' }
+                =image_tag('team/facebook.svg')
+        .right
+          %p
+            Toujours un crayon à la main, notre autodidacte de génie ne recule devant aucune nuit blanche pour que Bloomr rayonne de couleurs… mais ne vous arrêtez pas à son grain de folie, Guillaume a la rigueur d’un ingénieur quand il s’agit d’optimiser un parcours utilisateur.
+            %br
+            %br
+            Sa mission : façonner l’expérience utilisateur ultime jusque dans les moindres pixels et l'identité visuelle de l'univers Bloomr, l'incarner en forme et en couleur.
+          %q
+            Je suis frappé par la fracture entre les écoles et le monde du travail. Je pense que l’orientation devrait avoir une place aussi importante que l’éducation en elle-même.

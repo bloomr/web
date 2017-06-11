@@ -1,10 +1,14 @@
 #whoarewe {
+  padding: 0 15px;
+
   .intro {
     background: image-url('header/header-bg.png');
     color: #FFF;
     min-height: 300px;
     padding-top: 150px;
     text-align: center;
+    margin-right: -15px;
+    margin-left: -15px;
 
     > * {
       max-width: 1024px;
@@ -31,7 +35,7 @@
       // change !
       max-width: 600px;
 
-      @media (max-width: 699px) { 
+      @media (max-width: 699px) {
         flex-basis: 100%;
         order: -1;
       }
@@ -44,49 +48,123 @@
       span { border-bottom: 1px solid #FFF; }
     }
   }
-  
-  ul {
-    max-width: 1024px;
-    margin: auto;
-    padding: 0 10px;
 
-    > li {
+  .number {
+    max-width: 900px;
+    margin: 0 auto;
+
+    h1 {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    ul {
       display: flex;
-      margin: 40px 0;
-      justify-content: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
 
-      > div { max-width: 500px; }
-
-      h2 {
-        font-size: 22px;
-        line-height: 1.2;
-        margin-bottom: 10px;
-      }
-
-      p,q {
-        font-size: 16px;
-        line-height: 1.6;
-      }
-
-      q {
-        margin-top: 20px;
-        display: inline-block;
-      }
-
-      img { 
-        border-radius: 80px;
-        height: 160px;
-        margin-bottom: 15px;
-        margin-right: 40px;
-        width: 160px; 
-      }
-
-      @media(max-width: $max_phone_size) {
-        flex-direction: column;
-        align-items: center;
+      li {
+        width: 300px;
         text-align: center;
-        
-        img { margin-right: 0; }
+        margin-bottom: 40px;
+      }
+
+      p {
+        font-family: Satisfy;
+        font-size: 34px;
+        line-height: 1.29;
+        letter-spacing: 0.8px;
+        text-align: center;
+
+        span {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .discover {
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 0.8px;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 50px;
+    }
+  }
+
+  .members {
+    > ul {
+      margin: 0 auto;
+      max-width: 700px;
+
+      > li {
+        display: flex;
+        margin-bottom: 100px;
+        justify-content: center;
+
+        @media(max-width: 600px) {
+          flex-wrap: wrap;
+        }
+
+        .left {
+          margin-right: 40px;
+
+          img {
+            margin-bottom: 20px;
+          }
+
+          h2 {
+            line-height: 1.18;
+            margin-bottom: 10px;
+          }
+
+          @media(max-width: 600px) {
+            text-align: center;
+            margin-right: 0;
+            margin-bottom: 30px;
+          }
+
+          .nickname {
+            margin: 20px 0;
+            color: $orange;
+          }
+
+          .links {
+            li {
+              display: inline-block;
+              margin-right: 18px;
+            }
+          }
+        }
+
+        .right {
+          p,q {
+            line-height: 1.62;
+          }
+
+          q {
+            display: block;
+            margin-top: 30px;
+            font-style: italic;
+            position: relative;
+            color: $orange;
+            padding-left: 40px;
+
+            &::before {
+              content: '';
+              background-image: image-url('team/open-quotes.svg');
+              width: 23px;
+              height: 23px;
+              position: absolute;
+              left: 0;
+              top: 5px;
+            }
+
+            &::after {
+              content: '»'
+            }
+          }
+        }
       }
     }
   }
