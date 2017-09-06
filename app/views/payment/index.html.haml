@@ -44,9 +44,9 @@
         = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
 
         %p.cgu
-          En achetant un programme, vous acceptez les
-          %a{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view' }conditions générales
-          et vous certifiez que l'inscrit a 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
+          En t'inscrivant au programme, tu acceptes les
+          %a{ href: 'https://s3-eu-west-1.amazonaws.com/bloomr/static/CGU_et_CP_B2C.pdf', target: '_blank'}conditions générales et particulières.
+          Remboursement sur simple demande dans un délai de 14 jours.
 
         = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
         %p ou bien
@@ -76,8 +76,8 @@
 
         %p.cgu
           En t'inscrivant au programme, tu acceptes les
-          %a{ href: 'https://drive.google.com/file/d/0B6t2xBTfe9gaZzM5VHdrRlZJQm8/view' }conditions générales
-          et certifie avoir 14 ans minimum. Remboursement sur simple demande dans un délai de 14 jours.
+          %a{ href: 'https://s3-eu-west-1.amazonaws.com/bloomr/static/CGU_et_CP_B2C.pdf', target: '_blank'}conditions générales et particulières.
+          Remboursement sur simple demande dans un délai de 14 jours.
 
         = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
         %p ou bien
