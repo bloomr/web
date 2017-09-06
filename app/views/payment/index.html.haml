@@ -16,7 +16,7 @@
     %p.hide-phone Paiement sécurisé par <b>stripe</b>
   %section.main
     %h1.title Fabuleuse décision !
-    
+
     - if gift
       %p.last-step Vous souhaitez offrir le programme à un proche, nous applaudissons.
     - else
@@ -51,7 +51,7 @@
         = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
         %p ou bien
         %a.paypal{ href: "https://paypal.me/bloomr/#{@price}" }
-          %span Payer avec 
+          %span Payer avec
           %span.payment2-paypal Paypal
     - else
       = form_for Bloomy.new, url: '/payment' do |f|
@@ -82,7 +82,7 @@
         = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
         %p ou bien
         %a.paypal{ href: "https://paypal.me/bloomr/#{@price}" }
-          %span Payer avec 
+          %span Payer avec
           %span.payment2-paypal Paypal
 
   %footer
