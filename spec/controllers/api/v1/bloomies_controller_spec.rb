@@ -20,7 +20,8 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
       'type' => 'bloomies',
       'attributes' => {
         'first-name' => 'bloomy',
-        'email' => 'bloomy5@b.com'
+        'email' => 'bloomy5@b.com',
+        'coached' => false
       },
       'relationships' => {
         'programs' => { 'data' => [{ 'id' => '1', 'type' => 'programs' }] }
