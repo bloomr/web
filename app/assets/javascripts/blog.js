@@ -21,7 +21,7 @@
       .map(buildTemplate)
       .each(injectTemplate);
   };
-  
+
   var fetchDataFromBlog = function (data) {
     if($('#home').length !== 0) {
       if($('.blog-posts').is(':empty')) {
