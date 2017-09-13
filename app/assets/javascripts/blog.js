@@ -1,12 +1,11 @@
 (function() {
-  var url = 'https://public-api.wordpress.com/rest/v1.1/sites/blog.bloomr.org/posts/?number=3&fields=title,URL,featured_image,date';
+  var url = 'https://blog-bloomr.org/wp-json/wp/v2/posts';
 
   var buildTemplate = function (post) {
-    return '<li>' + 
-      "<a href='" + post.URL + "'>" + 
+    return '<li>' +
+      "<a href='" + post.link + "'>" +
       '<span class="date">' + (new Date(post.date)).toLocaleDateString() + '</span>' +
-      '<h1>' + post.title + '</h1>' +
-      '<img height="104px" src="' + post.featured_image + '">' +
+      '<h1>' + post.title.rendered + '</h1>' +
       "<span class='go'>→&nbsp;Lire l'article</span>" +
       '</a>' +
       '</li>';
@@ -17,7 +16,7 @@
   };
 
   var processData = function (data) {
-    _.chain(data.posts)
+    _.chain(data.slice(0, 3))
       .map(buildTemplate)
       .each(injectTemplate);
   };
