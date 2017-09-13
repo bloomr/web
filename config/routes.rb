@@ -93,7 +93,7 @@ Rails.application.routes.draw do
   end
 
   get 'presse' => 'static#press', as: 'press'
-  get 'programme' => 'program#index', as: 'program'
+  get 'programme', to: redirect('https://static.bloomr.org'), as: 'program'
 
   get 'robots.:format', to: 'robots#index'
 
