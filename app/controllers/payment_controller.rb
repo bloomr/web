@@ -32,7 +32,7 @@ class PaymentController < ApplicationController
 
   def create_bloomy
     bloomy = Bloomy.new(bloomy_params)
-    bloomy.programs << Program.from_name(@program_name)
+    bloomy.programs << ProgramTemplate.find_by(name: @program_name).to_program
     bloomy.save!
     Intercom::Wrapper.create_bloomy(bloomy, @gift)
     bloomy

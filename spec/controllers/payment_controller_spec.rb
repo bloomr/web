@@ -9,6 +9,9 @@ RSpec.describe PaymentController, type: :controller do
     FactoryGirl.create(:campaign, partner: 'sujetdubac', standard_price: '13.0', 'premium_price': '26')
   end
 
+  let!(:standard_program) { ProgramTemplate.create(name: 'standard', intercom: false, discourse: true) }
+  let!(:premium_program)  { ProgramTemplate.create(name: 'premium', intercom: true, discourse: true) }
+
   describe 'GET #index' do
     it 'returns http success' do
       get :index
