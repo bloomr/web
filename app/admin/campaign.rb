@@ -7,6 +7,7 @@ ActiveAdmin.register Campaign do
   index do
     id_column
     column :partner
+    column :campaign_url
     actions
   end
 
@@ -15,6 +16,7 @@ ActiveAdmin.register Campaign do
   form do |f|
     f.inputs 'Campaign' do
       f.input :partner
+      f.input :campaign_url
       f.has_many :campaignsProgramTemplates, heading: 'Program Templates', allow_destroy: true do |a|
         a.input :program_template_id, label: 'program', as: :select, collection: ProgramTemplate.all.map { |p| [p.name, p.id] }
         a.input :price
