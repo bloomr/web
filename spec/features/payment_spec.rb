@@ -2,9 +2,18 @@ require 'rails_helper'
 
 feature 'Buy a journey' do
   before do
-    FactoryGirl.create(:campaign, partner: 'default', standard_price: '35.0', premium_price: '70')
-    FactoryGirl.create(:campaign, partner: 'sujetdubac', standard_price: '13.0', premium_price: '26')
+    std_pt = ProgramTemplate.create(name: 'standard', intercom: false, discourse: true)
+    premium_pt = ProgramTemplate.create(name: 'premium', intercom: true, discourse: true)
+
+    default_campaign = FactoryGirl.create(:campaign, partner: 'default')
+    sujetdubac_campaign = FactoryGirl.create(:campaign, partner: 'sujetdubac')
     Campaign.create(partner: 'no-reduction', campaign_url: 'yop')
+
+    default_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: std_pt, price: 35)
+    default_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: premium_pt, price: 70)
+
+    sujetdubac_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: std_pt, price: 13)
+    sujetdubac_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: premium_pt, price: 26)
   end
 
   scenario 'I pay standard price with a default url' do

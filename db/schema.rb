@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918205158) do
+ActiveRecord::Schema.define(version: 20170918214516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,18 @@ ActiveRecord::Schema.define(version: 20170918205158) do
     t.datetime "updated_at",     null: false
     t.decimal  "premium_price"
   end
+
+  create_table "campaigns_program_templates", force: :cascade do |t|
+    t.decimal  "price",               null: false
+    t.integer  "campaign_id"
+    t.integer  "program_template_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "campaigns_program_templates", ["campaign_id", "program_template_id"], name: "campaigns_program_template_index", unique: true, using: :btree
+  add_index "campaigns_program_templates", ["campaign_id"], name: "index_campaigns_program_templates_on_campaign_id", using: :btree
+  add_index "campaigns_program_templates", ["program_template_id"], name: "index_campaigns_program_templates_on_program_template_id", using: :btree
 
   create_table "challenges", force: :cascade do |t|
     t.string   "name"

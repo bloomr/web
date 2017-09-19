@@ -2,15 +2,26 @@ require 'rails_helper'
 
 RSpec.describe PaymentController, type: :controller do
   let!(:default_campaign) do
-    FactoryGirl.create(:campaign, partner: 'default', standard_price: '35.0', premium_price: '50.0')
+    FactoryGirl.create(:campaign, partner: 'default')
   end
 
   let!(:sujetdubac_campaign) do
-    FactoryGirl.create(:campaign, partner: 'sujetdubac', standard_price: '13.0', 'premium_price': '26')
+    FactoryGirl.create(:campaign, partner: 'sujetdubac')
   end
 
   let!(:standard_program) { ProgramTemplate.create(name: 'standard', intercom: false, discourse: true) }
   let!(:premium_program)  { ProgramTemplate.create(name: 'premium', intercom: true, discourse: true) }
+
+  let!(:std_campaign_program) { CampaignsProgramTemplate.create(campaign: default_campaign, program_template: standard_program, price: 35) }
+  let!(:premium_campaign_program) { CampaignsProgramTemplate.create(campaign: default_campaign, program_template: premium_program, price: 50) }
+
+  let!(:sujet_std_campaign_program) { CampaignsProgramTemplate.create(campaign: sujetdubac_campaign, program_template: standard_program, price: 13) }
+  let!(:sujet_premium_campaign_program) { CampaignsProgramTemplate.create(campaign: sujetdubac_campaign, program_template: premium_program, price: 26) }
+
+  before do
+    default_campaign.campaignsProgramTemplates << std_campaign_program << premium_campaign_program
+    sujetdubac_campaign.campaignsProgramTemplates << sujet_std_campaign_program << sujet_premium_campaign_program
+  end
 
   describe 'GET #index' do
     it 'returns http success' do
