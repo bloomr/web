@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::BloomiesController, type: :controller do
-  let!(:bloomy) { create(:bloomy) }
+  let!(:bloomy) { create(:bloomy, company_name: 'company_name_tip_top') }
   let!(:bloomy2) { create(:bloomy) }
   let!(:mission) { Mission.create(prismic_id: '1') }
   let!(:mission2) { Mission.create(prismic_id: '2') }
@@ -21,7 +21,8 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
       'attributes' => {
         'first-name' => 'bloomy',
         'email' => 'bloomy5@b.com',
-        'coached' => false
+        'coached' => false,
+        'company-name' => 'company_name_tip_top'
       },
       'relationships' => {
         'programs' => { 'data' => [{ 'id' => '1', 'type' => 'programs' }] }

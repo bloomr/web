@@ -1,5 +1,5 @@
 ActiveAdmin.register Bloomy do
-  permit_params :email, :first_name, :age, :coached, :password,
+  permit_params :email, :first_name, :age, :coached, :password, :company_name,
                 programs_attributes: [
                   :name, :id, :discourse, :intercom, :_destroy
                 ]
@@ -27,6 +27,7 @@ ActiveAdmin.register Bloomy do
     column :name
     column :age
     column :coached
+    column :company_name
     column :created_at
     column :current_sign_in_at
     actions
@@ -43,6 +44,7 @@ ActiveAdmin.register Bloomy do
       f.input :first_name
       f.input :age
       f.input :coached
+      f.input :company_name
       if f.object.encrypted_password.blank?
         f.input :password, input_html: { value: 'la fraise rouge' },
                            label: 'Password (default: la fraise rouge)'
