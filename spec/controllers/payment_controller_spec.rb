@@ -46,7 +46,7 @@ RSpec.describe PaymentController, type: :controller do
 
     let(:metadata) do
       { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
-        'source' => 'default', 'gift' => false }
+        'source' => 'default', 'gift' => false, 'program_name' => 'standard' }
     end
 
     let(:bloomy) do
@@ -79,6 +79,7 @@ RSpec.describe PaymentController, type: :controller do
     end
 
     context 'if its a premium program' do
+      let(:metadata) { super().merge('program_name' => 'premium') }
       before { post :create, payload.merge(program_name: 'premium') }
       it { expect(subject.programs.first.name).to eq('premium') }
     end
@@ -128,6 +129,7 @@ RSpec.describe PaymentController, type: :controller do
       end
 
       context 'with the premium program' do
+        let(:metadata) { super().merge('program_name' => 'premium') }
         let(:payload) { super().merge('program_name' => 'premium') }
 
         context 'with no cookie' do

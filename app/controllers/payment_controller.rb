@@ -73,6 +73,7 @@ class PaymentController < ApplicationController
     metadata = { 'info_client' => bloomy_s }
     metadata['source'] = @campaign.partner
     metadata['gift'] = @gift
+    metadata['program_name'] = @program_name
     metadata
   end
 end
