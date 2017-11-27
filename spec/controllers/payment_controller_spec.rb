@@ -1,13 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe PaymentController, type: :controller do
-  let!(:default_campaign) do
-    FactoryGirl.create(:campaign, partner: 'default')
-  end
-
-  let!(:sujetdubac_campaign) do
-    FactoryGirl.create(:campaign, partner: 'sujetdubac')
-  end
+  let!(:default_campaign) { FactoryGirl.create(:campaign, partner: 'default') }
+  let!(:sujetdubac_campaign) { FactoryGirl.create(:campaign, partner: 'sujetdubac') }
 
   let!(:standard_program) { ProgramTemplate.create(name: 'standard', intercom: false, discourse: true) }
   let!(:premium_program)  { ProgramTemplate.create(name: 'premium', intercom: true, discourse: true) }
@@ -24,132 +19,204 @@ RSpec.describe PaymentController, type: :controller do
   end
 
   describe 'GET #index' do
-    it 'returns http success' do
-      get :index
-      expect(response).to have_http_status(:success)
+    before { get :index }
+
+    it { expect(response).to have_http_status(:success) }
+  end
+
+  describe 'POST #post_email' do
+    let(:program_name) { nil }
+    before { post :post_email, bloomy: { email: email }, program_name: program_name }
+
+    context 'when the email is not known' do
+      let(:email) { 'not-known@toto.com' }
+
+      it { expect(response).to redirect_to(payment_identity_path(program_name: 'standard', email: email)) }
+
+      context 'when the program is premium' do
+        let(:program_name) { 'premium' }
+
+        it { expect(response).to redirect_to(payment_identity_path(program_name: 'premium', email: email)) }
+      end
+    end
+
+    context 'when the email is known' do
+      let(:bloomy) { create(:bloomy) }
+      let(:email) { bloomy.email }
+
+      it { expect(response).to redirect_to(payment_card_path(program_name: 'standard', bloomy_id: bloomy.id)) }
+
+      context 'and the bloomy already has the program' do
+        before do
+          bloomy.programs << standard_program.to_program
+          post :post_email, bloomy: { email: email }, program_name: program_name
+        end
+
+        it { expect(response).to redirect_to(payment_index_path(program_name: 'standard')) }
+        it { expect(flash[:error]).not_to be_nil }
+      end
+    end
+  end
+
+  describe 'GET #identity' do
+    before { get :identity, program_name: 'standard', email: 'loulou@lou.com' }
+
+    it { expect(response).to have_http_status(:success) }
+    it { expect(assigns(:bloomy).email).to eq('loulou@lou.com') }
+    it { expect(assigns(:program_name)).to eq('standard') }
+  end
+
+  describe 'POST #create_bloomy' do
+    let(:bloomy_params) do
+      {
+        email: 'lou@lou.com',
+        name: 'name',
+        first_name: 'first_name',
+        age: 43,
+        password: 'tiptop123'
+      }
+    end
+    let(:bloomy) { Bloomy.find_by(email: 'lou@lou.com') }
+
+    before do
+      post :create_bloomy, bloomy: bloomy_params, program_name: 'standard'
+    end
+
+    context 'when everything is fine' do
+      before { bloomy.reload }
+
+      it { expect(response).to redirect_to(payment_card_path(program_name: 'standard', bloomy_id: bloomy.id)) }
+
+      it { expect(bloomy.email).to eq('lou@lou.com') }
+      it { expect(bloomy.name).to eq('name') }
+      it { expect(bloomy.first_name).to eq('first_name') }
+      it { expect(bloomy.age).to eq(43) }
+      it { expect(bloomy.valid_password?('tiptop123')).to be(true) }
+    end
+
+    context 'when the password is missing' do
+      let(:bloomy_params) do
+        super()['password'] = nil
+        super()
+      end
+
+      it { expect(response).to redirect_to(payment_identity_path(program_name: 'standard', email: 'lou@lou.com')) }
+      it { expect(flash[:error]).not_to be_nil }
+    end
+  end
+
+  describe 'GET #card' do
+    before { get :card, program_name: 'standard', bloomy_id: bloomy.id }
+
+    context 'if the bloomy is known' do
+      let(:bloomy) { create(:bloomy) }
+
+      it { expect(response).to have_http_status(:success) }
+      it { expect(assigns(:bloomy_id).to_i).to eq(bloomy.id) }
+      it { expect(assigns(:program_name)).to eq('standard') }
+    end
+
+    context 'if the bloomy already has the program' do
+      let(:bloomy) { create(:bloomy, programs: [standard_program.to_program]) }
+
+      it { expect(response).to redirect_to(payment_index_path) }
+    end
+
+    context 'if the bloomy is unknown' do
+      let(:bloomy) { Bloomy.new(id: 999) }
+
+      it { expect(response).to redirect_to(payment_index_path(program_name: 'standard')) }
+      it { expect(flash[:error]).not_to be_nil }
+    end
+  end
+
+  describe 'POST #charge' do
+    let(:bloomy) { create(:bloomy) }
+    let(:cookie_partner) { nil }
+
+    let(:stripes_args) do
+      { amount: amount, currency: 'eur', source: '1234',
+        description: '1 Parcours Bloomr',
+        receipt_email: bloomy.email, metadata: metadata }
+    end
+
+    let(:metadata) do
+      { 'info_client' => "#{bloomy.first_name} - #{bloomy.age} ans - #{bloomy.email}",
+        'source' => 'default', 'program_name' => 'standard' }
+    end
+
+    let(:payload) { { bloomy_id: bloomy.id, stripeToken: '1234', program_name: 'standard' } }
+
+    context 'when there are no pb with stripe' do
+      before do
+        allow(Stripe::Charge).to receive(:create)
+        # TODO: checker les parameteres intercom
+        allow(Intercom::Wrapper).to receive(:create_bloomy)
+
+        if cookie_partner.present?
+          request.cookies[:partner] = 'sujetdubac'
+        end
+
+        post :charge, payload
+        bloomy.reload
+      end
+
+      context 'if its a standard program' do
+        let(:amount) { 3500 }
+
+        it { expect(bloomy.programs.first.name).to eq('standard') }
+        it { expect(Stripe::Charge).to have_received(:create).with(stripes_args) }
+      end
+
+      context 'if its a premium program' do
+        let(:amount) { 5000 }
+        let(:metadata) { super().merge('program_name' => 'premium') }
+        let(:payload)  { super().merge('program_name' => 'premium') }
+
+        it { expect(bloomy.programs.first.name).to eq('premium') }
+        it { expect(Stripe::Charge).to have_received(:create).with(stripes_args) }
+      end
+
+      context 'with sujetdubac cookie' do
+        let(:metadata) { super().merge('source' => 'sujetdubac') }
+        let(:amount) { 1300 }
+        let(:cookie_partner) { 'sujetdubac' }
+
+        it { expect(Stripe::Charge).to have_received(:create).with(stripes_args) }
+      end
+    end
+
+    context 'if there is a pb with strip' do
+      before do
+        allow(Stripe::Charge).to receive(:create).and_raise('nop')
+        post :charge, payload
+        bloomy.reload
+      end
+
+      it { expect(response).to redirect_to(payment_card_path(program_name: 'standard', bloomy_id: bloomy.id)) }
+      it { expect(flash[:error]).to eq('nop') }
+    end
+
+    context 'if the bloomy is unknown' do
+      before { post :charge, payload.merge(bloomy_id: 999) }
+
+      it { expect(response).to redirect_to(payment_index_path(program_name: 'standard')) }
+      it { expect(flash[:error]).not_to be_nil }
+    end
+
+    context 'if the bloomy already has the program' do
+      let(:bloomy) { create(:bloomy, programs: [standard_program.to_program]) }
+
+      before { post :charge, payload }
+
+      it { expect(response).to redirect_to(payment_index_path) }
+      it { expect(flash[:error]).not_to be_nil }
     end
   end
 
   describe 'GET #thanks' do
-    it 'returns http success' do
-      get :thanks
-      expect(response).to have_http_status(:success)
-    end
-  end
+    subject { get :thanks }
 
-  describe 'POST #create' do
-    let(:stripes_args) do
-      { amount: amount, currency: 'eur', source: '1234',
-        description: '1 Parcours Bloomr',
-        receipt_email: 'loulou@lou.com', metadata: metadata }
-    end
-
-    let(:metadata) do
-      { 'info_client' => 'loulou - 44 ans - loulou@lou.com',
-        'source' => 'default', 'gift' => false, 'program_name' => 'standard' }
-    end
-
-    let(:bloomy) do
-      {
-        first_name: 'loulou',
-        name: 'yop',
-        email: 'loulou@lou.com',
-        age: '44',
-        password: 'yopyopyop'
-      }
-    end
-
-    let(:payload) { { bloomy: bloomy, stripeToken: '1234', program_name: 'standard' } }
-
-    subject { Bloomy.first }
-
-    before do
-      allow(Stripe::Charge).to receive(:create)
-      expect(Intercom::Wrapper).to receive(:create_bloomy)
-    end
-
-    describe 'the bloomy creation' do
-      before { post :create, payload }
-
-      it { expect(subject.first_name).to eq('loulou') }
-      it { expect(subject.name).to eq('yop') }
-      it { expect(subject.email).to eq('loulou@lou.com') }
-      it { expect(subject.age).to eq(44) }
-      it { expect(subject.valid_password?('yopyopyop')).to be(true) }
-    end
-
-    context 'if its a premium program' do
-      let(:metadata) { super().merge('program_name' => 'premium') }
-      before { post :create, payload.merge(program_name: 'premium') }
-      it { expect(subject.programs.first.name).to eq('premium') }
-    end
-
-    context 'if its a standard program' do
-      before { post :create, payload.merge(program_name: 'standard') }
-      it { expect(subject.programs.first.name).to eq('standard') }
-    end
-
-    context 'if it s a gift' do
-      let(:payload) { super().merge(gift: true, buyer_email: 'money@rich.com') }
-      let(:stripes_args) { super().merge(receipt_email: 'money@rich.com') }
-      let(:metadata) { super().merge('gift' => true) }
-      let(:amount) { 3500 }
-
-      it 'charges the right amount and redirect to payment_thanks' do
-        expect(Stripe::Charge).to receive(:create).with(stripes_args)
-        post :create, payload
-        expect(response).to redirect_to(payment_thanks_path + '?gift=true')
-      end
-    end
-
-    describe 'the stripe charges' do
-      after do
-        post :create, payload
-        expect(response).to redirect_to(payment_thanks_path + '?email=loulou%40lou.com')
-      end
-
-      context 'with the standard program' do
-        context 'with no cookie' do
-          let(:amount) { 3500 }
-
-          it 'charges the right amount and redirect to payment_thanks' do
-            expect(Stripe::Charge).to receive(:create).with(stripes_args)
-          end
-        end
-
-        context 'with sujetdubac cookie' do
-          let(:metadata) { super().merge('source' => 'sujetdubac') }
-          let(:amount) { 1300 }
-
-          it 'charge the right amount and set the right source' do
-            request.cookies[:partner] = 'sujetdubac'
-            expect(Stripe::Charge).to receive(:create).with(stripes_args)
-          end
-        end
-      end
-
-      context 'with the premium program' do
-        let(:metadata) { super().merge('program_name' => 'premium') }
-        let(:payload) { super().merge('program_name' => 'premium') }
-
-        context 'with no cookie' do
-          let(:amount) { default_campaign.amount('premium') }
-
-          it 'charges the right amount and redirect to payment_thanks' do
-            expect(Stripe::Charge).to receive(:create).with(stripes_args)
-          end
-        end
-
-        context 'with sujetdubac cookie' do
-          let(:metadata) { super().merge('source' => 'sujetdubac') }
-          let(:amount) { sujetdubac_campaign.amount('premium') }
-
-          it 'charge the right amount and set the right source' do
-            request.cookies[:partner] = 'sujetdubac'
-            expect(Stripe::Charge).to receive(:create).with(stripes_args)
-          end
-        end
-      end
-    end
+    it { is_expected.to have_http_status(:success) }
   end
 end

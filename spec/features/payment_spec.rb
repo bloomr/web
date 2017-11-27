@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 feature 'Buy a journey' do
+  let!(:std_pt) { ProgramTemplate.create(name: 'standard', intercom: false, discourse: true) }
+  let!(:premium_pt) { ProgramTemplate.create(name: 'premium', intercom: true, discourse: true) }
+
+  let!(:default_campaign) { FactoryGirl.create(:campaign, partner: 'default') }
+  let!(:sujetdubac_campaign) { FactoryGirl.create(:campaign, partner: 'sujetdubac') }
+
   before do
-    std_pt = ProgramTemplate.create(name: 'standard', intercom: false, discourse: true)
-    premium_pt = ProgramTemplate.create(name: 'premium', intercom: true, discourse: true)
-
-    default_campaign = FactoryGirl.create(:campaign, partner: 'default')
-    sujetdubac_campaign = FactoryGirl.create(:campaign, partner: 'sujetdubac')
-    Campaign.create(partner: 'no-reduction', campaign_url: 'yop')
-
     default_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: std_pt, price: 35)
     default_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: premium_pt, price: 70)
 
@@ -16,53 +15,50 @@ feature 'Buy a journey' do
     sujetdubac_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: premium_pt, price: 26)
   end
 
-  scenario 'I pay standard price with a default url' do
-    visit '/payment'
+  scenario 'I buy a standard program for the first time' do
+    email = 'test@test.com'
+    visit 'payment'
+
+    fill_email_page(email)
+
+    expect(page).to have_current_path(payment_identity_path(email: email, program_name: 'standard'))
+
+    fill_identity_page
+
+    expect(page).to have_current_path(payment_card_path(bloomy_id: Bloomy.find_by(email: email).id, program_name: 'standard'))
     check_price('35.00')
   end
 
-  scenario 'I pay the standard price with standard url' do
-    visit '/payment/standard'
-    check_price('35.00')
-  end
+  scenario 'I buy a premium program after a standard' do
+    bloomy = create(:bloomy)
+    bloomy.programs << std_pt.to_program
 
-  scenario 'I pay the premium price with premium url' do
-    visit '/payment/premium'
+    visit 'payment/premium'
+    fill_email_page(bloomy.email)
+
+    expect(page).to have_current_path(payment_card_path(bloomy_id: bloomy.id, program_name: 'premium'))
     check_price('70.00')
   end
 
-  scenario 'I ve got a special form if its a gift' do
-    visit '/payment?gift=true'
-    expect(page).to have_field('buyer_email')
-    expect(page.find('#gift', visible: false).value).to eq('true')
-  end
-
-  scenario 'i ve got a voucher if its a gift' do
-    visit '/payment/thanks?gift=true'
-    click_link 'Télécharger le coupon PDF'
-  end
-
-  scenario 'I get a discount if I come from a partner' do
+  scenario 'I buy a standard program with a reduction' do
     visit '/partner/sujetdubac'
-
-    visit '/payment'
-    check_price('13.00')
-
-    visit '/payment/standard'
-    check_price('13.00')
-
-    visit '/payment/premium'
+    visit 'payment/premium'
+    fill_email_page('test@test.com')
+    fill_identity_page
     check_price('26.00')
   end
 
-  scenario 'I get a default price if no reduction is set' do
-    visit '/partner/no-reduction'
+  def fill_email_page(email)
+    fill_in 'bloomy_email', with: email
+    click_button 'Suivant'
+  end
 
-    visit '/payment/standard'
-    check_price('35.00')
-
-    visit '/payment/premium'
-    check_price('70.00')
+  def fill_identity_page
+    fill_in 'bloomy_first_name', with: 'first_name'
+    fill_in 'bloomy_name', with: 'name'
+    fill_in 'bloomy_age', with: 34
+    fill_in 'bloomy_password', with: 'hphphpasdanjk'
+    click_button 'Suivant'
   end
 
   def check_price(price)

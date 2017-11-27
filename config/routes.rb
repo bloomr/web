@@ -8,10 +8,18 @@ Rails.application.routes.draw do
   devise_for :bloomies, controllers: { passwords: 'passwords',
                                        sessions: 'bloomy_sessions' }
 
-  resources :payment, only: [:index, :create]
+  resources :payment, only: [:create]
+  post '/payment/post-email', to: 'payment#post_email'
+
+  get 'payment/:program_name/identity/:email', to: 'payment#identity', as: 'payment_identity', constraints: { email: /.+/  }
+  post 'payment/create-bloomy', to: 'payment#create_bloomy'
+
+  get '/payment/:program_name/card/:bloomy_id', to: 'payment#card', as: 'payment_card'
+  post '/payment/charge', to: 'payment#charge'
+
   get '/payment/thanks', to: 'payment#thanks'
   get '/payment/voucher'
-  get '/payment/:program_name', to: 'payment#index', as: 'payment_program'
+  get '/payment(/:program_name)', to: 'payment#index', as: 'payment_program'
 
   get '/me/email_sent', to: 'me#email_sent'
   get '/me/', to: 'me#show'

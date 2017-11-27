@@ -14,23 +14,42 @@
     %p.hide-phone Paiement sécurisé par <b>stripe</b>
   %section.main
 
-    %h1.title Fabuleuse décision !
-    %p.last-step Commençons par le compte avec lequel tu vas te connecter
+    %h1.title Merci !
+    %p.last-step Et maintenant, pour valider ton inscription : le paiement
 
-    = form_for Bloomy.new, url: { controller: 'payment', action: 'post_email'} do |f|
-      = f.email_field :email, placeholder: 'Adresse email', required: true
-      = hidden_field_tag :program_name, @program_name
-      = button_tag 'Suivant', class: 'crazy-btn yellow'
-
+    = form_for Bloomy.new, url: '/payment/charge' do |f|
       .flash-messages
         - if flash[:error]
-          %p #{flash[:error].html_safe}
+          %p #{flash[:error]}
+
+      .payment2-cards
+
+      %p
+      = hidden_field_tag :bloomy_id, @bloomy_id
+      = hidden_field_tag :program_name, @program_name
+      = text_field_tag nil, nil, placeholder: 'Numéro de carte', required: true, class: 'large-cb cc-number', 'data-stripe' => 'number'
+      = text_field_tag nil, nil, placeholder: 'MM/YY', required: true, class: 'small-cb cc-exp', 'data-stripe' => 'exp'
+      = text_field_tag nil, nil, placeholder: 'CVC', required: true, class: 'small-cb cc-cvc', 'data-stripe' => 'cvc'
+
+      %p.cgu
+        En t'inscrivant au programme, tu acceptes les
+        %a{ href: 'https://s3-eu-west-1.amazonaws.com/bloomr/static/CGU_et_CP_B2C.pdf', target: '_blank'}conditions générales et particulières.
+        Remboursement sur simple demande dans un délai de 14 jours.
+
+      = button_tag "Payer #{@price} €", class: 'crazy-btn yellow'
+      %p ou bien
+      %a.paypal{ href: "https://paypal.me/bloomr/#{@price}" }
+        %span Payer avec
+        %span.payment2-paypal Paypal
 
   %footer
     %a{ href: '/' } Bloomr
 
 - content_for :remove_application_js, true
 - content_for :additional_javascript do
+  = javascript_include_tag 'https://js.stripe.com/v2/'
+  = javascript_include_tag 'payment-wrapper'
+
   %script
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

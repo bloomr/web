@@ -6,7 +6,7 @@
   %header
     %div.left
       %span.white-logo
-      %a.second{ href: 'javascript:history.back();' }
+      %a.second{ href: payment_index_path(program_name: @program_name) }
         ←&nbsp;
         %span.back RETOUR
         %br
@@ -15,16 +15,20 @@
   %section.main
 
     %h1.title Fabuleuse décision !
-    %p.last-step Commençons par le compte avec lequel tu vas te connecter
+    %p.last-step Dernière étape avant de commencer le programme : l’inscription !
 
-    = form_for Bloomy.new, url: { controller: 'payment', action: 'post_email'} do |f|
-      = f.email_field :email, placeholder: 'Adresse email', required: true
+    = form_for @bloomy, url: { controller: 'payment', action: 'create_bloomy' } do |f|
+      = f.email_field :email, placeholder: 'Adresse email'
+      = f.text_field :first_name, placeholder: 'Prénom', required: true, autofocus: true
+      = f.text_field :name, placeholder: 'Nom', required: true
+      = f.number_field :age, placeholder: 'Âge', required: true
+      = f.password_field :password, placeholder: 'Mot de passe', required: true
       = hidden_field_tag :program_name, @program_name
       = button_tag 'Suivant', class: 'crazy-btn yellow'
 
       .flash-messages
         - if flash[:error]
-          %p #{flash[:error].html_safe}
+          %p #{flash[:error]}
 
   %footer
     %a{ href: '/' } Bloomr
