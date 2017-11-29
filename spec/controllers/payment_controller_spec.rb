@@ -151,7 +151,6 @@ RSpec.describe PaymentController, type: :controller do
       before do
         allow(Stripe::Charge).to receive(:create)
         # TODO: checker les parameteres intercom
-        allow(Intercom::Wrapper).to receive(:create_bloomy)
 
         if cookie_partner.present?
           request.cookies[:partner] = 'sujetdubac'

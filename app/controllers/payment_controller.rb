@@ -47,7 +47,6 @@ class PaymentController < ApplicationController
     stripe_charge(bloomy)
     bloomy.programs << ProgramTemplate.find_by(name: program_name).to_program
 
-    Intercom::Wrapper.create_bloomy(bloomy, false)
     redirect_to(payment_thanks_path(email: URI.encode(bloomy.email)))
   rescue StandardError => e
     flash[:error] = e.message
