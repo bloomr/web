@@ -22,7 +22,8 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
         'first-name' => 'bloomy',
         'email' => 'bloomy5@b.com',
         'coached' => false,
-        'company-name' => 'company_name_tip_top'
+        'company-name' => 'company_name_tip_top',
+        'age' => 21
       },
       'relationships' => {
         'programs' => { 'data' => [{ 'id' => '1', 'type' => 'programs' }] }
