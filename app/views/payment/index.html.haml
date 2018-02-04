@@ -15,10 +15,10 @@
   %section.main
 
     %h1.title Fabuleuse décision !
-    %p.last-step Commençons par le compte avec lequel tu vas te connecter
+    %p.last-step Avec quelle adresse email souhaites-tu te connecter ?
 
     = form_for Bloomy.new, url: { controller: 'payment', action: 'post_email'} do |f|
-      = f.email_field :email, placeholder: 'Adresse email', required: true
+      = f.email_field :email, placeholder: 'Ton adresse email', required: true
       = hidden_field_tag :program_name, @program_name
       = button_tag 'Suivant', class: 'crazy-btn yellow'
 
