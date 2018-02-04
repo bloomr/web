@@ -14,8 +14,10 @@
     %p.hide-phone Paiement sécurisé par <b>stripe</b>
   %section.main
 
-    %h1.title Merci !
-    %p.last-step Et maintenant, pour valider ton inscription : le paiement
+    %h1.title Paiement
+    %p.last-step La transaction est sécurisée par connexion cryptée (https).
+    %p.last-step Bloomr ne stocke pas ton numéro de carte bleue.
+    %p.last-step Un seul paiement de #{@price} est effectué.
 
     = form_for Bloomy.new, url: '/payment/charge' do |f|
       .flash-messages
