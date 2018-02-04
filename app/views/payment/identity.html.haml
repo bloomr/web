@@ -16,14 +16,15 @@
 
     %h1.title Fabuleuse décision !
     %p.last-step Merci, plus que quelques infos pour finaliser ton inscription
-    %p.last-step Elles ne seront jamais transmises à un tiers
+    %p Elles ne seront jamais transmises à un tiers
+    %br
 
     = form_for @bloomy, url: { controller: 'payment', action: 'create_bloomy' } do |f|
-      = f.email_field :email, placeholder: 'Adresse email'
-      = f.text_field :first_name, placeholder: 'Ton prénom', required: true, autofocus: true
+      = f.email_field :email, placeholder: 'Ton adresse email'
+      = f.password_field :password, placeholder: 'Ton mot de passe', required: true, autofocus: true
+      = f.text_field :first_name, placeholder: 'Ton prénom', required: true
       = f.text_field :name, placeholder: 'Ton nom', required: true
       = f.number_field :age, placeholder: 'Ton âge', required: true
-      = f.password_field :password, placeholder: 'Ton mot de passe', required: true
       = hidden_field_tag :program_name, @program_name
       = button_tag 'Suivant', class: 'crazy-btn yellow'
 
