@@ -17,7 +17,7 @@
     %h1.title Paiement
     %p La transaction est sécurisée par connexion cryptée (https)
     %p Bloomr ne stocke pas ton numéro de carte bleue
-    %p Un seul paiement de #{@price} est effectué
+    %p Un seul paiement de #{@price} € est effectué
 
     = form_for Bloomy.new, url: '/payment/charge' do |f|
       .flash-messages
