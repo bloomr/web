@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171007120448) do
+ActiveRecord::Schema.define(version: 20180219154711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(version: 20171007120448) do
     t.string   "normalized_tag"
   end
 
+  add_index "keywords", ["normalized_tag"], name: "index_keywords_on_normalized_tag", unique: true, using: :btree
   add_index "keywords", ["tribe_id"], name: "index_keywords_on_tribe_id", using: :btree
 
   create_table "missions", force: :cascade do |t|

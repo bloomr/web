@@ -250,8 +250,8 @@ RSpec.describe User, type: :model do
       end
 
       context 'and two other keywords without tribes' do
-        let(:without_tribe_keyword1) { Keyword.create }
-        let(:without_tribe_keyword2) { Keyword.create }
+        let(:without_tribe_keyword1) { Keyword.create(tag: 'k1') }
+        let(:without_tribe_keyword2) { Keyword.create(tag: 'k2') }
 
         context 'and a user with this 3 keywords' do
           let(:user) { create(:user, keywords: [ecologie_keyword, without_tribe_keyword1, without_tribe_keyword2]) }
@@ -261,8 +261,8 @@ RSpec.describe User, type: :model do
 
       context 'with a "beautiful" tribe linked to "artisanat" and "flowers" keyword' do
         let(:beautiful_tribe) { Tribe.create(name: 'beautiful') }
-        let(:artisanat_keyword) { Keyword.create(tribe: beautiful_tribe) }
-        let(:flowers_keyword) { Keyword.create(tribe: beautiful_tribe) }
+        let(:artisanat_keyword) { Keyword.create(tribe: beautiful_tribe, tag: 'artisanat') }
+        let(:flowers_keyword) { Keyword.create(tribe: beautiful_tribe, tag: 'flowers') }
 
         context 'and a user with the 3 keywords' do
           let(:user) { create(:user, keywords: [ecologie_keyword, artisanat_keyword, flowers_keyword]) }
