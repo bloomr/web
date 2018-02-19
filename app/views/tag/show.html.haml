@@ -22,4 +22,6 @@
     - @portraits.each do |portrait|
       %li{ itemscope: true, itemtype: 'http://schema.org/Person' }
         = render 'jobs/card', portrait: portrait
-        
+
+  %section.cta
+    = link_to 'Découvre nos programmes en ligne', program_path, class: 'crazy-btn'

@@ -32,7 +32,7 @@
       // change !
       max-width: 600px;
 
-      @media (max-width: 699px) { 
+      @media (max-width: 699px) {
         flex-basis: 100%;
         order: -1;
       }
@@ -65,5 +65,10 @@
       margin: 15px;
       width: 290px;
     }
+  }
+
+  .cta {
+    text-align: center;
+    margin-bottom: 30px;
   }
 }
