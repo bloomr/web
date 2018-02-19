@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :payment, only: [:create]
   post '/payment/post-email', to: 'payment#post_email'
 
-  get 'payment/:program_name/identity/:email', to: 'payment#identity', as: 'payment_identity', constraints: { email: /.+/  }
+  get 'payment/:program_name/identity/:email', to: 'payment#identity', as: 'payment_identity', constraints: { email: /.+/ }
   post 'payment/create-bloomy', to: 'payment#create_bloomy'
 
   get '/payment/:program_name/card/:bloomy_id', to: 'payment#card', as: 'payment_card'
