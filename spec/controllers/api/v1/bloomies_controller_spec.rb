@@ -35,7 +35,8 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
           'attributes' => {
             'name' => 'program',
             'discourse' => true,
-            'intercom' => true
+            'intercom' => true,
+            'ended-at' => nil
           },
           'relationships' => {
             'missions' => {
