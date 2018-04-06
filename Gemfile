@@ -87,6 +87,7 @@ group :development, :test do
   gem 'sprite-factory'
   gem 'rmagick'
   gem 'byebug'
+  gem 'chromedriver-helper'
 end
 
 group :test do
