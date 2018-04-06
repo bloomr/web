@@ -99,6 +99,7 @@ Rails.application.configure do
     path: '/:class/:attachment/:id_partition/:style/:filename',
     url: ':s3_domain_url',
     default_url: 'missing.png',
-    s3_protocol: :https
+    s3_protocol: :https,
+    s3_region: ENV['S3_REGION']
   }
 end
