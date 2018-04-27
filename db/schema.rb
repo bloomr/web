@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326125006) do
+ActiveRecord::Schema.define(version: 20180427111720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -244,6 +244,7 @@ ActiveRecord::Schema.define(version: 20180326125006) do
     t.boolean  "discourse",  default: false
     t.boolean  "intercom",   default: false
     t.datetime "ended_at"
+    t.datetime "started_at"
   end
 
   add_index "programs", ["bloomy_id"], name: "index_programs_on_bloomy_id", using: :btree
