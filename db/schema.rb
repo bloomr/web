@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427111720) do
+ActiveRecord::Schema.define(version: 20180528133515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,14 @@ ActiveRecord::Schema.define(version: 20180427111720) do
   end
 
   add_index "books_users", ["book_id", "user_id"], name: "index_books_users_on_book_id_and_user_id", unique: true, using: :btree
+
+  create_table "bundles", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bundles", ["name"], name: "index_bundles_on_name", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "partner"
@@ -232,6 +240,7 @@ ActiveRecord::Schema.define(version: 20180427111720) do
     t.boolean  "intercom",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "bundle_id"
   end
 
   add_index "program_templates", ["name"], name: "index_program_templates_on_name", unique: true, using: :btree
@@ -350,4 +359,5 @@ ActiveRecord::Schema.define(version: 20180427111720) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "keywords", "tribes"
+  add_foreign_key "program_templates", "bundles"
 end
