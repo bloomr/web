@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528133515) do
+ActiveRecord::Schema.define(version: 20180528153623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,14 @@ ActiveRecord::Schema.define(version: 20180528133515) do
   end
 
   add_index "bundles", ["name"], name: "index_bundles_on_name", unique: true, using: :btree
+
+  create_table "bundles_campaigns", force: :cascade do |t|
+    t.integer "bundle_id"
+    t.integer "campaign_id"
+    t.decimal "price",       null: false
+  end
+
+  add_index "bundles_campaigns", ["bundle_id", "campaign_id"], name: "index_bundles_campaigns_on_bundle_id_and_campaign_id", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "partner"
