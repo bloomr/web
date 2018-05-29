@@ -45,7 +45,7 @@ class PaymentController < ApplicationController
   def charge
     bloomy = Bloomy.find(params[:bloomy_id])
     stripe_charge(bloomy)
-    bloomy.programs << ProgramTemplate.find_by(name: program_name).to_program
+    bloomy.programs << Bundle.find_by(name: program_name).to_program
 
     redirect_to(payment_thanks_path(email: URI.encode(bloomy.email)))
   rescue StandardError => e

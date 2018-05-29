@@ -4,15 +4,18 @@ feature 'Buy a journey' do
   let!(:std_pt) { ProgramTemplate.create(name: 'standard', intercom: false, discourse: true) }
   let!(:premium_pt) { ProgramTemplate.create(name: 'premium', intercom: true, discourse: true) }
 
+  let!(:std_bundle) { Bundle.create(name: 'standard', program_templates: [std_pt]) }
+  let!(:premium_bundle) { Bundle.create(name: 'premium', program_templates: [premium_pt]) }
+
   let!(:default_campaign) { FactoryGirl.create(:campaign, partner: 'default') }
   let!(:sujetdubac_campaign) { FactoryGirl.create(:campaign, partner: 'sujetdubac') }
 
   before do
-    default_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: std_pt, price: 35)
-    default_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: premium_pt, price: 70)
+    default_campaign.bundles_campaigns << BundlesCampaign.new(bundle: std_bundle, price: 35)
+    default_campaign.bundles_campaigns << BundlesCampaign.new(bundle: premium_bundle, price: 70)
 
-    sujetdubac_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: std_pt, price: 13)
-    sujetdubac_campaign.campaignsProgramTemplates << CampaignsProgramTemplate.new(program_template: premium_pt, price: 26)
+    sujetdubac_campaign.bundles_campaigns << BundlesCampaign.new(bundle: std_bundle, price: 13)
+    sujetdubac_campaign.bundles_campaigns << BundlesCampaign.new(bundle: premium_bundle, price: 26)
   end
 
   scenario 'I buy a standard program for the first time' do

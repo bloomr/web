@@ -7,15 +7,18 @@ RSpec.describe PaymentController, type: :controller do
   let!(:standard_program) { ProgramTemplate.create(name: 'standard', intercom: false, discourse: true) }
   let!(:premium_program)  { ProgramTemplate.create(name: 'premium', intercom: true, discourse: true) }
 
-  let!(:std_campaign_program) { CampaignsProgramTemplate.create(campaign: default_campaign, program_template: standard_program, price: 35) }
-  let!(:premium_campaign_program) { CampaignsProgramTemplate.create(campaign: default_campaign, program_template: premium_program, price: 50) }
+  let!(:standard_bundle) { Bundle.create(name: 'standard', program_templates: [standard_program]) }
+  let!(:premium_bundle) { Bundle.create(name: 'premium', program_templates: [premium_program]) }
 
-  let!(:sujet_std_campaign_program) { CampaignsProgramTemplate.create(campaign: sujetdubac_campaign, program_template: standard_program, price: 13) }
-  let!(:sujet_premium_campaign_program) { CampaignsProgramTemplate.create(campaign: sujetdubac_campaign, program_template: premium_program, price: 26) }
+  let!(:std_bundle_campaign) { BundlesCampaign.create(campaign: default_campaign, bundle: standard_bundle, price: 35) }
+  let!(:premium_bundle_campaign) { BundlesCampaign.create(campaign: default_campaign, bundle: premium_bundle, price: 50) }
+
+  let!(:sujet_std_bundle_campaign) { BundlesCampaign.create(campaign: sujetdubac_campaign, bundle: standard_bundle, price: 13) }
+  let!(:sujet_premium_bundle_campaign) { BundlesCampaign.create(campaign: sujetdubac_campaign, bundle: premium_bundle, price: 26) }
 
   before do
-    default_campaign.campaignsProgramTemplates << std_campaign_program << premium_campaign_program
-    sujetdubac_campaign.campaignsProgramTemplates << sujet_std_campaign_program << sujet_premium_campaign_program
+    default_campaign.bundles_campaigns << std_bundle_campaign << premium_bundle_campaign
+    sujetdubac_campaign.bundles_campaigns << sujet_std_bundle_campaign << sujet_premium_bundle_campaign
   end
 
   describe 'GET #index' do
