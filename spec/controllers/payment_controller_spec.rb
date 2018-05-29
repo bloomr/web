@@ -139,7 +139,7 @@ RSpec.describe PaymentController, type: :controller do
 
     let(:stripes_args) do
       { amount: amount, currency: 'eur', source: '1234',
-        description: '1 Parcours Bloomr',
+        description: '1 Accès Bloomr',
         receipt_email: bloomy.email, metadata: metadata }
     end
 

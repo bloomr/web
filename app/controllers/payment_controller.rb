@@ -79,7 +79,7 @@ class PaymentController < ApplicationController
       amount: campaign.amount(program_name),
       currency: 'eur',
       source: params[:stripeToken],
-      description: '1 Parcours Bloomr',
+      description: '1 Accès Bloomr',
       receipt_email: bloomy.email,
       metadata: metadata(bloomy)
     }
