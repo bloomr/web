@@ -6,6 +6,7 @@ class Campaign < ActiveRecord::Base
   has_many :bundles, through: :bundles_campaigns
 
   accepts_nested_attributes_for :campaignsProgramTemplates, allow_destroy: true
+  accepts_nested_attributes_for :bundles_campaigns, allow_destroy: true
 
   def self.find_by_partner_or_default(partner)
     campaign = Campaign.find_by_partner(partner)

@@ -1,7 +1,7 @@
 ActiveAdmin.register Campaign do
   permit_params :id, :partner, :campaign_url,
-                campaignsProgramTemplates_attributes: [
-                  :id, :campaign_id, :program_template_id, :price, :_destroy
+                bundles_campaigns_attributes: [
+                  :id, :bundle_id, :price, :_destroy
                 ]
 
   index do
@@ -17,8 +17,8 @@ ActiveAdmin.register Campaign do
     f.inputs 'Campaign' do
       f.input :partner
       f.input :campaign_url
-      f.has_many :campaignsProgramTemplates, heading: 'Program Templates', allow_destroy: true do |a|
-        a.input :program_template_id, label: 'program', as: :select, collection: ProgramTemplate.all.map { |p| [p.name, p.id] }
+      f.has_many :bundles_campaigns, heading: 'Bundles', allow_destroy: true do |a|
+        a.input :bundle_id, label: 'bundle', as: :select, collection: Bundle.all.map { |p| [p.name, p.id] }
         a.input :price
       end
     end
