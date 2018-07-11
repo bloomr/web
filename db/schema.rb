@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530140121) do
+ActiveRecord::Schema.define(version: 20180709131905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,13 @@ ActiveRecord::Schema.define(version: 20180530140121) do
 
   add_index "bundles_campaigns", ["bundle_id", "campaign_id"], name: "index_bundles_campaigns_on_bundle_id_and_campaign_id", unique: true, using: :btree
 
+  create_table "bundles_contracts", force: :cascade do |t|
+    t.integer "bundle_id"
+    t.integer "contract_id"
+  end
+
+  add_index "bundles_contracts", ["bundle_id", "contract_id"], name: "index_bundles_contracts_on_bundle_id_and_contract_id", unique: true, using: :btree
+
   create_table "campaigns", force: :cascade do |t|
     t.string   "partner"
     t.decimal  "standard_price"
@@ -163,6 +170,16 @@ ActiveRecord::Schema.define(version: 20180530140121) do
   add_index "challenges_users", ["challenge_id"], name: "index_challenges_users_on_challenge_id", using: :btree
   add_index "challenges_users", ["user_id", "challenge_id"], name: "index_challenges_users_on_user_id_and_challenge_id", unique: true, using: :btree
   add_index "challenges_users", ["user_id"], name: "index_challenges_users_on_user_id", using: :btree
+
+  create_table "contracts", force: :cascade do |t|
+    t.string   "company_name", null: false
+    t.string   "key",          null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "contracts", ["company_name"], name: "index_contracts_on_company_name", unique: true, using: :btree
+  add_index "contracts", ["key"], name: "index_contracts_on_key", unique: true, using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
