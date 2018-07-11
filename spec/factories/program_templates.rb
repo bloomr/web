@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :program_template do
-    name 'program_template_name'
+    sequence(:name) { |n| "program_template_name_#{n}" }
     discourse false
     intercom false
   end
