@@ -25,6 +25,14 @@
       = f.text_field :first_name, placeholder: 'Ton prénom', required: true
       = f.text_field :name, placeholder: 'Ton nom', required: true
       = f.number_field :age, placeholder: 'Ton âge', required: true
+      .cgu
+        = f.check_box :cgu_accepted, required: true
+        = f.label :cgu_accepted do
+          Je reconnais avoir pris connaissance des 
+          = link_to("Conditions Générales d'Utilisation", 'https://drive.google.com/file/d/1Ihjqc7-Bs0n9Ko1YsOCWxQnKTx97PzQB/view')
+          et de la 
+          = link_to("Charte de Confidentialité", 'https://drive.google.com/file/d/1hG5suJB564sGUF9XBkhQQaUH9estJ7ou/view?usp=sharing')
+
       = hidden_field_tag :program_name, @program_name
       = button_tag 'Suivant', class: 'crazy-btn yellow'
 

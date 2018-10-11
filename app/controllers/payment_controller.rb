@@ -71,7 +71,7 @@ class PaymentController < ApplicationController
   end
 
   def bloomy_params
-    params.require(:bloomy).permit(:email, :first_name, :age, :password, :name)
+    params.require(:bloomy).permit(:email, :first_name, :age, :password, :name, :cgu_accepted)
   end
 
   def stripe_charge(bloomy)

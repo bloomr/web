@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180709131905) do
+ActiveRecord::Schema.define(version: 20181011120833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20180709131905) do
     t.string   "name"
     t.boolean  "coached",                           default: false
     t.string   "company_name"
+    t.boolean  "cgu_accepted"
   end
 
   add_index "bloomies", ["authentication_token"], name: "index_bloomies_on_authentication_token", unique: true, using: :btree

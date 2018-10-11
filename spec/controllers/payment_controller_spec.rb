@@ -76,7 +76,8 @@ RSpec.describe PaymentController, type: :controller do
         name: 'name',
         first_name: 'first_name',
         age: 43,
-        password: 'tiptop123'
+        password: 'tiptop123',
+        cgu_accepted: true
       }
     end
     let(:bloomy) { Bloomy.find_by(email: 'lou@lou.com') }
@@ -95,6 +96,7 @@ RSpec.describe PaymentController, type: :controller do
       it { expect(bloomy.first_name).to eq('first_name') }
       it { expect(bloomy.age).to eq(43) }
       it { expect(bloomy.valid_password?('tiptop123')).to be(true) }
+      it { expect(bloomy.cgu_accepted?).to be(true) }
     end
 
     context 'when the password is missing' do
