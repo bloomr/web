@@ -1,5 +1,5 @@
 ActiveAdmin.register Bloomy do
-  permit_params :email, :first_name, :age, :coached, :password, :company_name,
+  permit_params :email, :first_name, :name, :age, :coached, :password, :company_name,
                 programs_attributes: [
                   :name, :id, :discourse, :intercom, :_destroy
                 ]
@@ -35,6 +35,7 @@ ActiveAdmin.register Bloomy do
 
   filter :email
   filter :first_name
+  filter :name
   filter :age
   filter :created_at
 
@@ -42,6 +43,7 @@ ActiveAdmin.register Bloomy do
     f.inputs 'Bloomy' do
       f.input :email
       f.input :first_name
+      f.input :name
       f.input :age
       f.input :coached
       f.input :company_name

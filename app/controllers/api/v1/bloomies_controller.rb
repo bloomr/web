@@ -46,7 +46,7 @@ module Api
       end
 
       def bloomy_parameters
-        params.permit(:first_name, :email, :password)
+        params.permit(:first_name, :name, :email, :password)
       end
     end
   end

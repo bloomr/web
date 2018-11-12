@@ -20,6 +20,7 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
       'type' => 'bloomies',
       'attributes' => {
         'first-name' => 'bloomy',
+        'name' => 'Dumont',
         'email' => 'bloomy5@b.com',
         'coached' => false,
         'company-name' => 'company_name_tip_top',
@@ -87,6 +88,7 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
 
   describe 'create' do
     let(:first_name) { 'first_name' }
+    let(:name) { 'name' }
     let(:password) { 'password' }
     let(:contract) { create(:contract) }
     let(:bundle) { create(:bundle, :with_program_template, contracts: [contract]) }
@@ -100,6 +102,7 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
     let(:params) do
       {
         first_name: first_name,
+        name: name,
         password: password,
         email: email,
         key: key,
@@ -119,6 +122,7 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
           it do
             expect(created_bloomy).to have_attributes(
               first_name: first_name,
+              name: name,
               email: email,
               company_name: contract.company_name,
               coached: true
