@@ -36,6 +36,7 @@ ActiveAdmin.register Bloomy do
   filter :email
   filter :first_name
   filter :name
+  filter :company_name
   filter :age
   filter :created_at
 
