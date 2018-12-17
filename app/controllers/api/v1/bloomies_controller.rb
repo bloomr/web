@@ -1,7 +1,7 @@
 module Api
   module V1
     class BloomiesController < ApplicationController
-      skip_before_filter :verify_authenticity_token
+      skip_before_action :verify_authenticity_token
       acts_as_token_authentication_handler_for Bloomy, fallback: :none, only: :show
       before_action :check_bloomy, only: :show
 

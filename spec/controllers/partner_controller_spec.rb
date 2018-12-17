@@ -8,7 +8,7 @@ RSpec.describe PartnerController, type: :controller do
 
       describe 'with a partner campaign' do
         before do
-          get :set_campaign, name: 'sujetdubac'
+          get :set_campaign, params: { name: 'sujetdubac' }
         end
 
         it 'redirect to bac bloomr org' do

@@ -5,7 +5,7 @@ RSpec.describe TagController, type: :controller do
     context 'when a tag is unknown' do
       it 'raises a 404' do
         expect do
-          get :show, normalized_tag: 'unknown_tag'
+          get :show, params: { normalized_tag: 'unknown_tag' }
         end.to raise_error(ActionController::RoutingError)
       end
     end
@@ -13,7 +13,7 @@ RSpec.describe TagController, type: :controller do
     context 'when a tag is known' do
       let!(:tag) { Keyword.create(tag: 'Capital') }
       before :each do
-        get :show, normalized_tag: 'capital'
+        get :show, params: { normalized_tag: 'capital' }
       end
 
       it 'returns it' do

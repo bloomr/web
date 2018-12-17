@@ -9,8 +9,7 @@ RSpec.describe JobsController, type: :controller do
     end
 
     before do
-      get :show, normalized_job_title: user.normalized_job_title,
-                 normalized_first_name: user.normalized_first_name
+      get :show, params: { normalized_job_title: user.normalized_job_title, normalized_first_name: user.normalized_first_name }
     end
 
     it 'counts the view' do

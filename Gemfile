@@ -1,42 +1,42 @@
 source 'https://rubygems.org'
-ruby '2.4.1'
+ruby '2.5.3'
 
-gem 'unicorn'
+gem 'puma'
 gem 'rack-timeout'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.8'
+gem 'rails'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '~> 5.0.0'
+gem 'turbolinks'
 #
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', group: :doc
 
 gem 'devise'
-gem 'simple_token_authentication', '~> 1.0'
+gem 'simple_token_authentication'
 
 gem 'autoprefixer-rails'
 
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin'
 
 gem 'select2-rails'
-gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
+gem 'activeadmin-select2'
 
-gem 'paperclip', '~> 5.2.0'
-gem 'aws-sdk', ' ~> 2.0'
+gem 'paperclip'
+gem 'aws-sdk'
 
 gem 'newrelic_rpm'
 
@@ -53,15 +53,15 @@ gem 'mandrill-api'
 gem 'httparty'
 gem 'delayed_job_active_record'
 
-gem 'rails-i18n', '~> 4.0.0'
+gem 'rails-i18n'
 gem 'factory_girl_rails'
 
 gem 'impressionist'
 
 gem 'jsonapi-resources'
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers'
 
-gem 'intercom', '~> 3.5.9'
+gem 'intercom'
 
 gem 'sitemap_generator'
 gem 'fog-aws'
@@ -75,6 +75,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
   gem 'capybara'

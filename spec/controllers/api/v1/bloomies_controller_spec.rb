@@ -21,7 +21,7 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
       'attributes' => {
         'first-name' => 'bloomy',
         'name' => 'Dumont',
-        'email' => 'bloomy5@b.com',
+        'email' => bloomy.email,
         'coached' => false,
         'company-name' => 'company_name_tip_top',
         'age' => 21
@@ -54,9 +54,11 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
   describe 'show' do
     context 'when the bloomy is logged' do
       before :each do
-        get :show, id: bloomy.id,
-                   'bloomy_email': bloomy.email,
-                   'bloomy_token': bloomy.authentication_token
+        get :show, params: {
+          id: bloomy.id,
+          'bloomy_email': bloomy.email,
+          'bloomy_token': bloomy.authentication_token
+        }
       end
 
       it 'returns the logged user' do
@@ -70,9 +72,11 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
       end
 
       it 'returns unauthorized if another bloomy is required' do
-        get :show, id: bloomy2.id,
-                   'bloomy_email': bloomy.email,
-                   'bloomy_token': bloomy.authentication_token
+        get :show, params: {
+          id: bloomy2.id,
+          'bloomy_email': bloomy.email,
+          'bloomy_token': bloomy.authentication_token
+        }
 
         expect(response).to have_http_status(:unauthorized)
       end
@@ -80,7 +84,7 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
 
     context 'when the bloomy is not logged in' do
       it 'returns unauthorized' do
-        get :show, id: 1
+        get :show, params: { id: 1 }
         expect(response).to have_http_status(:unauthorized)
       end
     end
@@ -112,7 +116,7 @@ RSpec.describe Api::V1::BloomiesController, type: :controller do
 
     let(:body) { JSON.parse(response.body) }
 
-    before { post :create, params }
+    before { post :create, params: params }
 
     context 'when the key match a contract' do
       context 'when a corresponding bundle exist' do

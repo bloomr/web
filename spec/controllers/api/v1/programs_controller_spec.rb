@@ -11,17 +11,20 @@ RSpec.describe Api::V1::ProgramsController, type: :controller do
   describe 'show' do
     context 'when the bloomy is logged' do
       it 'returns the program' do
-        get :show, id: program.id,
-                   'bloomy_email': bloomy.email,
-                   'bloomy_token': bloomy.authentication_token
-
+        get :show, params: {
+          id: program.id,
+          'bloomy_email': bloomy.email,
+          'bloomy_token': bloomy.authentication_token
+        }
         expect(response).to have_http_status(:success)
       end
 
       it 'returns unauthorized if another bloomy is required' do
-        get :show, id: program2.id,
-                   'bloomy_email': bloomy.email,
-                   'bloomy_token': bloomy.authentication_token
+        get :show, params: {
+          id: program2.id,
+          'bloomy_email': bloomy.email,
+          'bloomy_token': bloomy.authentication_token
+        }
 
         expect(response).to have_http_status(:unauthorized)
       end
@@ -29,7 +32,7 @@ RSpec.describe Api::V1::ProgramsController, type: :controller do
 
     context 'when the bloomy is not logged in' do
       it 'returns unauthorized' do
-        get :show, id: program.id
+        get :show, params: { id: program.id }
         expect(response).to have_http_status(:unauthorized)
       end
     end
@@ -60,7 +63,7 @@ RSpec.describe Api::V1::ProgramsController, type: :controller do
 
         context 'with one missions' do
           it 'updates the program' do
-            patch :update, payload
+            patch :update, params: payload
 
             expect(response).to have_http_status(:success)
             expect(program.reload.missions).to match([mission])
@@ -73,7 +76,7 @@ RSpec.describe Api::V1::ProgramsController, type: :controller do
             }
 
             it 'updates the program' do
-              patch :update, payload
+              patch :update, params: payload
 
               expect(response).to have_http_status(:success)
               expect(program.reload.missions).to match([mission, mission2])
@@ -82,7 +85,7 @@ RSpec.describe Api::V1::ProgramsController, type: :controller do
 
           it 'returns unauthorized if update another program' do
             payload['id'] = program2.id
-            patch :update, payload
+            patch :update, params: payload
 
             expect(response).to have_http_status(:unauthorized)
           end
@@ -91,7 +94,7 @@ RSpec.describe Api::V1::ProgramsController, type: :controller do
 
       context 'when the bloomy is not logged' do
         it 'returns unauthorized' do
-          patch :update, payload
+          patch :update, params: payload
 
           expect(response).to have_http_status(:unauthorized)
         end

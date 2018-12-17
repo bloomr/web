@@ -32,7 +32,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
       before :each do
         Warden.test_mode!
         login_as(user, scope: :user)
-        patch '/api/v1/users/1', payload(user.id).to_json, headers
+        patch '/api/v1/users/1', params: payload(user.id).to_json, headers: headers
         user.reload
       end
 
@@ -46,7 +46,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
     unless ENV['TRAVIS']
       context 'when the user is not logged in' do
         before :each do
-          patch '/api/v1/users/1', payload(user.id).to_json, headers
+          patch '/api/v1/users/1', params: payload(user.id).to_json, headers: headers
         end
 
         let(:my_payload) { payload(user.id) }
@@ -58,7 +58,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
   describe 'GET one #users' do
     it 'send the right attributes' do
       expect do
-        get "/api/v1/users/#{user.id}", nil, headers
+        get "/api/v1/users/#{user.id}", params: headers
       end.to raise_error(ActionController::RoutingError)
     end
   end
@@ -66,7 +66,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
   describe 'POST #users' do
     it 'has not route' do
       expect do
-        post "/api/v1/users/#{user.id}", nil, headers
+        post "/api/v1/users/#{user.id}", params: headers
       end.to raise_error(ActionController::RoutingError)
     end
   end
@@ -74,7 +74,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
   describe 'GET all #users' do
     it 'has not route' do
       expect do
-        post '/api/v1/users', nil, headers
+        post '/api/v1/users', params: headers
       end.to raise_error(ActionController::RoutingError)
     end
   end

@@ -5,7 +5,7 @@ module Api
 
     class CommentsController < ApplicationController
 
-      before_filter :load_question
+      before_action :load_question
 
       def index
         render json: @question.published_questions
@@ -38,7 +38,7 @@ module Api
 
       def comment_params
         comment_raw_params = params.require(:comment).permit(:author_avatar_url, :author_name, :comment, :question_id)
-        comment_raw_params.reduce({}) { |hash, (k, v)| hash.merge(k => strip_tags(v)) }
+        comment_raw_params.to_hash.reduce({}) { |hash, (k, v)| hash.merge(k => strip_tags(v)) }
       end
 
       def notify_slack comment, type

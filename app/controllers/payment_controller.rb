@@ -67,7 +67,7 @@ class PaymentController < ApplicationController
   end
 
   def program_name
-    params[:program_name] || 'standard'
+    params[:program_name].present? ? params[:program_name] : 'standard'
   end
 
   def bloomy_params

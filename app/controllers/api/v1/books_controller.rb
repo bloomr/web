@@ -1,8 +1,8 @@
 module Api
-  module V1
+module V1
     class BooksController < BaseController
       def search
-        in_english = params[:inEnglish].nil? ? false : params[:inEnglish]
+        in_english = params[:inEnglish] == 'true' ? true : false
         books = Amazon::Search.books(params[:keywords], in_english)
         data = books.map do |book|
           {

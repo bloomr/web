@@ -22,7 +22,7 @@ module Bloomr
 
     config.active_job.queue_adapter = :delayed_job
 
-    config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
+    config.middleware.insert_before 0, Rack::Cors, :debug => true, :logger => (-> { Rails.logger }) do
       allow do
         origins '*'
 
@@ -52,8 +52,8 @@ module Bloomr
 
     config.action_mailer.default_url_options = { host: ENV['MAILER_URL'] }
 
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.app_generators.scaffold_controller = :scaffold_controller
+
+    config.active_record.sqlite3.represent_boolean_as_integer = true
   end
 end

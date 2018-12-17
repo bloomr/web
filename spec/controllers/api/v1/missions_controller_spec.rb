@@ -13,7 +13,7 @@ RSpec.describe Api::V1::MissionsController, type: :controller do
 
       context 'when the mission does not exists' do
         it 'creates the mission' do
-          post :create, data: { attributes: { prismic_id: '2' }, type: 'mission' }
+          post :create, params: { data: { attributes: { prismic_id: '2' }, type: 'mission' } }
 
           expect(response).to have_http_status(:success)
           expect(Mission.find_by(prismic_id: 2)).not_to be_nil
@@ -22,7 +22,7 @@ RSpec.describe Api::V1::MissionsController, type: :controller do
 
       context 'when the mission exists' do
         it 'returns this mission' do
-          post :create, data: { attributes: { prismic_id: '1' }, type: 'mission' }
+          post :create, params: { data: { attributes: { prismic_id: '1' }, type: 'mission' } }
 
           expect(response).to have_http_status(:success)
           expect(JSON.parse(response.body)['data']['id']).to eq(mission.id.to_s)
@@ -32,7 +32,7 @@ RSpec.describe Api::V1::MissionsController, type: :controller do
 
     context 'when the bloomy is not logged in' do
       it 'returns unauthorized' do
-        post :create, {}
+        post :create, params: {}
         expect(response).to have_http_status(:unauthorized)
       end
     end

@@ -25,7 +25,7 @@ RSpec.describe Api::V1::KeywordsController, type: :request do
     before :each do
       published_keyword = Keyword.create(tag: 'publish')
       expect(Keyword).to receive(:published).and_return([published_keyword])
-      get '/api/v1/keywords', nil, headers
+      get '/api/v1/keywords', headers: headers
     end
 
     it { is_expected.to have_http_status(:success) }
@@ -37,13 +37,13 @@ RSpec.describe Api::V1::KeywordsController, type: :request do
 
   describe 'GET one #keyword' do
     it 'has not route' do
-      expect_no_route { get '/api/v1/keywords/1', nil, headers }
+      expect_no_route { get '/api/v1/keywords/1', headers: headers }
     end
   end
 
   describe 'PATCH #keywords' do
     it 'has not route' do
-      expect_no_route { patch '/api/v1/keywords/1', nil, headers }
+      expect_no_route { patch '/api/v1/keywords/1', headers: headers }
     end
   end
 
@@ -63,7 +63,7 @@ RSpec.describe Api::V1::KeywordsController, type: :request do
       before :each do
         Warden.test_mode!
         login_as(user, scope: :user)
-        post '/api/v1/keywords', payload.to_json, headers
+        post '/api/v1/keywords', params: payload.to_json, headers: headers
       end
 
       it 'creates the keyword' do
@@ -74,7 +74,7 @@ RSpec.describe Api::V1::KeywordsController, type: :request do
     unless ENV['TRAVIS']
       context 'when the user is not logged in' do
         before :each do
-          post '/api/v1/keywords', payload.to_json, headers
+          post '/api/v1/keywords', params: payload.to_json, headers: headers
         end
 
         it { is_expected.to have_http_status(403) }

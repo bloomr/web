@@ -47,7 +47,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
       before :each do
         Warden.test_mode!
         login_as(user, scope: :user)
-        patch "/api/v1/questions/#{question1.id}", payload(user.id, question1.id).to_json, headers
+        patch "/api/v1/questions/#{question1.id}", params: payload(user.id, question1.id).to_json, headers: headers
         question1.reload
       end
 
@@ -61,7 +61,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
     unless ENV['TRAVIS']
       context 'when the user is not logged in' do
         before :each do
-          patch "/api/v1/questions/#{question1.id}", payload(user.id, question1.id).to_json, headers
+          patch "/api/v1/questions/#{question1.id}", params: payload(user.id, question1.id).to_json, headers: headers
         end
 
         it { is_expected.to have_http_status(403) }
@@ -71,19 +71,19 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
 
   describe 'GET one #questions' do
     it 'has not route' do
-      expect_no_route { get "/api/v1/questions/#{question1.id}", nil, headers }
+      expect_no_route { get "/api/v1/questions/#{question1.id}", headers: headers }
     end
   end
 
   describe 'POST #questions' do
     it 'has not route' do
-      expect_no_route { post '/api/v1/questions', nil, headers }
+      expect_no_route { post '/api/v1/questions', headers: headers }
     end
   end
 
   describe 'GET all #questions' do
     it 'has not route' do
-      expect_no_route { post '/api/v1/questions', nil, headers }
+      expect_no_route { post '/api/v1/questions', headers: headers }
     end
   end
 end

@@ -78,7 +78,7 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  around_filter do |controller, action|
+  around_action do |controller, action|
     User.class_eval do
       def to_param
         id.to_s

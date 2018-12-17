@@ -26,7 +26,7 @@ RSpec.describe Api::V1::StrengthsController, type: :request do
       3.times do |i|
         Strength.create(name: "strength#{i}")
       end
-      get '/api/v1/strengths', nil, headers
+      get '/api/v1/strengths', headers: headers
     end
 
     it { is_expected.to have_http_status(:success) }
@@ -39,13 +39,13 @@ RSpec.describe Api::V1::StrengthsController, type: :request do
 
   describe 'PATCH #strengths' do
     it 'has not route' do
-      expect_no_route { patch '/api/v1/strengths/1', nil, headers }
+      expect_no_route { patch '/api/v1/strengths/1', headers: headers }
     end
   end
 
   describe 'POST #strengths' do
     it 'has not route' do
-      expect_no_route { post '/api/v1/strengths', nil, headers }
+      expect_no_route { post '/api/v1/strengths', headers: headers }
     end
   end
 end

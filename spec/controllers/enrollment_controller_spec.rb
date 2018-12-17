@@ -15,9 +15,11 @@ RSpec.describe EnrollmentController, type: :controller do
         expect(User).to receive(:create_with_default_questions!)
           .and_call_original
         expect(controller).to receive(:sign_in)
-        post :create, user: {
-          email: 'loulou@lou.com', job_title: 'job',
-          first_name: 'loulou', password: 'loulou12'
+        post :create, params: {
+          user: {
+            email: 'loulou@lou.com', job_title: 'job',
+            first_name: 'loulou', password: 'loulou12'
+          }
         }
       end
 
@@ -36,9 +38,12 @@ RSpec.describe EnrollmentController, type: :controller do
     context 'when the password is missing' do
       before do
         expect(Mailchimp).not_to receive(:send_notif_about_bloomeur)
-        post :create, user: {
-          email: 'loulou@lou.com', job_title: 'job',
-          first_name: 'loulou'
+        post :create,
+          params: {
+          user: {
+            email: 'loulou@lou.com', job_title: 'job',
+            first_name: 'loulou'
+          }
         }
       end
 

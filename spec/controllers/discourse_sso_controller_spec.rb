@@ -9,7 +9,7 @@ RSpec.describe DiscourseSsoController, type: :controller do
       sso = Base64.encode64("nonce=#{nonce}")
       sig = OpenSSL::HMAC.hexdigest('sha256', ENV['DISCOURSE_SECRET'], sso)
 
-      get :sso, sso: sso, sig: sig
+      get :sso, params: { sso: sso, sig: sig }
 
       expect(response).to have_http_status(:success)
       expect(assigns(:nonce)).to eq(nonce)
@@ -24,7 +24,8 @@ RSpec.describe DiscourseSsoController, type: :controller do
 
     before do
       ENV['DISCOURSE_URL'] = 'http://discourse'
-      post :login, bloomy: { email: email, password: password, query_string: qs }
+      ENV['DISCOURSE_SECRET'] = 'd836444a9e4084d5b224a60c208dce14'
+      post :login, params: { bloomy: { email: email, password: password, query_string: qs } }
     end
 
     context 'when the login is right' do

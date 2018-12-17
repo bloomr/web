@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   include AlgoliaSearch
 
-  algoliasearch index_name: "User_#{ENV['ALGOLIA_ENV']}", if: :published do
+  algoliasearch index_name: "User_#{ENV['ALGOLIA_ENV']}", disable_indexing: Rails.env.test?, if: :published do
     attribute :first_name, :job_title
     attribute :avatar_url do
       avatar.url('thumb')

@@ -1,4 +1,4 @@
-namespace :deduplicate {
+namespace :deduplicate do
   task tags: :environment do
     all_keywords = Keyword.group(:normalized_tag).count
     duplicates = all_keywords
@@ -20,4 +20,4 @@ namespace :deduplicate {
       end
     end
   end
-}
+end

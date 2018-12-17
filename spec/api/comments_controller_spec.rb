@@ -35,38 +35,38 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
 
         it "responds with 400 if empty comment" do
           @payload[:comment][:comment] = ""
-          post "/api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
+          post "/api/v1/questions/1/comments", params: @payload, headers: { "Accept" => "application/json" }
           expect(response).to have_http_status(400)
         end
 
         it "responds with 400 if nil comment" do
           @payload[:comment][:comment] = nil
-          post "/api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
+          post "/api/v1/questions/1/comments", params: @payload, headers:  { "Accept" => "application/json" }
           expect(response).to have_http_status(400)
         end
 
         it "responds with 400 if empty author's name" do
           @payload[:comment][:author_name] = ""
-          post "/api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
+          post "/api/v1/questions/1/comments", params: @payload, headers:  { "Accept" => "application/json" }
           expect(response).to have_http_status(400)
         end
 
         it "responds with 400 if nil author's name" do
           @payload[:comment][:author_name] = nil
-          post "/api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
+          post "/api/v1/questions/1/comments", params: @payload, headers:  { "Accept" => "application/json" }
           expect(response).to have_http_status(400)
         end
 
         it "strips HTML tags if h4x00rz (remove script balise)" do
           @payload[:comment][:comment] = "<script>alert('coucou')</script>yop"
-          post "/api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
+          post "/api/v1/questions/1/comments", params: @payload, headers:  { "Accept" => "application/json" }
           expect(QuestionComment.first.comment).to eq('yop')
         end
       end
 
       describe "with valid data" do
         before do
-          post "/api/v1/questions/1/comments", @payload, { "Accept" => "application/json" }
+          post "/api/v1/questions/1/comments", params: @payload, headers:  { "Accept" => "application/json" }
         end
 
         it "responds with 200 code if creation of comment" do
@@ -94,7 +94,7 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
 
       describe "with valid data" do
         before do
-          delete "/api/v1/questions/1/comments/#{@comment_to_delete.id}", nil, { "Accept" => "application/json" }
+          delete "/api/v1/questions/1/comments/#{@comment_to_delete.id}", headers: { "Accept" => "application/json" }
         end
 
         it "responds with 200 code if deletion of comment" do
@@ -110,7 +110,7 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
 
       describe "with unknown comment" do
         before do
-          delete "/api/v1/questions/1/comments/0", nil, { "Accept" => "application/json" }
+          delete "/api/v1/questions/1/comments/0", headers: { "Accept" => "application/json" }
         end
 
         it "responds with 404 code if unknown comment" do
@@ -130,7 +130,7 @@ RSpec.describe Api::V1::CommentsController, :type => :request do
               :answer => "My other answer",
               :user_id => User.first.id
           )
-          delete "/api/v1/questions/#{others_question.id}/comments/#{@comment_to_delete.id}", nil, { "Accept" => "application/json" }
+          delete "/api/v1/questions/#{others_question.id}/comments/#{@comment_to_delete.id}", headers: { "Accept" => "application/json" }
         end
 
         it "responds with 404 code if unknown comment" do

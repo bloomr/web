@@ -30,7 +30,7 @@ RSpec.describe Api::V1::MeController, type: :request do
     before :each do
       Warden.test_mode!
       login_as(user, scope: :user)
-      get '/api/v1/me', nil, headers
+      get '/api/v1/me', headers: headers
     end
 
     it { is_expected.to have_http_status(:success) }
@@ -99,7 +99,7 @@ RSpec.describe Api::V1::MeController, type: :request do
       expect(user).to receive(:avatar).and_return(avatar_double)
       expect(user).to receive(:save).twice # dont know ...
 
-      post '/api/v1/me/photo', avatar: 'binary_photo'
+      post '/api/v1/me/photo', params: { avatar: 'binary_photo' }
 
       expect(body['avatarUrl']).to eq('toto.png')
     end

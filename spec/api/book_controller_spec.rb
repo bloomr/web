@@ -41,7 +41,7 @@ RSpec.describe Api::V1::BooksController, type: :request do
       before :each do
         Warden.test_mode!
         login_as(user, scope: :user)
-        post '/api/v1/books', payload.to_json, headers
+        post '/api/v1/books', params: payload.to_json, headers: headers
       end
 
       it { is_expected.to have_http_status(:success) }
@@ -57,7 +57,7 @@ RSpec.describe Api::V1::BooksController, type: :request do
 
       context 'when the same book is saved' do
         before :each do
-          post '/api/v1/books', payload.to_json, headers
+          post '/api/v1/books', params: payload.to_json, headers: headers
         end
 
         it { is_expected.to have_http_status(:success) }
@@ -71,7 +71,7 @@ RSpec.describe Api::V1::BooksController, type: :request do
     unless ENV['TRAVIS']
       context 'when the user is not logged in' do
         before :each do
-          post '/api/v1/books', payload.to_json, headers
+          post '/api/v1/books', params: payload.to_json, headers: headers
         end
 
         it { is_expected.to have_http_status(403) }
@@ -81,19 +81,19 @@ RSpec.describe Api::V1::BooksController, type: :request do
 
   describe 'GET one #books' do
     it 'has no routes' do
-      expect_no_route { get '/api/v1/books/1', nil, headers }
+      expect_no_route { get '/api/v1/books/1', headers: headers }
     end
   end
 
   describe 'GET all #books' do
     it 'has no routes' do
-      expect_no_route { get '/api/v1/books', nil, headers }
+      expect_no_route { get '/api/v1/books', headers: headers }
     end
   end
 
   describe 'Patch all #books' do
     it 'has no routes' do
-      expect_no_route { patch '/api/v1/books', nil, headers }
+      expect_no_route { patch '/api/v1/books', headers: headers }
     end
   end
 end

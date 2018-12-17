@@ -29,7 +29,7 @@ RSpec.describe PaymentController, type: :controller do
 
   describe 'POST #post_email' do
     let(:program_name) { nil }
-    before { post :post_email, bloomy: { email: email }, program_name: program_name }
+    before { post :post_email, params: { bloomy: { email: email }, program_name: program_name } }
 
     context 'when the email is not known' do
       let(:email) { 'not-known@toto.com' }
@@ -52,7 +52,7 @@ RSpec.describe PaymentController, type: :controller do
       context 'and the bloomy already has the program' do
         before do
           bloomy.programs << standard_program.to_program
-          post :post_email, bloomy: { email: email }, program_name: program_name
+          post :post_email, params: { bloomy: { email: email }, program_name: program_name }
         end
 
         it { expect(response).to redirect_to(payment_index_path(program_name: 'standard')) }
@@ -62,7 +62,7 @@ RSpec.describe PaymentController, type: :controller do
   end
 
   describe 'GET #identity' do
-    before { get :identity, program_name: 'standard', email: 'loulou@lou.com' }
+    before { get :identity, params: { program_name: 'standard', email: 'loulou@lou.com' } }
 
     it { expect(response).to have_http_status(:success) }
     it { expect(assigns(:bloomy).email).to eq('loulou@lou.com') }
@@ -76,17 +76,19 @@ RSpec.describe PaymentController, type: :controller do
         name: 'name',
         first_name: 'first_name',
         age: 43,
-        password: 'tiptop123',
+        password: password,
         cgu_accepted: true
       }
     end
     let(:bloomy) { Bloomy.find_by(email: 'lou@lou.com') }
 
     before do
-      post :create_bloomy, bloomy: bloomy_params, program_name: 'standard'
+      puts 'before'
+      post :create_bloomy, params: { bloomy: bloomy_params, program_name: 'standard' }
     end
 
     context 'when everything is fine' do
+      let(:password) { 'tiptop123' }
       before { bloomy.reload }
 
       it { expect(response).to redirect_to(payment_card_path(program_name: 'standard', bloomy_id: bloomy.id)) }
@@ -100,10 +102,7 @@ RSpec.describe PaymentController, type: :controller do
     end
 
     context 'when the password is missing' do
-      let(:bloomy_params) do
-        super()['password'] = nil
-        super()
-      end
+      let(:password) { nil }
 
       it { expect(response).to redirect_to(payment_identity_path(program_name: 'standard', email: 'lou@lou.com')) }
       it { expect(flash[:error]).not_to be_nil }
@@ -111,7 +110,7 @@ RSpec.describe PaymentController, type: :controller do
   end
 
   describe 'GET #card' do
-    before { get :card, program_name: 'standard', bloomy_id: bloomy.id }
+    before { get :card, params: { program_name: 'standard', bloomy_id: bloomy.id } }
 
     context 'if the bloomy is known' do
       let(:bloomy) { create(:bloomy) }
@@ -161,7 +160,7 @@ RSpec.describe PaymentController, type: :controller do
           request.cookies[:partner] = 'sujetdubac'
         end
 
-        post :charge, payload
+        post :charge, params: payload
         bloomy.reload
       end
 
@@ -193,7 +192,7 @@ RSpec.describe PaymentController, type: :controller do
     context 'if there is a pb with strip' do
       before do
         allow(Stripe::Charge).to receive(:create).and_raise('nop')
-        post :charge, payload
+        post :charge, params: payload
         bloomy.reload
       end
 
@@ -202,7 +201,7 @@ RSpec.describe PaymentController, type: :controller do
     end
 
     context 'if the bloomy is unknown' do
-      before { post :charge, payload.merge(bloomy_id: 999) }
+      before { post :charge, params: payload.merge(bloomy_id: 999) }
 
       it { expect(response).to redirect_to(payment_index_path(program_name: 'standard')) }
       it { expect(flash[:error]).not_to be_nil }
@@ -211,7 +210,7 @@ RSpec.describe PaymentController, type: :controller do
     context 'if the bloomy already has the program' do
       let(:bloomy) { create(:bloomy, programs: [standard_program.to_program]) }
 
-      before { post :charge, payload }
+      before { post :charge, params: payload }
 
       it { expect(response).to redirect_to(payment_index_path) }
       it { expect(flash[:error]).not_to be_nil }

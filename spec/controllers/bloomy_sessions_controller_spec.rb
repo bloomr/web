@@ -10,7 +10,7 @@ RSpec.describe BloomySessionsController, type: :controller do
 
       before :each do
         expect(controller).to receive(:sign_in).with(bloomy, store: false)
-        post :create, payload
+        post :create, params: payload
       end
 
       it 'returns http success' do
@@ -28,7 +28,7 @@ RSpec.describe BloomySessionsController, type: :controller do
 
       before :each do
         request.env['devise.mapping'] = Devise.mappings[:bloomy]
-        post :create, payload
+        post :create, params: payload
       end
 
       it 'returns http unauthorized' do

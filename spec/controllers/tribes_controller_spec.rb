@@ -6,7 +6,7 @@ RSpec.describe TribesController, type: :controller do
       let!(:tribe) { Tribe.create(name: 'tiptop') }
 
       it 'returns http success' do
-        get :show, id: 'tiptop'
+        get :show, params: { id: 'tiptop' }
         expect(response).to have_http_status(:success)
         expect(assigns[:tribe]).to eq(tribe)
       end

@@ -22,7 +22,7 @@ RSpec.describe BredController, type: :controller do
     end
 
     it 'returns http success' do
-      post :create, payload
+      post :create, params: payload
       expect(response).to redirect_to(bred_program_thanks_path)
     end
   end
