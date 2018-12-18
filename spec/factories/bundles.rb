@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :bundle do
     sequence(:name) { |n| "name_#{n}" }
   end

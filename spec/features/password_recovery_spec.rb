@@ -9,7 +9,7 @@ feature 'password recovery' do
   end
 
   scenario 'a user recover is password' do
-    user = FactoryGirl.create(:user, password: 'loulou12')
+    user = FactoryBot.create(:user, password: 'loulou12')
 
     visit '/users/sign_in'
 
@@ -36,7 +36,7 @@ feature 'password recovery' do
   end
 
   scenario 'a bloomy recover is password' do
-    bloomy = FactoryGirl.create(:bloomy, password: 'loulou12')
+    bloomy = FactoryBot.create(:bloomy, password: 'loulou12')
 
     nonce = 'cb68251eefb5211e58c00ff1395f0c0b'
     sso = Base64.encode64("nonce=#{nonce}")

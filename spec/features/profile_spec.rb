@@ -19,7 +19,7 @@ feature 'the private profile' do
       end
 
       keywords = (1..5).map { |e| Keyword.create(tag: "k#{e}") }
-      FactoryGirl.create(:user_published_with_questions, keywords: keywords)
+      FactoryBot.create(:user_published_with_questions, keywords: keywords)
     end
 
     def test_user

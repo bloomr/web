@@ -54,7 +54,7 @@ gem 'httparty'
 gem 'delayed_job_active_record'
 
 gem 'rails-i18n'
-gem 'factory_girl_rails'
+gem 'factory_bot_rails'
 
 gem 'impressionist'
 

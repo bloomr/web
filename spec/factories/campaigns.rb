@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :campaign do
     partner 'MyString'
     standard_price '9.99'

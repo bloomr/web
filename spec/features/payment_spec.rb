@@ -7,8 +7,8 @@ feature 'Buy a journey' do
   let!(:std_bundle) { Bundle.create(name: 'standard', program_templates: [std_pt]) }
   let!(:premium_bundle) { Bundle.create(name: 'premium', program_templates: [premium_pt]) }
 
-  let!(:default_campaign) { FactoryGirl.create(:campaign, partner: 'default') }
-  let!(:sujetdubac_campaign) { FactoryGirl.create(:campaign, partner: 'sujetdubac') }
+  let!(:default_campaign) { FactoryBot.create(:campaign, partner: 'default') }
+  let!(:sujetdubac_campaign) { FactoryBot.create(:campaign, partner: 'sujetdubac') }
 
   before do
     default_campaign.bundles_campaigns << BundlesCampaign.new(bundle: std_bundle, price: 35)

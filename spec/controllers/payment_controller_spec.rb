@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe PaymentController, type: :controller do
-  let!(:default_campaign) { FactoryGirl.create(:campaign, partner: 'default') }
-  let!(:sujetdubac_campaign) { FactoryGirl.create(:campaign, partner: 'sujetdubac') }
+  let!(:default_campaign) { FactoryBot.create(:campaign, partner: 'default') }
+  let!(:sujetdubac_campaign) { FactoryBot.create(:campaign, partner: 'sujetdubac') }
 
   let!(:standard_program) { ProgramTemplate.create(name: 'standard', intercom: false, discourse: true) }
   let!(:premium_program)  { ProgramTemplate.create(name: 'premium', intercom: true, discourse: true) }

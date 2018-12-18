@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :book do
     author 'MyString'
     isbn 'isbn'

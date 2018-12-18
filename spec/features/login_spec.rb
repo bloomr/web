@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Login' do
   scenario 'when a user log in' do
-    user = FactoryGirl.create(:user, password: 'loulou12')
+    user = FactoryBot.create(:user, password: 'loulou12')
 
     visit '/users/sign_in'
 
