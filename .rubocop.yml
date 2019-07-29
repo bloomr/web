@@ -248,19 +248,19 @@ Lint/AmbiguousRegexpLiteral:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Lint/BlockAlignment:
+Layout/BlockAlignment:
   Enabled: false
 
 Lint/CircularArgumentReference:
   Enabled: false
 
-Lint/ConditionPosition:
+Layout/ConditionPosition:
   Enabled: false
 
 Lint/Debugger:
   Enabled: false
 
-Lint/DefEndAlignment:
+Layout/DefEndAlignment:
   Enabled: false
 
 Lint/DeprecatedClassMethods:
@@ -293,7 +293,7 @@ Lint/EmptyInterpolation:
 Lint/EmptyWhen:
   Enabled: false
 
-Lint/EndAlignment:
+Layout/EndAlignment:
   Enabled: true
   EnforcedStyleAlignWith: variable
 
@@ -520,9 +520,6 @@ Performance/FixedSize:
   Enabled: true
 
 Performance/FlatMap:
-  Enabled: true
-
-Performance/HashEachMethods:
   Enabled: true
 
 Performance/LstripRstrip:
@@ -891,9 +888,6 @@ Style/MethodCalledOnDoEndBlock:
 Style/MethodDefParentheses:
   Enabled: false
 
-Style/MethodMissing:
-  Enabled: false
-
 Style/MissingElse:
   Enabled: false
 
@@ -1075,12 +1069,6 @@ Style/SymbolProc:
   Enabled: false
 
 Style/TernaryParentheses:
-  Enabled: false
-
-Style/TrailingCommaInArguments:
-  Enabled: false
-
-Style/TrailingCommaInLiteral:
   Enabled: false
 
 Style/TrailingUnderscoreVariable:
