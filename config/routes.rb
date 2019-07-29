@@ -8,19 +8,6 @@ Rails.application.routes.draw do
   devise_for :bloomies, controllers: { passwords: 'passwords',
                                        sessions: 'bloomy_sessions' }
 
-  resources :payment, only: [:create]
-  post '/payment/post-email', to: 'payment#post_email'
-
-  get 'payment/:program_name/identity/:email', to: 'payment#identity', as: 'payment_identity', constraints: { email: /.+/ }
-  post 'payment/create-bloomy', to: 'payment#create_bloomy'
-
-  get '/payment/:program_name/card/:bloomy_id', to: 'payment#card', as: 'payment_card'
-  post '/payment/charge', to: 'payment#charge'
-
-  get '/payment/thanks', to: 'payment#thanks'
-  get '/payment/voucher'
-  get '/payment(/:program_name)', to: 'payment#index', as: 'payment_program'
-
   get '/me/email_sent', to: 'me#email_sent'
   get '/me/', to: 'me#show'
   get '/me/*other', to: 'me#show'
@@ -48,46 +35,6 @@ Rails.application.routes.draw do
   get 'tribes/:id', to: redirect('tribus/%{id}')
   get 'portraits/:id', to: 'jobs#show_by_id'
   get 'testimonies', to: redirect('/avis')
-
-  namespace :api do
-    namespace :v1 do
-      get 'me', to: 'me#show'
-      post '/me/photo', to: 'me#photo'
-      resources :users, only: [:update]
-      resources :challenges, only: [:index, :update]
-      resources :tribes, only: [:index]
-      get '/keywords/top', to: 'keywords#top'
-      resources :keywords, only: [:index, :create]
-      resources :questions, only: [:update] do
-        resources :comments, only: [:index, :create, :destroy]
-      end
-      resources :books, only: [:create]
-      get 'books/search' => 'books#search'
-      get 'users/:user_id/books(.:format)' => 'books#get_related_resources',
-          relationship: 'books', source: 'api/v1/users'
-
-      get 'users/:user_id/tribes(.:format)' => 'tribes#get_related_resources',
-          relationship: 'tribes', source: 'api/v1/users'
-
-      get 'users/:user_id/questions(.:format)' => 'questions#get_related_resources',
-          relationship: 'questions', source: 'api/v1/users'
-
-      get 'users/:user_id/challenges(.:format)' => 'challenges#get_related_resources',
-          relationship: 'challenges', source: 'api/v1/users'
-
-      get 'users/:user_id/keywords(.:format)' => 'keywords#get_related_resources',
-          relationship: 'keywords', source: 'api/v1/users'
-
-      get 'users/:user_id/strengths(.:format)' => 'strengths#get_related_resources',
-          relationship: 'strengths', source: 'api/v1/users'
-
-      jsonapi_resources :strengths
-
-      resources :bloomies, only: [:show, :create]
-      resources :programs, only: [:show, :update]
-      resources :missions, only: [:create]
-    end
-  end
 
   # Static pages
   get 'qui-nous-sommes', to: redirect('/qui-sommes-nous')

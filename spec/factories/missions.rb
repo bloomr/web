@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :mission do
-    prismic_id "MyString"
+    prismic_id { "MyString" }
   end
 end

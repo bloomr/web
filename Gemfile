@@ -83,6 +83,8 @@ group :development, :test do
   gem 'guard-livereload', '~> 2.4', require: false
   gem 'growl'
   gem 'rubocop', require: false
+  gem 'rubocop-rspec-focused', require: false
+  gem 'rubocop-rspec', require: false
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'sprite-factory'

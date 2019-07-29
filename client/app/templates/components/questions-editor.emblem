@@ -1,7 +1,0 @@
-each questions as |question|
-  if question.mandatory
-    label {{ question.title }} *
-  else
-    label {{ question.title }}
-  | {{input id=question.id value=question.answer type='hidden'}}
-  | <trix-editor input={{ question.id }} placeholder={{ question.description }} tabindex=2></trix-editor>
