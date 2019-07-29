@@ -1,14 +1,14 @@
 FactoryBot.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@example.com" }
-    first_name 'John'
-    job_title 'Developer'
-    password 'abcdfedv'
+    first_name { 'John' }
+    job_title { 'Developer' }
+    password { 'abcdfedv' }
 
     factory :user_published_with_questions do
       transient do
-        questions_count 2
-        question_love_job true
+        questions_count { 2 }
+        question_love_job { true }
       end
 
       after(:create) do |user, evaluator|

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tribe do
-    name 'apache'
+    name { 'apache' }
   end
 
 end

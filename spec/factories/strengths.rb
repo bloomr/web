@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :strength do
-    name "MyString"
+    name { "MyString" }
   end
 end
