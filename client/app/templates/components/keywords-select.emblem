@@ -1,2 +1,0 @@
-= power-select-multiple-with-create searchField='tag' search=(action "search") onchange=(action (mut selected)) oncreate=(action "createKeyword") selected=selected renderInPlace=true placeholder='' searchMessage='' noMatchesMessage='' buildSuggestion=buildSuggestion tabindex=tabindex as |keyword term|
-  = keyword.tag

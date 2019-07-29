@@ -1,1 +1,0 @@
-component 'image-upload' name='avatar' data-url='/api/v1/me/photo' accept='image/*' start=(action 'displaySpinner') done=(action 'updateImage')
