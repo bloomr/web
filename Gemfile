@@ -65,9 +65,9 @@ gem 'intercom'
 
 gem 'sitemap_generator'
 gem 'fog-aws'
+gem 'pg'
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'heroku-deflater'
 end
