@@ -1,0 +1,10 @@
+.particuliers-blog { width: 41px; height: 47px; background: image-url('particuliers/sprite.png') 0px -28px no-repeat; }
+.particuliers-boussole { width: 109px; height: 98px; background: image-url('particuliers/sprite.png') -41px -3px no-repeat; }
+.particuliers-fill-1 { width: 96px; height: 41px; background: image-url('particuliers/sprite.png') -150px -31px no-repeat; }
+.particuliers-lci { width: 159px; height: 104px; background: image-url('particuliers/sprite.png') -246px 0px no-repeat; }
+.particuliers-mains { width: 109px; height: 93px; background: image-url('particuliers/sprite.png') -405px -5px no-repeat; }
+.particuliers-mondecampus { width: 158px; height: 104px; background: image-url('particuliers/sprite.png') -514px 0px no-repeat; }
+.particuliers-mouv { width: 159px; height: 77px; background: image-url('particuliers/sprite.png') -672px -13px no-repeat; }
+.particuliers-separation { width: 9px; height: 77px; background: image-url('particuliers/sprite.png') -831px -13px no-repeat; }
+.particuliers-socialter { width: 160px; height: 43px; background: image-url('particuliers/sprite.png') -840px -30px no-repeat; }
+.particuliers-up { width: 157px; height: 103px; background: image-url('particuliers/sprite.png') -1000px 0px no-repeat; }

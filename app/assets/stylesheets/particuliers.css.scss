@@ -1,0 +1,196 @@
+#particuliers {
+  > * {
+    padding: 40px 10px;
+  }
+
+  .particuliers-boussole, .particuliers-mains, .particuliers-blog{ margin: 0 auto;  }
+
+
+  .intro {
+    background: image-url('particuliers/accroche.jpg') no-repeat;
+
+    background-position: center 0;
+    @media(max-width: $max_phone_size) {
+      background-position: calc(50% + 150px) 0;
+    }
+
+    color: #FFF;
+    min-height: 500px;
+    position: relative;
+
+    .catch {
+      h1 {
+        transform: rotate(-4deg);
+        font-family: Satisfy;
+      }
+
+      p { letter-spacing: 0.5px; }
+
+      @media(max-width: $max_phone_size) {
+        text-align: center;
+        max-width: 440px;
+        margin: 100px auto;
+
+        h1 { font-size: 36px; }
+        p { max-width: 440px; margin-top: 20px; }
+      }
+
+      @media(min-width: $max_phone_size + 1) and (max-width: 900px) {
+        text-align: center;
+        max-width: 440px;
+        margin: 100px auto;
+
+        h1 { font-size: 46px; }
+        p { max-width: 440px; margin-top: 20px; font-size: 20px; }
+      }
+
+      @media(min-width: 901px) {
+        padding-top: 150px;
+        position: absolute;
+        margin: auto;
+        width: 750px;
+        left: 240px;
+        right: 0;
+        display: inline-block;
+
+        h1 {
+          transform: rotate(-4deg);
+          font-family: Satisfy;
+          font-size: 50px;
+          display: inline-block;
+        }
+
+        p {
+          font-size: 20px;
+          line-height: 1.5;
+          position: relative;
+          left: 150px;
+          top: 20px;
+          display:inline-block
+        }
+
+        span { display: inline-block; }
+
+        span.particuliers-separation {
+          position: relative;
+          top: 10px;
+        }
+
+        .questions { width: 425px; margin-left: 30px; line-height: 1.2em;}
+      }
+    }
+
+  }
+
+  .for {
+    padding-top: 0;
+    &.list-wrapper {
+      > section {
+        max-width: 400px;
+        text-align: center;
+      }
+    }
+
+    .particuliers-mains { margin-bottom: 5px; }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      padding: 10px 0;
+    }
+
+    h1 {
+      color: $orange;
+      font-family: Satisfy;
+      font-size: 23px;
+      line-height: 1.4;
+      min-height: 70px;
+    }
+
+    p {
+      line-height: 1.7;
+      margin: 20px 40px;
+      min-height: 170px;
+    }
+
+    .crazy-btn { width: 300px; }
+
+    .know {
+      h1 { color: $indigo; }
+      .crazy-btn { background-color: $indigo; }
+      .crazy-btn:after { background-color: $light_indigo; }
+      b { font-weight: 600 }
+    }
+    .good_job { text-decoration: underline; font-weight: 600; }
+  }
+
+  .blog {
+    h1 { margin-bottom: 0px; }
+    text-align: center;
+    .crazy-btn { width: 300px; margin-top: 60px;}
+
+    > p { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+
+    li {
+      text-align: center;
+      max-width: 270px;
+      h1 { font-size: 20px; line-height: 1.7; min-height: 120px; }
+      .date { font-size: 14px; color: #b9b6af; }
+      img { display: block; margin: 0 auto 10px; }
+      a { font-size: 16px; font-weight: 600; letter-spacing: 0.5px; }
+      a:hover { .go { text-decoration: underline; } }
+
+      @media(max-width: $max_phone_size) {
+        text-align: center;
+        img { margin-right: auto; margin-left: auto; }
+      }
+    }
+  }
+
+  .philosophy, .love-job {
+    background-color: $light_orange;
+    text-align: center;
+    > * {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .main {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 0.7px;
+      margin: 40px auto 20px;
+    }
+    .second {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  }
+
+  .philosophy {
+    a {
+      margin-top: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+  }
+
+  .love-job { .crazy-btn { margin-top: 50px; } }
+
+
+  .thanks {
+    a { display: block; }
+    .title { margin: 50px auto 10px; }
+    .sub { font-size: 20px; margin-bottom: 50px; }
+    text-align: center;
+    .list-wrapper {
+      max-width: 1024px;
+      margin: 0 auto;
+      justify-content: space-around;
+      > li {
+        margin: auto 0;
+      }
+    }
+  }
+}

@@ -1,196 +1,143 @@
 #home {
-  > * {
-    padding: 40px 10px;
-  }
 
-  .home-boussole, .home-mains, .home-blog{ margin: 0 auto;  }
-
-
-  .intro {
-    background: image-url('home/accroche.jpg') no-repeat;
-
-    background-position: center 0;
-    @media(max-width: $max_phone_size) {
-      background-position: calc(50% + 150px) 0;
-    }
-
-    color: #FFF;
-    min-height: 500px;
-    position: relative;
-
-    .catch {
-      h1 {
-        transform: rotate(-4deg);
-        font-family: Satisfy;
-      }
-
-      p { letter-spacing: 0.5px; }
-
-      @media(max-width: $max_phone_size) {
-        text-align: center;
-        max-width: 440px;
-        margin: 100px auto;
-
-        h1 { font-size: 36px; }
-        p { max-width: 440px; margin-top: 20px; }
-      }
-
-      @media(min-width: $max_phone_size + 1) and (max-width: 900px) {
-        text-align: center;
-        max-width: 440px;
-        margin: 100px auto;
-
-        h1 { font-size: 46px; }
-        p { max-width: 440px; margin-top: 20px; font-size: 20px; }
-      }
-
-      @media(min-width: 901px) {
-        padding-top: 150px;
-        position: absolute;
-        margin: auto;
-        width: 750px;
-        left: 240px;
-        right: 0;
-        display: inline-block;
-
-        h1 {
-          transform: rotate(-4deg);
-          font-family: Satisfy;
-          font-size: 50px;
-          display: inline-block;
-        }
-
-        p {
-          font-size: 20px;
-          line-height: 1.5;
-          position: relative;
-          left: 150px;
-          top: 20px;
-          display:inline-block
-        }
-
-        span { display: inline-block; }
-
-        span.home-separation {
-          position: relative;
-          top: 20px;
-        }
-
-        .questions { width: 425px; margin-left: 30px; }
-      }
-    }
-
-  }
-
-  .for {
-    padding-top: 0;
-    &.list-wrapper {
-      > section {
-        max-width: 400px;
-        text-align: center;
-      }
-    }
-
-    .home-mains { margin-bottom: 5px; }
-
-    h2 {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      padding: 10px 0;
+  .header {
+    border-top: 4px solid #f29f1c;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  
+    .logo {
+      font-family: Satisfy;
+      font-size: 36px;  
     }
 
     h1 {
-      color: $orange;
-      font-family: Satisfy;
-      font-size: 23px;
-      line-height: 1.4;
-      min-height: 70px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: #3e3e3e;
     }
 
     p {
-      line-height: 1.7;
-      margin: 20px 40px;
-      min-height: 170px;
-    }
-
-    .crazy-btn { width: 300px; }
-
-    .know {
-      h1 { color: $indigo; }
-      .crazy-btn { background-color: $indigo; }
-      .crazy-btn:after { background-color: $light_indigo; }
-      b { font-weight: 600 }
-    }
-    .good_job { text-decoration: underline; font-weight: 600; }
-  }
-
-  .blog {
-    h1 { margin-bottom: 0px; }
-    text-align: center;
-    .crazy-btn { width: 300px; margin-top: 60px;}
-
-    > p { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
-
-    li {
+      padding-top: 10px;
+      font-family: OpenSans;
+      font-size: 16px;
       text-align: center;
-      max-width: 270px;
-      h1 { font-size: 20px; line-height: 1.7; min-height: 120px; }
-      .date { font-size: 14px; color: #b9b6af; }
-      img { display: block; margin: 0 auto 10px; }
-      a { font-size: 16px; font-weight: 600; letter-spacing: 0.5px; }
-      a:hover { .go { text-decoration: underline; } }
-
-      @media(max-width: $max_phone_size) {
-        text-align: center;
-        img { margin-right: auto; margin-left: auto; }
-      }
+      line-height: 1.22;
+      color: #3e3e3e;   
     }
+
   }
 
-  .philosophy, .love-job {
-    background-color: $light_orange;
-    text-align: center;
-    > * {
-      max-width: 620px;
-      margin: 0 auto;
+  .footer {
+    p {
+      padding-top: 10px;
+      font-family: OpenSans;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.22;
+      color: #3e3e3e;         
     }
-    .main {
-      font-size: 20px;
-      font-weight: bold;
-      letter-spacing: 0.7px;
-      margin: 40px auto 20px;
-    }
-    .second {
-      font-size: 18px;
-      line-height: 1.4;
-    }
-  }
 
-  .philosophy {
     a {
-      margin-top: 20px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      display: inline-block;
+      text-decoration: underline;
     }
+
   }
 
-  .love-job { .crazy-btn { margin-top: 50px; } }
+  .biface {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-
-  .thanks {
-    a { display: block; }
-    .title { margin: 50px auto 10px; }
-    .sub { font-size: 20px; margin-bottom: 50px; }
-    text-align: center;
-    .list-wrapper {
-      max-width: 1024px;
-      margin: 0 auto;
-      justify-content: space-around;
-      > li {
-        margin: auto 0;
+    .box {
+      width: 100%;
+      height: 431px;
+      margin-bottom : 10px;
+      margin-left : 30px;
+      margin-right : 30px;
+      margin-top : 10px;      
+      } 
+    
+    .who {
+      margin-left: 35px;
+      margin-top: 20px;
+      font-family: OpenSans;
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.22;
+      color: #3e3e3e;
       }
     }
-  }
+
+    .b2b {
+      background: image-url('home/b2b.png') no-repeat;
+      background-size: 100%;
+    }
+
+    .b2c {
+      background: image-url('home/b2c.png') no-repeat;
+      background-size: 95%;
+    }
+
+    div.punchline {
+      width: 92%;
+      height: 536px;
+      padding-top: 246px;
+      padding-left: 38px;
+    }
+
+    .punchline-b2c {
+      background: content-box image-url('home/orange.png') no-repeat;
+      background-size: 100%;
+    }
+
+    .punchline-b2b {
+      background: content-box image-url('home/green.png') no-repeat;
+      background-size: 100%;
+    }
+
+
+    .punchline {
+      text-align: center;
+
+      h2 {
+        padding-top: 20px;
+        font-family: Satisfy;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.35;
+        text-align: center;
+        letter-spacing: -0.83px;
+        color: #ffffff;
+
+        @media(max-width: $max_phone_size) {
+          font-size: 24px;
+        }
+
+        @media(min-width: $max_phone_size + 1) {
+          font-size: 36px;
+        }
+      }
+
+      p {
+        font-family: OpenSans;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.22;
+        letter-spacing: normal;
+        color: #ffffff;
+
+        @media(max-width: $max_phone_size) {
+          font-size: 14px;
+        }
+
+        @media(min-width: $max_phone_size + 1) {
+          font-size: 18px;
+        }
+
+
+      } 
+    } 
 }

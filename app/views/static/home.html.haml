@@ -1,57 +1,33 @@
-- content_for :title, "Bloomr : l'épanouissement professionnel pour tous"
-- content_for :description, "Un site unique et positif pour devenir acteur de son épanouissement au travail."
+- content_for :title, "Le digital et le coaching au service du plus grand nombre"
+- content_for :description, "Bloomr accompagne les particuliers et les entreprises pour aider tous ceux qui le souhaitent à devenir des acteurs conscients de leur développement professionnel."
+- content_for :hide_header, true
+- content_for :hide_footer, true
 
 #home
-  %section.intro
-    .catch
-      %h1 S'épanouir au travail, c'est fondamental
-      
-      %p
-        %span.home-separation
-        %span.questions Programmes en ligne et accompagnement individuel, pour devenir acteur de son épanouissement professionnel.        
+  %section.header
+    %p.logo Bloomr 
+    %h1 Préserver l'humain. Tirer parti du digital.
+    %p Programmes et espaces en ligne couplés à un accompagnement individuel et humain. 
+    %p Au service du développement professionnel du plus grand nombre.
 
-  %div.for.list-wrapper
-    %section.know
-      .img.home-boussole
-      %h2 DES PROGRAMMES EN LIGNE
-      %h1 Pour apprendre à te connaître, et développer ton potentiel unique
-      %p
-        Des exercices, de l’inspiration et de l’optimisme pour développer ton épanouissement tout en restant zen.
-        %br
-        %br
-        %b Déjà + de 11000 inscrits, de 16 à 59 ans !
+  %section.biface
+    %a{ :href => "/particuliers"} 
+      %p.who Vous êtes un particulier...
+      %div.box.b2c
+        %div.punchline.punchline-b2c
+          %h2 Bloomr pour les particuliers
+          %p Se construire une vie professionnelle épanouissante
 
-      %a.crazy-btn{ href: 'https://programmes.bloomr.org' } Découvre nos programmes
+    %a{ :href => "https://www.bloomr-impulse.com"}
+      %p.who Vous êtes RH, manager ou dirigeant(e)...
+      %div.box.b2b  
+        %div.punchline.punchline-b2b
+          %h2 Bloomr pour les entreprises
+          %p Pour réinventer l'accompagnement des collaborateurs
 
-    %section
-      .img.home-mains
-      %h2 DES MÉTIERS RACONTÉS PAR DES PROS HEUREUX
-      %h1 Pour découvrir leurs parcours et ce qui les rend heureux aujourd'hui.
-      %p
-        Les témoignages de professionnels qui aiment leur job sont une source d’inspiration qui ouvre des horizons.
-        %br
-        %br
-        %br
-        %a.good_job{ href: enrollment_index_path }Bien dans ton job ? Viens en parler
+  %section.footer
+    %p Copyright Bloomr 2019 - Paris, Marseille, Lille, Nantes - contact@bloomr.life
+    %p
+      %a{ :href => "https://programmes.bloomr.org/mentions-legales"} Mentions légales
+    
 
-      %a.crazy-btn{ href: jobs_path } Découvre les métiers
-
-  %section.blog
-    .img.home-blog
-    %h1.title Un blog plein d’optimisme...
-    %p pour booster ta confiance en toi et en l'avenir.
-    -#%ul.list-wrapper.blog-posts
-
-    %a.crazy-btn{ href: 'https://blog-bloomr.org', target: '_blank' } Découvre le blog Bloomr
-
-  %section.philosophy
-    %h1.title La philosophie Bloomr
-    %p.main Se frayer son chemin dans le monde professionnel est devenu un art. Se construire un parcours épanouissant, l’aventure de toute une vie.
-    %p.second
-      Comment trouver sa place dans ce monde ultra-mouvant ? Comment développer son bien-être au quotidien ?
-      %br
-      %br
-      Bloomr accompagne avec bienveillance ceux qui veulent s'épanouir durablement. A leur rythme et avec plaisir.
-      %br
-      %br
-      Nous apprenons à chacun comment s’épanouir maintenant et pour le reste de la vie : se connecter à ce qui est bon pour soi, saisir les opportunités et avancer en toute confiance.

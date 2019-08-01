@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   get 'qui-sommes-nous' => 'static#qui_sommes_nous'
 
   statics = %w( qui-sommes-nous templates
-                concept bloomifesto )
+                concept bloomifesto particuliers)
   statics.each do |name|
     get name => "static##{name}"
   end
