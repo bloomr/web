@@ -29,6 +29,9 @@
   }
 
   .footer {
+
+    padding-top: 30px;
+
     p {
       padding-top: 10px;
       font-family: OpenSans;
@@ -136,8 +139,6 @@
         @media(min-width: $max_phone_size + 1) {
           font-size: 18px;
         }
-
-
       } 
     } 
 }
