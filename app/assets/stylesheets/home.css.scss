@@ -86,7 +86,6 @@
         text-align: center;
 
         h2 {
-          padding-top: 30px;
           padding-bottom: 3px;
           font-family: Satisfy;
           font-weight: normal;
@@ -99,10 +98,12 @@
 
           @media(max-width: $max_phone_size) {
             font-size: 22px;
+            padding-top: 40px;
           }
 
           @media(min-width: $max_phone_size + 1) {
             font-size: 32px;
+            padding-top: 30px;
           }
         }
 
@@ -116,11 +117,11 @@
           color: #ffffff;
 
           @media(max-width: $max_phone_size) {
-            font-size: 14px;
+            font-size: 13px;
           }
 
           @media(min-width: $max_phone_size + 1) {
-            font-size: 16px;
+            font-size: 17px;
           }
         } 
       }
