@@ -3,7 +3,11 @@
   img {
     display: block;
     margin : 0 auto;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+  }
+
+  .resizable {
+    max-width: 100%;    
   }
 
   .header {
@@ -68,13 +72,13 @@
 
       .punchline-b2c {
         background: image-url('home/orange.svg') no-repeat;
-        background-size: 82%;
+        background-size: 90%;
         background-position: center;
       }
 
       .punchline-b2b {
         background: image-url('home/green.svg') no-repeat;
-        background-size: 80%;
+        background-size: 90%;
         background-position: center;
       }
 
@@ -94,7 +98,7 @@
           color: #ffffff;
 
           @media(max-width: $max_phone_size) {
-            font-size: 24px;
+            font-size: 22px;
           }
 
           @media(min-width: $max_phone_size + 1) {
