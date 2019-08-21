@@ -5,21 +5,22 @@
 
 #home
   %section.header
-    %p.logo Bloomr 
-    %h1 Préserver l'humain. Tirer parti du digital.
-    %p Programmes et espaces en ligne, couplés à un accompagnement individuel et humain. 
+    =image_tag('home/logo_black.svg', alt: 'bloomr')
+    %h1 Des programmes de développement professionnel en ligne, couplés à un accompagnement individuel et humain. 
 
   %section.biface
     %a{ :href => "/particuliers"} 
-      %p.who.whob2c Vous êtes un particulier...
-      %div.box.b2c
+      %div.box
+        =image_tag('home/logo.svg', alt: 'bloomr')
+        =image_tag('home/b2c.png', alt: 'offre particuliers')
         %div.punchline.punchline-b2c
           %h2 Bloomr pour les particuliers
           %p Pour se construire une vie professionnelle épanouissante
 
     %a{ :href => "https://www.bloomr-impulse.com"}
-      %p.who.whob2b Vous êtes RH, manager ou dirigeant(e)...
-      %div.box.b2b  
+      %div.box
+        =image_tag('home/logo_impulse.svg', alt: 'bloomr impulse')
+        =image_tag('home/b2b.png', alt: 'offre entreprises')
         %div.punchline.punchline-b2b
           %h2 Bloomr pour les entreprises
           %p Pour réinventer l'accompagnement des collaborateurs
