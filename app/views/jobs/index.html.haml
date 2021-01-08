@@ -58,7 +58,10 @@
             %span.icon{ class: "jobs-#{t.name.gsub(' ', '').gsub("'", '').gsub('.', '').downcase}" }
             %span #{t.name}
 
-  .grey-spacer
+  %section.program
+    %h1.title Toi aussi tu recherches le job qui va te faire vibrer&nbsp;?
+    %p Pose-toi les bonnes questions avec notre programme en ligne 100% finançable&nbsp;:
+    %a.crazy-btn{ href: program_path } Découvre le programme Bloomr
 
   %section.trend
     %h1.title Les Tendances
@@ -67,8 +70,3 @@
       - @popular_keywords.each_with_index do |k, i|
         %li{ class: "keyword-#{i}" } 
           %a{ href: tag_path(k.normalized_tag) } ##{k.tag}
-
-  %section.program
-    %h1.title Toi aussi tu recherches le job qui va te faire vibrer&nbsp;?
-    %p Pose-toi les bonnes questions avec nos programmes en ligne&nbsp;:
-    %a.crazy-btn{ href: program_path } Découvre les programmes
