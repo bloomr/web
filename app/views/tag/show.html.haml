@@ -18,10 +18,13 @@
           %br
           À vous de le découvrir !
 
+  %section.cta
+    = link_to 'Découvre notre programme en ligne', program_path, class: 'crazy-btn'
+
   %ul
     - @portraits.each do |portrait|
       %li{ itemscope: true, itemtype: 'http://schema.org/Person' }
         = render 'jobs/card', portrait: portrait
 
   %section.cta
-    = link_to 'Découvre nos programmes en ligne', program_path, class: 'crazy-btn'
+    = link_to 'Découvre notre programme en ligne', program_path, class: 'crazy-btn'
