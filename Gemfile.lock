@@ -895,6 +895,8 @@ GEM
       railties (>= 4.2, < 5.3)
       responders
     intercom (3.7.1)
+    intercom-rails (0.4.2)
+      activesupport (> 3.0)
     io-like (0.3.0)
     ipaddress (0.8.3)
     jaro_winkler (1.5.1)
@@ -1177,6 +1179,7 @@ DEPENDENCIES
   httparty
   impressionist
   intercom
+  intercom-rails
   jbuilder
   jquery-rails
   jsonapi-resources
