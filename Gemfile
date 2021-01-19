@@ -62,6 +62,7 @@ gem 'jsonapi-resources'
 gem 'active_model_serializers'
 
 gem 'intercom'
+gem "intercom-rails"
 
 gem 'sitemap_generator'
 gem 'fog-aws'
